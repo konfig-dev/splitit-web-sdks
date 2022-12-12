@@ -3,11 +3,13 @@
   "swagger": "2.0",
   "info": {
     "title": "splitit-web-api-v3",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "description": "Splitit's API"
   },
   "host": "web-api-v3.sandbox.splitit.com",
   "schemes": ["https"],
   "produces": ["text/plain", "application/json", "text/json"],
+  "tags": [{ "name": "InstallmentPlan" }],
   "paths": {
     "/api/installmentplans/{installmentPlanNumber}": {
       "get": {
@@ -25,18 +27,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -97,30 +95,23 @@
             "x-nullable": true
           },
           {
-            "type": "object",
+            "type": "string",
             "name": "extendedParams",
             "in": "query",
-            "x-nullable": true,
-            "additionalProperties": {
-              "type": "string"
-            }
+            "x-nullable": true
           },
           {
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -198,18 +189,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -275,18 +262,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -360,18 +343,15 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string",
+            "default": "Bearer "
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -438,18 +418,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -523,18 +499,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
@@ -593,18 +565,14 @@
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "type": "string"
           },
           {
             "name": "Authorization",
             "in": "header",
             "required": true,
             "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
+            "type": "string",
             "default": "Bearer "
           }
         ],
