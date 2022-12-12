@@ -1,0 +1,11 @@
+outputDirectory: /tmp/splitit-sdks-out
+generators:
+  java:
+    version: 1.0.0
+    groupId: com.splitit
+    artifactId: splitit-java-sdk
+    outputDirectory: java
+  csharp:
+    version: 1.0.0
+    packageName: Splitit.Net
+    outputDirectory: csharp
