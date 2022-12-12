@@ -10,6 +10,7 @@
   "schemes": ["https"],
   "produces": ["text/plain", "application/json", "text/json"],
   "tags": [{ "name": "InstallmentPlan" }],
+  "security": [{ "oauthKey": [], "idempotencyKey": [] }],
   "paths": {
     "/api/installmentplans/{installmentPlanNumber}": {
       "get": {
@@ -22,20 +23,6 @@
             "in": "path",
             "required": true,
             "x-nullable": true
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -99,20 +86,6 @@
             "name": "extendedParams",
             "in": "query",
             "x-nullable": true
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -184,20 +157,6 @@
             },
             "x-nullable": true,
             "enum": ["None", "Regular", "Fast", "Automation"]
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -257,20 +216,6 @@
             "in": "path",
             "required": true,
             "x-nullable": true
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -338,21 +283,6 @@
               "$ref": "#/definitions/UpdateOrderRequest"
             },
             "x-nullable": false
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string",
-            "default": "Bearer "
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -413,20 +343,6 @@
               "$ref": "#/definitions/InstallmentPlanUpdateRequestByIdentifier"
             },
             "x-nullable": false
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -494,20 +410,6 @@
               "$ref": "#/definitions/InstallmentPlanRefundRequest"
             },
             "x-nullable": false
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -560,20 +462,6 @@
             "in": "path",
             "required": true,
             "x-nullable": true
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "type": "string",
-            "default": "Bearer "
           }
         ],
         "responses": {
@@ -1287,6 +1175,19 @@
           }
         }
       ]
+    }
+  },
+  "securityDefinitions": {
+    "oauthKey": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Enter the token with the 'Bearer: ' prefix, e.g. 'Bearer abcde12345'."
+    },
+    "idempotencyKey": {
+      "type": "apiKey",
+      "name": "X-Splitit-IdempotencyKey",
+      "in": "header"
     }
   }
 }
