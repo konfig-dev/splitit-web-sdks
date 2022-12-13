@@ -12,7 +12,7 @@
 
 package com.splitit.client;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T17:20:02.893636-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T17:45:38.348478-08:00[America/Los_Angeles]")
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 
