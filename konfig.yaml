@@ -5,7 +5,13 @@ generators:
     groupId: com.splitit
     artifactId: splitit-java-sdk
     outputDirectory: java
+    git:
+      userId: konfig-dev
+      repoId: splitit-sdks/tree/main/java
   csharp:
     version: 1.0.0
     packageName: Splitit.Net
     outputDirectory: csharp
+    git:
+      userId: konfig-dev
+      repoId: splitit-sdks/tree/main/csharp
