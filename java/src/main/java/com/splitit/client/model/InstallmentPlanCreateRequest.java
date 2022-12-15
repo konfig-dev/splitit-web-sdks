@@ -52,7 +52,7 @@ import com.splitit.client.JSON;
 /**
  * InstallmentPlanCreateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T21:13:12.630167Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T14:27:55.699693-08:00[America/Los_Angeles]")
 public class InstallmentPlanCreateRequest {
   public static final String SERIALIZED_NAME_AUTO_CAPTURE = "AutoCapture";
   @SerializedName(SERIALIZED_NAME_AUTO_CAPTURE)

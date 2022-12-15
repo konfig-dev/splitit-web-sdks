@@ -48,7 +48,7 @@ import com.splitit.client.JSON;
 /**
  * InstallmentPlanUpdateRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T21:13:12.630167Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T14:27:55.699693-08:00[America/Los_Angeles]")
 public class InstallmentPlanUpdateRequest {
   public static final String SERIALIZED_NAME_REF_ORDER_NUMBER = "RefOrderNumber";
   @SerializedName(SERIALIZED_NAME_REF_ORDER_NUMBER)
