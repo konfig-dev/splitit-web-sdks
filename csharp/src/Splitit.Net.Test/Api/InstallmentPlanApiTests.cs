@@ -16,6 +16,7 @@ using System.Linq;
 using System.Reflection;
 using RestSharp;
 using NUnit.Framework;
+using Newtonsoft.Json;
 
 using Splitit.Net.Client;
 using Splitit.Net.Api;
@@ -40,7 +41,17 @@ namespace Splitit.Net.Test
         [SetUp]
         public void Init()
         {
-            instance = new InstallmentPlanApi();
+            var client = new RestClient("https://id.sandbox.splitit.com/connect/token");
+            string clientId = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            request.AddHeader("content-type", "application/x-www-form-urlencoded");
+            request.AddParameter("application/x-www-form-urlencoded", $"grant_type=client_credentials&client_id={clientId}&client_secret={clientSecret}", ParameterType.RequestBody);
+            IRestResponse response = client.Execute(request);
+            var data = JsonConvert.DeserializeObject(response.Content);
+            Console.Write(data);
+            instance = new InstallmentPlanApi(Configuration.Default);
         }
 
         /// <summary>
@@ -62,7 +73,7 @@ namespace Splitit.Net.Test
             //Assert.IsInstanceOf(typeof(InstallmentPlanApi), instance);
         }
 
-        
+
         /// <summary>
         /// Test Cancel
         /// </summary>
@@ -75,7 +86,7 @@ namespace Splitit.Net.Test
             //var response = instance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(InstallmentPlanCancelResponse), response, "response is InstallmentPlanCancelResponse");
         }
-        
+
         /// <summary>
         /// Test Get
         /// </summary>
@@ -88,7 +99,7 @@ namespace Splitit.Net.Test
             //var response = instance.Get(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(InstallmentPlanModel), response, "response is InstallmentPlanModel");
         }
-        
+
         /// <summary>
         /// Test Post
         /// </summary>
@@ -102,7 +113,7 @@ namespace Splitit.Net.Test
             //var response = instance.Post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
             //Assert.IsInstanceOf(typeof(InstallmentPlanModel), response, "response is InstallmentPlanModel");
         }
-        
+
         /// <summary>
         /// Test Refund
         /// </summary>
@@ -116,7 +127,7 @@ namespace Splitit.Net.Test
             //var response = instance.Refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
             //Assert.IsInstanceOf(typeof(InstallmentPlanRefundResponse), response, "response is InstallmentPlanRefundResponse");
         }
-        
+
         /// <summary>
         /// Test Search
         /// </summary>
@@ -124,14 +135,14 @@ namespace Splitit.Net.Test
         public void SearchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string xSplititIdempotencyKey = null;
-            //string installmentPlanNumber = null;
-            //string refOrderNumber = null;
-            //Dictionary<string, string> extendedParams = null;
-            //var response = instance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
-            //Assert.IsInstanceOf(typeof(InstallmentPlanGetResponse), response, "response is InstallmentPlanGetResponse");
+            string xSplititIdempotencyKey = "123132131231";
+            string installmentPlanNumber = "1231321";
+            string refOrderNumber = "1231321312312";
+            Dictionary<string, string> extendedParams = null;
+            var response = instance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+            Assert.IsInstanceOf(typeof(InstallmentPlanGetResponse), response, "response is InstallmentPlanGetResponse");
         }
-        
+
         /// <summary>
         /// Test UpdateOrder
         /// </summary>
@@ -145,7 +156,7 @@ namespace Splitit.Net.Test
             //var response = instance.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
             //Assert.IsInstanceOf(typeof(InstallmentPlanUpdateResponse), response, "response is InstallmentPlanUpdateResponse");
         }
-        
+
         /// <summary>
         /// Test UpdateOrder2
         /// </summary>
@@ -158,7 +169,7 @@ namespace Splitit.Net.Test
             //var response = instance.UpdateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
             //Assert.IsInstanceOf(typeof(InstallmentPlanUpdateResponse), response, "response is InstallmentPlanUpdateResponse");
         }
-        
+
         /// <summary>
         /// Test VerifyAuthorization
         /// </summary>
@@ -171,7 +182,7 @@ namespace Splitit.Net.Test
             //var response = instance.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(VerifyAuthorizationResponse), response, "response is VerifyAuthorizationResponse");
         }
-        
+
     }
 
 }
