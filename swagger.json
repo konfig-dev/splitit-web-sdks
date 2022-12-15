@@ -4,13 +4,17 @@
   "info": {
     "title": "splitit-web-api-v3",
     "version": "1.0.0",
-    "description": "Splitit's API"
+    "description": "Splitit's API",
+    "x-konfig-ignore": {
+      "konfig-oas2-schema": {
+        "paths": ["paths./api/installmentplans/search.get.parameters.2"]
+      }
+    }
   },
   "host": "web-api-v3.sandbox.splitit.com",
   "schemes": ["https"],
   "produces": ["text/plain", "application/json", "text/json"],
   "tags": [{ "name": "InstallmentPlan" }],
-  "security": [{ "oauthKey": [], "idempotencyKey": [] }],
   "paths": {
     "/api/installmentplans/{installmentPlanNumber}": {
       "get": {
@@ -23,6 +27,12 @@
             "in": "path",
             "required": true,
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -82,10 +92,19 @@
             "x-nullable": true
           },
           {
-            "type": "string",
+            "type": "object",
             "name": "extendedParams",
             "in": "query",
-            "x-nullable": true
+            "x-nullable": true,
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -157,6 +176,12 @@
             },
             "x-nullable": true,
             "enum": ["None", "Regular", "Fast", "Automation"]
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -216,6 +241,12 @@
             "in": "path",
             "required": true,
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -283,6 +314,12 @@
               "$ref": "#/definitions/UpdateOrderRequest"
             },
             "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -343,6 +380,12 @@
               "$ref": "#/definitions/InstallmentPlanUpdateRequestByIdentifier"
             },
             "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -410,6 +453,12 @@
               "$ref": "#/definitions/InstallmentPlanRefundRequest"
             },
             "x-nullable": false
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -462,6 +511,12 @@
             "in": "path",
             "required": true,
             "x-nullable": true
+          },
+          {
+            "type": "string",
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true
           }
         ],
         "responses": {
@@ -517,7 +572,25 @@
               "type": "string"
             },
             "Error": {
-              "$ref": "#/definitions/Error"
+              "$ref": "#/definitions/ErrorExtended"
+            }
+          }
+        }
+      ]
+    },
+    "ErrorExtended": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Error"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ExtraData": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
             }
           }
         }
@@ -1178,16 +1251,14 @@
     }
   },
   "securityDefinitions": {
-    "oauthKey": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header",
-      "description": "Enter the token with the 'Bearer: ' prefix, e.g. 'Bearer abcde12345'."
-    },
-    "idempotencyKey": {
-      "type": "apiKey",
-      "name": "X-Splitit-IdempotencyKey",
-      "in": "header"
+    "bearer": {
+      "type": "oauth2",
+      "description": "jwt",
+      "flow": "application",
+      "tokenUrl": "https://id.sandbox.splitit.com/connect/token",
+      "scopes": {
+        "api.v3": ""
+      }
     }
   }
 }
