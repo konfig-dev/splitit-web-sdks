@@ -44,13 +44,13 @@ namespace Splitit.Net.Test
             var client = new RestClient("https://id.sandbox.splitit.com/connect/token");
             string clientId = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_ID");
             string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
+
             var request = new RestRequest(Method.POST);
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("content-type", "application/x-www-form-urlencoded");
             request.AddParameter("application/x-www-form-urlencoded", $"grant_type=client_credentials&client_id={clientId}&client_secret={clientSecret}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
             var data = JsonConvert.DeserializeObject(response.Content);
-            Console.Write(data);
             instance = new InstallmentPlanApi(Configuration.Default);
         }
 
@@ -140,6 +140,7 @@ namespace Splitit.Net.Test
             string refOrderNumber = "1231321312312";
             Dictionary<string, string> extendedParams = null;
             var response = instance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+            Console.Write(response);
             Assert.IsInstanceOf(typeof(InstallmentPlanGetResponse), response, "response is InstallmentPlanGetResponse");
         }
 
