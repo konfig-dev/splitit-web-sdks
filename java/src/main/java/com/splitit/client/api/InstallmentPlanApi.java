@@ -86,6 +86,7 @@ public class InstallmentPlanApi {
     /**
      * Build call for cancel
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -99,7 +100,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call cancelCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -125,6 +126,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -142,18 +147,23 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelValidateBeforeCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling cancel(Async)");
         }
 
-        return cancelCall(installmentPlanNumber, _callback);
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling cancel(Async)");
+        }
+
+        return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
 
     }
 
@@ -161,6 +171,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return InstallmentPlanCancelResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -173,8 +184,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanCancelResponse cancel(String installmentPlanNumber) throws ApiException {
-        ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber);
+    public InstallmentPlanCancelResponse cancel(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
         return localVarResp.getData();
     }
 
@@ -182,6 +193,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return ApiResponse&lt;InstallmentPlanCancelResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -194,8 +206,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber) throws ApiException {
-        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, null);
+    public ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -204,6 +216,7 @@ public class InstallmentPlanApi {
      *  (asynchronously)
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -217,9 +230,9 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call cancelAsync(String installmentPlanNumber, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
+    public okhttp3.Call cancelAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, _callback);
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -227,6 +240,7 @@ public class InstallmentPlanApi {
     /**
      * Build call for get
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -240,7 +254,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -266,6 +280,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -283,18 +301,23 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getValidateBeforeCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling get(Async)");
         }
 
-        return getCall(installmentPlanNumber, _callback);
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling get(Async)");
+        }
+
+        return getCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
 
     }
 
@@ -302,6 +325,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return InstallmentPlanModel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -314,8 +338,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanModel get(String installmentPlanNumber) throws ApiException {
-        ApiResponse<InstallmentPlanModel> localVarResp = getWithHttpInfo(installmentPlanNumber);
+    public InstallmentPlanModel get(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        ApiResponse<InstallmentPlanModel> localVarResp = getWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
         return localVarResp.getData();
     }
 
@@ -323,6 +347,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return ApiResponse&lt;InstallmentPlanModel&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -335,8 +360,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanModel> getWithHttpInfo(String installmentPlanNumber) throws ApiException {
-        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, null);
+    public ApiResponse<InstallmentPlanModel> getWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -345,6 +370,7 @@ public class InstallmentPlanApi {
      *  (asynchronously)
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -358,15 +384,16 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsync(String installmentPlanNumber, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
+    public okhttp3.Call getAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, _callback);
+        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for post
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
      * @param xSplititTestMode  (optional)
      * @param _callback Callback for upload/download progress
@@ -383,7 +410,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCall(InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call postCall(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -412,6 +439,10 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("X-Splitit-TestMode", localVarApiClient.parameterToString(xSplititTestMode));
         }
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -433,24 +464,30 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postValidateBeforeCall(InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postValidateBeforeCall(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post(Async)");
+        }
+
         // verify the required parameter 'installmentPlanCreateRequest' is set
         if (installmentPlanCreateRequest == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanCreateRequest' when calling post(Async)");
         }
 
-        return postCall(installmentPlanCreateRequest, xSplititTestMode, _callback);
+        return postCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
 
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
      * @param xSplititTestMode  (optional)
      * @return InstallmentPlanModel
@@ -466,14 +503,15 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanModel post(InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
-        ApiResponse<InstallmentPlanModel> localVarResp = postWithHttpInfo(installmentPlanCreateRequest, xSplititTestMode);
+    public InstallmentPlanModel post(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
+        ApiResponse<InstallmentPlanModel> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
         return localVarResp.getData();
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
      * @param xSplititTestMode  (optional)
      * @return ApiResponse&lt;InstallmentPlanModel&gt;
@@ -489,8 +527,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanModel> postWithHttpInfo(InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
-        okhttp3.Call localVarCall = postValidateBeforeCall(installmentPlanCreateRequest, xSplititTestMode, null);
+    public ApiResponse<InstallmentPlanModel> postWithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -498,6 +536,7 @@ public class InstallmentPlanApi {
     /**
      *  (asynchronously)
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
      * @param xSplititTestMode  (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -514,9 +553,9 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAsync(InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
+    public okhttp3.Call postAsync(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postValidateBeforeCall(installmentPlanCreateRequest, xSplititTestMode, _callback);
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -524,6 +563,7 @@ public class InstallmentPlanApi {
     /**
      * Build call for refund
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanRefundRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -538,7 +578,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call refundCall(String installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call refundCall(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -564,6 +604,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -585,15 +629,20 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call refundValidateBeforeCall(String installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call refundValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling refund(Async)");
+        }
+
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling refund(Async)");
         }
 
         // verify the required parameter 'installmentPlanRefundRequest' is set
@@ -601,7 +650,7 @@ public class InstallmentPlanApi {
             throw new ApiException("Missing the required parameter 'installmentPlanRefundRequest' when calling refund(Async)");
         }
 
-        return refundCall(installmentPlanNumber, installmentPlanRefundRequest, _callback);
+        return refundCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
 
     }
 
@@ -609,6 +658,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanRefundRequest  (required)
      * @return InstallmentPlanRefundResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -622,8 +672,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanRefundResponse refund(String installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
-        ApiResponse<InstallmentPlanRefundResponse> localVarResp = refundWithHttpInfo(installmentPlanNumber, installmentPlanRefundRequest);
+    public InstallmentPlanRefundResponse refund(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
+        ApiResponse<InstallmentPlanRefundResponse> localVarResp = refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
         return localVarResp.getData();
     }
 
@@ -631,6 +681,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanRefundRequest  (required)
      * @return ApiResponse&lt;InstallmentPlanRefundResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -644,8 +695,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanRefundResponse> refundWithHttpInfo(String installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
-        okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, installmentPlanRefundRequest, null);
+    public ApiResponse<InstallmentPlanRefundResponse> refundWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
+        okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanRefundResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -654,6 +705,7 @@ public class InstallmentPlanApi {
      *  (asynchronously)
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanRefundRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -668,15 +720,16 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call refundAsync(String installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
+    public okhttp3.Call refundAsync(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, installmentPlanRefundRequest, _callback);
+        okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanRefundResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for search
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanNumber  (optional)
      * @param refOrderNumber  (optional)
      * @param extendedParams  (optional)
@@ -693,7 +746,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCall(String installmentPlanNumber, String refOrderNumber, String extendedParams, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -730,6 +783,10 @@ public class InstallmentPlanApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("extendedParams", extendedParams));
         }
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -747,19 +804,25 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchValidateBeforeCall(String installmentPlanNumber, String refOrderNumber, String extendedParams, final ApiCallback _callback) throws ApiException {
-        return searchCall(installmentPlanNumber, refOrderNumber, extendedParams, _callback);
+    private okhttp3.Call searchValidateBeforeCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling search(Async)");
+        }
+
+        return searchCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
 
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanNumber  (optional)
      * @param refOrderNumber  (optional)
      * @param extendedParams  (optional)
@@ -775,14 +838,15 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanGetResponse search(String installmentPlanNumber, String refOrderNumber, String extendedParams) throws ApiException {
-        ApiResponse<InstallmentPlanGetResponse> localVarResp = searchWithHttpInfo(installmentPlanNumber, refOrderNumber, extendedParams);
+    public InstallmentPlanGetResponse search(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
+        ApiResponse<InstallmentPlanGetResponse> localVarResp = searchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
         return localVarResp.getData();
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanNumber  (optional)
      * @param refOrderNumber  (optional)
      * @param extendedParams  (optional)
@@ -798,8 +862,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanGetResponse> searchWithHttpInfo(String installmentPlanNumber, String refOrderNumber, String extendedParams) throws ApiException {
-        okhttp3.Call localVarCall = searchValidateBeforeCall(installmentPlanNumber, refOrderNumber, extendedParams, null);
+    public ApiResponse<InstallmentPlanGetResponse> searchWithHttpInfo(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
+        okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -807,6 +871,7 @@ public class InstallmentPlanApi {
     /**
      *  (asynchronously)
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanNumber  (optional)
      * @param refOrderNumber  (optional)
      * @param extendedParams  (optional)
@@ -823,9 +888,9 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAsync(String installmentPlanNumber, String refOrderNumber, String extendedParams, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAsync(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = searchValidateBeforeCall(installmentPlanNumber, refOrderNumber, extendedParams, _callback);
+        okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -833,6 +898,7 @@ public class InstallmentPlanApi {
     /**
      * Build call for updateOrder
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param updateOrderRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -847,7 +913,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrderCall(String installmentPlanNumber, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -873,6 +939,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -894,15 +964,20 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateOrderValidateBeforeCall(String installmentPlanNumber, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrderValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling updateOrder(Async)");
+        }
+
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling updateOrder(Async)");
         }
 
         // verify the required parameter 'updateOrderRequest' is set
@@ -910,7 +985,7 @@ public class InstallmentPlanApi {
             throw new ApiException("Missing the required parameter 'updateOrderRequest' when calling updateOrder(Async)");
         }
 
-        return updateOrderCall(installmentPlanNumber, updateOrderRequest, _callback);
+        return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
 
     }
 
@@ -918,6 +993,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param updateOrderRequest  (required)
      * @return InstallmentPlanUpdateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -931,8 +1007,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanUpdateResponse updateOrder(String installmentPlanNumber, UpdateOrderRequest updateOrderRequest) throws ApiException {
-        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, updateOrderRequest);
+    public InstallmentPlanUpdateResponse updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) throws ApiException {
+        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
         return localVarResp.getData();
     }
 
@@ -940,6 +1016,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param updateOrderRequest  (required)
      * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -953,8 +1030,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, UpdateOrderRequest updateOrderRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, updateOrderRequest, null);
+    public ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -963,6 +1040,7 @@ public class InstallmentPlanApi {
      *  (asynchronously)
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param updateOrderRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -977,15 +1055,16 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrderAsync(String installmentPlanNumber, UpdateOrderRequest updateOrderRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+    public okhttp3.Call updateOrderAsync(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, updateOrderRequest, _callback);
+        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
      * Build call for updateOrder2
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanUpdateRequestByIdentifier  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1000,7 +1079,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrder2Call(InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateOrder2Call(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1025,6 +1104,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1046,24 +1129,30 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateOrder2ValidateBeforeCall(InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrder2ValidateBeforeCall(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling updateOrder2(Async)");
+        }
+
         // verify the required parameter 'installmentPlanUpdateRequestByIdentifier' is set
         if (installmentPlanUpdateRequestByIdentifier == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanUpdateRequestByIdentifier' when calling updateOrder2(Async)");
         }
 
-        return updateOrder2Call(installmentPlanUpdateRequestByIdentifier, _callback);
+        return updateOrder2Call(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
 
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanUpdateRequestByIdentifier  (required)
      * @return InstallmentPlanUpdateResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1077,14 +1166,15 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanUpdateResponse updateOrder2(InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
-        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrder2WithHttpInfo(installmentPlanUpdateRequestByIdentifier);
+    public InstallmentPlanUpdateResponse updateOrder2(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
+        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
         return localVarResp.getData();
     }
 
     /**
      * 
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanUpdateRequestByIdentifier  (required)
      * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -1098,8 +1188,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanUpdateResponse> updateOrder2WithHttpInfo(InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
-        okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(installmentPlanUpdateRequestByIdentifier, null);
+    public ApiResponse<InstallmentPlanUpdateResponse> updateOrder2WithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
+        okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1107,6 +1197,7 @@ public class InstallmentPlanApi {
     /**
      *  (asynchronously)
      * 
+     * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanUpdateRequestByIdentifier  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1121,9 +1212,9 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrder2Async(InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+    public okhttp3.Call updateOrder2Async(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(installmentPlanUpdateRequestByIdentifier, _callback);
+        okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1131,6 +1222,7 @@ public class InstallmentPlanApi {
     /**
      * Build call for verifyAuthorization
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1144,7 +1236,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1170,6 +1262,10 @@ public class InstallmentPlanApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -1187,18 +1283,23 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "idempotencyKey", "oauthKey" };
+        String[] localVarAuthNames = new String[] { "bearer" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call verifyAuthorizationValidateBeforeCall(String installmentPlanNumber, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call verifyAuthorizationValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling verifyAuthorization(Async)");
         }
 
-        return verifyAuthorizationCall(installmentPlanNumber, _callback);
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling verifyAuthorization(Async)");
+        }
+
+        return verifyAuthorizationCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
 
     }
 
@@ -1206,6 +1307,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return VerifyAuthorizationResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1218,8 +1320,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public VerifyAuthorizationResponse verifyAuthorization(String installmentPlanNumber) throws ApiException {
-        ApiResponse<VerifyAuthorizationResponse> localVarResp = verifyAuthorizationWithHttpInfo(installmentPlanNumber);
+    public VerifyAuthorizationResponse verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        ApiResponse<VerifyAuthorizationResponse> localVarResp = verifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
         return localVarResp.getData();
     }
 
@@ -1227,6 +1329,7 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @return ApiResponse&lt;VerifyAuthorizationResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1239,8 +1342,8 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VerifyAuthorizationResponse> verifyAuthorizationWithHttpInfo(String installmentPlanNumber) throws ApiException {
-        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, null);
+    public ApiResponse<VerifyAuthorizationResponse> verifyAuthorizationWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
         Type localVarReturnType = new TypeToken<VerifyAuthorizationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1249,6 +1352,7 @@ public class InstallmentPlanApi {
      *  (asynchronously)
      * 
      * @param installmentPlanNumber  (required)
+     * @param xSplititIdempotencyKey  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1262,9 +1366,9 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyAuthorizationAsync(String installmentPlanNumber, final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
+    public okhttp3.Call verifyAuthorizationAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, _callback);
+        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<VerifyAuthorizationResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -35,7 +35,7 @@ namespace Splitit.Net.Model
         /// </summary>
         /// <param name="traceId">traceId.</param>
         /// <param name="error">error.</param>
-        public FailedResponse(string traceId = default(string), Error error = default(Error))
+        public FailedResponse(string traceId = default(string), ErrorExtended error = default(ErrorExtended))
         {
             this.TraceId = traceId;
             this.Error = error;
@@ -51,7 +51,7 @@ namespace Splitit.Net.Model
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name="Error", EmitDefaultValue=false)]
-        public Error Error { get; set; }
+        public ErrorExtended Error { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

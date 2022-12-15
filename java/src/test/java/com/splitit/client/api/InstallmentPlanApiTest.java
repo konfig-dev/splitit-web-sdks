@@ -47,7 +47,8 @@ public class InstallmentPlanApiTest {
     @Test
     public void cancelTest() throws ApiException {
         String installmentPlanNumber = null;
-        InstallmentPlanCancelResponse response = api.cancel(installmentPlanNumber);
+        String xSplititIdempotencyKey = null;
+        InstallmentPlanCancelResponse response = api.cancel(installmentPlanNumber, xSplititIdempotencyKey);
         // TODO: test validations
     }
 
@@ -57,7 +58,8 @@ public class InstallmentPlanApiTest {
     @Test
     public void getTest() throws ApiException {
         String installmentPlanNumber = null;
-        InstallmentPlanModel response = api.get(installmentPlanNumber);
+        String xSplititIdempotencyKey = null;
+        InstallmentPlanModel response = api.get(installmentPlanNumber, xSplititIdempotencyKey);
         // TODO: test validations
     }
 
@@ -66,9 +68,10 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void postTest() throws ApiException {
+        String xSplititIdempotencyKey = null;
         InstallmentPlanCreateRequest installmentPlanCreateRequest = null;
         String xSplititTestMode = null;
-        InstallmentPlanModel response = api.post(installmentPlanCreateRequest, xSplititTestMode);
+        InstallmentPlanModel response = api.post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
         // TODO: test validations
     }
 
@@ -78,8 +81,9 @@ public class InstallmentPlanApiTest {
     @Test
     public void refundTest() throws ApiException {
         String installmentPlanNumber = null;
+        String xSplititIdempotencyKey = null;
         InstallmentPlanRefundRequest installmentPlanRefundRequest = null;
-        InstallmentPlanRefundResponse response = api.refund(installmentPlanNumber, installmentPlanRefundRequest);
+        InstallmentPlanRefundResponse response = api.refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
         // TODO: test validations
     }
 
@@ -88,10 +92,11 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void searchTest() throws ApiException {
+        String xSplititIdempotencyKey = null;
         String installmentPlanNumber = null;
         String refOrderNumber = null;
-        String extendedParams = null;
-        InstallmentPlanGetResponse response = api.search(installmentPlanNumber, refOrderNumber, extendedParams);
+        Map<String, String> extendedParams = null;
+        InstallmentPlanGetResponse response = api.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
         // TODO: test validations
     }
 
@@ -101,8 +106,9 @@ public class InstallmentPlanApiTest {
     @Test
     public void updateOrderTest() throws ApiException {
         String installmentPlanNumber = null;
+        String xSplititIdempotencyKey = null;
         UpdateOrderRequest updateOrderRequest = null;
-        InstallmentPlanUpdateResponse response = api.updateOrder(installmentPlanNumber, updateOrderRequest);
+        InstallmentPlanUpdateResponse response = api.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
         // TODO: test validations
     }
 
@@ -111,8 +117,9 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void updateOrder2Test() throws ApiException {
+        String xSplititIdempotencyKey = null;
         InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = null;
-        InstallmentPlanUpdateResponse response = api.updateOrder2(installmentPlanUpdateRequestByIdentifier);
+        InstallmentPlanUpdateResponse response = api.updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
         // TODO: test validations
     }
 
@@ -122,7 +129,8 @@ public class InstallmentPlanApiTest {
     @Test
     public void verifyAuthorizationTest() throws ApiException {
         String installmentPlanNumber = null;
-        VerifyAuthorizationResponse response = api.verifyAuthorization(installmentPlanNumber);
+        String xSplititIdempotencyKey = null;
+        VerifyAuthorizationResponse response = api.verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
         // TODO: test validations
     }
 

@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.splitit.client.model.Error;
+import com.splitit.client.model.ErrorExtended;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,7 +48,7 @@ import com.splitit.client.JSON;
 /**
  * PlanErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T17:45:38.348478-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T21:13:12.630167Z[Etc/UTC]")
 public class PlanErrorResponse {
   public static final String SERIALIZED_NAME_TRACE_ID = "TraceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
@@ -56,7 +56,7 @@ public class PlanErrorResponse {
 
   public static final String SERIALIZED_NAME_ERROR = "Error";
   @SerializedName(SERIALIZED_NAME_ERROR)
-  private Error error;
+  private ErrorExtended error;
 
   public static final String SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER = "InstallmentPlanNumber";
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER)
@@ -88,7 +88,7 @@ public class PlanErrorResponse {
   }
 
 
-  public PlanErrorResponse error(Error error) {
+  public PlanErrorResponse error(ErrorExtended error) {
     
     this.error = error;
     return this;
@@ -101,12 +101,12 @@ public class PlanErrorResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Error getError() {
+  public ErrorExtended getError() {
     return error;
   }
 
 
-  public void setError(Error error) {
+  public void setError(ErrorExtended error) {
     this.error = error;
   }
 
@@ -216,7 +216,7 @@ public class PlanErrorResponse {
       }
       // validate the optional field `Error`
       if (jsonObj.get("Error") != null && !jsonObj.get("Error").isJsonNull()) {
-        Error.validateJsonObject(jsonObj.getAsJsonObject("Error"));
+        ErrorExtended.validateJsonObject(jsonObj.getAsJsonObject("Error"));
       }
       if ((jsonObj.get("InstallmentPlanNumber") != null && !jsonObj.get("InstallmentPlanNumber").isJsonNull()) && !jsonObj.get("InstallmentPlanNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `InstallmentPlanNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InstallmentPlanNumber").toString()));

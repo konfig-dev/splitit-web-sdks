@@ -78,21 +78,16 @@ public static void Main()
 {
 
     Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-                // Configure API key authorization: idempotencyKey
-                Configuration.Default.ApiKey.Add("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-                // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-                // Configuration.Default.ApiKeyPrefix.Add("X-Splitit-IdempotencyKey", "Bearer");
-                // Configure API key authorization: oauthKey
-                Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-                // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-                // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+                // Configure OAuth2 access token for authorization: bearer
+                Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
     var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
 
     try
     {
-    InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber);
+    InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
         Debug.WriteLine(result);
     }
     catch (ApiException e)
@@ -130,6 +125,8 @@ Class | Method | HTTP request | Description
      - [Model.AuthorizationModel](docs/AuthorizationModel.md)
      - [Model.CardData](docs/CardData.md)
      - [Model.Error](docs/Error.md)
+     - [Model.ErrorExtended](docs/ErrorExtended.md)
+     - [Model.ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
      - [Model.FailedResponse](docs/FailedResponse.md)
      - [Model.FailedResponseAllOf](docs/FailedResponseAllOf.md)
      - [Model.GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
@@ -174,18 +171,12 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 
-    ### idempotencyKey
+    ### bearer
 
-    - **Type**: API key
-
-    - **API key parameter name**: X-Splitit-IdempotencyKey
-    - **Location**: HTTP header
-
-
-    ### oauthKey
-
-    - **Type**: API key
-
-    - **API key parameter name**: Authorization
-    - **Location**: HTTP header
+    
+        - **Type**: OAuth
+        - **Flow**: application
+        - **Authorization URL**: 
+        - **Scopes**: 
+          - api.v3: 
 

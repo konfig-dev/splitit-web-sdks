@@ -81,7 +81,7 @@ The version of the OpenAPI document: 1.0.0
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\Splitit.Net\Splitit.Net.csproj">
-          <Project>{5A334BD1-F98C-46C5-A26A-0A2CCA967D0E}</Project>
+          <Project>{FF7A6568-A7FF-4659-B623-9D537E2FB4DC}</Project>
           <Name>Splitit.Net</Name>
       </ProjectReference>
   </ItemGroup>

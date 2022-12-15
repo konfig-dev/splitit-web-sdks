@@ -51,7 +51,7 @@ import com.splitit.client.JSON;
 /**
  * PlanDataModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T17:45:38.348478-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T21:13:12.630167Z[Etc/UTC]")
 public class PlanDataModel {
   public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
   @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)

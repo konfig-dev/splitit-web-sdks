@@ -97,6 +97,8 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.AuthorizationModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.CardData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.Error.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.ErrorExtended.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.ErrorExtendedAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.FailedResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.FailedResponseAllOf.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.splitit.client.model.IdentifierContract.CustomTypeAdapterFactory());

@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TraceId** | **string** |  | [optional] 
-**Error** | [**Error**](Error.md) |  | [optional] 
+**Error** | [**ErrorExtended**](ErrorExtended.md) |  | [optional] 
 **InstallmentPlanNumber** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models)

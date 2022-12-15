@@ -36,7 +36,7 @@ namespace Splitit.Net.Model
         /// <param name="traceId">traceId.</param>
         /// <param name="error">error.</param>
         /// <param name="installmentPlanNumber">installmentPlanNumber.</param>
-        public PlanErrorResponse(string traceId = default(string), Error error = default(Error), string installmentPlanNumber = default(string))
+        public PlanErrorResponse(string traceId = default(string), ErrorExtended error = default(ErrorExtended), string installmentPlanNumber = default(string))
         {
             this.TraceId = traceId;
             this.Error = error;
@@ -53,7 +53,7 @@ namespace Splitit.Net.Model
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name="Error", EmitDefaultValue=false)]
-        public Error Error { get; set; }
+        public ErrorExtended Error { get; set; }
 
         /// <summary>
         /// Gets or Sets InstallmentPlanNumber

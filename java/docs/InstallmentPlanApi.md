@@ -16,7 +16,7 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 
 <a name="cancel"></a>
 # **cancel**
-> InstallmentPlanCancelResponse cancel(installmentPlanNumber)
+> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey)
 
 
 
@@ -35,22 +35,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber);
+      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber, xSplititIdempotencyKey);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
@@ -68,6 +61,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **installmentPlanNumber** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
 
 ### Return type
 
@@ -75,7 +69,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -93,7 +87,7 @@ public class Example {
 
 <a name="get"></a>
 # **get**
-> InstallmentPlanModel get(installmentPlanNumber)
+> InstallmentPlanModel get(installmentPlanNumber, xSplititIdempotencyKey)
 
 
 
@@ -112,22 +106,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      InstallmentPlanModel result = apiInstance.get(installmentPlanNumber);
+      InstallmentPlanModel result = apiInstance.get(installmentPlanNumber, xSplititIdempotencyKey);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#get");
@@ -145,6 +132,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **installmentPlanNumber** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
 
 ### Return type
 
@@ -152,7 +140,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -170,7 +158,7 @@ public class Example {
 
 <a name="post"></a>
 # **post**
-> InstallmentPlanModel post(installmentPlanCreateRequest, xSplititTestMode)
+> InstallmentPlanModel post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode)
 
 
 
@@ -189,23 +177,16 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanCreateRequest installmentPlanCreateRequest = new InstallmentPlanCreateRequest(); // InstallmentPlanCreateRequest | 
     String xSplititTestMode = "None"; // String | 
     try {
-      InstallmentPlanModel result = apiInstance.post(installmentPlanCreateRequest, xSplititTestMode);
+      InstallmentPlanModel result = apiInstance.post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#post");
@@ -222,6 +203,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **xSplititIdempotencyKey** | **String**|  | |
 | **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md)|  | |
 | **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
 
@@ -231,7 +213,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -250,7 +232,7 @@ public class Example {
 
 <a name="refund"></a>
 # **refund**
-> InstallmentPlanRefundResponse refund(installmentPlanNumber, installmentPlanRefundRequest)
+> InstallmentPlanRefundResponse refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest)
 
 
 
@@ -269,23 +251,16 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanRefundRequest installmentPlanRefundRequest = new InstallmentPlanRefundRequest(); // InstallmentPlanRefundRequest | 
     try {
-      InstallmentPlanRefundResponse result = apiInstance.refund(installmentPlanNumber, installmentPlanRefundRequest);
+      InstallmentPlanRefundResponse result = apiInstance.refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#refund");
@@ -303,6 +278,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **installmentPlanNumber** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
 | **installmentPlanRefundRequest** | [**InstallmentPlanRefundRequest**](InstallmentPlanRefundRequest.md)|  | |
 
 ### Return type
@@ -311,7 +287,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -329,7 +305,7 @@ public class Example {
 
 <a name="search"></a>
 # **search**
-> InstallmentPlanGetResponse search(installmentPlanNumber, refOrderNumber, extendedParams)
+> InstallmentPlanGetResponse search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams)
 
 
 
@@ -348,24 +324,17 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String refOrderNumber = "refOrderNumber_example"; // String | 
-    String extendedParams = "extendedParams_example"; // String | 
+    Map<String, String> extendedParams = new HashMap(); // Map<String, String> | 
     try {
-      InstallmentPlanGetResponse result = apiInstance.search(installmentPlanNumber, refOrderNumber, extendedParams);
+      InstallmentPlanGetResponse result = apiInstance.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#search");
@@ -382,9 +351,10 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **xSplititIdempotencyKey** | **String**|  | |
 | **installmentPlanNumber** | **String**|  | [optional] |
 | **refOrderNumber** | **String**|  | [optional] |
-| **extendedParams** | **String**|  | [optional] |
+| **extendedParams** | [**Map&lt;String, String&gt;**](String.md)|  | [optional] |
 
 ### Return type
 
@@ -392,7 +362,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -410,7 +380,7 @@ public class Example {
 
 <a name="updateOrder"></a>
 # **updateOrder**
-> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, updateOrderRequest)
+> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest)
 
 
 
@@ -429,23 +399,16 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
     try {
-      InstallmentPlanUpdateResponse result = apiInstance.updateOrder(installmentPlanNumber, updateOrderRequest);
+      InstallmentPlanUpdateResponse result = apiInstance.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder");
@@ -463,6 +426,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **installmentPlanNumber** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
 | **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | |
 
 ### Return type
@@ -471,7 +435,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -489,7 +453,7 @@ public class Example {
 
 <a name="updateOrder2"></a>
 # **updateOrder2**
-> InstallmentPlanUpdateResponse updateOrder2(installmentPlanUpdateRequestByIdentifier)
+> InstallmentPlanUpdateResponse updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier)
 
 
 
@@ -508,22 +472,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier(); // InstallmentPlanUpdateRequestByIdentifier | 
     try {
-      InstallmentPlanUpdateResponse result = apiInstance.updateOrder2(installmentPlanUpdateRequestByIdentifier);
+      InstallmentPlanUpdateResponse result = apiInstance.updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder2");
@@ -540,6 +497,7 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
+| **xSplititIdempotencyKey** | **String**|  | |
 | **installmentPlanUpdateRequestByIdentifier** | [**InstallmentPlanUpdateRequestByIdentifier**](InstallmentPlanUpdateRequestByIdentifier.md)|  | |
 
 ### Return type
@@ -548,7 +506,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -566,7 +524,7 @@ public class Example {
 
 <a name="verifyAuthorization"></a>
 # **verifyAuthorization**
-> VerifyAuthorizationResponse verifyAuthorization(installmentPlanNumber)
+> VerifyAuthorizationResponse verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey)
 
 
 
@@ -585,22 +543,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      VerifyAuthorizationResponse result = apiInstance.verifyAuthorization(installmentPlanNumber);
+      VerifyAuthorizationResponse result = apiInstance.verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#verifyAuthorization");
@@ -618,6 +569,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **installmentPlanNumber** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
 
 ### Return type
 
@@ -625,7 +577,7 @@ public class Example {
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

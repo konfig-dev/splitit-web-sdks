@@ -71,7 +71,8 @@ namespace Splitit.Net.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string installmentPlanNumber = null;
-            //var response = instance.Cancel(installmentPlanNumber);
+            //string xSplititIdempotencyKey = null;
+            //var response = instance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(InstallmentPlanCancelResponse), response, "response is InstallmentPlanCancelResponse");
         }
         
@@ -83,7 +84,8 @@ namespace Splitit.Net.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string installmentPlanNumber = null;
-            //var response = instance.Get(installmentPlanNumber);
+            //string xSplititIdempotencyKey = null;
+            //var response = instance.Get(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(InstallmentPlanModel), response, "response is InstallmentPlanModel");
         }
         
@@ -94,9 +96,10 @@ namespace Splitit.Net.Test
         public void PostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string xSplititIdempotencyKey = null;
             //InstallmentPlanCreateRequest installmentPlanCreateRequest = null;
             //string xSplititTestMode = null;
-            //var response = instance.Post(installmentPlanCreateRequest, xSplititTestMode);
+            //var response = instance.Post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
             //Assert.IsInstanceOf(typeof(InstallmentPlanModel), response, "response is InstallmentPlanModel");
         }
         
@@ -108,8 +111,9 @@ namespace Splitit.Net.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string installmentPlanNumber = null;
+            //string xSplititIdempotencyKey = null;
             //InstallmentPlanRefundRequest installmentPlanRefundRequest = null;
-            //var response = instance.Refund(installmentPlanNumber, installmentPlanRefundRequest);
+            //var response = instance.Refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
             //Assert.IsInstanceOf(typeof(InstallmentPlanRefundResponse), response, "response is InstallmentPlanRefundResponse");
         }
         
@@ -120,10 +124,11 @@ namespace Splitit.Net.Test
         public void SearchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string xSplititIdempotencyKey = null;
             //string installmentPlanNumber = null;
             //string refOrderNumber = null;
-            //string extendedParams = null;
-            //var response = instance.Search(installmentPlanNumber, refOrderNumber, extendedParams);
+            //Dictionary<string, string> extendedParams = null;
+            //var response = instance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
             //Assert.IsInstanceOf(typeof(InstallmentPlanGetResponse), response, "response is InstallmentPlanGetResponse");
         }
         
@@ -135,8 +140,9 @@ namespace Splitit.Net.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string installmentPlanNumber = null;
+            //string xSplititIdempotencyKey = null;
             //UpdateOrderRequest updateOrderRequest = null;
-            //var response = instance.UpdateOrder(installmentPlanNumber, updateOrderRequest);
+            //var response = instance.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
             //Assert.IsInstanceOf(typeof(InstallmentPlanUpdateResponse), response, "response is InstallmentPlanUpdateResponse");
         }
         
@@ -147,8 +153,9 @@ namespace Splitit.Net.Test
         public void UpdateOrder2Test()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //string xSplititIdempotencyKey = null;
             //InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = null;
-            //var response = instance.UpdateOrder2(installmentPlanUpdateRequestByIdentifier);
+            //var response = instance.UpdateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
             //Assert.IsInstanceOf(typeof(InstallmentPlanUpdateResponse), response, "response is InstallmentPlanUpdateResponse");
         }
         
@@ -160,7 +167,8 @@ namespace Splitit.Net.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string installmentPlanNumber = null;
-            //var response = instance.VerifyAuthorization(installmentPlanNumber);
+            //string xSplititIdempotencyKey = null;
+            //var response = instance.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
             //Assert.IsInstanceOf(typeof(VerifyAuthorizationResponse), response, "response is VerifyAuthorizationResponse");
         }
         

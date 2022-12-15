@@ -2,7 +2,7 @@
 
 splitit-web-api-v3
 - API version: 1.0.0
-  - Build date: 2022-12-12T17:45:38.348478-08:00[America/Los_Angeles]
+  - Build date: 2022-12-15T21:13:12.630167Z[Etc/UTC]
 
 Splitit's API
 
@@ -92,22 +92,15 @@ public class Example {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
     
-    // Configure API key authorization: idempotencyKey
-    ApiKeyAuth idempotencyKey = (ApiKeyAuth) defaultClient.getAuthentication("idempotencyKey");
-    idempotencyKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //idempotencyKey.setApiKeyPrefix("Token");
-
-    // Configure API key authorization: oauthKey
-    ApiKeyAuth oauthKey = (ApiKeyAuth) defaultClient.getAuthentication("oauthKey");
-    oauthKey.setApiKey("YOUR API KEY");
-    // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-    //oauthKey.setApiKeyPrefix("Token");
+    // Configure OAuth2 access token for authorization: bearer
+    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
+    bearer.setAccessToken("YOUR ACCESS TOKEN");
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber);
+      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber, xSplititIdempotencyKey);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
@@ -144,6 +137,8 @@ Class | Method | HTTP request | Description
  - [AuthorizationModel](docs/AuthorizationModel.md)
  - [CardData](docs/CardData.md)
  - [Error](docs/Error.md)
+ - [ErrorExtended](docs/ErrorExtended.md)
+ - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
  - [FailedResponse](docs/FailedResponse.md)
  - [FailedResponseAllOf](docs/FailedResponseAllOf.md)
  - [GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
@@ -188,17 +183,13 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
-### idempotencyKey
+### bearer
 
-- **Type**: API key
-- **API key parameter name**: X-Splitit-IdempotencyKey
-- **Location**: HTTP header
-
-### oauthKey
-
-- **Type**: API key
-- **API key parameter name**: Authorization
-- **Location**: HTTP header
+- **Type**: OAuth
+- **Flow**: application
+- **Authorization URL**: 
+- **Scopes**: 
+  - api.v3: 
 
 
 ## Recommendation

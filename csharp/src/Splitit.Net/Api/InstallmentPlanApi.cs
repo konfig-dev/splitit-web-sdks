@@ -33,8 +33,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>InstallmentPlanCancelResponse</returns>
-        InstallmentPlanCancelResponse Cancel (string installmentPlanNumber);
+        InstallmentPlanCancelResponse Cancel (string installmentPlanNumber, string xSplititIdempotencyKey);
 
         /// <summary>
         /// 
@@ -44,8 +45,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of InstallmentPlanCancelResponse</returns>
-        ApiResponse<InstallmentPlanCancelResponse> CancelWithHttpInfo (string installmentPlanNumber);
+        ApiResponse<InstallmentPlanCancelResponse> CancelWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey);
         /// <summary>
         /// 
         /// </summary>
@@ -54,8 +56,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>InstallmentPlanModel</returns>
-        InstallmentPlanModel Get (string installmentPlanNumber);
+        InstallmentPlanModel Get (string installmentPlanNumber, string xSplititIdempotencyKey);
 
         /// <summary>
         /// 
@@ -65,8 +68,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of InstallmentPlanModel</returns>
-        ApiResponse<InstallmentPlanModel> GetWithHttpInfo (string installmentPlanNumber);
+        ApiResponse<InstallmentPlanModel> GetWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey);
         /// <summary>
         /// 
         /// </summary>
@@ -74,10 +78,11 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <returns>InstallmentPlanModel</returns>
-        InstallmentPlanModel Post (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string));
+        InstallmentPlanModel Post (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string));
 
         /// <summary>
         /// 
@@ -86,10 +91,11 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <returns>ApiResponse of InstallmentPlanModel</returns>
-        ApiResponse<InstallmentPlanModel> PostWithHttpInfo (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string));
+        ApiResponse<InstallmentPlanModel> PostWithHttpInfo (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -98,9 +104,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <returns>InstallmentPlanRefundResponse</returns>
-        InstallmentPlanRefundResponse Refund (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest);
+        InstallmentPlanRefundResponse Refund (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest);
 
         /// <summary>
         /// 
@@ -110,9 +117,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <returns>ApiResponse of InstallmentPlanRefundResponse</returns>
-        ApiResponse<InstallmentPlanRefundResponse> RefundWithHttpInfo (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest);
+        ApiResponse<InstallmentPlanRefundResponse> RefundWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -120,11 +128,12 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <returns>InstallmentPlanGetResponse</returns>
-        InstallmentPlanGetResponse Search (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string));
+        InstallmentPlanGetResponse Search (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>));
 
         /// <summary>
         /// 
@@ -133,11 +142,12 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <returns>ApiResponse of InstallmentPlanGetResponse</returns>
-        ApiResponse<InstallmentPlanGetResponse> SearchWithHttpInfo (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string));
+        ApiResponse<InstallmentPlanGetResponse> SearchWithHttpInfo (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>));
         /// <summary>
         /// 
         /// </summary>
@@ -146,9 +156,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest);
+        InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest);
 
         /// <summary>
         /// 
@@ -158,9 +169,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest);
+        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest);
         /// <summary>
         /// 
         /// </summary>
@@ -168,9 +180,10 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        InstallmentPlanUpdateResponse UpdateOrder2 (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier);
+        InstallmentPlanUpdateResponse UpdateOrder2 (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier);
 
         /// <summary>
         /// 
@@ -179,9 +192,10 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrder2WithHttpInfo (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier);
+        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrder2WithHttpInfo (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier);
         /// <summary>
         /// 
         /// </summary>
@@ -190,8 +204,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>VerifyAuthorizationResponse</returns>
-        VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber);
+        VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber, string xSplititIdempotencyKey);
 
         /// <summary>
         /// 
@@ -201,8 +216,9 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of VerifyAuthorizationResponse</returns>
-        ApiResponse<VerifyAuthorizationResponse> VerifyAuthorizationWithHttpInfo (string installmentPlanNumber);
+        ApiResponse<VerifyAuthorizationResponse> VerifyAuthorizationWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -213,9 +229,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanCancelResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanCancelResponse> CancelAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanCancelResponse> CancelAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -225,9 +242,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanCancelResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCancelResponse>> CancelWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCancelResponse>> CancelWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -236,9 +254,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanModel</returns>
-        System.Threading.Tasks.Task<InstallmentPlanModel> GetAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanModel> GetAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -248,9 +267,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> GetWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> GetWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -258,11 +278,12 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanModel</returns>
-        System.Threading.Tasks.Task<InstallmentPlanModel> PostAsync (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanModel> PostAsync (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -271,11 +292,12 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> PostWithHttpInfoAsync (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> PostWithHttpInfoAsync (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -284,10 +306,11 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanRefundResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanRefundResponse> RefundAsync (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanRefundResponse> RefundAsync (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -297,10 +320,11 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanRefundResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanRefundResponse>> RefundWithHttpInfoAsync (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanRefundResponse>> RefundWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -308,12 +332,13 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanGetResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanGetResponse> SearchAsync (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanGetResponse> SearchAsync (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -322,12 +347,13 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanGetResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanGetResponse>> SearchWithHttpInfoAsync (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanGetResponse>> SearchWithHttpInfoAsync (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -336,10 +362,11 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -349,10 +376,11 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -360,10 +388,11 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrder2Async (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrder2Async (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -372,10 +401,11 @@ namespace Splitit.Net.Api
         /// 
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrder2WithHttpInfoAsync (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrder2WithHttpInfoAsync (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -384,9 +414,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of VerifyAuthorizationResponse</returns>
-        System.Threading.Tasks.Task<VerifyAuthorizationResponse> VerifyAuthorizationAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<VerifyAuthorizationResponse> VerifyAuthorizationAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// 
@@ -396,9 +427,10 @@ namespace Splitit.Net.Api
         /// </remarks>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (VerifyAuthorizationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<VerifyAuthorizationResponse>> VerifyAuthorizationWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<VerifyAuthorizationResponse>> VerifyAuthorizationWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -515,10 +547,11 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>InstallmentPlanCancelResponse</returns>
-        public InstallmentPlanCancelResponse Cancel (string installmentPlanNumber)
+        public InstallmentPlanCancelResponse Cancel (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
-             ApiResponse<InstallmentPlanCancelResponse> localVarResponse = CancelWithHttpInfo(installmentPlanNumber);
+             ApiResponse<InstallmentPlanCancelResponse> localVarResponse = CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
              return localVarResponse.Data;
         }
 
@@ -527,12 +560,16 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of InstallmentPlanCancelResponse</returns>
-        public ApiResponse<InstallmentPlanCancelResponse> CancelWithHttpInfo (string installmentPlanNumber)
+        public ApiResponse<InstallmentPlanCancelResponse> CancelWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Cancel");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Cancel");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}/cancel";
             var localVarPathParams = new Dictionary<String, String>();
@@ -558,16 +595,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -593,11 +627,12 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanCancelResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanCancelResponse> CancelAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanCancelResponse> CancelAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanCancelResponse> localVarResponse = await CancelWithHttpInfoAsync(installmentPlanNumber, cancellationToken);
+             ApiResponse<InstallmentPlanCancelResponse> localVarResponse = await CancelWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -607,13 +642,17 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanCancelResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCancelResponse>> CancelWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCancelResponse>> CancelWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Cancel");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Cancel");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}/cancel";
             var localVarPathParams = new Dictionary<String, String>();
@@ -639,16 +678,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -674,10 +710,11 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>InstallmentPlanModel</returns>
-        public InstallmentPlanModel Get (string installmentPlanNumber)
+        public InstallmentPlanModel Get (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
-             ApiResponse<InstallmentPlanModel> localVarResponse = GetWithHttpInfo(installmentPlanNumber);
+             ApiResponse<InstallmentPlanModel> localVarResponse = GetWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
              return localVarResponse.Data;
         }
 
@@ -686,12 +723,16 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of InstallmentPlanModel</returns>
-        public ApiResponse<InstallmentPlanModel> GetWithHttpInfo (string installmentPlanNumber)
+        public ApiResponse<InstallmentPlanModel> GetWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Get");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Get");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -717,16 +758,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -752,11 +790,12 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanModel</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanModel> GetAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanModel> GetAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanModel> localVarResponse = await GetWithHttpInfoAsync(installmentPlanNumber, cancellationToken);
+             ApiResponse<InstallmentPlanModel> localVarResponse = await GetWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -766,13 +805,17 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> GetWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> GetWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Get");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Get");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}";
             var localVarPathParams = new Dictionary<String, String>();
@@ -798,16 +841,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -832,12 +872,13 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <returns>InstallmentPlanModel</returns>
-        public InstallmentPlanModel Post (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string))
+        public InstallmentPlanModel Post (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string))
         {
-             ApiResponse<InstallmentPlanModel> localVarResponse = PostWithHttpInfo(installmentPlanCreateRequest, xSplititTestMode);
+             ApiResponse<InstallmentPlanModel> localVarResponse = PostWithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
              return localVarResponse.Data;
         }
 
@@ -845,11 +886,15 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <returns>ApiResponse of InstallmentPlanModel</returns>
-        public ApiResponse<InstallmentPlanModel> PostWithHttpInfo (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string))
+        public ApiResponse<InstallmentPlanModel> PostWithHttpInfo (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string))
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Post");
             // verify the required parameter 'installmentPlanCreateRequest' is set
             if (installmentPlanCreateRequest == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanCreateRequest' when calling InstallmentPlanApi->Post");
@@ -882,6 +927,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (xSplititTestMode != null) localVarHeaderParams.Add("X-Splitit-TestMode", this.Configuration.ApiClient.ParameterToString(xSplititTestMode)); // header parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanCreateRequest != null && installmentPlanCreateRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanCreateRequest); // http body (model) parameter
@@ -891,15 +937,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanCreateRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -924,13 +966,14 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanModel</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanModel> PostAsync (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanModel> PostAsync (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanModel> localVarResponse = await PostWithHttpInfoAsync(installmentPlanCreateRequest, xSplititTestMode, cancellationToken);
+             ApiResponse<InstallmentPlanModel> localVarResponse = await PostWithHttpInfoAsync(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -939,12 +982,16 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> PostWithHttpInfoAsync (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanModel>> PostWithHttpInfoAsync (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Post");
             // verify the required parameter 'installmentPlanCreateRequest' is set
             if (installmentPlanCreateRequest == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanCreateRequest' when calling InstallmentPlanApi->Post");
@@ -977,6 +1024,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (xSplititTestMode != null) localVarHeaderParams.Add("X-Splitit-TestMode", this.Configuration.ApiClient.ParameterToString(xSplititTestMode)); // header parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanCreateRequest != null && installmentPlanCreateRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanCreateRequest); // http body (model) parameter
@@ -986,15 +1034,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanCreateRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1020,11 +1064,12 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <returns>InstallmentPlanRefundResponse</returns>
-        public InstallmentPlanRefundResponse Refund (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest)
+        public InstallmentPlanRefundResponse Refund (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest)
         {
-             ApiResponse<InstallmentPlanRefundResponse> localVarResponse = RefundWithHttpInfo(installmentPlanNumber, installmentPlanRefundRequest);
+             ApiResponse<InstallmentPlanRefundResponse> localVarResponse = RefundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
              return localVarResponse.Data;
         }
 
@@ -1033,13 +1078,17 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <returns>ApiResponse of InstallmentPlanRefundResponse</returns>
-        public ApiResponse<InstallmentPlanRefundResponse> RefundWithHttpInfo (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest)
+        public ApiResponse<InstallmentPlanRefundResponse> RefundWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Refund");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Refund");
             // verify the required parameter 'installmentPlanRefundRequest' is set
             if (installmentPlanRefundRequest == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanRefundRequest' when calling InstallmentPlanApi->Refund");
@@ -1072,6 +1121,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanRefundRequest != null && installmentPlanRefundRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanRefundRequest); // http body (model) parameter
@@ -1081,15 +1131,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanRefundRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1115,12 +1161,13 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanRefundResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanRefundResponse> RefundAsync (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanRefundResponse> RefundAsync (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanRefundResponse> localVarResponse = await RefundWithHttpInfoAsync(installmentPlanNumber, installmentPlanRefundRequest, cancellationToken);
+             ApiResponse<InstallmentPlanRefundResponse> localVarResponse = await RefundWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1130,14 +1177,18 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanRefundRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanRefundResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanRefundResponse>> RefundWithHttpInfoAsync (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanRefundResponse>> RefundWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->Refund");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Refund");
             // verify the required parameter 'installmentPlanRefundRequest' is set
             if (installmentPlanRefundRequest == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanRefundRequest' when calling InstallmentPlanApi->Refund");
@@ -1170,6 +1221,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanRefundRequest != null && installmentPlanRefundRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanRefundRequest); // http body (model) parameter
@@ -1179,15 +1231,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanRefundRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1212,13 +1260,14 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <returns>InstallmentPlanGetResponse</returns>
-        public InstallmentPlanGetResponse Search (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string))
+        public InstallmentPlanGetResponse Search (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>))
         {
-             ApiResponse<InstallmentPlanGetResponse> localVarResponse = SearchWithHttpInfo(installmentPlanNumber, refOrderNumber, extendedParams);
+             ApiResponse<InstallmentPlanGetResponse> localVarResponse = SearchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
              return localVarResponse.Data;
         }
 
@@ -1226,12 +1275,16 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <returns>ApiResponse of InstallmentPlanGetResponse</returns>
-        public ApiResponse<InstallmentPlanGetResponse> SearchWithHttpInfo (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string))
+        public ApiResponse<InstallmentPlanGetResponse> SearchWithHttpInfo (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>))
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Search");
 
             var localVarPath = "/api/installmentplans/search";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1259,16 +1312,13 @@ namespace Splitit.Net.Api
             if (installmentPlanNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "installmentPlanNumber", installmentPlanNumber)); // query parameter
             if (refOrderNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "refOrderNumber", refOrderNumber)); // query parameter
             if (extendedParams != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "extendedParams", extendedParams)); // query parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1293,14 +1343,15 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanGetResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanGetResponse> SearchAsync (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanGetResponse> SearchAsync (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanGetResponse> localVarResponse = await SearchWithHttpInfoAsync(installmentPlanNumber, refOrderNumber, extendedParams, cancellationToken);
+             ApiResponse<InstallmentPlanGetResponse> localVarResponse = await SearchWithHttpInfoAsync(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1309,13 +1360,17 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanNumber"> (optional)</param>
         /// <param name="refOrderNumber"> (optional)</param>
         /// <param name="extendedParams"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanGetResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanGetResponse>> SearchWithHttpInfoAsync (string installmentPlanNumber = default(string), string refOrderNumber = default(string), string extendedParams = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanGetResponse>> SearchWithHttpInfoAsync (string xSplititIdempotencyKey, string installmentPlanNumber = default(string), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->Search");
 
             var localVarPath = "/api/installmentplans/search";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1343,16 +1398,13 @@ namespace Splitit.Net.Api
             if (installmentPlanNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "installmentPlanNumber", installmentPlanNumber)); // query parameter
             if (refOrderNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "refOrderNumber", refOrderNumber)); // query parameter
             if (extendedParams != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "extendedParams", extendedParams)); // query parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1378,11 +1430,12 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        public InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest)
+        public InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest)
         {
-             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrderWithHttpInfo(installmentPlanNumber, updateOrderRequest);
+             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
              return localVarResponse.Data;
         }
 
@@ -1391,13 +1444,17 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        public ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest)
+        public ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->UpdateOrder");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->UpdateOrder");
             // verify the required parameter 'updateOrderRequest' is set
             if (updateOrderRequest == null)
                 throw new ApiException(400, "Missing required parameter 'updateOrderRequest' when calling InstallmentPlanApi->UpdateOrder");
@@ -1430,6 +1487,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (updateOrderRequest != null && updateOrderRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateOrderRequest); // http body (model) parameter
@@ -1439,15 +1497,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = updateOrderRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1473,12 +1527,13 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrderWithHttpInfoAsync(installmentPlanNumber, updateOrderRequest, cancellationToken);
+             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrderWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1488,14 +1543,18 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="updateOrderRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->UpdateOrder");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->UpdateOrder");
             // verify the required parameter 'updateOrderRequest' is set
             if (updateOrderRequest == null)
                 throw new ApiException(400, "Missing required parameter 'updateOrderRequest' when calling InstallmentPlanApi->UpdateOrder");
@@ -1528,6 +1587,7 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (updateOrderRequest != null && updateOrderRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateOrderRequest); // http body (model) parameter
@@ -1537,15 +1597,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = updateOrderRequest; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1570,11 +1626,12 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        public InstallmentPlanUpdateResponse UpdateOrder2 (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
+        public InstallmentPlanUpdateResponse UpdateOrder2 (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
         {
-             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrder2WithHttpInfo(installmentPlanUpdateRequestByIdentifier);
+             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
              return localVarResponse.Data;
         }
 
@@ -1582,10 +1639,14 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        public ApiResponse<InstallmentPlanUpdateResponse> UpdateOrder2WithHttpInfo (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
+        public ApiResponse<InstallmentPlanUpdateResponse> UpdateOrder2WithHttpInfo (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->UpdateOrder2");
             // verify the required parameter 'installmentPlanUpdateRequestByIdentifier' is set
             if (installmentPlanUpdateRequestByIdentifier == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanUpdateRequestByIdentifier' when calling InstallmentPlanApi->UpdateOrder2");
@@ -1617,6 +1678,7 @@ namespace Splitit.Net.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanUpdateRequestByIdentifier != null && installmentPlanUpdateRequestByIdentifier.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanUpdateRequestByIdentifier); // http body (model) parameter
@@ -1626,15 +1688,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanUpdateRequestByIdentifier; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1659,12 +1717,13 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrder2Async (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrder2Async (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrder2WithHttpInfoAsync(installmentPlanUpdateRequestByIdentifier, cancellationToken);
+             ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrder2WithHttpInfoAsync(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1673,11 +1732,15 @@ namespace Splitit.Net.Api
         ///  
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="installmentPlanUpdateRequestByIdentifier"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrder2WithHttpInfoAsync (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrder2WithHttpInfoAsync (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, CancellationToken cancellationToken = default(CancellationToken))
         {
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->UpdateOrder2");
             // verify the required parameter 'installmentPlanUpdateRequestByIdentifier' is set
             if (installmentPlanUpdateRequestByIdentifier == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanUpdateRequestByIdentifier' when calling InstallmentPlanApi->UpdateOrder2");
@@ -1709,6 +1772,7 @@ namespace Splitit.Net.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
             if (installmentPlanUpdateRequestByIdentifier != null && installmentPlanUpdateRequestByIdentifier.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(installmentPlanUpdateRequestByIdentifier); // http body (model) parameter
@@ -1718,15 +1782,11 @@ namespace Splitit.Net.Api
                 localVarPostBody = installmentPlanUpdateRequestByIdentifier; // byte array
             }
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1752,10 +1812,11 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>VerifyAuthorizationResponse</returns>
-        public VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber)
+        public VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
-             ApiResponse<VerifyAuthorizationResponse> localVarResponse = VerifyAuthorizationWithHttpInfo(installmentPlanNumber);
+             ApiResponse<VerifyAuthorizationResponse> localVarResponse = VerifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
              return localVarResponse.Data;
         }
 
@@ -1764,12 +1825,16 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <returns>ApiResponse of VerifyAuthorizationResponse</returns>
-        public ApiResponse<VerifyAuthorizationResponse> VerifyAuthorizationWithHttpInfo (string installmentPlanNumber)
+        public ApiResponse<VerifyAuthorizationResponse> VerifyAuthorizationWithHttpInfo (string installmentPlanNumber, string xSplititIdempotencyKey)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->VerifyAuthorization");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->VerifyAuthorization");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}/verifyauthorization";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1795,16 +1860,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request
@@ -1830,11 +1892,12 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of VerifyAuthorizationResponse</returns>
-        public async System.Threading.Tasks.Task<VerifyAuthorizationResponse> VerifyAuthorizationAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<VerifyAuthorizationResponse> VerifyAuthorizationAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<VerifyAuthorizationResponse> localVarResponse = await VerifyAuthorizationWithHttpInfoAsync(installmentPlanNumber, cancellationToken);
+             ApiResponse<VerifyAuthorizationResponse> localVarResponse = await VerifyAuthorizationWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1844,13 +1907,17 @@ namespace Splitit.Net.Api
         /// </summary>
         /// <exception cref="Splitit.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="installmentPlanNumber"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (VerifyAuthorizationResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<VerifyAuthorizationResponse>> VerifyAuthorizationWithHttpInfoAsync (string installmentPlanNumber, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<VerifyAuthorizationResponse>> VerifyAuthorizationWithHttpInfoAsync (string installmentPlanNumber, string xSplititIdempotencyKey, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
                 throw new ApiException(400, "Missing required parameter 'installmentPlanNumber' when calling InstallmentPlanApi->VerifyAuthorization");
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+                throw new ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->VerifyAuthorization");
 
             var localVarPath = "/api/installmentplans/{installmentPlanNumber}/verifyauthorization";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1876,16 +1943,13 @@ namespace Splitit.Net.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (installmentPlanNumber != null) localVarPathParams.Add("installmentPlanNumber", this.Configuration.ApiClient.ParameterToString(installmentPlanNumber)); // path parameter
+            if (xSplititIdempotencyKey != null) localVarHeaderParams.Add("X-Splitit-IdempotencyKey", this.Configuration.ApiClient.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
-            // authentication (idempotencyKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey")))
+            // authentication (bearer) required
+            // oauth required
+            if (!String.IsNullOrEmpty(this.Configuration.AccessToken))
             {
-                localVarHeaderParams["X-Splitit-IdempotencyKey"] = this.Configuration.GetApiKeyWithPrefix("X-Splitit-IdempotencyKey");
-            }
-            // authentication (oauthKey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = "Bearer " + this.Configuration.AccessToken;
             }
 
             // make the HTTP request

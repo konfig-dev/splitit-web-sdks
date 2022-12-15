@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## Cancel
 
-> InstallmentPlanCancelResponse Cancel (string installmentPlanNumber)
+> InstallmentPlanCancelResponse Cancel (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -37,21 +37,16 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
 
             try
             {
-                InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber);
+                InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -71,6 +66,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | **string**|  | 
+ **xSplititIdempotencyKey** | **string**|  | 
 
 ### Return type
 
@@ -78,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -103,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## Get
 
-> InstallmentPlanModel Get (string installmentPlanNumber)
+> InstallmentPlanModel Get (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -123,21 +119,16 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
 
             try
             {
-                InstallmentPlanModel result = apiInstance.Get(installmentPlanNumber);
+                InstallmentPlanModel result = apiInstance.Get(installmentPlanNumber, xSplititIdempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -157,6 +148,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | **string**|  | 
+ **xSplititIdempotencyKey** | **string**|  | 
 
 ### Return type
 
@@ -164,7 +156,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -189,7 +181,7 @@ Name | Type | Description  | Notes
 
 ## Post
 
-> InstallmentPlanModel Post (InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = null)
+> InstallmentPlanModel Post (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = null)
 
 
 
@@ -209,22 +201,17 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
             var installmentPlanCreateRequest = new InstallmentPlanCreateRequest(); // InstallmentPlanCreateRequest | 
             var xSplititTestMode = "None";  // string |  (optional) 
 
             try
             {
-                InstallmentPlanModel result = apiInstance.Post(installmentPlanCreateRequest, xSplititTestMode);
+                InstallmentPlanModel result = apiInstance.Post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -243,6 +230,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSplititIdempotencyKey** | **string**|  | 
  **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md)|  | 
  **xSplititTestMode** | **string**|  | [optional] 
 
@@ -252,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -278,7 +266,7 @@ Name | Type | Description  | Notes
 
 ## Refund
 
-> InstallmentPlanRefundResponse Refund (string installmentPlanNumber, InstallmentPlanRefundRequest installmentPlanRefundRequest)
+> InstallmentPlanRefundResponse Refund (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest)
 
 
 
@@ -298,22 +286,17 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
             var installmentPlanRefundRequest = new InstallmentPlanRefundRequest(); // InstallmentPlanRefundRequest | 
 
             try
             {
-                InstallmentPlanRefundResponse result = apiInstance.Refund(installmentPlanNumber, installmentPlanRefundRequest);
+                InstallmentPlanRefundResponse result = apiInstance.Refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -333,6 +316,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | **string**|  | 
+ **xSplititIdempotencyKey** | **string**|  | 
  **installmentPlanRefundRequest** | [**InstallmentPlanRefundRequest**](InstallmentPlanRefundRequest.md)|  | 
 
 ### Return type
@@ -341,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -366,7 +350,7 @@ Name | Type | Description  | Notes
 
 ## Search
 
-> InstallmentPlanGetResponse Search (string installmentPlanNumber = null, string refOrderNumber = null, string extendedParams = null)
+> InstallmentPlanGetResponse Search (string xSplititIdempotencyKey, string installmentPlanNumber = null, string refOrderNumber = null, Dictionary<string, string> extendedParams = null)
 
 
 
@@ -386,23 +370,18 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
             var installmentPlanNumber = "installmentPlanNumber_example";  // string |  (optional) 
             var refOrderNumber = "refOrderNumber_example";  // string |  (optional) 
-            var extendedParams = "extendedParams_example";  // string |  (optional) 
+            var extendedParams = new Dictionary<string, string>(); // Dictionary<string, string> |  (optional) 
 
             try
             {
-                InstallmentPlanGetResponse result = apiInstance.Search(installmentPlanNumber, refOrderNumber, extendedParams);
+                InstallmentPlanGetResponse result = apiInstance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -421,9 +400,10 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSplititIdempotencyKey** | **string**|  | 
  **installmentPlanNumber** | **string**|  | [optional] 
  **refOrderNumber** | **string**|  | [optional] 
- **extendedParams** | **string**|  | [optional] 
+ **extendedParams** | [**Dictionary&lt;string, string&gt;**](string.md)|  | [optional] 
 
 ### Return type
 
@@ -431,7 +411,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -456,7 +436,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrder
 
-> InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, UpdateOrderRequest updateOrderRequest)
+> InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest)
 
 
 
@@ -476,22 +456,17 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
             var updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
 
             try
             {
-                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder(installmentPlanNumber, updateOrderRequest);
+                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -511,6 +486,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | **string**|  | 
+ **xSplititIdempotencyKey** | **string**|  | 
  **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | 
 
 ### Return type
@@ -519,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -544,7 +520,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrder2
 
-> InstallmentPlanUpdateResponse UpdateOrder2 (InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
+> InstallmentPlanUpdateResponse UpdateOrder2 (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
 
 
 
@@ -564,21 +540,16 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
             var installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier(); // InstallmentPlanUpdateRequestByIdentifier | 
 
             try
             {
-                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder2(installmentPlanUpdateRequestByIdentifier);
+                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -597,6 +568,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xSplititIdempotencyKey** | **string**|  | 
  **installmentPlanUpdateRequestByIdentifier** | [**InstallmentPlanUpdateRequestByIdentifier**](InstallmentPlanUpdateRequestByIdentifier.md)|  | 
 
 ### Return type
@@ -605,7 +577,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 
@@ -630,7 +602,7 @@ Name | Type | Description  | Notes
 
 ## VerifyAuthorization
 
-> VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber)
+> VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -650,21 +622,16 @@ namespace Example
         public static void Main()
         {
             Configuration.Default.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure API key authorization: idempotencyKey
-            Configuration.Default.AddApiKey("X-Splitit-IdempotencyKey", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("X-Splitit-IdempotencyKey", "Bearer");
-            // Configure API key authorization: oauthKey
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            // Configure OAuth2 access token for authorization: bearer
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
 
             var apiInstance = new InstallmentPlanApi(Configuration.Default);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
 
             try
             {
-                VerifyAuthorizationResponse result = apiInstance.VerifyAuthorization(installmentPlanNumber);
+                VerifyAuthorizationResponse result = apiInstance.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -684,6 +651,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | **string**|  | 
+ **xSplititIdempotencyKey** | **string**|  | 
 
 ### Return type
 
@@ -691,7 +659,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[idempotencyKey](../README.md#idempotencyKey), [oauthKey](../README.md#oauthKey)
+[bearer](../README.md#bearer)
 
 ### HTTP request headers
 

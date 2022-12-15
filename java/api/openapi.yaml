@@ -3,11 +3,15 @@ info:
   description: Splitit's API
   title: splitit-web-api-v3
   version: 1.0.0
+  x-konfig-ignore:
+    konfig-oas2-schema:
+      paths:
+      - paths./api/installmentplans/search.get.parameters.2
 servers:
 - url: https://web-api-v3.sandbox.splitit.com
 security:
-- oauthKey: []
-  idempotencyKey: []
+- bearer:
+  - api.v3
 tags:
 - name: InstallmentPlan
 paths:
@@ -23,6 +27,13 @@ paths:
           type: string
         style: simple
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -117,9 +128,18 @@ paths:
         name: extendedParams
         required: false
         schema:
-          type: string
+          additionalProperties:
+            type: string
+          type: object
         style: form
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -209,6 +229,13 @@ paths:
         x-schema:
           $ref: '#/components/schemas/TestModes'
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -320,6 +347,13 @@ paths:
           type: string
         style: simple
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -401,6 +435,13 @@ paths:
           type: string
         style: simple
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -490,6 +531,14 @@ paths:
   /api/installmentplans/updateorder:
     put:
       operationId: InstallmentPlan_UpdateOrder2
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -588,6 +637,13 @@ paths:
           type: string
         style: simple
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -686,6 +742,13 @@ paths:
           type: string
         style: simple
         x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -761,6 +824,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/ResponseV2'
       - $ref: '#/components/schemas/FailedResponse_allOf'
+    ErrorExtended:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - $ref: '#/components/schemas/ErrorExtended_allOf'
     Error:
       properties:
         Code:
@@ -1248,7 +1315,15 @@ components:
         TraceId:
           type: string
         Error:
-          $ref: '#/components/schemas/Error'
+          $ref: '#/components/schemas/ErrorExtended'
+      type: object
+      example: null
+    ErrorExtended_allOf:
+      properties:
+        ExtraData:
+          additionalProperties:
+            type: string
+          type: object
       type: object
       example: null
     InstallmentPlanModel_allOf:
@@ -1358,14 +1433,13 @@ components:
       type: object
       example: null
   securitySchemes:
-    oauthKey:
-      description: "Enter the token with the 'Bearer: ' prefix, e.g. 'Bearer abcde12345'."
-      in: header
-      name: Authorization
-      type: apiKey
-    idempotencyKey:
-      in: header
-      name: X-Splitit-IdempotencyKey
-      type: apiKey
+    bearer:
+      description: jwt
+      flows:
+        clientCredentials:
+          scopes:
+            api.v3: ""
+          tokenUrl: https://id.sandbox.splitit.com/connect/token
+      type: oauth2
 x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))
 
