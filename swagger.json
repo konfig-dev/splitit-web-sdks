@@ -12,6 +12,7 @@
     }
   },
   "host": "web-api-v3.sandbox.splitit.com",
+  "security": [{ "bearer": ["api.v3"] }],
   "schemes": ["https"],
   "produces": ["text/plain", "application/json", "text/json"],
   "tags": [{ "name": "InstallmentPlan" }],
