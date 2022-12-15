@@ -15,7 +15,7 @@ package com.splitit.client;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T14:27:55.699693-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T15:01:38.286696-08:00[America/Los_Angeles]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

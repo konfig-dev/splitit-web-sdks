@@ -12,7 +12,7 @@ The version of the OpenAPI document: 1.0.0
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85EF3589-FD94-4813-AD1D-92DB878BE9CB}</ProjectGuid>
+    <ProjectGuid>{6783EA06-7A1D-4A04-AD92-878ECE2E1458}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Splitit.Net</RootNamespace>

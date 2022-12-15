@@ -48,7 +48,7 @@ import com.splitit.client.JSON;
 /**
  * PlanErrorResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T14:27:55.699693-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T15:01:38.286696-08:00[America/Los_Angeles]")
 public class PlanErrorResponse {
   public static final String SERIALIZED_NAME_TRACE_ID = "TraceId";
   @SerializedName(SERIALIZED_NAME_TRACE_ID)
