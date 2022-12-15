@@ -2,13 +2,7 @@ package com.splitit.client.api;
 
 import com.splitit.client.ApiClient;
 import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.OAuth;
-import com.splitit.client.model.InstallmentPlanCreateRequest;
 import com.splitit.client.model.InstallmentPlanGetResponse;
-import com.splitit.client.model.InstallmentPlanModel;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
