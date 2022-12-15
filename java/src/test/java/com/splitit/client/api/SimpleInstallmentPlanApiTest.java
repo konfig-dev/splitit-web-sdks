@@ -3,10 +3,12 @@ package com.splitit.client.api;
 import com.splitit.client.ApiClient;
 import com.splitit.client.ApiException;
 import com.splitit.client.Configuration;
-import com.splitit.client.auth.ApiKeyAuth;
 import com.splitit.client.auth.OAuth;
 import com.splitit.client.model.InstallmentPlanCreateRequest;
+import com.splitit.client.model.InstallmentPlanGetResponse;
 import com.splitit.client.model.InstallmentPlanModel;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
@@ -18,17 +20,12 @@ public class SimpleInstallmentPlanApiTest {
      */
     @Test
     public void createInstallmentPlanTest() throws ApiException {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        defaultClient.setBasePath("http://127.0.0.1:4010");
-        OAuth oauthKey = (OAuth) defaultClient.getAuthentication("bearer");
-        oauthKey.setAccessToken("YOUR API KEY");
+        String clientId = System.getenv().get("SPLITIT_CLIENT_ID");
+        String clientSecret = System.getenv().get("SPLITIT_CLIENT_SECRET");
+        ApiClient defaultClient = new ApiClient(clientId, clientSecret, null);
         InstallmentPlanApi api = new InstallmentPlanApi(defaultClient);
-        InstallmentPlanCreateRequest installmentPlanCreateRequest = new InstallmentPlanCreateRequest();
-        installmentPlanCreateRequest.setAutoCapture(true);
-        installmentPlanCreateRequest.setAttempt3dSecure(true);
-        installmentPlanCreateRequest.setAttemptAuthorize(true);
-        installmentPlanCreateRequest.setTermsAndConditionsAccepted(true);
-        InstallmentPlanModel model = api.post("YOUR IDEMPOTENCY KEY", installmentPlanCreateRequest, null);
+        InstallmentPlanGetResponse model = api.search("1234213214", "123", "123", null);
+        System.out.println(model);
         assertNotNull("Received null response", model);
     }
 }
