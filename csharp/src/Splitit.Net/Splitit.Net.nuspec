@@ -14,7 +14,7 @@
         <!-- Authors contain text that appears directly on the gallery -->
         <authors>$author$</authors>
 
-        <icon>icon.png</icon>
+        <icon>logo.png</icon>
 
         <!-- Owners are typically nuget.org identities that allow gallery
              users to easily find other packages by the same owners.  -->
