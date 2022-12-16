@@ -20,5 +20,6 @@ target
 .gradle
 build
 
-# Don't ignore IntelliJ files
+# Ignore IntelliJ files
 .idea
+*.iml
