@@ -10,7 +10,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/java
   csharp:
-    version: 1.0.2
+    version: 1.0.3
     packageName: Splitit.Net
     outputDirectory: csharp
     git:
