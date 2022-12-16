@@ -14,6 +14,8 @@
         <!-- Authors contain text that appears directly on the gallery -->
         <authors>$author$</authors>
 
+        <icon>icon.png</icon>
+
         <!-- Owners are typically nuget.org identities that allow gallery
              users to easily find other packages by the same owners.  -->
         <owners>$author$</owners>
@@ -40,6 +42,7 @@
 
         <!-- A readme.txt will be displayed when the package is installed -->
         <file src="..\..\README.md" target="" />
+        <file src="..\..\logo.png" target="" />
         <file src="..\..\docs\**\*.*" target="docs" />
 
     </files>
