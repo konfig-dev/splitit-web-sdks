@@ -29,7 +29,7 @@ namespace Splitit.Net.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.0";
+        public const string Version = "1.0.1";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -114,7 +114,7 @@ namespace Splitit.Net.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Konfig/1.0.0/csharp";
+            UserAgent = "Konfig/1.0.1/csharp";
             BasePath = "https://web-api-v3.sandbox.splitit.com";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -187,7 +187,7 @@ namespace Splitit.Net.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Konfig/1.0.0/csharp"
+            string userAgent = "Konfig/1.0.1/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -421,7 +421,7 @@ namespace Splitit.Net.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 1.0.0\n";
+            report += "    SDK Package Version: 1.0.1\n";
 
             return report;
         }
