@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 
 ```xml
 <dependency>
-  <groupId>com.splitit</groupId>
+  <groupId>com.konfigthis</groupId>
   <artifactId>splitit-java-sdk</artifactId>
   <version>1.0.0</version>
   <scope>compile</scope>
@@ -55,7 +55,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.splitit:splitit-java-sdk:1.0.0"
+     implementation "com.konfigthis:splitit-java-sdk:1.0.0"
   }
 ```
 
@@ -79,12 +79,12 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {

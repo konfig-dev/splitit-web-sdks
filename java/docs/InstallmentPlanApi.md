@@ -23,12 +23,12 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -94,12 +94,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -165,12 +165,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -239,12 +239,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -312,12 +312,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -387,12 +387,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -460,12 +460,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
@@ -531,12 +531,12 @@ public class Example {
 ### Example
 ```java
 // Import classes:
-import com.splitit.client.ApiClient;
-import com.splitit.client.ApiException;
-import com.splitit.client.Configuration;
-import com.splitit.client.auth.*;
-import com.splitit.client.models.*;
-import com.splitit.client.api.InstallmentPlanApi;
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.models.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {

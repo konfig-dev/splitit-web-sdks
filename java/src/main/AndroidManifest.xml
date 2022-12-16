@@ -1,3 +1,3 @@
-<manifest package="com.splitit.client" xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.konfigthis.splitit.client" xmlns:android="http://schemas.android.com/apk/res/android">
     <application />
 </manifest>

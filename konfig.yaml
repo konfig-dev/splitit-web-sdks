@@ -3,7 +3,8 @@ specPath: swagger.json
 generators:
   java:
     version: 1.0.0
-    groupId: com.splitit
+    groupId: com.konfigthis
+    packageName: splitit
     artifactId: splitit-java-sdk
     outputDirectory: java
     git:
