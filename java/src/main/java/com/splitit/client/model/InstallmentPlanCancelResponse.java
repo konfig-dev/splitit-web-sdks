@@ -47,7 +47,7 @@ import com.splitit.client.JSON;
 /**
  * InstallmentPlanCancelResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T15:01:38.286696-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T16:17:53.108341-08:00[America/Los_Angeles]")
 public class InstallmentPlanCancelResponse {
   public static final String SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER = "InstallmentPlanNumber";
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER)
