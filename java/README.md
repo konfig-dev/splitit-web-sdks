@@ -2,7 +2,6 @@
 
 splitit-web-api-v3
 - API version: 1.0.0
-  - Build date: 2022-12-15T16:17:53.108341-08:00[America/Los_Angeles]
 
 Splitit's API
 

@@ -47,7 +47,7 @@ import com.splitit.client.JSON;
 /**
  * AddressDataModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T16:17:53.108341-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AddressDataModel {
   public static final String SERIALIZED_NAME_ADDRESS_LINE1 = "AddressLine1";
   @SerializedName(SERIALIZED_NAME_ADDRESS_LINE1)

@@ -47,7 +47,7 @@ import com.splitit.client.JSON;
 /**
  * RedirectionEndpointsModel
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-15T16:17:53.108341-08:00[America/Los_Angeles]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RedirectionEndpointsModel {
   public static final String SERIALIZED_NAME_AUTHORIZE_SUCCEEDED = "AuthorizeSucceeded";
   @SerializedName(SERIALIZED_NAME_AUTHORIZE_SUCCEEDED)

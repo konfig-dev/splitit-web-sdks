@@ -8,6 +8,9 @@
         <!-- The package version number that is used when resolving dependencies -->
         <version>$version$</version>
 
+        <!-- To specify the path to README.md to display on nuget.org -->
+        <readme>README.md</readme>
+
         <!-- Authors contain text that appears directly on the gallery -->
         <authors>$author$</authors>
 
