@@ -1,6 +1,20 @@
 outputDirectory: /tmp/splitit-sdks-out
 specPath: swagger.json
 generators:
+  typescript:
+    packageVersion: 1.0.0
+    generatorVersion: 2
+    outputDirectory: typescript
+    npmName: splitit-typescript-sdk
+    npmDescription: SDK for Splitit REST API
+    removeTagFromOperationId: true
+    clientName: SplititClient
+    httpClient: node
+    npmAuthor: splitit.com
+    useOptions: true
+    git:
+      userId: konfig-dev
+      repoId: splitit-sdks/tree/main/typescript
   java:
     version: 1.0.1
     groupId: com.konfigthis
