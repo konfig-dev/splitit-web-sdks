@@ -1,15 +1,16 @@
 {
   "name": "splitit-typescript-sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SDK for Splitit REST API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "https://github.com/konfig-dev/splitit-sdks/tree/main/typescript",
+  "homepage": "https://github.com/konfig-dev/splitit-sdks/tree/main/typescript",
   "author": "splitit.com",
   "license": "MIT",
   "scripts": {
     "build": "npm run clean && tsc -p tsconfig.build.json",
-    "release": "npm run build && npm run publish",
+    "release": "npm run build && npm publish",
     "clean": "rm -rf dist/",
     "test": "jest"
   },
