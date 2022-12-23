@@ -9,6 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn clean && tsc -p tsconfig.build.json",
+    "release": "yarn build && npm publish",
     "clean": "rm -rf dist/",
     "test": "jest"
   },
