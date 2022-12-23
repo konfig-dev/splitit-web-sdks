@@ -44,13 +44,14 @@ namespace Splitit.Net.Test
             var client = new RestClient("https://id.sandbox.splitit.com/connect/token");
             string clientId = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_ID");
             string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
-
             var request = new RestRequest(Method.POST);
             request.AddHeader("cache-control", "no-cache");
             request.AddHeader("content-type", "application/x-www-form-urlencoded");
             request.AddParameter("application/x-www-form-urlencoded", $"grant_type=client_credentials&client_id={clientId}&client_secret={clientSecret}", ParameterType.RequestBody);
             IRestResponse response = client.Execute(request);
-            var data = JsonConvert.DeserializeObject(response.Content);
+            dynamic data = JsonConvert.DeserializeObject(response.Content);
+            var accessToken = (String)data.access_token;
+            Configuration.Default.AccessToken = accessToken;
             instance = new InstallmentPlanApi(Configuration.Default);
         }
 
