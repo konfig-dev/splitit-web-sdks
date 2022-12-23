@@ -2,7 +2,7 @@ outputDirectory: /tmp/splitit-sdks-out
 specPath: swagger.json
 generators:
   typescript:
-    packageVersion: 1.0.0
+    packageVersion: 1.0.1
     generatorVersion: 2
     outputDirectory: typescript
     npmName: splitit-typescript-sdk
