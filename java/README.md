@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-java-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.konfigthis:splitit-java-sdk:1.0.0"
+     implementation "com.konfigthis:splitit-java-sdk:1.0.1"
   }
 ```
 
@@ -69,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-java-sdk-1.0.0.jar`
+* `target/splitit-java-sdk-1.0.1.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

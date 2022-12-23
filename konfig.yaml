@@ -2,7 +2,7 @@ outputDirectory: /tmp/splitit-sdks-out
 specPath: swagger.json
 generators:
   java:
-    version: 1.0.0
+    version: 1.0.1
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-java-sdk
