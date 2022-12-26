@@ -1,7 +1,13 @@
 outputDirectory: /tmp/splitit-sdks-out
 specPath: swagger.json
+requiredEnvironmentVariables:
+  - SPLITIT_CLIENT_ID
+  - SPLITIT_CLIENT_SECRET
 generators:
   typescript:
+    test:
+      script:
+        - yarn test
     packageVersion: 1.0.2
     generatorVersion: 2
     outputDirectory: typescript
@@ -16,6 +22,9 @@ generators:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/typescript
   java:
+    test:
+      script:
+        - mvn test
     version: 1.0.1
     groupId: com.konfigthis
     packageName: splitit
@@ -25,6 +34,9 @@ generators:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/java
   csharp:
+    test:
+      script:
+        - sh mono_nunit_test.sh
     version: 1.0.4
     packageName: Splitit.Net
     outputDirectory: csharp
