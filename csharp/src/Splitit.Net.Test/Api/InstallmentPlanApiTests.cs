@@ -107,12 +107,45 @@ namespace Splitit.Net.Test
         [Test]
         public void PostTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xSplititIdempotencyKey = null;
-            //InstallmentPlanCreateRequest installmentPlanCreateRequest = null;
-            //string xSplititTestMode = null;
-            //var response = instance.Post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
-            //Assert.IsInstanceOf(typeof(InstallmentPlanModel), response, "response is InstallmentPlanModel");
+            PlanDataModel planData = new PlanDataModel();
+            planData.TotalAmount = 10;
+            planData.NumberOfInstallments = 10;
+            planData.Currency = "USD";
+            planData.PurchaseMethod = PurchaseMethod.InStore;
+
+            ShopperData shopper = new ShopperData();
+            shopper.Email = "fake@email.com";
+
+            AddressDataModel address = new AddressDataModel();
+            address.AddressLine1 = "144 Union St";
+            address.City = "Brooklyn";
+            address.State = "North Dakota";
+            address.Zip = "11231";
+            address.Country = "United States";
+
+            CardData card = new CardData();
+            card.CardCvv = "111";
+            card.CardExpMonth = "12";
+            card.CardExpYear = "2025";
+            card.CardNumber = "4556997457604103";
+            card.CardHolderFullName = "Test User";
+
+            PaymentMethodModel paymentMethod = new PaymentMethodModel();
+            paymentMethod.Type = PaymentMethodType.Card;
+            paymentMethod.Card = card;
+
+            InstallmentPlanCreateRequest createRequest = new InstallmentPlanCreateRequest();
+            createRequest.Attempt3dSecure = true;
+            createRequest.TermsAndConditionsAccepted = true;
+            createRequest.AutoCapture = true;
+            createRequest.AttemptAuthorize = true;
+            createRequest.PlanData = planData;
+            createRequest.BillingAddress = address;
+            createRequest.PaymentMethod = paymentMethod;
+            createRequest.Shopper = shopper;
+
+            var response = instance.Post(new DateTime().ToString(), createRequest);
+            Assert.IsNotNull(response, "Response is null");
         }
 
         /// <summary>
@@ -135,14 +168,6 @@ namespace Splitit.Net.Test
         [Test]
         public void SearchTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            string xSplititIdempotencyKey = "123132131231";
-            string installmentPlanNumber = "1231321";
-            string refOrderNumber = "1231321312312";
-            Dictionary<string, string> extendedParams = null;
-            var response = instance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
-            Console.Write(response);
-            Assert.IsInstanceOf(typeof(InstallmentPlanGetResponse), response, "response is InstallmentPlanGetResponse");
         }
 
         /// <summary>
