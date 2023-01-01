@@ -8,7 +8,7 @@ generators:
     test:
       script:
         - yarn test
-    version: 1.0.2
+    version: 1.0.3
     outputDirectory: typescript
     npmName: splitit-typescript-sdk
     git:
