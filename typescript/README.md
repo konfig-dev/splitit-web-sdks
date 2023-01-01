@@ -1,25 +1,45 @@
-# Example
+## splitit-typescript-sdk@1.0.2
 
-```typescript
-const clientId = process.env.SPLITIT_CLIENT_ID;
-const clientSecret = process.env.SPLITIT_CLIENT_SECRET;
+This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
-const oauthResponse = await fetch(
-  "https://id.sandbox.splitit.com/connect/token",
-  {
-    method: "POST",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-    body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`,
-  }
-);
-const json = await oauthResponse.json();
-const accessToken = json.access_token;
-const client = new SplititClient({ TOKEN: accessToken });
-const response = await client.installmentPlan.search({
-  xSplititIdempotencyKey: "1231231",
-  installmentPlanNumber: "21321",
-  refOrderNumber: "21312321",
-});
+Environment
+* Node.js
+* Webpack
+* Browserify
+
+Language level
+* ES5 - you must have a Promises/A+ library installed
+* ES6
+
+Module system
+* CommonJS
+* ES6 module system
+
+It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
+
+### Building
+
+To build and compile the typescript sources to javascript use:
 ```
+npm install
+npm run build
+```
+
+### Publishing
+
+First build the package then run ```npm publish```
+
+### Consuming
+
+navigate to the folder of your consuming project and run one of the following commands.
+
+_published:_
+
+```
+npm install splitit-typescript-sdk@1.0.2 --save
+```
+
+_unPublished (not recommended):_
+
+```
+npm install PATH_TO_GENERATED_PACKAGE --save

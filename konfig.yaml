@@ -8,16 +8,9 @@ generators:
     test:
       script:
         - yarn test
-    packageVersion: 1.0.2
-    generatorVersion: 2
+    version: 1.0.2
     outputDirectory: typescript
     npmName: splitit-typescript-sdk
-    npmDescription: SDK for Splitit REST API
-    removeTagFromOperationId: true
-    clientName: SplititClient
-    httpClient: node
-    npmAuthor: splitit.com
-    useOptions: true
     git:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/typescript

@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "declaration": true,
+    "target": "ES5",
     "module": "commonjs",
-    "strict": true,
-    "outDir": "./dist",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "declaration": true
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-  "include": ["src/**/*.ts"]
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
