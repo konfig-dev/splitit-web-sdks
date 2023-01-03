@@ -92,9 +92,9 @@ public class Example {
     String clientId = System.getenv("CLIENT_ID");
     String secretId = System.getenv("CLIENT_SECRET");
     ApiClient apiClient = new ApiClient(clientId, secretId, null);
-    
+
     // Set custom base path if desired
-    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
 
     InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
