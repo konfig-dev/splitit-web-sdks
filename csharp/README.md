@@ -71,9 +71,15 @@ namespace Example
         {
 
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: bearer
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
