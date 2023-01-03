@@ -30,7 +30,7 @@ generators:
     test:
       script:
         - sh mono_nunit_test.sh
-    version: 1.0.4
+    version: 1.0.5
     packageName: Splitit.Net
     outputDirectory: csharp
     logoPath: logo.png
