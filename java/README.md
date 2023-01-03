@@ -88,14 +88,15 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
     
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
