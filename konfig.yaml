@@ -33,6 +33,7 @@ generators:
     version: 1.0.4
     packageName: Splitit.Net
     outputDirectory: csharp
+    logoPath: logo.png
     git:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/csharp
