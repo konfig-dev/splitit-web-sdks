@@ -8,18 +8,11 @@
  */
 
 using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
 using Xunit;
 
+using Splitit.Net.Model;
 using Splitit.Net.Client;
 using Splitit.Net.Api;
-// uncomment below to import models
-//using Splitit.Net.Model;
 
 namespace Splitit.Net.Test.Api
 {
@@ -36,7 +29,14 @@ namespace Splitit.Net.Test.Api
 
         public SimpleInstallmentPlanApiTests()
         {
-            instance = new InstallmentPlanApi();
+            Configuration config = new Configuration();
+            string clientId = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
+            config.OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
+            config.OAuthFlow = Client.Auth.OAuthFlow.APPLICATION;
+            instance = new InstallmentPlanApi(config);
         }
 
         public void Dispose()
@@ -44,14 +44,48 @@ namespace Splitit.Net.Test.Api
             // Cleanup when everything is done.
         }
 
+        [Fact]
         public void SimplePostTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xSplititIdempotencyKey = null;
-            //InstallmentPlanCreateRequest installmentPlanCreateRequest = null;
-            //string xSplititTestMode = null;
-            //var response = instance.Post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
-            //Assert.IsType<InstallmentPlanModel>(response);
+            PlanDataModel planData = new PlanDataModel();
+            planData.TotalAmount = 10;
+            planData.NumberOfInstallments = 10;
+            planData.Currency = "USD";
+            planData.PurchaseMethod = PurchaseMethod.InStore;
+
+            ShopperData shopper = new ShopperData();
+            shopper.Email = "fake@email.com";
+
+            AddressDataModel address = new AddressDataModel();
+            address.AddressLine1 = "144 Union St";
+            address.City = "Brooklyn";
+            address.State = "North Dakota";
+            address.Zip = "11231";
+            address.Country = "United States";
+
+            CardData card = new CardData();
+            card.CardCvv = "111";
+            card.CardExpMonth = "12";
+            card.CardExpYear = "2025";
+            card.CardNumber = "4556997457604103";
+            card.CardHolderFullName = "Test User";
+
+            PaymentMethodModel paymentMethod = new PaymentMethodModel();
+            paymentMethod.Type = PaymentMethodType.Card;
+            paymentMethod.Card = card;
+
+            InstallmentPlanCreateRequest createRequest = new InstallmentPlanCreateRequest();
+            createRequest.Attempt3dSecure = true;
+            createRequest.TermsAndConditionsAccepted = true;
+            createRequest.AutoCapture = true;
+            createRequest.AttemptAuthorize = true;
+            createRequest.PlanData = planData;
+            createRequest.BillingAddress = address;
+            createRequest.PaymentMethod = paymentMethod;
+            createRequest.Shopper = shopper;
+
+            var response = instance.Post(new DateTime().ToString(), createRequest);
+            Assert.NotNull(response);
         }
 
     }
