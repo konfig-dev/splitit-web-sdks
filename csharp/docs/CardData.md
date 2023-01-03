@@ -1,4 +1,3 @@
-
 # Splitit.Net.Model.CardData
 
 ## Properties
@@ -11,7 +10,5 @@ Name | Type | Description | Notes
 **CardExpMonth** | **string** |  | [optional] 
 **CardCvv** | **string** |  | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

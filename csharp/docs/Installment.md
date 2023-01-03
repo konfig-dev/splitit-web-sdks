@@ -1,4 +1,3 @@
-
 # Splitit.Net.Model.Installment
 
 ## Properties
@@ -10,7 +9,5 @@ Name | Type | Description | Notes
 **ProcessDateTime** | **DateTime** |  | [optional] 
 **Status** | **InstallmentStatus** |  | 
 
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to README]](../README.md)
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
