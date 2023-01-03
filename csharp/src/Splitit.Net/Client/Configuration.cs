@@ -115,6 +115,8 @@ namespace Splitit.Net.Client
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
+            OAuthFlow = Auth.OAuthFlow.APPLICATION;
+            OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
             Servers = new List<IReadOnlyDictionary<string, object>>()
             {
                 {

@@ -34,8 +34,6 @@ namespace Splitit.Net.Test.Api
             string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
             config.OAuthClientId = clientId;
             config.OAuthClientSecret = clientSecret;
-            config.OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
-            config.OAuthFlow = Client.Auth.OAuthFlow.APPLICATION;
             instance = new InstallmentPlanApi(config);
         }
 
