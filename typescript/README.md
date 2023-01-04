@@ -25,21 +25,10 @@ npm install
 npm run build
 ```
 
-### Publishing
-
-First build the package then run ```npm publish```
-
 ### Consuming
 
-navigate to the folder of your consuming project and run one of the following commands.
-
-_published:_
+navigate to the folder of your consuming project and run the following command.
 
 ```
 npm install splitit-typescript-sdk@1.0.3 --save
 ```
-
-_unPublished (not recommended):_
-
-```
-npm install PATH_TO_GENERATED_PACKAGE --save
