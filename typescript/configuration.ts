@@ -20,6 +20,8 @@ export interface ConfigurationParameters {
     accessToken?: string | Promise<string> | ((name?: string, scopes?: string[]) => string) | ((name?: string, scopes?: string[]) => Promise<string>);
     basePath?: string;
     baseOptions?: any;
+    oauthClientId?: string;
+    oauthClientSecret?: string;
     formDataCtor?: new () => any;
 }
 
@@ -37,6 +39,14 @@ export class Configuration {
      * @memberof Configuration
      */
     username?: string;
+    /**
+     * client id for OAuth2 Application flow
+     */
+    oauthClientId?: string;
+    /**
+     * client secret for OAuth2 Application flow
+     */
+    oauthClientSecret?: string;
     /**
      * parameter for basic security
      *
@@ -82,6 +92,8 @@ export class Configuration {
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions;
         this.formDataCtor = param.formDataCtor;
+        this.oauthClientId = param.oauthClientId;
+        this.oauthClientSecret = param.oauthClientSecret;
     }
 
     /**
