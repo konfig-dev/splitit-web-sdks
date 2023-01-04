@@ -6,7 +6,7 @@ it("simple operation started", async () => {
 
   const config = new Configuration({ oauthClientId, oauthClientSecret });
   const api = new InstallmentPlanApi(config);
-  const result = api.post(new Date().toISOString(), {
+  const result = await api.post(new Date().toISOString(), {
     Attempt3dSecure: true,
     AutoCapture: true,
     AttemptAuthorize: true,
