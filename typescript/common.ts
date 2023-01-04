@@ -75,26 +75,25 @@ export const setBearerAuthToObject = async function (object: any, configuration?
  * @export
  */
 export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
-    if (configuration === undefined) return
-    let localVarAccessTokenValue: string | null = null;
-    if (configuration.oauthClientId && configuration.oauthClientSecret) {
+    if (configuration && configuration.oauthClientId && configuration.oauthClientSecret) {
         const oauthResponse = await axios.request({
-        url: "https://id.sandbox.splitit.com/connect/token",
-        method: "POST",
-        headers: {
-            "content-type": "application/x-www-form-urlencoded",
-        },
-        data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
+            url: "https://id.sandbox.splitit.com/connect/token",
+            method: "POST",
+            headers: {
+                "content-type": "application/x-www-form-urlencoded",
+            },
+            data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
         });
         const json = await oauthResponse.data;
-        localVarAccessTokenValue = json.access_token;
-    } else if (configuration.accessToken) {
-        localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+        const accessToken = json.access_token;
+        object["Authorization"] = "Bearer " + accessToken;
+    }
+    if (configuration && configuration.accessToken) {
+        const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
             ? await configuration.accessToken(name, scopes)
             : await configuration.accessToken;
+        object["Authorization"] = "Bearer " + localVarAccessTokenValue;
     }
-    if (localVarAccessTokenValue === null) return
-    object["Authorization"] = "Bearer " + localVarAccessTokenValue;
 }
 
 function setFlattenedQueryParams(urlSearchParams: URLSearchParams, parameter: any, key: string = ""): void {

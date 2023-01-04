@@ -91,9 +91,9 @@ export class Configuration {
         this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions;
-        this.formDataCtor = param.formDataCtor;
         this.oauthClientId = param.oauthClientId;
         this.oauthClientSecret = param.oauthClientSecret;
+        this.formDataCtor = param.formDataCtor;
     }
 
     /**
