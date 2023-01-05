@@ -30,7 +30,7 @@ generators:
     test:
       script:
         - dotnet test
-    version: 1.0.5
+    version: 1.0.6
     packageName: Splitit.Net
     outputDirectory: csharp
     logoPath: logo.png
