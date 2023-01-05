@@ -1,5 +1,9 @@
-import { InstallmentPlanApi, PaymentMethodType, PurchaseMethod } from "./api";
-import { Configuration } from "./configuration";
+import {
+  InstallmentPlanApi,
+  PaymentMethodType,
+  PurchaseMethod,
+  Configuration,
+} from "./";
 it("simple operation started", async () => {
   const oauthClientId = process.env.SPLITIT_CLIENT_ID;
   const oauthClientSecret = process.env.SPLITIT_CLIENT_SECRET;
