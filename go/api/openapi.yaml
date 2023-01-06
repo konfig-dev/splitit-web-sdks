@@ -1,0 +1,1432 @@
+openapi: 3.0.0
+info:
+  description: Splitit's API
+  title: splitit-web-api-v3
+  version: 1.0.0
+  x-konfig-ignore:
+    konfig-oas2-schema:
+      paths:
+      - paths./api/installmentplans/search.get.parameters.2
+servers:
+- url: https://web-api-v3.sandbox.splitit.com
+security:
+- bearer:
+  - api.v3
+tags:
+- name: InstallmentPlan
+paths:
+  /api/installmentplans/{installmentPlanNumber}:
+    get:
+      operationId: InstallmentPlan_Get
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/search:
+    get:
+      operationId: InstallmentPlan_Search
+      parameters:
+      - explode: true
+        in: query
+        name: installmentPlanNumber
+        required: false
+        schema:
+          type: string
+        style: form
+        x-nullable: true
+      - explode: true
+        in: query
+        name: refOrderNumber
+        required: false
+        schema:
+          type: string
+        style: form
+        x-nullable: true
+      - explode: true
+        in: query
+        name: extendedParams
+        required: false
+        schema:
+          additionalProperties:
+            type: string
+          type: object
+        style: form
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans:
+    post:
+      operationId: InstallmentPlan_Post
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-TestMode
+        required: false
+        schema:
+          enum:
+          - None
+          - Regular
+          - Fast
+          - Automation
+          type: string
+        style: simple
+        x-originalName: testMode
+        x-schema:
+          $ref: '#/components/schemas/TestModes'
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanModel'
+          description: ""
+          x-nullable: false
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PlanErrorResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/{installmentPlanNumber}/verifyauthorization:
+    get:
+      operationId: InstallmentPlan_VerifyAuthorization
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/{installmentPlanNumber}/updateorder:
+    put:
+      operationId: InstallmentPlan_UpdateOrder
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateOrderRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/updateorder:
+    put:
+      operationId: InstallmentPlan_UpdateOrder2
+      parameters:
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/{installmentPlanNumber}/refund:
+    post:
+      operationId: InstallmentPlan_Refund
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+        required: true
+        x-nullable: false
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+  /api/installmentplans/{installmentPlanNumber}/cancel:
+    post:
+      operationId: InstallmentPlan_Cancel
+      parameters:
+      - explode: false
+        in: path
+        name: installmentPlanNumber
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: true
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      tags:
+      - InstallmentPlan
+components:
+  schemas:
+    FailedResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/FailedResponse_allOf'
+    ErrorExtended:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - $ref: '#/components/schemas/ErrorExtended_allOf'
+    Error:
+      properties:
+        Code:
+          type: string
+        Message:
+          type: string
+        AdditionalInfo:
+          type: string
+      type: object
+    ResponseV2:
+      type: object
+    InstallmentPlanModel:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/InstallmentPlanModel_allOf'
+    PurchaseMethod:
+      description: ""
+      enum:
+      - InStore
+      - PhoneOrder
+      - ECommerce
+      type: string
+      x-enumNames:
+      - InStore
+      - PhoneOrder
+      - ECommerce
+    PlanStatus:
+      description: ""
+      enum:
+      - Initialized
+      - PendingCapture
+      - Active
+      - Cleared
+      - Canceled
+      type: string
+      x-enumNames:
+      - Initialized
+      - PendingCapture
+      - Active
+      - Cleared
+      - Canceled
+    AuthorizationModel:
+      properties:
+        Status:
+          $ref: '#/components/schemas/GwAuthorizationStatus'
+        Date:
+          format: date-time
+          type: string
+        SplititErrorResultCode:
+          type: string
+        GatewayTransactionID:
+          type: string
+        GatewayResultCode:
+          type: string
+        GatewayResultMessage:
+          type: string
+        ThreeDSRedirect:
+          $ref: '#/components/schemas/ThreeDsRedirectData'
+        CAVV:
+          type: string
+        ECI:
+          type: string
+      required:
+      - Status
+      type: object
+    GwAuthorizationStatus:
+      description: ""
+      enum:
+      - NA
+      - Succeeded
+      - Pending3DS
+      - Failed
+      type: string
+      x-enumNames:
+      - NA
+      - Succeeded
+      - Pending3DS
+      - Failed
+    ThreeDsRedirectData:
+      properties:
+        Url:
+          type: string
+        Verb:
+          type: string
+        Params:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    ShopperData:
+      example:
+        Email: Email
+        FullName: FullName
+        PhoneNumber: PhoneNumber
+        Culture: Culture
+      properties:
+        FullName:
+          type: string
+        Email:
+          type: string
+        PhoneNumber:
+          type: string
+        Culture:
+          type: string
+      type: object
+    AddressData:
+      properties:
+        AddressLine:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+      type: object
+    PaymentMethodModel:
+      example:
+        Type: null
+        Card:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          CardHolderFullName: CardHolderFullName
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+      properties:
+        Type:
+          $ref: '#/components/schemas/PaymentMethodType'
+        Card:
+          $ref: '#/components/schemas/CardData'
+      required:
+      - Type
+      type: object
+    PaymentMethodType:
+      description: ""
+      enum:
+      - Card
+      type: string
+      x-enumNames:
+      - Card
+    CardData:
+      example:
+        CardNumber: CardNumber
+        CardExpMonth: CardExpMonth
+        CardHolderFullName: CardHolderFullName
+        CardExpYear: CardExpYear
+        CardCvv: CardCvv
+      properties:
+        CardHolderFullName:
+          type: string
+        CardNumber:
+          type: string
+        CardExpYear:
+          type: string
+        CardExpMonth:
+          type: string
+        CardCvv:
+          type: string
+      type: object
+    Installment:
+      properties:
+        InstallmentNumber:
+          format: int32
+          type: integer
+        Amount:
+          format: decimal
+          type: number
+        ProcessDateTime:
+          format: date-time
+          type: string
+        Status:
+          $ref: '#/components/schemas/InstallmentStatus'
+      required:
+      - Amount
+      - InstallmentNumber
+      - Status
+      type: object
+    InstallmentStatus:
+      description: ""
+      enum:
+      - Pending
+      - Processed
+      type: string
+      x-enumNames:
+      - Pending
+      - Processed
+    LinksData:
+      properties:
+        Checkout:
+          type: string
+        LearnMore:
+          type: string
+        TermsConditions:
+          type: string
+        PrivacyPolicy:
+          type: string
+      type: object
+    InstallmentPlanGetResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/InstallmentPlanGetResponse_allOf'
+    PlanErrorResponse:
+      allOf:
+      - $ref: '#/components/schemas/FailedResponse'
+      - $ref: '#/components/schemas/PlanErrorResponse_allOf'
+    InstallmentPlanCreateRequest:
+      example:
+        PlanData:
+          ExtendedParams:
+            key: ExtendedParams
+          RefOrderNumber: RefOrderNumber
+          Currency: Currency
+          TerminalId: TerminalId
+          TotalAmount: 0.8008281904610115
+          PurchaseMethod: null
+          NumberOfInstallments: 6
+        BillingAddress:
+          Zip: Zip
+          AddressLine2: AddressLine2
+          AddressLine1: AddressLine1
+          State: State
+          Country: Country
+          City: City
+        TermsAndConditionsAccepted: true
+        AutoCapture: true
+        AttemptAuthorize: true
+        Shopper:
+          Email: Email
+          FullName: FullName
+          PhoneNumber: PhoneNumber
+          Culture: Culture
+        PaymentMethod:
+          Type: null
+          Card:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            CardHolderFullName: CardHolderFullName
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+        RedirectUrls:
+          Succeeded: Succeeded
+          Failed: Failed
+          AuthorizeSucceeded: AuthorizeSucceeded
+          AuthorizeFailed: AuthorizeFailed
+        Attempt3dSecure: true
+      properties:
+        AutoCapture:
+          type: boolean
+        Attempt3dSecure:
+          type: boolean
+        AttemptAuthorize:
+          type: boolean
+        TermsAndConditionsAccepted:
+          type: boolean
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/RedirectionEndpointsModel'
+      required:
+      - Attempt3dSecure
+      - AttemptAuthorize
+      - AutoCapture
+      - TermsAndConditionsAccepted
+      type: object
+    PlanDataModel:
+      example:
+        ExtendedParams:
+          key: ExtendedParams
+        RefOrderNumber: RefOrderNumber
+        Currency: Currency
+        TerminalId: TerminalId
+        TotalAmount: 0.8008281904610115
+        PurchaseMethod: null
+        NumberOfInstallments: 6
+      properties:
+        TotalAmount:
+          format: decimal
+          type: number
+        Currency:
+          type: string
+        NumberOfInstallments:
+          format: int32
+          type: integer
+        TerminalId:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - NumberOfInstallments
+      - PurchaseMethod
+      - TotalAmount
+      type: object
+    AddressDataModel:
+      example:
+        Zip: Zip
+        AddressLine2: AddressLine2
+        AddressLine1: AddressLine1
+        State: State
+        Country: Country
+        City: City
+      properties:
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+      type: object
+    RedirectionEndpointsModel:
+      example:
+        Succeeded: Succeeded
+        Failed: Failed
+        AuthorizeSucceeded: AuthorizeSucceeded
+        AuthorizeFailed: AuthorizeFailed
+      properties:
+        AuthorizeSucceeded:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Succeeded property
+        Succeeded:
+          type: string
+        AuthorizeFailed:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Failed property
+        Failed:
+          type: string
+      type: object
+    TestModes:
+      description: ""
+      enum:
+      - None
+      - Regular
+      - Fast
+      - Automation
+      type: string
+      x-enumNames:
+      - None
+      - Regular
+      - Fast
+      - Automation
+    VerifyAuthorizationResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/VerifyAuthorizationResponse_allOf'
+    InstallmentPlanUpdateResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/InstallmentPlanUpdateResponse_allOf'
+    ShippingStatus:
+      description: ""
+      enum:
+      - Pending
+      - Shipped
+      - Delivered
+      type: string
+      x-enumNames:
+      - Pending
+      - Shipped
+      - Delivered
+    UpdateOrderRequest:
+      example:
+        TrackingNumber: TrackingNumber
+        RefOrderNumber: RefOrderNumber
+        ShippingStatus: null
+        Capture: true
+      properties:
+        TrackingNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+        Capture:
+          type: boolean
+      type: object
+    InstallmentPlanUpdateRequestByIdentifier:
+      allOf:
+      - $ref: '#/components/schemas/InstallmentPlanUpdateRequest'
+      - $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier_allOf'
+    IdentifierContract:
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+    InstallmentPlanUpdateRequest:
+      properties:
+        RefOrderNumber:
+          type: string
+        TrackingNumber:
+          type: string
+        Capture:
+          type: boolean
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus2'
+      type: object
+    ShippingStatus2:
+      description: ""
+      enum:
+      - Shipped
+      - Delivered
+      type: string
+      x-enumNames:
+      - Shipped
+      - Delivered
+    InstallmentPlanRefundResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/InstallmentPlanRefundResponse_allOf'
+    RefundSummary:
+      properties:
+        TotalAmount:
+          format: decimal
+          type: number
+        FailedAmount:
+          format: decimal
+          type: number
+        SucceededAmount:
+          format: decimal
+          type: number
+        PendingAmount:
+          format: decimal
+          type: number
+      type: object
+    InstallmentPlanRefundRequest:
+      example:
+        RefundStrategy: null
+        Amount: 0.8008281904610115
+      properties:
+        Amount:
+          format: decimal
+          type: number
+        RefundStrategy:
+          $ref: '#/components/schemas/RefundStrategy'
+      required:
+      - Amount
+      type: object
+    RefundStrategy:
+      description: ""
+      enum:
+      - FutureInstallmentsFirst
+      - FutureInstallmentsLast
+      - FutureInstallmentsNotAllowed
+      - ReduceFromLastInstallment
+      type: string
+      x-enumNames:
+      - FutureInstallmentsFirst
+      - FutureInstallmentsLast
+      - FutureInstallmentsNotAllowed
+      - ReduceFromLastInstallment
+    InstallmentPlanCancelResponse:
+      allOf:
+      - $ref: '#/components/schemas/ResponseV2'
+      - $ref: '#/components/schemas/PlanErrorResponse_allOf'
+    FailedResponse_allOf:
+      properties:
+        TraceId:
+          type: string
+        Error:
+          $ref: '#/components/schemas/ErrorExtended'
+      type: object
+      example: null
+    ErrorExtended_allOf:
+      properties:
+        ExtraData:
+          additionalProperties:
+            type: string
+          type: object
+      type: object
+      example: null
+    InstallmentPlanModel_allOf:
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          format: decimal
+          type: number
+        Amount:
+          format: decimal
+          type: number
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        Installments:
+          items:
+            $ref: '#/components/schemas/Installment'
+          type: array
+        Links:
+          $ref: '#/components/schemas/LinksData'
+      required:
+      - Status
+      type: object
+      example: null
+    InstallmentPlanGetResponse_allOf:
+      properties:
+        PlanList:
+          items:
+            $ref: '#/components/schemas/InstallmentPlanModel'
+          type: array
+      type: object
+      example: null
+    PlanErrorResponse_allOf:
+      properties:
+        InstallmentPlanNumber:
+          type: string
+      type: object
+      example: null
+    VerifyAuthorizationResponse_allOf:
+      properties:
+        IsAuthorized:
+          type: boolean
+        AuthorizationAmount:
+          format: decimal
+          type: number
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+      required:
+      - IsAuthorized
+      type: object
+      example: null
+    InstallmentPlanUpdateResponse_allOf:
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+      required:
+      - ShippingStatus
+      - Status
+      type: object
+      example: null
+    InstallmentPlanUpdateRequestByIdentifier_allOf:
+      properties:
+        Identifier:
+          $ref: '#/components/schemas/IdentifierContract'
+      type: object
+      example: null
+    InstallmentPlanRefundResponse_allOf:
+      properties:
+        RefundId:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Currency:
+          type: string
+        NonCreditRefundAmount:
+          format: decimal
+          type: number
+        CreditRefundAmount:
+          format: decimal
+          type: number
+        Summary:
+          $ref: '#/components/schemas/RefundSummary'
+      type: object
+      example: null
+  securitySchemes:
+    bearer:
+      description: jwt
+      flows:
+        clientCredentials:
+          scopes:
+            api.v3: ""
+          tokenUrl: https://id.sandbox.splitit.com/connect/token
+      type: oauth2
+x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))

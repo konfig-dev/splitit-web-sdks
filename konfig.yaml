@@ -37,3 +37,10 @@ generators:
     git:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/csharp
+  go:
+    version: 1.0.0
+    packageName: splitit
+    outputDirectory: go
+    git:
+      userId: konfig-dev
+      repoId: splitit-sdks/go
