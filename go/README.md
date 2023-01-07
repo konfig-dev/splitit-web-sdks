@@ -40,7 +40,9 @@ Default configuration comes with `Servers` field that contains server objects as
 For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
 
 ```golang
-ctx := context.WithValue(context.Background(), splitit.ContextServerIndex, 1)
+import splitit "github.com/konfig-dev/splitit-sdks/go"
+configuration := splitit.NewConfiguration()
+configuration.Context = context.WithValue(configuration.Context, splitit.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
@@ -48,7 +50,9 @@ ctx := context.WithValue(context.Background(), splitit.ContextServerIndex, 1)
 Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
 
 ```golang
-ctx := context.WithValue(context.Background(), splitit.ContextServerVariables, map[string]string{
+import splitit "github.com/konfig-dev/splitit-sdks/go"
+configuration := splitit.NewConfiguration()
+configuration.Context = context.WithValue(configuration.Context, splitit.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
 ```
@@ -62,10 +66,12 @@ An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
 ```golang
-ctx := context.WithValue(context.Background(), splitit.ContextOperationServerIndices, map[string]int{
+import splitit "github.com/konfig-dev/splitit-sdks/go"
+configuration := splitit.NewConfiguration()
+configuration.Context = context.WithValue(configuration.Context, splitit.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
-ctx = context.WithValue(context.Background(), splitit.ContextOperationServerVariables, map[string]map[string]string{
+configuration.Context = context.WithValue(configuration.Context, splitit.ContextOperationServerVariables, map[string]map[string]string{
 	"{classname}Service.{nickname}": {
 		"port": "8443",
 	},
@@ -154,20 +160,23 @@ Class | Method | HTTP request | Description
 Example
 
 ```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "ACCESSTOKENSTRING")
-r, err := client.Service.Operation(auth, args)
+import splitit "github.com/konfig-dev/splitit-sdks/go"
+configuration := splitit.NewConfiguration()
+configuration.Context = context.WithValue(configuration.Context, sw.ContextAccessToken, "ACCESSTOKENSTRING")
+client := splitit.NewAPIClient(configuration)
+resp, httpRes, err := client.Service.Operation(args).Execute()
 ```
 
 Or via OAuth2 module to automatically refresh tokens and perform user authentication.
 
 ```golang
-import "golang.org/x/oauth2"
-
 /* Perform OAuth2 round trip request and obtain a token */
-
-tokenSource := oauth2cfg.TokenSource(createContext(httpClient), &token)
-auth := context.WithValue(oauth2.NoContext, sw.ContextOAuth2, tokenSource)
-r, err := client.Service.Operation(auth, args)
+clientId := os.Getenv("SPLITIT_CLIENT_ID")
+clientSecret := os.Getenv("SPLITIT_CLIENT_SECRET")
+configuration := splitit.NewConfiguration()
+configuration.SetOAuthClientCredentials(clientId, clientSecret)
+client := splitit.NewAPIClient(configuration)
+resp, httpRes, err := client.Service.Operation(args).Execute()
 ```
 
 
