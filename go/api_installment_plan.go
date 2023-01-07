@@ -364,10 +364,10 @@ Post Method for Post
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiPostRequest
 */
-func (a *InstallmentPlanApiService) Post(ctx context.Context) ApiPostRequest {
+func (a *InstallmentPlanApiService) Post() ApiPostRequest {
 	return ApiPostRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 	}
 }
 

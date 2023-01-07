@@ -10,7 +10,6 @@ Testing InstallmentPlanApiService
 package splitit
 
 import (
-	"context"
 	"fmt"
 	"os"
 	"testing"
@@ -18,22 +17,13 @@ import (
 	client "github.com/konfig-dev/splitit-sdks/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"golang.org/x/oauth2/clientcredentials"
 )
 
 func Test_simple(t *testing.T) {
-	ctx := context.Background()
 	clientId := os.Getenv("SPLITIT_CLIENT_ID")
 	clientSecret := os.Getenv("SPLITIT_CLIENT_SECRET")
-	oauthConf := &clientcredentials.Config{
-		ClientID:     clientId,
-		ClientSecret: clientSecret,
-		TokenURL:     "https://id.sandbox.splitit.com/connect/token",
-	}
-	tokenSource := oauthConf.TokenSource(ctx)
-	ctx = context.WithValue(ctx, client.ContextOAuth2, tokenSource)
-
 	configuration := client.NewConfiguration()
+	configuration.SetOAuthClientCredentials(clientId, clientSecret)
 	apiClient := client.NewAPIClient(configuration)
 
 	t.Run("Test Simple", func(t *testing.T) {
@@ -84,7 +74,7 @@ func Test_simple(t *testing.T) {
 			},
 		}
 
-		r := apiClient.InstallmentPlanApi.Post(ctx)
+		r := apiClient.InstallmentPlanApi.Post()
 		r = r.InstallmentPlanCreateRequest(*installmentPlanCreateRequest)
 		xSplititIdempotencyKey := "1234"
 		r = r.XSplititIdempotencyKey(xSplititIdempotencyKey)

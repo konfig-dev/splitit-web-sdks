@@ -15,6 +15,7 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
+	"golang.org/x/oauth2/clientcredentials"
 )
 
 // contextKeys are used to identify the type of value in the context.
@@ -95,6 +96,7 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
+	context 		 context.Context
 }
 
 // NewConfiguration returns a new Configuration object
@@ -111,8 +113,19 @@ func NewConfiguration() *Configuration {
 		},
 		OperationServers: map[string]ServerConfigurations{
 		},
+		context: context.Background(),
 	}
 	return cfg
+}
+
+// Setup OAuth Client Credentials Flow for all requests
+func (c *Configuration) SetOAuthClientCredentials(clientId string, clientSecret string) {
+	config := &clientcredentials.Config{
+		ClientID: clientId,
+		ClientSecret: clientSecret,
+		TokenURL: "https://id.sandbox.splitit.com/connect/token",
+	}
+	c.context = context.WithValue(c.context, ContextOAuth2, config.TokenSource(c.context))
 }
 
 // AddDefaultHeader adds a new HTTP header to the default header in the request
@@ -213,7 +226,7 @@ func (c *Configuration) ServerURLWithContext(ctx context.Context, endpoint strin
 	}
 
 	if ctx == nil {
-		return sc.URL(0, nil)
+	return sc.URL(0, nil)
 	}
 
 	index, err := getServerOperationIndex(ctx, endpoint)
