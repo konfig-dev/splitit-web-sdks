@@ -14,6 +14,17 @@ generators:
     git:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/typescript
+  python:
+    version: 1.0.0
+    test:
+      script:
+        - tox
+    packageName: splitit_client
+    projectName: splitit-python-sdk
+    outputDirectory: python
+    git:
+      userId: konfig-dev
+      repoId: splitit-sdks/tree/main/python
   java:
     test:
       script:
