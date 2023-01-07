@@ -49,7 +49,7 @@ Cancel Method for Cancel
 func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) ApiCancelRequest {
 	return ApiCancelRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -203,7 +203,7 @@ Get Method for Get
 func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) ApiGetRequest {
 	return ApiGetRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -367,7 +367,7 @@ Post Method for Post
 func (a *InstallmentPlanApiService) Post() ApiPostRequest {
 	return ApiPostRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 	}
 }
 
@@ -544,7 +544,7 @@ Refund Method for Refund
 func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) ApiRefundRequest {
 	return ApiRefundRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -719,7 +719,7 @@ Search Method for Search
 func (a *InstallmentPlanApiService) Search() ApiSearchRequest {
 	return ApiSearchRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 	}
 }
 
@@ -886,7 +886,7 @@ UpdateOrder Method for UpdateOrder
 func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) ApiUpdateOrderRequest {
 	return ApiUpdateOrderRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -1049,7 +1049,7 @@ UpdateOrder2 Method for UpdateOrder2
 func (a *InstallmentPlanApiService) UpdateOrder2() ApiUpdateOrder2Request {
 	return ApiUpdateOrder2Request{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 	}
 }
 
@@ -1206,7 +1206,7 @@ VerifyAuthorization Method for VerifyAuthorization
 func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string) ApiVerifyAuthorizationRequest {
 	return ApiVerifyAuthorizationRequest{
 		ApiService: a,
-		ctx: a.client.cfg.context,
+		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }

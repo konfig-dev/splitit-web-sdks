@@ -96,7 +96,7 @@ type Configuration struct {
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
 	HTTPClient       *http.Client
-    context          context.Context
+    Context          context.Context
 }
 
 // NewConfiguration returns a new Configuration object
@@ -105,7 +105,7 @@ func NewConfiguration() *Configuration {
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "Konfig/1.0.0/go",
 		Debug:            false,
-        context: context.Background(),
+        Context: context.Background(),
 		Servers:          ServerConfigurations{
 			{
 				URL: "https://web-api-v3.sandbox.splitit.com",
@@ -125,7 +125,7 @@ func (c *Configuration) SetOAuthClientCredentials(clientId string, clientSecret 
                ClientSecret: clientSecret,
                TokenURL: "https://id.sandbox.splitit.com/connect/token",
        }
-       c.context = context.WithValue(c.context, ContextOAuth2, config.TokenSource(c.context))
+       c.Context = context.WithValue(c.Context, ContextOAuth2, config.TokenSource(c.Context))
 }
 
 // AddDefaultHeader adds a new HTTP header to the default header in the request
