@@ -14,7 +14,7 @@ import (
 	"os"
 	"testing"
 
-	client "github.com/konfig-dev/splitit-sdks/go"
+	splitit "github.com/konfig-dev/splitit-sdks/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -22,9 +22,9 @@ import (
 func Test_simple(t *testing.T) {
 	clientId := os.Getenv("SPLITIT_CLIENT_ID")
 	clientSecret := os.Getenv("SPLITIT_CLIENT_SECRET")
-	configuration := client.NewConfiguration()
+	configuration := splitit.NewConfiguration()
 	configuration.SetOAuthClientCredentials(clientId, clientSecret)
-	apiClient := client.NewAPIClient(configuration)
+	client := splitit.NewAPIClient(configuration)
 
 	t.Run("Test Simple", func(t *testing.T) {
 
@@ -41,30 +41,30 @@ func Test_simple(t *testing.T) {
 		CardNumber := "4556997457604103"
 		CardHolderFullName := "Test User"
 
-		installmentPlanCreateRequest := &client.InstallmentPlanCreateRequest{
+		installmentPlanCreateRequest := &splitit.InstallmentPlanCreateRequest{
 			Attempt3dSecure:            true,
 			AutoCapture:                true,
 			AttemptAuthorize:           true,
 			TermsAndConditionsAccepted: true,
-			PlanData: &client.PlanDataModel{
+			PlanData: &splitit.PlanDataModel{
 				TotalAmount:          10.0,
 				NumberOfInstallments: 10,
 				Currency:             &Currency,
-				PurchaseMethod:       client.PURCHASEMETHOD_IN_STORE,
+				PurchaseMethod:       splitit.PURCHASEMETHOD_IN_STORE,
 			},
-			Shopper: &client.ShopperData{
+			Shopper: &splitit.ShopperData{
 				Email: &Email,
 			},
-			BillingAddress: &client.AddressDataModel{
+			BillingAddress: &splitit.AddressDataModel{
 				AddressLine1: &AddressLine1,
 				City:         &City,
 				State:        &State,
 				Zip:          &Zip,
 				Country:      &Country,
 			},
-			PaymentMethod: &client.PaymentMethodModel{
-				Type: client.PAYMENTMETHODTYPE_CARD,
-				Card: &client.CardData{
+			PaymentMethod: &splitit.PaymentMethodModel{
+				Type: splitit.PAYMENTMETHODTYPE_CARD,
+				Card: &splitit.CardData{
 					CardExpMonth:       &CardExpMonth,
 					CardExpYear:        &CardExpYear,
 					CardCvv:            &CardCvv,
@@ -74,7 +74,7 @@ func Test_simple(t *testing.T) {
 			},
 		}
 
-		r := apiClient.InstallmentPlanApi.Post()
+		r := client.InstallmentPlanApi.Post()
 		r = r.InstallmentPlanCreateRequest(*installmentPlanCreateRequest)
 		xSplititIdempotencyKey := "1234"
 		r = r.XSplititIdempotencyKey(xSplititIdempotencyKey)
