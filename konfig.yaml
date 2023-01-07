@@ -38,6 +38,9 @@ generators:
       userId: konfig-dev
       repoId: splitit-sdks/tree/main/csharp
   go:
+    test:
+      script:
+        - go test ./...
     version: 1.0.0
     packageName: splitit
     outputDirectory: go
