@@ -46,10 +46,10 @@ Cancel Method for Cancel
  @param installmentPlanNumber
  @return ApiCancelRequest
 */
-func (a *InstallmentPlanApiService) Cancel(ctx context.Context, installmentPlanNumber string) ApiCancelRequest {
+func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) ApiCancelRequest {
 	return ApiCancelRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -200,10 +200,10 @@ Get Method for Get
  @param installmentPlanNumber
  @return ApiGetRequest
 */
-func (a *InstallmentPlanApiService) Get(ctx context.Context, installmentPlanNumber string) ApiGetRequest {
+func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) ApiGetRequest {
 	return ApiGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -541,10 +541,10 @@ Refund Method for Refund
  @param installmentPlanNumber
  @return ApiRefundRequest
 */
-func (a *InstallmentPlanApiService) Refund(ctx context.Context, installmentPlanNumber string) ApiRefundRequest {
+func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) ApiRefundRequest {
 	return ApiRefundRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -716,10 +716,10 @@ Search Method for Search
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiSearchRequest
 */
-func (a *InstallmentPlanApiService) Search(ctx context.Context) ApiSearchRequest {
+func (a *InstallmentPlanApiService) Search() ApiSearchRequest {
 	return ApiSearchRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 	}
 }
 
@@ -883,10 +883,10 @@ UpdateOrder Method for UpdateOrder
  @param installmentPlanNumber
  @return ApiUpdateOrderRequest
 */
-func (a *InstallmentPlanApiService) UpdateOrder(ctx context.Context, installmentPlanNumber string) ApiUpdateOrderRequest {
+func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) ApiUpdateOrderRequest {
 	return ApiUpdateOrderRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }
@@ -1046,10 +1046,10 @@ UpdateOrder2 Method for UpdateOrder2
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiUpdateOrder2Request
 */
-func (a *InstallmentPlanApiService) UpdateOrder2(ctx context.Context) ApiUpdateOrder2Request {
+func (a *InstallmentPlanApiService) UpdateOrder2() ApiUpdateOrder2Request {
 	return ApiUpdateOrder2Request{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 	}
 }
 
@@ -1203,10 +1203,10 @@ VerifyAuthorization Method for VerifyAuthorization
  @param installmentPlanNumber
  @return ApiVerifyAuthorizationRequest
 */
-func (a *InstallmentPlanApiService) VerifyAuthorization(ctx context.Context, installmentPlanNumber string) ApiVerifyAuthorizationRequest {
+func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string) ApiVerifyAuthorizationRequest {
 	return ApiVerifyAuthorizationRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx: a.client.cfg.context,
 		installmentPlanNumber: installmentPlanNumber,
 	}
 }

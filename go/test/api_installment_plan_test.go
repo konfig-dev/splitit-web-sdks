@@ -10,123 +10,121 @@ Testing InstallmentPlanApiService
 package splitit
 
 import (
-	"context"
-	"testing"
-
-	openapiclient "github.com/konfig-dev/splitit-sdks/go"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
+    "github.com/stretchr/testify/assert"
+    "github.com/stretchr/testify/require"
+    "testing"
+    openapiclient "github.com/konfig-dev/splitit-sdks/go"
 )
 
 func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		var installmentPlanNumber string
+        var installmentPlanNumber string
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.Cancel(context.Background(), installmentPlanNumber).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Cancel(installmentPlanNumber).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService Get", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService Get", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		var installmentPlanNumber string
+        var installmentPlanNumber string
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.Get(context.Background(), installmentPlanNumber).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Get(installmentPlanNumber).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService Post", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService Post", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.Post().Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Post().Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService Refund", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService Refund", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		var installmentPlanNumber string
+        var installmentPlanNumber string
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.Refund(context.Background(), installmentPlanNumber).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Refund(installmentPlanNumber).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService Search", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService Search", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.Search(context.Background()).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Search().Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService UpdateOrder", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService UpdateOrder", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		var installmentPlanNumber string
+        var installmentPlanNumber string
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.UpdateOrder(context.Background(), installmentPlanNumber).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.UpdateOrder(installmentPlanNumber).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService UpdateOrder2", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService UpdateOrder2", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.UpdateOrder2(context.Background()).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.UpdateOrder2().Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
-	t.Run("Test InstallmentPlanApiService VerifyAuthorization", func(t *testing.T) {
+    t.Run("Test InstallmentPlanApiService VerifyAuthorization", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+        t.Skip("skip test")  // remove to run test
 
-		var installmentPlanNumber string
+        var installmentPlanNumber string
 
-		resp, httpRes, err := apiClient.InstallmentPlanApi.VerifyAuthorization(context.Background(), installmentPlanNumber).Execute()
+        resp, httpRes, err := apiClient.InstallmentPlanApi.VerifyAuthorization(installmentPlanNumber).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+    })
 
 }
