@@ -967,7 +967,8 @@
           "$ref": "#/definitions/PurchaseMethod"
         },
         "RefOrderNumber": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "ExtendedParams": {
           "type": "object",
