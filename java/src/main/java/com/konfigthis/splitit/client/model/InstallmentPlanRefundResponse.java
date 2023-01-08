@@ -311,10 +311,6 @@ public class InstallmentPlanRefundResponse {
       if ((jsonObj.get("Currency") != null && !jsonObj.get("Currency").isJsonNull()) && !jsonObj.get("Currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `Currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Currency").toString()));
       }
-      // validate the optional field `Summary`
-      if (jsonObj.get("Summary") != null && !jsonObj.get("Summary").isJsonNull()) {
-        RefundSummary.validateJsonObject(jsonObj.getAsJsonObject("Summary"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

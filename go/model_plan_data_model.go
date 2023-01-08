@@ -22,8 +22,11 @@ type PlanDataModel struct {
 	TerminalId *string `json:"TerminalId,omitempty"`
 	PurchaseMethod PurchaseMethod `json:"PurchaseMethod"`
 	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
-	ExtendedParams *map[string]string `json:"ExtendedParams,omitempty"`
+	ExtendedParams map[string]interface{} `json:"ExtendedParams,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PlanDataModel PlanDataModel
 
 // NewPlanDataModel instantiates a new PlanDataModel object
 // This constructor will assign default values to properties that have it defined,
@@ -214,19 +217,19 @@ func (o *PlanDataModel) SetRefOrderNumber(v string) {
 }
 
 // GetExtendedParams returns the ExtendedParams field value if set, zero value otherwise.
-func (o *PlanDataModel) GetExtendedParams() map[string]string {
+func (o *PlanDataModel) GetExtendedParams() map[string]interface{} {
 	if o == nil || isNil(o.ExtendedParams) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ExtendedParams
+	return o.ExtendedParams
 }
 
 // GetExtendedParamsOk returns a tuple with the ExtendedParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PlanDataModel) GetExtendedParamsOk() (*map[string]string, bool) {
+func (o *PlanDataModel) GetExtendedParamsOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ExtendedParams) {
-    return nil, false
+    return map[string]interface{}{}, false
 	}
 	return o.ExtendedParams, true
 }
@@ -240,9 +243,9 @@ func (o *PlanDataModel) HasExtendedParams() bool {
 	return false
 }
 
-// SetExtendedParams gets a reference to the given map[string]string and assigns it to the ExtendedParams field.
-func (o *PlanDataModel) SetExtendedParams(v map[string]string) {
-	o.ExtendedParams = &v
+// SetExtendedParams gets a reference to the given map[string]interface{} and assigns it to the ExtendedParams field.
+func (o *PlanDataModel) SetExtendedParams(v map[string]interface{}) {
+	o.ExtendedParams = v
 }
 
 func (o PlanDataModel) MarshalJSON() ([]byte, error) {
@@ -268,7 +271,35 @@ func (o PlanDataModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ExtendedParams) {
 		toSerialize["ExtendedParams"] = o.ExtendedParams
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *PlanDataModel) UnmarshalJSON(bytes []byte) (err error) {
+	varPlanDataModel := _PlanDataModel{}
+
+	if err = json.Unmarshal(bytes, &varPlanDataModel); err == nil {
+		*o = PlanDataModel(varPlanDataModel)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "TotalAmount")
+		delete(additionalProperties, "Currency")
+		delete(additionalProperties, "NumberOfInstallments")
+		delete(additionalProperties, "TerminalId")
+		delete(additionalProperties, "PurchaseMethod")
+		delete(additionalProperties, "RefOrderNumber")
+		delete(additionalProperties, "ExtendedParams")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePlanDataModel struct {

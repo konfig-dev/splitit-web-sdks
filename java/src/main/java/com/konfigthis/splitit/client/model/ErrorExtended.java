@@ -65,7 +65,7 @@ public class ErrorExtended {
 
   public static final String SERIALIZED_NAME_EXTRA_DATA = "ExtraData";
   @SerializedName(SERIALIZED_NAME_EXTRA_DATA)
-  private Map<String, String> extraData = null;
+  private Map<String, Object> extraData = null;
 
   public ErrorExtended() {
   }
@@ -139,13 +139,13 @@ public class ErrorExtended {
   }
 
 
-  public ErrorExtended extraData(Map<String, String> extraData) {
+  public ErrorExtended extraData(Map<String, Object> extraData) {
     
     this.extraData = extraData;
     return this;
   }
 
-  public ErrorExtended putExtraDataItem(String key, String extraDataItem) {
+  public ErrorExtended putExtraDataItem(String key, Object extraDataItem) {
     if (this.extraData == null) {
       this.extraData = new HashMap<>();
     }
@@ -160,12 +160,12 @@ public class ErrorExtended {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Map<String, String> getExtraData() {
+  public Map<String, Object> getExtraData() {
     return extraData;
   }
 
 
-  public void setExtraData(Map<String, String> extraData) {
+  public void setExtraData(Map<String, Object> extraData) {
     this.extraData = extraData;
   }
 

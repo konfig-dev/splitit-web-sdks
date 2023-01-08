@@ -100,12 +100,12 @@ class InstallmentPlanModel(ModelComposed):
         return {
             'status': (PlanStatus,),  # noqa: E501
             'installment_plan_number': (str,),  # noqa: E501
-            'ref_order_number': (str,),  # noqa: E501
+            'ref_order_number': (str, none_type,),  # noqa: E501
             'purchase_method': (PurchaseMethod,),  # noqa: E501
             'currency': (str,),  # noqa: E501
             'original_amount': (float,),  # noqa: E501
             'amount': (float,),  # noqa: E501
-            'extended_params': ({str: (str,)},),  # noqa: E501
+            'extended_params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
             'authorization': (AuthorizationModel,),  # noqa: E501
             'shopper': (ShopperData,),  # noqa: E501
             'billing_address': (AddressData,),  # noqa: E501
@@ -177,12 +177,12 @@ class InstallmentPlanModel(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             installment_plan_number (str): [optional]  # noqa: E501
-            ref_order_number (str): [optional]  # noqa: E501
+            ref_order_number (str, none_type): [optional]  # noqa: E501
             purchase_method (PurchaseMethod): [optional]  # noqa: E501
             currency (str): [optional]  # noqa: E501
             original_amount (float): [optional]  # noqa: E501
             amount (float): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             authorization (AuthorizationModel): [optional]  # noqa: E501
             shopper (ShopperData): [optional]  # noqa: E501
             billing_address (AddressData): [optional]  # noqa: E501
@@ -294,12 +294,12 @@ class InstallmentPlanModel(ModelComposed):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             installment_plan_number (str): [optional]  # noqa: E501
-            ref_order_number (str): [optional]  # noqa: E501
+            ref_order_number (str, none_type): [optional]  # noqa: E501
             purchase_method (PurchaseMethod): [optional]  # noqa: E501
             currency (str): [optional]  # noqa: E501
             original_amount (float): [optional]  # noqa: E501
             amount (float): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
             authorization (AuthorizationModel): [optional]  # noqa: E501
             shopper (ShopperData): [optional]  # noqa: E501
             billing_address (AddressData): [optional]  # noqa: E501

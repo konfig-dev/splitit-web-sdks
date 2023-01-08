@@ -18,8 +18,11 @@ import (
 type IdentifierContract struct {
 	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
 	InstallmentPlanNumber *string `json:"InstallmentPlanNumber,omitempty"`
-	ExtendedParams *map[string]string `json:"ExtendedParams,omitempty"`
+	ExtendedParams map[string]interface{} `json:"ExtendedParams,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _IdentifierContract IdentifierContract
 
 // NewIdentifierContract instantiates a new IdentifierContract object
 // This constructor will assign default values to properties that have it defined,
@@ -103,19 +106,19 @@ func (o *IdentifierContract) SetInstallmentPlanNumber(v string) {
 }
 
 // GetExtendedParams returns the ExtendedParams field value if set, zero value otherwise.
-func (o *IdentifierContract) GetExtendedParams() map[string]string {
+func (o *IdentifierContract) GetExtendedParams() map[string]interface{} {
 	if o == nil || isNil(o.ExtendedParams) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ExtendedParams
+	return o.ExtendedParams
 }
 
 // GetExtendedParamsOk returns a tuple with the ExtendedParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *IdentifierContract) GetExtendedParamsOk() (*map[string]string, bool) {
+func (o *IdentifierContract) GetExtendedParamsOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ExtendedParams) {
-    return nil, false
+    return map[string]interface{}{}, false
 	}
 	return o.ExtendedParams, true
 }
@@ -129,9 +132,9 @@ func (o *IdentifierContract) HasExtendedParams() bool {
 	return false
 }
 
-// SetExtendedParams gets a reference to the given map[string]string and assigns it to the ExtendedParams field.
-func (o *IdentifierContract) SetExtendedParams(v map[string]string) {
-	o.ExtendedParams = &v
+// SetExtendedParams gets a reference to the given map[string]interface{} and assigns it to the ExtendedParams field.
+func (o *IdentifierContract) SetExtendedParams(v map[string]interface{}) {
+	o.ExtendedParams = v
 }
 
 func (o IdentifierContract) MarshalJSON() ([]byte, error) {
@@ -145,7 +148,31 @@ func (o IdentifierContract) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ExtendedParams) {
 		toSerialize["ExtendedParams"] = o.ExtendedParams
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *IdentifierContract) UnmarshalJSON(bytes []byte) (err error) {
+	varIdentifierContract := _IdentifierContract{}
+
+	if err = json.Unmarshal(bytes, &varIdentifierContract); err == nil {
+		*o = IdentifierContract(varIdentifierContract)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "RefOrderNumber")
+		delete(additionalProperties, "InstallmentPlanNumber")
+		delete(additionalProperties, "ExtendedParams")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableIdentifierContract struct {

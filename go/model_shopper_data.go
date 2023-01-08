@@ -20,7 +20,10 @@ type ShopperData struct {
 	Email *string `json:"Email,omitempty"`
 	PhoneNumber *string `json:"PhoneNumber,omitempty"`
 	Culture *string `json:"Culture,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ShopperData ShopperData
 
 // NewShopperData instantiates a new ShopperData object
 // This constructor will assign default values to properties that have it defined,
@@ -181,7 +184,32 @@ func (o ShopperData) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Culture) {
 		toSerialize["Culture"] = o.Culture
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *ShopperData) UnmarshalJSON(bytes []byte) (err error) {
+	varShopperData := _ShopperData{}
+
+	if err = json.Unmarshal(bytes, &varShopperData); err == nil {
+		*o = ShopperData(varShopperData)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "FullName")
+		delete(additionalProperties, "Email")
+		delete(additionalProperties, "PhoneNumber")
+		delete(additionalProperties, "Culture")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableShopperData struct {

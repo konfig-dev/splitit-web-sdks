@@ -80,6 +80,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
             ),
         )
         response = self.api.post(str(uuid.uuid4()), request)
+        print(response)
         assert response is not None, "Received null response"
 
 

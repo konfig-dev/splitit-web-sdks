@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InstallmentPlanNumber** | Pointer to **string** |  | [optional] 
-**RefOrderNumber** | Pointer to **string** |  | [optional] 
+**RefOrderNumber** | Pointer to **NullableString** |  | [optional] 
 **PurchaseMethod** | Pointer to [**PurchaseMethod**](PurchaseMethod.md) |  | [optional] 
 **Status** | [**PlanStatus**](PlanStatus.md) |  | 
 **Currency** | Pointer to **string** |  | [optional] 
 **OriginalAmount** | Pointer to **float32** |  | [optional] 
 **Amount** | Pointer to **float32** |  | [optional] 
-**ExtendedParams** | Pointer to **map[string]string** |  | [optional] 
+**ExtendedParams** | Pointer to **map[string]interface{}** |  | [optional] 
 **Authorization** | Pointer to [**AuthorizationModel**](AuthorizationModel.md) |  | [optional] 
 **Shopper** | Pointer to [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | Pointer to [**AddressData**](AddressData.md) |  | [optional] 
@@ -88,6 +88,16 @@ SetRefOrderNumber sets RefOrderNumber field to given value.
 
 HasRefOrderNumber returns a boolean if a field has been set.
 
+### SetRefOrderNumberNil
+
+`func (o *InstallmentPlanModel) SetRefOrderNumberNil(b bool)`
+
+ SetRefOrderNumberNil sets the value for RefOrderNumber to be an explicit nil
+
+### UnsetRefOrderNumber
+`func (o *InstallmentPlanModel) UnsetRefOrderNumber()`
+
+UnsetRefOrderNumber ensures that no value is present for RefOrderNumber, not even an explicit nil
 ### GetPurchaseMethod
 
 `func (o *InstallmentPlanModel) GetPurchaseMethod() PurchaseMethod`
@@ -210,20 +220,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetExtendedParams
 
-`func (o *InstallmentPlanModel) GetExtendedParams() map[string]string`
+`func (o *InstallmentPlanModel) GetExtendedParams() map[string]interface{}`
 
 GetExtendedParams returns the ExtendedParams field if non-nil, zero value otherwise.
 
 ### GetExtendedParamsOk
 
-`func (o *InstallmentPlanModel) GetExtendedParamsOk() (*map[string]string, bool)`
+`func (o *InstallmentPlanModel) GetExtendedParamsOk() (*map[string]interface{}, bool)`
 
 GetExtendedParamsOk returns a tuple with the ExtendedParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtendedParams
 
-`func (o *InstallmentPlanModel) SetExtendedParams(v map[string]string)`
+`func (o *InstallmentPlanModel) SetExtendedParams(v map[string]interface{})`
 
 SetExtendedParams sets ExtendedParams field to given value.
 

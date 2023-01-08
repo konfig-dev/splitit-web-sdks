@@ -332,7 +332,7 @@ public class Example {
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String refOrderNumber = "refOrderNumber_example"; // String | 
-    Map<String, String> extendedParams = new HashMap(); // Map<String, String> | 
+    Map<String, Object> extendedParams = null; // Map<String, Object> | 
     try {
       InstallmentPlanGetResponse result = apiInstance.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
       System.out.println(result);
@@ -354,7 +354,7 @@ public class Example {
 | **xSplititIdempotencyKey** | **String**|  | |
 | **installmentPlanNumber** | **String**|  | [optional] |
 | **refOrderNumber** | **String**|  | [optional] |
-| **extendedParams** | [**Map&lt;String, String&gt;**](String.md)|  | [optional] |
+| **extendedParams** | [**Map&lt;String, Object&gt;**](Object.md)|  | [optional] |
 
 ### Return type
 

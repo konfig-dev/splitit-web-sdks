@@ -82,7 +82,7 @@ namespace Splitit.Net.Test.Api
             createRequest.PaymentMethod = paymentMethod;
             createRequest.Shopper = shopper;
 
-            var response = instance.Post(new DateTime().ToString(), createRequest);
+            var response = instance.Post(Guid.NewGuid().ToString(), createRequest);
             Assert.NotNull(response);
         }
 

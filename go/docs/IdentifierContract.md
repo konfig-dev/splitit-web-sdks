@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RefOrderNumber** | Pointer to **string** |  | [optional] 
 **InstallmentPlanNumber** | Pointer to **string** |  | [optional] 
-**ExtendedParams** | Pointer to **map[string]string** |  | [optional] 
+**ExtendedParams** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasInstallmentPlanNumber returns a boolean if a field has been set.
 
 ### GetExtendedParams
 
-`func (o *IdentifierContract) GetExtendedParams() map[string]string`
+`func (o *IdentifierContract) GetExtendedParams() map[string]interface{}`
 
 GetExtendedParams returns the ExtendedParams field if non-nil, zero value otherwise.
 
 ### GetExtendedParamsOk
 
-`func (o *IdentifierContract) GetExtendedParamsOk() (*map[string]string, bool)`
+`func (o *IdentifierContract) GetExtendedParamsOk() (*map[string]interface{}, bool)`
 
 GetExtendedParamsOk returns a tuple with the ExtendedParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtendedParams
 
-`func (o *IdentifierContract) SetExtendedParams(v map[string]string)`
+`func (o *IdentifierContract) SetExtendedParams(v map[string]interface{})`
 
 SetExtendedParams sets ExtendedParams field to given value.
 

@@ -223,47 +223,11 @@ with splitit_client.ApiClient(configuration) as api_client:
         attempt3d_secure=True,
         attempt_authorize=True,
         terms_and_conditions_accepted=True,
-        shopper=ShopperData(
-            full_name="full_name_example",
-            email="email_example",
-            phone_number="phone_number_example",
-            culture="culture_example",
-        ),
-        plan_data=PlanDataModel(
-            total_amount=3.14,
-            currency="currency_example",
-            number_of_installments=1,
-            terminal_id="terminal_id_example",
-            purchase_method=PurchaseMethod("InStore"),
-            ref_order_number="ref_order_number_example",
-            extended_params={
-                "key": "key_example",
-            },
-        ),
-        billing_address=AddressDataModel(
-            address_line1="address_line1_example",
-            address_line2="address_line2_example",
-            city="city_example",
-            country="country_example",
-            state="state_example",
-            zip="zip_example",
-        ),
-        payment_method=PaymentMethodModel(
-            type=PaymentMethodType("Card"),
-            card=CardData(
-                card_holder_full_name="card_holder_full_name_example",
-                card_number="card_number_example",
-                card_exp_year="card_exp_year_example",
-                card_exp_month="card_exp_month_example",
-                card_cvv="card_cvv_example",
-            ),
-        ),
-        redirect_urls=RedirectionEndpointsModel(
-            authorize_succeeded="authorize_succeeded_example",
-            succeeded="succeeded_example",
-            authorize_failed="authorize_failed_example",
-            failed="failed_example",
-        ),
+        shopper=ShopperData(),
+        plan_data=PlanDataModel(),
+        billing_address=AddressDataModel(),
+        payment_method=PaymentMethodModel(),
+        redirect_urls=RedirectionEndpointsModel(),
     ) # InstallmentPlanCreateRequest | 
     x_splitit_test_mode = "None" # str |  (optional)
 
@@ -447,9 +411,7 @@ with splitit_client.ApiClient(configuration) as api_client:
     x_splitit_idempotency_key = "X-Splitit-IdempotencyKey_example" # str | 
     installment_plan_number = "installmentPlanNumber_example" # str |  (optional)
     ref_order_number = "refOrderNumber_example" # str |  (optional)
-    extended_params = {
-        "key": "key_example",
-    } # {str: (str,)} |  (optional)
+    extended_params = {} # {str: (bool, date, datetime, dict, float, int, list, str, none_type)} |  (optional)
 
     # example passing only required values which don't have defaults set
     try:
@@ -475,7 +437,7 @@ Name | Type | Description  | Notes
  **x_splitit_idempotency_key** | **str**|  |
  **installment_plan_number** | **str**|  | [optional]
  **ref_order_number** | **str**|  | [optional]
- **extended_params** | **{str: (str,)}**|  | [optional]
+ **extended_params** | [**{str: (bool, date, datetime, dict, float, int, list, str, none_type)}**](bool, date, datetime, dict, float, int, list, str, none_type.md)|  | [optional]
 
 ### Return type
 

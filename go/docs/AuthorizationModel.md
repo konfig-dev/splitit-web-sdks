@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | [**GwAuthorizationStatus**](GwAuthorizationStatus.md) |  | 
 **Date** | Pointer to **time.Time** |  | [optional] 
-**SplititErrorResultCode** | Pointer to **string** |  | [optional] 
+**SplititErrorResultCode** | Pointer to **NullableString** |  | [optional] 
 **GatewayTransactionID** | Pointer to **string** |  | [optional] 
 **GatewayResultCode** | Pointer to **string** |  | [optional] 
 **GatewayResultMessage** | Pointer to **string** |  | [optional] 
 **ThreeDSRedirect** | Pointer to [**ThreeDsRedirectData**](ThreeDsRedirectData.md) |  | [optional] 
-**CAVV** | Pointer to **string** |  | [optional] 
-**ECI** | Pointer to **string** |  | [optional] 
+**CAVV** | Pointer to **NullableString** |  | [optional] 
+**ECI** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -103,6 +103,16 @@ SetSplititErrorResultCode sets SplititErrorResultCode field to given value.
 
 HasSplititErrorResultCode returns a boolean if a field has been set.
 
+### SetSplititErrorResultCodeNil
+
+`func (o *AuthorizationModel) SetSplititErrorResultCodeNil(b bool)`
+
+ SetSplititErrorResultCodeNil sets the value for SplititErrorResultCode to be an explicit nil
+
+### UnsetSplititErrorResultCode
+`func (o *AuthorizationModel) UnsetSplititErrorResultCode()`
+
+UnsetSplititErrorResultCode ensures that no value is present for SplititErrorResultCode, not even an explicit nil
 ### GetGatewayTransactionID
 
 `func (o *AuthorizationModel) GetGatewayTransactionID() string`
@@ -228,6 +238,16 @@ SetCAVV sets CAVV field to given value.
 
 HasCAVV returns a boolean if a field has been set.
 
+### SetCAVVNil
+
+`func (o *AuthorizationModel) SetCAVVNil(b bool)`
+
+ SetCAVVNil sets the value for CAVV to be an explicit nil
+
+### UnsetCAVV
+`func (o *AuthorizationModel) UnsetCAVV()`
+
+UnsetCAVV ensures that no value is present for CAVV, not even an explicit nil
 ### GetECI
 
 `func (o *AuthorizationModel) GetECI() string`
@@ -253,6 +273,16 @@ SetECI sets ECI field to given value.
 
 HasECI returns a boolean if a field has been set.
 
+### SetECINil
+
+`func (o *AuthorizationModel) SetECINil(b bool)`
+
+ SetECINil sets the value for ECI to be an explicit nil
+
+### UnsetECI
+`func (o *AuthorizationModel) UnsetECI()`
+
+UnsetECI ensures that no value is present for ECI, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

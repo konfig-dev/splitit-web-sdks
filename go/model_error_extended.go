@@ -19,7 +19,7 @@ type ErrorExtended struct {
 	Code *string `json:"Code,omitempty"`
 	Message *string `json:"Message,omitempty"`
 	AdditionalInfo *string `json:"AdditionalInfo,omitempty"`
-	ExtraData *map[string]string `json:"ExtraData,omitempty"`
+	ExtraData map[string]interface{} `json:"ExtraData,omitempty"`
 }
 
 // NewErrorExtended instantiates a new ErrorExtended object
@@ -136,19 +136,19 @@ func (o *ErrorExtended) SetAdditionalInfo(v string) {
 }
 
 // GetExtraData returns the ExtraData field value if set, zero value otherwise.
-func (o *ErrorExtended) GetExtraData() map[string]string {
+func (o *ErrorExtended) GetExtraData() map[string]interface{} {
 	if o == nil || isNil(o.ExtraData) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ExtraData
+	return o.ExtraData
 }
 
 // GetExtraDataOk returns a tuple with the ExtraData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorExtended) GetExtraDataOk() (*map[string]string, bool) {
+func (o *ErrorExtended) GetExtraDataOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ExtraData) {
-    return nil, false
+    return map[string]interface{}{}, false
 	}
 	return o.ExtraData, true
 }
@@ -162,9 +162,9 @@ func (o *ErrorExtended) HasExtraData() bool {
 	return false
 }
 
-// SetExtraData gets a reference to the given map[string]string and assigns it to the ExtraData field.
-func (o *ErrorExtended) SetExtraData(v map[string]string) {
-	o.ExtraData = &v
+// SetExtraData gets a reference to the given map[string]interface{} and assigns it to the ExtraData field.
+func (o *ErrorExtended) SetExtraData(v map[string]interface{}) {
+	o.ExtraData = v
 }
 
 func (o ErrorExtended) MarshalJSON() ([]byte, error) {

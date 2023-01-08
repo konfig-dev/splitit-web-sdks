@@ -27,6 +27,8 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
  * @interface AddressData
  */
 export interface AddressData {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -70,6 +72,8 @@ export interface AddressData {
  * @interface AddressDataModel
  */
 export interface AddressDataModel {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -113,6 +117,8 @@ export interface AddressDataModel {
  * @interface AuthorizationModel
  */
 export interface AuthorizationModel {
+    [key: string]: any;
+
     /**
      * 
      * @type {GwAuthorizationStatus}
@@ -130,7 +136,7 @@ export interface AuthorizationModel {
      * @type {string}
      * @memberof AuthorizationModel
      */
-    'SplititErrorResultCode'?: string;
+    'SplititErrorResultCode'?: string | null;
     /**
      * 
      * @type {string}
@@ -160,13 +166,13 @@ export interface AuthorizationModel {
      * @type {string}
      * @memberof AuthorizationModel
      */
-    'CAVV'?: string;
+    'CAVV'?: string | null;
     /**
      * 
      * @type {string}
      * @memberof AuthorizationModel
      */
-    'ECI'?: string;
+    'ECI'?: string | null;
 }
 /**
  * 
@@ -174,6 +180,8 @@ export interface AuthorizationModel {
  * @interface CardData
  */
 export interface CardData {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -231,10 +239,10 @@ export interface ErrorExtended {
     'AdditionalInfo'?: string;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof ErrorExtended
      */
-    'ExtraData'?: { [key: string]: string; };
+    'ExtraData'?: { [key: string]: any; };
 }
 /**
  * 
@@ -244,10 +252,10 @@ export interface ErrorExtended {
 export interface ErrorExtendedAllOf {
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof ErrorExtendedAllOf
      */
-    'ExtraData'?: { [key: string]: string; };
+    'ExtraData'?: { [key: string]: any; };
 }
 /**
  * 
@@ -309,6 +317,8 @@ export type GwAuthorizationStatus = typeof GwAuthorizationStatus[keyof typeof Gw
  * @interface IdentifierContract
  */
 export interface IdentifierContract {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -323,10 +333,10 @@ export interface IdentifierContract {
     'InstallmentPlanNumber'?: string;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof IdentifierContract
      */
-    'ExtendedParams'?: { [key: string]: string; };
+    'ExtendedParams'?: { [key: string]: any; };
 }
 /**
  * 
@@ -334,6 +344,8 @@ export interface IdentifierContract {
  * @interface Installment
  */
 export interface Installment {
+    [key: string]: any;
+
     /**
      * 
      * @type {number}
@@ -476,7 +488,7 @@ export interface InstallmentPlanModel {
      * @type {string}
      * @memberof InstallmentPlanModel
      */
-    'RefOrderNumber'?: string;
+    'RefOrderNumber'?: string | null;
     /**
      * 
      * @type {PurchaseMethod}
@@ -509,10 +521,10 @@ export interface InstallmentPlanModel {
     'Amount'?: number;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof InstallmentPlanModel
      */
-    'ExtendedParams'?: { [key: string]: string; };
+    'ExtendedParams'?: { [key: string]: any; };
     /**
      * 
      * @type {AuthorizationModel}
@@ -567,7 +579,7 @@ export interface InstallmentPlanModelAllOf {
      * @type {string}
      * @memberof InstallmentPlanModelAllOf
      */
-    'RefOrderNumber'?: string;
+    'RefOrderNumber'?: string | null;
     /**
      * 
      * @type {PurchaseMethod}
@@ -600,10 +612,10 @@ export interface InstallmentPlanModelAllOf {
     'Amount'?: number;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof InstallmentPlanModelAllOf
      */
-    'ExtendedParams'?: { [key: string]: string; };
+    'ExtendedParams'?: { [key: string]: any; };
     /**
      * 
      * @type {AuthorizationModel}
@@ -752,6 +764,8 @@ export interface InstallmentPlanRefundResponseAllOf {
  * @interface InstallmentPlanUpdateRequest
  */
 export interface InstallmentPlanUpdateRequest {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -909,6 +923,8 @@ export type InstallmentStatus = typeof InstallmentStatus[keyof typeof Installmen
  * @interface LinksData
  */
 export interface LinksData {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -940,6 +956,8 @@ export interface LinksData {
  * @interface ModelError
  */
 export interface ModelError {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -965,6 +983,8 @@ export interface ModelError {
  * @interface PaymentMethodModel
  */
 export interface PaymentMethodModel {
+    [key: string]: any;
+
     /**
      * 
      * @type {PaymentMethodType}
@@ -997,6 +1017,8 @@ export type PaymentMethodType = typeof PaymentMethodType[keyof typeof PaymentMet
  * @interface PlanDataModel
  */
 export interface PlanDataModel {
+    [key: string]: any;
+
     /**
      * 
      * @type {number}
@@ -1035,10 +1057,10 @@ export interface PlanDataModel {
     'RefOrderNumber'?: string;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof PlanDataModel
      */
-    'ExtendedParams'?: { [key: string]: string; };
+    'ExtendedParams'?: { [key: string]: any; };
 }
 /**
  * 
@@ -1116,6 +1138,8 @@ export type PurchaseMethod = typeof PurchaseMethod[keyof typeof PurchaseMethod];
  * @interface RedirectionEndpointsModel
  */
 export interface RedirectionEndpointsModel {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -1163,6 +1187,8 @@ export type RefundStrategy = typeof RefundStrategy[keyof typeof RefundStrategy];
  * @interface RefundSummary
  */
 export interface RefundSummary {
+    [key: string]: any;
+
     /**
      * 
      * @type {number}
@@ -1223,6 +1249,8 @@ export type ShippingStatus2 = typeof ShippingStatus2[keyof typeof ShippingStatus
  * @interface ShopperData
  */
 export interface ShopperData {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -1270,6 +1298,8 @@ export type TestModes = typeof TestModes[keyof typeof TestModes];
  * @interface ThreeDsRedirectData
  */
 export interface ThreeDsRedirectData {
+    [key: string]: any;
+
     /**
      * 
      * @type {string}
@@ -1284,10 +1314,10 @@ export interface ThreeDsRedirectData {
     'Verb'?: string;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {{ [key: string]: any; }}
      * @memberof ThreeDsRedirectData
      */
-    'Params'?: { [key: string]: string; };
+    'Params'?: { [key: string]: any; };
 }
 /**
  * 
@@ -1571,11 +1601,11 @@ export const InstallmentPlanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} xSplititIdempotencyKey 
          * @param {string} [installmentPlanNumber] 
          * @param {string} [refOrderNumber] 
-         * @param {{ [key: string]: string; }} [extendedParams] 
+         * @param {{ [key: string]: any; }} [extendedParams] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search: async (xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: string; }, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        search: async (xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: any; }, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('search', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             const localVarPath = `/api/installmentplans/search`;
@@ -1822,11 +1852,11 @@ export const InstallmentPlanApiFp = function(configuration?: Configuration) {
          * @param {string} xSplititIdempotencyKey 
          * @param {string} [installmentPlanNumber] 
          * @param {string} [refOrderNumber] 
-         * @param {{ [key: string]: string; }} [extendedParams] 
+         * @param {{ [key: string]: any; }} [extendedParams] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: string; }, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanGetResponse>> {
+        async search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: any; }, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanGetResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1921,11 +1951,11 @@ export const InstallmentPlanApiFactory = function (configuration?: Configuration
          * @param {string} xSplititIdempotencyKey 
          * @param {string} [installmentPlanNumber] 
          * @param {string} [refOrderNumber] 
-         * @param {{ [key: string]: string; }} [extendedParams] 
+         * @param {{ [key: string]: any; }} [extendedParams] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: string; }, options?: any): AxiosPromise<InstallmentPlanGetResponse> {
+        search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: any; }, options?: any): AxiosPromise<InstallmentPlanGetResponse> {
             return localVarFp.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2024,12 +2054,12 @@ export class InstallmentPlanApi extends BaseAPI {
      * @param {string} xSplititIdempotencyKey 
      * @param {string} [installmentPlanNumber] 
      * @param {string} [refOrderNumber] 
-     * @param {{ [key: string]: string; }} [extendedParams] 
+     * @param {{ [key: string]: any; }} [extendedParams] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InstallmentPlanApi
      */
-    public search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: string; }, options?: AxiosRequestConfig) {
+    public search(xSplititIdempotencyKey: string, installmentPlanNumber?: string, refOrderNumber?: string, extendedParams?: { [key: string]: any; }, options?: AxiosRequestConfig) {
         return InstallmentPlanApiFp(this.configuration).search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, options).then((request) => request(this.axios, this.basePath));
     }
 

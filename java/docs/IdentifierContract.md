@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**refOrderNumber** | **String** |  |  [optional] |
 |**installmentPlanNumber** | **String** |  |  [optional] |
-|**extendedParams** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**extendedParams** | **Map&lt;String, Object&gt;** |  |  [optional] |
 
 
 

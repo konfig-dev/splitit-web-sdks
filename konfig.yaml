@@ -3,12 +3,17 @@ specPath: swagger.json
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
+allObjectsHaveAdditionalProperties:
+  requestBody: false
+  excludeGenerators:
+    # C# has some problem with additionalProperties and the CardData model being passed into request body
+    - csharp
 generators:
   typescript:
     test:
       script:
         - yarn test
-    version: 1.0.4
+    version: 1.0.5
     outputDirectory: typescript
     npmName: splitit-typescript-sdk
     git:
@@ -29,7 +34,7 @@ generators:
     test:
       script:
         - mvn test
-    version: 1.0.1
+    version: 1.0.2
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-java-sdk
@@ -41,7 +46,7 @@ generators:
     test:
       script:
         - dotnet test
-    version: 1.0.6
+    version: 1.0.7
     packageName: Splitit.Net
     outputDirectory: csharp
     logoPath: logo.png
@@ -51,8 +56,9 @@ generators:
   go:
     test:
       script:
+        - go clean -testcache
         - go test ./...
-    version: 1.0.0
+    version: 1.0.1
     packageName: splitit
     outputDirectory: go
     git:

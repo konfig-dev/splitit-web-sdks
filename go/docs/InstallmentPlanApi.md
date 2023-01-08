@@ -317,7 +317,7 @@ func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
     installmentPlanNumber := "installmentPlanNumber_example" // string |  (optional)
     refOrderNumber := "refOrderNumber_example" // string |  (optional)
-    extendedParams := map[string]string{"key": "Inner_example"} // map[string]string |  (optional)
+    extendedParams := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
  **xSplititIdempotencyKey** | **string** |  | 
  **installmentPlanNumber** | **string** |  | 
  **refOrderNumber** | **string** |  | 
- **extendedParams** | **map[string]string** |  | 
+ **extendedParams** | **map[string]interface{}** |  | 
 
 ### Return type
 

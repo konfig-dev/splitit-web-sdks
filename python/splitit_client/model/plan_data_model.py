@@ -64,7 +64,14 @@ class PlanDataModel(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -86,7 +93,7 @@ class PlanDataModel(ModelNormal):
             'currency': (str,),  # noqa: E501
             'terminal_id': (str,),  # noqa: E501
             'ref_order_number': (str,),  # noqa: E501
-            'extended_params': ({str: (str,)},),  # noqa: E501
+            'extended_params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -153,7 +160,7 @@ class PlanDataModel(ModelNormal):
             currency (str): [optional]  # noqa: E501
             terminal_id (str): [optional]  # noqa: E501
             ref_order_number (str): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -250,7 +257,7 @@ class PlanDataModel(ModelNormal):
             currency (str): [optional]  # noqa: E501
             terminal_id (str): [optional]  # noqa: E501
             ref_order_number (str): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

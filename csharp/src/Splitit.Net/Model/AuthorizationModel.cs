@@ -76,7 +76,7 @@ namespace Splitit.Net.Model
         /// <summary>
         /// Gets or Sets SplititErrorResultCode
         /// </summary>
-        [DataMember(Name = "SplititErrorResultCode", EmitDefaultValue = false)]
+        [DataMember(Name = "SplititErrorResultCode", EmitDefaultValue = true)]
         public string SplititErrorResultCode { get; set; }
 
         /// <summary>
@@ -106,13 +106,13 @@ namespace Splitit.Net.Model
         /// <summary>
         /// Gets or Sets CAVV
         /// </summary>
-        [DataMember(Name = "CAVV", EmitDefaultValue = false)]
+        [DataMember(Name = "CAVV", EmitDefaultValue = true)]
         public string CAVV { get; set; }
 
         /// <summary>
         /// Gets or Sets ECI
         /// </summary>
-        [DataMember(Name = "ECI", EmitDefaultValue = false)]
+        [DataMember(Name = "ECI", EmitDefaultValue = true)]
         public string ECI { get; set; }
 
         /// <summary>

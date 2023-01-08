@@ -20,7 +20,10 @@ type RefundSummary struct {
 	FailedAmount *float32 `json:"FailedAmount,omitempty"`
 	SucceededAmount *float32 `json:"SucceededAmount,omitempty"`
 	PendingAmount *float32 `json:"PendingAmount,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RefundSummary RefundSummary
 
 // NewRefundSummary instantiates a new RefundSummary object
 // This constructor will assign default values to properties that have it defined,
@@ -181,7 +184,32 @@ func (o RefundSummary) MarshalJSON() ([]byte, error) {
 	if !isNil(o.PendingAmount) {
 		toSerialize["PendingAmount"] = o.PendingAmount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *RefundSummary) UnmarshalJSON(bytes []byte) (err error) {
+	varRefundSummary := _RefundSummary{}
+
+	if err = json.Unmarshal(bytes, &varRefundSummary); err == nil {
+		*o = RefundSummary(varRefundSummary)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "TotalAmount")
+		delete(additionalProperties, "FailedAmount")
+		delete(additionalProperties, "SucceededAmount")
+		delete(additionalProperties, "PendingAmount")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRefundSummary struct {

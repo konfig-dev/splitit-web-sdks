@@ -85,7 +85,7 @@ class ErrorExtended(ModelComposed):
             'code': (str,),  # noqa: E501
             'message': (str,),  # noqa: E501
             'additional_info': (str,),  # noqa: E501
-            'extra_data': ({str: (str,)},),  # noqa: E501
+            'extra_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -142,7 +142,7 @@ class ErrorExtended(ModelComposed):
             code (str): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             additional_info (str): [optional]  # noqa: E501
-            extra_data ({str: (str,)}): [optional]  # noqa: E501
+            extra_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -249,7 +249,7 @@ class ErrorExtended(ModelComposed):
             code (str): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             additional_info (str): [optional]  # noqa: E501
-            extra_data ({str: (str,)}): [optional]  # noqa: E501
+            extra_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

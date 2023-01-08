@@ -746,7 +746,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, Object> extendedParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -809,7 +809,7 @@ public class InstallmentPlanApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call searchValidateBeforeCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call searchValidateBeforeCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, Object> extendedParams, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xSplititIdempotencyKey' is set
         if (xSplititIdempotencyKey == null) {
             throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling search(Async)");
@@ -838,7 +838,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public InstallmentPlanGetResponse search(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
+    public InstallmentPlanGetResponse search(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, Object> extendedParams) throws ApiException {
         ApiResponse<InstallmentPlanGetResponse> localVarResp = searchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
         return localVarResp.getData();
     }
@@ -862,7 +862,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InstallmentPlanGetResponse> searchWithHttpInfo(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
+    public ApiResponse<InstallmentPlanGetResponse> searchWithHttpInfo(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, Object> extendedParams) throws ApiException {
         okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -888,7 +888,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchAsync(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
+    public okhttp3.Call searchAsync(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, Object> extendedParams, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();

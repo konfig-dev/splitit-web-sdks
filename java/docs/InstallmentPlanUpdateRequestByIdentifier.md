@@ -11,7 +11,7 @@
 |**trackingNumber** | **String** |  |  [optional] |
 |**capture** | **Boolean** |  |  [optional] |
 |**shippingStatus** | **ShippingStatus2** |  |  [optional] |
-|**identifier** | [**IdentifierContract**](IdentifierContract.md) |  |  [optional] |
+|**identifier** | **IdentifierContract** |  |  [optional] |
 
 
 

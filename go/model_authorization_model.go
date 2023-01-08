@@ -19,14 +19,17 @@ import (
 type AuthorizationModel struct {
 	Status GwAuthorizationStatus `json:"Status"`
 	Date *time.Time `json:"Date,omitempty"`
-	SplititErrorResultCode *string `json:"SplititErrorResultCode,omitempty"`
+	SplititErrorResultCode NullableString `json:"SplititErrorResultCode,omitempty"`
 	GatewayTransactionID *string `json:"GatewayTransactionID,omitempty"`
 	GatewayResultCode *string `json:"GatewayResultCode,omitempty"`
 	GatewayResultMessage *string `json:"GatewayResultMessage,omitempty"`
 	ThreeDSRedirect *ThreeDsRedirectData `json:"ThreeDSRedirect,omitempty"`
-	CAVV *string `json:"CAVV,omitempty"`
-	ECI *string `json:"ECI,omitempty"`
+	CAVV NullableString `json:"CAVV,omitempty"`
+	ECI NullableString `json:"ECI,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AuthorizationModel AuthorizationModel
 
 // NewAuthorizationModel instantiates a new AuthorizationModel object
 // This constructor will assign default values to properties that have it defined,
@@ -102,36 +105,46 @@ func (o *AuthorizationModel) SetDate(v time.Time) {
 	o.Date = &v
 }
 
-// GetSplititErrorResultCode returns the SplititErrorResultCode field value if set, zero value otherwise.
+// GetSplititErrorResultCode returns the SplititErrorResultCode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthorizationModel) GetSplititErrorResultCode() string {
-	if o == nil || isNil(o.SplititErrorResultCode) {
+	if o == nil || isNil(o.SplititErrorResultCode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SplititErrorResultCode
+	return *o.SplititErrorResultCode.Get()
 }
 
 // GetSplititErrorResultCodeOk returns a tuple with the SplititErrorResultCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthorizationModel) GetSplititErrorResultCodeOk() (*string, bool) {
-	if o == nil || isNil(o.SplititErrorResultCode) {
+	if o == nil {
     return nil, false
 	}
-	return o.SplititErrorResultCode, true
+	return o.SplititErrorResultCode.Get(), o.SplititErrorResultCode.IsSet()
 }
 
 // HasSplititErrorResultCode returns a boolean if a field has been set.
 func (o *AuthorizationModel) HasSplititErrorResultCode() bool {
-	if o != nil && !isNil(o.SplititErrorResultCode) {
+	if o != nil && o.SplititErrorResultCode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSplititErrorResultCode gets a reference to the given string and assigns it to the SplititErrorResultCode field.
+// SetSplititErrorResultCode gets a reference to the given NullableString and assigns it to the SplititErrorResultCode field.
 func (o *AuthorizationModel) SetSplititErrorResultCode(v string) {
-	o.SplititErrorResultCode = &v
+	o.SplititErrorResultCode.Set(&v)
+}
+// SetSplititErrorResultCodeNil sets the value for SplititErrorResultCode to be an explicit nil
+func (o *AuthorizationModel) SetSplititErrorResultCodeNil() {
+	o.SplititErrorResultCode.Set(nil)
+}
+
+// UnsetSplititErrorResultCode ensures that no value is present for SplititErrorResultCode, not even an explicit nil
+func (o *AuthorizationModel) UnsetSplititErrorResultCode() {
+	o.SplititErrorResultCode.Unset()
 }
 
 // GetGatewayTransactionID returns the GatewayTransactionID field value if set, zero value otherwise.
@@ -262,68 +275,88 @@ func (o *AuthorizationModel) SetThreeDSRedirect(v ThreeDsRedirectData) {
 	o.ThreeDSRedirect = &v
 }
 
-// GetCAVV returns the CAVV field value if set, zero value otherwise.
+// GetCAVV returns the CAVV field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthorizationModel) GetCAVV() string {
-	if o == nil || isNil(o.CAVV) {
+	if o == nil || isNil(o.CAVV.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CAVV
+	return *o.CAVV.Get()
 }
 
 // GetCAVVOk returns a tuple with the CAVV field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthorizationModel) GetCAVVOk() (*string, bool) {
-	if o == nil || isNil(o.CAVV) {
+	if o == nil {
     return nil, false
 	}
-	return o.CAVV, true
+	return o.CAVV.Get(), o.CAVV.IsSet()
 }
 
 // HasCAVV returns a boolean if a field has been set.
 func (o *AuthorizationModel) HasCAVV() bool {
-	if o != nil && !isNil(o.CAVV) {
+	if o != nil && o.CAVV.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCAVV gets a reference to the given string and assigns it to the CAVV field.
+// SetCAVV gets a reference to the given NullableString and assigns it to the CAVV field.
 func (o *AuthorizationModel) SetCAVV(v string) {
-	o.CAVV = &v
+	o.CAVV.Set(&v)
+}
+// SetCAVVNil sets the value for CAVV to be an explicit nil
+func (o *AuthorizationModel) SetCAVVNil() {
+	o.CAVV.Set(nil)
 }
 
-// GetECI returns the ECI field value if set, zero value otherwise.
+// UnsetCAVV ensures that no value is present for CAVV, not even an explicit nil
+func (o *AuthorizationModel) UnsetCAVV() {
+	o.CAVV.Unset()
+}
+
+// GetECI returns the ECI field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AuthorizationModel) GetECI() string {
-	if o == nil || isNil(o.ECI) {
+	if o == nil || isNil(o.ECI.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ECI
+	return *o.ECI.Get()
 }
 
 // GetECIOk returns a tuple with the ECI field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AuthorizationModel) GetECIOk() (*string, bool) {
-	if o == nil || isNil(o.ECI) {
+	if o == nil {
     return nil, false
 	}
-	return o.ECI, true
+	return o.ECI.Get(), o.ECI.IsSet()
 }
 
 // HasECI returns a boolean if a field has been set.
 func (o *AuthorizationModel) HasECI() bool {
-	if o != nil && !isNil(o.ECI) {
+	if o != nil && o.ECI.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetECI gets a reference to the given string and assigns it to the ECI field.
+// SetECI gets a reference to the given NullableString and assigns it to the ECI field.
 func (o *AuthorizationModel) SetECI(v string) {
-	o.ECI = &v
+	o.ECI.Set(&v)
+}
+// SetECINil sets the value for ECI to be an explicit nil
+func (o *AuthorizationModel) SetECINil() {
+	o.ECI.Set(nil)
+}
+
+// UnsetECI ensures that no value is present for ECI, not even an explicit nil
+func (o *AuthorizationModel) UnsetECI() {
+	o.ECI.Unset()
 }
 
 func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
@@ -334,8 +367,8 @@ func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Date) {
 		toSerialize["Date"] = o.Date
 	}
-	if !isNil(o.SplititErrorResultCode) {
-		toSerialize["SplititErrorResultCode"] = o.SplititErrorResultCode
+	if o.SplititErrorResultCode.IsSet() {
+		toSerialize["SplititErrorResultCode"] = o.SplititErrorResultCode.Get()
 	}
 	if !isNil(o.GatewayTransactionID) {
 		toSerialize["GatewayTransactionID"] = o.GatewayTransactionID
@@ -349,13 +382,43 @@ func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ThreeDSRedirect) {
 		toSerialize["ThreeDSRedirect"] = o.ThreeDSRedirect
 	}
-	if !isNil(o.CAVV) {
-		toSerialize["CAVV"] = o.CAVV
+	if o.CAVV.IsSet() {
+		toSerialize["CAVV"] = o.CAVV.Get()
 	}
-	if !isNil(o.ECI) {
-		toSerialize["ECI"] = o.ECI
+	if o.ECI.IsSet() {
+		toSerialize["ECI"] = o.ECI.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *AuthorizationModel) UnmarshalJSON(bytes []byte) (err error) {
+	varAuthorizationModel := _AuthorizationModel{}
+
+	if err = json.Unmarshal(bytes, &varAuthorizationModel); err == nil {
+		*o = AuthorizationModel(varAuthorizationModel)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "Status")
+		delete(additionalProperties, "Date")
+		delete(additionalProperties, "SplititErrorResultCode")
+		delete(additionalProperties, "GatewayTransactionID")
+		delete(additionalProperties, "GatewayResultCode")
+		delete(additionalProperties, "GatewayResultMessage")
+		delete(additionalProperties, "ThreeDSRedirect")
+		delete(additionalProperties, "CAVV")
+		delete(additionalProperties, "ECI")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAuthorizationModel struct {

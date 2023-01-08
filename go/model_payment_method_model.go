@@ -18,7 +18,10 @@ import (
 type PaymentMethodModel struct {
 	Type PaymentMethodType `json:"Type"`
 	Card *CardData `json:"Card,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _PaymentMethodModel PaymentMethodModel
 
 // NewPaymentMethodModel instantiates a new PaymentMethodModel object
 // This constructor will assign default values to properties that have it defined,
@@ -102,7 +105,30 @@ func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Card) {
 		toSerialize["Card"] = o.Card
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *PaymentMethodModel) UnmarshalJSON(bytes []byte) (err error) {
+	varPaymentMethodModel := _PaymentMethodModel{}
+
+	if err = json.Unmarshal(bytes, &varPaymentMethodModel); err == nil {
+		*o = PaymentMethodModel(varPaymentMethodModel)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "Type")
+		delete(additionalProperties, "Card")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullablePaymentMethodModel struct {

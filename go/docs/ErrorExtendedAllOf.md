@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ExtraData** | Pointer to **map[string]string** |  | [optional] 
+**ExtraData** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetExtraData
 
-`func (o *ErrorExtendedAllOf) GetExtraData() map[string]string`
+`func (o *ErrorExtendedAllOf) GetExtraData() map[string]interface{}`
 
 GetExtraData returns the ExtraData field if non-nil, zero value otherwise.
 
 ### GetExtraDataOk
 
-`func (o *ErrorExtendedAllOf) GetExtraDataOk() (*map[string]string, bool)`
+`func (o *ErrorExtendedAllOf) GetExtraDataOk() (*map[string]interface{}, bool)`
 
 GetExtraDataOk returns a tuple with the ExtraData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtraData
 
-`func (o *ErrorExtendedAllOf) SetExtraData(v map[string]string)`
+`func (o *ErrorExtendedAllOf) SetExtraData(v map[string]interface{})`
 
 SetExtraData sets ExtraData field to given value.
 

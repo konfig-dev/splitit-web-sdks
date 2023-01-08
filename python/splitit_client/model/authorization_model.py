@@ -66,7 +66,14 @@ class AuthorizationModel(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -84,13 +91,13 @@ class AuthorizationModel(ModelNormal):
         return {
             'status': (GwAuthorizationStatus,),  # noqa: E501
             'date': (datetime,),  # noqa: E501
-            'splitit_error_result_code': (str,),  # noqa: E501
+            'splitit_error_result_code': (str, none_type,),  # noqa: E501
             'gateway_transaction_id': (str,),  # noqa: E501
             'gateway_result_code': (str,),  # noqa: E501
             'gateway_result_message': (str,),  # noqa: E501
             'three_ds_redirect': (ThreeDsRedirectData,),  # noqa: E501
-            'cavv': (str,),  # noqa: E501
-            'eci': (str,),  # noqa: E501
+            'cavv': (str, none_type,),  # noqa: E501
+            'eci': (str, none_type,),  # noqa: E501
         }
 
     @cached_property
@@ -155,13 +162,13 @@ class AuthorizationModel(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             date (datetime): [optional]  # noqa: E501
-            splitit_error_result_code (str): [optional]  # noqa: E501
+            splitit_error_result_code (str, none_type): [optional]  # noqa: E501
             gateway_transaction_id (str): [optional]  # noqa: E501
             gateway_result_code (str): [optional]  # noqa: E501
             gateway_result_message (str): [optional]  # noqa: E501
             three_ds_redirect (ThreeDsRedirectData): [optional]  # noqa: E501
-            cavv (str): [optional]  # noqa: E501
-            eci (str): [optional]  # noqa: E501
+            cavv (str, none_type): [optional]  # noqa: E501
+            eci (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -252,13 +259,13 @@ class AuthorizationModel(ModelNormal):
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
             date (datetime): [optional]  # noqa: E501
-            splitit_error_result_code (str): [optional]  # noqa: E501
+            splitit_error_result_code (str, none_type): [optional]  # noqa: E501
             gateway_transaction_id (str): [optional]  # noqa: E501
             gateway_result_code (str): [optional]  # noqa: E501
             gateway_result_message (str): [optional]  # noqa: E501
             three_ds_redirect (ThreeDsRedirectData): [optional]  # noqa: E501
-            cavv (str): [optional]  # noqa: E501
-            eci (str): [optional]  # noqa: E501
+            cavv (str, none_type): [optional]  # noqa: E501
+            eci (str, none_type): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

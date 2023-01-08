@@ -16,7 +16,7 @@ import (
 
 // ErrorExtendedAllOf struct for ErrorExtendedAllOf
 type ErrorExtendedAllOf struct {
-	ExtraData *map[string]string `json:"ExtraData,omitempty"`
+	ExtraData map[string]interface{} `json:"ExtraData,omitempty"`
 }
 
 // NewErrorExtendedAllOf instantiates a new ErrorExtendedAllOf object
@@ -37,19 +37,19 @@ func NewErrorExtendedAllOfWithDefaults() *ErrorExtendedAllOf {
 }
 
 // GetExtraData returns the ExtraData field value if set, zero value otherwise.
-func (o *ErrorExtendedAllOf) GetExtraData() map[string]string {
+func (o *ErrorExtendedAllOf) GetExtraData() map[string]interface{} {
 	if o == nil || isNil(o.ExtraData) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ExtraData
+	return o.ExtraData
 }
 
 // GetExtraDataOk returns a tuple with the ExtraData field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ErrorExtendedAllOf) GetExtraDataOk() (*map[string]string, bool) {
+func (o *ErrorExtendedAllOf) GetExtraDataOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ExtraData) {
-    return nil, false
+    return map[string]interface{}{}, false
 	}
 	return o.ExtraData, true
 }
@@ -63,9 +63,9 @@ func (o *ErrorExtendedAllOf) HasExtraData() bool {
 	return false
 }
 
-// SetExtraData gets a reference to the given map[string]string and assigns it to the ExtraData field.
-func (o *ErrorExtendedAllOf) SetExtraData(v map[string]string) {
-	o.ExtraData = &v
+// SetExtraData gets a reference to the given map[string]interface{} and assigns it to the ExtraData field.
+func (o *ErrorExtendedAllOf) SetExtraData(v map[string]interface{}) {
+	o.ExtraData = v
 }
 
 func (o ErrorExtendedAllOf) MarshalJSON() ([]byte, error) {

@@ -22,7 +22,10 @@ type AddressDataModel struct {
 	Country *string `json:"Country,omitempty"`
 	State *string `json:"State,omitempty"`
 	Zip *string `json:"Zip,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AddressDataModel AddressDataModel
 
 // NewAddressDataModel instantiates a new AddressDataModel object
 // This constructor will assign default values to properties that have it defined,
@@ -253,7 +256,34 @@ func (o AddressDataModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Zip) {
 		toSerialize["Zip"] = o.Zip
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *AddressDataModel) UnmarshalJSON(bytes []byte) (err error) {
+	varAddressDataModel := _AddressDataModel{}
+
+	if err = json.Unmarshal(bytes, &varAddressDataModel); err == nil {
+		*o = AddressDataModel(varAddressDataModel)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "AddressLine1")
+		delete(additionalProperties, "AddressLine2")
+		delete(additionalProperties, "City")
+		delete(additionalProperties, "Country")
+		delete(additionalProperties, "State")
+		delete(additionalProperties, "Zip")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAddressDataModel struct {

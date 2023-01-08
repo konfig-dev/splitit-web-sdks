@@ -627,7 +627,8 @@
               "type": "string"
             },
             "RefOrderNumber": {
-              "type": "string"
+              "type": "string",
+              "x-nullable": true
             },
             "PurchaseMethod": {
               "$ref": "#/definitions/PurchaseMethod"
@@ -707,7 +708,8 @@
           "format": "date-time"
         },
         "SplititErrorResultCode": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "GatewayTransactionID": {
           "type": "string"
@@ -722,10 +724,12 @@
           "$ref": "#/definitions/ThreeDsRedirectData"
         },
         "CAVV": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         },
         "ECI": {
-          "type": "string"
+          "type": "string",
+          "x-nullable": true
         }
       }
     },
@@ -967,8 +971,7 @@
           "$ref": "#/definitions/PurchaseMethod"
         },
         "RefOrderNumber": {
-          "type": "string",
-          "x-nullable": true
+          "type": "string"
         },
         "ExtendedParams": {
           "type": "object",

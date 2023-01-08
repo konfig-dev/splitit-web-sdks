@@ -92,7 +92,7 @@ namespace Splitit.Net.Model
         /// <summary>
         /// Gets or Sets RefOrderNumber
         /// </summary>
-        [DataMember(Name = "RefOrderNumber", EmitDefaultValue = false)]
+        [DataMember(Name = "RefOrderNumber", EmitDefaultValue = true)]
         public string RefOrderNumber { get; set; }
 
         /// <summary>

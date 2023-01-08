@@ -17,13 +17,13 @@ import (
 // InstallmentPlanModelAllOf struct for InstallmentPlanModelAllOf
 type InstallmentPlanModelAllOf struct {
 	InstallmentPlanNumber *string `json:"InstallmentPlanNumber,omitempty"`
-	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
+	RefOrderNumber NullableString `json:"RefOrderNumber,omitempty"`
 	PurchaseMethod *PurchaseMethod `json:"PurchaseMethod,omitempty"`
 	Status PlanStatus `json:"Status"`
 	Currency *string `json:"Currency,omitempty"`
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty"`
 	Amount *float32 `json:"Amount,omitempty"`
-	ExtendedParams *map[string]string `json:"ExtendedParams,omitempty"`
+	ExtendedParams map[string]interface{} `json:"ExtendedParams,omitempty"`
 	Authorization *AuthorizationModel `json:"Authorization,omitempty"`
 	Shopper *ShopperData `json:"Shopper,omitempty"`
 	BillingAddress *AddressData `json:"BillingAddress,omitempty"`
@@ -82,36 +82,46 @@ func (o *InstallmentPlanModelAllOf) SetInstallmentPlanNumber(v string) {
 	o.InstallmentPlanNumber = &v
 }
 
-// GetRefOrderNumber returns the RefOrderNumber field value if set, zero value otherwise.
+// GetRefOrderNumber returns the RefOrderNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InstallmentPlanModelAllOf) GetRefOrderNumber() string {
-	if o == nil || isNil(o.RefOrderNumber) {
+	if o == nil || isNil(o.RefOrderNumber.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RefOrderNumber
+	return *o.RefOrderNumber.Get()
 }
 
 // GetRefOrderNumberOk returns a tuple with the RefOrderNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InstallmentPlanModelAllOf) GetRefOrderNumberOk() (*string, bool) {
-	if o == nil || isNil(o.RefOrderNumber) {
+	if o == nil {
     return nil, false
 	}
-	return o.RefOrderNumber, true
+	return o.RefOrderNumber.Get(), o.RefOrderNumber.IsSet()
 }
 
 // HasRefOrderNumber returns a boolean if a field has been set.
 func (o *InstallmentPlanModelAllOf) HasRefOrderNumber() bool {
-	if o != nil && !isNil(o.RefOrderNumber) {
+	if o != nil && o.RefOrderNumber.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRefOrderNumber gets a reference to the given string and assigns it to the RefOrderNumber field.
+// SetRefOrderNumber gets a reference to the given NullableString and assigns it to the RefOrderNumber field.
 func (o *InstallmentPlanModelAllOf) SetRefOrderNumber(v string) {
-	o.RefOrderNumber = &v
+	o.RefOrderNumber.Set(&v)
+}
+// SetRefOrderNumberNil sets the value for RefOrderNumber to be an explicit nil
+func (o *InstallmentPlanModelAllOf) SetRefOrderNumberNil() {
+	o.RefOrderNumber.Set(nil)
+}
+
+// UnsetRefOrderNumber ensures that no value is present for RefOrderNumber, not even an explicit nil
+func (o *InstallmentPlanModelAllOf) UnsetRefOrderNumber() {
+	o.RefOrderNumber.Unset()
 }
 
 // GetPurchaseMethod returns the PurchaseMethod field value if set, zero value otherwise.
@@ -267,19 +277,19 @@ func (o *InstallmentPlanModelAllOf) SetAmount(v float32) {
 }
 
 // GetExtendedParams returns the ExtendedParams field value if set, zero value otherwise.
-func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]string {
+func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]interface{} {
 	if o == nil || isNil(o.ExtendedParams) {
-		var ret map[string]string
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.ExtendedParams
+	return o.ExtendedParams
 }
 
 // GetExtendedParamsOk returns a tuple with the ExtendedParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (*map[string]string, bool) {
+func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.ExtendedParams) {
-    return nil, false
+    return map[string]interface{}{}, false
 	}
 	return o.ExtendedParams, true
 }
@@ -293,9 +303,9 @@ func (o *InstallmentPlanModelAllOf) HasExtendedParams() bool {
 	return false
 }
 
-// SetExtendedParams gets a reference to the given map[string]string and assigns it to the ExtendedParams field.
-func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]string) {
-	o.ExtendedParams = &v
+// SetExtendedParams gets a reference to the given map[string]interface{} and assigns it to the ExtendedParams field.
+func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]interface{}) {
+	o.ExtendedParams = v
 }
 
 // GetAuthorization returns the Authorization field value if set, zero value otherwise.
@@ -495,8 +505,8 @@ func (o InstallmentPlanModelAllOf) MarshalJSON() ([]byte, error) {
 	if !isNil(o.InstallmentPlanNumber) {
 		toSerialize["InstallmentPlanNumber"] = o.InstallmentPlanNumber
 	}
-	if !isNil(o.RefOrderNumber) {
-		toSerialize["RefOrderNumber"] = o.RefOrderNumber
+	if o.RefOrderNumber.IsSet() {
+		toSerialize["RefOrderNumber"] = o.RefOrderNumber.Get()
 	}
 	if !isNil(o.PurchaseMethod) {
 		toSerialize["PurchaseMethod"] = o.PurchaseMethod

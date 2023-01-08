@@ -20,7 +20,10 @@ type RedirectionEndpointsModel struct {
 	Succeeded *string `json:"Succeeded,omitempty"`
 	AuthorizeFailed *string `json:"AuthorizeFailed,omitempty"`
 	Failed *string `json:"Failed,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RedirectionEndpointsModel RedirectionEndpointsModel
 
 // NewRedirectionEndpointsModel instantiates a new RedirectionEndpointsModel object
 // This constructor will assign default values to properties that have it defined,
@@ -181,7 +184,32 @@ func (o RedirectionEndpointsModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Failed) {
 		toSerialize["Failed"] = o.Failed
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *RedirectionEndpointsModel) UnmarshalJSON(bytes []byte) (err error) {
+	varRedirectionEndpointsModel := _RedirectionEndpointsModel{}
+
+	if err = json.Unmarshal(bytes, &varRedirectionEndpointsModel); err == nil {
+		*o = RedirectionEndpointsModel(varRedirectionEndpointsModel)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "AuthorizeSucceeded")
+		delete(additionalProperties, "Succeeded")
+		delete(additionalProperties, "AuthorizeFailed")
+		delete(additionalProperties, "Failed")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRedirectionEndpointsModel struct {

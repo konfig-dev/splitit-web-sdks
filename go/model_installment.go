@@ -21,7 +21,10 @@ type Installment struct {
 	Amount float32 `json:"Amount"`
 	ProcessDateTime *time.Time `json:"ProcessDateTime,omitempty"`
 	Status InstallmentStatus `json:"Status"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Installment Installment
 
 // NewInstallment instantiates a new Installment object
 // This constructor will assign default values to properties that have it defined,
@@ -161,7 +164,32 @@ func (o Installment) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["Status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *Installment) UnmarshalJSON(bytes []byte) (err error) {
+	varInstallment := _Installment{}
+
+	if err = json.Unmarshal(bytes, &varInstallment); err == nil {
+		*o = Installment(varInstallment)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "InstallmentNumber")
+		delete(additionalProperties, "Amount")
+		delete(additionalProperties, "ProcessDateTime")
+		delete(additionalProperties, "Status")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInstallment struct {

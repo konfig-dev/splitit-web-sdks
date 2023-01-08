@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Code** | Pointer to **string** |  | [optional] 
 **Message** | Pointer to **string** |  | [optional] 
 **AdditionalInfo** | Pointer to **string** |  | [optional] 
-**ExtraData** | Pointer to **map[string]string** |  | [optional] 
+**ExtraData** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +105,20 @@ HasAdditionalInfo returns a boolean if a field has been set.
 
 ### GetExtraData
 
-`func (o *ErrorExtended) GetExtraData() map[string]string`
+`func (o *ErrorExtended) GetExtraData() map[string]interface{}`
 
 GetExtraData returns the ExtraData field if non-nil, zero value otherwise.
 
 ### GetExtraDataOk
 
-`func (o *ErrorExtended) GetExtraDataOk() (*map[string]string, bool)`
+`func (o *ErrorExtended) GetExtraDataOk() (*map[string]interface{}, bool)`
 
 GetExtraDataOk returns a tuple with the ExtraData field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtraData
 
-`func (o *ErrorExtended) SetExtraData(v map[string]string)`
+`func (o *ErrorExtended) SetExtraData(v map[string]interface{})`
 
 SetExtraData sets ExtraData field to given value.
 

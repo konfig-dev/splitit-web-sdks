@@ -151,10 +151,6 @@ public class InstallmentPlanUpdateRequestByIdentifierAllOf {
           throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `InstallmentPlanUpdateRequestByIdentifierAllOf` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
-      // validate the optional field `Identifier`
-      if (jsonObj.get("Identifier") != null && !jsonObj.get("Identifier").isJsonNull()) {
-        IdentifierContract.validateJsonObject(jsonObj.getAsJsonObject("Identifier"));
-      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

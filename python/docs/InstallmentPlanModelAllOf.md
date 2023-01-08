@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | [**PlanStatus**](PlanStatus.md) |  | 
 **installment_plan_number** | **str** |  | [optional] 
-**ref_order_number** | **str** |  | [optional] 
+**ref_order_number** | **str, none_type** |  | [optional] 
 **purchase_method** | [**PurchaseMethod**](PurchaseMethod.md) |  | [optional] 
 **currency** | **str** |  | [optional] 
 **original_amount** | **float** |  | [optional] 
 **amount** | **float** |  | [optional] 
-**extended_params** | **{str: (str,)}** |  | [optional] 
+**extended_params** | **{str: (bool, date, datetime, dict, float, int, list, str, none_type)}** |  | [optional] 
 **authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  | [optional] 
 **shopper** | [**ShopperData**](ShopperData.md) |  | [optional] 
 **billing_address** | [**AddressData**](AddressData.md) |  | [optional] 

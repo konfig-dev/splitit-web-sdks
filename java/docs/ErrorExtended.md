@@ -10,7 +10,7 @@
 |**code** | **String** |  |  [optional] |
 |**message** | **String** |  |  [optional] |
 |**additionalInfo** | **String** |  |  [optional] |
-|**extraData** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**extraData** | **Map&lt;String, Object&gt;** |  |  [optional] |
 
 
 

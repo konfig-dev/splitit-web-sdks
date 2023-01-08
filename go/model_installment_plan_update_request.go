@@ -20,7 +20,10 @@ type InstallmentPlanUpdateRequest struct {
 	TrackingNumber *string `json:"TrackingNumber,omitempty"`
 	Capture *bool `json:"Capture,omitempty"`
 	ShippingStatus *ShippingStatus2 `json:"ShippingStatus,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InstallmentPlanUpdateRequest InstallmentPlanUpdateRequest
 
 // NewInstallmentPlanUpdateRequest instantiates a new InstallmentPlanUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -181,7 +184,32 @@ func (o InstallmentPlanUpdateRequest) MarshalJSON() ([]byte, error) {
 	if !isNil(o.ShippingStatus) {
 		toSerialize["ShippingStatus"] = o.ShippingStatus
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return json.Marshal(toSerialize)
+}
+
+func (o *InstallmentPlanUpdateRequest) UnmarshalJSON(bytes []byte) (err error) {
+	varInstallmentPlanUpdateRequest := _InstallmentPlanUpdateRequest{}
+
+	if err = json.Unmarshal(bytes, &varInstallmentPlanUpdateRequest); err == nil {
+		*o = InstallmentPlanUpdateRequest(varInstallmentPlanUpdateRequest)
+	}
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
+		delete(additionalProperties, "RefOrderNumber")
+		delete(additionalProperties, "TrackingNumber")
+		delete(additionalProperties, "Capture")
+		delete(additionalProperties, "ShippingStatus")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInstallmentPlanUpdateRequest struct {

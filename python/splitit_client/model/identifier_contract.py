@@ -60,7 +60,13 @@ class IdentifierContract(ModelNormal):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -77,7 +83,7 @@ class IdentifierContract(ModelNormal):
         return {
             'ref_order_number': (str,),  # noqa: E501
             'installment_plan_number': (str,),  # noqa: E501
-            'extended_params': ({str: (str,)},),  # noqa: E501
+            'extended_params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
         }
 
     @cached_property
@@ -134,7 +140,7 @@ class IdentifierContract(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             ref_order_number (str): [optional]  # noqa: E501
             installment_plan_number (str): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -222,7 +228,7 @@ class IdentifierContract(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             ref_order_number (str): [optional]  # noqa: E501
             installment_plan_number (str): [optional]  # noqa: E501
-            extended_params ({str: (str,)}): [optional]  # noqa: E501
+            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
