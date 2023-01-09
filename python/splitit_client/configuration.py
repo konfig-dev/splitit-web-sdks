@@ -9,9 +9,12 @@
 
 
 import copy
+import json
 import logging
 import multiprocessing
 import sys
+import typing
+import urllib
 import urllib3
 
 from http import client as http_client
@@ -85,6 +88,7 @@ class Configuration(object):
                  api_key=None, api_key_prefix=None,
                  access_token=None,
                  username=None, password=None,
+                 client_id=None, client_secret=None,
                  discard_unknown_keys=False,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
@@ -112,6 +116,10 @@ class Configuration(object):
         self.api_key = {}
         if api_key:
             self.api_key = api_key
+        """OAuth2 Client Credentials
+        """
+        if client_id is not None and client_secret is not None:
+            self.oauth = OAuth(client_id=client_id, client_secret=client_secret)
         """dict to store API key(s)
         """
         self.api_key_prefix = {}
@@ -370,12 +378,15 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         auth = {}
-        if self.access_token is not None:
+        if self.oauth is not None:
+            # Initialize
+            if self.oauth.access_token is None:
+                self.oauth.refresh_access_token()
             auth['bearer'] = {
-                'type': 'oauth2',
+                'type': 'oauth2-clientcredentials',
                 'in': 'header',
                 'key': 'Authorization',
-                'value': 'Bearer ' + self.access_token
+                'value': 'Bearer ' + self.oauth.access_token
             }
         return auth
 
@@ -452,3 +463,24 @@ class Configuration(object):
         """Fix base path."""
         self._base_path = value
         self.server_index = None
+
+class OAuth:
+    def __init__(self, client_id: typing.AnyStr, client_secret: typing.AnyStr) -> None:
+        self._client_id = client_id
+        self._client_secret = client_secret
+        self.access_token = None
+    
+    def refresh_access_token(self) -> None:
+        self.access_token = self.retrieve_access_token()
+    
+    def retrieve_access_token(self) -> typing.AnyStr:
+        request = urllib.request.Request("https://id.sandbox.splitit.com/connect/token")
+        request.add_header("Content-Type", "application/x-www-form-urlencoded")
+        params = {
+                "grant_type": "client_credentials",
+                "client_id": self._client_id,
+                "client_secret": self._client_secret
+        }
+        data = urllib.parse.urlencode(params).encode("utf-8")
+        f = urllib.request.urlopen(request, data)
+        return json.loads(f.read().decode("utf-8"))["access_token"]

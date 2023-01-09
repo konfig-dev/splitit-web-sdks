@@ -10,8 +10,6 @@
 
 import os
 import unittest
-import urllib
-import json
 import uuid
 
 from splitit_client import ApiClient, Configuration
@@ -34,17 +32,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     def setUp(self):
         client_id = os.environ["SPLITIT_CLIENT_ID"]
         client_secret = os.environ["SPLITIT_CLIENT_SECRET"]
-        request = urllib.request.Request("https://id.sandbox.splitit.com/connect/token")
-        request.add_header("Content-Type", "application/x-www-form-urlencoded")
-        params = {
-                "grant_type": "client_credentials",
-                "client_id": client_id,
-                "client_secret": client_secret
-        }
-        data = urllib.parse.urlencode(params).encode("utf-8")
-        f = urllib.request.urlopen(request, data)
-        parsed = json.loads(f.read().decode("utf-8"))
-        configuration = Configuration(access_token=parsed["access_token"])
+        configuration = Configuration(client_id=client_id, client_secret=client_secret)
         api_client = ApiClient(configuration)
         self.api = InstallmentPlanApi(api_client)  # noqa: E501
 

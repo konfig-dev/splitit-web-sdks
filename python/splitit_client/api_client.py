@@ -22,7 +22,7 @@ from urllib3.fields import RequestField
 
 from splitit_client import rest
 from splitit_client.configuration import Configuration
-from splitit_client.exceptions import ApiTypeError, ApiValueError, ApiException
+from splitit_client.exceptions import ApiTypeError, ApiValueError, ApiException, UnauthorizedException, ForbiddenException
 from splitit_client.model_utils import (
     ModelNormal,
     ModelSimple,
@@ -132,6 +132,7 @@ class ApiClient(object):
         _request_timeout: typing.Optional[typing.Union[int, float, typing.Tuple]] = None,
         _host: typing.Optional[str] = None,
         _check_type: typing.Optional[bool] = None,
+        _retry_oauth: bool = True,
         _content_type: typing.Optional[str] = None,
         _request_auths: typing.Optional[typing.List[typing.Dict[str, typing.Any]]] = None
     ):
@@ -200,6 +201,31 @@ class ApiClient(object):
                 post_params=post_params, body=body,
                 _preload_content=_preload_content,
                 _request_timeout=_request_timeout)
+        except (UnauthorizedException, ForbiddenException) as e:
+            if self.configuration.oauth is not None and _retry_oauth:
+                # access token might need to be refreshed so try once more
+                self.configuration.oauth.refresh_access_token()
+                self.__call_api(
+                    resource_path=resource_path,
+                    method=method,
+                    path_params=path_params,
+                    query_params=query_params,
+                    header_params=header_params,
+                    body=body,
+                    post_params=post_params,
+                    files=files,
+                    response_type=response_type,
+                    auth_settings=auth_settings,
+                    _return_http_data_only=_return_http_data_only,
+                    collection_formats=collection_formats,
+                    _preload_content=_preload_content,
+                    _request_timeout=_request_timeout,
+                    _host=_host,
+                    _check_type=_check_type,
+                    _retry_oauth=False,
+                    _content_type=_content_type,
+                    _request_auths=_request_auths)
+
         except ApiException as e:
             e.body = e.body.decode('utf-8')
             raise e
