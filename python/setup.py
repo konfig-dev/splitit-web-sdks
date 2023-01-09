@@ -19,6 +19,11 @@ VERSION = "1.0.0"
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
 
+# read the contents of README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 REQUIRES = [
   "urllib3 >= 1.25.3",
   "python-dateutil",
@@ -30,13 +35,12 @@ setup(
     description="splitit-web-api-v3",
     author="Konfig",
     author_email="engineering@konfigthis.com",
-    url="",
+    url="https://github.com/konfig-dev/splitit-sdks/tree/main/python",
     keywords=["Konfig", "splitit-web-api-v3"],
     python_requires=">=3.6",
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
     include_package_data=True,
-    long_description="""\
-    Splitit&#39;s API  # noqa: E501
-    """
+    long_description=long_description,
+    long_description_content_type='text/markdown'
 )
