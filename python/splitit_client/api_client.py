@@ -22,7 +22,8 @@ from urllib3.fields import RequestField
 
 from splitit_client import rest
 from splitit_client.configuration import Configuration
-from splitit_client.exceptions import ApiTypeError, ApiValueError, ApiException, UnauthorizedException, ForbiddenException
+from splitit_client.exceptions import ApiTypeError, ApiValueError, ApiException
+from splitit_client.exceptions import UnauthorizedException, ForbiddenException
 from splitit_client.model_utils import (
     ModelNormal,
     ModelSimple,
@@ -225,7 +226,6 @@ class ApiClient(object):
                     _retry_oauth=False,
                     _content_type=_content_type,
                     _request_auths=_request_auths)
-
         except ApiException as e:
             e.body = e.body.decode('utf-8')
             raise e

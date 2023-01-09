@@ -9,13 +9,13 @@
 
 
 import copy
-import json
 import logging
 import multiprocessing
 import sys
+import urllib3
+import json
 import typing
 import urllib
-import urllib3
 
 from http import client as http_client
 from splitit_client.exceptions import ApiValueError
@@ -87,8 +87,8 @@ class Configuration(object):
     def __init__(self, host=None,
                  api_key=None, api_key_prefix=None,
                  access_token=None,
-                 username=None, password=None,
                  client_id=None, client_secret=None,
+                 username=None, password=None,
                  discard_unknown_keys=False,
                  disabled_client_side_validations="",
                  server_index=None, server_variables=None,
@@ -116,16 +116,16 @@ class Configuration(object):
         self.api_key = {}
         if api_key:
             self.api_key = api_key
-        """OAuth2 Client Credentials
-        """
-        if client_id is not None and client_secret is not None:
-            self.oauth = OAuth(client_id=client_id, client_secret=client_secret)
         """dict to store API key(s)
         """
         self.api_key_prefix = {}
         if api_key_prefix:
             self.api_key_prefix = api_key_prefix
         """dict to store API prefix (e.g. Bearer)
+        """
+        if client_id is not None and client_secret is not None:
+            self.oauth = OAuth(client_id=client_id, client_secret=client_secret)
+        """OAuth2 Client Credentials
         """
         self.refresh_api_key_hook = None
         """function hook to refresh API key if expired
