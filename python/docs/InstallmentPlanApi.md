@@ -30,22 +30,19 @@ from splitit_client.api import installment_plan_api
 from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.installment_plan_cancel_response import InstallmentPlanCancelResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -112,22 +109,19 @@ from splitit_client.api import installment_plan_api
 from splitit_client.model.installment_plan_model import InstallmentPlanModel
 from splitit_client.model.failed_response import FailedResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -196,22 +190,19 @@ from splitit_client.model.installment_plan_create_request import InstallmentPlan
 from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.plan_error_response import PlanErrorResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -300,22 +291,19 @@ from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.installment_plan_refund_request import InstallmentPlanRefundRequest
 from splitit_client.model.installment_plan_refund_response import InstallmentPlanRefundResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -387,22 +375,19 @@ from splitit_client.api import installment_plan_api
 from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.installment_plan_get_response import InstallmentPlanGetResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -482,22 +467,19 @@ from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.update_order_request import UpdateOrderRequest
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -572,22 +554,19 @@ from splitit_client.model.installment_plan_update_request_by_identifier import I
 from splitit_client.model.failed_response import FailedResponse
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
@@ -654,22 +633,19 @@ from splitit_client.api import installment_plan_api
 from splitit_client.model.verify_authorization_response import VerifyAuthorizationResponse
 from splitit_client.model.failed_response import FailedResponse
 from pprint import pprint
-# Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
-)
-
 # The client must configure the authentication and authorization parameters
 # in accordance with the API server security policy.
 # Examples for each auth method are provided below, use the example that
 # satisfies your auth use case.
-
-# Configure OAuth2 access token for authorization: bearer
+client_id = os.environ["CLIENT_ID"]
+client_secret = os.environ["CLIENT_SECRET"]
 configuration = splitit_client.Configuration(
-    host = "https://web-api-v3.sandbox.splitit.com"
+    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host = 'https://web-api-v3.sandbox.splitit.com'
+    client_id=client_id,
+    client_secret=client_secret
 )
-configuration.access_token = 'YOUR_ACCESS_TOKEN'
 
 # Enter a context with an instance of the API client
 with splitit_client.ApiClient(configuration) as api_client:
