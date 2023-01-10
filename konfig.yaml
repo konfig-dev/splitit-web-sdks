@@ -59,7 +59,7 @@ generators:
         - go clean -testcache
         - go test ./...
     version: 1.0.2
-    packageName: splitit-web
+    packageName: splitit
     outputDirectory: go
     git:
       userId: konfig-dev
