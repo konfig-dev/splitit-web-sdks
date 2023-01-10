@@ -13,7 +13,7 @@ import (
     "github.com/stretchr/testify/assert"
     "github.com/stretchr/testify/require"
     "testing"
-    openapiclient "github.com/konfig-dev/splitit-sdks/go"
+    openapiclient "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func Test_splitit_InstallmentPlanApiService(t *testing.T) {

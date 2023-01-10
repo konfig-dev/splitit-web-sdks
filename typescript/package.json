@@ -1,17 +1,17 @@
 {
-  "name": "splitit-typescript-sdk",
-  "version": "1.0.5",
+  "name": "splitit-web-typescript-sdk",
+  "version": "1.0.6",
   "description": "Client for splitit-web-api-v3",
   "author": "Konfig",
   "repository": {
     "type": "git",
-    "url": "https://github.com/konfig-dev/splitit-sdks/tree/main/typescript"
+    "url": "https://github.com/konfig-dev/splitit-web-sdks/tree/main/typescript"
   },
   "keywords": [
     "axios",
     "typescript",
     "konfig",
-    "splitit-typescript-sdk"
+    "splitit-web-typescript-sdk"
   ],
   "license": "Unlicense",
   "main": "./dist/index.js",

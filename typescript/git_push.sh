@@ -19,7 +19,7 @@ if [ "$git_user_id" = "" ]; then
 fi
 
 if [ "$git_repo_id" = "" ]; then
-    git_repo_id="splitit-sdks/tree/main/typescript"
+    git_repo_id="splitit-web-sdks/tree/main/typescript"
     echo "[INFO] No command line input provided. Set \$git_repo_id to $git_repo_id"
 fi
 

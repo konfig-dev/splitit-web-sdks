@@ -10,8 +10,8 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "splitit-python-sdk"
-VERSION = "1.0.0"
+NAME = "splitit-web-python-sdk"
+VERSION = "1.0.1"
 # To install the library, run the following
 #
 # python setup.py install
@@ -35,7 +35,7 @@ setup(
     description="splitit-web-api-v3",
     author="Konfig",
     author_email="engineering@konfigthis.com",
-    url="https://github.com/konfig-dev/splitit-sdks/tree/main/python",
+    url="https://github.com/konfig-dev/splitit-web-sdks/tree/main/python",
     keywords=["Konfig", "splitit-web-api-v3"],
     python_requires=">=3.6",
     install_requires=REQUIRES,

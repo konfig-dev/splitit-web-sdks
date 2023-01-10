@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'com.diffplug.spotless'
 
 group = 'com.konfigthis'
-version = '1.0.2'
+version = '1.0.3'
 
 buildscript {
     repositories {
@@ -89,7 +89,7 @@ if(hasProperty('target') && target == 'android') {
     publishing {
         publications {
             maven(MavenPublication) {
-               artifactId = 'splitit-java-sdk'
+               artifactId = 'splitit-web-java-sdk'
                from components.java
             }
         }

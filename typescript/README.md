@@ -1,4 +1,4 @@
-## splitit-typescript-sdk@1.0.5
+## splitit-web-typescript-sdk@1.0.6
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -30,14 +30,14 @@ npm run build
 navigate to the folder of your consuming project and run the following command.
 
 ```
-npm install splitit-typescript-sdk@1.0.5 --save
+npm install splitit-web-typescript-sdk@1.0.6 --save
 ```
 
 ### Getting Started
 
 ```typescript
 
-import { Configuration, InstallmentPlanApi, FailedResponse, InstallmentPlanCancelResponse } from "splitit-typescript-sdk";
+import { Configuration, InstallmentPlanApi, FailedResponse, InstallmentPlanCancelResponse } from "splitit-web-typescript-sdk";
 
 const oauthClientId = process.env.CLIENT_ID;
 const oauthClientSecret = process.env.CLIENT_SECRET;

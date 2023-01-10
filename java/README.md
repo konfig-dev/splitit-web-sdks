@@ -1,4 +1,4 @@
-# splitit-java-sdk
+# splitit-web-java-sdk
 
 splitit-web-api-v3
 - API version: 1.0.0
@@ -38,8 +38,8 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
   <groupId>com.konfigthis</groupId>
-  <artifactId>splitit-java-sdk</artifactId>
-  <version>1.0.2</version>
+  <artifactId>splitit-web-java-sdk</artifactId>
+  <version>1.0.3</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -50,12 +50,12 @@ Add this dependency to your project's build file:
 
 ```groovy
   repositories {
-    mavenCentral()     // Needed if the 'splitit-java-sdk' jar has been published to maven central.
-    mavenLocal()       // Needed if the 'splitit-java-sdk' jar has been published to the local maven repo.
+    mavenCentral()     // Needed if the 'splitit-web-java-sdk' jar has been published to maven central.
+    mavenLocal()       // Needed if the 'splitit-web-java-sdk' jar has been published to the local maven repo.
   }
 
   dependencies {
-     implementation "com.konfigthis:splitit-java-sdk:1.0.2"
+     implementation "com.konfigthis:splitit-web-java-sdk:1.0.3"
   }
 ```
 
@@ -69,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-java-sdk-1.0.2.jar`
+* `target/splitit-web-java-sdk-1.0.3.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
