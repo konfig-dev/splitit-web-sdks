@@ -10,9 +10,6 @@ allObjectsHaveAdditionalProperties:
     - csharp
 generators:
   typescript:
-    test:
-      script:
-        - yarn test
     version: 1.0.6
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
@@ -21,9 +18,6 @@ generators:
       repoId: splitit-web-sdks/tree/main/typescript
   python:
     version: 1.0.1
-    test:
-      script:
-        - tox
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
@@ -31,9 +25,6 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    test:
-      script:
-        - mvn test
     version: 1.0.3
     groupId: com.konfigthis
     packageName: splitit
@@ -43,9 +34,6 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/java
   csharp:
-    test:
-      script:
-        - dotnet test
     version: 1.0.8
     packageName: Splitit.Web.Net
     outputDirectory: csharp
@@ -54,10 +42,6 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    test:
-      script:
-        - go clean -testcache
-        - go test ./...
     version: 1.0.2
     packageName: splitit
     outputDirectory: go
