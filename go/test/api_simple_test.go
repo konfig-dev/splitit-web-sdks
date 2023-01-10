@@ -14,7 +14,7 @@ import (
 	"os"
 	"testing"
 
-	splitit "github.com/konfig-dev/splitit-sdks/go"
+	splitit "github.com/konfig-dev/splitit-web-sdks/go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
