@@ -1,4 +1,4 @@
-# Splitit.Net.Model.ErrorExtended
+# Splitit.Web.Net.Model.ErrorExtended
 
 ## Properties
 

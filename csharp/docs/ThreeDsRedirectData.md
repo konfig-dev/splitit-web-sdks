@@ -1,4 +1,4 @@
-# Splitit.Net.Model.ThreeDsRedirectData
+# Splitit.Web.Net.Model.ThreeDsRedirectData
 
 ## Properties
 

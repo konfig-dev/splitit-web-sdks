@@ -1,4 +1,4 @@
-# Splitit.Net.Model.PurchaseMethod
+# Splitit.Web.Net.Model.PurchaseMethod
 
 ## Properties
 

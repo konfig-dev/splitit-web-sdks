@@ -1,4 +1,4 @@
-# Splitit.Net.Model.AddressData
+# Splitit.Web.Net.Model.AddressData
 
 ## Properties
 

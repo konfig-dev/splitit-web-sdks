@@ -1,4 +1,4 @@
-# Splitit.Net.Model.PaymentMethodType
+# Splitit.Web.Net.Model.PaymentMethodType
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Splitit.Net.Model.RefundSummary
+# Splitit.Web.Net.Model.RefundSummary
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Splitit.Net.Model.ShippingStatus2
+# Splitit.Web.Net.Model.ShippingStatus2
 
 ## Properties
 

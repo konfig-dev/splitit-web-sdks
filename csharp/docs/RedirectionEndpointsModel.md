@@ -1,4 +1,4 @@
-# Splitit.Net.Model.RedirectionEndpointsModel
+# Splitit.Web.Net.Model.RedirectionEndpointsModel
 
 ## Properties
 

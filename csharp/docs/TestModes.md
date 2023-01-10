@@ -1,4 +1,4 @@
-# Splitit.Net.Model.TestModes
+# Splitit.Web.Net.Model.TestModes
 
 ## Properties
 

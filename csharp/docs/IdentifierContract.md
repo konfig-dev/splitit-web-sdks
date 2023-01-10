@@ -1,4 +1,4 @@
-# Splitit.Net.Model.IdentifierContract
+# Splitit.Web.Net.Model.IdentifierContract
 
 ## Properties
 

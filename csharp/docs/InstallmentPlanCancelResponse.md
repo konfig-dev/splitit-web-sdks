@@ -1,4 +1,4 @@
-# Splitit.Net.Model.InstallmentPlanCancelResponse
+# Splitit.Web.Net.Model.InstallmentPlanCancelResponse
 
 ## Properties
 

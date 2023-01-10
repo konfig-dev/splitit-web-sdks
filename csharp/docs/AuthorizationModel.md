@@ -1,4 +1,4 @@
-# Splitit.Net.Model.AuthorizationModel
+# Splitit.Web.Net.Model.AuthorizationModel
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Splitit.Net.Model.GwAuthorizationStatus
+# Splitit.Web.Net.Model.GwAuthorizationStatus
 
 ## Properties
 

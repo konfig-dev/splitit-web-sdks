@@ -1,4 +1,4 @@
-# Splitit.Net.Model.UpdateOrderRequest
+# Splitit.Web.Net.Model.UpdateOrderRequest
 
 ## Properties
 

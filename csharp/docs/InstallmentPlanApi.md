@@ -1,4 +1,4 @@
-# Splitit.Net.Api.InstallmentPlanApi
+# Splitit.Web.Net.Api.InstallmentPlanApi
 
 All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 
@@ -23,9 +23,9 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -119,9 +119,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -215,9 +215,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -314,9 +314,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -412,9 +412,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -512,9 +512,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -610,9 +610,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {
@@ -706,9 +706,9 @@ catch (ApiException e)
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {

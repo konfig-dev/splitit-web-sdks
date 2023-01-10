@@ -1,4 +1,4 @@
-# Splitit.Net.Model.InstallmentPlanGetResponse
+# Splitit.Web.Net.Model.InstallmentPlanGetResponse
 
 ## Properties
 

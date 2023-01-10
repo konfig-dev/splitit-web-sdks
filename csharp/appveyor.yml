@@ -6,4 +6,4 @@ build_script:
 - dotnet build -c Release
 - dotnet test -c Release
 after_build:
-- dotnet pack .\src\Splitit.Net\Splitit.Net.csproj -o ../../output -c Release --no-build
+- dotnet pack .\src\Splitit.Web.Net\Splitit.Web.Net.csproj -o ../../output -c Release --no-build

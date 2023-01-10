@@ -1,4 +1,4 @@
-# Splitit.Net.Model.FailedResponseAllOf
+# Splitit.Web.Net.Model.FailedResponseAllOf
 
 ## Properties
 

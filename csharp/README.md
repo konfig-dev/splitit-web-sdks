@@ -1,4 +1,4 @@
-# Splitit.Net - the C# library for the splitit-web-api-v3
+# Splitit.Web.Net - the C# library for the splitit-web-api-v3
 
 Splitit's API
 
@@ -38,9 +38,9 @@ Generate the DLL using your preferred tool (e.g. `dotnet build`)
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 ```csharp
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 ```
 <a name="usage"></a>
 ## Usage
@@ -59,9 +59,9 @@ c.Proxy = webProxy;
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Net.Api;
-using Splitit.Net.Client;
-using Splitit.Net.Model;
+using Splitit.Web.Net.Api;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
 
 namespace Example
 {

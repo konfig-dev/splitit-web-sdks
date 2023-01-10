@@ -1,4 +1,4 @@
-# Splitit.Net.Model.PlanErrorResponseAllOf
+# Splitit.Web.Net.Model.PlanErrorResponseAllOf
 
 ## Properties
 

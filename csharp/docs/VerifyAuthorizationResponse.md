@@ -1,4 +1,4 @@
-# Splitit.Net.Model.VerifyAuthorizationResponse
+# Splitit.Web.Net.Model.VerifyAuthorizationResponse
 
 ## Properties
 

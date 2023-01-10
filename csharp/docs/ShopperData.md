@@ -1,4 +1,4 @@
-# Splitit.Net.Model.ShopperData
+# Splitit.Web.Net.Model.ShopperData
 
 ## Properties
 

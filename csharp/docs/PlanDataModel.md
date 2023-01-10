@@ -1,4 +1,4 @@
-# Splitit.Net.Model.PlanDataModel
+# Splitit.Web.Net.Model.PlanDataModel
 
 ## Properties
 

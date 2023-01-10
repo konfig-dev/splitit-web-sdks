@@ -1,4 +1,4 @@
-# Splitit.Net.Model.PlanStatus
+# Splitit.Web.Net.Model.PlanStatus
 
 ## Properties
 

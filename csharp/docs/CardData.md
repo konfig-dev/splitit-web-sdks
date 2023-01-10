@@ -1,4 +1,4 @@
-# Splitit.Net.Model.CardData
+# Splitit.Web.Net.Model.CardData
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# Splitit.Net.Model.ErrorExtendedAllOf
+# Splitit.Web.Net.Model.ErrorExtendedAllOf
 
 ## Properties
 

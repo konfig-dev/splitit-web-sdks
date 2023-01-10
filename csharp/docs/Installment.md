@@ -1,4 +1,4 @@
-# Splitit.Net.Model.Installment
+# Splitit.Web.Net.Model.Installment
 
 ## Properties
 

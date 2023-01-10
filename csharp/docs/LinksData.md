@@ -1,4 +1,4 @@
-# Splitit.Net.Model.LinksData
+# Splitit.Web.Net.Model.LinksData
 
 ## Properties
 

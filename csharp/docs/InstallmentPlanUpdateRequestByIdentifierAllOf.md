@@ -1,4 +1,4 @@
-# Splitit.Net.Model.InstallmentPlanUpdateRequestByIdentifierAllOf
+# Splitit.Web.Net.Model.InstallmentPlanUpdateRequestByIdentifierAllOf
 
 ## Properties
 

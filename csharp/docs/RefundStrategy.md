@@ -1,4 +1,4 @@
-# Splitit.Net.Model.RefundStrategy
+# Splitit.Web.Net.Model.RefundStrategy
 
 ## Properties
 
