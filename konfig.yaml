@@ -47,7 +47,7 @@ generators:
       script:
         - dotnet test
     version: 1.0.8
-    packageName: Splitit.Net
+    packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
     git:
@@ -59,7 +59,7 @@ generators:
         - go clean -testcache
         - go test ./...
     version: 1.0.2
-    packageName: splitit
+    packageName: splitit-web
     outputDirectory: go
     git:
       userId: konfig-dev
