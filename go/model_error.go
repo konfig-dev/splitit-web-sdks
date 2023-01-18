@@ -19,10 +19,7 @@ type Error struct {
 	Code *string `json:"Code,omitempty"`
 	Message *string `json:"Message,omitempty"`
 	AdditionalInfo *string `json:"AdditionalInfo,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _Error Error
 
 // NewError instantiates a new Error object
 // This constructor will assign default values to properties that have it defined,
@@ -148,31 +145,7 @@ func (o Error) MarshalJSON() ([]byte, error) {
 	if !isNil(o.AdditionalInfo) {
 		toSerialize["AdditionalInfo"] = o.AdditionalInfo
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *Error) UnmarshalJSON(bytes []byte) (err error) {
-	varError := _Error{}
-
-	if err = json.Unmarshal(bytes, &varError); err == nil {
-		*o = Error(varError)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "Code")
-		delete(additionalProperties, "Message")
-		delete(additionalProperties, "AdditionalInfo")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableError struct {

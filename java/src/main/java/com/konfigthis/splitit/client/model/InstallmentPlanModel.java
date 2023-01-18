@@ -93,7 +93,7 @@ public class InstallmentPlanModel {
 
   public static final String SERIALIZED_NAME_EXTENDED_PARAMS = "ExtendedParams";
   @SerializedName(SERIALIZED_NAME_EXTENDED_PARAMS)
-  private Map<String, Object> extendedParams = null;
+  private Map<String, String> extendedParams = null;
 
   public static final String SERIALIZED_NAME_AUTHORIZATION = "Authorization";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION)
@@ -283,13 +283,13 @@ public class InstallmentPlanModel {
   }
 
 
-  public InstallmentPlanModel extendedParams(Map<String, Object> extendedParams) {
+  public InstallmentPlanModel extendedParams(Map<String, String> extendedParams) {
     
     this.extendedParams = extendedParams;
     return this;
   }
 
-  public InstallmentPlanModel putExtendedParamsItem(String key, Object extendedParamsItem) {
+  public InstallmentPlanModel putExtendedParamsItem(String key, String extendedParamsItem) {
     if (this.extendedParams == null) {
       this.extendedParams = new HashMap<>();
     }
@@ -304,12 +304,12 @@ public class InstallmentPlanModel {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Map<String, Object> getExtendedParams() {
+  public Map<String, String> getExtendedParams() {
     return extendedParams;
   }
 
 
-  public void setExtendedParams(Map<String, Object> extendedParams) {
+  public void setExtendedParams(Map<String, String> extendedParams) {
     this.extendedParams = extendedParams;
   }
 
@@ -592,15 +592,45 @@ public class InstallmentPlanModel {
       if ((jsonObj.get("InstallmentPlanNumber") != null && !jsonObj.get("InstallmentPlanNumber").isJsonNull()) && !jsonObj.get("InstallmentPlanNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `InstallmentPlanNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InstallmentPlanNumber").toString()));
       }
-      if ((jsonObj.get("RefOrderNumber") != null && !jsonObj.get("RefOrderNumber").isJsonNull()) && !jsonObj.get("RefOrderNumber").isJsonPrimitive()) {
+      if (!jsonObj.get("RefOrderNumber").isJsonNull() && (jsonObj.get("RefOrderNumber") != null && !jsonObj.get("RefOrderNumber").isJsonNull()) && !jsonObj.get("RefOrderNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `RefOrderNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RefOrderNumber").toString()));
       }
       if ((jsonObj.get("Currency") != null && !jsonObj.get("Currency").isJsonNull()) && !jsonObj.get("Currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `Currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Currency").toString()));
       }
-      // ensure the optional json data is an array if present
-      if (jsonObj.get("Installments") != null && !jsonObj.get("Installments").isJsonArray()) {
-        throw new IllegalArgumentException(String.format("Expected the field `Installments` to be an array in the JSON string but got `%s`", jsonObj.get("Installments").toString()));
+      // validate the optional field `Authorization`
+      if (jsonObj.get("Authorization") != null && !jsonObj.get("Authorization").isJsonNull()) {
+        AuthorizationModel.validateJsonObject(jsonObj.getAsJsonObject("Authorization"));
+      }
+      // validate the optional field `Shopper`
+      if (jsonObj.get("Shopper") != null && !jsonObj.get("Shopper").isJsonNull()) {
+        ShopperData.validateJsonObject(jsonObj.getAsJsonObject("Shopper"));
+      }
+      // validate the optional field `BillingAddress`
+      if (jsonObj.get("BillingAddress") != null && !jsonObj.get("BillingAddress").isJsonNull()) {
+        AddressData.validateJsonObject(jsonObj.getAsJsonObject("BillingAddress"));
+      }
+      // validate the optional field `PaymentMethod`
+      if (jsonObj.get("PaymentMethod") != null && !jsonObj.get("PaymentMethod").isJsonNull()) {
+        PaymentMethodModel.validateJsonObject(jsonObj.getAsJsonObject("PaymentMethod"));
+      }
+      if (jsonObj.get("Installments") != null && !jsonObj.get("Installments").isJsonNull()) {
+        JsonArray jsonArrayinstallments = jsonObj.getAsJsonArray("Installments");
+        if (jsonArrayinstallments != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("Installments").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `Installments` to be an array in the JSON string but got `%s`", jsonObj.get("Installments").toString()));
+          }
+
+          // validate the optional field `Installments` (array)
+          for (int i = 0; i < jsonArrayinstallments.size(); i++) {
+            Installment.validateJsonObject(jsonArrayinstallments.get(i).getAsJsonObject());
+          };
+        }
+      }
+      // validate the optional field `Links`
+      if (jsonObj.get("Links") != null && !jsonObj.get("Links").isJsonNull()) {
+        LinksData.validateJsonObject(jsonObj.getAsJsonObject("Links"));
       }
   }
 

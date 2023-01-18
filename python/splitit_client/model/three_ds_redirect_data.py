@@ -83,7 +83,7 @@ class ThreeDsRedirectData(ModelNormal):
         return {
             'url': (str,),  # noqa: E501
             'verb': (str,),  # noqa: E501
-            'params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'params': ({str: (str,)},),  # noqa: E501
         }
 
     @cached_property
@@ -140,7 +140,7 @@ class ThreeDsRedirectData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             url (str): [optional]  # noqa: E501
             verb (str): [optional]  # noqa: E501
-            params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            params ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -228,7 +228,7 @@ class ThreeDsRedirectData(ModelNormal):
                                 _visited_composed_classes = (Animal,)
             url (str): [optional]  # noqa: E501
             verb (str): [optional]  # noqa: E501
-            params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            params ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

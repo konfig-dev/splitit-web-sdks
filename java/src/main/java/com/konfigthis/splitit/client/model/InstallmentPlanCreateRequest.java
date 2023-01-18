@@ -406,6 +406,26 @@ public class InstallmentPlanCreateRequest {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `Shopper`
+      if (jsonObj.get("Shopper") != null && !jsonObj.get("Shopper").isJsonNull()) {
+        ShopperData.validateJsonObject(jsonObj.getAsJsonObject("Shopper"));
+      }
+      // validate the optional field `PlanData`
+      if (jsonObj.get("PlanData") != null && !jsonObj.get("PlanData").isJsonNull()) {
+        PlanDataModel.validateJsonObject(jsonObj.getAsJsonObject("PlanData"));
+      }
+      // validate the optional field `BillingAddress`
+      if (jsonObj.get("BillingAddress") != null && !jsonObj.get("BillingAddress").isJsonNull()) {
+        AddressDataModel.validateJsonObject(jsonObj.getAsJsonObject("BillingAddress"));
+      }
+      // validate the optional field `PaymentMethod`
+      if (jsonObj.get("PaymentMethod") != null && !jsonObj.get("PaymentMethod").isJsonNull()) {
+        PaymentMethodModel.validateJsonObject(jsonObj.getAsJsonObject("PaymentMethod"));
+      }
+      // validate the optional field `RedirectUrls`
+      if (jsonObj.get("RedirectUrls") != null && !jsonObj.get("RedirectUrls").isJsonNull()) {
+        RedirectionEndpointsModel.validateJsonObject(jsonObj.getAsJsonObject("RedirectUrls"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

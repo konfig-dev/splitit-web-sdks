@@ -220,6 +220,10 @@ public class VerifyAuthorizationResponse {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      // validate the optional field `Authorization`
+      if (jsonObj.get("Authorization") != null && !jsonObj.get("Authorization").isJsonNull()) {
+        AuthorizationModel.validateJsonObject(jsonObj.getAsJsonObject("Authorization"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

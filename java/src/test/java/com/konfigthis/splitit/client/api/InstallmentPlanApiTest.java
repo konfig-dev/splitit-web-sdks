@@ -95,7 +95,7 @@ public class InstallmentPlanApiTest {
         String xSplititIdempotencyKey = null;
         String installmentPlanNumber = null;
         String refOrderNumber = null;
-        Map<String, Object> extendedParams = null;
+        Map<String, String> extendedParams = null;
         InstallmentPlanGetResponse response = api.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
         // TODO: test validations
     }

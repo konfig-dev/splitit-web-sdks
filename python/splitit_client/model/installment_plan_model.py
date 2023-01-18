@@ -82,7 +82,14 @@ class InstallmentPlanModel(ModelComposed):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -105,7 +112,7 @@ class InstallmentPlanModel(ModelComposed):
             'currency': (str,),  # noqa: E501
             'original_amount': (float,),  # noqa: E501
             'amount': (float,),  # noqa: E501
-            'extended_params': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'extended_params': ({str: (str,)},),  # noqa: E501
             'authorization': (AuthorizationModel,),  # noqa: E501
             'shopper': (ShopperData,),  # noqa: E501
             'billing_address': (AddressData,),  # noqa: E501
@@ -182,7 +189,7 @@ class InstallmentPlanModel(ModelComposed):
             currency (str): [optional]  # noqa: E501
             original_amount (float): [optional]  # noqa: E501
             amount (float): [optional]  # noqa: E501
-            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            extended_params ({str: (str,)}): [optional]  # noqa: E501
             authorization (AuthorizationModel): [optional]  # noqa: E501
             shopper (ShopperData): [optional]  # noqa: E501
             billing_address (AddressData): [optional]  # noqa: E501
@@ -299,7 +306,7 @@ class InstallmentPlanModel(ModelComposed):
             currency (str): [optional]  # noqa: E501
             original_amount (float): [optional]  # noqa: E501
             amount (float): [optional]  # noqa: E501
-            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            extended_params ({str: (str,)}): [optional]  # noqa: E501
             authorization (AuthorizationModel): [optional]  # noqa: E501
             shopper (ShopperData): [optional]  # noqa: E501
             billing_address (AddressData): [optional]  # noqa: E501

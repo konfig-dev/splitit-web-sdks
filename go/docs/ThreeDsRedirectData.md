@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | Pointer to **string** |  | [optional] 
 **Verb** | Pointer to **string** |  | [optional] 
-**Params** | Pointer to **map[string]interface{}** |  | [optional] 
+**Params** | Pointer to **map[string]string** |  | [optional] 
 
 ## Methods
 
@@ -79,20 +79,20 @@ HasVerb returns a boolean if a field has been set.
 
 ### GetParams
 
-`func (o *ThreeDsRedirectData) GetParams() map[string]interface{}`
+`func (o *ThreeDsRedirectData) GetParams() map[string]string`
 
 GetParams returns the Params field if non-nil, zero value otherwise.
 
 ### GetParamsOk
 
-`func (o *ThreeDsRedirectData) GetParamsOk() (*map[string]interface{}, bool)`
+`func (o *ThreeDsRedirectData) GetParamsOk() (*map[string]string, bool)`
 
 GetParamsOk returns a tuple with the Params field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParams
 
-`func (o *ThreeDsRedirectData) SetParams(v map[string]interface{})`
+`func (o *ThreeDsRedirectData) SetParams(v map[string]string)`
 
 SetParams sets Params field to given value.
 

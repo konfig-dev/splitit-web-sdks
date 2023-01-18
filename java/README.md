@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-web-java-sdk</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.konfigthis:splitit-web-java-sdk:1.0.3"
+     implementation "com.konfigthis:splitit-web-java-sdk:1.0.4"
   }
 ```
 
@@ -69,7 +69,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-web-java-sdk-1.0.3.jar`
+* `target/splitit-web-java-sdk-1.0.4.jar`
 * `target/lib/*.jar`
 
 ## Getting Started

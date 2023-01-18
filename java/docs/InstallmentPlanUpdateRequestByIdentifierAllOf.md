@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**identifier** | **IdentifierContract** |  |  [optional] |
+|**identifier** | [**IdentifierContract**](IdentifierContract.md) |  |  [optional] |
 
 
 

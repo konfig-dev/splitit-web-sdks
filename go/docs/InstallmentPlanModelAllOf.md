@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Currency** | Pointer to **string** |  | [optional] 
 **OriginalAmount** | Pointer to **float32** |  | [optional] 
 **Amount** | Pointer to **float32** |  | [optional] 
-**ExtendedParams** | Pointer to **map[string]interface{}** |  | [optional] 
+**ExtendedParams** | Pointer to **map[string]string** |  | [optional] 
 **Authorization** | Pointer to [**AuthorizationModel**](AuthorizationModel.md) |  | [optional] 
 **Shopper** | Pointer to [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | Pointer to [**AddressData**](AddressData.md) |  | [optional] 
@@ -220,20 +220,20 @@ HasAmount returns a boolean if a field has been set.
 
 ### GetExtendedParams
 
-`func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]interface{}`
+`func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]string`
 
 GetExtendedParams returns the ExtendedParams field if non-nil, zero value otherwise.
 
 ### GetExtendedParamsOk
 
-`func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (*map[string]interface{}, bool)`
+`func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (*map[string]string, bool)`
 
 GetExtendedParamsOk returns a tuple with the ExtendedParams field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtendedParams
 
-`func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]interface{})`
+`func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]string)`
 
 SetExtendedParams sets ExtendedParams field to given value.
 

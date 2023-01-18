@@ -14,13 +14,13 @@
 |**currency** | **String** |  |  [optional] |
 |**originalAmount** | **BigDecimal** |  |  [optional] |
 |**amount** | **BigDecimal** |  |  [optional] |
-|**extendedParams** | **Map&lt;String, Object&gt;** |  |  [optional] |
-|**authorization** | **AuthorizationModel** |  |  [optional] |
-|**shopper** | **ShopperData** |  |  [optional] |
-|**billingAddress** | **AddressData** |  |  [optional] |
-|**paymentMethod** | **PaymentMethodModel** |  |  [optional] |
-|**installments** | **List&lt;Installment&gt;** |  |  [optional] |
-|**links** | **LinksData** |  |  [optional] |
+|**extendedParams** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  |  [optional] |
+|**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
+|**billingAddress** | [**AddressData**](AddressData.md) |  |  [optional] |
+|**paymentMethod** | [**PaymentMethodModel**](PaymentMethodModel.md) |  |  [optional] |
+|**installments** | [**List&lt;Installment&gt;**](Installment.md) |  |  [optional] |
+|**links** | [**LinksData**](LinksData.md) |  |  [optional] |
 
 
 

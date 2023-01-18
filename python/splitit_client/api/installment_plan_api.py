@@ -350,7 +350,7 @@ class InstallmentPlanApi(object):
                     'ref_order_number':
                         (str,),
                     'extended_params':
-                        ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),
+                        ({str: (str,)},),
                 },
                 'attribute_map': {
                     'x_splitit_idempotency_key': 'X-Splitit-IdempotencyKey',
@@ -937,7 +937,7 @@ class InstallmentPlanApi(object):
         Keyword Args:
             installment_plan_number (str): [optional]
             ref_order_number (str): [optional]
-            extended_params ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]
+            extended_params ({str: (str,)}): [optional]
             _return_http_data_only (bool): response data without head status
                 code and headers. Default is True.
             _preload_content (bool): if False, the urllib3.HTTPResponse object

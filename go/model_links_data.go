@@ -20,10 +20,7 @@ type LinksData struct {
 	LearnMore *string `json:"LearnMore,omitempty"`
 	TermsConditions *string `json:"TermsConditions,omitempty"`
 	PrivacyPolicy *string `json:"PrivacyPolicy,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _LinksData LinksData
 
 // NewLinksData instantiates a new LinksData object
 // This constructor will assign default values to properties that have it defined,
@@ -184,32 +181,7 @@ func (o LinksData) MarshalJSON() ([]byte, error) {
 	if !isNil(o.PrivacyPolicy) {
 		toSerialize["PrivacyPolicy"] = o.PrivacyPolicy
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *LinksData) UnmarshalJSON(bytes []byte) (err error) {
-	varLinksData := _LinksData{}
-
-	if err = json.Unmarshal(bytes, &varLinksData); err == nil {
-		*o = LinksData(varLinksData)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "Checkout")
-		delete(additionalProperties, "LearnMore")
-		delete(additionalProperties, "TermsConditions")
-		delete(additionalProperties, "PrivacyPolicy")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableLinksData struct {

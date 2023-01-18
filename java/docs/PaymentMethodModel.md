@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**type** | **PaymentMethodType** |  |  |
-|**card** | **CardData** |  |  [optional] |
+|**card** | [**CardData**](CardData.md) |  |  [optional] |
 
 
 

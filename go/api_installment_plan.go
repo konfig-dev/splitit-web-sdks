@@ -683,7 +683,7 @@ type ApiSearchRequest struct {
 	xSplititIdempotencyKey *string
 	installmentPlanNumber *string
 	refOrderNumber *string
-	extendedParams *map[string]interface{}
+	extendedParams *map[string]string
 }
 
 func (r ApiSearchRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiSearchRequest {
@@ -701,7 +701,7 @@ func (r ApiSearchRequest) RefOrderNumber(refOrderNumber string) ApiSearchRequest
 	return r
 }
 
-func (r ApiSearchRequest) ExtendedParams(extendedParams map[string]interface{}) ApiSearchRequest {
+func (r ApiSearchRequest) ExtendedParams(extendedParams map[string]string) ApiSearchRequest {
 	r.extendedParams = &extendedParams
 	return r
 }

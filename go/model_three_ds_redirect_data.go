@@ -18,11 +18,8 @@ import (
 type ThreeDsRedirectData struct {
 	Url *string `json:"Url,omitempty"`
 	Verb *string `json:"Verb,omitempty"`
-	Params map[string]interface{} `json:"Params,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Params *map[string]string `json:"Params,omitempty"`
 }
-
-type _ThreeDsRedirectData ThreeDsRedirectData
 
 // NewThreeDsRedirectData instantiates a new ThreeDsRedirectData object
 // This constructor will assign default values to properties that have it defined,
@@ -106,19 +103,19 @@ func (o *ThreeDsRedirectData) SetVerb(v string) {
 }
 
 // GetParams returns the Params field value if set, zero value otherwise.
-func (o *ThreeDsRedirectData) GetParams() map[string]interface{} {
+func (o *ThreeDsRedirectData) GetParams() map[string]string {
 	if o == nil || isNil(o.Params) {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.Params
+	return *o.Params
 }
 
 // GetParamsOk returns a tuple with the Params field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ThreeDsRedirectData) GetParamsOk() (map[string]interface{}, bool) {
+func (o *ThreeDsRedirectData) GetParamsOk() (*map[string]string, bool) {
 	if o == nil || isNil(o.Params) {
-    return map[string]interface{}{}, false
+    return nil, false
 	}
 	return o.Params, true
 }
@@ -132,9 +129,9 @@ func (o *ThreeDsRedirectData) HasParams() bool {
 	return false
 }
 
-// SetParams gets a reference to the given map[string]interface{} and assigns it to the Params field.
-func (o *ThreeDsRedirectData) SetParams(v map[string]interface{}) {
-	o.Params = v
+// SetParams gets a reference to the given map[string]string and assigns it to the Params field.
+func (o *ThreeDsRedirectData) SetParams(v map[string]string) {
+	o.Params = &v
 }
 
 func (o ThreeDsRedirectData) MarshalJSON() ([]byte, error) {
@@ -148,31 +145,7 @@ func (o ThreeDsRedirectData) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Params) {
 		toSerialize["Params"] = o.Params
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *ThreeDsRedirectData) UnmarshalJSON(bytes []byte) (err error) {
-	varThreeDsRedirectData := _ThreeDsRedirectData{}
-
-	if err = json.Unmarshal(bytes, &varThreeDsRedirectData); err == nil {
-		*o = ThreeDsRedirectData(varThreeDsRedirectData)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "Url")
-		delete(additionalProperties, "Verb")
-		delete(additionalProperties, "Params")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableThreeDsRedirectData struct {

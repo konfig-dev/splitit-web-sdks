@@ -128,7 +128,8 @@ paths:
         name: extendedParams
         required: false
         schema:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
         style: form
         x-nullable: true
@@ -828,7 +829,6 @@ components:
       - $ref: '#/components/schemas/Error'
       - $ref: '#/components/schemas/ErrorExtended_allOf'
     Error:
-      additionalProperties: true
       properties:
         Code:
           type: string
@@ -838,7 +838,6 @@ components:
           type: string
       type: object
     ResponseV2:
-      additionalProperties: true
       type: object
     InstallmentPlanModel:
       allOf:
@@ -871,7 +870,6 @@ components:
       - Cleared
       - Canceled
     AuthorizationModel:
-      additionalProperties: true
       properties:
         Status:
           $ref: '#/components/schemas/GwAuthorizationStatus'
@@ -912,18 +910,17 @@ components:
       - Pending3DS
       - Failed
     ThreeDsRedirectData:
-      additionalProperties: true
       properties:
         Url:
           type: string
         Verb:
           type: string
         Params:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
       type: object
     ShopperData:
-      additionalProperties: true
       example:
         Email: Email
         FullName: FullName
@@ -940,7 +937,6 @@ components:
           type: string
       type: object
     AddressData:
-      additionalProperties: true
       properties:
         AddressLine:
           type: string
@@ -956,7 +952,6 @@ components:
           type: string
       type: object
     PaymentMethodModel:
-      additionalProperties: true
       example:
         Type: null
         Card:
@@ -981,7 +976,6 @@ components:
       x-enumNames:
       - Card
     CardData:
-      additionalProperties: true
       example:
         CardNumber: CardNumber
         CardExpMonth: CardExpMonth
@@ -1001,7 +995,6 @@ components:
           type: string
       type: object
     Installment:
-      additionalProperties: true
       properties:
         InstallmentNumber:
           format: int32
@@ -1029,7 +1022,6 @@ components:
       - Pending
       - Processed
     LinksData:
-      additionalProperties: true
       properties:
         Checkout:
           type: string
@@ -1052,7 +1044,7 @@ components:
       example:
         PlanData:
           ExtendedParams:
-            key: ""
+            key: ExtendedParams
           RefOrderNumber: RefOrderNumber
           Currency: Currency
           TerminalId: TerminalId
@@ -1114,10 +1106,9 @@ components:
       - TermsAndConditionsAccepted
       type: object
     PlanDataModel:
-      additionalProperties: true
       example:
         ExtendedParams:
-          key: ""
+          key: ExtendedParams
         RefOrderNumber: RefOrderNumber
         Currency: Currency
         TerminalId: TerminalId
@@ -1140,7 +1131,8 @@ components:
         RefOrderNumber:
           type: string
         ExtendedParams:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
       required:
       - NumberOfInstallments
@@ -1148,7 +1140,6 @@ components:
       - TotalAmount
       type: object
     AddressDataModel:
-      additionalProperties: true
       example:
         Zip: Zip
         AddressLine2: AddressLine2
@@ -1171,7 +1162,6 @@ components:
           type: string
       type: object
     RedirectionEndpointsModel:
-      additionalProperties: true
       example:
         Succeeded: Succeeded
         Failed: Failed
@@ -1244,18 +1234,17 @@ components:
       - $ref: '#/components/schemas/InstallmentPlanUpdateRequest'
       - $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier_allOf'
     IdentifierContract:
-      additionalProperties: true
       properties:
         RefOrderNumber:
           type: string
         InstallmentPlanNumber:
           type: string
         ExtendedParams:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
       type: object
     InstallmentPlanUpdateRequest:
-      additionalProperties: true
       properties:
         RefOrderNumber:
           type: string
@@ -1280,7 +1269,6 @@ components:
       - $ref: '#/components/schemas/ResponseV2'
       - $ref: '#/components/schemas/InstallmentPlanRefundResponse_allOf'
     RefundSummary:
-      additionalProperties: true
       properties:
         TotalAmount:
           format: decimal
@@ -1336,7 +1324,8 @@ components:
     ErrorExtended_allOf:
       properties:
         ExtraData:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
       type: object
       example: null
@@ -1360,7 +1349,8 @@ components:
           format: decimal
           type: number
         ExtendedParams:
-          additionalProperties: true
+          additionalProperties:
+            type: string
           type: object
         Authorization:
           $ref: '#/components/schemas/AuthorizationModel'

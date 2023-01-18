@@ -53,18 +53,18 @@ import com.konfigthis.splitit.client.JSON;
 public class ErrorExtendedAllOf {
   public static final String SERIALIZED_NAME_EXTRA_DATA = "ExtraData";
   @SerializedName(SERIALIZED_NAME_EXTRA_DATA)
-  private Map<String, Object> extraData = null;
+  private Map<String, String> extraData = null;
 
   public ErrorExtendedAllOf() {
   }
 
-  public ErrorExtendedAllOf extraData(Map<String, Object> extraData) {
+  public ErrorExtendedAllOf extraData(Map<String, String> extraData) {
     
     this.extraData = extraData;
     return this;
   }
 
-  public ErrorExtendedAllOf putExtraDataItem(String key, Object extraDataItem) {
+  public ErrorExtendedAllOf putExtraDataItem(String key, String extraDataItem) {
     if (this.extraData == null) {
       this.extraData = new HashMap<>();
     }
@@ -79,12 +79,12 @@ public class ErrorExtendedAllOf {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public Map<String, Object> getExtraData() {
+  public Map<String, String> getExtraData() {
     return extraData;
   }
 
 
-  public void setExtraData(Map<String, Object> extraData) {
+  public void setExtraData(Map<String, String> extraData) {
     this.extraData = extraData;
   }
 

@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**isAuthorized** | **Boolean** |  |  |
 |**authorizationAmount** | **BigDecimal** |  |  [optional] |
-|**authorization** | **AuthorizationModel** |  |  [optional] |
+|**authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  |  [optional] |
 
 
 

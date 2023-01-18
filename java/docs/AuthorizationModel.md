@@ -13,7 +13,7 @@
 |**gatewayTransactionID** | **String** |  |  [optional] |
 |**gatewayResultCode** | **String** |  |  [optional] |
 |**gatewayResultMessage** | **String** |  |  [optional] |
-|**threeDSRedirect** | **ThreeDsRedirectData** |  |  [optional] |
+|**threeDSRedirect** | [**ThreeDsRedirectData**](ThreeDsRedirectData.md) |  |  [optional] |
 |**CAVV** | **String** |  |  [optional] |
 |**ECI** | **String** |  |  [optional] |
 

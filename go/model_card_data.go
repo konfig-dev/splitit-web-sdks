@@ -21,10 +21,7 @@ type CardData struct {
 	CardExpYear *string `json:"CardExpYear,omitempty"`
 	CardExpMonth *string `json:"CardExpMonth,omitempty"`
 	CardCvv *string `json:"CardCvv,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _CardData CardData
 
 // NewCardData instantiates a new CardData object
 // This constructor will assign default values to properties that have it defined,
@@ -220,33 +217,7 @@ func (o CardData) MarshalJSON() ([]byte, error) {
 	if !isNil(o.CardCvv) {
 		toSerialize["CardCvv"] = o.CardCvv
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *CardData) UnmarshalJSON(bytes []byte) (err error) {
-	varCardData := _CardData{}
-
-	if err = json.Unmarshal(bytes, &varCardData); err == nil {
-		*o = CardData(varCardData)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "CardHolderFullName")
-		delete(additionalProperties, "CardNumber")
-		delete(additionalProperties, "CardExpYear")
-		delete(additionalProperties, "CardExpMonth")
-		delete(additionalProperties, "CardCvv")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCardData struct {

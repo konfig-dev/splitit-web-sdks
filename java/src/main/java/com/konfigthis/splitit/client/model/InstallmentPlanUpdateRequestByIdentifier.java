@@ -278,6 +278,10 @@ public class InstallmentPlanUpdateRequestByIdentifier {
       if ((jsonObj.get("TrackingNumber") != null && !jsonObj.get("TrackingNumber").isJsonNull()) && !jsonObj.get("TrackingNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `TrackingNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("TrackingNumber").toString()));
       }
+      // validate the optional field `Identifier`
+      if (jsonObj.get("Identifier") != null && !jsonObj.get("Identifier").isJsonNull()) {
+        IdentifierContract.validateJsonObject(jsonObj.getAsJsonObject("Identifier"));
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

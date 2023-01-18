@@ -23,7 +23,7 @@ type InstallmentPlanModelAllOf struct {
 	Currency *string `json:"Currency,omitempty"`
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty"`
 	Amount *float32 `json:"Amount,omitempty"`
-	ExtendedParams map[string]interface{} `json:"ExtendedParams,omitempty"`
+	ExtendedParams *map[string]string `json:"ExtendedParams,omitempty"`
 	Authorization *AuthorizationModel `json:"Authorization,omitempty"`
 	Shopper *ShopperData `json:"Shopper,omitempty"`
 	BillingAddress *AddressData `json:"BillingAddress,omitempty"`
@@ -277,19 +277,19 @@ func (o *InstallmentPlanModelAllOf) SetAmount(v float32) {
 }
 
 // GetExtendedParams returns the ExtendedParams field value if set, zero value otherwise.
-func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]interface{} {
+func (o *InstallmentPlanModelAllOf) GetExtendedParams() map[string]string {
 	if o == nil || isNil(o.ExtendedParams) {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.ExtendedParams
+	return *o.ExtendedParams
 }
 
 // GetExtendedParamsOk returns a tuple with the ExtendedParams field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (map[string]interface{}, bool) {
+func (o *InstallmentPlanModelAllOf) GetExtendedParamsOk() (*map[string]string, bool) {
 	if o == nil || isNil(o.ExtendedParams) {
-    return map[string]interface{}{}, false
+    return nil, false
 	}
 	return o.ExtendedParams, true
 }
@@ -303,9 +303,9 @@ func (o *InstallmentPlanModelAllOf) HasExtendedParams() bool {
 	return false
 }
 
-// SetExtendedParams gets a reference to the given map[string]interface{} and assigns it to the ExtendedParams field.
-func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]interface{}) {
-	o.ExtendedParams = v
+// SetExtendedParams gets a reference to the given map[string]string and assigns it to the ExtendedParams field.
+func (o *InstallmentPlanModelAllOf) SetExtendedParams(v map[string]string) {
+	o.ExtendedParams = &v
 }
 
 // GetAuthorization returns the Authorization field value if set, zero value otherwise.

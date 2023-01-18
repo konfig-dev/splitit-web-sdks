@@ -66,7 +66,14 @@ class ErrorExtended(ModelComposed):
     validations = {
     }
 
-    additional_properties_type = None
+    @cached_property
+    def additional_properties_type():
+        """
+        This must be a method because a model may have properties that are
+        of type self, this must run after the class is loaded
+        """
+        lazy_import()
+        return (bool, date, datetime, dict, float, int, list, str, none_type,)  # noqa: E501
 
     _nullable = False
 
@@ -85,7 +92,7 @@ class ErrorExtended(ModelComposed):
             'code': (str,),  # noqa: E501
             'message': (str,),  # noqa: E501
             'additional_info': (str,),  # noqa: E501
-            'extra_data': ({str: (bool, date, datetime, dict, float, int, list, str, none_type)},),  # noqa: E501
+            'extra_data': ({str: (str,)},),  # noqa: E501
         }
 
     @cached_property
@@ -142,7 +149,7 @@ class ErrorExtended(ModelComposed):
             code (str): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             additional_info (str): [optional]  # noqa: E501
-            extra_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            extra_data ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -249,7 +256,7 @@ class ErrorExtended(ModelComposed):
             code (str): [optional]  # noqa: E501
             message (str): [optional]  # noqa: E501
             additional_info (str): [optional]  # noqa: E501
-            extra_data ({str: (bool, date, datetime, dict, float, int, list, str, none_type)}): [optional]  # noqa: E501
+            extra_data ({str: (str,)}): [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

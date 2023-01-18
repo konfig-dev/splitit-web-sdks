@@ -75,7 +75,7 @@ export const setBearerAuthToObject = async function (object: any, configuration?
  * @export
  */
 export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
-    if (configuration && configuration.oauthClientId && configuration.oauthClientSecret) {
+    if (configuration && configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
         const oauthResponse = await axios.request({
             url: "https://id.sandbox.splitit.com/connect/token",
             method: "POST",
@@ -85,8 +85,7 @@ export const setOAuthToObject = async function (object: any, name: string, scope
             data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
         });
         const json = await oauthResponse.data;
-        const accessToken = json.access_token;
-        object["Authorization"] = "Bearer " + accessToken;
+        configuration.accessToken = json.access_token;
     }
     if (configuration && configuration.accessToken) {
         const localVarAccessTokenValue = typeof configuration.accessToken === 'function'

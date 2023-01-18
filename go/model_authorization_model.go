@@ -26,10 +26,7 @@ type AuthorizationModel struct {
 	ThreeDSRedirect *ThreeDsRedirectData `json:"ThreeDSRedirect,omitempty"`
 	CAVV NullableString `json:"CAVV,omitempty"`
 	ECI NullableString `json:"ECI,omitempty"`
-	AdditionalProperties map[string]interface{}
 }
-
-type _AuthorizationModel AuthorizationModel
 
 // NewAuthorizationModel instantiates a new AuthorizationModel object
 // This constructor will assign default values to properties that have it defined,
@@ -388,37 +385,7 @@ func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
 	if o.ECI.IsSet() {
 		toSerialize["ECI"] = o.ECI.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return json.Marshal(toSerialize)
-}
-
-func (o *AuthorizationModel) UnmarshalJSON(bytes []byte) (err error) {
-	varAuthorizationModel := _AuthorizationModel{}
-
-	if err = json.Unmarshal(bytes, &varAuthorizationModel); err == nil {
-		*o = AuthorizationModel(varAuthorizationModel)
-	}
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(bytes, &additionalProperties); err == nil {
-		delete(additionalProperties, "Status")
-		delete(additionalProperties, "Date")
-		delete(additionalProperties, "SplititErrorResultCode")
-		delete(additionalProperties, "GatewayTransactionID")
-		delete(additionalProperties, "GatewayResultCode")
-		delete(additionalProperties, "GatewayResultMessage")
-		delete(additionalProperties, "ThreeDSRedirect")
-		delete(additionalProperties, "CAVV")
-		delete(additionalProperties, "ECI")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAuthorizationModel struct {
