@@ -23,19 +23,19 @@ import (
 // InstallmentPlanApiService InstallmentPlanApi service
 type InstallmentPlanApiService service
 
-type ApiCancelRequest struct {
+type InstallmentPlanApiCancelRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
 	xSplititIdempotencyKey *string
 }
 
-func (r ApiCancelRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiCancelRequest {
+func (r InstallmentPlanApiCancelRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiCancelRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiCancelRequest) Execute() (*InstallmentPlanCancelResponse, *http.Response, error) {
+func (r InstallmentPlanApiCancelRequest) Execute() (*InstallmentPlanCancelResponse, *http.Response, error) {
 	return r.ApiService.CancelExecute(r)
 }
 
@@ -44,10 +44,10 @@ Cancel Method for Cancel
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
- @return ApiCancelRequest
+ @return InstallmentPlanApiCancelRequest
 */
-func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) ApiCancelRequest {
-	return ApiCancelRequest{
+func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) InstallmentPlanApiCancelRequest {
+	return InstallmentPlanApiCancelRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
@@ -56,7 +56,7 @@ func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) ApiCanc
 
 // Execute executes the request
 //  @return InstallmentPlanCancelResponse
-func (a *InstallmentPlanApiService) CancelExecute(r ApiCancelRequest) (*InstallmentPlanCancelResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequest) (*InstallmentPlanCancelResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -177,19 +177,19 @@ func (a *InstallmentPlanApiService) CancelExecute(r ApiCancelRequest) (*Installm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetRequest struct {
+type InstallmentPlanApiGetRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
 	xSplititIdempotencyKey *string
 }
 
-func (r ApiGetRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiGetRequest {
+func (r InstallmentPlanApiGetRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiGetRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiGetRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
+func (r InstallmentPlanApiGetRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -198,10 +198,10 @@ Get Method for Get
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
- @return ApiGetRequest
+ @return InstallmentPlanApiGetRequest
 */
-func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) ApiGetRequest {
-	return ApiGetRequest{
+func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) InstallmentPlanApiGetRequest {
+	return InstallmentPlanApiGetRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
@@ -210,7 +210,7 @@ func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) ApiGetRequ
 
 // Execute executes the request
 //  @return InstallmentPlanModel
-func (a *InstallmentPlanApiService) GetExecute(r ApiGetRequest) (*InstallmentPlanModel, *http.Response, error) {
+func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (*InstallmentPlanModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -331,7 +331,7 @@ func (a *InstallmentPlanApiService) GetExecute(r ApiGetRequest) (*InstallmentPla
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostRequest struct {
+type InstallmentPlanApiPostRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	xSplititIdempotencyKey *string
@@ -339,22 +339,22 @@ type ApiPostRequest struct {
 	xSplititTestMode *string
 }
 
-func (r ApiPostRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiPostRequest {
+func (r InstallmentPlanApiPostRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiPostRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiPostRequest) InstallmentPlanCreateRequest(installmentPlanCreateRequest InstallmentPlanCreateRequest) ApiPostRequest {
+func (r InstallmentPlanApiPostRequest) InstallmentPlanCreateRequest(installmentPlanCreateRequest InstallmentPlanCreateRequest) InstallmentPlanApiPostRequest {
 	r.installmentPlanCreateRequest = &installmentPlanCreateRequest
 	return r
 }
 
-func (r ApiPostRequest) XSplititTestMode(xSplititTestMode string) ApiPostRequest {
+func (r InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string) InstallmentPlanApiPostRequest {
 	r.xSplititTestMode = &xSplititTestMode
 	return r
 }
 
-func (r ApiPostRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
+func (r InstallmentPlanApiPostRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
 	return r.ApiService.PostExecute(r)
 }
 
@@ -362,10 +362,10 @@ func (r ApiPostRequest) Execute() (*InstallmentPlanModel, *http.Response, error)
 Post Method for Post
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRequest
+ @return InstallmentPlanApiPostRequest
 */
-func (a *InstallmentPlanApiService) Post() ApiPostRequest {
-	return ApiPostRequest{
+func (a *InstallmentPlanApiService) Post() InstallmentPlanApiPostRequest {
+	return InstallmentPlanApiPostRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 	}
@@ -373,7 +373,7 @@ func (a *InstallmentPlanApiService) Post() ApiPostRequest {
 
 // Execute executes the request
 //  @return InstallmentPlanModel
-func (a *InstallmentPlanApiService) PostExecute(r ApiPostRequest) (*InstallmentPlanModel, *http.Response, error) {
+func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest) (*InstallmentPlanModel, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -512,7 +512,7 @@ func (a *InstallmentPlanApiService) PostExecute(r ApiPostRequest) (*InstallmentP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRefundRequest struct {
+type InstallmentPlanApiRefundRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
@@ -520,17 +520,17 @@ type ApiRefundRequest struct {
 	installmentPlanRefundRequest *InstallmentPlanRefundRequest
 }
 
-func (r ApiRefundRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiRefundRequest {
+func (r InstallmentPlanApiRefundRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiRefundRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiRefundRequest) InstallmentPlanRefundRequest(installmentPlanRefundRequest InstallmentPlanRefundRequest) ApiRefundRequest {
+func (r InstallmentPlanApiRefundRequest) InstallmentPlanRefundRequest(installmentPlanRefundRequest InstallmentPlanRefundRequest) InstallmentPlanApiRefundRequest {
 	r.installmentPlanRefundRequest = &installmentPlanRefundRequest
 	return r
 }
 
-func (r ApiRefundRequest) Execute() (*InstallmentPlanRefundResponse, *http.Response, error) {
+func (r InstallmentPlanApiRefundRequest) Execute() (*InstallmentPlanRefundResponse, *http.Response, error) {
 	return r.ApiService.RefundExecute(r)
 }
 
@@ -539,10 +539,10 @@ Refund Method for Refund
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
- @return ApiRefundRequest
+ @return InstallmentPlanApiRefundRequest
 */
-func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) ApiRefundRequest {
-	return ApiRefundRequest{
+func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) InstallmentPlanApiRefundRequest {
+	return InstallmentPlanApiRefundRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
@@ -551,7 +551,7 @@ func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) ApiRefu
 
 // Execute executes the request
 //  @return InstallmentPlanRefundResponse
-func (a *InstallmentPlanApiService) RefundExecute(r ApiRefundRequest) (*InstallmentPlanRefundResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequest) (*InstallmentPlanRefundResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -677,7 +677,7 @@ func (a *InstallmentPlanApiService) RefundExecute(r ApiRefundRequest) (*Installm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiSearchRequest struct {
+type InstallmentPlanApiSearchRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	xSplititIdempotencyKey *string
@@ -686,27 +686,27 @@ type ApiSearchRequest struct {
 	extendedParams *map[string]string
 }
 
-func (r ApiSearchRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiSearchRequest {
+func (r InstallmentPlanApiSearchRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiSearchRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiSearchRequest) InstallmentPlanNumber(installmentPlanNumber string) ApiSearchRequest {
+func (r InstallmentPlanApiSearchRequest) InstallmentPlanNumber(installmentPlanNumber string) InstallmentPlanApiSearchRequest {
 	r.installmentPlanNumber = &installmentPlanNumber
 	return r
 }
 
-func (r ApiSearchRequest) RefOrderNumber(refOrderNumber string) ApiSearchRequest {
+func (r InstallmentPlanApiSearchRequest) RefOrderNumber(refOrderNumber string) InstallmentPlanApiSearchRequest {
 	r.refOrderNumber = &refOrderNumber
 	return r
 }
 
-func (r ApiSearchRequest) ExtendedParams(extendedParams map[string]string) ApiSearchRequest {
+func (r InstallmentPlanApiSearchRequest) ExtendedParams(extendedParams map[string]string) InstallmentPlanApiSearchRequest {
 	r.extendedParams = &extendedParams
 	return r
 }
 
-func (r ApiSearchRequest) Execute() (*InstallmentPlanGetResponse, *http.Response, error) {
+func (r InstallmentPlanApiSearchRequest) Execute() (*InstallmentPlanGetResponse, *http.Response, error) {
 	return r.ApiService.SearchExecute(r)
 }
 
@@ -714,10 +714,10 @@ func (r ApiSearchRequest) Execute() (*InstallmentPlanGetResponse, *http.Response
 Search Method for Search
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiSearchRequest
+ @return InstallmentPlanApiSearchRequest
 */
-func (a *InstallmentPlanApiService) Search() ApiSearchRequest {
-	return ApiSearchRequest{
+func (a *InstallmentPlanApiService) Search() InstallmentPlanApiSearchRequest {
+	return InstallmentPlanApiSearchRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 	}
@@ -725,7 +725,7 @@ func (a *InstallmentPlanApiService) Search() ApiSearchRequest {
 
 // Execute executes the request
 //  @return InstallmentPlanGetResponse
-func (a *InstallmentPlanApiService) SearchExecute(r ApiSearchRequest) (*InstallmentPlanGetResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequest) (*InstallmentPlanGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -854,7 +854,7 @@ func (a *InstallmentPlanApiService) SearchExecute(r ApiSearchRequest) (*Installm
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateOrderRequest struct {
+type InstallmentPlanApiUpdateOrderRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
@@ -862,17 +862,17 @@ type ApiUpdateOrderRequest struct {
 	updateOrderRequest *UpdateOrderRequest
 }
 
-func (r ApiUpdateOrderRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiUpdateOrderRequest {
+func (r InstallmentPlanApiUpdateOrderRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiUpdateOrderRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiUpdateOrderRequest) UpdateOrderRequest(updateOrderRequest UpdateOrderRequest) ApiUpdateOrderRequest {
+func (r InstallmentPlanApiUpdateOrderRequest) UpdateOrderRequest(updateOrderRequest UpdateOrderRequest) InstallmentPlanApiUpdateOrderRequest {
 	r.updateOrderRequest = &updateOrderRequest
 	return r
 }
 
-func (r ApiUpdateOrderRequest) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
+func (r InstallmentPlanApiUpdateOrderRequest) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateOrderExecute(r)
 }
 
@@ -881,10 +881,10 @@ UpdateOrder Method for UpdateOrder
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
- @return ApiUpdateOrderRequest
+ @return InstallmentPlanApiUpdateOrderRequest
 */
-func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) ApiUpdateOrderRequest {
-	return ApiUpdateOrderRequest{
+func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) InstallmentPlanApiUpdateOrderRequest {
+	return InstallmentPlanApiUpdateOrderRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
@@ -893,7 +893,7 @@ func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) Ap
 
 // Execute executes the request
 //  @return InstallmentPlanUpdateResponse
-func (a *InstallmentPlanApiService) UpdateOrderExecute(r ApiUpdateOrderRequest) (*InstallmentPlanUpdateResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdateOrderRequest) (*InstallmentPlanUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1019,24 +1019,24 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r ApiUpdateOrderRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateOrder2Request struct {
+type InstallmentPlanApiUpdateOrder2Request struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	xSplititIdempotencyKey *string
 	installmentPlanUpdateRequestByIdentifier *InstallmentPlanUpdateRequestByIdentifier
 }
 
-func (r ApiUpdateOrder2Request) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiUpdateOrder2Request {
+func (r InstallmentPlanApiUpdateOrder2Request) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiUpdateOrder2Request {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiUpdateOrder2Request) InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier InstallmentPlanUpdateRequestByIdentifier) ApiUpdateOrder2Request {
+func (r InstallmentPlanApiUpdateOrder2Request) InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier InstallmentPlanUpdateRequestByIdentifier) InstallmentPlanApiUpdateOrder2Request {
 	r.installmentPlanUpdateRequestByIdentifier = &installmentPlanUpdateRequestByIdentifier
 	return r
 }
 
-func (r ApiUpdateOrder2Request) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
+func (r InstallmentPlanApiUpdateOrder2Request) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
 	return r.ApiService.UpdateOrder2Execute(r)
 }
 
@@ -1044,10 +1044,10 @@ func (r ApiUpdateOrder2Request) Execute() (*InstallmentPlanUpdateResponse, *http
 UpdateOrder2 Method for UpdateOrder2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdateOrder2Request
+ @return InstallmentPlanApiUpdateOrder2Request
 */
-func (a *InstallmentPlanApiService) UpdateOrder2() ApiUpdateOrder2Request {
-	return ApiUpdateOrder2Request{
+func (a *InstallmentPlanApiService) UpdateOrder2() InstallmentPlanApiUpdateOrder2Request {
+	return InstallmentPlanApiUpdateOrder2Request{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 	}
@@ -1055,7 +1055,7 @@ func (a *InstallmentPlanApiService) UpdateOrder2() ApiUpdateOrder2Request {
 
 // Execute executes the request
 //  @return InstallmentPlanUpdateResponse
-func (a *InstallmentPlanApiService) UpdateOrder2Execute(r ApiUpdateOrder2Request) (*InstallmentPlanUpdateResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) UpdateOrder2Execute(r InstallmentPlanApiUpdateOrder2Request) (*InstallmentPlanUpdateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -1180,19 +1180,19 @@ func (a *InstallmentPlanApiService) UpdateOrder2Execute(r ApiUpdateOrder2Request
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiVerifyAuthorizationRequest struct {
+type InstallmentPlanApiVerifyAuthorizationRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
 	xSplititIdempotencyKey *string
 }
 
-func (r ApiVerifyAuthorizationRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) ApiVerifyAuthorizationRequest {
+func (r InstallmentPlanApiVerifyAuthorizationRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiVerifyAuthorizationRequest {
 	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
 	return r
 }
 
-func (r ApiVerifyAuthorizationRequest) Execute() (*VerifyAuthorizationResponse, *http.Response, error) {
+func (r InstallmentPlanApiVerifyAuthorizationRequest) Execute() (*VerifyAuthorizationResponse, *http.Response, error) {
 	return r.ApiService.VerifyAuthorizationExecute(r)
 }
 
@@ -1201,10 +1201,10 @@ VerifyAuthorization Method for VerifyAuthorization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
- @return ApiVerifyAuthorizationRequest
+ @return InstallmentPlanApiVerifyAuthorizationRequest
 */
-func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string) ApiVerifyAuthorizationRequest {
-	return ApiVerifyAuthorizationRequest{
+func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string) InstallmentPlanApiVerifyAuthorizationRequest {
+	return InstallmentPlanApiVerifyAuthorizationRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
@@ -1213,7 +1213,7 @@ func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber st
 
 // Execute executes the request
 //  @return VerifyAuthorizationResponse
-func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r ApiVerifyAuthorizationRequest) (*VerifyAuthorizationResponse, *http.Response, error) {
+func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r InstallmentPlanApiVerifyAuthorizationRequest) (*VerifyAuthorizationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}

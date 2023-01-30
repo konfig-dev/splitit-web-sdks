@@ -30,15 +30,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.Cancel(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Cancel``: %v\n", err)
@@ -100,15 +100,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.Get(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Get``: %v\n", err)
@@ -170,16 +170,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
-    installmentPlanCreateRequest := *openapiclient.NewInstallmentPlanCreateRequest(false, false, false, false) // InstallmentPlanCreateRequest | 
+    installmentPlanCreateRequest := *splitit.NewInstallmentPlanCreateRequest(false, false, false, false) // InstallmentPlanCreateRequest | 
     xSplititTestMode := "xSplititTestMode_example" // string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.Post(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Post``: %v\n", err)
@@ -238,16 +238,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
-    installmentPlanRefundRequest := *openapiclient.NewInstallmentPlanRefundRequest(float32(123)) // InstallmentPlanRefundRequest | 
+    installmentPlanRefundRequest := *splitit.NewInstallmentPlanRefundRequest(float32(123)) // InstallmentPlanRefundRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.Refund(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanRefundRequest(installmentPlanRefundRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Refund``: %v\n", err)
@@ -310,7 +310,7 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
@@ -319,8 +319,8 @@ func main() {
     refOrderNumber := "refOrderNumber_example" // string |  (optional)
     extendedParams := map[string]string{"key": "Inner_example"} // map[string]string |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.Search(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Search``: %v\n", err)
@@ -380,16 +380,16 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
-    updateOrderRequest := *openapiclient.NewUpdateOrderRequest() // UpdateOrderRequest | 
+    updateOrderRequest := *splitit.NewUpdateOrderRequest() // UpdateOrderRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).UpdateOrderRequest(updateOrderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.UpdateOrder``: %v\n", err)
@@ -452,15 +452,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
-    installmentPlanUpdateRequestByIdentifier := *openapiclient.NewInstallmentPlanUpdateRequestByIdentifier() // InstallmentPlanUpdateRequestByIdentifier | 
+    installmentPlanUpdateRequestByIdentifier := *splitit.NewInstallmentPlanUpdateRequestByIdentifier() // InstallmentPlanUpdateRequestByIdentifier | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.UpdateOrder2``: %v\n", err)
@@ -518,15 +518,15 @@ import (
     "context"
     "fmt"
     "os"
-    openapiclient "./openapi"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
     resp, r, err := apiClient.InstallmentPlanApi.VerifyAuthorization(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.VerifyAuthorization``: %v\n", err)

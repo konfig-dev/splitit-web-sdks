@@ -13,13 +13,13 @@ import (
     "github.com/stretchr/testify/assert"
     "github.com/stretchr/testify/require"
     "testing"
-    openapiclient "github.com/konfig-dev/splitit-web-sdks/go"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
 )
 
 func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
 
     t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
 
