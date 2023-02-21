@@ -8,6 +8,7 @@ generators:
     version: 1.1.0
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
+    clientName: Splitit
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
@@ -16,6 +17,7 @@ generators:
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
+    clientName: Splitit
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
