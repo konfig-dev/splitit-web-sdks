@@ -3,7 +3,17 @@
   "files.associations": {
     ".konfigignore": "ignore"
   },
-  "python.testing.pytestArgs": ["python"],
+  "python.testing.pytestArgs": [
+    "python"
+  ],
   "python.testing.unittestEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./python",
+    "-p",
+    "test_*.py"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
 }
