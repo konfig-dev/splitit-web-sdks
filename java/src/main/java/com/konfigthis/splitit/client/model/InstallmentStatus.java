@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -31,7 +31,9 @@ public enum InstallmentStatus {
   
   PENDING("Pending"),
   
-  PROCESSED("Processed");
+  PROCESSED("Processed"),
+  
+  CANCELED("Canceled");
 
   private String value;
 

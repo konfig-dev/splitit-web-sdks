@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -20,12 +20,11 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.splitit.client.model.GwAuthorizationStatus;
-import com.konfigthis.splitit.client.model.ThreeDsRedirectData;
+import com.konfigthis.splitit.client.model.ThreeDsRedirectDataV3;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
-import org.openapitools.jackson.nullable.JsonNullable;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -79,7 +78,7 @@ public class AuthorizationModel {
 
   public static final String SERIALIZED_NAME_THREE_D_S_REDIRECT = "ThreeDSRedirect";
   @SerializedName(SERIALIZED_NAME_THREE_D_S_REDIRECT)
-  private ThreeDsRedirectData threeDSRedirect;
+  private ThreeDsRedirectDataV3 threeDSRedirect;
 
   public static final String SERIALIZED_NAME_C_A_V_V = "CAVV";
   @SerializedName(SERIALIZED_NAME_C_A_V_V)
@@ -230,7 +229,7 @@ public class AuthorizationModel {
   }
 
 
-  public AuthorizationModel threeDSRedirect(ThreeDsRedirectData threeDSRedirect) {
+  public AuthorizationModel threeDSRedirect(ThreeDsRedirectDataV3 threeDSRedirect) {
     
     this.threeDSRedirect = threeDSRedirect;
     return this;
@@ -243,12 +242,12 @@ public class AuthorizationModel {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ThreeDsRedirectData getThreeDSRedirect() {
+  public ThreeDsRedirectDataV3 getThreeDSRedirect() {
     return threeDSRedirect;
   }
 
 
-  public void setThreeDSRedirect(ThreeDsRedirectData threeDSRedirect) {
+  public void setThreeDSRedirect(ThreeDsRedirectDataV3 threeDSRedirect) {
     this.threeDSRedirect = threeDSRedirect;
   }
 
@@ -365,20 +364,9 @@ public class AuthorizationModel {
         Objects.equals(this.additionalProperties, authorizationModel.additionalProperties);
   }
 
-  private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
-    return a == b || (a != null && b != null && a.isPresent() && b.isPresent() && Objects.deepEquals(a.get(), b.get()));
-  }
-
   @Override
   public int hashCode() {
     return Objects.hash(status, date, splititErrorResultCode, gatewayTransactionID, gatewayResultCode, gatewayResultMessage, threeDSRedirect, CAVV, ECI, additionalProperties);
-  }
-
-  private static <T> int hashCodeNullable(JsonNullable<T> a) {
-    if (a == null) {
-      return 1;
-    }
-    return a.isPresent() ? Arrays.deepHashCode(new Object[]{a.get()}) : 31;
   }
 
   @Override
@@ -451,7 +439,7 @@ public class AuthorizationModel {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      if (!jsonObj.get("SplititErrorResultCode").isJsonNull() && (jsonObj.get("SplititErrorResultCode") != null && !jsonObj.get("SplititErrorResultCode").isJsonNull()) && !jsonObj.get("SplititErrorResultCode").isJsonPrimitive()) {
+      if ((jsonObj.get("SplititErrorResultCode") != null && !jsonObj.get("SplititErrorResultCode").isJsonNull()) && !jsonObj.get("SplititErrorResultCode").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `SplititErrorResultCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("SplititErrorResultCode").toString()));
       }
       if ((jsonObj.get("GatewayTransactionID") != null && !jsonObj.get("GatewayTransactionID").isJsonNull()) && !jsonObj.get("GatewayTransactionID").isJsonPrimitive()) {
@@ -465,12 +453,12 @@ public class AuthorizationModel {
       }
       // validate the optional field `ThreeDSRedirect`
       if (jsonObj.get("ThreeDSRedirect") != null && !jsonObj.get("ThreeDSRedirect").isJsonNull()) {
-        ThreeDsRedirectData.validateJsonObject(jsonObj.getAsJsonObject("ThreeDSRedirect"));
+        ThreeDsRedirectDataV3.validateJsonObject(jsonObj.getAsJsonObject("ThreeDSRedirect"));
       }
-      if (!jsonObj.get("CAVV").isJsonNull() && (jsonObj.get("CAVV") != null && !jsonObj.get("CAVV").isJsonNull()) && !jsonObj.get("CAVV").isJsonPrimitive()) {
+      if ((jsonObj.get("CAVV") != null && !jsonObj.get("CAVV").isJsonNull()) && !jsonObj.get("CAVV").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `CAVV` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CAVV").toString()));
       }
-      if (!jsonObj.get("ECI").isJsonNull() && (jsonObj.get("ECI") != null && !jsonObj.get("ECI").isJsonNull()) && !jsonObj.get("ECI").isJsonPrimitive()) {
+      if ((jsonObj.get("ECI") != null && !jsonObj.get("ECI").isJsonNull()) && !jsonObj.get("ECI").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `ECI` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ECI").toString()));
       }
   }

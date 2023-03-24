@@ -8,8 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**autoCapture** | **Boolean** |  |  |
-|**attempt3dSecure** | **Boolean** |  |  |
-|**attemptAuthorize** | **Boolean** |  |  |
+|**attempt3dSecure** | **Boolean** |  |  [optional] |
 |**termsAndConditionsAccepted** | **Boolean** |  |  |
 |**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
 |**planData** | [**PlanDataModel**](PlanDataModel.md) |  |  [optional] |

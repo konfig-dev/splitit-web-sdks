@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -81,6 +81,10 @@ public class PlanDataModel {
   @SerializedName(SERIALIZED_NAME_EXTENDED_PARAMS)
   private Map<String, String> extendedParams = null;
 
+  public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT = "FirstInstallmentAmount";
+  @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT)
+  private BigDecimal firstInstallmentAmount;
+
   public PlanDataModel() {
   }
 
@@ -140,8 +144,8 @@ public class PlanDataModel {
    * Get numberOfInstallments
    * @return numberOfInstallments
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Integer getNumberOfInstallments() {
     return numberOfInstallments;
@@ -252,6 +256,29 @@ public class PlanDataModel {
     this.extendedParams = extendedParams;
   }
 
+
+  public PlanDataModel firstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+    
+    this.firstInstallmentAmount = firstInstallmentAmount;
+    return this;
+  }
+
+   /**
+   * Get firstInstallmentAmount
+   * @return firstInstallmentAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public BigDecimal getFirstInstallmentAmount() {
+    return firstInstallmentAmount;
+  }
+
+
+  public void setFirstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+    this.firstInstallmentAmount = firstInstallmentAmount;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -313,13 +340,14 @@ public class PlanDataModel {
         Objects.equals(this.terminalId, planDataModel.terminalId) &&
         Objects.equals(this.purchaseMethod, planDataModel.purchaseMethod) &&
         Objects.equals(this.refOrderNumber, planDataModel.refOrderNumber) &&
-        Objects.equals(this.extendedParams, planDataModel.extendedParams)&&
+        Objects.equals(this.extendedParams, planDataModel.extendedParams) &&
+        Objects.equals(this.firstInstallmentAmount, planDataModel.firstInstallmentAmount)&&
         Objects.equals(this.additionalProperties, planDataModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalAmount, currency, numberOfInstallments, terminalId, purchaseMethod, refOrderNumber, extendedParams, additionalProperties);
+    return Objects.hash(totalAmount, currency, numberOfInstallments, terminalId, purchaseMethod, refOrderNumber, extendedParams, firstInstallmentAmount, additionalProperties);
   }
 
   @Override
@@ -333,6 +361,7 @@ public class PlanDataModel {
     sb.append("    purchaseMethod: ").append(toIndentedString(purchaseMethod)).append("\n");
     sb.append("    refOrderNumber: ").append(toIndentedString(refOrderNumber)).append("\n");
     sb.append("    extendedParams: ").append(toIndentedString(extendedParams)).append("\n");
+    sb.append("    firstInstallmentAmount: ").append(toIndentedString(firstInstallmentAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -363,11 +392,11 @@ public class PlanDataModel {
     openapiFields.add("PurchaseMethod");
     openapiFields.add("RefOrderNumber");
     openapiFields.add("ExtendedParams");
+    openapiFields.add("FirstInstallmentAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("TotalAmount");
-    openapiRequiredFields.add("NumberOfInstallments");
     openapiRequiredFields.add("PurchaseMethod");
   }
 

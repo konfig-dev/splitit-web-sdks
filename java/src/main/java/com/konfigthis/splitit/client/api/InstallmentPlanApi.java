@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -26,15 +26,20 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
 import com.konfigthis.splitit.client.model.FailedResponse;
+import com.konfigthis.splitit.client.model.InitiatePlanResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
+import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanGetResponse;
-import com.konfigthis.splitit.client.model.InstallmentPlanModel;
+import com.konfigthis.splitit.client.model.InstallmentPlanInitiateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundResponse;
+import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
+import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
 import com.konfigthis.splitit.client.model.PlanErrorResponse;
 import com.konfigthis.splitit.client.model.UpdateOrderRequest;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
@@ -83,24 +88,7 @@ public class InstallmentPlanApi {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    /**
-     * Build call for cancel
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cancelCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -147,7 +135,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -167,83 +155,112 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return InstallmentPlanCancelResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanCancelResponse cancel(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
-        ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return ApiResponse&lt;InstallmentPlanCancelResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+    private ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
         okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call cancelAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
+    private okhttp3.Call cancelAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIcancelRequest {
+        private final String installmentPlanNumber;
+        private final String xSplititIdempotencyKey;
+
+        private APIcancelRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+        }
+
+        /**
+         * Build call for cancel
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+
+        /**
+         * Execute cancel request
+         * @return InstallmentPlanCancelResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanCancelResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute cancel request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanCancelResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanCancelResponse> executeWithHttpInfo() throws ApiException {
+            return cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+        }
+
+        /**
+         * Execute cancel request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
+            return cancelAsync(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+    }
+
     /**
-     * Build call for get
+     * 
+     * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIcancelRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -254,7 +271,199 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
+    public APIcancelRequest cancel(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        return new APIcancelRequest(installmentPlanNumber, xSplititIdempotencyKey);
+    }
+    private okhttp3.Call checkEligibilityCall(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = checkInstallmentsEligibilityRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/installmentplans/check-eligibility";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call checkEligibilityValidateBeforeCall(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling checkEligibility(Async)");
+        }
+
+        // verify the required parameter 'checkInstallmentsEligibilityRequest' is set
+        if (checkInstallmentsEligibilityRequest == null) {
+            throw new ApiException("Missing the required parameter 'checkInstallmentsEligibilityRequest' when calling checkEligibility(Async)");
+        }
+
+        return checkEligibilityCall(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
+
+    }
+
+
+    private ApiResponse<InstallmentsEligibilityResponse> checkEligibilityWithHttpInfo(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest) throws ApiException {
+        okhttp3.Call localVarCall = checkEligibilityValidateBeforeCall(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, null);
+        Type localVarReturnType = new TypeToken<InstallmentsEligibilityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call checkEligibilityAsync(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest, final ApiCallback<InstallmentsEligibilityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = checkEligibilityValidateBeforeCall(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
+        Type localVarReturnType = new TypeToken<InstallmentsEligibilityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIcheckEligibilityRequest {
+        private final String xSplititIdempotencyKey;
+        private final CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest;
+
+        private APIcheckEligibilityRequest(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest) {
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.checkInstallmentsEligibilityRequest = checkInstallmentsEligibilityRequest;
+        }
+
+        /**
+         * Build call for checkEligibility
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return checkEligibilityCall(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
+        }
+
+        /**
+         * Execute checkEligibility request
+         * @return InstallmentsEligibilityResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentsEligibilityResponse execute() throws ApiException {
+            ApiResponse<InstallmentsEligibilityResponse> localVarResp = checkEligibilityWithHttpInfo(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute checkEligibility request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentsEligibilityResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentsEligibilityResponse> executeWithHttpInfo() throws ApiException {
+            return checkEligibilityWithHttpInfo(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+        }
+
+        /**
+         * Execute checkEligibility request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentsEligibilityResponse> _callback) throws ApiException {
+            return checkEligibilityAsync(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @param xSplititIdempotencyKey  (required)
+     * @param checkInstallmentsEligibilityRequest  (required)
+     * @return APIcheckEligibilityRequest
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public APIcheckEligibilityRequest checkEligibility(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest) {
+        return new APIcheckEligibilityRequest(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+    }
+    private okhttp3.Call getCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -301,7 +510,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -321,59 +530,112 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return InstallmentPlanModel
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanModel get(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
-        ApiResponse<InstallmentPlanModel> localVarResp = getWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return ApiResponse&lt;InstallmentPlanModel&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanModel> getWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+    private ApiResponse<InstallmentPlanGetResponse> getWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
         okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
-        Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call getAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIgetRequest {
+        private final String installmentPlanNumber;
+        private final String xSplititIdempotencyKey;
+
+        private APIgetRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+        }
+
+        /**
+         * Build call for get
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+
+        /**
+         * Execute get request
+         * @return InstallmentPlanGetResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanGetResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanGetResponse> localVarResp = getWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute get request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanGetResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanGetResponse> executeWithHttpInfo() throws ApiException {
+            return getWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+        }
+
+        /**
+         * Execute get request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
+            return getAsync(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+    }
+
     /**
-     *  (asynchronously)
+     * 
      * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIgetRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -384,21 +646,204 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
+    public APIgetRequest get(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        return new APIgetRequest(installmentPlanNumber, xSplititIdempotencyKey);
+    }
+    private okhttp3.Call postCall(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
 
-        okhttp3.Call localVarCall = getValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
-        Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = installmentPlanInitiateRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/installmentplans/initiate";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (xSplititTestMode != null) {
+            localVarHeaderParams.put("X-Splitit-TestMode", localVarApiClient.parameterToString(xSplititTestMode));
+        }
+
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call postValidateBeforeCall(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post(Async)");
+        }
+
+        // verify the required parameter 'installmentPlanInitiateRequest' is set
+        if (installmentPlanInitiateRequest == null) {
+            throw new ApiException("Missing the required parameter 'installmentPlanInitiateRequest' when calling post(Async)");
+        }
+
+        return postCall(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+
+    }
+
+
+    private ApiResponse<InitiatePlanResponse> postWithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode) throws ApiException {
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, null);
+        Type localVarReturnType = new TypeToken<InitiatePlanResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call postAsync(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        Type localVarReturnType = new TypeToken<InitiatePlanResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIpostRequest {
+        private final String xSplititIdempotencyKey;
+        private final InstallmentPlanInitiateRequest installmentPlanInitiateRequest;
+        private String xSplititTestMode;
+
+        private APIpostRequest(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest) {
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.installmentPlanInitiateRequest = installmentPlanInitiateRequest;
+        }
+
+        /**
+         * Set xSplititTestMode
+         * @param xSplititTestMode  (optional)
+         * @return APIpostRequest
+         */
+        public APIpostRequest xSplititTestMode(String xSplititTestMode) {
+            this.xSplititTestMode = xSplititTestMode;
+            return this;
+        }
+
+        /**
+         * Build call for post
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return postCall(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        }
+
+        /**
+         * Execute post request
+         * @return InitiatePlanResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InitiatePlanResponse execute() throws ApiException {
+            ApiResponse<InitiatePlanResponse> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute post request with HTTP info returned
+         * @return ApiResponse&lt;InitiatePlanResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InitiatePlanResponse> executeWithHttpInfo() throws ApiException {
+            return postWithHttpInfo(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
+        }
+
+        /**
+         * Execute post request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
+            return postAsync(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        }
+    }
+
     /**
-     * Build call for post
+     * 
+     * 
      * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanCreateRequest  (required)
-     * @param xSplititTestMode  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param installmentPlanInitiateRequest  (required)
+     * @return APIpostRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -410,7 +855,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postCall(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    public APIpostRequest post(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest) {
+        return new APIpostRequest(xSplititIdempotencyKey, installmentPlanInitiateRequest);
+    }
+    private okhttp3.Call post2Call(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -464,84 +912,147 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postValidateBeforeCall(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call post2ValidateBeforeCall(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xSplititIdempotencyKey' is set
         if (xSplititIdempotencyKey == null) {
-            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post(Async)");
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post2(Async)");
         }
 
         // verify the required parameter 'installmentPlanCreateRequest' is set
         if (installmentPlanCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'installmentPlanCreateRequest' when calling post(Async)");
+            throw new ApiException("Missing the required parameter 'installmentPlanCreateRequest' when calling post2(Async)");
         }
 
-        return postCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        return post2Call(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
 
     }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanCreateRequest  (required)
-     * @param xSplititTestMode  (optional)
-     * @return InstallmentPlanModel
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanModel post(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
-        ApiResponse<InstallmentPlanModel> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanCreateRequest  (required)
-     * @param xSplititTestMode  (optional)
-     * @return ApiResponse&lt;InstallmentPlanModel&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanModel> postWithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
-        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, null);
-        Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
+    private ApiResponse<InstallmentPlanCreateResponse> post2WithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
+        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, null);
+        Type localVarReturnType = new TypeToken<InstallmentPlanCreateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call post2Async(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        Type localVarReturnType = new TypeToken<InstallmentPlanCreateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIpost2Request {
+        private final String xSplititIdempotencyKey;
+        private final InstallmentPlanCreateRequest installmentPlanCreateRequest;
+        private String xSplititTestMode;
+
+        private APIpost2Request(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest) {
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.installmentPlanCreateRequest = installmentPlanCreateRequest;
+        }
+
+        /**
+         * Set xSplititTestMode
+         * @param xSplititTestMode  (optional)
+         * @return APIpost2Request
+         */
+        public APIpost2Request xSplititTestMode(String xSplititTestMode) {
+            this.xSplititTestMode = xSplititTestMode;
+            return this;
+        }
+
+        /**
+         * Build call for post2
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return post2Call(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        }
+
+        /**
+         * Execute post2 request
+         * @return InstallmentPlanCreateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanCreateResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanCreateResponse> localVarResp = post2WithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute post2 request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanCreateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanCreateResponse> executeWithHttpInfo() throws ApiException {
+            return post2WithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
+        }
+
+        /**
+         * Execute post2 request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
+            return post2Async(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        }
+    }
+
     /**
-     *  (asynchronously)
+     * 
      * 
      * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
-     * @param xSplititTestMode  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIpost2Request
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -553,32 +1064,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call postAsync(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback<InstallmentPlanModel> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
-        Type localVarReturnType = new TypeToken<InstallmentPlanModel>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIpost2Request post2(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest) {
+        return new APIpost2Request(xSplititIdempotencyKey, installmentPlanCreateRequest);
     }
-    /**
-     * Build call for refund
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanRefundRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call refundCall(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call refundCall(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -629,7 +1118,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -654,88 +1143,115 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanRefundRequest  (required)
-     * @return InstallmentPlanRefundResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanRefundResponse refund(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
-        ApiResponse<InstallmentPlanRefundResponse> localVarResp = refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanRefundRequest  (required)
-     * @return ApiResponse&lt;InstallmentPlanRefundResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanRefundResponse> refundWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
+    private ApiResponse<InstallmentPlanRefundResponse> refundWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) throws ApiException {
         okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanRefundResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanRefundRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call refundAsync(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
+    private okhttp3.Call refundAsync(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = refundValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanRefundResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIrefundRequest {
+        private final String installmentPlanNumber;
+        private final String xSplititIdempotencyKey;
+        private final InstallmentPlanRefundRequest installmentPlanRefundRequest;
+
+        private APIrefundRequest(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.installmentPlanRefundRequest = installmentPlanRefundRequest;
+        }
+
+        /**
+         * Build call for refund
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return refundCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
+        }
+
+        /**
+         * Execute refund request
+         * @return InstallmentPlanRefundResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanRefundResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanRefundResponse> localVarResp = refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute refund request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanRefundResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanRefundResponse> executeWithHttpInfo() throws ApiException {
+            return refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+        }
+
+        /**
+         * Execute refund request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
+            return refundAsync(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for search
+     * 
+     * 
+     * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanNumber  (optional)
-     * @param refOrderNumber  (optional)
-     * @param extendedParams  (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param installmentPlanRefundRequest  (required)
+     * @return APIrefundRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -746,7 +1262,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
+    public APIrefundRequest refund(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) {
+        return new APIrefundRequest(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+    }
+    private okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -804,7 +1323,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -819,90 +1338,142 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanNumber  (optional)
-     * @param refOrderNumber  (optional)
-     * @param extendedParams  (optional)
-     * @return InstallmentPlanGetResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanGetResponse search(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
-        ApiResponse<InstallmentPlanGetResponse> localVarResp = searchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanNumber  (optional)
-     * @param refOrderNumber  (optional)
-     * @param extendedParams  (optional)
-     * @return ApiResponse&lt;InstallmentPlanGetResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanGetResponse> searchWithHttpInfo(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
+    private ApiResponse<InstallmentPlanSearchResponse> searchWithHttpInfo(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams) throws ApiException {
         okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, null);
-        Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstallmentPlanSearchResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanNumber  (optional)
-     * @param refOrderNumber  (optional)
-     * @param extendedParams  (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call searchAsync(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
+    private okhttp3.Call searchAsync(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback<InstallmentPlanSearchResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = searchValidateBeforeCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
-        Type localVarReturnType = new TypeToken<InstallmentPlanGetResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<InstallmentPlanSearchResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIsearchRequest {
+        private final String xSplititIdempotencyKey;
+        private String installmentPlanNumber;
+        private String refOrderNumber;
+        private Map<String, String> extendedParams;
+
+        private APIsearchRequest(String xSplititIdempotencyKey) {
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+        }
+
+        /**
+         * Set installmentPlanNumber
+         * @param installmentPlanNumber  (optional)
+         * @return APIsearchRequest
+         */
+        public APIsearchRequest installmentPlanNumber(String installmentPlanNumber) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            return this;
+        }
+
+        /**
+         * Set refOrderNumber
+         * @param refOrderNumber  (optional)
+         * @return APIsearchRequest
+         */
+        public APIsearchRequest refOrderNumber(String refOrderNumber) {
+            this.refOrderNumber = refOrderNumber;
+            return this;
+        }
+
+        /**
+         * Set extendedParams
+         * @param extendedParams  (optional)
+         * @return APIsearchRequest
+         */
+        public APIsearchRequest extendedParams(Map<String, String> extendedParams) {
+            this.extendedParams = extendedParams;
+            return this;
+        }
+
+        /**
+         * Build call for search
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return searchCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
+        }
+
+        /**
+         * Execute search request
+         * @return InstallmentPlanSearchResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanSearchResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanSearchResponse> localVarResp = searchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute search request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanSearchResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanSearchResponse> executeWithHttpInfo() throws ApiException {
+            return searchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+        }
+
+        /**
+         * Execute search request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanSearchResponse> _callback) throws ApiException {
+            return searchAsync(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
+        }
+    }
+
     /**
-     * Build call for updateOrder
-     * @param installmentPlanNumber  (required)
+     * 
+     * 
      * @param xSplititIdempotencyKey  (required)
-     * @param updateOrderRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @return APIsearchRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -913,7 +1484,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
+    public APIsearchRequest search(String xSplititIdempotencyKey) {
+        return new APIsearchRequest(xSplititIdempotencyKey);
+    }
+    private okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -964,7 +1538,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -989,86 +1563,115 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param updateOrderRequest  (required)
-     * @return InstallmentPlanUpdateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanUpdateResponse updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) throws ApiException {
-        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param updateOrderRequest  (required)
-     * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) throws ApiException {
+    private ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) throws ApiException {
         okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @param updateOrderRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateOrderAsync(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+    private okhttp3.Call updateOrderAsync(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdateOrderRequest {
+        private final String installmentPlanNumber;
+        private final String xSplititIdempotencyKey;
+        private final UpdateOrderRequest updateOrderRequest;
+
+        private APIupdateOrderRequest(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.updateOrderRequest = updateOrderRequest;
+        }
+
+        /**
+         * Build call for updateOrder
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
+        }
+
+        /**
+         * Execute updateOrder request
+         * @return InstallmentPlanUpdateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanUpdateResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateOrder request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanUpdateResponse> executeWithHttpInfo() throws ApiException {
+            return updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+        }
+
+        /**
+         * Execute updateOrder request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+            return updateOrderAsync(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
+        }
+    }
+
     /**
-     * Build call for updateOrder2
+     * 
+     * 
+     * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanUpdateRequestByIdentifier  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param updateOrderRequest  (required)
+     * @return APIupdateOrderRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1079,7 +1682,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateOrder2Call(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
+    public APIupdateOrderRequest updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) {
+        return new APIupdateOrderRequest(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+    }
+    private okhttp3.Call updateOrder2Call(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1129,7 +1735,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1149,83 +1755,112 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanUpdateRequestByIdentifier  (required)
-     * @return InstallmentPlanUpdateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public InstallmentPlanUpdateResponse updateOrder2(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
-        ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanUpdateRequestByIdentifier  (required)
-     * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<InstallmentPlanUpdateResponse> updateOrder2WithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
+    private ApiResponse<InstallmentPlanUpdateResponse> updateOrder2WithHttpInfo(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) throws ApiException {
         okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    /**
-     *  (asynchronously)
-     * 
-     * @param xSplititIdempotencyKey  (required)
-     * @param installmentPlanUpdateRequestByIdentifier  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateOrder2Async(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+    private okhttp3.Call updateOrder2Async(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = updateOrder2ValidateBeforeCall(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
+
+    public class APIupdateOrder2Request {
+        private final String xSplititIdempotencyKey;
+        private final InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier;
+
+        private APIupdateOrder2Request(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) {
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.installmentPlanUpdateRequestByIdentifier = installmentPlanUpdateRequestByIdentifier;
+        }
+
+        /**
+         * Build call for updateOrder2
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return updateOrder2Call(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
+        }
+
+        /**
+         * Execute updateOrder2 request
+         * @return InstallmentPlanUpdateResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public InstallmentPlanUpdateResponse execute() throws ApiException {
+            ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute updateOrder2 request with HTTP info returned
+         * @return ApiResponse&lt;InstallmentPlanUpdateResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<InstallmentPlanUpdateResponse> executeWithHttpInfo() throws ApiException {
+            return updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+        }
+
+        /**
+         * Execute updateOrder2 request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+            return updateOrder2Async(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
+        }
+    }
+
     /**
-     * Build call for verifyAuthorization
-     * @param installmentPlanNumber  (required)
+     * 
+     * 
      * @param xSplititIdempotencyKey  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
+     * @param installmentPlanUpdateRequestByIdentifier  (required)
+     * @return APIupdateOrder2Request
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1236,7 +1871,10 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
+    public APIupdateOrder2Request updateOrder2(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) {
+        return new APIupdateOrder2Request(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+    }
+    private okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1283,7 +1921,7 @@ public class InstallmentPlanApi {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
-        String[] localVarAuthNames = new String[] { "bearer" };
+        String[] localVarAuthNames = new String[] { "oauth" };
         return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
@@ -1303,59 +1941,112 @@ public class InstallmentPlanApi {
 
     }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return VerifyAuthorizationResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public VerifyAuthorizationResponse verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
-        ApiResponse<VerifyAuthorizationResponse> localVarResp = verifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
-        return localVarResp.getData();
-    }
 
-    /**
-     * 
-     * 
-     * @param installmentPlanNumber  (required)
-     * @param xSplititIdempotencyKey  (required)
-     * @return ApiResponse&lt;VerifyAuthorizationResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<VerifyAuthorizationResponse> verifyAuthorizationWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
+    private ApiResponse<VerifyAuthorizationResponse> verifyAuthorizationWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey) throws ApiException {
         okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, null);
         Type localVarReturnType = new TypeToken<VerifyAuthorizationResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
+    private okhttp3.Call verifyAuthorizationAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        Type localVarReturnType = new TypeToken<VerifyAuthorizationResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public class APIverifyAuthorizationRequest {
+        private final String installmentPlanNumber;
+        private final String xSplititIdempotencyKey;
+
+        private APIverifyAuthorizationRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+            this.installmentPlanNumber = installmentPlanNumber;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+        }
+
+        /**
+         * Build call for verifyAuthorization
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return verifyAuthorizationCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+
+        /**
+         * Execute verifyAuthorization request
+         * @return VerifyAuthorizationResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public VerifyAuthorizationResponse execute() throws ApiException {
+            ApiResponse<VerifyAuthorizationResponse> localVarResp = verifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+            return localVarResp.getData();
+        }
+
+        /**
+         * Execute verifyAuthorization request with HTTP info returned
+         * @return ApiResponse&lt;VerifyAuthorizationResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<VerifyAuthorizationResponse> executeWithHttpInfo() throws ApiException {
+            return verifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+        }
+
+        /**
+         * Execute verifyAuthorization request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
+            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
+            return verifyAuthorizationAsync(installmentPlanNumber, xSplititIdempotencyKey, _callback);
+        }
+    }
+
     /**
-     *  (asynchronously)
+     * 
      * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @return APIverifyAuthorizationRequest
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
@@ -1366,11 +2057,7 @@ public class InstallmentPlanApi {
         <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call verifyAuthorizationAsync(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = verifyAuthorizationValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
-        Type localVarReturnType = new TypeToken<VerifyAuthorizationResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
+    public APIverifyAuthorizationRequest verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        return new APIverifyAuthorizationRequest(installmentPlanNumber, xSplititIdempotencyKey);
     }
 }

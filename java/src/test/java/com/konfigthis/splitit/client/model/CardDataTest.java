@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -17,6 +17,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.CardBrand;
+import com.konfigthis.splitit.client.model.CardType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -76,6 +78,22 @@ public class CardDataTest {
     @Test
     public void cardCvvTest() {
         // TODO: test cardCvv
+    }
+
+    /**
+     * Test the property 'cardBrand'
+     */
+    @Test
+    public void cardBrandTest() {
+        // TODO: test cardBrand
+    }
+
+    /**
+     * Test the property 'cardType'
+     */
+    @Test
+    public void cardTypeTest() {
+        // TODO: test cardType
     }
 
 }

@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -62,10 +62,6 @@ public class InstallmentPlanCreateRequest {
   @SerializedName(SERIALIZED_NAME_ATTEMPT3D_SECURE)
   private Boolean attempt3dSecure;
 
-  public static final String SERIALIZED_NAME_ATTEMPT_AUTHORIZE = "AttemptAuthorize";
-  @SerializedName(SERIALIZED_NAME_ATTEMPT_AUTHORIZE)
-  private Boolean attemptAuthorize;
-
   public static final String SERIALIZED_NAME_TERMS_AND_CONDITIONS_ACCEPTED = "TermsAndConditionsAccepted";
   @SerializedName(SERIALIZED_NAME_TERMS_AND_CONDITIONS_ACCEPTED)
   private Boolean termsAndConditionsAccepted;
@@ -126,8 +122,8 @@ public class InstallmentPlanCreateRequest {
    * Get attempt3dSecure
    * @return attempt3dSecure
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getAttempt3dSecure() {
     return attempt3dSecure;
@@ -136,29 +132,6 @@ public class InstallmentPlanCreateRequest {
 
   public void setAttempt3dSecure(Boolean attempt3dSecure) {
     this.attempt3dSecure = attempt3dSecure;
-  }
-
-
-  public InstallmentPlanCreateRequest attemptAuthorize(Boolean attemptAuthorize) {
-    
-    this.attemptAuthorize = attemptAuthorize;
-    return this;
-  }
-
-   /**
-   * Get attemptAuthorize
-   * @return attemptAuthorize
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
-
-  public Boolean getAttemptAuthorize() {
-    return attemptAuthorize;
-  }
-
-
-  public void setAttemptAuthorize(Boolean attemptAuthorize) {
-    this.attemptAuthorize = attemptAuthorize;
   }
 
 
@@ -356,7 +329,6 @@ public class InstallmentPlanCreateRequest {
     InstallmentPlanCreateRequest installmentPlanCreateRequest = (InstallmentPlanCreateRequest) o;
     return Objects.equals(this.autoCapture, installmentPlanCreateRequest.autoCapture) &&
         Objects.equals(this.attempt3dSecure, installmentPlanCreateRequest.attempt3dSecure) &&
-        Objects.equals(this.attemptAuthorize, installmentPlanCreateRequest.attemptAuthorize) &&
         Objects.equals(this.termsAndConditionsAccepted, installmentPlanCreateRequest.termsAndConditionsAccepted) &&
         Objects.equals(this.shopper, installmentPlanCreateRequest.shopper) &&
         Objects.equals(this.planData, installmentPlanCreateRequest.planData) &&
@@ -368,7 +340,7 @@ public class InstallmentPlanCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoCapture, attempt3dSecure, attemptAuthorize, termsAndConditionsAccepted, shopper, planData, billingAddress, paymentMethod, redirectUrls, additionalProperties);
+    return Objects.hash(autoCapture, attempt3dSecure, termsAndConditionsAccepted, shopper, planData, billingAddress, paymentMethod, redirectUrls, additionalProperties);
   }
 
   @Override
@@ -377,7 +349,6 @@ public class InstallmentPlanCreateRequest {
     sb.append("class InstallmentPlanCreateRequest {\n");
     sb.append("    autoCapture: ").append(toIndentedString(autoCapture)).append("\n");
     sb.append("    attempt3dSecure: ").append(toIndentedString(attempt3dSecure)).append("\n");
-    sb.append("    attemptAuthorize: ").append(toIndentedString(attemptAuthorize)).append("\n");
     sb.append("    termsAndConditionsAccepted: ").append(toIndentedString(termsAndConditionsAccepted)).append("\n");
     sb.append("    shopper: ").append(toIndentedString(shopper)).append("\n");
     sb.append("    planData: ").append(toIndentedString(planData)).append("\n");
@@ -409,7 +380,6 @@ public class InstallmentPlanCreateRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("AutoCapture");
     openapiFields.add("Attempt3dSecure");
-    openapiFields.add("AttemptAuthorize");
     openapiFields.add("TermsAndConditionsAccepted");
     openapiFields.add("Shopper");
     openapiFields.add("PlanData");
@@ -420,8 +390,6 @@ public class InstallmentPlanCreateRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("AutoCapture");
-    openapiRequiredFields.add("Attempt3dSecure");
-    openapiRequiredFields.add("AttemptAuthorize");
     openapiRequiredFields.add("TermsAndConditionsAccepted");
   }
 

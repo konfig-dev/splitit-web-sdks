@@ -5,8 +5,10 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**cancel**](InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel |  |
+| [**checkEligibility**](InstallmentPlanApi.md#checkEligibility) | **POST** /api/installmentplans/check-eligibility |  |
 | [**get**](InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} |  |
-| [**post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans |  |
+| [**post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate |  |
+| [**post2**](InstallmentPlanApi.md#post2) | **POST** /api/installmentplans |  |
 | [**refund**](InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund |  |
 | [**search**](InstallmentPlanApi.md#search) | **GET** /api/installmentplans/search |  |
 | [**updateOrder**](InstallmentPlanApi.md#updateOrder) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder |  |
@@ -16,13 +18,12 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 
 <a name="cancel"></a>
 # **cancel**
-> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey)
+> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -32,18 +33,20 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber, xSplititIdempotencyKey);
+      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber, xSplititIdempotencyKey)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
@@ -69,7 +72,7 @@ public class Example {
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -85,15 +88,14 @@ public class Example {
 | **404** |  |  -  |
 | **500** |  |  -  |
 
-<a name="get"></a>
-# **get**
-> InstallmentPlanModel get(installmentPlanNumber, xSplititIdempotencyKey)
+<a name="checkEligibility"></a>
+# **checkEligibility**
+> InstallmentsEligibilityResponse checkEligibility(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -103,18 +105,92 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
+    CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest(); // CheckInstallmentsEligibilityRequest | 
+    try {
+      InstallmentsEligibilityResponse result = apiInstance.checkEligibility(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstallmentPlanApi#checkEligibility");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **xSplititIdempotencyKey** | **String**|  | |
+| **checkInstallmentsEligibilityRequest** | [**CheckInstallmentsEligibilityRequest**](CheckInstallmentsEligibilityRequest.md)|  | |
+
+### Return type
+
+[**InstallmentsEligibilityResponse**](InstallmentsEligibilityResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
+
+<a name="get"></a>
+# **get**
+> InstallmentPlanGetResponse get(installmentPlanNumber, xSplititIdempotencyKey).execute();
+
+
+
+### Example
+```java
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.model.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
+
+public class Example {
+  public static void main(String[] args) {
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
+
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      InstallmentPlanModel result = apiInstance.get(installmentPlanNumber, xSplititIdempotencyKey);
+      InstallmentPlanGetResponse result = apiInstance.get(installmentPlanNumber, xSplititIdempotencyKey)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#get");
@@ -136,11 +212,11 @@ public class Example {
 
 ### Return type
 
-[**InstallmentPlanModel**](InstallmentPlanModel.md)
+[**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -158,13 +234,12 @@ public class Example {
 
 <a name="post"></a>
 # **post**
-> InstallmentPlanModel post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode)
+> InitiatePlanResponse post(xSplititIdempotencyKey, installmentPlanInitiateRequest).xSplititTestMode(xSplititTestMode).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -174,22 +249,101 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
+    InstallmentPlanInitiateRequest installmentPlanInitiateRequest = new InstallmentPlanInitiateRequest(); // InstallmentPlanInitiateRequest | 
+    String xSplititTestMode = "None"; // String | 
+    try {
+      InitiatePlanResponse result = apiInstance.post(xSplititIdempotencyKey, installmentPlanInitiateRequest)
+            .xSplititTestMode(xSplititTestMode)
+            .execute();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstallmentPlanApi#post");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **xSplititIdempotencyKey** | **String**|  | |
+| **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md)|  | |
+| **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
+
+### Return type
+
+[**InitiatePlanResponse**](InitiatePlanResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **400** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
+
+<a name="post2"></a>
+# **post2**
+> InstallmentPlanCreateResponse post2(xSplititIdempotencyKey, installmentPlanCreateRequest).xSplititTestMode(xSplititTestMode).execute();
+
+
+
+### Example
+```java
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.model.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
+
+public class Example {
+  public static void main(String[] args) {
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
+
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanCreateRequest installmentPlanCreateRequest = new InstallmentPlanCreateRequest(); // InstallmentPlanCreateRequest | 
     String xSplititTestMode = "None"; // String | 
     try {
-      InstallmentPlanModel result = apiInstance.post(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
+      InstallmentPlanCreateResponse result = apiInstance.post2(xSplititIdempotencyKey, installmentPlanCreateRequest)
+            .xSplititTestMode(xSplititTestMode)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling InstallmentPlanApi#post");
+      System.err.println("Exception when calling InstallmentPlanApi#post2");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -209,11 +363,11 @@ public class Example {
 
 ### Return type
 
-[**InstallmentPlanModel**](InstallmentPlanModel.md)
+[**InstallmentPlanCreateResponse**](InstallmentPlanCreateResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -232,13 +386,12 @@ public class Example {
 
 <a name="refund"></a>
 # **refund**
-> InstallmentPlanRefundResponse refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest)
+> InstallmentPlanRefundResponse refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -248,19 +401,21 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanRefundRequest installmentPlanRefundRequest = new InstallmentPlanRefundRequest(); // InstallmentPlanRefundRequest | 
     try {
-      InstallmentPlanRefundResponse result = apiInstance.refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+      InstallmentPlanRefundResponse result = apiInstance.refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#refund");
@@ -287,7 +442,7 @@ public class Example {
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -305,13 +460,12 @@ public class Example {
 
 <a name="search"></a>
 # **search**
-> InstallmentPlanGetResponse search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams)
+> InstallmentPlanSearchResponse search(xSplititIdempotencyKey).installmentPlanNumber(installmentPlanNumber).refOrderNumber(refOrderNumber).extendedParams(extendedParams).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -321,20 +475,25 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String refOrderNumber = "refOrderNumber_example"; // String | 
     Map<String, String> extendedParams = new HashMap(); // Map<String, String> | 
     try {
-      InstallmentPlanGetResponse result = apiInstance.search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+      InstallmentPlanSearchResponse result = apiInstance.search(xSplititIdempotencyKey)
+            .installmentPlanNumber(installmentPlanNumber)
+            .refOrderNumber(refOrderNumber)
+            .extendedParams(extendedParams)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#search");
@@ -358,11 +517,11 @@ public class Example {
 
 ### Return type
 
-[**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
+[**InstallmentPlanSearchResponse**](InstallmentPlanSearchResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -380,13 +539,12 @@ public class Example {
 
 <a name="updateOrder"></a>
 # **updateOrder**
-> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest)
+> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -396,19 +554,21 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
     try {
-      InstallmentPlanUpdateResponse result = apiInstance.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+      InstallmentPlanUpdateResponse result = apiInstance.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder");
@@ -435,7 +595,7 @@ public class Example {
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -453,13 +613,12 @@ public class Example {
 
 <a name="updateOrder2"></a>
 # **updateOrder2**
-> InstallmentPlanUpdateResponse updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier)
+> InstallmentPlanUpdateResponse updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -469,18 +628,20 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier(); // InstallmentPlanUpdateRequestByIdentifier | 
     try {
-      InstallmentPlanUpdateResponse result = apiInstance.updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+      InstallmentPlanUpdateResponse result = apiInstance.updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder2");
@@ -506,7 +667,7 @@ public class Example {
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -524,13 +685,12 @@ public class Example {
 
 <a name="verifyAuthorization"></a>
 # **verifyAuthorization**
-> VerifyAuthorizationResponse verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey)
+> VerifyAuthorizationResponse verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey).execute();
 
 
 
 ### Example
 ```java
-// Import classes:
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
@@ -540,18 +700,20 @@ import com.konfigthis.splitit.client.api.InstallmentPlanApi;
 
 public class Example {
   public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://web-api-v3.sandbox.splitit.com");
-    
-    // Configure OAuth2 access token for authorization: bearer
-    OAuth bearer = (OAuth) defaultClient.getAuthentication("bearer");
-    bearer.setAccessToken("YOUR ACCESS TOKEN");
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String secretId = System.getenv("CLIENT_SECRET");
+    ApiClient apiClient = new ApiClient(clientId, secretId, null);
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(defaultClient);
+    // Set custom base path if desired
+    // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
+
+    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
     String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
     try {
-      VerifyAuthorizationResponse result = apiInstance.verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
+      VerifyAuthorizationResponse result = apiInstance.verifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey)
+            .execute();
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#verifyAuthorization");
@@ -577,7 +739,7 @@ public class Example {
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 

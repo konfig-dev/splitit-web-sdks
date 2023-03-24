@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.CardBrand;
+import com.konfigthis.splitit.client.model.CardType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -68,6 +70,14 @@ public class CardData {
   public static final String SERIALIZED_NAME_CARD_CVV = "CardCvv";
   @SerializedName(SERIALIZED_NAME_CARD_CVV)
   private String cardCvv;
+
+  public static final String SERIALIZED_NAME_CARD_BRAND = "CardBrand";
+  @SerializedName(SERIALIZED_NAME_CARD_BRAND)
+  private CardBrand cardBrand;
+
+  public static final String SERIALIZED_NAME_CARD_TYPE = "CardType";
+  @SerializedName(SERIALIZED_NAME_CARD_TYPE)
+  private CardType cardType;
 
   public CardData() {
   }
@@ -186,6 +196,52 @@ public class CardData {
     this.cardCvv = cardCvv;
   }
 
+
+  public CardData cardBrand(CardBrand cardBrand) {
+    
+    this.cardBrand = cardBrand;
+    return this;
+  }
+
+   /**
+   * Get cardBrand
+   * @return cardBrand
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CardBrand getCardBrand() {
+    return cardBrand;
+  }
+
+
+  public void setCardBrand(CardBrand cardBrand) {
+    this.cardBrand = cardBrand;
+  }
+
+
+  public CardData cardType(CardType cardType) {
+    
+    this.cardType = cardType;
+    return this;
+  }
+
+   /**
+   * Get cardType
+   * @return cardType
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public CardType getCardType() {
+    return cardType;
+  }
+
+
+  public void setCardType(CardType cardType) {
+    this.cardType = cardType;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -245,13 +301,15 @@ public class CardData {
         Objects.equals(this.cardNumber, cardData.cardNumber) &&
         Objects.equals(this.cardExpYear, cardData.cardExpYear) &&
         Objects.equals(this.cardExpMonth, cardData.cardExpMonth) &&
-        Objects.equals(this.cardCvv, cardData.cardCvv)&&
+        Objects.equals(this.cardCvv, cardData.cardCvv) &&
+        Objects.equals(this.cardBrand, cardData.cardBrand) &&
+        Objects.equals(this.cardType, cardData.cardType)&&
         Objects.equals(this.additionalProperties, cardData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cardHolderFullName, cardNumber, cardExpYear, cardExpMonth, cardCvv, additionalProperties);
+    return Objects.hash(cardHolderFullName, cardNumber, cardExpYear, cardExpMonth, cardCvv, cardBrand, cardType, additionalProperties);
   }
 
   @Override
@@ -263,6 +321,8 @@ public class CardData {
     sb.append("    cardExpYear: ").append(toIndentedString(cardExpYear)).append("\n");
     sb.append("    cardExpMonth: ").append(toIndentedString(cardExpMonth)).append("\n");
     sb.append("    cardCvv: ").append(toIndentedString(cardCvv)).append("\n");
+    sb.append("    cardBrand: ").append(toIndentedString(cardBrand)).append("\n");
+    sb.append("    cardType: ").append(toIndentedString(cardType)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -291,6 +351,8 @@ public class CardData {
     openapiFields.add("CardExpYear");
     openapiFields.add("CardExpMonth");
     openapiFields.add("CardCvv");
+    openapiFields.add("CardBrand");
+    openapiFields.add("CardType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

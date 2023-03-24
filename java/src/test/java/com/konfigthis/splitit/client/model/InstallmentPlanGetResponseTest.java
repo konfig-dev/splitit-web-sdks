@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -17,12 +17,24 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.InstallmentPlanModel;
+import com.konfigthis.splitit.client.model.AddressData;
+import com.konfigthis.splitit.client.model.AuthorizationModel;
+import com.konfigthis.splitit.client.model.Installment;
+import com.konfigthis.splitit.client.model.LinksData;
+import com.konfigthis.splitit.client.model.PaymentMethodModel;
+import com.konfigthis.splitit.client.model.PlanStatus;
+import com.konfigthis.splitit.client.model.PurchaseMethod;
+import com.konfigthis.splitit.client.model.RefundModel;
+import com.konfigthis.splitit.client.model.ShopperData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -42,11 +54,131 @@ public class InstallmentPlanGetResponseTest {
     }
 
     /**
-     * Test the property 'planList'
+     * Test the property 'installmentPlanNumber'
      */
     @Test
-    public void planListTest() {
-        // TODO: test planList
+    public void installmentPlanNumberTest() {
+        // TODO: test installmentPlanNumber
+    }
+
+    /**
+     * Test the property 'dateCreated'
+     */
+    @Test
+    public void dateCreatedTest() {
+        // TODO: test dateCreated
+    }
+
+    /**
+     * Test the property 'refOrderNumber'
+     */
+    @Test
+    public void refOrderNumberTest() {
+        // TODO: test refOrderNumber
+    }
+
+    /**
+     * Test the property 'purchaseMethod'
+     */
+    @Test
+    public void purchaseMethodTest() {
+        // TODO: test purchaseMethod
+    }
+
+    /**
+     * Test the property 'status'
+     */
+    @Test
+    public void statusTest() {
+        // TODO: test status
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
+    }
+
+    /**
+     * Test the property 'originalAmount'
+     */
+    @Test
+    public void originalAmountTest() {
+        // TODO: test originalAmount
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
+    }
+
+    /**
+     * Test the property 'authorization'
+     */
+    @Test
+    public void authorizationTest() {
+        // TODO: test authorization
+    }
+
+    /**
+     * Test the property 'shopper'
+     */
+    @Test
+    public void shopperTest() {
+        // TODO: test shopper
+    }
+
+    /**
+     * Test the property 'billingAddress'
+     */
+    @Test
+    public void billingAddressTest() {
+        // TODO: test billingAddress
+    }
+
+    /**
+     * Test the property 'paymentMethod'
+     */
+    @Test
+    public void paymentMethodTest() {
+        // TODO: test paymentMethod
+    }
+
+    /**
+     * Test the property 'extendedParams'
+     */
+    @Test
+    public void extendedParamsTest() {
+        // TODO: test extendedParams
+    }
+
+    /**
+     * Test the property 'installments'
+     */
+    @Test
+    public void installmentsTest() {
+        // TODO: test installments
+    }
+
+    /**
+     * Test the property 'refunds'
+     */
+    @Test
+    public void refundsTest() {
+        // TODO: test refunds
+    }
+
+    /**
+     * Test the property 'links'
+     */
+    @Test
+    public void linksTest() {
+        // TODO: test links
     }
 
 }

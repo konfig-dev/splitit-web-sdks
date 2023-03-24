@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -96,6 +96,14 @@ public class PlanDataModelTest {
     @Test
     public void extendedParamsTest() {
         // TODO: test extendedParams
+    }
+
+    /**
+     * Test the property 'firstInstallmentAmount'
+     */
+    @Test
+    public void firstInstallmentAmountTest() {
+        // TODO: test firstInstallmentAmount
     }
 
 }

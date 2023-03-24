@@ -12,6 +12,8 @@
 |**cardExpYear** | **String** |  |  [optional] |
 |**cardExpMonth** | **String** |  |  [optional] |
 |**cardCvv** | **String** |  |  [optional] |
+|**cardBrand** | **CardBrand** |  |  [optional] |
+|**cardType** | **CardType** |  |  [optional] |
 
 
 

@@ -1,6 +1,6 @@
 /*
  * splitit-web-api-v3
- * Splitit's API
+ * Splitit's Web API
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -94,7 +94,7 @@ public class ApiClient {
         initHttpClient();
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("bearer", new OAuth());
+        authentications.put("oauth", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -110,7 +110,7 @@ public class ApiClient {
         httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("bearer", new OAuth());
+        authentications.put("oauth", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
@@ -171,7 +171,7 @@ public class ApiClient {
         }
         RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
         authentications.put(
-                "bearer",
+                "oauth",
                 retryingOAuth
         );
         initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
@@ -180,6 +180,8 @@ public class ApiClient {
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
+
+
 
     private void initHttpClient() {
         initHttpClient(Collections.<Interceptor>emptyList());
@@ -191,6 +193,7 @@ public class ApiClient {
         for (Interceptor interceptor: interceptors) {
             builder.addInterceptor(interceptor);
         }
+        builder.readTimeout(0, TimeUnit.MILLISECONDS);
 
         httpClient = builder.build();
     }
@@ -201,7 +204,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Konfig/1.1.0/java");
+        setUserAgent("OpenAPI-Generator/2.0.0/java");
 
         authentications = new HashMap<String, Authentication>();
     }

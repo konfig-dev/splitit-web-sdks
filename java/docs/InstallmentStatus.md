@@ -9,5 +9,7 @@
 
 * `PROCESSED` (value: `"Processed"`)
 
+* `CANCELED` (value: `"Canceled"`)
+
 
 

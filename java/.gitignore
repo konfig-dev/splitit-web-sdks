@@ -23,3 +23,6 @@ build
 # Ignore IntelliJ files
 .idea
 *.iml
+
+# Mac OS
+.DS_Store
