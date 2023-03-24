@@ -12,7 +12,18 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @interface ErrorExtendedAllOf
+ */
+export interface ErrorExtendedAllOf {
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof ErrorExtendedAllOf
+     */
+    'ExtraData'?: { [key: string]: string; };
+}
+

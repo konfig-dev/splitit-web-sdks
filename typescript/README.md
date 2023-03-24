@@ -1,6 +1,6 @@
-## splitit-web-typescript-sdk@1.1.0
+## splitit-web-typescript-sdk@2.0.0
 
-This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
+This library that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
 Environment
 * Node.js
@@ -15,8 +15,6 @@ Module system
 * CommonJS
 * ES6 module system
 
-It can be used in both TypeScript and JavaScript. In TypeScript, the definition should be automatically resolved via `package.json`. ([Reference](http://www.typescriptlang.org/docs/handbook/typings-for-npm-packages.html))
-
 ### Building
 
 To build and compile the typescript sources to javascript use:
@@ -30,27 +28,45 @@ npm run build
 navigate to the folder of your consuming project and run the following command.
 
 ```
-npm install splitit-web-typescript-sdk@1.1.0 --save
+npm install splitit-web-typescript-sdk@2.0.0 --save
 ```
 
 ### Getting Started
 
 ```typescript
+import { Splitit } from "splitit-web-typescript-sdk"
 
-import { Configuration, InstallmentPlanApi, FailedResponse, InstallmentPlanCancelResponse } from "splitit-web-typescript-sdk";
-
-const oauthClientId = process.env.CLIENT_ID;
-const oauthClientSecret = process.env.CLIENT_SECRET;
-const config = new Configuration({ oauthClientId, oauthClientSecret });
-
-const api = new InstallmentPlanApi(config);
-
-const installmentPlanNumber: string = "installmentPlanNumber_example";
-const xSplititIdempotencyKey: string = "xSplititIdempotencyKey_example";
-
-const request = api.cancel(installmentPlanNumber, xSplititIdempotencyKey);
-request.then(result => {
-    console.log(result)
+const splitit = new Splitit({
+    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    // basePath: "https://web-api-v3.sandbox.splitit.com",
+    oauthClientId: 'CLIENT_ID',
+    oauthClientSecret: 'CLIENT_SECRET',
 })
 
+const cancelResponse = await splitit.installmentplan.cancel({
+        "installmentPlanNumber": "installmentPlanNumber_example",
+        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
+    })
+
+console.log(cancelResponse)
+
 ```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*InstallmentplanApi* | [**cancel**](docs/InstallmentplanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel | 
+*InstallmentplanApi* | [**checkEligibility**](docs/InstallmentplanApi.md#checkEligibility) | **POST** /api/installmentplans/check-eligibility | 
+*InstallmentplanApi* | [**get**](docs/InstallmentplanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
+*InstallmentplanApi* | [**post**](docs/InstallmentplanApi.md#post) | **POST** /api/installmentplans/initiate | 
+*InstallmentplanApi* | [**post2**](docs/InstallmentplanApi.md#post2) | **POST** /api/installmentplans | 
+*InstallmentplanApi* | [**refund**](docs/InstallmentplanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund | 
+*InstallmentplanApi* | [**search**](docs/InstallmentplanApi.md#search) | **GET** /api/installmentplans/search | 
+*InstallmentplanApi* | [**updateOrder**](docs/InstallmentplanApi.md#updateOrder) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder | 
+*InstallmentplanApi* | [**updateOrder2**](docs/InstallmentplanApi.md#updateOrder2) | **PUT** /api/installmentplans/updateorder | 
+*InstallmentplanApi* | [**verifyAuthorization**](docs/InstallmentplanApi.md#verifyAuthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
+
+

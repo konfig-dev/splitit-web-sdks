@@ -1,20 +1,13 @@
-import {
-  InstallmentPlanApi,
-  PaymentMethodType,
-  PurchaseMethod,
-  Configuration,
-} from "./";
+import { PurchaseMethod, Splitit } from "./index";
 it("simple operation started", async () => {
   const oauthClientId = process.env.SPLITIT_CLIENT_ID;
   const oauthClientSecret = process.env.SPLITIT_CLIENT_SECRET;
 
-  const config = new Configuration({ oauthClientId, oauthClientSecret });
-  const api = new InstallmentPlanApi(config);
-  const result = await api.post(new Date().toISOString(), {
-    Attempt3dSecure: true,
+  const splitit = new Splitit({ oauthClientId, oauthClientSecret });
+  const result = await splitit.installmentplan.post({
     AutoCapture: true,
-    AttemptAuthorize: true,
-    TermsAndConditionsAccepted: true,
+    Attempt3dSecure: true,
+    xSplititIdempotencyKey: new Date().toISOString(),
     Shopper: {
       Email: "fake@email.com",
     },
@@ -31,16 +24,7 @@ it("simple operation started", async () => {
       Zip: "11231",
       Country: "United States",
     },
-    PaymentMethod: {
-      Type: PaymentMethodType.Card,
-      Card: {
-        CardCvv: "111",
-        CardExpMonth: "12",
-        CardExpYear: "2025",
-        CardHolderFullName: "Test User",
-        CardNumber: "4556997457604103",
-      },
-    },
+    RedirectUrls: {},
   });
   expect(result).not.toBeNull();
 });

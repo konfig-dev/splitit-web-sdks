@@ -12,7 +12,18 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @interface PlanErrorResponseAllOf
+ */
+export interface PlanErrorResponseAllOf {
+    /**
+     * 
+     * @type {string}
+     * @memberof PlanErrorResponseAllOf
+     */
+    'InstallmentPlanNumber'?: string;
+}
+

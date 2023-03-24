@@ -12,7 +12,20 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const PurchaseMethod = {
+    InStore: 'InStore',
+    PhoneOrder: 'PhoneOrder',
+    ECommerce: 'ECommerce'
+} as const;
+
+export type PurchaseMethod = typeof PurchaseMethod[keyof typeof PurchaseMethod];
+
+
+

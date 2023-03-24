@@ -12,7 +12,18 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const PaymentMethodType = {
+    Card: 'Card'
+} as const;
+
+export type PaymentMethodType = typeof PaymentMethodType[keyof typeof PaymentMethodType];
+
+
+

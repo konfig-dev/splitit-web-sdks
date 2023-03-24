@@ -12,7 +12,19 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ShippingStatus2 = {
+    Shipped: 'Shipped',
+    Delivered: 'Delivered'
+} as const;
+
+export type ShippingStatus2 = typeof ShippingStatus2[keyof typeof ShippingStatus2];
+
+
+

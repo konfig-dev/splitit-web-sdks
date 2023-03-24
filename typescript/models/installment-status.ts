@@ -12,7 +12,20 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const InstallmentStatus = {
+    Pending: 'Pending',
+    Processed: 'Processed',
+    Canceled: 'Canceled'
+} as const;
+
+export type InstallmentStatus = typeof InstallmentStatus[keyof typeof InstallmentStatus];
+
+
+

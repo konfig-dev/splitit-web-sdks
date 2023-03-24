@@ -12,7 +12,18 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @interface InstallmentPlanCancelResponse
+ */
+export interface InstallmentPlanCancelResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof InstallmentPlanCancelResponse
+     */
+    'InstallmentPlanNumber'?: string;
+}
+

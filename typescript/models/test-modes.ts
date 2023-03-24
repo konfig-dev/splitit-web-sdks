@@ -12,7 +12,21 @@
  * Do not edit the class manually.
  */
 
-export * from "./api";
-export * from "./configuration";
-export * from "./models";
-export * from "./client";
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const TestModes = {
+    None: 'None',
+    Regular: 'Regular',
+    Fast: 'Fast',
+    Automation: 'Automation'
+} as const;
+
+export type TestModes = typeof TestModes[keyof typeof TestModes];
+
+
+
