@@ -1,5 +1,6 @@
 outputDirectory: /tmp/splitit-web-sdks-out
-specPath: swagger.json
+specInputPath: swagger.json
+specPath: swagger-fixed.json
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET

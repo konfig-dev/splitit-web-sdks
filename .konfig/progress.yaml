@@ -1,0 +1,29 @@
+description: Splitit's Web API
+examples: {}
+examples_2: {}
+operationIds: {}
+operationTags: {}
+renameTags: {}
+requestSchemaNames: {}
+responseDescriptions: {}
+responseSchemaNames: {}
+securityParameters:
+  Authorization:
+    header:
+      flows:
+        clientCredentials:
+          scopes:
+            api.v3: ''
+          tokenUrl: https://id.sandbox.splitit.com/connect/token
+      securityName: oauth
+      type: oauth2
+  X-Splitit-IdempotencyKey:
+    header: false
+  X-Splitit-TestMode:
+    header: false
+  extendedParams:
+    query: false
+  installmentPlanNumber:
+    query: false
+  refOrderNumber:
+    query: false
