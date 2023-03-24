@@ -14,11 +14,12 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 1.1.0
+    version: 2.0.0
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
     clientName: Splitit
+    setSkipSerializationToTrueByDefault: true
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python

@@ -12,18 +12,7 @@ import os
 import unittest
 import uuid
 
-from splitit_client import ApiClient, Configuration
-from splitit_client.api.installment_plan_api import InstallmentPlanApi  # noqa: E501
-from splitit_client.models import (
-    AddressDataModel,
-    CardData,
-    PaymentMethodType,
-    InstallmentPlanCreateRequest,
-    PaymentMethodModel,
-    PlanDataModel,
-    PurchaseMethod,
-    ShopperData,
-)
+from splitit_client import Splitit
 
 
 class TestInstallmentPlanApiSimple(unittest.TestCase):
@@ -32,9 +21,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     def setUp(self):
         client_id = os.environ["SPLITIT_CLIENT_ID"]
         client_secret = os.environ["SPLITIT_CLIENT_SECRET"]
-        configuration = Configuration(client_id=client_id, client_secret=client_secret)
-        api_client = ApiClient(configuration)
-        self.api = InstallmentPlanApi(api_client)  # noqa: E501
+        self.api = Splitit(client_id=client_id, client_secret=client_secret)
 
     def tearDown(self):
         pass
@@ -42,32 +29,32 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     def test_post(self):
         """Test case for post
         """
-        request = InstallmentPlanCreateRequest(True, True, True, True)
-        request.plan_data = PlanDataModel(
-            total_amount=10.0,
-            number_of_installments=10,
-            currency="USD",
-            purchase_method=PurchaseMethod("InStore"),
+        response = self.api.installment_plan.post(
+            header_params={
+                'X-Splitit-IdempotencyKey': str(uuid.uuid4()),
+            },
+            body={
+                "AutoCapture": True,
+                "Attempt3dSecure": True,
+                "Shopper": {
+                    "Email": "fake@email.com"
+                },
+                "BillingAddress": {
+                    "AddressLine1": "144 Union St",
+                    "City": "Brooklyn",
+                    "State": "North Dakota",
+                    "Zip": "11231",
+                    "Country": "United States",
+                },
+                "PlanData": {
+                    "TotalAmount": 10.0,
+                    "NumberOfInstallements": 10,
+                    "Currency": "USD",
+                    "PurchaseMethod": "InStore",
+                },
+                "RedirectUrls": {}
+            }
         )
-        request.shopper = ShopperData(email="fake@email.com")
-        request.billing_address = AddressDataModel(
-            address_line1="144 Union St",
-            city="Brooklyn",
-            state="North Dakota",
-            zip="11231",
-            country="United States",
-        )
-        request.payment_method = PaymentMethodModel(
-            type=PaymentMethodType("Card"),
-            card=CardData(
-                card_exp_month="12",
-                card_exp_year="2025",
-                card_cvv="111",
-                card_number="4556997457604103",
-                card_holder_full_name="Test User",
-            ),
-        )
-        response = self.api.post(str(uuid.uuid4()), request)
         print(response)
         assert response is not None, "Received null response"
 
