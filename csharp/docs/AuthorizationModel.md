@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GatewayTransactionID** | **string** |  | [optional] 
 **GatewayResultCode** | **string** |  | [optional] 
 **GatewayResultMessage** | **string** |  | [optional] 
-**ThreeDSRedirect** | [**ThreeDsRedirectData**](ThreeDsRedirectData.md) |  | [optional] 
+**ThreeDSRedirect** | [**ThreeDsRedirectDataV3**](ThreeDsRedirectDataV3.md) |  | [optional] 
 **CAVV** | **string** |  | [optional] 
 **ECI** | **string** |  | [optional] 
 

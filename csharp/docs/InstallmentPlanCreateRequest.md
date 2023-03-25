@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoCapture** | **bool** |  | 
-**Attempt3dSecure** | **bool** |  | 
-**AttemptAuthorize** | **bool** |  | 
+**Attempt3dSecure** | **bool** |  | [optional] 
 **TermsAndConditionsAccepted** | **bool** |  | 
 **Shopper** | [**ShopperData**](ShopperData.md) |  | [optional] 
 **PlanData** | [**PlanDataModel**](PlanDataModel.md) |  | [optional] 

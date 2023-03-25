@@ -68,19 +68,15 @@ namespace Splitit.Web.Net.Test.Api
             card.CardNumber = "4556997457604103";
             card.CardHolderFullName = "Test User";
 
-            PaymentMethodModel paymentMethod = new PaymentMethodModel();
-            paymentMethod.Type = PaymentMethodType.Card;
-            paymentMethod.Card = card;
+            InitiateRedirectionEndpointsModel redirectUrls = new InitiateRedirectionEndpointsModel();
 
-            InstallmentPlanCreateRequest createRequest = new InstallmentPlanCreateRequest();
+            InstallmentPlanInitiateRequest createRequest = new InstallmentPlanInitiateRequest();
             createRequest.Attempt3dSecure = true;
-            createRequest.TermsAndConditionsAccepted = true;
             createRequest.AutoCapture = true;
-            createRequest.AttemptAuthorize = true;
             createRequest.PlanData = planData;
             createRequest.BillingAddress = address;
-            createRequest.PaymentMethod = paymentMethod;
             createRequest.Shopper = shopper;
+            createRequest.RedirectUrls = redirectUrls;
 
             var response = instance.Post(Guid.NewGuid().ToString(), createRequest);
             Assert.NotNull(response);
