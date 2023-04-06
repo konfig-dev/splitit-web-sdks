@@ -7,5 +7,7 @@
 
 * `CARD` (value: `"Card"`)
 
+* `SPLITITTOKEN` (value: `"SplititToken"`)
+
 
 

@@ -1168,6 +1168,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          Token: Token
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -1361,6 +1362,7 @@ components:
     PaymentMethodModel:
       example:
         Type: null
+        Token: Token
         Card:
           CardNumber: CardNumber
           CardExpMonth: CardExpMonth
@@ -1374,6 +1376,8 @@ components:
           $ref: '#/components/schemas/PaymentMethodType'
         Card:
           $ref: '#/components/schemas/CardData'
+        Token:
+          type: string
       required:
       - Type
       type: object
@@ -1381,9 +1385,11 @@ components:
       description: ""
       enum:
       - Card
+      - SplititToken
       type: string
       x-enumNames:
       - Card
+      - SplititToken
     CardData:
       example:
         CardNumber: CardNumber
@@ -1607,6 +1613,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            Token: Token
             Card:
               CardNumber: CardNumber
               CardExpMonth: CardExpMonth
@@ -1680,6 +1687,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            Token: Token
             Card:
               CardNumber: CardNumber
               CardExpMonth: CardExpMonth
@@ -1761,6 +1769,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          Token: Token
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -2055,6 +2064,7 @@ components:
         Currency: Currency
         PaymentMethod:
           Type: null
+          Token: Token
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -2138,6 +2148,7 @@ components:
           Culture: Culture
         PaymentMethod:
           Type: null
+          Token: Token
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth

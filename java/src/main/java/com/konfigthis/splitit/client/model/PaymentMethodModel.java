@@ -59,6 +59,10 @@ public class PaymentMethodModel {
   @SerializedName(SERIALIZED_NAME_CARD)
   private CardData card;
 
+  public static final String SERIALIZED_NAME_TOKEN = "Token";
+  @SerializedName(SERIALIZED_NAME_TOKEN)
+  private String token;
+
   public PaymentMethodModel() {
   }
 
@@ -105,6 +109,29 @@ public class PaymentMethodModel {
 
   public void setCard(CardData card) {
     this.card = card;
+  }
+
+
+  public PaymentMethodModel token(String token) {
+    
+    this.token = token;
+    return this;
+  }
+
+   /**
+   * Get token
+   * @return token
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getToken() {
+    return token;
+  }
+
+
+  public void setToken(String token) {
+    this.token = token;
   }
 
   /**
@@ -163,13 +190,14 @@ public class PaymentMethodModel {
     }
     PaymentMethodModel paymentMethodModel = (PaymentMethodModel) o;
     return Objects.equals(this.type, paymentMethodModel.type) &&
-        Objects.equals(this.card, paymentMethodModel.card)&&
+        Objects.equals(this.card, paymentMethodModel.card) &&
+        Objects.equals(this.token, paymentMethodModel.token)&&
         Objects.equals(this.additionalProperties, paymentMethodModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, card, additionalProperties);
+    return Objects.hash(type, card, token, additionalProperties);
   }
 
   @Override
@@ -178,6 +206,7 @@ public class PaymentMethodModel {
     sb.append("class PaymentMethodModel {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    card: ").append(toIndentedString(card)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -203,6 +232,7 @@ public class PaymentMethodModel {
     openapiFields = new HashSet<String>();
     openapiFields.add("Type");
     openapiFields.add("Card");
+    openapiFields.add("Token");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -231,6 +261,9 @@ public class PaymentMethodModel {
       // validate the optional field `Card`
       if (jsonObj.get("Card") != null && !jsonObj.get("Card").isJsonNull()) {
         CardData.validateJsonObject(jsonObj.getAsJsonObject("Card"));
+      }
+      if ((jsonObj.get("Token") != null && !jsonObj.get("Token").isJsonNull()) && !jsonObj.get("Token").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Token` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Token").toString()));
       }
   }
 

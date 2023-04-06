@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**type** | **PaymentMethodType** |  |  |
 |**card** | [**CardData**](CardData.md) |  |  [optional] |
+|**token** | **String** |  |  [optional] |
 
 
 

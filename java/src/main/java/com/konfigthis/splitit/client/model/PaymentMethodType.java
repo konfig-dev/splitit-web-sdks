@@ -29,7 +29,9 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(PaymentMethodType.Adapter.class)
 public enum PaymentMethodType {
   
-  CARD("Card");
+  CARD("Card"),
+  
+  SPLITITTOKEN("SplititToken");
 
   private String value;
 

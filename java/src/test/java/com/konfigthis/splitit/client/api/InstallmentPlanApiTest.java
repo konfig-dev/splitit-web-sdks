@@ -33,9 +33,9 @@ import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
 import com.konfigthis.splitit.client.model.PlanErrorResponse;
 import com.konfigthis.splitit.client.model.UpdateOrderRequest;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,13 +45,13 @@ import java.util.Map;
 /**
  * API tests for InstallmentPlanApi
  */
-@Ignore
+@Disabled
 public class InstallmentPlanApiTest {
 
     private static InstallmentPlanApi api;
 
     
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         ApiClient apiClient = Configuration.getDefaultApiClient();
         api = new InstallmentPlanApi(apiClient);
