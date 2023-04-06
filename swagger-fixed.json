@@ -1909,6 +1909,9 @@
           },
           "Card": {
             "$ref": "#/components/schemas/CardData"
+          },
+          "Token": {
+            "type": "string"
           }
         }
       },
@@ -1916,10 +1919,12 @@
         "description": "",
         "type": "string",
         "x-enumNames": [
-          "Card"
+          "Card",
+          "SplititToken"
         ],
         "enum": [
-          "Card"
+          "Card",
+          "SplititToken"
         ]
       },
       "CardData": {

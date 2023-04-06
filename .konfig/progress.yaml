@@ -1,6 +1,7 @@
 description: Splitit's Web API
 examples: {}
 examples_2: {}
+fixOnlyOneTagName: false
 operationIds: {}
 operationTags: {}
 renameTags: {}
