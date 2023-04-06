@@ -1,5 +1,6 @@
 outputDirectory: /tmp/splitit-web-sdks-out
 specInputPath: swagger.json
+specRemotePath: https://web-api-v3.sandbox.splitit.com/swagger/web-api-v3/swagger.json
 specPath: swagger-fixed.json
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
