@@ -1123,6 +1123,9 @@
         },
         "Card": {
           "$ref": "#/definitions/CardData"
+        },
+        "Token": {
+          "type": "string"
         }
       }
     },
@@ -1130,10 +1133,12 @@
       "type": "string",
       "description": "",
       "x-enumNames": [
-        "Card"
+        "Card",
+        "SplititToken"
       ],
       "enum": [
-        "Card"
+        "Card",
+        "SplititToken"
       ]
     },
     "CardData": {
