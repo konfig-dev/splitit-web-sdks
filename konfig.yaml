@@ -6,6 +6,14 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
 generators:
+  php:
+    version: 1.0.0
+    outputDirectory: php
+    packageName: splitit-web-php-sdk
+    invokerPackage: Splitit
+    git:
+      userId: konfig-dev
+      repoId: splitit-web-php-sdk
   typescript:
     version: 2.0.0
     outputDirectory: typescript
