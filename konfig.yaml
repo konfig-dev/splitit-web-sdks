@@ -7,7 +7,7 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_SECRET
 generators:
   php:
-    version: 1.0.0
+    version: 1.1.0
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
