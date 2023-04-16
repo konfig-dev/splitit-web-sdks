@@ -1480,6 +1480,9 @@
         },
         "RedirectUrls": {
           "$ref": "#/definitions/InitiateRedirectionEndpointsModel"
+        },
+        "UxSettings": {
+          "$ref": "#/definitions/UxSettingsModel"
         }
       }
     },
@@ -1519,6 +1522,10 @@
         "FirstInstallmentAmount": {
           "type": "number",
           "format": "decimal"
+        },
+        "FirstInstallmentDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },
@@ -1556,6 +1563,18 @@
         },
         "Cancel": {
           "type": "string"
+        }
+      }
+    },
+    "UxSettingsModel": {
+      "type": "object",
+      "properties": {
+        "DisplayedInstallmentOptions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
         }
       }
     },
@@ -2009,11 +2028,22 @@
         "RefOrderNumber": {
           "type": "string"
         },
+        "AllowedInstallmentOptions": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
         "Tags": {
           "type": "object",
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "FirstInstallmentDate": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     }
