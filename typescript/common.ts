@@ -38,20 +38,40 @@ export const assertParamExists = function (functionName: string, paramName: stri
  *
  * @export
  */
-export const setApiKeyToObject = async function (object: any, keyParamName: string, configuration?: Configuration) {
-    if (configuration && configuration.apiKey) {
-      if (typeof configuration.apiKey === "function")
-        object[keyParamName] = await configuration.apiKey(keyParamName);
-      else if (typeof configuration.apiKey === "string")
-        object[keyParamName] = configuration.apiKey;
-      else if (typeof configuration.apiKey === "object") {
-        if (keyParamName in configuration.apiKey)
-          object[keyParamName] = configuration.apiKey[keyParamName];
-      } else
-        throw Error(
-          `Unexpected type ${typeof configuration.apiKey} for Configuration.apiKey`
-        );
-    }
+export const setApiKeyToObject = async function ({
+  object,
+  key,
+  type,
+  keyParamName,
+  configuration,
+  prefix
+}: {
+  object: any
+  key?: string
+  type?: "Cookie"
+  keyParamName: string
+  configuration?: Configuration
+  prefix?: string
+}) {
+  key = key ? key : keyParamName
+  let apiKey: string | null | undefined = null
+  if (configuration && configuration.apiKey) {
+    if (typeof configuration.apiKey === 'function')
+      apiKey = await configuration.apiKey(keyParamName)
+    else if (typeof configuration.apiKey === 'string')
+      apiKey = configuration.apiKey
+    else if (typeof configuration.apiKey === 'object') {
+      if (keyParamName in configuration.apiKey)
+        apiKey = configuration.apiKey[keyParamName]
+    } else
+      throw Error(
+        `Unexpected type ${typeof configuration.apiKey} for Configuration.apiKey`
+      )
+  }
+  if (!apiKey) return
+  object[key] = prefix !== undefined ? `${prefix}${apiKey}` : apiKey
+  if (type === "Cookie")
+    object[key] = `${keyParamName}=${object[key]}`
 }
 
 /**

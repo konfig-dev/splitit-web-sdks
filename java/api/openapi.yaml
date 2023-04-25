@@ -54,6 +54,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -67,6 +68,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -80,6 +82,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -93,6 +96,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -165,6 +169,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -178,6 +183,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -191,6 +197,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -204,6 +211,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -282,6 +290,7 @@ paths:
                 $ref: '#/components/schemas/PlanErrorResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "401":
           content:
             text/plain:
@@ -295,6 +304,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -308,6 +318,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -321,6 +332,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -334,6 +346,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -413,6 +426,7 @@ paths:
                 $ref: '#/components/schemas/PlanErrorResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "401":
           content:
             text/plain:
@@ -426,6 +440,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -439,6 +454,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -452,6 +468,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -465,6 +482,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -520,6 +538,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -533,6 +552,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -546,6 +566,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -559,6 +580,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -629,6 +651,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -642,6 +665,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -655,6 +679,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -668,6 +693,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -731,6 +757,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -744,6 +771,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -757,6 +785,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -770,6 +799,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -841,6 +871,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -854,6 +885,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -867,6 +899,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -880,6 +913,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -935,6 +969,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -948,6 +983,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -961,6 +997,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -974,6 +1011,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -1036,6 +1074,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "403":
           content:
             text/plain:
@@ -1049,6 +1088,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "404":
           content:
             text/plain:
@@ -1062,6 +1102,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
         "500":
           content:
             text/plain:
@@ -1075,6 +1116,7 @@ paths:
                 $ref: '#/components/schemas/FailedResponse'
           description: ""
           x-nullable: false
+          x-do-not-generate: true
       security:
       - oauth:
         - api.v3
@@ -1093,6 +1135,8 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorExtended'
       type: object
+      x-konfig-is-used-in-non-successful-response: true
+      x-do-not-generate: true
     ErrorExtended:
       allOf:
       - $ref: '#/components/schemas/Error'
@@ -1228,6 +1272,7 @@ components:
       - DateCreated
       - Status
       type: object
+      x-konfig-is-used-in-successful-response: true
     PurchaseMethod:
       description: ""
       enum:
@@ -1707,6 +1752,7 @@ components:
             $ref: '#/components/schemas/SearchInstallmentPlanResponseItem'
           type: array
       type: object
+      x-konfig-is-used-in-successful-response: true
     SearchInstallmentPlanResponseItem:
       example:
         Status: null
@@ -1879,10 +1925,12 @@ components:
       required:
       - Status
       type: object
+      x-konfig-is-used-in-successful-response: true
     PlanErrorResponse:
       allOf:
       - $ref: '#/components/schemas/FailedResponse'
       - $ref: '#/components/schemas/PlanErrorResponse_allOf'
+      x-konfig-is-used-in-non-successful-response: true
     InstallmentPlanInitiateRequest:
       example:
         PlanData:
@@ -1895,6 +1943,7 @@ components:
           PurchaseMethod: null
           FirstInstallmentAmount: 1.4658129805029452
           NumberOfInstallments: 6
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
         BillingAddress:
           Zip: Zip
           AddressLine2: AddressLine2
@@ -1902,6 +1951,10 @@ components:
           State: State
           Country: Country
           City: City
+        UxSettings:
+          DisplayedInstallmentOptions:
+          - 5
+          - 5
         AutoCapture: true
         Shopper:
           Email: Email
@@ -1926,8 +1979,9 @@ components:
           $ref: '#/components/schemas/AddressDataModel'
         RedirectUrls:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
+        UxSettings:
+          $ref: '#/components/schemas/UxSettingsModel'
       required:
-      - Attempt3dSecure
       - AutoCapture
       type: object
     PlanDataModel:
@@ -1941,6 +1995,7 @@ components:
         PurchaseMethod: null
         FirstInstallmentAmount: 1.4658129805029452
         NumberOfInstallments: 6
+        FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
       properties:
         TotalAmount:
           format: decimal
@@ -1963,6 +2018,9 @@ components:
         FirstInstallmentAmount:
           format: decimal
           type: number
+        FirstInstallmentDate:
+          format: date-time
+          type: string
       required:
       - PurchaseMethod
       - TotalAmount
@@ -2001,6 +2059,18 @@ components:
           type: string
         Cancel:
           type: string
+      type: object
+    UxSettingsModel:
+      example:
+        DisplayedInstallmentOptions:
+        - 5
+        - 5
+      properties:
+        DisplayedInstallmentOptions:
+          items:
+            format: int32
+            type: integer
+          type: array
       type: object
     TestModes:
       description: ""
@@ -2120,6 +2190,7 @@ components:
       - DateCreated
       - Status
       type: object
+      x-konfig-is-used-in-successful-response: true
     InstallmentPlanCreateRequest:
       example:
         PlanData:
@@ -2132,6 +2203,7 @@ components:
           PurchaseMethod: null
           FirstInstallmentAmount: 1.4658129805029452
           NumberOfInstallments: 6
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
         BillingAddress:
           Zip: Zip
           AddressLine2: AddressLine2
@@ -2233,6 +2305,7 @@ components:
       required:
       - IsAuthorized
       type: object
+      x-konfig-is-used-in-successful-response: true
     InstallmentPlanUpdateResponse:
       example:
         Status: null
@@ -2252,6 +2325,7 @@ components:
       - ShippingStatus
       - Status
       type: object
+      x-konfig-is-used-in-successful-response: true
     ShippingStatus:
       description: ""
       enum:
@@ -2342,6 +2416,7 @@ components:
         Summary:
           $ref: '#/components/schemas/RefundSummary'
       type: object
+      x-konfig-is-used-in-successful-response: true
     RefundSummary:
       example:
         SucceededAmount: 5.637376656633329
@@ -2395,6 +2470,7 @@ components:
         InstallmentPlanNumber:
           type: string
       type: object
+      x-konfig-is-used-in-successful-response: true
     InstallmentsEligibilityResponse:
       example:
         PaymentPlanOptions:
@@ -2420,6 +2496,7 @@ components:
             $ref: '#/components/schemas/PaymentPlanOptionModel'
           type: array
       type: object
+      x-konfig-is-used-in-successful-response: true
     PaymentPlanOptionModel:
       example:
         LastInstallmentAmount: 5.962133916683182
@@ -2469,6 +2546,9 @@ components:
         PlanData:
           RefOrderNumber: RefOrderNumber
           Currency: Currency
+          AllowedInstallmentOptions:
+          - 5
+          - 5
           TerminalId: TerminalId
           TotalAmount: 0.8008281904610115
           PurchaseMethod: null
@@ -2476,6 +2556,7 @@ components:
           NumberOfInstallments: 1
           Tags:
             key: Tags
+          FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
         BillingAddress:
           Zip: Zip
           AddressLine2: AddressLine2
@@ -2503,6 +2584,9 @@ components:
       example:
         RefOrderNumber: RefOrderNumber
         Currency: Currency
+        AllowedInstallmentOptions:
+        - 5
+        - 5
         TerminalId: TerminalId
         TotalAmount: 0.8008281904610115
         PurchaseMethod: null
@@ -2510,6 +2594,7 @@ components:
         NumberOfInstallments: 1
         Tags:
           key: Tags
+        FirstInstallmentDate: 2000-01-23T04:56:07.000+00:00
       properties:
         TerminalId:
           type: string
@@ -2528,10 +2613,18 @@ components:
           $ref: '#/components/schemas/PurchaseMethod'
         RefOrderNumber:
           type: string
+        AllowedInstallmentOptions:
+          items:
+            format: int32
+            type: integer
+          type: array
         Tags:
           additionalProperties:
             type: string
           type: object
+        FirstInstallmentDate:
+          format: date-time
+          type: string
       required:
       - NumberOfInstallments
       - PurchaseMethod
@@ -2595,8 +2688,9 @@ components:
           $ref: '#/components/schemas/AddressDataModel'
         RedirectUrls:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
+        UxSettings:
+          $ref: '#/components/schemas/UxSettingsModel'
       required:
-      - Attempt3dSecure
       - AutoCapture
       - X-Splitit-IdempotencyKey
       type: object

@@ -13,8 +13,8 @@
 |**purchaseMethod** | **PurchaseMethod** |  |  [optional] |
 |**status** | **PlanStatus** |  |  |
 |**currency** | **String** |  |  [optional] |
-|**originalAmount** | **BigDecimal** |  |  [optional] |
-|**amount** | **BigDecimal** |  |  [optional] |
+|**originalAmount** | **Double** |  |  [optional] |
+|**amount** | **Double** |  |  [optional] |
 |**authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  |  [optional] |
 |**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
 |**billingAddress** | [**AddressData**](AddressData.md) |  |  [optional] |

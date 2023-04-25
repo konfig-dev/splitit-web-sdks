@@ -70,5 +70,11 @@ export interface PlanDataModel {
      * @memberof PlanDataModel
      */
     'FirstInstallmentAmount'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof PlanDataModel
+     */
+    'FirstInstallmentDate'?: string;
 }
 

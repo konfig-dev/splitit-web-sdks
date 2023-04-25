@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**installmentNumber** | **Integer** |  |  |
-|**amount** | **BigDecimal** |  |  |
+|**amount** | **Double** |  |  |
 |**processDateTime** | **OffsetDateTime** |  |  [optional] |
 |**status** | **InstallmentStatus** |  |  |
 

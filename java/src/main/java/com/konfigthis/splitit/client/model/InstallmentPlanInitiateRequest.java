@@ -23,6 +23,7 @@ import com.konfigthis.splitit.client.model.AddressDataModel;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.PlanDataModel;
 import com.konfigthis.splitit.client.model.ShopperData;
+import com.konfigthis.splitit.client.model.UxSettingsModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -77,10 +78,15 @@ public class InstallmentPlanInitiateRequest {
   @SerializedName(SERIALIZED_NAME_REDIRECT_URLS)
   private InitiateRedirectionEndpointsModel redirectUrls;
 
+  public static final String SERIALIZED_NAME_UX_SETTINGS = "UxSettings";
+  @SerializedName(SERIALIZED_NAME_UX_SETTINGS)
+  private UxSettingsModel uxSettings;
+
   public InstallmentPlanInitiateRequest() {
   }
 
   public InstallmentPlanInitiateRequest autoCapture(Boolean autoCapture) {
+    
     
     this.autoCapture = autoCapture;
     return this;
@@ -99,11 +105,13 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setAutoCapture(Boolean autoCapture) {
+    
     this.autoCapture = autoCapture;
   }
 
 
   public InstallmentPlanInitiateRequest attempt3dSecure(Boolean attempt3dSecure) {
+    
     
     this.attempt3dSecure = attempt3dSecure;
     return this;
@@ -113,8 +121,8 @@ public class InstallmentPlanInitiateRequest {
    * Get attempt3dSecure
    * @return attempt3dSecure
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getAttempt3dSecure() {
     return attempt3dSecure;
@@ -122,11 +130,13 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setAttempt3dSecure(Boolean attempt3dSecure) {
+    
     this.attempt3dSecure = attempt3dSecure;
   }
 
 
   public InstallmentPlanInitiateRequest shopper(ShopperData shopper) {
+    
     
     this.shopper = shopper;
     return this;
@@ -145,11 +155,13 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setShopper(ShopperData shopper) {
+    
     this.shopper = shopper;
   }
 
 
   public InstallmentPlanInitiateRequest planData(PlanDataModel planData) {
+    
     
     this.planData = planData;
     return this;
@@ -168,11 +180,13 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setPlanData(PlanDataModel planData) {
+    
     this.planData = planData;
   }
 
 
   public InstallmentPlanInitiateRequest billingAddress(AddressDataModel billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -191,11 +205,13 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setBillingAddress(AddressDataModel billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 
 
   public InstallmentPlanInitiateRequest redirectUrls(InitiateRedirectionEndpointsModel redirectUrls) {
+    
     
     this.redirectUrls = redirectUrls;
     return this;
@@ -214,7 +230,33 @@ public class InstallmentPlanInitiateRequest {
 
 
   public void setRedirectUrls(InitiateRedirectionEndpointsModel redirectUrls) {
+    
     this.redirectUrls = redirectUrls;
+  }
+
+
+  public InstallmentPlanInitiateRequest uxSettings(UxSettingsModel uxSettings) {
+    
+    
+    this.uxSettings = uxSettings;
+    return this;
+  }
+
+   /**
+   * Get uxSettings
+   * @return uxSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public UxSettingsModel getUxSettings() {
+    return uxSettings;
+  }
+
+
+  public void setUxSettings(UxSettingsModel uxSettings) {
+    
+    this.uxSettings = uxSettings;
   }
 
   /**
@@ -277,13 +319,14 @@ public class InstallmentPlanInitiateRequest {
         Objects.equals(this.shopper, installmentPlanInitiateRequest.shopper) &&
         Objects.equals(this.planData, installmentPlanInitiateRequest.planData) &&
         Objects.equals(this.billingAddress, installmentPlanInitiateRequest.billingAddress) &&
-        Objects.equals(this.redirectUrls, installmentPlanInitiateRequest.redirectUrls)&&
+        Objects.equals(this.redirectUrls, installmentPlanInitiateRequest.redirectUrls) &&
+        Objects.equals(this.uxSettings, installmentPlanInitiateRequest.uxSettings)&&
         Objects.equals(this.additionalProperties, installmentPlanInitiateRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoCapture, attempt3dSecure, shopper, planData, billingAddress, redirectUrls, additionalProperties);
+    return Objects.hash(autoCapture, attempt3dSecure, shopper, planData, billingAddress, redirectUrls, uxSettings, additionalProperties);
   }
 
   @Override
@@ -296,6 +339,7 @@ public class InstallmentPlanInitiateRequest {
     sb.append("    planData: ").append(toIndentedString(planData)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    redirectUrls: ").append(toIndentedString(redirectUrls)).append("\n");
+    sb.append("    uxSettings: ").append(toIndentedString(uxSettings)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -325,11 +369,11 @@ public class InstallmentPlanInitiateRequest {
     openapiFields.add("PlanData");
     openapiFields.add("BillingAddress");
     openapiFields.add("RedirectUrls");
+    openapiFields.add("UxSettings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("AutoCapture");
-    openapiRequiredFields.add("Attempt3dSecure");
   }
 
  /**
@@ -366,6 +410,10 @@ public class InstallmentPlanInitiateRequest {
       // validate the optional field `RedirectUrls`
       if (jsonObj.get("RedirectUrls") != null && !jsonObj.get("RedirectUrls").isJsonNull()) {
         InitiateRedirectionEndpointsModel.validateJsonObject(jsonObj.getAsJsonObject("RedirectUrls"));
+      }
+      // validate the optional field `UxSettings`
+      if (jsonObj.get("UxSettings") != null && !jsonObj.get("UxSettings").isJsonNull()) {
+        UxSettingsModel.validateJsonObject(jsonObj.getAsJsonObject("UxSettings"));
       }
   }
 

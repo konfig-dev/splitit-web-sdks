@@ -15,6 +15,8 @@ package com.konfigthis.splitit.client;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.Request;
+
 /**
  * API response returned by API call.
  */
@@ -22,16 +24,7 @@ public class ApiResponse<T> {
     final private int statusCode;
     final private Map<String, List<String>> headers;
     final private T data;
-
-    /**
-     * <p>Constructor for ApiResponse.</p>
-     *
-     * @param statusCode The status code of HTTP response
-     * @param headers The headers of HTTP response
-     */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers) {
-        this(statusCode, headers, null);
-    }
+    final private Request request;
 
     /**
      * <p>Constructor for ApiResponse.</p>
@@ -40,7 +33,8 @@ public class ApiResponse<T> {
      * @param headers The headers of HTTP response
      * @param data The object deserialized from response bod
      */
-    public ApiResponse(int statusCode, Map<String, List<String>> headers, T data) {
+    public ApiResponse(Request request, int statusCode, Map<String, List<String>> headers, T data) {
+        this.request = request;
         this.statusCode = statusCode;
         this.headers = headers;
         this.data = data;
@@ -71,5 +65,14 @@ public class ApiResponse<T> {
      */
     public T getData() {
         return data;
+    }
+
+    /**
+     * <p>Get the <code>request</code>.</p>
+     *
+     * @return the request
+     */
+    public Request getRequest() {
+        return request;
     }
 }

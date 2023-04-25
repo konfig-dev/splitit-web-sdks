@@ -24,6 +24,9 @@ import { PlanDataModel } from './plan-data-model';
 // May contain unused imports in some cases
 // @ts-ignore
 import { ShopperData } from './shopper-data';
+// May contain unused imports in some cases
+// @ts-ignore
+import { UxSettingsModel } from './ux-settings-model';
 
 /**
  * 
@@ -42,7 +45,7 @@ export interface InstallmentPlanInitiateRequest {
      * @type {boolean}
      * @memberof InstallmentPlanInitiateRequest
      */
-    'Attempt3dSecure': boolean;
+    'Attempt3dSecure'?: boolean;
     /**
      * 
      * @type {ShopperData}
@@ -67,5 +70,11 @@ export interface InstallmentPlanInitiateRequest {
      * @memberof InstallmentPlanInitiateRequest
      */
     'RedirectUrls'?: InitiateRedirectionEndpointsModel;
+    /**
+     * 
+     * @type {UxSettingsModel}
+     * @memberof InstallmentPlanInitiateRequest
+     */
+    'UxSettings'?: UxSettingsModel;
 }
 

@@ -72,6 +72,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'Card'
         }
+        /// <summary>
+        /// Test the property 'Token'
+        /// </summary>
+        [Fact]
+        public void TokenTest()
+        {
+            // TODO unit test for the property 'Token'
+        }
 
     }
 

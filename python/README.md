@@ -2,7 +2,7 @@
 Splitit's Web API
 
 - API version: 1.0.0
-- Package version: 2.0.0
+- Package version: 2.1.0
 
 ## Requirements.
 
@@ -14,9 +14,9 @@ Python >=3.7
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install splitit-web-python-sdk==2.0.0
+pip install splitit-web-python-sdk==2.1.0
 ```
-(you may need to run `pip` with root permission: `sudo pip install splitit-web-python-sdk==2.0.0`)
+(you may need to run `pip` with root permission: `sudo pip install splitit-web-python-sdk==2.1.0`)
 
 Then import the package:
 ```python
@@ -39,24 +39,39 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-cancel_response = splitit.installment_plan.cancel(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-)
 try:
+    cancel_response = splitit.installment_plan.cancel(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+    )
+    pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
     pprint(cancel_response.headers)
     pprint(cancel_response.status)
+    pprint(cancel_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanCancelResponse.cancel: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.cancel: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 
 ## Documentation for API Endpoints
@@ -128,6 +143,7 @@ Class | Method | HTTP request | Description
  - [TestModes](docs/models/TestModes.md)
  - [ThreeDsRedirectDataV3](docs/models/ThreeDsRedirectDataV3.md)
  - [UpdateOrderRequest](docs/models/UpdateOrderRequest.md)
+ - [UxSettingsModel](docs/models/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/models/VerifyAuthorizationResponse.md)
 
 ## Documentation For Authorization

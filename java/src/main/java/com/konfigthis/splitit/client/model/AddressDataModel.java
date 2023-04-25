@@ -78,6 +78,7 @@ public class AddressDataModel {
 
   public AddressDataModel addressLine1(String addressLine1) {
     
+    
     this.addressLine1 = addressLine1;
     return this;
   }
@@ -95,11 +96,13 @@ public class AddressDataModel {
 
 
   public void setAddressLine1(String addressLine1) {
+    
     this.addressLine1 = addressLine1;
   }
 
 
   public AddressDataModel addressLine2(String addressLine2) {
+    
     
     this.addressLine2 = addressLine2;
     return this;
@@ -118,11 +121,13 @@ public class AddressDataModel {
 
 
   public void setAddressLine2(String addressLine2) {
+    
     this.addressLine2 = addressLine2;
   }
 
 
   public AddressDataModel city(String city) {
+    
     
     this.city = city;
     return this;
@@ -141,11 +146,13 @@ public class AddressDataModel {
 
 
   public void setCity(String city) {
+    
     this.city = city;
   }
 
 
   public AddressDataModel country(String country) {
+    
     
     this.country = country;
     return this;
@@ -164,11 +171,13 @@ public class AddressDataModel {
 
 
   public void setCountry(String country) {
+    
     this.country = country;
   }
 
 
   public AddressDataModel state(String state) {
+    
     
     this.state = state;
     return this;
@@ -187,11 +196,13 @@ public class AddressDataModel {
 
 
   public void setState(String state) {
+    
     this.state = state;
   }
 
 
   public AddressDataModel zip(String zip) {
+    
     
     this.zip = zip;
     return this;
@@ -210,6 +221,7 @@ public class AddressDataModel {
 
 
   public void setZip(String zip) {
+    
     this.zip = zip;
   }
 

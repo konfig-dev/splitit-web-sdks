@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -18,6 +18,7 @@ import (
 type PaymentMethodModel struct {
 	Type PaymentMethodType `json:"Type"`
 	Card *CardData `json:"Card,omitempty"`
+	Token *string `json:"Token,omitempty"`
 }
 
 // NewPaymentMethodModel instantiates a new PaymentMethodModel object
@@ -94,6 +95,38 @@ func (o *PaymentMethodModel) SetCard(v CardData) {
 	o.Card = &v
 }
 
+// GetToken returns the Token field value if set, zero value otherwise.
+func (o *PaymentMethodModel) GetToken() string {
+	if o == nil || isNil(o.Token) {
+		var ret string
+		return ret
+	}
+	return *o.Token
+}
+
+// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentMethodModel) GetTokenOk() (*string, bool) {
+	if o == nil || isNil(o.Token) {
+    return nil, false
+	}
+	return o.Token, true
+}
+
+// HasToken returns a boolean if a field has been set.
+func (o *PaymentMethodModel) HasToken() bool {
+	if o != nil && !isNil(o.Token) {
+		return true
+	}
+
+	return false
+}
+
+// SetToken gets a reference to the given string and assigns it to the Token field.
+func (o *PaymentMethodModel) SetToken(v string) {
+	o.Token = &v
+}
+
 func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -101,6 +134,9 @@ func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Card) {
 		toSerialize["Card"] = o.Card
+	}
+	if !isNil(o.Token) {
+		toSerialize["Token"] = o.Token
 	}
 	return json.Marshal(toSerialize)
 }

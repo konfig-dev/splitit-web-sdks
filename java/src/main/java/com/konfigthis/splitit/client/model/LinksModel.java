@@ -66,6 +66,7 @@ public class LinksModel {
 
   public LinksModel privacyPolicyUrl(String privacyPolicyUrl) {
     
+    
     this.privacyPolicyUrl = privacyPolicyUrl;
     return this;
   }
@@ -83,11 +84,13 @@ public class LinksModel {
 
 
   public void setPrivacyPolicyUrl(String privacyPolicyUrl) {
+    
     this.privacyPolicyUrl = privacyPolicyUrl;
   }
 
 
   public LinksModel termsAndConditionsUrl(String termsAndConditionsUrl) {
+    
     
     this.termsAndConditionsUrl = termsAndConditionsUrl;
     return this;
@@ -106,11 +109,13 @@ public class LinksModel {
 
 
   public void setTermsAndConditionsUrl(String termsAndConditionsUrl) {
+    
     this.termsAndConditionsUrl = termsAndConditionsUrl;
   }
 
 
   public LinksModel learnMoreUrl(String learnMoreUrl) {
+    
     
     this.learnMoreUrl = learnMoreUrl;
     return this;
@@ -129,6 +134,7 @@ public class LinksModel {
 
 
   public void setLearnMoreUrl(String learnMoreUrl) {
+    
     this.learnMoreUrl = learnMoreUrl;
   }
 

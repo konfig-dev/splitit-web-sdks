@@ -17,7 +17,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 2.0.0
+    version: 2.1.0
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     clientName: Splitit
@@ -25,7 +25,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 2.0.0
+    version: 2.1.0
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
@@ -35,7 +35,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 2.1.0
+    version: 2.2.0
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
@@ -44,7 +44,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/java
   csharp:
-    version: 2.0.0
+    version: 2.1.0
     packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
@@ -52,7 +52,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    version: 1.1.0
+    version: 1.2.0
     packageName: splitit
     outputDirectory: go
     git:

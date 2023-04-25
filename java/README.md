@@ -44,7 +44,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-web-java-sdk</artifactId>
-  <version>2.1.0</version>
+  <version>2.2.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -60,7 +60,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis:splitit-web-java-sdk:2.1.0"
+   implementation "com.konfigthis:splitit-web-java-sdk:2.2.0"
 }
 ```
 
@@ -97,7 +97,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-web-java-sdk-2.1.0.jar`
+* `target/splitit-web-java-sdk-2.2.0.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -107,6 +107,7 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```java
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.ApiResponse;
 import com.konfigthis.splitit.client.Configuration;
 import com.konfigthis.splitit.client.auth.*;
 import com.konfigthis.splitit.client.model.*;
@@ -122,13 +123,32 @@ public class Example {
     // Set custom base path if desired
     // apiClient.setBasePath("https://web-api-v3.sandbox.splitit.com");    
 
-    InstallmentPlanApi apiInstance = new InstallmentPlanApi(apiClient);
-    String installmentPlanNumber = "installmentPlanNumber_example"; // String | 
-    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example"; // String | 
+    InstallmentPlanApi api = new InstallmentPlanApi(apiClient);
+    String installmentPlanNumber = "installmentPlanNumber_example";
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     try {
-      InstallmentPlanCancelResponse result = apiInstance.cancel(installmentPlanNumber, xSplititIdempotencyKey)
-            .execute();
+      InstallmentPlanCancelResponse result = api
+              .cancel(installmentPlanNumber, xSplititIdempotencyKey)
+              .execute();
       System.out.println(result);
+      System.out.println(result.toJson()); // Serialize response back to JSON 
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstallmentPlanApi#cancel");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request 
+    try {
+      ApiResponse<InstallmentPlanCancelResponse> response = api
+              .cancel(installmentPlanNumber, xSplititIdempotencyKey)
+              .executeWithHttpInfo();
+      System.out.println(response.getData());
+      System.out.println(response.getHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRequest());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
       System.err.println("Status code: " + e.getCode());
@@ -170,7 +190,6 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorExtended](docs/ErrorExtended.md)
  - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
- - [FailedResponse](docs/FailedResponse.md)
  - [GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/IdentifierContract.md)
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
@@ -213,6 +232,7 @@ Class | Method | HTTP request | Description
  - [TestModes](docs/TestModes.md)
  - [ThreeDsRedirectDataV3](docs/ThreeDsRedirectDataV3.md)
  - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
+ - [UxSettingsModel](docs/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/VerifyAuthorizationResponse.md)
 
 

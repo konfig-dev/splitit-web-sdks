@@ -586,8 +586,8 @@ namespace Splitit.Web.Net.Api
                 Splitit.Web.Net.Client.GlobalConfiguration.Instance,
                 new Splitit.Web.Net.Client.Configuration { BasePath = basePath }
             );
-            this.Client = new Splitit.Web.Net.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Splitit.Web.Net.Client.ApiClient(this.Configuration.BasePath);
+            this.Client = new Splitit.Web.Net.Client.ApiClient(this.Configuration);
+            this.AsynchronousClient = new Splitit.Web.Net.Client.ApiClient(this.Configuration);
             this.ExceptionFactory = Splitit.Web.Net.Client.Configuration.DefaultExceptionFactory;
         }
 
@@ -605,9 +605,9 @@ namespace Splitit.Web.Net.Api
                 Splitit.Web.Net.Client.GlobalConfiguration.Instance,
                 configuration
             );
-            this.Client = new Splitit.Web.Net.Client.ApiClient(this.Configuration.BasePath);
-            this.AsynchronousClient = new Splitit.Web.Net.Client.ApiClient(this.Configuration.BasePath);
-            ExceptionFactory = Splitit.Web.Net.Client.Configuration.DefaultExceptionFactory;
+            this.Client = new Splitit.Web.Net.Client.ApiClient(this.Configuration);
+            this.AsynchronousClient = new Splitit.Web.Net.Client.ApiClient(this.Configuration);
+            this.ExceptionFactory = Splitit.Web.Net.Client.Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -831,7 +831,7 @@ namespace Splitit.Web.Net.Api
             }
 
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Cancel";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1036,7 +1036,7 @@ namespace Splitit.Web.Net.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = checkInstallmentsEligibilityRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.CheckEligibility";
@@ -1235,7 +1235,7 @@ namespace Splitit.Web.Net.Api
             }
 
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Get";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1450,9 +1450,9 @@ namespace Splitit.Web.Net.Api
 
             if (xSplititTestMode != null)
             {
-                localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode)); // header parameter
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode, dataFormat: "")); // header parameter
             }
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = installmentPlanInitiateRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Post";
@@ -1668,9 +1668,9 @@ namespace Splitit.Web.Net.Api
 
             if (xSplititTestMode != null)
             {
-                localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode)); // header parameter
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode, dataFormat: "")); // header parameter
             }
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = installmentPlanCreateRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Post2";
@@ -1894,7 +1894,7 @@ namespace Splitit.Web.Net.Api
             }
 
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = installmentPlanRefundRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Refund";
@@ -1992,15 +1992,15 @@ namespace Splitit.Web.Net.Api
 
             if (installmentPlanNumber != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "installmentPlanNumber", installmentPlanNumber));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "installmentPlanNumber", installmentPlanNumber, ""));
             }
             if (refOrderNumber != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "refOrderNumber", refOrderNumber));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "refOrderNumber", refOrderNumber, ""));
             }
             if (extendedParams != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "extendedParams", extendedParams));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "extendedParams", extendedParams, ""));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
 
@@ -2101,17 +2101,17 @@ namespace Splitit.Web.Net.Api
 
             if (installmentPlanNumber != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "installmentPlanNumber", installmentPlanNumber));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "installmentPlanNumber", installmentPlanNumber, ""));
             }
             if (refOrderNumber != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "refOrderNumber", refOrderNumber));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "refOrderNumber", refOrderNumber, ""));
             }
             if (extendedParams != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "extendedParams", extendedParams));
+                localVarRequestOptions.QueryParameters.Add(Splitit.Web.Net.Client.ClientUtils.ParameterToMultiMap("", "extendedParams", extendedParams, ""));
             }
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.Search";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2334,7 +2334,7 @@ namespace Splitit.Web.Net.Api
             }
 
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = updateOrderRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.UpdateOrder";
@@ -2540,7 +2540,7 @@ namespace Splitit.Web.Net.Api
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.Data = installmentPlanUpdateRequestByIdentifier;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.UpdateOrder2";
@@ -2739,7 +2739,7 @@ namespace Splitit.Web.Net.Api
             }
 
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.VerifyAuthorization";
             localVarRequestOptions.OperationIndex = operationIndex;

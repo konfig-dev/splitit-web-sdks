@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.RefundStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
@@ -62,7 +61,7 @@ public class RefundModel {
 
   public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
   @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   public static final String SERIALIZED_NAME_STATUS = "Status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -70,16 +69,17 @@ public class RefundModel {
 
   public static final String SERIALIZED_NAME_NON_CREDIT_REFUND_AMOUNT = "NonCreditRefundAmount";
   @SerializedName(SERIALIZED_NAME_NON_CREDIT_REFUND_AMOUNT)
-  private BigDecimal nonCreditRefundAmount;
+  private Double nonCreditRefundAmount;
 
   public static final String SERIALIZED_NAME_CREDIT_REFUND_AMOUNT = "CreditRefundAmount";
   @SerializedName(SERIALIZED_NAME_CREDIT_REFUND_AMOUNT)
-  private BigDecimal creditRefundAmount;
+  private Double creditRefundAmount;
 
   public RefundModel() {
   }
 
   public RefundModel refundId(String refundId) {
+    
     
     this.refundId = refundId;
     return this;
@@ -98,11 +98,13 @@ public class RefundModel {
 
 
   public void setRefundId(String refundId) {
+    
     this.refundId = refundId;
   }
 
 
   public RefundModel submitDate(OffsetDateTime submitDate) {
+    
     
     this.submitDate = submitDate;
     return this;
@@ -121,13 +123,22 @@ public class RefundModel {
 
 
   public void setSubmitDate(OffsetDateTime submitDate) {
+    
     this.submitDate = submitDate;
   }
 
 
-  public RefundModel totalAmount(BigDecimal totalAmount) {
+  public RefundModel totalAmount(Double totalAmount) {
+    
     
     this.totalAmount = totalAmount;
+    return this;
+  }
+
+  public RefundModel totalAmount(Integer totalAmount) {
+    
+    
+    this.totalAmount = totalAmount.doubleValue();
     return this;
   }
 
@@ -138,17 +149,19 @@ public class RefundModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
 
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
+    
     this.totalAmount = totalAmount;
   }
 
 
   public RefundModel status(RefundStatus status) {
+    
     
     this.status = status;
     return this;
@@ -167,13 +180,22 @@ public class RefundModel {
 
 
   public void setStatus(RefundStatus status) {
+    
     this.status = status;
   }
 
 
-  public RefundModel nonCreditRefundAmount(BigDecimal nonCreditRefundAmount) {
+  public RefundModel nonCreditRefundAmount(Double nonCreditRefundAmount) {
+    
     
     this.nonCreditRefundAmount = nonCreditRefundAmount;
+    return this;
+  }
+
+  public RefundModel nonCreditRefundAmount(Integer nonCreditRefundAmount) {
+    
+    
+    this.nonCreditRefundAmount = nonCreditRefundAmount.doubleValue();
     return this;
   }
 
@@ -184,19 +206,28 @@ public class RefundModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getNonCreditRefundAmount() {
+  public Double getNonCreditRefundAmount() {
     return nonCreditRefundAmount;
   }
 
 
-  public void setNonCreditRefundAmount(BigDecimal nonCreditRefundAmount) {
+  public void setNonCreditRefundAmount(Double nonCreditRefundAmount) {
+    
     this.nonCreditRefundAmount = nonCreditRefundAmount;
   }
 
 
-  public RefundModel creditRefundAmount(BigDecimal creditRefundAmount) {
+  public RefundModel creditRefundAmount(Double creditRefundAmount) {
+    
     
     this.creditRefundAmount = creditRefundAmount;
+    return this;
+  }
+
+  public RefundModel creditRefundAmount(Integer creditRefundAmount) {
+    
+    
+    this.creditRefundAmount = creditRefundAmount.doubleValue();
     return this;
   }
 
@@ -207,12 +238,13 @@ public class RefundModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getCreditRefundAmount() {
+  public Double getCreditRefundAmount() {
     return creditRefundAmount;
   }
 
 
-  public void setCreditRefundAmount(BigDecimal creditRefundAmount) {
+  public void setCreditRefundAmount(Double creditRefundAmount) {
+    
     this.creditRefundAmount = creditRefundAmount;
   }
 

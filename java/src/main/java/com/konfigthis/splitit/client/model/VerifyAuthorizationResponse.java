@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.AuthorizationModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,7 +56,7 @@ public class VerifyAuthorizationResponse {
 
   public static final String SERIALIZED_NAME_AUTHORIZATION_AMOUNT = "AuthorizationAmount";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION_AMOUNT)
-  private BigDecimal authorizationAmount;
+  private Double authorizationAmount;
 
   public static final String SERIALIZED_NAME_AUTHORIZATION = "Authorization";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION)
@@ -67,6 +66,7 @@ public class VerifyAuthorizationResponse {
   }
 
   public VerifyAuthorizationResponse isAuthorized(Boolean isAuthorized) {
+    
     
     this.isAuthorized = isAuthorized;
     return this;
@@ -85,13 +85,22 @@ public class VerifyAuthorizationResponse {
 
 
   public void setIsAuthorized(Boolean isAuthorized) {
+    
     this.isAuthorized = isAuthorized;
   }
 
 
-  public VerifyAuthorizationResponse authorizationAmount(BigDecimal authorizationAmount) {
+  public VerifyAuthorizationResponse authorizationAmount(Double authorizationAmount) {
+    
     
     this.authorizationAmount = authorizationAmount;
+    return this;
+  }
+
+  public VerifyAuthorizationResponse authorizationAmount(Integer authorizationAmount) {
+    
+    
+    this.authorizationAmount = authorizationAmount.doubleValue();
     return this;
   }
 
@@ -102,17 +111,19 @@ public class VerifyAuthorizationResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getAuthorizationAmount() {
+  public Double getAuthorizationAmount() {
     return authorizationAmount;
   }
 
 
-  public void setAuthorizationAmount(BigDecimal authorizationAmount) {
+  public void setAuthorizationAmount(Double authorizationAmount) {
+    
     this.authorizationAmount = authorizationAmount;
   }
 
 
   public VerifyAuthorizationResponse authorization(AuthorizationModel authorization) {
+    
     
     this.authorization = authorization;
     return this;
@@ -131,6 +142,7 @@ public class VerifyAuthorizationResponse {
 
 
   public void setAuthorization(AuthorizationModel authorization) {
+    
     this.authorization = authorization;
   }
 

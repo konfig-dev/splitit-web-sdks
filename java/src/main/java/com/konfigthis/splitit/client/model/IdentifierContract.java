@@ -68,6 +68,7 @@ public class IdentifierContract {
 
   public IdentifierContract refOrderNumber(String refOrderNumber) {
     
+    
     this.refOrderNumber = refOrderNumber;
     return this;
   }
@@ -85,11 +86,13 @@ public class IdentifierContract {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public IdentifierContract installmentPlanNumber(String installmentPlanNumber) {
+    
     
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
@@ -108,11 +111,13 @@ public class IdentifierContract {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public IdentifierContract extendedParams(Map<String, String> extendedParams) {
+    
     
     this.extendedParams = extendedParams;
     return this;
@@ -139,6 +144,7 @@ public class IdentifierContract {
 
 
   public void setExtendedParams(Map<String, String> extendedParams) {
+    
     this.extendedParams = extendedParams;
   }
 

@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**isAuthorized** | **Boolean** |  |  |
-|**authorizationAmount** | **BigDecimal** |  |  [optional] |
+|**authorizationAmount** | **Double** |  |  [optional] |
 |**authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  |  [optional] |
 
 

@@ -120,6 +120,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'FirstInstallmentAmount'
         }
+        /// <summary>
+        /// Test the property 'FirstInstallmentDate'
+        /// </summary>
+        [Fact]
+        public void FirstInstallmentDateTest()
+        {
+            // TODO unit test for the property 'FirstInstallmentDate'
+        }
 
     }
 

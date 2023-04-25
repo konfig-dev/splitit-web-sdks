@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */

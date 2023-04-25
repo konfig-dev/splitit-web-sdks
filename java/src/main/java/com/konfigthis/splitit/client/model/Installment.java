@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.InstallmentStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 import com.google.gson.Gson;
@@ -58,7 +57,7 @@ public class Installment {
 
   public static final String SERIALIZED_NAME_AMOUNT = "Amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_PROCESS_DATE_TIME = "ProcessDateTime";
   @SerializedName(SERIALIZED_NAME_PROCESS_DATE_TIME)
@@ -72,6 +71,7 @@ public class Installment {
   }
 
   public Installment installmentNumber(Integer installmentNumber) {
+    
     
     this.installmentNumber = installmentNumber;
     return this;
@@ -90,13 +90,22 @@ public class Installment {
 
 
   public void setInstallmentNumber(Integer installmentNumber) {
+    
     this.installmentNumber = installmentNumber;
   }
 
 
-  public Installment amount(BigDecimal amount) {
+  public Installment amount(Double amount) {
+    
     
     this.amount = amount;
+    return this;
+  }
+
+  public Installment amount(Integer amount) {
+    
+    
+    this.amount = amount.doubleValue();
     return this;
   }
 
@@ -107,17 +116,19 @@ public class Installment {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
+    
     this.amount = amount;
   }
 
 
   public Installment processDateTime(OffsetDateTime processDateTime) {
+    
     
     this.processDateTime = processDateTime;
     return this;
@@ -136,11 +147,13 @@ public class Installment {
 
 
   public void setProcessDateTime(OffsetDateTime processDateTime) {
+    
     this.processDateTime = processDateTime;
   }
 
 
   public Installment status(InstallmentStatus status) {
+    
     
     this.status = status;
     return this;
@@ -159,6 +172,7 @@ public class Installment {
 
 
   public void setStatus(InstallmentStatus status) {
+    
     this.status = status;
   }
 

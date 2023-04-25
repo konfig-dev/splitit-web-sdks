@@ -20,7 +20,8 @@
  */
 
 export const PaymentMethodType = {
-    Card: 'Card'
+    Card: 'Card',
+    SplititToken: 'SplititToken'
 } as const;
 
 export type PaymentMethodType = typeof PaymentMethodType[keyof typeof PaymentMethodType];

@@ -66,9 +66,21 @@ export interface PlanData {
     'RefOrderNumber'?: string;
     /**
      * 
+     * @type {Array<number>}
+     * @memberof PlanData
+     */
+    'AllowedInstallmentOptions'?: Array<number>;
+    /**
+     * 
      * @type {{ [key: string]: string; }}
      * @memberof PlanData
      */
     'Tags'?: { [key: string]: string; };
+    /**
+     * 
+     * @type {string}
+     * @memberof PlanData
+     */
+    'FirstInstallmentDate'?: string;
 }
 

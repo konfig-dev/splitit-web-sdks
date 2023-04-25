@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.RefundStrategy;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,7 +52,7 @@ import com.konfigthis.splitit.client.JSON;
 public class InstallmentPlanRefundRequest {
   public static final String SERIALIZED_NAME_AMOUNT = "Amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_REFUND_STRATEGY = "RefundStrategy";
   @SerializedName(SERIALIZED_NAME_REFUND_STRATEGY)
@@ -62,9 +61,17 @@ public class InstallmentPlanRefundRequest {
   public InstallmentPlanRefundRequest() {
   }
 
-  public InstallmentPlanRefundRequest amount(BigDecimal amount) {
+  public InstallmentPlanRefundRequest amount(Double amount) {
+    
     
     this.amount = amount;
+    return this;
+  }
+
+  public InstallmentPlanRefundRequest amount(Integer amount) {
+    
+    
+    this.amount = amount.doubleValue();
     return this;
   }
 
@@ -75,17 +82,19 @@ public class InstallmentPlanRefundRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
+    
     this.amount = amount;
   }
 
 
   public InstallmentPlanRefundRequest refundStrategy(RefundStrategy refundStrategy) {
+    
     
     this.refundStrategy = refundStrategy;
     return this;
@@ -104,6 +113,7 @@ public class InstallmentPlanRefundRequest {
 
 
   public void setRefundStrategy(RefundStrategy refundStrategy) {
+    
     this.refundStrategy = refundStrategy;
   }
 

@@ -23,7 +23,7 @@ import com.konfigthis.splitit.client.model.PurchaseMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,7 +55,7 @@ import com.konfigthis.splitit.client.JSON;
 public class PlanDataModel {
   public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
   @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   public static final String SERIALIZED_NAME_CURRENCY = "Currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -83,14 +83,26 @@ public class PlanDataModel {
 
   public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT = "FirstInstallmentAmount";
   @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT)
-  private BigDecimal firstInstallmentAmount;
+  private Double firstInstallmentAmount;
+
+  public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_DATE = "FirstInstallmentDate";
+  @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_DATE)
+  private OffsetDateTime firstInstallmentDate;
 
   public PlanDataModel() {
   }
 
-  public PlanDataModel totalAmount(BigDecimal totalAmount) {
+  public PlanDataModel totalAmount(Double totalAmount) {
+    
     
     this.totalAmount = totalAmount;
+    return this;
+  }
+
+  public PlanDataModel totalAmount(Integer totalAmount) {
+    
+    
+    this.totalAmount = totalAmount.doubleValue();
     return this;
   }
 
@@ -101,17 +113,19 @@ public class PlanDataModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
 
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
+    
     this.totalAmount = totalAmount;
   }
 
 
   public PlanDataModel currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -130,11 +144,13 @@ public class PlanDataModel {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
   public PlanDataModel numberOfInstallments(Integer numberOfInstallments) {
+    
     
     this.numberOfInstallments = numberOfInstallments;
     return this;
@@ -153,11 +169,13 @@ public class PlanDataModel {
 
 
   public void setNumberOfInstallments(Integer numberOfInstallments) {
+    
     this.numberOfInstallments = numberOfInstallments;
   }
 
 
   public PlanDataModel terminalId(String terminalId) {
+    
     
     this.terminalId = terminalId;
     return this;
@@ -176,11 +194,13 @@ public class PlanDataModel {
 
 
   public void setTerminalId(String terminalId) {
+    
     this.terminalId = terminalId;
   }
 
 
   public PlanDataModel purchaseMethod(PurchaseMethod purchaseMethod) {
+    
     
     this.purchaseMethod = purchaseMethod;
     return this;
@@ -199,11 +219,13 @@ public class PlanDataModel {
 
 
   public void setPurchaseMethod(PurchaseMethod purchaseMethod) {
+    
     this.purchaseMethod = purchaseMethod;
   }
 
 
   public PlanDataModel refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -222,11 +244,13 @@ public class PlanDataModel {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public PlanDataModel extendedParams(Map<String, String> extendedParams) {
+    
     
     this.extendedParams = extendedParams;
     return this;
@@ -253,13 +277,22 @@ public class PlanDataModel {
 
 
   public void setExtendedParams(Map<String, String> extendedParams) {
+    
     this.extendedParams = extendedParams;
   }
 
 
-  public PlanDataModel firstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public PlanDataModel firstInstallmentAmount(Double firstInstallmentAmount) {
+    
     
     this.firstInstallmentAmount = firstInstallmentAmount;
+    return this;
+  }
+
+  public PlanDataModel firstInstallmentAmount(Integer firstInstallmentAmount) {
+    
+    
+    this.firstInstallmentAmount = firstInstallmentAmount.doubleValue();
     return this;
   }
 
@@ -270,13 +303,39 @@ public class PlanDataModel {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getFirstInstallmentAmount() {
+  public Double getFirstInstallmentAmount() {
     return firstInstallmentAmount;
   }
 
 
-  public void setFirstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public void setFirstInstallmentAmount(Double firstInstallmentAmount) {
+    
     this.firstInstallmentAmount = firstInstallmentAmount;
+  }
+
+
+  public PlanDataModel firstInstallmentDate(OffsetDateTime firstInstallmentDate) {
+    
+    
+    this.firstInstallmentDate = firstInstallmentDate;
+    return this;
+  }
+
+   /**
+   * Get firstInstallmentDate
+   * @return firstInstallmentDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getFirstInstallmentDate() {
+    return firstInstallmentDate;
+  }
+
+
+  public void setFirstInstallmentDate(OffsetDateTime firstInstallmentDate) {
+    
+    this.firstInstallmentDate = firstInstallmentDate;
   }
 
   /**
@@ -341,13 +400,14 @@ public class PlanDataModel {
         Objects.equals(this.purchaseMethod, planDataModel.purchaseMethod) &&
         Objects.equals(this.refOrderNumber, planDataModel.refOrderNumber) &&
         Objects.equals(this.extendedParams, planDataModel.extendedParams) &&
-        Objects.equals(this.firstInstallmentAmount, planDataModel.firstInstallmentAmount)&&
+        Objects.equals(this.firstInstallmentAmount, planDataModel.firstInstallmentAmount) &&
+        Objects.equals(this.firstInstallmentDate, planDataModel.firstInstallmentDate)&&
         Objects.equals(this.additionalProperties, planDataModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalAmount, currency, numberOfInstallments, terminalId, purchaseMethod, refOrderNumber, extendedParams, firstInstallmentAmount, additionalProperties);
+    return Objects.hash(totalAmount, currency, numberOfInstallments, terminalId, purchaseMethod, refOrderNumber, extendedParams, firstInstallmentAmount, firstInstallmentDate, additionalProperties);
   }
 
   @Override
@@ -362,6 +422,7 @@ public class PlanDataModel {
     sb.append("    refOrderNumber: ").append(toIndentedString(refOrderNumber)).append("\n");
     sb.append("    extendedParams: ").append(toIndentedString(extendedParams)).append("\n");
     sb.append("    firstInstallmentAmount: ").append(toIndentedString(firstInstallmentAmount)).append("\n");
+    sb.append("    firstInstallmentDate: ").append(toIndentedString(firstInstallmentDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -393,6 +454,7 @@ public class PlanDataModel {
     openapiFields.add("RefOrderNumber");
     openapiFields.add("ExtendedParams");
     openapiFields.add("FirstInstallmentAmount");
+    openapiFields.add("FirstInstallmentDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

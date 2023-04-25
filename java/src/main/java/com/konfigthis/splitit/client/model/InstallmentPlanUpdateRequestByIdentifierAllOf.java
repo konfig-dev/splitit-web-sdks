@@ -59,6 +59,7 @@ public class InstallmentPlanUpdateRequestByIdentifierAllOf {
 
   public InstallmentPlanUpdateRequestByIdentifierAllOf identifier(IdentifierContract identifier) {
     
+    
     this.identifier = identifier;
     return this;
   }
@@ -76,6 +77,7 @@ public class InstallmentPlanUpdateRequestByIdentifierAllOf {
 
 
   public void setIdentifier(IdentifierContract identifier) {
+    
     this.identifier = identifier;
   }
 

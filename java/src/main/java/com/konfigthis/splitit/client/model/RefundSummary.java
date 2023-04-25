@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -52,26 +51,34 @@ import com.konfigthis.splitit.client.JSON;
 public class RefundSummary {
   public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
   @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   public static final String SERIALIZED_NAME_FAILED_AMOUNT = "FailedAmount";
   @SerializedName(SERIALIZED_NAME_FAILED_AMOUNT)
-  private BigDecimal failedAmount;
+  private Double failedAmount;
 
   public static final String SERIALIZED_NAME_SUCCEEDED_AMOUNT = "SucceededAmount";
   @SerializedName(SERIALIZED_NAME_SUCCEEDED_AMOUNT)
-  private BigDecimal succeededAmount;
+  private Double succeededAmount;
 
   public static final String SERIALIZED_NAME_PENDING_AMOUNT = "PendingAmount";
   @SerializedName(SERIALIZED_NAME_PENDING_AMOUNT)
-  private BigDecimal pendingAmount;
+  private Double pendingAmount;
 
   public RefundSummary() {
   }
 
-  public RefundSummary totalAmount(BigDecimal totalAmount) {
+  public RefundSummary totalAmount(Double totalAmount) {
+    
     
     this.totalAmount = totalAmount;
+    return this;
+  }
+
+  public RefundSummary totalAmount(Integer totalAmount) {
+    
+    
+    this.totalAmount = totalAmount.doubleValue();
     return this;
   }
 
@@ -82,19 +89,28 @@ public class RefundSummary {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
 
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
+    
     this.totalAmount = totalAmount;
   }
 
 
-  public RefundSummary failedAmount(BigDecimal failedAmount) {
+  public RefundSummary failedAmount(Double failedAmount) {
+    
     
     this.failedAmount = failedAmount;
+    return this;
+  }
+
+  public RefundSummary failedAmount(Integer failedAmount) {
+    
+    
+    this.failedAmount = failedAmount.doubleValue();
     return this;
   }
 
@@ -105,19 +121,28 @@ public class RefundSummary {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getFailedAmount() {
+  public Double getFailedAmount() {
     return failedAmount;
   }
 
 
-  public void setFailedAmount(BigDecimal failedAmount) {
+  public void setFailedAmount(Double failedAmount) {
+    
     this.failedAmount = failedAmount;
   }
 
 
-  public RefundSummary succeededAmount(BigDecimal succeededAmount) {
+  public RefundSummary succeededAmount(Double succeededAmount) {
+    
     
     this.succeededAmount = succeededAmount;
+    return this;
+  }
+
+  public RefundSummary succeededAmount(Integer succeededAmount) {
+    
+    
+    this.succeededAmount = succeededAmount.doubleValue();
     return this;
   }
 
@@ -128,19 +153,28 @@ public class RefundSummary {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getSucceededAmount() {
+  public Double getSucceededAmount() {
     return succeededAmount;
   }
 
 
-  public void setSucceededAmount(BigDecimal succeededAmount) {
+  public void setSucceededAmount(Double succeededAmount) {
+    
     this.succeededAmount = succeededAmount;
   }
 
 
-  public RefundSummary pendingAmount(BigDecimal pendingAmount) {
+  public RefundSummary pendingAmount(Double pendingAmount) {
+    
     
     this.pendingAmount = pendingAmount;
+    return this;
+  }
+
+  public RefundSummary pendingAmount(Integer pendingAmount) {
+    
+    
+    this.pendingAmount = pendingAmount.doubleValue();
     return this;
   }
 
@@ -151,12 +185,13 @@ public class RefundSummary {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getPendingAmount() {
+  public Double getPendingAmount() {
     return pendingAmount;
   }
 
 
-  public void setPendingAmount(BigDecimal pendingAmount) {
+  public void setPendingAmount(Double pendingAmount) {
+    
     this.pendingAmount = pendingAmount;
   }
 

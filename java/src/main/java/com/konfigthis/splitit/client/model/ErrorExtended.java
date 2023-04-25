@@ -72,6 +72,7 @@ public class ErrorExtended {
 
   public ErrorExtended code(String code) {
     
+    
     this.code = code;
     return this;
   }
@@ -89,11 +90,13 @@ public class ErrorExtended {
 
 
   public void setCode(String code) {
+    
     this.code = code;
   }
 
 
   public ErrorExtended message(String message) {
+    
     
     this.message = message;
     return this;
@@ -112,11 +115,13 @@ public class ErrorExtended {
 
 
   public void setMessage(String message) {
+    
     this.message = message;
   }
 
 
   public ErrorExtended additionalInfo(String additionalInfo) {
+    
     
     this.additionalInfo = additionalInfo;
     return this;
@@ -135,11 +140,13 @@ public class ErrorExtended {
 
 
   public void setAdditionalInfo(String additionalInfo) {
+    
     this.additionalInfo = additionalInfo;
   }
 
 
   public ErrorExtended extraData(Map<String, String> extraData) {
+    
     
     this.extraData = extraData;
     return this;
@@ -166,6 +173,7 @@ public class ErrorExtended {
 
 
   public void setExtraData(Map<String, String> extraData) {
+    
     this.extraData = extraData;
   }
 

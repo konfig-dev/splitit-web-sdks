@@ -8,13 +8,15 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**terminalId** | **String** |  |  [optional] |
-|**totalAmount** | **BigDecimal** |  |  |
-|**firstInstallmentAmount** | **BigDecimal** |  |  [optional] |
+|**totalAmount** | **Double** |  |  |
+|**firstInstallmentAmount** | **Double** |  |  [optional] |
 |**currency** | **String** |  |  [optional] |
 |**numberOfInstallments** | **Integer** |  |  |
 |**purchaseMethod** | **PurchaseMethod** |  |  |
 |**refOrderNumber** | **String** |  |  [optional] |
+|**allowedInstallmentOptions** | **List&lt;Integer&gt;** |  |  [optional] |
 |**tags** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**firstInstallmentDate** | **OffsetDateTime** |  |  [optional] |
 
 
 

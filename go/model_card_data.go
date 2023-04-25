@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -21,6 +21,8 @@ type CardData struct {
 	CardExpYear *string `json:"CardExpYear,omitempty"`
 	CardExpMonth *string `json:"CardExpMonth,omitempty"`
 	CardCvv *string `json:"CardCvv,omitempty"`
+	CardBrand *CardBrand `json:"CardBrand,omitempty"`
+	CardType *CardType `json:"CardType,omitempty"`
 }
 
 // NewCardData instantiates a new CardData object
@@ -200,6 +202,70 @@ func (o *CardData) SetCardCvv(v string) {
 	o.CardCvv = &v
 }
 
+// GetCardBrand returns the CardBrand field value if set, zero value otherwise.
+func (o *CardData) GetCardBrand() CardBrand {
+	if o == nil || isNil(o.CardBrand) {
+		var ret CardBrand
+		return ret
+	}
+	return *o.CardBrand
+}
+
+// GetCardBrandOk returns a tuple with the CardBrand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardData) GetCardBrandOk() (*CardBrand, bool) {
+	if o == nil || isNil(o.CardBrand) {
+    return nil, false
+	}
+	return o.CardBrand, true
+}
+
+// HasCardBrand returns a boolean if a field has been set.
+func (o *CardData) HasCardBrand() bool {
+	if o != nil && !isNil(o.CardBrand) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardBrand gets a reference to the given CardBrand and assigns it to the CardBrand field.
+func (o *CardData) SetCardBrand(v CardBrand) {
+	o.CardBrand = &v
+}
+
+// GetCardType returns the CardType field value if set, zero value otherwise.
+func (o *CardData) GetCardType() CardType {
+	if o == nil || isNil(o.CardType) {
+		var ret CardType
+		return ret
+	}
+	return *o.CardType
+}
+
+// GetCardTypeOk returns a tuple with the CardType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CardData) GetCardTypeOk() (*CardType, bool) {
+	if o == nil || isNil(o.CardType) {
+    return nil, false
+	}
+	return o.CardType, true
+}
+
+// HasCardType returns a boolean if a field has been set.
+func (o *CardData) HasCardType() bool {
+	if o != nil && !isNil(o.CardType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardType gets a reference to the given CardType and assigns it to the CardType field.
+func (o *CardData) SetCardType(v CardType) {
+	o.CardType = &v
+}
+
 func (o CardData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.CardHolderFullName) {
@@ -216,6 +282,12 @@ func (o CardData) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.CardCvv) {
 		toSerialize["CardCvv"] = o.CardCvv
+	}
+	if !isNil(o.CardBrand) {
+		toSerialize["CardBrand"] = o.CardBrand
+	}
+	if !isNil(o.CardType) {
+		toSerialize["CardType"] = o.CardType
 	}
 	return json.Marshal(toSerialize)
 }

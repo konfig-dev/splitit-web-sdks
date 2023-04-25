@@ -10,8 +10,8 @@
 |**refundId** | **String** |  |  [optional] |
 |**installmentPlanNumber** | **String** |  |  [optional] |
 |**currency** | **String** |  |  [optional] |
-|**nonCreditRefundAmount** | **BigDecimal** |  |  [optional] |
-|**creditRefundAmount** | **BigDecimal** |  |  [optional] |
+|**nonCreditRefundAmount** | **Double** |  |  [optional] |
+|**creditRefundAmount** | **Double** |  |  [optional] |
 |**summary** | [**RefundSummary**](RefundSummary.md) |  |  [optional] |
 
 

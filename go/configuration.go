@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -103,7 +103,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "Konfig/1.1.0/go",
+		UserAgent:        "Konfig/1.2.0/go",
 		Debug:            false,
         Context: context.Background(),
 		Servers:          ServerConfigurations{

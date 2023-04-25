@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -12,27 +12,29 @@ package splitit
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // PlanDataModel struct for PlanDataModel
 type PlanDataModel struct {
 	TotalAmount float32 `json:"TotalAmount"`
 	Currency *string `json:"Currency,omitempty"`
-	NumberOfInstallments int32 `json:"NumberOfInstallments"`
+	NumberOfInstallments *int32 `json:"NumberOfInstallments,omitempty"`
 	TerminalId *string `json:"TerminalId,omitempty"`
 	PurchaseMethod PurchaseMethod `json:"PurchaseMethod"`
 	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
 	ExtendedParams *map[string]string `json:"ExtendedParams,omitempty"`
+	FirstInstallmentAmount *float32 `json:"FirstInstallmentAmount,omitempty"`
+	FirstInstallmentDate *time.Time `json:"FirstInstallmentDate,omitempty"`
 }
 
 // NewPlanDataModel instantiates a new PlanDataModel object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlanDataModel(totalAmount float32, numberOfInstallments int32, purchaseMethod PurchaseMethod) *PlanDataModel {
+func NewPlanDataModel(totalAmount float32, purchaseMethod PurchaseMethod) *PlanDataModel {
 	this := PlanDataModel{}
 	this.TotalAmount = totalAmount
-	this.NumberOfInstallments = numberOfInstallments
 	this.PurchaseMethod = purchaseMethod
 	return &this
 }
@@ -101,28 +103,36 @@ func (o *PlanDataModel) SetCurrency(v string) {
 	o.Currency = &v
 }
 
-// GetNumberOfInstallments returns the NumberOfInstallments field value
+// GetNumberOfInstallments returns the NumberOfInstallments field value if set, zero value otherwise.
 func (o *PlanDataModel) GetNumberOfInstallments() int32 {
-	if o == nil {
+	if o == nil || isNil(o.NumberOfInstallments) {
 		var ret int32
 		return ret
 	}
-
-	return o.NumberOfInstallments
+	return *o.NumberOfInstallments
 }
 
-// GetNumberOfInstallmentsOk returns a tuple with the NumberOfInstallments field value
+// GetNumberOfInstallmentsOk returns a tuple with the NumberOfInstallments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PlanDataModel) GetNumberOfInstallmentsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || isNil(o.NumberOfInstallments) {
     return nil, false
 	}
-	return &o.NumberOfInstallments, true
+	return o.NumberOfInstallments, true
 }
 
-// SetNumberOfInstallments sets field value
+// HasNumberOfInstallments returns a boolean if a field has been set.
+func (o *PlanDataModel) HasNumberOfInstallments() bool {
+	if o != nil && !isNil(o.NumberOfInstallments) {
+		return true
+	}
+
+	return false
+}
+
+// SetNumberOfInstallments gets a reference to the given int32 and assigns it to the NumberOfInstallments field.
 func (o *PlanDataModel) SetNumberOfInstallments(v int32) {
-	o.NumberOfInstallments = v
+	o.NumberOfInstallments = &v
 }
 
 // GetTerminalId returns the TerminalId field value if set, zero value otherwise.
@@ -245,6 +255,70 @@ func (o *PlanDataModel) SetExtendedParams(v map[string]string) {
 	o.ExtendedParams = &v
 }
 
+// GetFirstInstallmentAmount returns the FirstInstallmentAmount field value if set, zero value otherwise.
+func (o *PlanDataModel) GetFirstInstallmentAmount() float32 {
+	if o == nil || isNil(o.FirstInstallmentAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.FirstInstallmentAmount
+}
+
+// GetFirstInstallmentAmountOk returns a tuple with the FirstInstallmentAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanDataModel) GetFirstInstallmentAmountOk() (*float32, bool) {
+	if o == nil || isNil(o.FirstInstallmentAmount) {
+    return nil, false
+	}
+	return o.FirstInstallmentAmount, true
+}
+
+// HasFirstInstallmentAmount returns a boolean if a field has been set.
+func (o *PlanDataModel) HasFirstInstallmentAmount() bool {
+	if o != nil && !isNil(o.FirstInstallmentAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstInstallmentAmount gets a reference to the given float32 and assigns it to the FirstInstallmentAmount field.
+func (o *PlanDataModel) SetFirstInstallmentAmount(v float32) {
+	o.FirstInstallmentAmount = &v
+}
+
+// GetFirstInstallmentDate returns the FirstInstallmentDate field value if set, zero value otherwise.
+func (o *PlanDataModel) GetFirstInstallmentDate() time.Time {
+	if o == nil || isNil(o.FirstInstallmentDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.FirstInstallmentDate
+}
+
+// GetFirstInstallmentDateOk returns a tuple with the FirstInstallmentDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanDataModel) GetFirstInstallmentDateOk() (*time.Time, bool) {
+	if o == nil || isNil(o.FirstInstallmentDate) {
+    return nil, false
+	}
+	return o.FirstInstallmentDate, true
+}
+
+// HasFirstInstallmentDate returns a boolean if a field has been set.
+func (o *PlanDataModel) HasFirstInstallmentDate() bool {
+	if o != nil && !isNil(o.FirstInstallmentDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstInstallmentDate gets a reference to the given time.Time and assigns it to the FirstInstallmentDate field.
+func (o *PlanDataModel) SetFirstInstallmentDate(v time.Time) {
+	o.FirstInstallmentDate = &v
+}
+
 func (o PlanDataModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -253,7 +327,7 @@ func (o PlanDataModel) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Currency) {
 		toSerialize["Currency"] = o.Currency
 	}
-	if true {
+	if !isNil(o.NumberOfInstallments) {
 		toSerialize["NumberOfInstallments"] = o.NumberOfInstallments
 	}
 	if !isNil(o.TerminalId) {
@@ -267,6 +341,12 @@ func (o PlanDataModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ExtendedParams) {
 		toSerialize["ExtendedParams"] = o.ExtendedParams
+	}
+	if !isNil(o.FirstInstallmentAmount) {
+		toSerialize["FirstInstallmentAmount"] = o.FirstInstallmentAmount
+	}
+	if !isNil(o.FirstInstallmentDate) {
+		toSerialize["FirstInstallmentDate"] = o.FirstInstallmentDate
 	}
 	return json.Marshal(toSerialize)
 }

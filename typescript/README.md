@@ -1,35 +1,23 @@
-## splitit-web-typescript-sdk@2.0.0
+## splitit-web-typescript-sdk@2.1.0
+Splitit\'s Web API
 
-This library that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
-Environment
-* Node.js
-* Webpack
-* Browserify
+**Important note: this library is can be used in both the client-side or server-side, but using it
+in client-side browser code is not recommended as you would expose security credentials.**
 
-Language level
-* ES5 - you must have a Promises/A+ library installed
-* ES6
+### Installing
 
-Module system
-* CommonJS
-* ES6 module system
-
-### Building
-
-To build and compile the typescript sources to javascript use:
+#### npm
 ```
-npm install
-npm run build
+npm install splitit-web-typescript-sdk --save
 ```
 
-### Consuming
-
-navigate to the folder of your consuming project and run the following command.
-
+#### yarn
 ```
-npm install splitit-web-typescript-sdk@2.0.0 --save
+yarn add splitit-web-typescript-sdk
 ```
+
+
 
 ### Getting Started
 
@@ -41,6 +29,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const cancelResponse = await splitit.installmentplan.cancel({
@@ -68,5 +57,4 @@ Class | Method | HTTP request | Description
 *InstallmentplanApi* | [**updateOrder**](docs/InstallmentplanApi.md#updateOrder) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder | 
 *InstallmentplanApi* | [**updateOrder2**](docs/InstallmentplanApi.md#updateOrder2) | **PUT** /api/installmentplans/updateorder | 
 *InstallmentplanApi* | [**verifyAuthorization**](docs/InstallmentplanApi.md#verifyAuthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
-
 

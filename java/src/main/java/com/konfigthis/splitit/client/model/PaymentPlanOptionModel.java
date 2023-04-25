@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.LinksModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -57,15 +56,15 @@ public class PaymentPlanOptionModel {
 
   public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT = "FirstInstallmentAmount";
   @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT)
-  private BigDecimal firstInstallmentAmount;
+  private Double firstInstallmentAmount;
 
   public static final String SERIALIZED_NAME_INSTALLMENT_AMOUNT = "InstallmentAmount";
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_AMOUNT)
-  private BigDecimal installmentAmount;
+  private Double installmentAmount;
 
   public static final String SERIALIZED_NAME_LAST_INSTALLMENT_AMOUNT = "LastInstallmentAmount";
   @SerializedName(SERIALIZED_NAME_LAST_INSTALLMENT_AMOUNT)
-  private BigDecimal lastInstallmentAmount;
+  private Double lastInstallmentAmount;
 
   public static final String SERIALIZED_NAME_LINKS = "Links";
   @SerializedName(SERIALIZED_NAME_LINKS)
@@ -75,6 +74,7 @@ public class PaymentPlanOptionModel {
   }
 
   public PaymentPlanOptionModel numberOfInstallments(Integer numberOfInstallments) {
+    
     
     this.numberOfInstallments = numberOfInstallments;
     return this;
@@ -93,13 +93,22 @@ public class PaymentPlanOptionModel {
 
 
   public void setNumberOfInstallments(Integer numberOfInstallments) {
+    
     this.numberOfInstallments = numberOfInstallments;
   }
 
 
-  public PaymentPlanOptionModel firstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public PaymentPlanOptionModel firstInstallmentAmount(Double firstInstallmentAmount) {
+    
     
     this.firstInstallmentAmount = firstInstallmentAmount;
+    return this;
+  }
+
+  public PaymentPlanOptionModel firstInstallmentAmount(Integer firstInstallmentAmount) {
+    
+    
+    this.firstInstallmentAmount = firstInstallmentAmount.doubleValue();
     return this;
   }
 
@@ -110,19 +119,28 @@ public class PaymentPlanOptionModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getFirstInstallmentAmount() {
+  public Double getFirstInstallmentAmount() {
     return firstInstallmentAmount;
   }
 
 
-  public void setFirstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public void setFirstInstallmentAmount(Double firstInstallmentAmount) {
+    
     this.firstInstallmentAmount = firstInstallmentAmount;
   }
 
 
-  public PaymentPlanOptionModel installmentAmount(BigDecimal installmentAmount) {
+  public PaymentPlanOptionModel installmentAmount(Double installmentAmount) {
+    
     
     this.installmentAmount = installmentAmount;
+    return this;
+  }
+
+  public PaymentPlanOptionModel installmentAmount(Integer installmentAmount) {
+    
+    
+    this.installmentAmount = installmentAmount.doubleValue();
     return this;
   }
 
@@ -133,19 +151,28 @@ public class PaymentPlanOptionModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getInstallmentAmount() {
+  public Double getInstallmentAmount() {
     return installmentAmount;
   }
 
 
-  public void setInstallmentAmount(BigDecimal installmentAmount) {
+  public void setInstallmentAmount(Double installmentAmount) {
+    
     this.installmentAmount = installmentAmount;
   }
 
 
-  public PaymentPlanOptionModel lastInstallmentAmount(BigDecimal lastInstallmentAmount) {
+  public PaymentPlanOptionModel lastInstallmentAmount(Double lastInstallmentAmount) {
+    
     
     this.lastInstallmentAmount = lastInstallmentAmount;
+    return this;
+  }
+
+  public PaymentPlanOptionModel lastInstallmentAmount(Integer lastInstallmentAmount) {
+    
+    
+    this.lastInstallmentAmount = lastInstallmentAmount.doubleValue();
     return this;
   }
 
@@ -156,17 +183,19 @@ public class PaymentPlanOptionModel {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getLastInstallmentAmount() {
+  public Double getLastInstallmentAmount() {
     return lastInstallmentAmount;
   }
 
 
-  public void setLastInstallmentAmount(BigDecimal lastInstallmentAmount) {
+  public void setLastInstallmentAmount(Double lastInstallmentAmount) {
+    
     this.lastInstallmentAmount = lastInstallmentAmount;
   }
 
 
   public PaymentPlanOptionModel links(LinksModel links) {
+    
     
     this.links = links;
     return this;
@@ -185,6 +214,7 @@ public class PaymentPlanOptionModel {
 
 
   public void setLinks(LinksModel links) {
+    
     this.links = links;
   }
 

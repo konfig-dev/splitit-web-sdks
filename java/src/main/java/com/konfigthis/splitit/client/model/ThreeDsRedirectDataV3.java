@@ -68,6 +68,7 @@ public class ThreeDsRedirectDataV3 {
 
   public ThreeDsRedirectDataV3 url(String url) {
     
+    
     this.url = url;
     return this;
   }
@@ -85,11 +86,13 @@ public class ThreeDsRedirectDataV3 {
 
 
   public void setUrl(String url) {
+    
     this.url = url;
   }
 
 
   public ThreeDsRedirectDataV3 verb(String verb) {
+    
     
     this.verb = verb;
     return this;
@@ -108,11 +111,13 @@ public class ThreeDsRedirectDataV3 {
 
 
   public void setVerb(String verb) {
+    
     this.verb = verb;
   }
 
 
   public ThreeDsRedirectDataV3 params(Map<String, String> params) {
+    
     
     this.params = params;
     return this;
@@ -139,6 +144,7 @@ public class ThreeDsRedirectDataV3 {
 
 
   public void setParams(Map<String, String> params) {
+    
     this.params = params;
   }
 

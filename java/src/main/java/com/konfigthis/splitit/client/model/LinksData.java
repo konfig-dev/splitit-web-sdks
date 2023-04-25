@@ -70,6 +70,7 @@ public class LinksData {
 
   public LinksData checkout(String checkout) {
     
+    
     this.checkout = checkout;
     return this;
   }
@@ -87,11 +88,13 @@ public class LinksData {
 
 
   public void setCheckout(String checkout) {
+    
     this.checkout = checkout;
   }
 
 
   public LinksData learnMore(String learnMore) {
+    
     
     this.learnMore = learnMore;
     return this;
@@ -110,11 +113,13 @@ public class LinksData {
 
 
   public void setLearnMore(String learnMore) {
+    
     this.learnMore = learnMore;
   }
 
 
   public LinksData termsConditions(String termsConditions) {
+    
     
     this.termsConditions = termsConditions;
     return this;
@@ -133,11 +138,13 @@ public class LinksData {
 
 
   public void setTermsConditions(String termsConditions) {
+    
     this.termsConditions = termsConditions;
   }
 
 
   public LinksData privacyPolicy(String privacyPolicy) {
+    
     
     this.privacyPolicy = privacyPolicy;
     return this;
@@ -156,6 +163,7 @@ public class LinksData {
 
 
   public void setPrivacyPolicy(String privacyPolicy) {
+    
     this.privacyPolicy = privacyPolicy;
   }
 

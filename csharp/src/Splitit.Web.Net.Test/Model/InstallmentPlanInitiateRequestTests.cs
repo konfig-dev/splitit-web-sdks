@@ -104,6 +104,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'RedirectUrls'
         }
+        /// <summary>
+        /// Test the property 'UxSettings'
+        /// </summary>
+        [Fact]
+        public void UxSettingsTest()
+        {
+            // TODO unit test for the property 'UxSettings'
+        }
 
     }
 

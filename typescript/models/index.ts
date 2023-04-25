@@ -51,4 +51,5 @@ export * from './shopper-data';
 export * from './test-modes';
 export * from './three-ds-redirect-data-v3';
 export * from './update-order-request';
+export * from './ux-settings-model';
 export * from './verify-authorization-response';

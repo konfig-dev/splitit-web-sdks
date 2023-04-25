@@ -58,6 +58,7 @@ public class InstallmentPlanCancelResponse {
 
   public InstallmentPlanCancelResponse installmentPlanNumber(String installmentPlanNumber) {
     
+    
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
   }
@@ -75,6 +76,7 @@ public class InstallmentPlanCancelResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 

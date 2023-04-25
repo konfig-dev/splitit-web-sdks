@@ -91,6 +91,7 @@ public class InstallmentPlanCreateRequest {
 
   public InstallmentPlanCreateRequest autoCapture(Boolean autoCapture) {
     
+    
     this.autoCapture = autoCapture;
     return this;
   }
@@ -108,11 +109,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setAutoCapture(Boolean autoCapture) {
+    
     this.autoCapture = autoCapture;
   }
 
 
   public InstallmentPlanCreateRequest attempt3dSecure(Boolean attempt3dSecure) {
+    
     
     this.attempt3dSecure = attempt3dSecure;
     return this;
@@ -131,11 +134,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setAttempt3dSecure(Boolean attempt3dSecure) {
+    
     this.attempt3dSecure = attempt3dSecure;
   }
 
 
   public InstallmentPlanCreateRequest termsAndConditionsAccepted(Boolean termsAndConditionsAccepted) {
+    
     
     this.termsAndConditionsAccepted = termsAndConditionsAccepted;
     return this;
@@ -154,11 +159,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setTermsAndConditionsAccepted(Boolean termsAndConditionsAccepted) {
+    
     this.termsAndConditionsAccepted = termsAndConditionsAccepted;
   }
 
 
   public InstallmentPlanCreateRequest shopper(ShopperData shopper) {
+    
     
     this.shopper = shopper;
     return this;
@@ -177,11 +184,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setShopper(ShopperData shopper) {
+    
     this.shopper = shopper;
   }
 
 
   public InstallmentPlanCreateRequest planData(PlanDataModel planData) {
+    
     
     this.planData = planData;
     return this;
@@ -200,11 +209,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setPlanData(PlanDataModel planData) {
+    
     this.planData = planData;
   }
 
 
   public InstallmentPlanCreateRequest billingAddress(AddressDataModel billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -223,11 +234,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setBillingAddress(AddressDataModel billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 
 
   public InstallmentPlanCreateRequest paymentMethod(PaymentMethodModel paymentMethod) {
+    
     
     this.paymentMethod = paymentMethod;
     return this;
@@ -246,11 +259,13 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setPaymentMethod(PaymentMethodModel paymentMethod) {
+    
     this.paymentMethod = paymentMethod;
   }
 
 
   public InstallmentPlanCreateRequest redirectUrls(RedirectionEndpointsModel redirectUrls) {
+    
     
     this.redirectUrls = redirectUrls;
     return this;
@@ -269,6 +284,7 @@ public class InstallmentPlanCreateRequest {
 
 
   public void setRedirectUrls(RedirectionEndpointsModel redirectUrls) {
+    
     this.redirectUrls = redirectUrls;
   }
 

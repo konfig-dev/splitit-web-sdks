@@ -37,24 +37,39 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-cancel_response = splitit.installment_plan.cancel(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-)
 try:
+    cancel_response = splitit.installment_plan.cancel(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+    )
+    pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
     pprint(cancel_response.headers)
     pprint(cancel_response.status)
+    pprint(cancel_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanCancelResponse.cancel: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.cancel: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -258,23 +273,39 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-check_eligibility_response = splitit.installment_plan.check_eligibility(
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = {
-    },
-)
+body = {
+    }
 try:
+    check_eligibility_response = splitit.installment_plan.check_eligibility(
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(check_eligibility_response.body)
     pprint(check_eligibility_response.body["payment_plan_options"])
     pprint(check_eligibility_response.headers)
     pprint(check_eligibility_response.status)
+    pprint(check_eligibility_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentsEligibilityResponse.check_eligibility: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.check_eligibility: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -491,15 +522,16 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-get_response = splitit.installment_plan.get(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-)
 try:
+    get_response = splitit.installment_plan.get(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+    )
+    pprint(get_response.body)
     pprint(get_response.body["date_created"])
     pprint(get_response.body["status"])
     pprint(get_response.body["installment_plan_number"])
@@ -518,12 +550,26 @@ try:
     pprint(get_response.body["links"])
     pprint(get_response.headers)
     pprint(get_response.status)
+    pprint(get_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanGetResponse.get: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.get: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -727,17 +773,18 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-post_response = splitit.installment_plan.post(
-    header_params = {
-        'X-Splitit-TestMode': "None",
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = {
+body = {
         "auto_capture": True,
-        "attempt3d_secure": True,
-    },
-)
+    }
 try:
+    post_response = splitit.installment_plan.post(
+        header_params = {
+            'X-Splitit-TestMode': "None",
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(post_response.body)
     pprint(post_response.body["status"])
     pprint(post_response.body["installment_plan_number"])
     pprint(post_response.body["ref_order_number"])
@@ -750,12 +797,27 @@ try:
     pprint(post_response.body["checkout_url"])
     pprint(post_response.headers)
     pprint(post_response.status)
+    pprint(post_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InitiatePlanResponse.post: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.post: %s\n" % e)
     pprint(e.body)
+    if e.status == 400:
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -1006,17 +1068,19 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-post2_response = splitit.installment_plan.post2(
-    header_params = {
-        'X-Splitit-TestMode': "None",
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = {
+body = {
         "auto_capture": True,
         "terms_and_conditions_accepted": True,
-    },
-)
+    }
 try:
+    post2_response = splitit.installment_plan.post2(
+        header_params = {
+            'X-Splitit-TestMode': "None",
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(post2_response.body)
     pprint(post2_response.body["date_created"])
     pprint(post2_response.body["status"])
     pprint(post2_response.body["installment_plan_number"])
@@ -1034,12 +1098,27 @@ try:
     pprint(post2_response.body["links"])
     pprint(post2_response.headers)
     pprint(post2_response.status)
+    pprint(post2_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanCreateResponse.post2: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.post2: %s\n" % e)
     pprint(e.body)
+    if e.status == 400:
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -1290,19 +1369,21 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-refund_response = splitit.installment_plan.refund(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = {
+body = {
         "amount": 3.14,
         "refund_strategy": "FutureInstallmentsFirst",
-    },
-)
+    }
 try:
+    refund_response = splitit.installment_plan.refund(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(refund_response.body)
     pprint(refund_response.body["refund_id"])
     pprint(refund_response.body["installment_plan_number"])
     pprint(refund_response.body["currency"])
@@ -1311,12 +1392,26 @@ try:
     pprint(refund_response.body["summary"])
     pprint(refund_response.headers)
     pprint(refund_response.status)
+    pprint(refund_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanRefundResponse.refund: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.refund: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -1548,28 +1643,43 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-search_response = splitit.installment_plan.search(
-    query_params = {
-        'installmentPlanNumber': "string_example",
-        'refOrderNumber': "string_example",
-        'extendedParams': {
+try:
+    search_response = splitit.installment_plan.search(
+        query_params = {
+            'installmentPlanNumber': "string_example",
+            'refOrderNumber': "string_example",
+            'extendedParams': {
         "key": "string_example",
     },
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-)
-try:
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+    )
+    pprint(search_response.body)
     pprint(search_response.body["plan_list"])
     pprint(search_response.headers)
     pprint(search_response.status)
+    pprint(search_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanSearchResponse.search: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.search: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -1795,30 +1905,46 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-update_order_response = splitit.installment_plan.update_order(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = {
+body = {
         "shipping_status": "Pending",
-    },
-)
+    }
 try:
+    update_order_response = splitit.installment_plan.update_order(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(update_order_response.body)
     pprint(update_order_response.body["status"])
     pprint(update_order_response.body["shipping_status"])
     pprint(update_order_response.body["ref_order_number"])
     pprint(update_order_response.body["installment_plan_number"])
     pprint(update_order_response.headers)
     pprint(update_order_response.status)
+    pprint(update_order_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanUpdateResponse.update_order: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.update_order: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -2050,25 +2176,41 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-update_order2_response = splitit.installment_plan.update_order2(
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-    body = None,
-)
+body = None
 try:
+    update_order2_response = splitit.installment_plan.update_order2(
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+        body=body
+    )
+    pprint(update_order2_response.body)
     pprint(update_order2_response.body["status"])
     pprint(update_order2_response.body["shipping_status"])
     pprint(update_order2_response.body["ref_order_number"])
     pprint(update_order2_response.body["installment_plan_number"])
     pprint(update_order2_response.headers)
     pprint(update_order2_response.status)
+    pprint(update_order2_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanUpdateResponse.update_order2: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.update_order2: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 
@@ -2285,26 +2427,41 @@ splitit = Splitit(
     access_token = 'YOUR_ACCESS_TOKEN'
 )
 
-verify_authorization_response = splitit.installment_plan.verify_authorization(
-    path_params = {
-        'installmentPlanNumber': "installmentPlanNumber_example",
-    },
-    header_params = {
-        'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-    },
-)
 try:
+    verify_authorization_response = splitit.installment_plan.verify_authorization(
+        path_params = {
+            'installmentPlanNumber': "installmentPlanNumber_example",
+        },
+        header_params = {
+            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
+        },
+    )
+    pprint(verify_authorization_response.body)
     pprint(verify_authorization_response.body["is_authorized"])
     pprint(verify_authorization_response.body["authorization_amount"])
     pprint(verify_authorization_response.body["authorization"])
     pprint(verify_authorization_response.headers)
     pprint(verify_authorization_response.status)
+    pprint(verify_authorization_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling VerifyAuthorizationResponse.verify_authorization: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.verify_authorization: %s\n" % e)
     pprint(e.body)
+    if e.status == 401:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 500:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 403:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
+    if e.status == 404:
+        pprint(e.body["trace_id"])
+        pprint(e.body["error"])
     pprint(e.headers)
     pprint(e.status)
     pprint(e.reason)
+    pprint(e.round_trip_time)
 ```
 ### Parameters
 

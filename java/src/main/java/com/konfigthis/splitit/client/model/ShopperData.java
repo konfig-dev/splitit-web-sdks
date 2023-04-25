@@ -70,6 +70,7 @@ public class ShopperData {
 
   public ShopperData fullName(String fullName) {
     
+    
     this.fullName = fullName;
     return this;
   }
@@ -87,11 +88,13 @@ public class ShopperData {
 
 
   public void setFullName(String fullName) {
+    
     this.fullName = fullName;
   }
 
 
   public ShopperData email(String email) {
+    
     
     this.email = email;
     return this;
@@ -110,11 +113,13 @@ public class ShopperData {
 
 
   public void setEmail(String email) {
+    
     this.email = email;
   }
 
 
   public ShopperData phoneNumber(String phoneNumber) {
+    
     
     this.phoneNumber = phoneNumber;
     return this;
@@ -133,11 +138,13 @@ public class ShopperData {
 
 
   public void setPhoneNumber(String phoneNumber) {
+    
     this.phoneNumber = phoneNumber;
   }
 
 
   public ShopperData culture(String culture) {
+    
     
     this.culture = culture;
     return this;
@@ -156,6 +163,7 @@ public class ShopperData {
 
 
   public void setCulture(String culture) {
+    
     this.culture = culture;
   }
 

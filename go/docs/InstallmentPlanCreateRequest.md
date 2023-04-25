@@ -5,8 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoCapture** | **bool** |  | 
-**Attempt3dSecure** | **bool** |  | 
-**AttemptAuthorize** | **bool** |  | 
+**Attempt3dSecure** | Pointer to **bool** |  | [optional] 
 **TermsAndConditionsAccepted** | **bool** |  | 
 **Shopper** | Pointer to [**ShopperData**](ShopperData.md) |  | [optional] 
 **PlanData** | Pointer to [**PlanDataModel**](PlanDataModel.md) |  | [optional] 
@@ -18,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewInstallmentPlanCreateRequest
 
-`func NewInstallmentPlanCreateRequest(autoCapture bool, attempt3dSecure bool, attemptAuthorize bool, termsAndConditionsAccepted bool, ) *InstallmentPlanCreateRequest`
+`func NewInstallmentPlanCreateRequest(autoCapture bool, termsAndConditionsAccepted bool, ) *InstallmentPlanCreateRequest`
 
 NewInstallmentPlanCreateRequest instantiates a new InstallmentPlanCreateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -72,26 +71,11 @@ and a boolean to check if the value has been set.
 
 SetAttempt3dSecure sets Attempt3dSecure field to given value.
 
+### HasAttempt3dSecure
 
-### GetAttemptAuthorize
+`func (o *InstallmentPlanCreateRequest) HasAttempt3dSecure() bool`
 
-`func (o *InstallmentPlanCreateRequest) GetAttemptAuthorize() bool`
-
-GetAttemptAuthorize returns the AttemptAuthorize field if non-nil, zero value otherwise.
-
-### GetAttemptAuthorizeOk
-
-`func (o *InstallmentPlanCreateRequest) GetAttemptAuthorizeOk() (*bool, bool)`
-
-GetAttemptAuthorizeOk returns a tuple with the AttemptAuthorize field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAttemptAuthorize
-
-`func (o *InstallmentPlanCreateRequest) SetAttemptAuthorize(v bool)`
-
-SetAttemptAuthorize sets AttemptAuthorize field to given value.
-
+HasAttempt3dSecure returns a boolean if a field has been set.
 
 ### GetTermsAndConditionsAccepted
 

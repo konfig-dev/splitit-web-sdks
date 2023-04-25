@@ -71,6 +71,7 @@ public class UpdateOrderRequest {
 
   public UpdateOrderRequest trackingNumber(String trackingNumber) {
     
+    
     this.trackingNumber = trackingNumber;
     return this;
   }
@@ -88,11 +89,13 @@ public class UpdateOrderRequest {
 
 
   public void setTrackingNumber(String trackingNumber) {
+    
     this.trackingNumber = trackingNumber;
   }
 
 
   public UpdateOrderRequest refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -111,11 +114,13 @@ public class UpdateOrderRequest {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public UpdateOrderRequest shippingStatus(ShippingStatus shippingStatus) {
+    
     
     this.shippingStatus = shippingStatus;
     return this;
@@ -134,11 +139,13 @@ public class UpdateOrderRequest {
 
 
   public void setShippingStatus(ShippingStatus shippingStatus) {
+    
     this.shippingStatus = shippingStatus;
   }
 
 
   public UpdateOrderRequest capture(Boolean capture) {
+    
     
     this.capture = capture;
     return this;
@@ -157,6 +164,7 @@ public class UpdateOrderRequest {
 
 
   public void setCapture(Boolean capture) {
+    
     this.capture = capture;
   }
 

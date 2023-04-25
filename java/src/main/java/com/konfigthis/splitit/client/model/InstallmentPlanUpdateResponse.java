@@ -72,6 +72,7 @@ public class InstallmentPlanUpdateResponse {
 
   public InstallmentPlanUpdateResponse refOrderNumber(String refOrderNumber) {
     
+    
     this.refOrderNumber = refOrderNumber;
     return this;
   }
@@ -89,11 +90,13 @@ public class InstallmentPlanUpdateResponse {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public InstallmentPlanUpdateResponse installmentPlanNumber(String installmentPlanNumber) {
+    
     
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
@@ -112,11 +115,13 @@ public class InstallmentPlanUpdateResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public InstallmentPlanUpdateResponse status(PlanStatus status) {
+    
     
     this.status = status;
     return this;
@@ -135,11 +140,13 @@ public class InstallmentPlanUpdateResponse {
 
 
   public void setStatus(PlanStatus status) {
+    
     this.status = status;
   }
 
 
   public InstallmentPlanUpdateResponse shippingStatus(ShippingStatus shippingStatus) {
+    
     
     this.shippingStatus = shippingStatus;
     return this;
@@ -158,6 +165,7 @@ public class InstallmentPlanUpdateResponse {
 
 
   public void setShippingStatus(ShippingStatus shippingStatus) {
+    
     this.shippingStatus = shippingStatus;
   }
 

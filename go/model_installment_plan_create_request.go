@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -17,8 +17,7 @@ import (
 // InstallmentPlanCreateRequest struct for InstallmentPlanCreateRequest
 type InstallmentPlanCreateRequest struct {
 	AutoCapture bool `json:"AutoCapture"`
-	Attempt3dSecure bool `json:"Attempt3dSecure"`
-	AttemptAuthorize bool `json:"AttemptAuthorize"`
+	Attempt3dSecure *bool `json:"Attempt3dSecure,omitempty"`
 	TermsAndConditionsAccepted bool `json:"TermsAndConditionsAccepted"`
 	Shopper *ShopperData `json:"Shopper,omitempty"`
 	PlanData *PlanDataModel `json:"PlanData,omitempty"`
@@ -31,11 +30,9 @@ type InstallmentPlanCreateRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstallmentPlanCreateRequest(autoCapture bool, attempt3dSecure bool, attemptAuthorize bool, termsAndConditionsAccepted bool) *InstallmentPlanCreateRequest {
+func NewInstallmentPlanCreateRequest(autoCapture bool, termsAndConditionsAccepted bool) *InstallmentPlanCreateRequest {
 	this := InstallmentPlanCreateRequest{}
 	this.AutoCapture = autoCapture
-	this.Attempt3dSecure = attempt3dSecure
-	this.AttemptAuthorize = attemptAuthorize
 	this.TermsAndConditionsAccepted = termsAndConditionsAccepted
 	return &this
 }
@@ -72,52 +69,36 @@ func (o *InstallmentPlanCreateRequest) SetAutoCapture(v bool) {
 	o.AutoCapture = v
 }
 
-// GetAttempt3dSecure returns the Attempt3dSecure field value
+// GetAttempt3dSecure returns the Attempt3dSecure field value if set, zero value otherwise.
 func (o *InstallmentPlanCreateRequest) GetAttempt3dSecure() bool {
-	if o == nil {
+	if o == nil || isNil(o.Attempt3dSecure) {
 		var ret bool
 		return ret
 	}
-
-	return o.Attempt3dSecure
+	return *o.Attempt3dSecure
 }
 
-// GetAttempt3dSecureOk returns a tuple with the Attempt3dSecure field value
+// GetAttempt3dSecureOk returns a tuple with the Attempt3dSecure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstallmentPlanCreateRequest) GetAttempt3dSecureOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.Attempt3dSecure) {
     return nil, false
 	}
-	return &o.Attempt3dSecure, true
+	return o.Attempt3dSecure, true
 }
 
-// SetAttempt3dSecure sets field value
+// HasAttempt3dSecure returns a boolean if a field has been set.
+func (o *InstallmentPlanCreateRequest) HasAttempt3dSecure() bool {
+	if o != nil && !isNil(o.Attempt3dSecure) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttempt3dSecure gets a reference to the given bool and assigns it to the Attempt3dSecure field.
 func (o *InstallmentPlanCreateRequest) SetAttempt3dSecure(v bool) {
-	o.Attempt3dSecure = v
-}
-
-// GetAttemptAuthorize returns the AttemptAuthorize field value
-func (o *InstallmentPlanCreateRequest) GetAttemptAuthorize() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.AttemptAuthorize
-}
-
-// GetAttemptAuthorizeOk returns a tuple with the AttemptAuthorize field value
-// and a boolean to check if the value has been set.
-func (o *InstallmentPlanCreateRequest) GetAttemptAuthorizeOk() (*bool, bool) {
-	if o == nil {
-    return nil, false
-	}
-	return &o.AttemptAuthorize, true
-}
-
-// SetAttemptAuthorize sets field value
-func (o *InstallmentPlanCreateRequest) SetAttemptAuthorize(v bool) {
-	o.AttemptAuthorize = v
+	o.Attempt3dSecure = &v
 }
 
 // GetTermsAndConditionsAccepted returns the TermsAndConditionsAccepted field value
@@ -309,11 +290,8 @@ func (o InstallmentPlanCreateRequest) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["AutoCapture"] = o.AutoCapture
 	}
-	if true {
+	if !isNil(o.Attempt3dSecure) {
 		toSerialize["Attempt3dSecure"] = o.Attempt3dSecure
-	}
-	if true {
-		toSerialize["AttemptAuthorize"] = o.AttemptAuthorize
 	}
 	if true {
 		toSerialize["TermsAndConditionsAccepted"] = o.TermsAndConditionsAccepted

@@ -32,6 +32,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const cancelResponse = await splitit.installmentplan.cancel({
@@ -89,6 +90,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const checkEligibilityResponse = await splitit.installmentplan.checkEligibility({
@@ -145,6 +147,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const getResponse = await splitit.installmentplan.get({
@@ -202,13 +205,13 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const postResponse = await splitit.installmentplan.post({
         "xSplititTestMode": "None",
         "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
         "auto_capture": true,
-        "attempt3d_secure": true,
     })
 
 console.log(postResponse)
@@ -263,6 +266,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const post2Response = await splitit.installmentplan.post2({
@@ -324,6 +328,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const refundResponse = await splitit.installmentplan.refund({
@@ -384,6 +389,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const searchResponse = await splitit.installmentplan.search({
@@ -442,6 +448,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const updateOrderResponse = await splitit.installmentplan.updateOrder({
@@ -501,6 +508,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const updateOrder2Response = await splitit.installmentplan.updateOrder2({
@@ -558,6 +566,7 @@ const splitit = new Splitit({
     // basePath: "https://web-api-v3.sandbox.splitit.com",
     oauthClientId: 'CLIENT_ID',
     oauthClientSecret: 'CLIENT_SECRET',
+
 })
 
 const verifyAuthorizationResponse = await splitit.installmentplan.verifyAuthorization({

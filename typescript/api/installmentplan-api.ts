@@ -16,15 +16,26 @@ import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'ax
 import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
-import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setOAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObject, setBearerAuthToObject, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '../common';
+import { setOAuthToObject } from '../common';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+// @ts-ignore
+import { AddressData } from '../models';
+// @ts-ignore
+import { AddressDataModel } from '../models';
+// @ts-ignore
+import { CardData } from '../models';
 // @ts-ignore
 import { CheckInstallmentsEligibilityRequest } from '../models';
 // @ts-ignore
 import { FailedResponse } from '../models';
 // @ts-ignore
+import { IdentifierContract } from '../models';
+// @ts-ignore
 import { InitiatePlanResponse } from '../models';
+// @ts-ignore
+import { InitiateRedirectionEndpointsModel } from '../models';
 // @ts-ignore
 import { InstallmentPlanCancelResponse } from '../models';
 // @ts-ignore
@@ -48,13 +59,32 @@ import { InstallmentPlanUpdateResponse } from '../models';
 // @ts-ignore
 import { InstallmentsEligibilityResponse } from '../models';
 // @ts-ignore
+import { PaymentMethodModel } from '../models';
+// @ts-ignore
+import { PlanData } from '../models';
+// @ts-ignore
+import { PlanDataModel } from '../models';
+// @ts-ignore
 import { PlanErrorResponse } from '../models';
 // @ts-ignore
+import { RedirectionEndpointsModel } from '../models';
+// @ts-ignore
+import { RefundStrategy } from '../models';
+// @ts-ignore
+import { ShippingStatus } from '../models';
+// @ts-ignore
+import { ShippingStatus2 } from '../models';
+// @ts-ignore
+import { ShopperData } from '../models';
+// @ts-ignore
 import { UpdateOrderRequest } from '../models';
+// @ts-ignore
+import { UxSettingsModel } from '../models';
 // @ts-ignore
 import { VerifyAuthorizationResponse } from '../models';
 import { paginate } from "../pagination/paginate";
 import { requestBeforeHook } from '../requestBeforeHook';
+import { InstallmentplanApiCustom } from "./installmentplan-api-custom";
 /**
  * InstallmentplanApi - axios parameter creator
  * @export
@@ -89,7 +119,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -98,12 +127,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -139,7 +167,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -150,14 +177,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(checkInstallmentsEligibilityRequest, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: checkInstallmentsEligibilityRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(checkInstallmentsEligibilityRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -193,7 +220,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -202,12 +228,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -244,7 +269,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
             }
@@ -259,14 +283,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanInitiateRequest, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: installmentPlanInitiateRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanInitiateRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -302,7 +326,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
             }
@@ -317,14 +340,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanCreateRequest, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: installmentPlanCreateRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanCreateRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -363,7 +386,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -374,14 +396,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanRefundRequest, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: installmentPlanRefundRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanRefundRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -416,7 +438,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (installmentPlanNumber !== undefined) {
                 localVarQueryParameter['installmentPlanNumber'] = installmentPlanNumber;
             }
@@ -437,12 +458,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -482,7 +502,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -493,14 +512,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateOrderRequest, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: updateOrderRequest,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(updateOrderRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -535,7 +554,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -546,14 +564,14 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanUpdateRequestByIdentifier, localVarRequestOptions, configuration)
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                requestBody: installmentPlanUpdateRequestByIdentifier,
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
+            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanUpdateRequestByIdentifier, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -589,7 +607,6 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             // authentication oauth required
             // oauth required
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-
             if (xSplititIdempotencyKey != null) {
                 localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
             }
@@ -598,12 +615,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
     
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
             requestBeforeHook({
-              queryParameters: localVarQueryParameter,
-              requestConfig: localVarRequestOptions,
-              path: localVarPath,
-              configuration
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration
             });
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -1061,7 +1077,7 @@ export type InstallmentplanApiVerifyAuthorizationRequest = {
  * @class InstallmentplanApi
  * @extends {BaseAPI}
  */
-export class InstallmentplanApi extends BaseAPI {
+export class InstallmentplanApi extends InstallmentplanApiCustom {
     /**
      * 
      * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.

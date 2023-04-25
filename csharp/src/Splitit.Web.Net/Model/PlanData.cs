@@ -52,8 +52,10 @@ namespace Splitit.Web.Net.Model
         /// <param name="numberOfInstallments">numberOfInstallments (required).</param>
         /// <param name="purchaseMethod">purchaseMethod (required).</param>
         /// <param name="refOrderNumber">refOrderNumber.</param>
+        /// <param name="allowedInstallmentOptions">allowedInstallmentOptions.</param>
         /// <param name="tags">tags.</param>
-        public PlanData(string terminalId = default(string), decimal totalAmount = default(decimal), decimal firstInstallmentAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), Dictionary<string, string> tags = default(Dictionary<string, string>))
+        /// <param name="firstInstallmentDate">firstInstallmentDate.</param>
+        public PlanData(string terminalId = default(string), decimal totalAmount = default(decimal), decimal firstInstallmentAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), List<int> allowedInstallmentOptions = default(List<int>), Dictionary<string, string> tags = default(Dictionary<string, string>), DateTime firstInstallmentDate = default(DateTime))
         {
             this.TotalAmount = totalAmount;
             this.NumberOfInstallments = numberOfInstallments;
@@ -62,7 +64,9 @@ namespace Splitit.Web.Net.Model
             this.FirstInstallmentAmount = firstInstallmentAmount;
             this.Currency = currency;
             this.RefOrderNumber = refOrderNumber;
+            this.AllowedInstallmentOptions = allowedInstallmentOptions;
             this.Tags = tags;
+            this.FirstInstallmentDate = firstInstallmentDate;
         }
 
         /// <summary>
@@ -102,10 +106,22 @@ namespace Splitit.Web.Net.Model
         public string RefOrderNumber { get; set; }
 
         /// <summary>
+        /// Gets or Sets AllowedInstallmentOptions
+        /// </summary>
+        [DataMember(Name = "AllowedInstallmentOptions", EmitDefaultValue = false)]
+        public List<int> AllowedInstallmentOptions { get; set; }
+
+        /// <summary>
         /// Gets or Sets Tags
         /// </summary>
         [DataMember(Name = "Tags", EmitDefaultValue = false)]
         public Dictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FirstInstallmentDate
+        /// </summary>
+        [DataMember(Name = "FirstInstallmentDate", EmitDefaultValue = false)]
+        public DateTime FirstInstallmentDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -122,7 +138,9 @@ namespace Splitit.Web.Net.Model
             sb.Append("  NumberOfInstallments: ").Append(NumberOfInstallments).Append("\n");
             sb.Append("  PurchaseMethod: ").Append(PurchaseMethod).Append("\n");
             sb.Append("  RefOrderNumber: ").Append(RefOrderNumber).Append("\n");
+            sb.Append("  AllowedInstallmentOptions: ").Append(AllowedInstallmentOptions).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  FirstInstallmentDate: ").Append(FirstInstallmentDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -190,10 +208,21 @@ namespace Splitit.Web.Net.Model
                     this.RefOrderNumber.Equals(input.RefOrderNumber))
                 ) && 
                 (
+                    this.AllowedInstallmentOptions == input.AllowedInstallmentOptions ||
+                    this.AllowedInstallmentOptions != null &&
+                    input.AllowedInstallmentOptions != null &&
+                    this.AllowedInstallmentOptions.SequenceEqual(input.AllowedInstallmentOptions)
+                ) && 
+                (
                     this.Tags == input.Tags ||
                     this.Tags != null &&
                     input.Tags != null &&
                     this.Tags.SequenceEqual(input.Tags)
+                ) && 
+                (
+                    this.FirstInstallmentDate == input.FirstInstallmentDate ||
+                    (this.FirstInstallmentDate != null &&
+                    this.FirstInstallmentDate.Equals(input.FirstInstallmentDate))
                 );
         }
 
@@ -222,9 +251,17 @@ namespace Splitit.Web.Net.Model
                 {
                     hashCode = (hashCode * 59) + this.RefOrderNumber.GetHashCode();
                 }
+                if (this.AllowedInstallmentOptions != null)
+                {
+                    hashCode = (hashCode * 59) + this.AllowedInstallmentOptions.GetHashCode();
+                }
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                if (this.FirstInstallmentDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.FirstInstallmentDate.GetHashCode();
                 }
                 return hashCode;
             }

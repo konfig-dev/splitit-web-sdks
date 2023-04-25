@@ -69,6 +69,7 @@ public class CheckInstallmentsEligibilityRequest {
 
   public CheckInstallmentsEligibilityRequest planData(PlanData planData) {
     
+    
     this.planData = planData;
     return this;
   }
@@ -86,11 +87,13 @@ public class CheckInstallmentsEligibilityRequest {
 
 
   public void setPlanData(PlanData planData) {
+    
     this.planData = planData;
   }
 
 
   public CheckInstallmentsEligibilityRequest cardDetails(CardData cardDetails) {
+    
     
     this.cardDetails = cardDetails;
     return this;
@@ -109,11 +112,13 @@ public class CheckInstallmentsEligibilityRequest {
 
 
   public void setCardDetails(CardData cardDetails) {
+    
     this.cardDetails = cardDetails;
   }
 
 
   public CheckInstallmentsEligibilityRequest billingAddress(AddressData billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -132,6 +137,7 @@ public class CheckInstallmentsEligibilityRequest {
 
 
   public void setBillingAddress(AddressData billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 

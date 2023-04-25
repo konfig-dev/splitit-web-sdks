@@ -47,10 +47,12 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         /// <param name="type">type (required).</param>
         /// <param name="card">card.</param>
-        public PaymentMethodModel(PaymentMethodType type = default(PaymentMethodType), CardData card = default(CardData))
+        /// <param name="token">token.</param>
+        public PaymentMethodModel(PaymentMethodType type = default(PaymentMethodType), CardData card = default(CardData), string token = default(string))
         {
             this.Type = type;
             this.Card = card;
+            this.Token = token;
         }
 
         /// <summary>
@@ -58,6 +60,12 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         [DataMember(Name = "Card", EmitDefaultValue = false)]
         public CardData Card { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Token
+        /// </summary>
+        [DataMember(Name = "Token", EmitDefaultValue = false)]
+        public string Token { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,6 +77,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("class PaymentMethodModel {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Card: ").Append(Card).Append("\n");
+            sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,6 +121,11 @@ namespace Splitit.Web.Net.Model
                     this.Card == input.Card ||
                     (this.Card != null &&
                     this.Card.Equals(input.Card))
+                ) && 
+                (
+                    this.Token == input.Token ||
+                    (this.Token != null &&
+                    this.Token.Equals(input.Token))
                 );
         }
 
@@ -128,6 +142,10 @@ namespace Splitit.Web.Net.Model
                 if (this.Card != null)
                 {
                     hashCode = (hashCode * 59) + this.Card.GetHashCode();
+                }
+                if (this.Token != null)
+                {
+                    hashCode = (hashCode * 59) + this.Token.GetHashCode();
                 }
                 return hashCode;
             }

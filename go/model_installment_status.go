@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -22,12 +22,14 @@ type InstallmentStatus string
 const (
 	INSTALLMENTSTATUS_PENDING InstallmentStatus = "Pending"
 	INSTALLMENTSTATUS_PROCESSED InstallmentStatus = "Processed"
+	INSTALLMENTSTATUS_CANCELED InstallmentStatus = "Canceled"
 )
 
 // All allowed values of InstallmentStatus enum
 var AllowedInstallmentStatusEnumValues = []InstallmentStatus{
 	"Pending",
 	"Processed",
+	"Canceled",
 }
 
 func (v *InstallmentStatus) UnmarshalJSON(src []byte) error {

@@ -68,6 +68,7 @@ public class PaymentMethodModel {
 
   public PaymentMethodModel type(PaymentMethodType type) {
     
+    
     this.type = type;
     return this;
   }
@@ -85,11 +86,13 @@ public class PaymentMethodModel {
 
 
   public void setType(PaymentMethodType type) {
+    
     this.type = type;
   }
 
 
   public PaymentMethodModel card(CardData card) {
+    
     
     this.card = card;
     return this;
@@ -108,11 +111,13 @@ public class PaymentMethodModel {
 
 
   public void setCard(CardData card) {
+    
     this.card = card;
   }
 
 
   public PaymentMethodModel token(String token) {
+    
     
     this.token = token;
     return this;
@@ -131,6 +136,7 @@ public class PaymentMethodModel {
 
 
   public void setToken(String token) {
+    
     this.token = token;
   }
 

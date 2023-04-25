@@ -37,5 +37,11 @@ export interface PaymentMethodModel {
      * @memberof PaymentMethodModel
      */
     'Card'?: CardData;
+    /**
+     * 
+     * @type {string}
+     * @memberof PaymentMethodModel
+     */
+    'Token'?: string;
 }
 

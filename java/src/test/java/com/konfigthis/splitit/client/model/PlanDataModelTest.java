@@ -21,7 +21,7 @@ import com.konfigthis.splitit.client.model.PurchaseMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.Disabled;
@@ -104,6 +104,14 @@ public class PlanDataModelTest {
     @Test
     public void firstInstallmentAmountTest() {
         // TODO: test firstInstallmentAmount
+    }
+
+    /**
+     * Test the property 'firstInstallmentDate'
+     */
+    @Test
+    public void firstInstallmentDateTest() {
+        // TODO: test firstInstallmentDate
     }
 
 }

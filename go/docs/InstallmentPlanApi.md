@@ -5,8 +5,10 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**Cancel**](InstallmentPlanApi.md#Cancel) | **Post** /api/installmentplans/{installmentPlanNumber}/cancel | 
+[**CheckEligibility**](InstallmentPlanApi.md#CheckEligibility) | **Post** /api/installmentplans/check-eligibility | 
 [**Get**](InstallmentPlanApi.md#Get) | **Get** /api/installmentplans/{installmentPlanNumber} | 
-[**Post**](InstallmentPlanApi.md#Post) | **Post** /api/installmentplans | 
+[**Post**](InstallmentPlanApi.md#Post) | **Post** /api/installmentplans/initiate | 
+[**Post2**](InstallmentPlanApi.md#Post2) | **Post** /api/installmentplans | 
 [**Refund**](InstallmentPlanApi.md#Refund) | **Post** /api/installmentplans/{installmentPlanNumber}/refund | 
 [**Search**](InstallmentPlanApi.md#Search) | **Get** /api/installmentplans/search | 
 [**UpdateOrder**](InstallmentPlanApi.md#UpdateOrder) | **Put** /api/installmentplans/{installmentPlanNumber}/updateorder | 
@@ -73,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -85,9 +87,75 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CheckEligibility
+
+> InstallmentsEligibilityResponse CheckEligibility(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
+)
+
+func main() {
+    xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    checkInstallmentsEligibilityRequest := *splitit.NewCheckInstallmentsEligibilityRequest() // CheckInstallmentsEligibilityRequest | 
+
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
+    resp, r, err := apiClient.InstallmentPlanApi.CheckEligibility(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.CheckEligibility``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CheckEligibility`: InstallmentsEligibilityResponse
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.CheckEligibility`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCheckEligibilityRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSplititIdempotencyKey** | **string** |  | 
+ **checkInstallmentsEligibilityRequest** | [**CheckInstallmentsEligibilityRequest**](CheckInstallmentsEligibilityRequest.md) |  | 
+
+### Return type
+
+[**InstallmentsEligibilityResponse**](InstallmentsEligibilityResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## Get
 
-> InstallmentPlanModel Get(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+> InstallmentPlanGetResponse Get(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
 
 
 
@@ -114,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Get`: InstallmentPlanModel
+    // response from `Get`: InstallmentPlanGetResponse
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Get`: %v\n", resp)
 }
 ```
@@ -139,11 +207,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstallmentPlanModel**](InstallmentPlanModel.md)
+[**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -157,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## Post
 
-> InstallmentPlanModel Post(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+> InitiatePlanResponse Post(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
 
 
 
@@ -175,17 +243,17 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
-    installmentPlanCreateRequest := *splitit.NewInstallmentPlanCreateRequest(false, false, false, false) // InstallmentPlanCreateRequest | 
+    installmentPlanInitiateRequest := *splitit.NewInstallmentPlanInitiateRequest(false) // InstallmentPlanInitiateRequest | 
     xSplititTestMode := "xSplititTestMode_example" // string |  (optional)
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Post(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Post(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Post``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Post`: InstallmentPlanModel
+    // response from `Post`: InitiatePlanResponse
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Post`: %v\n", resp)
 }
 ```
@@ -202,16 +270,84 @@ Other parameters are passed through a pointer to a apiPostRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md) |  | 
+ **xSplititTestMode** | **string** |  | 
+
+### Return type
+
+[**InitiatePlanResponse**](InitiatePlanResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+- **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Post2
+
+> InstallmentPlanCreateResponse Post2(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
+)
+
+func main() {
+    xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    installmentPlanCreateRequest := *splitit.NewInstallmentPlanCreateRequest(false, false) // InstallmentPlanCreateRequest | 
+    xSplititTestMode := "xSplititTestMode_example" // string |  (optional)
+
+    configuration := splitit.NewConfiguration()
+    apiClient := splitit.NewAPIClient(configuration)
+    resp, r, err := apiClient.InstallmentPlanApi.Post2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Post2``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `Post2`: InstallmentPlanCreateResponse
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Post2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPost2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xSplititIdempotencyKey** | **string** |  | 
  **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md) |  | 
  **xSplititTestMode** | **string** |  | 
 
 ### Return type
 
-[**InstallmentPlanModel**](InstallmentPlanModel.md)
+[**InstallmentPlanCreateResponse**](InstallmentPlanCreateResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -283,7 +419,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -297,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## Search
 
-> InstallmentPlanGetResponse Search(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
+> InstallmentPlanSearchResponse Search(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
 
 
 
@@ -326,7 +462,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Search``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Search`: InstallmentPlanGetResponse
+    // response from `Search`: InstallmentPlanSearchResponse
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Search`: %v\n", resp)
 }
 ```
@@ -349,11 +485,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
+[**InstallmentPlanSearchResponse**](InstallmentPlanSearchResponse.md)
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -425,7 +561,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -491,7 +627,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 
@@ -561,7 +697,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[bearer](../README.md#bearer)
+[oauth](../README.md#oauth)
 
 ### HTTP request headers
 

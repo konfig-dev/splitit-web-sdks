@@ -6,17 +6,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalAmount** | **float32** |  | 
 **Currency** | Pointer to **string** |  | [optional] 
-**NumberOfInstallments** | **int32** |  | 
+**NumberOfInstallments** | Pointer to **int32** |  | [optional] 
 **TerminalId** | Pointer to **string** |  | [optional] 
 **PurchaseMethod** | [**PurchaseMethod**](PurchaseMethod.md) |  | 
 **RefOrderNumber** | Pointer to **string** |  | [optional] 
 **ExtendedParams** | Pointer to **map[string]string** |  | [optional] 
+**FirstInstallmentAmount** | Pointer to **float32** |  | [optional] 
+**FirstInstallmentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
 ### NewPlanDataModel
 
-`func NewPlanDataModel(totalAmount float32, numberOfInstallments int32, purchaseMethod PurchaseMethod, ) *PlanDataModel`
+`func NewPlanDataModel(totalAmount float32, purchaseMethod PurchaseMethod, ) *PlanDataModel`
 
 NewPlanDataModel instantiates a new PlanDataModel object
 This constructor will assign default values to properties that have it defined,
@@ -95,6 +97,11 @@ and a boolean to check if the value has been set.
 
 SetNumberOfInstallments sets NumberOfInstallments field to given value.
 
+### HasNumberOfInstallments
+
+`func (o *PlanDataModel) HasNumberOfInstallments() bool`
+
+HasNumberOfInstallments returns a boolean if a field has been set.
 
 ### GetTerminalId
 
@@ -190,6 +197,56 @@ SetExtendedParams sets ExtendedParams field to given value.
 `func (o *PlanDataModel) HasExtendedParams() bool`
 
 HasExtendedParams returns a boolean if a field has been set.
+
+### GetFirstInstallmentAmount
+
+`func (o *PlanDataModel) GetFirstInstallmentAmount() float32`
+
+GetFirstInstallmentAmount returns the FirstInstallmentAmount field if non-nil, zero value otherwise.
+
+### GetFirstInstallmentAmountOk
+
+`func (o *PlanDataModel) GetFirstInstallmentAmountOk() (*float32, bool)`
+
+GetFirstInstallmentAmountOk returns a tuple with the FirstInstallmentAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirstInstallmentAmount
+
+`func (o *PlanDataModel) SetFirstInstallmentAmount(v float32)`
+
+SetFirstInstallmentAmount sets FirstInstallmentAmount field to given value.
+
+### HasFirstInstallmentAmount
+
+`func (o *PlanDataModel) HasFirstInstallmentAmount() bool`
+
+HasFirstInstallmentAmount returns a boolean if a field has been set.
+
+### GetFirstInstallmentDate
+
+`func (o *PlanDataModel) GetFirstInstallmentDate() time.Time`
+
+GetFirstInstallmentDate returns the FirstInstallmentDate field if non-nil, zero value otherwise.
+
+### GetFirstInstallmentDateOk
+
+`func (o *PlanDataModel) GetFirstInstallmentDateOk() (*time.Time, bool)`
+
+GetFirstInstallmentDateOk returns a tuple with the FirstInstallmentDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirstInstallmentDate
+
+`func (o *PlanDataModel) SetFirstInstallmentDate(v time.Time)`
+
+SetFirstInstallmentDate sets FirstInstallmentDate field to given value.
+
+### HasFirstInstallmentDate
+
+`func (o *PlanDataModel) HasFirstInstallmentDate() bool`
+
+HasFirstInstallmentDate returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

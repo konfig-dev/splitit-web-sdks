@@ -204,7 +204,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Konfig/2.1.0/java");
+        setUserAgent("Konfig/2.2.0/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -225,6 +225,10 @@ public class ApiClient {
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
+        // strip trailing slash from basePath
+        if (basePath != null && basePath.endsWith("/")) {
+            basePath = basePath.substring(0, basePath.length() - 1);
+        }
         this.basePath = basePath;
         return this;
     }
@@ -1072,7 +1076,7 @@ public class ApiClient {
         try {
             Response response = call.execute();
             T data = handleResponse(response, returnType);
-            return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
+            return new ApiResponse<T>(call.request(), response.code(), response.headers().toMultimap(), data);
         } catch (IOException e) {
             throw new ApiException(e);
         }

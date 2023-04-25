@@ -84,6 +84,7 @@ public class CardData {
 
   public CardData cardHolderFullName(String cardHolderFullName) {
     
+    
     this.cardHolderFullName = cardHolderFullName;
     return this;
   }
@@ -101,11 +102,13 @@ public class CardData {
 
 
   public void setCardHolderFullName(String cardHolderFullName) {
+    
     this.cardHolderFullName = cardHolderFullName;
   }
 
 
   public CardData cardNumber(String cardNumber) {
+    
     
     this.cardNumber = cardNumber;
     return this;
@@ -124,11 +127,13 @@ public class CardData {
 
 
   public void setCardNumber(String cardNumber) {
+    
     this.cardNumber = cardNumber;
   }
 
 
   public CardData cardExpYear(String cardExpYear) {
+    
     
     this.cardExpYear = cardExpYear;
     return this;
@@ -147,11 +152,13 @@ public class CardData {
 
 
   public void setCardExpYear(String cardExpYear) {
+    
     this.cardExpYear = cardExpYear;
   }
 
 
   public CardData cardExpMonth(String cardExpMonth) {
+    
     
     this.cardExpMonth = cardExpMonth;
     return this;
@@ -170,11 +177,13 @@ public class CardData {
 
 
   public void setCardExpMonth(String cardExpMonth) {
+    
     this.cardExpMonth = cardExpMonth;
   }
 
 
   public CardData cardCvv(String cardCvv) {
+    
     
     this.cardCvv = cardCvv;
     return this;
@@ -193,11 +202,13 @@ public class CardData {
 
 
   public void setCardCvv(String cardCvv) {
+    
     this.cardCvv = cardCvv;
   }
 
 
   public CardData cardBrand(CardBrand cardBrand) {
+    
     
     this.cardBrand = cardBrand;
     return this;
@@ -216,11 +227,13 @@ public class CardData {
 
 
   public void setCardBrand(CardBrand cardBrand) {
+    
     this.cardBrand = cardBrand;
   }
 
 
   public CardData cardType(CardType cardType) {
+    
     
     this.cardType = cardType;
     return this;
@@ -239,6 +252,7 @@ public class CardData {
 
 
   public void setCardType(CardType cardType) {
+    
     this.cardType = cardType;
   }
 

@@ -66,6 +66,7 @@ public class InitiateRedirectionEndpointsModel {
 
   public InitiateRedirectionEndpointsModel succeeded(String succeeded) {
     
+    
     this.succeeded = succeeded;
     return this;
   }
@@ -83,11 +84,13 @@ public class InitiateRedirectionEndpointsModel {
 
 
   public void setSucceeded(String succeeded) {
+    
     this.succeeded = succeeded;
   }
 
 
   public InitiateRedirectionEndpointsModel failed(String failed) {
+    
     
     this.failed = failed;
     return this;
@@ -106,11 +109,13 @@ public class InitiateRedirectionEndpointsModel {
 
 
   public void setFailed(String failed) {
+    
     this.failed = failed;
   }
 
 
   public InitiateRedirectionEndpointsModel cancel(String cancel) {
+    
     
     this.cancel = cancel;
     return this;
@@ -129,6 +134,7 @@ public class InitiateRedirectionEndpointsModel {
 
 
   public void setCancel(String cancel) {
+    
     this.cancel = cancel;
   }
 

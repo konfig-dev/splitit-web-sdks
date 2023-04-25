@@ -60,6 +60,7 @@ public class ErrorExtendedAllOf {
 
   public ErrorExtendedAllOf extraData(Map<String, String> extraData) {
     
+    
     this.extraData = extraData;
     return this;
   }
@@ -85,6 +86,7 @@ public class ErrorExtendedAllOf {
 
 
   public void setExtraData(Map<String, String> extraData) {
+    
     this.extraData = extraData;
   }
 

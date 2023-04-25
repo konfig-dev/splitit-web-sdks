@@ -93,6 +93,7 @@ public class AuthorizationModel {
 
   public AuthorizationModel status(GwAuthorizationStatus status) {
     
+    
     this.status = status;
     return this;
   }
@@ -110,11 +111,13 @@ public class AuthorizationModel {
 
 
   public void setStatus(GwAuthorizationStatus status) {
+    
     this.status = status;
   }
 
 
   public AuthorizationModel date(OffsetDateTime date) {
+    
     
     this.date = date;
     return this;
@@ -133,11 +136,13 @@ public class AuthorizationModel {
 
 
   public void setDate(OffsetDateTime date) {
+    
     this.date = date;
   }
 
 
   public AuthorizationModel splititErrorResultCode(String splititErrorResultCode) {
+    
     
     this.splititErrorResultCode = splititErrorResultCode;
     return this;
@@ -156,11 +161,13 @@ public class AuthorizationModel {
 
 
   public void setSplititErrorResultCode(String splititErrorResultCode) {
+    
     this.splititErrorResultCode = splititErrorResultCode;
   }
 
 
   public AuthorizationModel gatewayTransactionID(String gatewayTransactionID) {
+    
     
     this.gatewayTransactionID = gatewayTransactionID;
     return this;
@@ -179,11 +186,13 @@ public class AuthorizationModel {
 
 
   public void setGatewayTransactionID(String gatewayTransactionID) {
+    
     this.gatewayTransactionID = gatewayTransactionID;
   }
 
 
   public AuthorizationModel gatewayResultCode(String gatewayResultCode) {
+    
     
     this.gatewayResultCode = gatewayResultCode;
     return this;
@@ -202,11 +211,13 @@ public class AuthorizationModel {
 
 
   public void setGatewayResultCode(String gatewayResultCode) {
+    
     this.gatewayResultCode = gatewayResultCode;
   }
 
 
   public AuthorizationModel gatewayResultMessage(String gatewayResultMessage) {
+    
     
     this.gatewayResultMessage = gatewayResultMessage;
     return this;
@@ -225,11 +236,13 @@ public class AuthorizationModel {
 
 
   public void setGatewayResultMessage(String gatewayResultMessage) {
+    
     this.gatewayResultMessage = gatewayResultMessage;
   }
 
 
   public AuthorizationModel threeDSRedirect(ThreeDsRedirectDataV3 threeDSRedirect) {
+    
     
     this.threeDSRedirect = threeDSRedirect;
     return this;
@@ -248,11 +261,13 @@ public class AuthorizationModel {
 
 
   public void setThreeDSRedirect(ThreeDsRedirectDataV3 threeDSRedirect) {
+    
     this.threeDSRedirect = threeDSRedirect;
   }
 
 
   public AuthorizationModel CAVV(String CAVV) {
+    
     
     this.CAVV = CAVV;
     return this;
@@ -271,11 +286,13 @@ public class AuthorizationModel {
 
 
   public void setCAVV(String CAVV) {
+    
     this.CAVV = CAVV;
   }
 
 
   public AuthorizationModel ECI(String ECI) {
+    
     
     this.ECI = ECI;
     return this;
@@ -294,6 +311,7 @@ public class AuthorizationModel {
 
 
   public void setECI(String ECI) {
+    
     this.ECI = ECI;
   }
 

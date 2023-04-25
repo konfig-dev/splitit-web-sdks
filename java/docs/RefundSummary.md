@@ -7,10 +7,10 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**totalAmount** | **BigDecimal** |  |  [optional] |
-|**failedAmount** | **BigDecimal** |  |  [optional] |
-|**succeededAmount** | **BigDecimal** |  |  [optional] |
-|**pendingAmount** | **BigDecimal** |  |  [optional] |
+|**totalAmount** | **Double** |  |  [optional] |
+|**failedAmount** | **Double** |  |  [optional] |
+|**succeededAmount** | **Double** |  |  [optional] |
+|**pendingAmount** | **Double** |  |  [optional] |
 
 
 

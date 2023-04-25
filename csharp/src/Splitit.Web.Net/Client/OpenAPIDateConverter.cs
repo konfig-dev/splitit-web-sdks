@@ -18,12 +18,16 @@ namespace Splitit.Web.Net.Client
     public class OpenAPIDateConverter : IsoDateTimeConverter
     {
         /// <summary>
+        /// The C# date formatter string that is used in <see cref="string.ToString(System.IFormatProvider)"/>
+        /// </summary>
+        public const string RFC3339FullDateFormat = "yyyy-MM-dd";
+        /// <summary>
         /// Initializes a new instance of the <see cref="OpenAPIDateConverter" /> class.
         /// </summary>
         public OpenAPIDateConverter()
         {
             // full-date   = date-fullyear "-" date-month "-" date-mday
-            DateTimeFormat = "yyyy-MM-dd";
+            DateTimeFormat = RFC3339FullDateFormat;
         }
     }
 }

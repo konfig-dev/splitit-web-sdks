@@ -70,6 +70,7 @@ public class RedirectionEndpointsModel {
 
   public RedirectionEndpointsModel authorizeSucceeded(String authorizeSucceeded) {
     
+    
     this.authorizeSucceeded = authorizeSucceeded;
     return this;
   }
@@ -87,11 +88,13 @@ public class RedirectionEndpointsModel {
 
 
   public void setAuthorizeSucceeded(String authorizeSucceeded) {
+    
     this.authorizeSucceeded = authorizeSucceeded;
   }
 
 
   public RedirectionEndpointsModel succeeded(String succeeded) {
+    
     
     this.succeeded = succeeded;
     return this;
@@ -110,11 +113,13 @@ public class RedirectionEndpointsModel {
 
 
   public void setSucceeded(String succeeded) {
+    
     this.succeeded = succeeded;
   }
 
 
   public RedirectionEndpointsModel authorizeFailed(String authorizeFailed) {
+    
     
     this.authorizeFailed = authorizeFailed;
     return this;
@@ -133,11 +138,13 @@ public class RedirectionEndpointsModel {
 
 
   public void setAuthorizeFailed(String authorizeFailed) {
+    
     this.authorizeFailed = authorizeFailed;
   }
 
 
   public RedirectionEndpointsModel failed(String failed) {
+    
     
     this.failed = failed;
     return this;
@@ -156,6 +163,7 @@ public class RedirectionEndpointsModel {
 
 
   public void setFailed(String failed) {
+    
     this.failed = failed;
   }
 

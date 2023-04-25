@@ -35,7 +35,13 @@ namespace Splitit.Web.Net.Model
         /// Enum Card for value: Card
         /// </summary>
         [EnumMember(Value = "Card")]
-        Card = 1
+        Card = 1,
+
+        /// <summary>
+        /// Enum SplititToken for value: SplititToken
+        /// </summary>
+        [EnumMember(Value = "SplititToken")]
+        SplititToken = 2
 
     }
 

@@ -26,7 +26,6 @@ import com.konfigthis.splitit.client.model.ShopperData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,7 +77,7 @@ public class InitiatePlanResponse {
 
   public static final String SERIALIZED_NAME_AMOUNT = "Amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_EXTENDED_PARAMS = "ExtendedParams";
   @SerializedName(SERIALIZED_NAME_EXTENDED_PARAMS)
@@ -101,6 +100,7 @@ public class InitiatePlanResponse {
 
   public InitiatePlanResponse installmentPlanNumber(String installmentPlanNumber) {
     
+    
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
   }
@@ -118,11 +118,13 @@ public class InitiatePlanResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public InitiatePlanResponse refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -141,11 +143,13 @@ public class InitiatePlanResponse {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public InitiatePlanResponse purchaseMethod(PurchaseMethod purchaseMethod) {
+    
     
     this.purchaseMethod = purchaseMethod;
     return this;
@@ -164,11 +168,13 @@ public class InitiatePlanResponse {
 
 
   public void setPurchaseMethod(PurchaseMethod purchaseMethod) {
+    
     this.purchaseMethod = purchaseMethod;
   }
 
 
   public InitiatePlanResponse status(PlanStatus status) {
+    
     
     this.status = status;
     return this;
@@ -187,11 +193,13 @@ public class InitiatePlanResponse {
 
 
   public void setStatus(PlanStatus status) {
+    
     this.status = status;
   }
 
 
   public InitiatePlanResponse currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -210,13 +218,22 @@ public class InitiatePlanResponse {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
-  public InitiatePlanResponse amount(BigDecimal amount) {
+  public InitiatePlanResponse amount(Double amount) {
+    
     
     this.amount = amount;
+    return this;
+  }
+
+  public InitiatePlanResponse amount(Integer amount) {
+    
+    
+    this.amount = amount.doubleValue();
     return this;
   }
 
@@ -227,17 +244,19 @@ public class InitiatePlanResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
+    
     this.amount = amount;
   }
 
 
   public InitiatePlanResponse extendedParams(Map<String, String> extendedParams) {
+    
     
     this.extendedParams = extendedParams;
     return this;
@@ -264,11 +283,13 @@ public class InitiatePlanResponse {
 
 
   public void setExtendedParams(Map<String, String> extendedParams) {
+    
     this.extendedParams = extendedParams;
   }
 
 
   public InitiatePlanResponse shopper(ShopperData shopper) {
+    
     
     this.shopper = shopper;
     return this;
@@ -287,11 +308,13 @@ public class InitiatePlanResponse {
 
 
   public void setShopper(ShopperData shopper) {
+    
     this.shopper = shopper;
   }
 
 
   public InitiatePlanResponse billingAddress(AddressData billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -310,11 +333,13 @@ public class InitiatePlanResponse {
 
 
   public void setBillingAddress(AddressData billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 
 
   public InitiatePlanResponse checkoutUrl(String checkoutUrl) {
+    
     
     this.checkoutUrl = checkoutUrl;
     return this;
@@ -333,6 +358,7 @@ public class InitiatePlanResponse {
 
 
   public void setCheckoutUrl(String checkoutUrl) {
+    
     this.checkoutUrl = checkoutUrl;
   }
 

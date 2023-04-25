@@ -61,6 +61,7 @@ public class InstallmentsEligibilityResponse {
 
   public InstallmentsEligibilityResponse paymentPlanOptions(List<PaymentPlanOptionModel> paymentPlanOptions) {
     
+    
     this.paymentPlanOptions = paymentPlanOptions;
     return this;
   }
@@ -86,6 +87,7 @@ public class InstallmentsEligibilityResponse {
 
 
   public void setPaymentPlanOptions(List<PaymentPlanOptionModel> paymentPlanOptions) {
+    
     this.paymentPlanOptions = paymentPlanOptions;
   }
 

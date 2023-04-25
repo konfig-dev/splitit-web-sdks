@@ -26,9 +26,13 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.konfigthis.splitit.client.model.AddressData;
+import com.konfigthis.splitit.client.model.AddressDataModel;
+import com.konfigthis.splitit.client.model.CardData;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
-import com.konfigthis.splitit.client.model.FailedResponse;
+import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
+import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
@@ -40,8 +44,16 @@ import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
 import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
-import com.konfigthis.splitit.client.model.PlanErrorResponse;
+import com.konfigthis.splitit.client.model.PaymentMethodModel;
+import com.konfigthis.splitit.client.model.PlanData;
+import com.konfigthis.splitit.client.model.PlanDataModel;
+import com.konfigthis.splitit.client.model.RedirectionEndpointsModel;
+import com.konfigthis.splitit.client.model.RefundStrategy;
+import com.konfigthis.splitit.client.model.ShippingStatus;
+import com.konfigthis.splitit.client.model.ShippingStatus2;
+import com.konfigthis.splitit.client.model.ShopperData;
 import com.konfigthis.splitit.client.model.UpdateOrderRequest;
+import com.konfigthis.splitit.client.model.UxSettingsModel;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
 
 import java.lang.reflect.Type;
@@ -56,11 +68,11 @@ public class InstallmentPlanApi {
     private int localHostIndex;
     private String localCustomBaseUrl;
 
-    public InstallmentPlanApi() {
+    public InstallmentPlanApi() throws IllegalArgumentException {
         this(Configuration.getDefaultApiClient());
     }
 
-    public InstallmentPlanApi(ApiClient apiClient) {
+    public InstallmentPlanApi(ApiClient apiClient) throws IllegalArgumentException {
         this.localVarApiClient = apiClient;
     }
 
@@ -170,11 +182,11 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIcancelRequest {
+    public class CancelRequestBuilder {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
 
-        private APIcancelRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        private CancelRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
         }
@@ -188,15 +200,12 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         }
+
 
         /**
          * Execute cancel request
@@ -206,10 +215,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanCancelResponse execute() throws ApiException {
@@ -225,10 +230,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanCancelResponse> executeWithHttpInfo() throws ApiException {
@@ -244,10 +245,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
@@ -260,19 +257,17 @@ public class InstallmentPlanApi {
      * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @return APIcancelRequest
+     * @return CancelRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIcancelRequest cancel(String installmentPlanNumber, String xSplititIdempotencyKey) {
-        return new APIcancelRequest(installmentPlanNumber, xSplititIdempotencyKey);
+    public CancelRequestBuilder cancel(String installmentPlanNumber, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new CancelRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey);
     }
     private okhttp3.Call checkEligibilityCall(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -359,15 +354,46 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIcheckEligibilityRequest {
+    public class CheckEligibilityRequestBuilder {
         private final String xSplititIdempotencyKey;
-        private final CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest;
+        private PlanData planData;
+        private CardData cardDetails;
+        private AddressData billingAddress;
 
-        private APIcheckEligibilityRequest(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest) {
+        private CheckEligibilityRequestBuilder(String xSplititIdempotencyKey) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.checkInstallmentsEligibilityRequest = checkInstallmentsEligibilityRequest;
         }
 
+        /**
+         * Set planData
+         * @param planData  (optional)
+         * @return CheckEligibilityRequestBuilder
+         */
+        public CheckEligibilityRequestBuilder planData(PlanData planData) {
+            this.planData = planData;
+            return this;
+        }
+        
+        /**
+         * Set cardDetails
+         * @param cardDetails  (optional)
+         * @return CheckEligibilityRequestBuilder
+         */
+        public CheckEligibilityRequestBuilder cardDetails(CardData cardDetails) {
+            this.cardDetails = cardDetails;
+            return this;
+        }
+        
+        /**
+         * Set billingAddress
+         * @param billingAddress  (optional)
+         * @return CheckEligibilityRequestBuilder
+         */
+        public CheckEligibilityRequestBuilder billingAddress(AddressData billingAddress) {
+            this.billingAddress = billingAddress;
+            return this;
+        }
+        
         /**
          * Build call for checkEligibility
          * @param _callback ApiCallback API callback
@@ -377,14 +403,19 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = buildBodyParams();
             return checkEligibilityCall(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
+        }
+
+        private CheckInstallmentsEligibilityRequest buildBodyParams() {
+            CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest();
+            checkInstallmentsEligibilityRequest.planData(this.planData);
+            checkInstallmentsEligibilityRequest.cardDetails(this.cardDetails);
+            checkInstallmentsEligibilityRequest.billingAddress(this.billingAddress);
+            return checkInstallmentsEligibilityRequest;
         }
 
         /**
@@ -395,13 +426,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentsEligibilityResponse execute() throws ApiException {
+            CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = buildBodyParams();
             ApiResponse<InstallmentsEligibilityResponse> localVarResp = checkEligibilityWithHttpInfo(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
             return localVarResp.getData();
         }
@@ -414,13 +442,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentsEligibilityResponse> executeWithHttpInfo() throws ApiException {
+            CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = buildBodyParams();
             return checkEligibilityWithHttpInfo(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
         }
 
@@ -433,13 +458,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentsEligibilityResponse> _callback) throws ApiException {
+            CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = buildBodyParams();
             return checkEligibilityAsync(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest, _callback);
         }
     }
@@ -449,19 +471,16 @@ public class InstallmentPlanApi {
      * 
      * @param xSplititIdempotencyKey  (required)
      * @param checkInstallmentsEligibilityRequest  (required)
-     * @return APIcheckEligibilityRequest
+     * @return CheckEligibilityRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIcheckEligibilityRequest checkEligibility(String xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest) {
-        return new APIcheckEligibilityRequest(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+    public CheckEligibilityRequestBuilder checkEligibility(String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new CheckEligibilityRequestBuilder(xSplititIdempotencyKey);
     }
     private okhttp3.Call getCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -545,11 +564,11 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIgetRequest {
+    public class GetRequestBuilder {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
 
-        private APIgetRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        private GetRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
         }
@@ -563,15 +582,12 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return getCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         }
+
 
         /**
          * Execute get request
@@ -581,10 +597,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanGetResponse execute() throws ApiException {
@@ -600,10 +612,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanGetResponse> executeWithHttpInfo() throws ApiException {
@@ -619,10 +627,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanGetResponse> _callback) throws ApiException {
@@ -635,19 +639,17 @@ public class InstallmentPlanApi {
      * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @return APIgetRequest
+     * @return GetRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIgetRequest get(String installmentPlanNumber, String xSplititIdempotencyKey) {
-        return new APIgetRequest(installmentPlanNumber, xSplititIdempotencyKey);
+    public GetRequestBuilder get(String installmentPlanNumber, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new GetRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey);
     }
     private okhttp3.Call postCall(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -738,26 +740,92 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIpostRequest {
+    public class PostRequestBuilder {
+        private final Boolean autoCapture;
         private final String xSplititIdempotencyKey;
-        private final InstallmentPlanInitiateRequest installmentPlanInitiateRequest;
+        private Boolean attempt3dSecure;
+        private ShopperData shopper;
+        private PlanDataModel planData;
+        private AddressDataModel billingAddress;
+        private InitiateRedirectionEndpointsModel redirectUrls;
+        private UxSettingsModel uxSettings;
         private String xSplititTestMode;
 
-        private APIpostRequest(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest) {
+        private PostRequestBuilder(Boolean autoCapture, String xSplititIdempotencyKey) {
+            this.autoCapture = autoCapture;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.installmentPlanInitiateRequest = installmentPlanInitiateRequest;
         }
 
         /**
+         * Set attempt3dSecure
+         * @param attempt3dSecure  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
+            this.attempt3dSecure = attempt3dSecure;
+            return this;
+        }
+        
+        /**
+         * Set shopper
+         * @param shopper  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder shopper(ShopperData shopper) {
+            this.shopper = shopper;
+            return this;
+        }
+        
+        /**
+         * Set planData
+         * @param planData  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder planData(PlanDataModel planData) {
+            this.planData = planData;
+            return this;
+        }
+        
+        /**
+         * Set billingAddress
+         * @param billingAddress  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder billingAddress(AddressDataModel billingAddress) {
+            this.billingAddress = billingAddress;
+            return this;
+        }
+        
+        /**
+         * Set redirectUrls
+         * @param redirectUrls  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder redirectUrls(InitiateRedirectionEndpointsModel redirectUrls) {
+            this.redirectUrls = redirectUrls;
+            return this;
+        }
+        
+        /**
+         * Set uxSettings
+         * @param uxSettings  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder uxSettings(UxSettingsModel uxSettings) {
+            this.uxSettings = uxSettings;
+            return this;
+        }
+        
+        /**
          * Set xSplititTestMode
          * @param xSplititTestMode  (optional)
-         * @return APIpostRequest
+         * @return PostRequestBuilder
          */
-        public APIpostRequest xSplititTestMode(String xSplititTestMode) {
+        public PostRequestBuilder xSplititTestMode(String xSplititTestMode) {
             this.xSplititTestMode = xSplititTestMode;
             return this;
         }
-
+        
         /**
          * Build call for post
          * @param _callback ApiCallback API callback
@@ -767,15 +835,23 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
             return postCall(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        }
+
+        private InstallmentPlanInitiateRequest buildBodyParams() {
+            InstallmentPlanInitiateRequest installmentPlanInitiateRequest = new InstallmentPlanInitiateRequest();
+            installmentPlanInitiateRequest.autoCapture(this.autoCapture);
+            installmentPlanInitiateRequest.attempt3dSecure(this.attempt3dSecure);
+            installmentPlanInitiateRequest.shopper(this.shopper);
+            installmentPlanInitiateRequest.planData(this.planData);
+            installmentPlanInitiateRequest.billingAddress(this.billingAddress);
+            installmentPlanInitiateRequest.redirectUrls(this.redirectUrls);
+            installmentPlanInitiateRequest.uxSettings(this.uxSettings);
+            return installmentPlanInitiateRequest;
         }
 
         /**
@@ -786,14 +862,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InitiatePlanResponse execute() throws ApiException {
+            InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
             ApiResponse<InitiatePlanResponse> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
             return localVarResp.getData();
         }
@@ -806,14 +878,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InitiatePlanResponse> executeWithHttpInfo() throws ApiException {
+            InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
             return postWithHttpInfo(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
         }
 
@@ -826,14 +894,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
+            InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
             return postAsync(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode, _callback);
         }
     }
@@ -843,20 +907,17 @@ public class InstallmentPlanApi {
      * 
      * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanInitiateRequest  (required)
-     * @return APIpostRequest
+     * @return PostRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIpostRequest post(String xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest) {
-        return new APIpostRequest(xSplititIdempotencyKey, installmentPlanInitiateRequest);
+    public PostRequestBuilder post(Boolean autoCapture, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (autoCapture == null) throw new IllegalArgumentException("\"autoCapture\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new PostRequestBuilder(autoCapture, xSplititIdempotencyKey);
     }
     private okhttp3.Call post2Call(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -947,26 +1008,94 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIpost2Request {
+    public class Post2RequestBuilder {
+        private final Boolean autoCapture;
+        private final Boolean termsAndConditionsAccepted;
         private final String xSplititIdempotencyKey;
-        private final InstallmentPlanCreateRequest installmentPlanCreateRequest;
+        private Boolean attempt3dSecure;
+        private ShopperData shopper;
+        private PlanDataModel planData;
+        private AddressDataModel billingAddress;
+        private PaymentMethodModel paymentMethod;
+        private RedirectionEndpointsModel redirectUrls;
         private String xSplititTestMode;
 
-        private APIpost2Request(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest) {
+        private Post2RequestBuilder(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey) {
+            this.autoCapture = autoCapture;
+            this.termsAndConditionsAccepted = termsAndConditionsAccepted;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.installmentPlanCreateRequest = installmentPlanCreateRequest;
         }
 
         /**
+         * Set attempt3dSecure
+         * @param attempt3dSecure  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder attempt3dSecure(Boolean attempt3dSecure) {
+            this.attempt3dSecure = attempt3dSecure;
+            return this;
+        }
+        
+        /**
+         * Set shopper
+         * @param shopper  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder shopper(ShopperData shopper) {
+            this.shopper = shopper;
+            return this;
+        }
+        
+        /**
+         * Set planData
+         * @param planData  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder planData(PlanDataModel planData) {
+            this.planData = planData;
+            return this;
+        }
+        
+        /**
+         * Set billingAddress
+         * @param billingAddress  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder billingAddress(AddressDataModel billingAddress) {
+            this.billingAddress = billingAddress;
+            return this;
+        }
+        
+        /**
+         * Set paymentMethod
+         * @param paymentMethod  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder paymentMethod(PaymentMethodModel paymentMethod) {
+            this.paymentMethod = paymentMethod;
+            return this;
+        }
+        
+        /**
+         * Set redirectUrls
+         * @param redirectUrls  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder redirectUrls(RedirectionEndpointsModel redirectUrls) {
+            this.redirectUrls = redirectUrls;
+            return this;
+        }
+        
+        /**
          * Set xSplititTestMode
          * @param xSplititTestMode  (optional)
-         * @return APIpost2Request
+         * @return Post2RequestBuilder
          */
-        public APIpost2Request xSplititTestMode(String xSplititTestMode) {
+        public Post2RequestBuilder xSplititTestMode(String xSplititTestMode) {
             this.xSplititTestMode = xSplititTestMode;
             return this;
         }
-
+        
         /**
          * Build call for post2
          * @param _callback ApiCallback API callback
@@ -976,15 +1105,24 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
             return post2Call(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        }
+
+        private InstallmentPlanCreateRequest buildBodyParams() {
+            InstallmentPlanCreateRequest installmentPlanCreateRequest = new InstallmentPlanCreateRequest();
+            installmentPlanCreateRequest.autoCapture(this.autoCapture);
+            installmentPlanCreateRequest.attempt3dSecure(this.attempt3dSecure);
+            installmentPlanCreateRequest.termsAndConditionsAccepted(this.termsAndConditionsAccepted);
+            installmentPlanCreateRequest.shopper(this.shopper);
+            installmentPlanCreateRequest.planData(this.planData);
+            installmentPlanCreateRequest.billingAddress(this.billingAddress);
+            installmentPlanCreateRequest.paymentMethod(this.paymentMethod);
+            installmentPlanCreateRequest.redirectUrls(this.redirectUrls);
+            return installmentPlanCreateRequest;
         }
 
         /**
@@ -995,14 +1133,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanCreateResponse execute() throws ApiException {
+            InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
             ApiResponse<InstallmentPlanCreateResponse> localVarResp = post2WithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
             return localVarResp.getData();
         }
@@ -1015,14 +1149,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanCreateResponse> executeWithHttpInfo() throws ApiException {
+            InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
             return post2WithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
         }
 
@@ -1035,14 +1165,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
+            InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
             return post2Async(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode, _callback);
         }
     }
@@ -1052,20 +1178,18 @@ public class InstallmentPlanApi {
      * 
      * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanCreateRequest  (required)
-     * @return APIpost2Request
+     * @return Post2RequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIpost2Request post2(String xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest) {
-        return new APIpost2Request(xSplititIdempotencyKey, installmentPlanCreateRequest);
+    public Post2RequestBuilder post2(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (autoCapture == null) throw new IllegalArgumentException("\"autoCapture\" is required but got null");
+        if (termsAndConditionsAccepted == null) throw new IllegalArgumentException("\"termsAndConditionsAccepted\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new Post2RequestBuilder(autoCapture, termsAndConditionsAccepted, xSplititIdempotencyKey);
     }
     private okhttp3.Call refundCall(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1158,17 +1282,28 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIrefundRequest {
+    public class RefundRequestBuilder {
+        private final double amount;
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
-        private final InstallmentPlanRefundRequest installmentPlanRefundRequest;
+        private RefundStrategy refundStrategy;
 
-        private APIrefundRequest(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) {
+        private RefundRequestBuilder(double amount, String installmentPlanNumber, String xSplititIdempotencyKey) {
+            this.amount = amount;
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.installmentPlanRefundRequest = installmentPlanRefundRequest;
         }
 
+        /**
+         * Set refundStrategy
+         * @param refundStrategy  (optional)
+         * @return RefundRequestBuilder
+         */
+        public RefundRequestBuilder refundStrategy(RefundStrategy refundStrategy) {
+            this.refundStrategy = refundStrategy;
+            return this;
+        }
+        
         /**
          * Build call for refund
          * @param _callback ApiCallback API callback
@@ -1178,14 +1313,18 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            InstallmentPlanRefundRequest installmentPlanRefundRequest = buildBodyParams();
             return refundCall(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
+        }
+
+        private InstallmentPlanRefundRequest buildBodyParams() {
+            InstallmentPlanRefundRequest installmentPlanRefundRequest = new InstallmentPlanRefundRequest();
+            installmentPlanRefundRequest.amount(this.amount);
+            installmentPlanRefundRequest.refundStrategy(this.refundStrategy);
+            return installmentPlanRefundRequest;
         }
 
         /**
@@ -1196,13 +1335,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanRefundResponse execute() throws ApiException {
+            InstallmentPlanRefundRequest installmentPlanRefundRequest = buildBodyParams();
             ApiResponse<InstallmentPlanRefundResponse> localVarResp = refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
             return localVarResp.getData();
         }
@@ -1215,13 +1351,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanRefundResponse> executeWithHttpInfo() throws ApiException {
+            InstallmentPlanRefundRequest installmentPlanRefundRequest = buildBodyParams();
             return refundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
         }
 
@@ -1234,13 +1367,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanRefundResponse> _callback) throws ApiException {
+            InstallmentPlanRefundRequest installmentPlanRefundRequest = buildBodyParams();
             return refundAsync(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest, _callback);
         }
     }
@@ -1251,19 +1381,18 @@ public class InstallmentPlanApi {
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanRefundRequest  (required)
-     * @return APIrefundRequest
+     * @return RefundRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIrefundRequest refund(String installmentPlanNumber, String xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest) {
-        return new APIrefundRequest(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+    public RefundRequestBuilder refund(double amount, String installmentPlanNumber, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        
+        if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new RefundRequestBuilder(amount, installmentPlanNumber, xSplititIdempotencyKey);
     }
     private okhttp3.Call searchCall(String xSplititIdempotencyKey, String installmentPlanNumber, String refOrderNumber, Map<String, String> extendedParams, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1353,46 +1482,46 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIsearchRequest {
+    public class SearchRequestBuilder {
         private final String xSplititIdempotencyKey;
         private String installmentPlanNumber;
         private String refOrderNumber;
         private Map<String, String> extendedParams;
 
-        private APIsearchRequest(String xSplititIdempotencyKey) {
+        private SearchRequestBuilder(String xSplititIdempotencyKey) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
         }
 
         /**
          * Set installmentPlanNumber
          * @param installmentPlanNumber  (optional)
-         * @return APIsearchRequest
+         * @return SearchRequestBuilder
          */
-        public APIsearchRequest installmentPlanNumber(String installmentPlanNumber) {
+        public SearchRequestBuilder installmentPlanNumber(String installmentPlanNumber) {
             this.installmentPlanNumber = installmentPlanNumber;
             return this;
         }
-
+        
         /**
          * Set refOrderNumber
          * @param refOrderNumber  (optional)
-         * @return APIsearchRequest
+         * @return SearchRequestBuilder
          */
-        public APIsearchRequest refOrderNumber(String refOrderNumber) {
+        public SearchRequestBuilder refOrderNumber(String refOrderNumber) {
             this.refOrderNumber = refOrderNumber;
             return this;
         }
-
+        
         /**
          * Set extendedParams
          * @param extendedParams  (optional)
-         * @return APIsearchRequest
+         * @return SearchRequestBuilder
          */
-        public APIsearchRequest extendedParams(Map<String, String> extendedParams) {
+        public SearchRequestBuilder extendedParams(Map<String, String> extendedParams) {
             this.extendedParams = extendedParams;
             return this;
         }
-
+        
         /**
          * Build call for search
          * @param _callback ApiCallback API callback
@@ -1402,15 +1531,12 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return searchCall(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams, _callback);
         }
+
 
         /**
          * Execute search request
@@ -1420,10 +1546,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanSearchResponse execute() throws ApiException {
@@ -1439,10 +1561,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanSearchResponse> executeWithHttpInfo() throws ApiException {
@@ -1458,10 +1576,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanSearchResponse> _callback) throws ApiException {
@@ -1473,19 +1587,16 @@ public class InstallmentPlanApi {
      * 
      * 
      * @param xSplititIdempotencyKey  (required)
-     * @return APIsearchRequest
+     * @return SearchRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIsearchRequest search(String xSplititIdempotencyKey) {
-        return new APIsearchRequest(xSplititIdempotencyKey);
+    public SearchRequestBuilder search(String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new SearchRequestBuilder(xSplititIdempotencyKey);
     }
     private okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1578,17 +1689,59 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIupdateOrderRequest {
+    public class UpdateOrderRequestBuilder {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
-        private final UpdateOrderRequest updateOrderRequest;
+        private String trackingNumber;
+        private String refOrderNumber;
+        private ShippingStatus shippingStatus;
+        private Boolean capture;
 
-        private APIupdateOrderRequest(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) {
+        private UpdateOrderRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.updateOrderRequest = updateOrderRequest;
         }
 
+        /**
+         * Set trackingNumber
+         * @param trackingNumber  (optional)
+         * @return UpdateOrderRequestBuilder
+         */
+        public UpdateOrderRequestBuilder trackingNumber(String trackingNumber) {
+            this.trackingNumber = trackingNumber;
+            return this;
+        }
+        
+        /**
+         * Set refOrderNumber
+         * @param refOrderNumber  (optional)
+         * @return UpdateOrderRequestBuilder
+         */
+        public UpdateOrderRequestBuilder refOrderNumber(String refOrderNumber) {
+            this.refOrderNumber = refOrderNumber;
+            return this;
+        }
+        
+        /**
+         * Set shippingStatus
+         * @param shippingStatus  (optional)
+         * @return UpdateOrderRequestBuilder
+         */
+        public UpdateOrderRequestBuilder shippingStatus(ShippingStatus shippingStatus) {
+            this.shippingStatus = shippingStatus;
+            return this;
+        }
+        
+        /**
+         * Set capture
+         * @param capture  (optional)
+         * @return UpdateOrderRequestBuilder
+         */
+        public UpdateOrderRequestBuilder capture(Boolean capture) {
+            this.capture = capture;
+            return this;
+        }
+        
         /**
          * Build call for updateOrder
          * @param _callback ApiCallback API callback
@@ -1598,14 +1751,20 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            UpdateOrderRequest updateOrderRequest = buildBodyParams();
             return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
+        }
+
+        private UpdateOrderRequest buildBodyParams() {
+            UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest();
+            updateOrderRequest.trackingNumber(this.trackingNumber);
+            updateOrderRequest.refOrderNumber(this.refOrderNumber);
+            updateOrderRequest.shippingStatus(this.shippingStatus);
+            updateOrderRequest.capture(this.capture);
+            return updateOrderRequest;
         }
 
         /**
@@ -1616,13 +1775,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanUpdateResponse execute() throws ApiException {
+            UpdateOrderRequest updateOrderRequest = buildBodyParams();
             ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
             return localVarResp.getData();
         }
@@ -1635,13 +1791,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanUpdateResponse> executeWithHttpInfo() throws ApiException {
+            UpdateOrderRequest updateOrderRequest = buildBodyParams();
             return updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
         }
 
@@ -1654,13 +1807,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+            UpdateOrderRequest updateOrderRequest = buildBodyParams();
             return updateOrderAsync(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest, _callback);
         }
     }
@@ -1671,19 +1821,17 @@ public class InstallmentPlanApi {
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
      * @param updateOrderRequest  (required)
-     * @return APIupdateOrderRequest
+     * @return UpdateOrderRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateOrderRequest updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest) {
-        return new APIupdateOrderRequest(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+    public UpdateOrderRequestBuilder updateOrder(String installmentPlanNumber, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new UpdateOrderRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey);
     }
     private okhttp3.Call updateOrder2Call(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1770,15 +1918,68 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIupdateOrder2Request {
+    public class UpdateOrder2RequestBuilder {
         private final String xSplititIdempotencyKey;
-        private final InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier;
+        private String refOrderNumber;
+        private String trackingNumber;
+        private Boolean capture;
+        private ShippingStatus2 shippingStatus;
+        private IdentifierContract identifier;
 
-        private APIupdateOrder2Request(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) {
+        private UpdateOrder2RequestBuilder(String xSplititIdempotencyKey) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
-            this.installmentPlanUpdateRequestByIdentifier = installmentPlanUpdateRequestByIdentifier;
         }
 
+        /**
+         * Set refOrderNumber
+         * @param refOrderNumber  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder refOrderNumber(String refOrderNumber) {
+            this.refOrderNumber = refOrderNumber;
+            return this;
+        }
+        
+        /**
+         * Set trackingNumber
+         * @param trackingNumber  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder trackingNumber(String trackingNumber) {
+            this.trackingNumber = trackingNumber;
+            return this;
+        }
+        
+        /**
+         * Set capture
+         * @param capture  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder capture(Boolean capture) {
+            this.capture = capture;
+            return this;
+        }
+        
+        /**
+         * Set shippingStatus
+         * @param shippingStatus  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder shippingStatus(ShippingStatus2 shippingStatus) {
+            this.shippingStatus = shippingStatus;
+            return this;
+        }
+        
+        /**
+         * Set identifier
+         * @param identifier  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder identifier(IdentifierContract identifier) {
+            this.identifier = identifier;
+            return this;
+        }
+        
         /**
          * Build call for updateOrder2
          * @param _callback ApiCallback API callback
@@ -1788,14 +1989,16 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = buildBodyParams();
             return updateOrder2Call(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
+        }
+
+        private InstallmentPlanUpdateRequestByIdentifier buildBodyParams() {
+            InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier();
+            return installmentPlanUpdateRequestByIdentifier;
         }
 
         /**
@@ -1806,13 +2009,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public InstallmentPlanUpdateResponse execute() throws ApiException {
+            InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = buildBodyParams();
             ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
             return localVarResp.getData();
         }
@@ -1825,13 +2025,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<InstallmentPlanUpdateResponse> executeWithHttpInfo() throws ApiException {
+            InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = buildBodyParams();
             return updateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
         }
 
@@ -1844,13 +2041,10 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+            InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = buildBodyParams();
             return updateOrder2Async(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier, _callback);
         }
     }
@@ -1860,19 +2054,16 @@ public class InstallmentPlanApi {
      * 
      * @param xSplititIdempotencyKey  (required)
      * @param installmentPlanUpdateRequestByIdentifier  (required)
-     * @return APIupdateOrder2Request
+     * @return UpdateOrder2RequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIupdateOrder2Request updateOrder2(String xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier) {
-        return new APIupdateOrder2Request(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+    public UpdateOrder2RequestBuilder updateOrder2(String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new UpdateOrder2RequestBuilder(xSplititIdempotencyKey);
     }
     private okhttp3.Call verifyAuthorizationCall(String installmentPlanNumber, String xSplititIdempotencyKey, final ApiCallback _callback) throws ApiException {
         String basePath = null;
@@ -1956,11 +2147,11 @@ public class InstallmentPlanApi {
         return localVarCall;
     }
 
-    public class APIverifyAuthorizationRequest {
+    public class VerifyAuthorizationRequestBuilder {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
 
-        private APIverifyAuthorizationRequest(String installmentPlanNumber, String xSplititIdempotencyKey) {
+        private VerifyAuthorizationRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey) {
             this.installmentPlanNumber = installmentPlanNumber;
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
         }
@@ -1974,15 +2165,12 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             return verifyAuthorizationCall(installmentPlanNumber, xSplititIdempotencyKey, _callback);
         }
+
 
         /**
          * Execute verifyAuthorization request
@@ -1992,10 +2180,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public VerifyAuthorizationResponse execute() throws ApiException {
@@ -2011,10 +2195,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public ApiResponse<VerifyAuthorizationResponse> executeWithHttpInfo() throws ApiException {
@@ -2030,10 +2210,6 @@ public class InstallmentPlanApi {
          <table summary="Response Details" border="1">
             <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
             <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-            <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<VerifyAuthorizationResponse> _callback) throws ApiException {
@@ -2046,18 +2222,16 @@ public class InstallmentPlanApi {
      * 
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
-     * @return APIverifyAuthorizationRequest
+     * @return VerifyAuthorizationRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td>  </td><td>  -  </td></tr>
-        <tr><td> 500 </td><td>  </td><td>  -  </td></tr>
      </table>
      */
-    public APIverifyAuthorizationRequest verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey) {
-        return new APIverifyAuthorizationRequest(installmentPlanNumber, xSplititIdempotencyKey);
+    public VerifyAuthorizationRequestBuilder verifyAuthorization(String installmentPlanNumber, String xSplititIdempotencyKey) throws IllegalArgumentException {
+        if (installmentPlanNumber == null) throw new IllegalArgumentException("\"installmentPlanNumber\" is required but got null");
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+        return new VerifyAuthorizationRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey);
     }
 }

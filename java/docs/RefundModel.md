@@ -9,10 +9,10 @@
 |------------ | ------------- | ------------- | -------------|
 |**refundId** | **String** |  |  [optional] |
 |**submitDate** | **OffsetDateTime** |  |  |
-|**totalAmount** | **BigDecimal** |  |  |
+|**totalAmount** | **Double** |  |  |
 |**status** | **RefundStatus** |  |  |
-|**nonCreditRefundAmount** | **BigDecimal** |  |  |
-|**creditRefundAmount** | **BigDecimal** |  |  |
+|**nonCreditRefundAmount** | **Double** |  |  |
+|**creditRefundAmount** | **Double** |  |  |
 
 
 

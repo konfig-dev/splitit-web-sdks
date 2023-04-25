@@ -71,6 +71,7 @@ public class InstallmentPlanUpdateRequest {
 
   public InstallmentPlanUpdateRequest refOrderNumber(String refOrderNumber) {
     
+    
     this.refOrderNumber = refOrderNumber;
     return this;
   }
@@ -88,11 +89,13 @@ public class InstallmentPlanUpdateRequest {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public InstallmentPlanUpdateRequest trackingNumber(String trackingNumber) {
+    
     
     this.trackingNumber = trackingNumber;
     return this;
@@ -111,11 +114,13 @@ public class InstallmentPlanUpdateRequest {
 
 
   public void setTrackingNumber(String trackingNumber) {
+    
     this.trackingNumber = trackingNumber;
   }
 
 
   public InstallmentPlanUpdateRequest capture(Boolean capture) {
+    
     
     this.capture = capture;
     return this;
@@ -134,11 +139,13 @@ public class InstallmentPlanUpdateRequest {
 
 
   public void setCapture(Boolean capture) {
+    
     this.capture = capture;
   }
 
 
   public InstallmentPlanUpdateRequest shippingStatus(ShippingStatus2 shippingStatus) {
+    
     
     this.shippingStatus = shippingStatus;
     return this;
@@ -157,6 +164,7 @@ public class InstallmentPlanUpdateRequest {
 
 
   public void setShippingStatus(ShippingStatus2 shippingStatus) {
+    
     this.shippingStatus = shippingStatus;
   }
 

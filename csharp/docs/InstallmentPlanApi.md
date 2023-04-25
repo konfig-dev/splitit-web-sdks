@@ -23,6 +23,7 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -36,9 +37,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
@@ -47,13 +54,19 @@ namespace Example
             try
             {
                 InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Cancel: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Cancel: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -119,6 +132,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -132,9 +146,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
@@ -143,13 +163,19 @@ namespace Example
             try
             {
                 InstallmentsEligibilityResponse result = apiInstance.CheckEligibility(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.CheckEligibility: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.CheckEligibility: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -215,6 +241,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -228,9 +255,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
@@ -239,13 +272,19 @@ namespace Example
             try
             {
                 InstallmentPlanGetResponse result = apiInstance.Get(installmentPlanNumber, xSplititIdempotencyKey);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Get: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Get: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -311,6 +350,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -324,9 +364,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
@@ -336,13 +382,19 @@ namespace Example
             try
             {
                 InitiatePlanResponse result = apiInstance.Post(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Post: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Post: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -410,6 +462,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -423,9 +476,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
@@ -435,13 +494,19 @@ namespace Example
             try
             {
                 InstallmentPlanCreateResponse result = apiInstance.Post2(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Post2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Post2: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -509,6 +574,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -522,9 +588,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
@@ -534,13 +606,19 @@ namespace Example
             try
             {
                 InstallmentPlanRefundResponse result = apiInstance.Refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Refund: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Refund: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -607,6 +685,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -620,9 +699,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
@@ -633,13 +718,19 @@ namespace Example
             try
             {
                 InstallmentPlanSearchResponse result = apiInstance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.Search: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.Search: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -707,6 +798,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -720,9 +812,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
@@ -732,13 +830,19 @@ namespace Example
             try
             {
                 InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.UpdateOrder: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.UpdateOrder: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -805,6 +909,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -818,9 +923,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
@@ -829,13 +940,19 @@ namespace Example
             try
             {
                 InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.UpdateOrder2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.UpdateOrder2: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }
@@ -901,6 +1018,7 @@ catch (ApiException e)
 
 ### Example
 ```csharp
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Splitit.Web.Net.Api;
@@ -914,9 +1032,15 @@ namespace Example
         public static void Main()
         {
             Configuration config = new Configuration();
-            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-            // Configure OAuth2 access token for authorization: oauth
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            // Configure custom BasePath if desired
+            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+
+            // Configure OAuth2 credentials for "application" OAuth flow
+            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
+            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
+            config.OAuthClientId = clientId;
+            config.OAuthClientSecret = clientSecret;
 
             var apiInstance = new InstallmentPlanApi(config);
             var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
@@ -925,13 +1049,19 @@ namespace Example
             try
             {
                 VerifyAuthorizationResponse result = apiInstance.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
-                Debug.WriteLine(result);
+                Console.WriteLine(result);
             }
-            catch (ApiException  e)
+            catch (ApiException e)
             {
-                Debug.Print("Exception when calling InstallmentPlanApi.VerifyAuthorization: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.VerifyAuthorization: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
             }
         }
     }

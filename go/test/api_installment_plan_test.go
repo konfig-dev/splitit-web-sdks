@@ -19,6 +19,8 @@ import (
 func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
     configuration := splitit.NewConfiguration()
+    
+    
     apiClient := splitit.NewAPIClient(configuration)
 
     t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
@@ -28,6 +30,18 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
         var installmentPlanNumber string
 
         resp, httpRes, err := apiClient.InstallmentPlanApi.Cancel(installmentPlanNumber).Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
+    t.Run("Test InstallmentPlanApiService CheckEligibility", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        resp, httpRes, err := apiClient.InstallmentPlanApi.CheckEligibility().Execute()
 
         require.Nil(t, err)
         require.NotNil(t, resp)
@@ -54,6 +68,18 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
         t.Skip("skip test")  // remove to run test
 
         resp, httpRes, err := apiClient.InstallmentPlanApi.Post().Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+
+    })
+
+    t.Run("Test InstallmentPlanApiService Post2", func(t *testing.T) {
+
+        t.Skip("skip test")  // remove to run test
+
+        resp, httpRes, err := apiClient.InstallmentPlanApi.Post2().Execute()
 
         require.Nil(t, err)
         require.NotNil(t, resp)

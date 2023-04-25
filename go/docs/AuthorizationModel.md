@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Status** | [**GwAuthorizationStatus**](GwAuthorizationStatus.md) |  | 
 **Date** | Pointer to **time.Time** |  | [optional] 
-**SplititErrorResultCode** | Pointer to **NullableString** |  | [optional] 
+**SplititErrorResultCode** | Pointer to **string** |  | [optional] 
 **GatewayTransactionID** | Pointer to **string** |  | [optional] 
 **GatewayResultCode** | Pointer to **string** |  | [optional] 
 **GatewayResultMessage** | Pointer to **string** |  | [optional] 
-**ThreeDSRedirect** | Pointer to [**ThreeDsRedirectData**](ThreeDsRedirectData.md) |  | [optional] 
-**CAVV** | Pointer to **NullableString** |  | [optional] 
-**ECI** | Pointer to **NullableString** |  | [optional] 
+**ThreeDSRedirect** | Pointer to [**ThreeDsRedirectDataV3**](ThreeDsRedirectDataV3.md) |  | [optional] 
+**CAVV** | Pointer to **string** |  | [optional] 
+**ECI** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -103,16 +103,6 @@ SetSplititErrorResultCode sets SplititErrorResultCode field to given value.
 
 HasSplititErrorResultCode returns a boolean if a field has been set.
 
-### SetSplititErrorResultCodeNil
-
-`func (o *AuthorizationModel) SetSplititErrorResultCodeNil(b bool)`
-
- SetSplititErrorResultCodeNil sets the value for SplititErrorResultCode to be an explicit nil
-
-### UnsetSplititErrorResultCode
-`func (o *AuthorizationModel) UnsetSplititErrorResultCode()`
-
-UnsetSplititErrorResultCode ensures that no value is present for SplititErrorResultCode, not even an explicit nil
 ### GetGatewayTransactionID
 
 `func (o *AuthorizationModel) GetGatewayTransactionID() string`
@@ -190,20 +180,20 @@ HasGatewayResultMessage returns a boolean if a field has been set.
 
 ### GetThreeDSRedirect
 
-`func (o *AuthorizationModel) GetThreeDSRedirect() ThreeDsRedirectData`
+`func (o *AuthorizationModel) GetThreeDSRedirect() ThreeDsRedirectDataV3`
 
 GetThreeDSRedirect returns the ThreeDSRedirect field if non-nil, zero value otherwise.
 
 ### GetThreeDSRedirectOk
 
-`func (o *AuthorizationModel) GetThreeDSRedirectOk() (*ThreeDsRedirectData, bool)`
+`func (o *AuthorizationModel) GetThreeDSRedirectOk() (*ThreeDsRedirectDataV3, bool)`
 
 GetThreeDSRedirectOk returns a tuple with the ThreeDSRedirect field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetThreeDSRedirect
 
-`func (o *AuthorizationModel) SetThreeDSRedirect(v ThreeDsRedirectData)`
+`func (o *AuthorizationModel) SetThreeDSRedirect(v ThreeDsRedirectDataV3)`
 
 SetThreeDSRedirect sets ThreeDSRedirect field to given value.
 
@@ -238,16 +228,6 @@ SetCAVV sets CAVV field to given value.
 
 HasCAVV returns a boolean if a field has been set.
 
-### SetCAVVNil
-
-`func (o *AuthorizationModel) SetCAVVNil(b bool)`
-
- SetCAVVNil sets the value for CAVV to be an explicit nil
-
-### UnsetCAVV
-`func (o *AuthorizationModel) UnsetCAVV()`
-
-UnsetCAVV ensures that no value is present for CAVV, not even an explicit nil
 ### GetECI
 
 `func (o *AuthorizationModel) GetECI() string`
@@ -273,16 +253,6 @@ SetECI sets ECI field to given value.
 
 HasECI returns a boolean if a field has been set.
 
-### SetECINil
-
-`func (o *AuthorizationModel) SetECINil(b bool)`
-
- SetECINil sets the value for ECI to be an explicit nil
-
-### UnsetECI
-`func (o *AuthorizationModel) UnsetECI()`
-
-UnsetECI ensures that no value is present for ECI, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

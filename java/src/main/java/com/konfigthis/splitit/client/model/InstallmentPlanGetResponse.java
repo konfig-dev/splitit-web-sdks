@@ -31,7 +31,6 @@ import com.konfigthis.splitit.client.model.ShopperData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,11 +89,11 @@ public class InstallmentPlanGetResponse {
 
   public static final String SERIALIZED_NAME_ORIGINAL_AMOUNT = "OriginalAmount";
   @SerializedName(SERIALIZED_NAME_ORIGINAL_AMOUNT)
-  private BigDecimal originalAmount;
+  private Double originalAmount;
 
   public static final String SERIALIZED_NAME_AMOUNT = "Amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_AUTHORIZATION = "Authorization";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION)
@@ -133,6 +132,7 @@ public class InstallmentPlanGetResponse {
 
   public InstallmentPlanGetResponse installmentPlanNumber(String installmentPlanNumber) {
     
+    
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
   }
@@ -150,11 +150,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public InstallmentPlanGetResponse dateCreated(OffsetDateTime dateCreated) {
+    
     
     this.dateCreated = dateCreated;
     return this;
@@ -173,11 +175,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setDateCreated(OffsetDateTime dateCreated) {
+    
     this.dateCreated = dateCreated;
   }
 
 
   public InstallmentPlanGetResponse refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -196,11 +200,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public InstallmentPlanGetResponse purchaseMethod(PurchaseMethod purchaseMethod) {
+    
     
     this.purchaseMethod = purchaseMethod;
     return this;
@@ -219,11 +225,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setPurchaseMethod(PurchaseMethod purchaseMethod) {
+    
     this.purchaseMethod = purchaseMethod;
   }
 
 
   public InstallmentPlanGetResponse status(PlanStatus status) {
+    
     
     this.status = status;
     return this;
@@ -242,11 +250,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setStatus(PlanStatus status) {
+    
     this.status = status;
   }
 
 
   public InstallmentPlanGetResponse currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -265,13 +275,22 @@ public class InstallmentPlanGetResponse {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
-  public InstallmentPlanGetResponse originalAmount(BigDecimal originalAmount) {
+  public InstallmentPlanGetResponse originalAmount(Double originalAmount) {
+    
     
     this.originalAmount = originalAmount;
+    return this;
+  }
+
+  public InstallmentPlanGetResponse originalAmount(Integer originalAmount) {
+    
+    
+    this.originalAmount = originalAmount.doubleValue();
     return this;
   }
 
@@ -282,19 +301,28 @@ public class InstallmentPlanGetResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
     return originalAmount;
   }
 
 
-  public void setOriginalAmount(BigDecimal originalAmount) {
+  public void setOriginalAmount(Double originalAmount) {
+    
     this.originalAmount = originalAmount;
   }
 
 
-  public InstallmentPlanGetResponse amount(BigDecimal amount) {
+  public InstallmentPlanGetResponse amount(Double amount) {
+    
     
     this.amount = amount;
+    return this;
+  }
+
+  public InstallmentPlanGetResponse amount(Integer amount) {
+    
+    
+    this.amount = amount.doubleValue();
     return this;
   }
 
@@ -305,17 +333,19 @@ public class InstallmentPlanGetResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
+    
     this.amount = amount;
   }
 
 
   public InstallmentPlanGetResponse authorization(AuthorizationModel authorization) {
+    
     
     this.authorization = authorization;
     return this;
@@ -334,11 +364,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setAuthorization(AuthorizationModel authorization) {
+    
     this.authorization = authorization;
   }
 
 
   public InstallmentPlanGetResponse shopper(ShopperData shopper) {
+    
     
     this.shopper = shopper;
     return this;
@@ -357,11 +389,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setShopper(ShopperData shopper) {
+    
     this.shopper = shopper;
   }
 
 
   public InstallmentPlanGetResponse billingAddress(AddressData billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -380,11 +414,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setBillingAddress(AddressData billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 
 
   public InstallmentPlanGetResponse paymentMethod(PaymentMethodModel paymentMethod) {
+    
     
     this.paymentMethod = paymentMethod;
     return this;
@@ -403,11 +439,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setPaymentMethod(PaymentMethodModel paymentMethod) {
+    
     this.paymentMethod = paymentMethod;
   }
 
 
   public InstallmentPlanGetResponse extendedParams(Map<String, String> extendedParams) {
+    
     
     this.extendedParams = extendedParams;
     return this;
@@ -434,11 +472,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setExtendedParams(Map<String, String> extendedParams) {
+    
     this.extendedParams = extendedParams;
   }
 
 
   public InstallmentPlanGetResponse installments(List<Installment> installments) {
+    
     
     this.installments = installments;
     return this;
@@ -465,11 +505,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setInstallments(List<Installment> installments) {
+    
     this.installments = installments;
   }
 
 
   public InstallmentPlanGetResponse refunds(List<RefundModel> refunds) {
+    
     
     this.refunds = refunds;
     return this;
@@ -496,11 +538,13 @@ public class InstallmentPlanGetResponse {
 
 
   public void setRefunds(List<RefundModel> refunds) {
+    
     this.refunds = refunds;
   }
 
 
   public InstallmentPlanGetResponse links(LinksData links) {
+    
     
     this.links = links;
     return this;
@@ -519,6 +563,7 @@ public class InstallmentPlanGetResponse {
 
 
   public void setLinks(LinksData links) {
+    
     this.links = links;
   }
 

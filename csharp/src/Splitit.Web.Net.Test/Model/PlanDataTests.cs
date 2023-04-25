@@ -113,12 +113,28 @@ namespace Splitit.Web.Net.Test.Model
             // TODO unit test for the property 'RefOrderNumber'
         }
         /// <summary>
+        /// Test the property 'AllowedInstallmentOptions'
+        /// </summary>
+        [Fact]
+        public void AllowedInstallmentOptionsTest()
+        {
+            // TODO unit test for the property 'AllowedInstallmentOptions'
+        }
+        /// <summary>
         /// Test the property 'Tags'
         /// </summary>
         [Fact]
         public void TagsTest()
         {
             // TODO unit test for the property 'Tags'
+        }
+        /// <summary>
+        /// Test the property 'FirstInstallmentDate'
+        /// </summary>
+        [Fact]
+        public void FirstInstallmentDateTest()
+        {
+            // TODO unit test for the property 'FirstInstallmentDate'
         }
 
     }

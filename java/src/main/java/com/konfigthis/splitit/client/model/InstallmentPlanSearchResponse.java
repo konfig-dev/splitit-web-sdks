@@ -61,6 +61,7 @@ public class InstallmentPlanSearchResponse {
 
   public InstallmentPlanSearchResponse planList(List<SearchInstallmentPlanResponseItem> planList) {
     
+    
     this.planList = planList;
     return this;
   }
@@ -86,6 +87,7 @@ public class InstallmentPlanSearchResponse {
 
 
   public void setPlanList(List<SearchInstallmentPlanResponseItem> planList) {
+    
     this.planList = planList;
   }
 

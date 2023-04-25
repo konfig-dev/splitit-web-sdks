@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -177,6 +177,167 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type InstallmentPlanApiCheckEligibilityRequest struct {
+	ctx context.Context
+	ApiService *InstallmentPlanApiService
+	xSplititIdempotencyKey *string
+	checkInstallmentsEligibilityRequest *CheckInstallmentsEligibilityRequest
+}
+
+func (r InstallmentPlanApiCheckEligibilityRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiCheckEligibilityRequest {
+	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
+	return r
+}
+
+func (r InstallmentPlanApiCheckEligibilityRequest) CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest CheckInstallmentsEligibilityRequest) InstallmentPlanApiCheckEligibilityRequest {
+	r.checkInstallmentsEligibilityRequest = &checkInstallmentsEligibilityRequest
+	return r
+}
+
+func (r InstallmentPlanApiCheckEligibilityRequest) Execute() (*InstallmentsEligibilityResponse, *http.Response, error) {
+	return r.ApiService.CheckEligibilityExecute(r)
+}
+
+/*
+CheckEligibility Method for CheckEligibility
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return InstallmentPlanApiCheckEligibilityRequest
+*/
+func (a *InstallmentPlanApiService) CheckEligibility() InstallmentPlanApiCheckEligibilityRequest {
+	return InstallmentPlanApiCheckEligibilityRequest{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+	}
+}
+
+// Execute executes the request
+//  @return InstallmentsEligibilityResponse
+func (a *InstallmentPlanApiService) CheckEligibilityExecute(r InstallmentPlanApiCheckEligibilityRequest) (*InstallmentsEligibilityResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *InstallmentsEligibilityResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InstallmentPlanApiService.CheckEligibility")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/installmentplans/check-eligibility"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xSplititIdempotencyKey == nil {
+		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
+	}
+	if r.checkInstallmentsEligibilityRequest == nil {
+		return localVarReturnValue, nil, reportError("checkInstallmentsEligibilityRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json", "text/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
+	// body params
+	localVarPostBody = r.checkInstallmentsEligibilityRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type InstallmentPlanApiGetRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
@@ -189,7 +350,7 @@ func (r InstallmentPlanApiGetRequest) XSplititIdempotencyKey(xSplititIdempotency
 	return r
 }
 
-func (r InstallmentPlanApiGetRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
+func (r InstallmentPlanApiGetRequest) Execute() (*InstallmentPlanGetResponse, *http.Response, error) {
 	return r.ApiService.GetExecute(r)
 }
 
@@ -209,13 +370,13 @@ func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) Installmen
 }
 
 // Execute executes the request
-//  @return InstallmentPlanModel
-func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (*InstallmentPlanModel, *http.Response, error) {
+//  @return InstallmentPlanGetResponse
+func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (*InstallmentPlanGetResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InstallmentPlanModel
+		localVarReturnValue  *InstallmentPlanGetResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InstallmentPlanApiService.Get")
@@ -335,7 +496,7 @@ type InstallmentPlanApiPostRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	xSplititIdempotencyKey *string
-	installmentPlanCreateRequest *InstallmentPlanCreateRequest
+	installmentPlanInitiateRequest *InstallmentPlanInitiateRequest
 	xSplititTestMode *string
 }
 
@@ -344,8 +505,8 @@ func (r InstallmentPlanApiPostRequest) XSplititIdempotencyKey(xSplititIdempotenc
 	return r
 }
 
-func (r InstallmentPlanApiPostRequest) InstallmentPlanCreateRequest(installmentPlanCreateRequest InstallmentPlanCreateRequest) InstallmentPlanApiPostRequest {
-	r.installmentPlanCreateRequest = &installmentPlanCreateRequest
+func (r InstallmentPlanApiPostRequest) InstallmentPlanInitiateRequest(installmentPlanInitiateRequest InstallmentPlanInitiateRequest) InstallmentPlanApiPostRequest {
+	r.installmentPlanInitiateRequest = &installmentPlanInitiateRequest
 	return r
 }
 
@@ -354,7 +515,7 @@ func (r InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string)
 	return r
 }
 
-func (r InstallmentPlanApiPostRequest) Execute() (*InstallmentPlanModel, *http.Response, error) {
+func (r InstallmentPlanApiPostRequest) Execute() (*InitiatePlanResponse, *http.Response, error) {
 	return r.ApiService.PostExecute(r)
 }
 
@@ -372,16 +533,197 @@ func (a *InstallmentPlanApiService) Post() InstallmentPlanApiPostRequest {
 }
 
 // Execute executes the request
-//  @return InstallmentPlanModel
-func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest) (*InstallmentPlanModel, *http.Response, error) {
+//  @return InitiatePlanResponse
+func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest) (*InitiatePlanResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InstallmentPlanModel
+		localVarReturnValue  *InitiatePlanResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InstallmentPlanApiService.Post")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/installmentplans/initiate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xSplititIdempotencyKey == nil {
+		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
+	}
+	if r.installmentPlanInitiateRequest == nil {
+		return localVarReturnValue, nil, reportError("installmentPlanInitiateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json", "text/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xSplititTestMode != nil {
+		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
+	}
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
+	// body params
+	localVarPostBody = r.installmentPlanInitiateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v PlanErrorResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v FailedResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+            		newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+            		newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type InstallmentPlanApiPost2Request struct {
+	ctx context.Context
+	ApiService *InstallmentPlanApiService
+	xSplititIdempotencyKey *string
+	installmentPlanCreateRequest *InstallmentPlanCreateRequest
+	xSplititTestMode *string
+}
+
+func (r InstallmentPlanApiPost2Request) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiPost2Request {
+	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
+	return r
+}
+
+func (r InstallmentPlanApiPost2Request) InstallmentPlanCreateRequest(installmentPlanCreateRequest InstallmentPlanCreateRequest) InstallmentPlanApiPost2Request {
+	r.installmentPlanCreateRequest = &installmentPlanCreateRequest
+	return r
+}
+
+func (r InstallmentPlanApiPost2Request) XSplititTestMode(xSplititTestMode string) InstallmentPlanApiPost2Request {
+	r.xSplititTestMode = &xSplititTestMode
+	return r
+}
+
+func (r InstallmentPlanApiPost2Request) Execute() (*InstallmentPlanCreateResponse, *http.Response, error) {
+	return r.ApiService.Post2Execute(r)
+}
+
+/*
+Post2 Method for Post2
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return InstallmentPlanApiPost2Request
+*/
+func (a *InstallmentPlanApiService) Post2() InstallmentPlanApiPost2Request {
+	return InstallmentPlanApiPost2Request{
+		ApiService: a,
+		ctx: a.client.cfg.Context,
+	}
+}
+
+// Execute executes the request
+//  @return InstallmentPlanCreateResponse
+func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Request) (*InstallmentPlanCreateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *InstallmentPlanCreateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InstallmentPlanApiService.Post2")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -706,7 +1048,7 @@ func (r InstallmentPlanApiSearchRequest) ExtendedParams(extendedParams map[strin
 	return r
 }
 
-func (r InstallmentPlanApiSearchRequest) Execute() (*InstallmentPlanGetResponse, *http.Response, error) {
+func (r InstallmentPlanApiSearchRequest) Execute() (*InstallmentPlanSearchResponse, *http.Response, error) {
 	return r.ApiService.SearchExecute(r)
 }
 
@@ -724,13 +1066,13 @@ func (a *InstallmentPlanApiService) Search() InstallmentPlanApiSearchRequest {
 }
 
 // Execute executes the request
-//  @return InstallmentPlanGetResponse
-func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequest) (*InstallmentPlanGetResponse, *http.Response, error) {
+//  @return InstallmentPlanSearchResponse
+func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequest) (*InstallmentPlanSearchResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InstallmentPlanGetResponse
+		localVarReturnValue  *InstallmentPlanSearchResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "InstallmentPlanApiService.Search")

@@ -12,7 +12,7 @@
 |**purchaseMethod** | **PurchaseMethod** |  |  [optional] |
 |**status** | **PlanStatus** |  |  |
 |**currency** | **String** |  |  [optional] |
-|**amount** | **BigDecimal** |  |  [optional] |
+|**amount** | **Double** |  |  [optional] |
 |**extendedParams** | **Map&lt;String, String&gt;** |  |  [optional] |
 |**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
 |**billingAddress** | [**AddressData**](AddressData.md) |  |  [optional] |

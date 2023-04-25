@@ -23,8 +23,10 @@ import com.konfigthis.splitit.client.model.PurchaseMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -59,11 +61,11 @@ public class PlanData {
 
   public static final String SERIALIZED_NAME_TOTAL_AMOUNT = "TotalAmount";
   @SerializedName(SERIALIZED_NAME_TOTAL_AMOUNT)
-  private BigDecimal totalAmount;
+  private Double totalAmount;
 
   public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT = "FirstInstallmentAmount";
   @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_AMOUNT)
-  private BigDecimal firstInstallmentAmount;
+  private Double firstInstallmentAmount;
 
   public static final String SERIALIZED_NAME_CURRENCY = "Currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -81,14 +83,23 @@ public class PlanData {
   @SerializedName(SERIALIZED_NAME_REF_ORDER_NUMBER)
   private String refOrderNumber;
 
+  public static final String SERIALIZED_NAME_ALLOWED_INSTALLMENT_OPTIONS = "AllowedInstallmentOptions";
+  @SerializedName(SERIALIZED_NAME_ALLOWED_INSTALLMENT_OPTIONS)
+  private List<Integer> allowedInstallmentOptions = null;
+
   public static final String SERIALIZED_NAME_TAGS = "Tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
   private Map<String, String> tags = null;
+
+  public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_DATE = "FirstInstallmentDate";
+  @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_DATE)
+  private OffsetDateTime firstInstallmentDate;
 
   public PlanData() {
   }
 
   public PlanData terminalId(String terminalId) {
+    
     
     this.terminalId = terminalId;
     return this;
@@ -107,13 +118,22 @@ public class PlanData {
 
 
   public void setTerminalId(String terminalId) {
+    
     this.terminalId = terminalId;
   }
 
 
-  public PlanData totalAmount(BigDecimal totalAmount) {
+  public PlanData totalAmount(Double totalAmount) {
+    
     
     this.totalAmount = totalAmount;
+    return this;
+  }
+
+  public PlanData totalAmount(Integer totalAmount) {
+    
+    
+    this.totalAmount = totalAmount.doubleValue();
     return this;
   }
 
@@ -124,19 +144,28 @@ public class PlanData {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public BigDecimal getTotalAmount() {
+  public Double getTotalAmount() {
     return totalAmount;
   }
 
 
-  public void setTotalAmount(BigDecimal totalAmount) {
+  public void setTotalAmount(Double totalAmount) {
+    
     this.totalAmount = totalAmount;
   }
 
 
-  public PlanData firstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public PlanData firstInstallmentAmount(Double firstInstallmentAmount) {
+    
     
     this.firstInstallmentAmount = firstInstallmentAmount;
+    return this;
+  }
+
+  public PlanData firstInstallmentAmount(Integer firstInstallmentAmount) {
+    
+    
+    this.firstInstallmentAmount = firstInstallmentAmount.doubleValue();
     return this;
   }
 
@@ -147,17 +176,19 @@ public class PlanData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getFirstInstallmentAmount() {
+  public Double getFirstInstallmentAmount() {
     return firstInstallmentAmount;
   }
 
 
-  public void setFirstInstallmentAmount(BigDecimal firstInstallmentAmount) {
+  public void setFirstInstallmentAmount(Double firstInstallmentAmount) {
+    
     this.firstInstallmentAmount = firstInstallmentAmount;
   }
 
 
   public PlanData currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -176,11 +207,13 @@ public class PlanData {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
   public PlanData numberOfInstallments(Integer numberOfInstallments) {
+    
     
     this.numberOfInstallments = numberOfInstallments;
     return this;
@@ -199,11 +232,13 @@ public class PlanData {
 
 
   public void setNumberOfInstallments(Integer numberOfInstallments) {
+    
     this.numberOfInstallments = numberOfInstallments;
   }
 
 
   public PlanData purchaseMethod(PurchaseMethod purchaseMethod) {
+    
     
     this.purchaseMethod = purchaseMethod;
     return this;
@@ -222,11 +257,13 @@ public class PlanData {
 
 
   public void setPurchaseMethod(PurchaseMethod purchaseMethod) {
+    
     this.purchaseMethod = purchaseMethod;
   }
 
 
   public PlanData refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -245,11 +282,46 @@ public class PlanData {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
+  public PlanData allowedInstallmentOptions(List<Integer> allowedInstallmentOptions) {
+    
+    
+    this.allowedInstallmentOptions = allowedInstallmentOptions;
+    return this;
+  }
+
+  public PlanData addAllowedInstallmentOptionsItem(Integer allowedInstallmentOptionsItem) {
+    if (this.allowedInstallmentOptions == null) {
+      this.allowedInstallmentOptions = new ArrayList<>();
+    }
+    this.allowedInstallmentOptions.add(allowedInstallmentOptionsItem);
+    return this;
+  }
+
+   /**
+   * Get allowedInstallmentOptions
+   * @return allowedInstallmentOptions
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<Integer> getAllowedInstallmentOptions() {
+    return allowedInstallmentOptions;
+  }
+
+
+  public void setAllowedInstallmentOptions(List<Integer> allowedInstallmentOptions) {
+    
+    this.allowedInstallmentOptions = allowedInstallmentOptions;
+  }
+
+
   public PlanData tags(Map<String, String> tags) {
+    
     
     this.tags = tags;
     return this;
@@ -276,7 +348,33 @@ public class PlanData {
 
 
   public void setTags(Map<String, String> tags) {
+    
     this.tags = tags;
+  }
+
+
+  public PlanData firstInstallmentDate(OffsetDateTime firstInstallmentDate) {
+    
+    
+    this.firstInstallmentDate = firstInstallmentDate;
+    return this;
+  }
+
+   /**
+   * Get firstInstallmentDate
+   * @return firstInstallmentDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public OffsetDateTime getFirstInstallmentDate() {
+    return firstInstallmentDate;
+  }
+
+
+  public void setFirstInstallmentDate(OffsetDateTime firstInstallmentDate) {
+    
+    this.firstInstallmentDate = firstInstallmentDate;
   }
 
   /**
@@ -341,13 +439,15 @@ public class PlanData {
         Objects.equals(this.numberOfInstallments, planData.numberOfInstallments) &&
         Objects.equals(this.purchaseMethod, planData.purchaseMethod) &&
         Objects.equals(this.refOrderNumber, planData.refOrderNumber) &&
-        Objects.equals(this.tags, planData.tags)&&
+        Objects.equals(this.allowedInstallmentOptions, planData.allowedInstallmentOptions) &&
+        Objects.equals(this.tags, planData.tags) &&
+        Objects.equals(this.firstInstallmentDate, planData.firstInstallmentDate)&&
         Objects.equals(this.additionalProperties, planData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(terminalId, totalAmount, firstInstallmentAmount, currency, numberOfInstallments, purchaseMethod, refOrderNumber, tags, additionalProperties);
+    return Objects.hash(terminalId, totalAmount, firstInstallmentAmount, currency, numberOfInstallments, purchaseMethod, refOrderNumber, allowedInstallmentOptions, tags, firstInstallmentDate, additionalProperties);
   }
 
   @Override
@@ -361,7 +461,9 @@ public class PlanData {
     sb.append("    numberOfInstallments: ").append(toIndentedString(numberOfInstallments)).append("\n");
     sb.append("    purchaseMethod: ").append(toIndentedString(purchaseMethod)).append("\n");
     sb.append("    refOrderNumber: ").append(toIndentedString(refOrderNumber)).append("\n");
+    sb.append("    allowedInstallmentOptions: ").append(toIndentedString(allowedInstallmentOptions)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    firstInstallmentDate: ").append(toIndentedString(firstInstallmentDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -392,7 +494,9 @@ public class PlanData {
     openapiFields.add("NumberOfInstallments");
     openapiFields.add("PurchaseMethod");
     openapiFields.add("RefOrderNumber");
+    openapiFields.add("AllowedInstallmentOptions");
     openapiFields.add("Tags");
+    openapiFields.add("FirstInstallmentDate");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -428,6 +532,10 @@ public class PlanData {
       }
       if ((jsonObj.get("RefOrderNumber") != null && !jsonObj.get("RefOrderNumber").isJsonNull()) && !jsonObj.get("RefOrderNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `RefOrderNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RefOrderNumber").toString()));
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("AllowedInstallmentOptions") != null && !jsonObj.get("AllowedInstallmentOptions").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `AllowedInstallmentOptions` to be an array in the JSON string but got `%s`", jsonObj.get("AllowedInstallmentOptions").toString()));
       }
   }
 

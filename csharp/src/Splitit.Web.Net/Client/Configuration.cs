@@ -33,7 +33,7 @@ namespace Splitit.Web.Net.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.0.0";
+        public const string Version = "2.1.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -58,6 +58,12 @@ namespace Splitit.Web.Net.Client
                     string.Format("Error calling {0}: {1}", methodName, response.RawContent),
                     response.RawContent, response.Headers);
             }
+
+            // This occurs when response was successful but something happened in the client library
+            // (e.g. deserialization error)
+            if (response.Exception != null)
+                throw new ClientException(response, response.Exception);
+
             return null;
         };
 
@@ -110,7 +116,7 @@ namespace Splitit.Web.Net.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = WebUtility.UrlEncode("Konfig/2.0.0/csharp");
+            UserAgent = WebUtility.UrlEncode("Konfig/2.1.0/csharp");
             BasePath = "https://web-api-v3.sandbox.splitit.com";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -544,7 +550,7 @@ namespace Splitit.Web.Net.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 2.0.0\n";
+            report += "    SDK Package Version: 2.1.0\n";
 
             return report;
         }

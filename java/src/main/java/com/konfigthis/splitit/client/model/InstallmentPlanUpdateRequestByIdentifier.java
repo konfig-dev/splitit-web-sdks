@@ -76,6 +76,7 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
   public InstallmentPlanUpdateRequestByIdentifier refOrderNumber(String refOrderNumber) {
     
+    
     this.refOrderNumber = refOrderNumber;
     return this;
   }
@@ -93,11 +94,13 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public InstallmentPlanUpdateRequestByIdentifier trackingNumber(String trackingNumber) {
+    
     
     this.trackingNumber = trackingNumber;
     return this;
@@ -116,11 +119,13 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
 
   public void setTrackingNumber(String trackingNumber) {
+    
     this.trackingNumber = trackingNumber;
   }
 
 
   public InstallmentPlanUpdateRequestByIdentifier capture(Boolean capture) {
+    
     
     this.capture = capture;
     return this;
@@ -139,11 +144,13 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
 
   public void setCapture(Boolean capture) {
+    
     this.capture = capture;
   }
 
 
   public InstallmentPlanUpdateRequestByIdentifier shippingStatus(ShippingStatus2 shippingStatus) {
+    
     
     this.shippingStatus = shippingStatus;
     return this;
@@ -162,11 +169,13 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
 
   public void setShippingStatus(ShippingStatus2 shippingStatus) {
+    
     this.shippingStatus = shippingStatus;
   }
 
 
   public InstallmentPlanUpdateRequestByIdentifier identifier(IdentifierContract identifier) {
+    
     
     this.identifier = identifier;
     return this;
@@ -185,6 +194,7 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
 
   public void setIdentifier(IdentifierContract identifier) {
+    
     this.identifier = identifier;
   }
 

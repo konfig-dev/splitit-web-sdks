@@ -40,12 +40,13 @@ namespace Splitit.Web.Net.Model
         /// Initializes a new instance of the <see cref="InstallmentPlanInitiateRequest" /> class.
         /// </summary>
         /// <param name="autoCapture">autoCapture (required).</param>
-        /// <param name="attempt3dSecure">attempt3dSecure (required).</param>
+        /// <param name="attempt3dSecure">attempt3dSecure.</param>
         /// <param name="shopper">shopper.</param>
         /// <param name="planData">planData.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="redirectUrls">redirectUrls.</param>
-        public InstallmentPlanInitiateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), InitiateRedirectionEndpointsModel redirectUrls = default(InitiateRedirectionEndpointsModel))
+        /// <param name="uxSettings">uxSettings.</param>
+        public InstallmentPlanInitiateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), InitiateRedirectionEndpointsModel redirectUrls = default(InitiateRedirectionEndpointsModel), UxSettingsModel uxSettings = default(UxSettingsModel))
         {
             this.AutoCapture = autoCapture;
             this.Attempt3dSecure = attempt3dSecure;
@@ -53,6 +54,7 @@ namespace Splitit.Web.Net.Model
             this.PlanData = planData;
             this.BillingAddress = billingAddress;
             this.RedirectUrls = redirectUrls;
+            this.UxSettings = uxSettings;
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace Splitit.Web.Net.Model
         /// <summary>
         /// Gets or Sets Attempt3dSecure
         /// </summary>
-        [DataMember(Name = "Attempt3dSecure", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "Attempt3dSecure", EmitDefaultValue = true)]
         public bool Attempt3dSecure { get; set; }
 
         /// <summary>
@@ -92,6 +94,12 @@ namespace Splitit.Web.Net.Model
         public InitiateRedirectionEndpointsModel RedirectUrls { get; set; }
 
         /// <summary>
+        /// Gets or Sets UxSettings
+        /// </summary>
+        [DataMember(Name = "UxSettings", EmitDefaultValue = false)]
+        public UxSettingsModel UxSettings { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,6 +113,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  PlanData: ").Append(PlanData).Append("\n");
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  RedirectUrls: ").Append(RedirectUrls).Append("\n");
+            sb.Append("  UxSettings: ").Append(UxSettings).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,6 +176,11 @@ namespace Splitit.Web.Net.Model
                     this.RedirectUrls == input.RedirectUrls ||
                     (this.RedirectUrls != null &&
                     this.RedirectUrls.Equals(input.RedirectUrls))
+                ) && 
+                (
+                    this.UxSettings == input.UxSettings ||
+                    (this.UxSettings != null &&
+                    this.UxSettings.Equals(input.UxSettings))
                 );
         }
 
@@ -196,6 +210,10 @@ namespace Splitit.Web.Net.Model
                 if (this.RedirectUrls != null)
                 {
                     hashCode = (hashCode * 59) + this.RedirectUrls.GetHashCode();
+                }
+                if (this.UxSettings != null)
+                {
+                    hashCode = (hashCode * 59) + this.UxSettings.GetHashCode();
                 }
                 return hashCode;
             }

@@ -53,7 +53,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="refOrderNumber">refOrderNumber.</param>
         /// <param name="extendedParams">extendedParams.</param>
         /// <param name="firstInstallmentAmount">firstInstallmentAmount.</param>
-        public PlanDataModel(decimal totalAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), string terminalId = default(string), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), decimal firstInstallmentAmount = default(decimal))
+        /// <param name="firstInstallmentDate">firstInstallmentDate.</param>
+        public PlanDataModel(decimal totalAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), string terminalId = default(string), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), decimal firstInstallmentAmount = default(decimal), DateTime firstInstallmentDate = default(DateTime))
         {
             this.TotalAmount = totalAmount;
             this.PurchaseMethod = purchaseMethod;
@@ -63,6 +64,7 @@ namespace Splitit.Web.Net.Model
             this.RefOrderNumber = refOrderNumber;
             this.ExtendedParams = extendedParams;
             this.FirstInstallmentAmount = firstInstallmentAmount;
+            this.FirstInstallmentDate = firstInstallmentDate;
         }
 
         /// <summary>
@@ -108,6 +110,12 @@ namespace Splitit.Web.Net.Model
         public decimal FirstInstallmentAmount { get; set; }
 
         /// <summary>
+        /// Gets or Sets FirstInstallmentDate
+        /// </summary>
+        [DataMember(Name = "FirstInstallmentDate", EmitDefaultValue = false)]
+        public DateTime FirstInstallmentDate { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -123,6 +131,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  RefOrderNumber: ").Append(RefOrderNumber).Append("\n");
             sb.Append("  ExtendedParams: ").Append(ExtendedParams).Append("\n");
             sb.Append("  FirstInstallmentAmount: ").Append(FirstInstallmentAmount).Append("\n");
+            sb.Append("  FirstInstallmentDate: ").Append(FirstInstallmentDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,6 +203,11 @@ namespace Splitit.Web.Net.Model
                 (
                     this.FirstInstallmentAmount == input.FirstInstallmentAmount ||
                     this.FirstInstallmentAmount.Equals(input.FirstInstallmentAmount)
+                ) && 
+                (
+                    this.FirstInstallmentDate == input.FirstInstallmentDate ||
+                    (this.FirstInstallmentDate != null &&
+                    this.FirstInstallmentDate.Equals(input.FirstInstallmentDate))
                 );
         }
 
@@ -226,6 +240,10 @@ namespace Splitit.Web.Net.Model
                     hashCode = (hashCode * 59) + this.ExtendedParams.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.FirstInstallmentAmount.GetHashCode();
+                if (this.FirstInstallmentDate != null)
+                {
+                    hashCode = (hashCode * 59) + this.FirstInstallmentDate.GetHashCode();
+                }
                 return hashCode;
             }
         }

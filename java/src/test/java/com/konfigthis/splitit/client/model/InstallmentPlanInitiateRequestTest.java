@@ -21,6 +21,7 @@ import com.konfigthis.splitit.client.model.AddressDataModel;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.PlanDataModel;
 import com.konfigthis.splitit.client.model.ShopperData;
+import com.konfigthis.splitit.client.model.UxSettingsModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -88,6 +89,14 @@ public class InstallmentPlanInitiateRequestTest {
     @Test
     public void redirectUrlsTest() {
         // TODO: test redirectUrls
+    }
+
+    /**
+     * Test the property 'uxSettings'
+     */
+    @Test
+    public void uxSettingsTest() {
+        // TODO: test uxSettings
     }
 
 }

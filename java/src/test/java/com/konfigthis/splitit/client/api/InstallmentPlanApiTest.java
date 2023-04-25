@@ -16,9 +16,13 @@ import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.ApiClient;
 import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.model.AddressData;
+import com.konfigthis.splitit.client.model.AddressDataModel;
+import com.konfigthis.splitit.client.model.CardData;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
-import com.konfigthis.splitit.client.model.FailedResponse;
+import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
+import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
@@ -30,8 +34,16 @@ import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
 import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
-import com.konfigthis.splitit.client.model.PlanErrorResponse;
+import com.konfigthis.splitit.client.model.PaymentMethodModel;
+import com.konfigthis.splitit.client.model.PlanData;
+import com.konfigthis.splitit.client.model.PlanDataModel;
+import com.konfigthis.splitit.client.model.RedirectionEndpointsModel;
+import com.konfigthis.splitit.client.model.RefundStrategy;
+import com.konfigthis.splitit.client.model.ShippingStatus;
+import com.konfigthis.splitit.client.model.ShippingStatus2;
+import com.konfigthis.splitit.client.model.ShopperData;
 import com.konfigthis.splitit.client.model.UpdateOrderRequest;
+import com.konfigthis.splitit.client.model.UxSettingsModel;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -75,8 +87,13 @@ public class InstallmentPlanApiTest {
     @Test
     public void checkEligibilityTest() throws ApiException {
         String xSplititIdempotencyKey = null;
-        CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = null;
-        InstallmentsEligibilityResponse response = api.checkEligibility(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest)
+        PlanData planData = null;
+        CardData cardDetails = null;
+        AddressData billingAddress = null;
+        InstallmentsEligibilityResponse response = api.checkEligibility(xSplititIdempotencyKey)
+                .planData(planData)
+                .cardDetails(cardDetails)
+                .billingAddress(billingAddress)
                 .execute();
         // TODO: test validations
     }
@@ -98,10 +115,22 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void postTest() throws ApiException {
+        Boolean autoCapture = null;
         String xSplititIdempotencyKey = null;
-        InstallmentPlanInitiateRequest installmentPlanInitiateRequest = null;
+        Boolean attempt3dSecure = null;
+        ShopperData shopper = null;
+        PlanDataModel planData = null;
+        AddressDataModel billingAddress = null;
+        InitiateRedirectionEndpointsModel redirectUrls = null;
+        UxSettingsModel uxSettings = null;
         String xSplititTestMode = null;
-        InitiatePlanResponse response = api.post(xSplititIdempotencyKey, installmentPlanInitiateRequest)
+        InitiatePlanResponse response = api.post(autoCapture, xSplititIdempotencyKey)
+                .attempt3dSecure(attempt3dSecure)
+                .shopper(shopper)
+                .planData(planData)
+                .billingAddress(billingAddress)
+                .redirectUrls(redirectUrls)
+                .uxSettings(uxSettings)
                 .xSplititTestMode(xSplititTestMode)
                 .execute();
         // TODO: test validations
@@ -112,10 +141,23 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void post2Test() throws ApiException {
+        Boolean autoCapture = null;
+        Boolean termsAndConditionsAccepted = null;
         String xSplititIdempotencyKey = null;
-        InstallmentPlanCreateRequest installmentPlanCreateRequest = null;
+        Boolean attempt3dSecure = null;
+        ShopperData shopper = null;
+        PlanDataModel planData = null;
+        AddressDataModel billingAddress = null;
+        PaymentMethodModel paymentMethod = null;
+        RedirectionEndpointsModel redirectUrls = null;
         String xSplititTestMode = null;
-        InstallmentPlanCreateResponse response = api.post2(xSplititIdempotencyKey, installmentPlanCreateRequest)
+        InstallmentPlanCreateResponse response = api.post2(autoCapture, termsAndConditionsAccepted, xSplititIdempotencyKey)
+                .attempt3dSecure(attempt3dSecure)
+                .shopper(shopper)
+                .planData(planData)
+                .billingAddress(billingAddress)
+                .paymentMethod(paymentMethod)
+                .redirectUrls(redirectUrls)
                 .xSplititTestMode(xSplititTestMode)
                 .execute();
         // TODO: test validations
@@ -126,10 +168,12 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void refundTest() throws ApiException {
+        Double amount = null;
         String installmentPlanNumber = null;
         String xSplititIdempotencyKey = null;
-        InstallmentPlanRefundRequest installmentPlanRefundRequest = null;
-        InstallmentPlanRefundResponse response = api.refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest)
+        RefundStrategy refundStrategy = null;
+        InstallmentPlanRefundResponse response = api.refund(amount, installmentPlanNumber, xSplititIdempotencyKey)
+                .refundStrategy(refundStrategy)
                 .execute();
         // TODO: test validations
     }
@@ -158,8 +202,15 @@ public class InstallmentPlanApiTest {
     public void updateOrderTest() throws ApiException {
         String installmentPlanNumber = null;
         String xSplititIdempotencyKey = null;
-        UpdateOrderRequest updateOrderRequest = null;
-        InstallmentPlanUpdateResponse response = api.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest)
+        String trackingNumber = null;
+        String refOrderNumber = null;
+        ShippingStatus shippingStatus = null;
+        Boolean capture = null;
+        InstallmentPlanUpdateResponse response = api.updateOrder(installmentPlanNumber, xSplititIdempotencyKey)
+                .trackingNumber(trackingNumber)
+                .refOrderNumber(refOrderNumber)
+                .shippingStatus(shippingStatus)
+                .capture(capture)
                 .execute();
         // TODO: test validations
     }
@@ -170,8 +221,17 @@ public class InstallmentPlanApiTest {
     @Test
     public void updateOrder2Test() throws ApiException {
         String xSplititIdempotencyKey = null;
-        InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier = null;
-        InstallmentPlanUpdateResponse response = api.updateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier)
+        String refOrderNumber = null;
+        String trackingNumber = null;
+        Boolean capture = null;
+        ShippingStatus2 shippingStatus = null;
+        IdentifierContract identifier = null;
+        InstallmentPlanUpdateResponse response = api.updateOrder2(xSplititIdempotencyKey)
+                .refOrderNumber(refOrderNumber)
+                .trackingNumber(trackingNumber)
+                .capture(capture)
+                .shippingStatus(shippingStatus)
+                .identifier(identifier)
                 .execute();
         // TODO: test validations
     }

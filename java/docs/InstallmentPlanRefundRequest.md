@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **BigDecimal** |  |  |
+|**amount** | **Double** |  |  |
 |**refundStrategy** | **RefundStrategy** |  |  [optional] |
 
 

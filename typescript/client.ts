@@ -15,11 +15,13 @@ import {
   InstallmentplanApi,
 } from "./api";
 import { Configuration, ConfigurationParameters } from "./configuration";
+import { SplititCustom } from "./client-custom";
 
-export class Splitit {
+export class Splitit extends SplititCustom {
   readonly installmentplan: InstallmentplanApi;
 
   constructor(configurationParameters: ConfigurationParameters) {
+    super(configurationParameters);
     const configuration = new Configuration(configurationParameters);
     this.installmentplan = new InstallmentplanApi(configuration);
   }

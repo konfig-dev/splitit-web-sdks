@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **CardExpYear** | Pointer to **string** |  | [optional] 
 **CardExpMonth** | Pointer to **string** |  | [optional] 
 **CardCvv** | Pointer to **string** |  | [optional] 
+**CardBrand** | Pointer to [**CardBrand**](CardBrand.md) |  | [optional] 
+**CardType** | Pointer to [**CardType**](CardType.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +155,56 @@ SetCardCvv sets CardCvv field to given value.
 `func (o *CardData) HasCardCvv() bool`
 
 HasCardCvv returns a boolean if a field has been set.
+
+### GetCardBrand
+
+`func (o *CardData) GetCardBrand() CardBrand`
+
+GetCardBrand returns the CardBrand field if non-nil, zero value otherwise.
+
+### GetCardBrandOk
+
+`func (o *CardData) GetCardBrandOk() (*CardBrand, bool)`
+
+GetCardBrandOk returns a tuple with the CardBrand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardBrand
+
+`func (o *CardData) SetCardBrand(v CardBrand)`
+
+SetCardBrand sets CardBrand field to given value.
+
+### HasCardBrand
+
+`func (o *CardData) HasCardBrand() bool`
+
+HasCardBrand returns a boolean if a field has been set.
+
+### GetCardType
+
+`func (o *CardData) GetCardType() CardType`
+
+GetCardType returns the CardType field if non-nil, zero value otherwise.
+
+### GetCardTypeOk
+
+`func (o *CardData) GetCardTypeOk() (*CardType, bool)`
+
+GetCardTypeOk returns a tuple with the CardType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardType
+
+`func (o *CardData) SetCardType(v CardType)`
+
+SetCardType sets CardType field to given value.
+
+### HasCardType
+
+`func (o *CardData) HasCardType() bool`
+
+HasCardType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

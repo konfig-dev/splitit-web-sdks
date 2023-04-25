@@ -31,7 +31,6 @@ import com.konfigthis.splitit.client.model.ShopperData;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -90,11 +89,11 @@ public class SearchInstallmentPlanResponseItem {
 
   public static final String SERIALIZED_NAME_ORIGINAL_AMOUNT = "OriginalAmount";
   @SerializedName(SERIALIZED_NAME_ORIGINAL_AMOUNT)
-  private BigDecimal originalAmount;
+  private Double originalAmount;
 
   public static final String SERIALIZED_NAME_AMOUNT = "Amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private BigDecimal amount;
+  private Double amount;
 
   public static final String SERIALIZED_NAME_AUTHORIZATION = "Authorization";
   @SerializedName(SERIALIZED_NAME_AUTHORIZATION)
@@ -133,6 +132,7 @@ public class SearchInstallmentPlanResponseItem {
 
   public SearchInstallmentPlanResponseItem installmentPlanNumber(String installmentPlanNumber) {
     
+    
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
   }
@@ -150,11 +150,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public SearchInstallmentPlanResponseItem dateCreated(OffsetDateTime dateCreated) {
+    
     
     this.dateCreated = dateCreated;
     return this;
@@ -173,11 +175,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setDateCreated(OffsetDateTime dateCreated) {
+    
     this.dateCreated = dateCreated;
   }
 
 
   public SearchInstallmentPlanResponseItem refOrderNumber(String refOrderNumber) {
+    
     
     this.refOrderNumber = refOrderNumber;
     return this;
@@ -196,11 +200,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setRefOrderNumber(String refOrderNumber) {
+    
     this.refOrderNumber = refOrderNumber;
   }
 
 
   public SearchInstallmentPlanResponseItem purchaseMethod(PurchaseMethod purchaseMethod) {
+    
     
     this.purchaseMethod = purchaseMethod;
     return this;
@@ -219,11 +225,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setPurchaseMethod(PurchaseMethod purchaseMethod) {
+    
     this.purchaseMethod = purchaseMethod;
   }
 
 
   public SearchInstallmentPlanResponseItem status(PlanStatus status) {
+    
     
     this.status = status;
     return this;
@@ -242,11 +250,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setStatus(PlanStatus status) {
+    
     this.status = status;
   }
 
 
   public SearchInstallmentPlanResponseItem currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -265,13 +275,22 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
-  public SearchInstallmentPlanResponseItem originalAmount(BigDecimal originalAmount) {
+  public SearchInstallmentPlanResponseItem originalAmount(Double originalAmount) {
+    
     
     this.originalAmount = originalAmount;
+    return this;
+  }
+
+  public SearchInstallmentPlanResponseItem originalAmount(Integer originalAmount) {
+    
+    
+    this.originalAmount = originalAmount.doubleValue();
     return this;
   }
 
@@ -282,19 +301,28 @@ public class SearchInstallmentPlanResponseItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getOriginalAmount() {
+  public Double getOriginalAmount() {
     return originalAmount;
   }
 
 
-  public void setOriginalAmount(BigDecimal originalAmount) {
+  public void setOriginalAmount(Double originalAmount) {
+    
     this.originalAmount = originalAmount;
   }
 
 
-  public SearchInstallmentPlanResponseItem amount(BigDecimal amount) {
+  public SearchInstallmentPlanResponseItem amount(Double amount) {
+    
     
     this.amount = amount;
+    return this;
+  }
+
+  public SearchInstallmentPlanResponseItem amount(Integer amount) {
+    
+    
+    this.amount = amount.doubleValue();
     return this;
   }
 
@@ -305,17 +333,19 @@ public class SearchInstallmentPlanResponseItem {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getAmount() {
+  public Double getAmount() {
     return amount;
   }
 
 
-  public void setAmount(BigDecimal amount) {
+  public void setAmount(Double amount) {
+    
     this.amount = amount;
   }
 
 
   public SearchInstallmentPlanResponseItem authorization(AuthorizationModel authorization) {
+    
     
     this.authorization = authorization;
     return this;
@@ -334,11 +364,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setAuthorization(AuthorizationModel authorization) {
+    
     this.authorization = authorization;
   }
 
 
   public SearchInstallmentPlanResponseItem shopper(ShopperData shopper) {
+    
     
     this.shopper = shopper;
     return this;
@@ -357,11 +389,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setShopper(ShopperData shopper) {
+    
     this.shopper = shopper;
   }
 
 
   public SearchInstallmentPlanResponseItem billingAddress(AddressData billingAddress) {
+    
     
     this.billingAddress = billingAddress;
     return this;
@@ -380,11 +414,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setBillingAddress(AddressData billingAddress) {
+    
     this.billingAddress = billingAddress;
   }
 
 
   public SearchInstallmentPlanResponseItem paymentMethod(PaymentMethodModel paymentMethod) {
+    
     
     this.paymentMethod = paymentMethod;
     return this;
@@ -403,11 +439,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setPaymentMethod(PaymentMethodModel paymentMethod) {
+    
     this.paymentMethod = paymentMethod;
   }
 
 
   public SearchInstallmentPlanResponseItem extendedParams(Map<String, String> extendedParams) {
+    
     
     this.extendedParams = extendedParams;
     return this;
@@ -434,11 +472,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setExtendedParams(Map<String, String> extendedParams) {
+    
     this.extendedParams = extendedParams;
   }
 
 
   public SearchInstallmentPlanResponseItem installments(List<Installment> installments) {
+    
     
     this.installments = installments;
     return this;
@@ -465,11 +505,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setInstallments(List<Installment> installments) {
+    
     this.installments = installments;
   }
 
 
   public SearchInstallmentPlanResponseItem refunds(List<RefundModel> refunds) {
+    
     
     this.refunds = refunds;
     return this;
@@ -496,11 +538,13 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setRefunds(List<RefundModel> refunds) {
+    
     this.refunds = refunds;
   }
 
 
   public SearchInstallmentPlanResponseItem links(LinksData links) {
+    
     
     this.links = links;
     return this;
@@ -519,6 +563,7 @@ public class SearchInstallmentPlanResponseItem {
 
 
   public void setLinks(LinksData links) {
+    
     this.links = links;
   }
 

@@ -67,6 +67,7 @@ public class PlanErrorResponse {
 
   public PlanErrorResponse traceId(String traceId) {
     
+    
     this.traceId = traceId;
     return this;
   }
@@ -84,11 +85,13 @@ public class PlanErrorResponse {
 
 
   public void setTraceId(String traceId) {
+    
     this.traceId = traceId;
   }
 
 
   public PlanErrorResponse error(ErrorExtended error) {
+    
     
     this.error = error;
     return this;
@@ -107,11 +110,13 @@ public class PlanErrorResponse {
 
 
   public void setError(ErrorExtended error) {
+    
     this.error = error;
   }
 
 
   public PlanErrorResponse installmentPlanNumber(String installmentPlanNumber) {
+    
     
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
@@ -130,6 +135,7 @@ public class PlanErrorResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 

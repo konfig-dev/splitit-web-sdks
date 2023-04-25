@@ -228,11 +228,11 @@ class Schema:
         if key_type:
             key_or_value = "key"
         valid_classes_phrase = cls.__get_valid_classes_phrase(valid_classes)
-        msg = "Invalid type. Required {1} type {2} and " "passed type was {3}".format(
-            var_name,
+        msg = "Invalid type. Required {0} type {1} and " "passed type was {2} for \"{3}\"".format(
             key_or_value,
             valid_classes_phrase,
             type(var_value).__name__,
+            var_name,
         )
         return msg
 
@@ -462,7 +462,7 @@ class Schema:
         __from_server = False
         __validated_path_to_schemas = {}
         __arg = cast_to_allowed_types(
-            __arg, __from_server, __validated_path_to_schemas)
+            __arg, __from_server, __validated_path_to_schemas, schema=cls)
         __validation_metadata = ValidationMetadata(
             configuration=_configuration, from_server=__from_server, validated_path_to_schemas=__validated_path_to_schemas)
         __path_to_schemas = cls.__get_new_cls(__arg, __validation_metadata)
@@ -513,6 +513,7 @@ if typing.TYPE_CHECKING:
     # qty 1
     NoneMixin = NoneClass
     FrozenDictMixin = frozendict.frozendict
+    IntMixin = int
     TupleMixin = tuple
     StrMixin = str
     DecimalMixin = decimal.Decimal
@@ -520,6 +521,8 @@ if typing.TYPE_CHECKING:
     BytesMixin = bytes
     FileMixin = FileIO
     # qty 2
+    class NumberMixin(decimal.Decimal, int):
+        pass
     class BinaryMixin(bytes, FileIO):
         pass
     class NoneFrozenDictMixin(NoneClass, frozendict.frozendict):
@@ -640,8 +643,8 @@ if typing.TYPE_CHECKING:
     # qty 6
     class NoneFrozenDictTupleStrDecimalBoolMixin(NoneClass, frozendict.frozendict, tuple, str, decimal.Decimal, BoolClass):
         pass
-    # qty 8
-    class NoneFrozenDictTupleStrDecimalBoolFileBytesMixin(NoneClass, frozendict.frozendict, tuple, str, decimal.Decimal, BoolClass, FileIO, bytes):
+    # qty 9
+    class NoneFrozenDictTupleStrIntDecimalBoolFileBytesMixin(NoneClass, frozendict.frozendict, tuple, str, int, decimal.Decimal, BoolClass, FileIO, bytes):
         pass
 else:
     # qty 1
@@ -655,6 +658,8 @@ else:
         _types = {str}
     class DecimalMixin:
         _types = {decimal.Decimal}
+    class IntMixin:
+        _types = {int}
     class BoolMixin:
         _types = {BoolClass}
     class BytesMixin:
@@ -662,6 +667,8 @@ else:
     class FileMixin:
         _types = {FileIO}
     # qty 2
+    class NumberMixin:
+        _types = {decimal.Decimal, int}
     class BinaryMixin:
         _types = {bytes, FileIO}
     class NoneFrozenDictMixin:
@@ -782,9 +789,9 @@ else:
     # qty 6
     class NoneFrozenDictTupleStrDecimalBoolMixin:
         _types = {NoneClass, frozendict.frozendict, tuple, str, decimal.Decimal, BoolClass}
-    # qty 8
-    class NoneFrozenDictTupleStrDecimalBoolFileBytesMixin:
-        _types = {NoneClass, frozendict.frozendict, tuple, str, decimal.Decimal, BoolClass, FileIO, bytes}
+    # qty 9
+    class NoneFrozenDictTupleStrIntDecimalBoolFileBytesMixin:
+        _types = {NoneClass, frozendict.frozendict, tuple, str, int, decimal.Decimal, BoolClass, FileIO, bytes}
 
 
 class ValidatorBase:
@@ -1539,9 +1546,9 @@ class DictBase(Discriminable, ValidatorBase):
                 continue
             try:
                 other_path_to_schemas = schema._validate_oapg(value, validation_metadata=arg_validation_metadata)
+                update(path_to_schemas, other_path_to_schemas)
             except (ApiTypeError, ApiValueError) as e:
                 validation_errors.append(e)
-            update(path_to_schemas, other_path_to_schemas)
         if len(validation_errors) > 0:
             raise SchemaValidationError(validation_errors)
         return path_to_schemas
@@ -1703,6 +1710,7 @@ def cast_to_allowed_types(
     from_server: bool,
     validated_path_to_schemas: typing.Dict[typing.Tuple[typing.Union[str, int], ...], typing.Set[typing.Union['Schema', str, decimal.Decimal, BoolClass, NoneClass, frozendict.frozendict, tuple]]],
     path_to_item: typing.Tuple[typing.Union[str, int], ...] = tuple(['args[0]']),
+    schema: Schema = None,
 ) -> typing.Union[frozendict.frozendict, tuple, decimal.Decimal, str, bytes, BoolClass, NoneClass, FileIO]:
     """
     Casts the input payload arg into the allowed types
@@ -1755,7 +1763,7 @@ def cast_to_allowed_types(
             return BoolClass.TRUE
         return BoolClass.FALSE
     elif isinstance(arg, int):
-        return decimal.Decimal(arg)
+        return arg
     elif isinstance(arg, float):
         decimal_from_float = decimal.Decimal(arg)
         if decimal_from_float.as_integer_ratio()[1] == 1:
@@ -1769,7 +1777,14 @@ def cast_to_allowed_types(
         return NoneClass.NONE
     elif isinstance(arg, (date, datetime)):
         if not from_server:
-            return arg.isoformat()
+            # if schema itself is the DateTimeSchema class then convert to isoformat
+            # if schema itself is the DateSchema class then convert to yyyy-mm-dd using strftime
+            if schema is None:
+                return arg.isoformat()
+            if schema is DateTimeSchema:
+                return arg.isoformat()
+            if schema is DateSchema:
+                return arg.strftime('%Y-%m-%d')
         raise type_error
     elif isinstance(arg, uuid.UUID):
         if not from_server:
@@ -2013,7 +2028,7 @@ class NoneSchema(
 class NumberSchema(
     NumberBase,
     Schema,
-    DecimalMixin
+    NumberMixin
 ):
     """
     This is used for type: number with no format
@@ -2061,7 +2076,7 @@ class IntBase:
         return super()._validate_oapg(arg, validation_metadata=validation_metadata)
 
 
-class IntSchema(IntBase, NumberSchema):
+class IntSchema(IntBase, NumberBase, Schema, IntMixin):
 
     @classmethod
     def from_openapi_data_oapg(cls, arg: int, _configuration: typing.Optional[Configuration] = None):
@@ -2337,7 +2352,7 @@ class AnyTypeSchema(
     BoolBase,
     NoneBase,
     Schema,
-    NoneFrozenDictTupleStrDecimalBoolFileBytesMixin
+    NoneFrozenDictTupleStrIntDecimalBoolFileBytesMixin
 ):
     # Python representation of a schema defined as true or {}
     pass

@@ -23,7 +23,6 @@ import com.konfigthis.splitit.client.model.RefundSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -65,11 +64,11 @@ public class InstallmentPlanRefundResponse {
 
   public static final String SERIALIZED_NAME_NON_CREDIT_REFUND_AMOUNT = "NonCreditRefundAmount";
   @SerializedName(SERIALIZED_NAME_NON_CREDIT_REFUND_AMOUNT)
-  private BigDecimal nonCreditRefundAmount;
+  private Double nonCreditRefundAmount;
 
   public static final String SERIALIZED_NAME_CREDIT_REFUND_AMOUNT = "CreditRefundAmount";
   @SerializedName(SERIALIZED_NAME_CREDIT_REFUND_AMOUNT)
-  private BigDecimal creditRefundAmount;
+  private Double creditRefundAmount;
 
   public static final String SERIALIZED_NAME_SUMMARY = "Summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
@@ -79,6 +78,7 @@ public class InstallmentPlanRefundResponse {
   }
 
   public InstallmentPlanRefundResponse refundId(String refundId) {
+    
     
     this.refundId = refundId;
     return this;
@@ -97,11 +97,13 @@ public class InstallmentPlanRefundResponse {
 
 
   public void setRefundId(String refundId) {
+    
     this.refundId = refundId;
   }
 
 
   public InstallmentPlanRefundResponse installmentPlanNumber(String installmentPlanNumber) {
+    
     
     this.installmentPlanNumber = installmentPlanNumber;
     return this;
@@ -120,11 +122,13 @@ public class InstallmentPlanRefundResponse {
 
 
   public void setInstallmentPlanNumber(String installmentPlanNumber) {
+    
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
 
   public InstallmentPlanRefundResponse currency(String currency) {
+    
     
     this.currency = currency;
     return this;
@@ -143,13 +147,22 @@ public class InstallmentPlanRefundResponse {
 
 
   public void setCurrency(String currency) {
+    
     this.currency = currency;
   }
 
 
-  public InstallmentPlanRefundResponse nonCreditRefundAmount(BigDecimal nonCreditRefundAmount) {
+  public InstallmentPlanRefundResponse nonCreditRefundAmount(Double nonCreditRefundAmount) {
+    
     
     this.nonCreditRefundAmount = nonCreditRefundAmount;
+    return this;
+  }
+
+  public InstallmentPlanRefundResponse nonCreditRefundAmount(Integer nonCreditRefundAmount) {
+    
+    
+    this.nonCreditRefundAmount = nonCreditRefundAmount.doubleValue();
     return this;
   }
 
@@ -160,19 +173,28 @@ public class InstallmentPlanRefundResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getNonCreditRefundAmount() {
+  public Double getNonCreditRefundAmount() {
     return nonCreditRefundAmount;
   }
 
 
-  public void setNonCreditRefundAmount(BigDecimal nonCreditRefundAmount) {
+  public void setNonCreditRefundAmount(Double nonCreditRefundAmount) {
+    
     this.nonCreditRefundAmount = nonCreditRefundAmount;
   }
 
 
-  public InstallmentPlanRefundResponse creditRefundAmount(BigDecimal creditRefundAmount) {
+  public InstallmentPlanRefundResponse creditRefundAmount(Double creditRefundAmount) {
+    
     
     this.creditRefundAmount = creditRefundAmount;
+    return this;
+  }
+
+  public InstallmentPlanRefundResponse creditRefundAmount(Integer creditRefundAmount) {
+    
+    
+    this.creditRefundAmount = creditRefundAmount.doubleValue();
     return this;
   }
 
@@ -183,17 +205,19 @@ public class InstallmentPlanRefundResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public BigDecimal getCreditRefundAmount() {
+  public Double getCreditRefundAmount() {
     return creditRefundAmount;
   }
 
 
-  public void setCreditRefundAmount(BigDecimal creditRefundAmount) {
+  public void setCreditRefundAmount(Double creditRefundAmount) {
+    
     this.creditRefundAmount = creditRefundAmount;
   }
 
 
   public InstallmentPlanRefundResponse summary(RefundSummary summary) {
+    
     
     this.summary = summary;
     return this;
@@ -212,6 +236,7 @@ public class InstallmentPlanRefundResponse {
 
 
   public void setSummary(RefundSummary summary) {
+    
     this.summary = summary;
   }
 

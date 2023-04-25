@@ -1,7 +1,7 @@
 /*
 splitit-web-api-v3
 
-Splitit's API
+Splitit's Web API
 
 API version: 1.0.0
 */
@@ -21,11 +21,13 @@ type PaymentMethodType string
 // List of PaymentMethodType
 const (
 	PAYMENTMETHODTYPE_CARD PaymentMethodType = "Card"
+	PAYMENTMETHODTYPE_SPLITIT_TOKEN PaymentMethodType = "SplititToken"
 )
 
 // All allowed values of PaymentMethodType enum
 var AllowedPaymentMethodTypeEnumValues = []PaymentMethodType{
 	"Card",
+	"SplititToken",
 }
 
 func (v *PaymentMethodType) UnmarshalJSON(src []byte) error {

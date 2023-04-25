@@ -66,6 +66,7 @@ public class Error {
 
   public Error code(String code) {
     
+    
     this.code = code;
     return this;
   }
@@ -83,11 +84,13 @@ public class Error {
 
 
   public void setCode(String code) {
+    
     this.code = code;
   }
 
 
   public Error message(String message) {
+    
     
     this.message = message;
     return this;
@@ -106,11 +109,13 @@ public class Error {
 
 
   public void setMessage(String message) {
+    
     this.message = message;
   }
 
 
   public Error additionalInfo(String additionalInfo) {
+    
     
     this.additionalInfo = additionalInfo;
     return this;
@@ -129,6 +134,7 @@ public class Error {
 
 
   public void setAdditionalInfo(String additionalInfo) {
+    
     this.additionalInfo = additionalInfo;
   }
 

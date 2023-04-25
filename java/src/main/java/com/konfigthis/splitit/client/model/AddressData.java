@@ -78,6 +78,7 @@ public class AddressData {
 
   public AddressData addressLine(String addressLine) {
     
+    
     this.addressLine = addressLine;
     return this;
   }
@@ -95,11 +96,13 @@ public class AddressData {
 
 
   public void setAddressLine(String addressLine) {
+    
     this.addressLine = addressLine;
   }
 
 
   public AddressData addressLine2(String addressLine2) {
+    
     
     this.addressLine2 = addressLine2;
     return this;
@@ -118,11 +121,13 @@ public class AddressData {
 
 
   public void setAddressLine2(String addressLine2) {
+    
     this.addressLine2 = addressLine2;
   }
 
 
   public AddressData city(String city) {
+    
     
     this.city = city;
     return this;
@@ -141,11 +146,13 @@ public class AddressData {
 
 
   public void setCity(String city) {
+    
     this.city = city;
   }
 
 
   public AddressData country(String country) {
+    
     
     this.country = country;
     return this;
@@ -164,11 +171,13 @@ public class AddressData {
 
 
   public void setCountry(String country) {
+    
     this.country = country;
   }
 
 
   public AddressData state(String state) {
+    
     
     this.state = state;
     return this;
@@ -187,11 +196,13 @@ public class AddressData {
 
 
   public void setState(String state) {
+    
     this.state = state;
   }
 
 
   public AddressData zip(String zip) {
+    
     
     this.zip = zip;
     return this;
@@ -210,6 +221,7 @@ public class AddressData {
 
 
   public void setZip(String zip) {
+    
     this.zip = zip;
   }
 

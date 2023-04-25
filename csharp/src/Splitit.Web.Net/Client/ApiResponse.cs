@@ -47,6 +47,11 @@ namespace Splitit.Web.Net.Client
         string ErrorText { get; set; }
 
         /// <summary>
+        /// Gets or sets any exception that occurred during the request.
+        /// </summary>
+        Exception Exception { get; set; }
+
+        /// <summary>
         /// Gets or sets any cookies passed along on the response.
         /// </summary>
         List<Cookie> Cookies { get; set; }
@@ -112,6 +117,11 @@ namespace Splitit.Web.Net.Client
         /// The raw content
         /// </summary>
         public string RawContent { get; }
+
+        /// <summary>
+        /// Gets or sets any exception that occurred during the request.
+        /// </summary>
+        public Exception Exception { get; set; }
 
         #endregion Properties
 

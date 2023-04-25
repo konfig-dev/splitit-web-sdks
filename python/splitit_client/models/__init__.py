@@ -61,4 +61,5 @@ from splitit_client.model.shopper_data import ShopperData
 from splitit_client.model.test_modes import TestModes
 from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 from splitit_client.model.update_order_request import UpdateOrderRequest
+from splitit_client.model.ux_settings_model import UxSettingsModel
 from splitit_client.model.verify_authorization_response import VerifyAuthorizationResponse
