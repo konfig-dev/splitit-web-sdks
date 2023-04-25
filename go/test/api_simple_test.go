@@ -35,20 +35,15 @@ func Test_simple(t *testing.T) {
 		State := "North Dakota"
 		Zip := "11231"
 		Country := "United States"
-		CardExpMonth := "12"
-		CardExpYear := "2025"
-		CardCvv := "111"
-		CardNumber := "4556997457604103"
-		CardHolderFullName := "Test User"
+		var NumberOfInstallments int32 = 10
+		Attemp3dSecure := true
 
-		installmentPlanCreateRequest := &splitit.InstallmentPlanCreateRequest{
-			Attempt3dSecure:            true,
-			AutoCapture:                true,
-			AttemptAuthorize:           true,
-			TermsAndConditionsAccepted: true,
+		installmentPlanCreateRequest := &splitit.InstallmentPlanInitiateRequest{
+			Attempt3dSecure: &Attemp3dSecure,
+			AutoCapture:     true,
 			PlanData: &splitit.PlanDataModel{
 				TotalAmount:          10.0,
-				NumberOfInstallments: 10,
+				NumberOfInstallments: &NumberOfInstallments,
 				Currency:             &Currency,
 				PurchaseMethod:       splitit.PURCHASEMETHOD_IN_STORE,
 			},
@@ -62,20 +57,10 @@ func Test_simple(t *testing.T) {
 				Zip:          &Zip,
 				Country:      &Country,
 			},
-			PaymentMethod: &splitit.PaymentMethodModel{
-				Type: splitit.PAYMENTMETHODTYPE_CARD,
-				Card: &splitit.CardData{
-					CardExpMonth:       &CardExpMonth,
-					CardExpYear:        &CardExpYear,
-					CardCvv:            &CardCvv,
-					CardNumber:         &CardNumber,
-					CardHolderFullName: &CardHolderFullName,
-				},
-			},
 		}
 
 		r := client.InstallmentPlanApi.Post()
-		r = r.InstallmentPlanCreateRequest(*installmentPlanCreateRequest)
+		r = r.InstallmentPlanInitiateRequest(*installmentPlanCreateRequest)
 		xSplititIdempotencyKey := "1234"
 		r = r.XSplititIdempotencyKey(xSplititIdempotencyKey)
 		fmt.Printf("%+v\n", r)
