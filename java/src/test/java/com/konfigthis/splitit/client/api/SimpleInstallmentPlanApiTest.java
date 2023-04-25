@@ -5,7 +5,6 @@ import com.konfigthis.splitit.client.ApiException;
 import com.konfigthis.splitit.client.model.*;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 import static org.junit.Assert.assertNotNull;
@@ -21,12 +20,11 @@ public class SimpleInstallmentPlanApiTest {
                 String secretId = System.getenv("SPLITIT_CLIENT_SECRET");
                 ApiClient defaultClient = new ApiClient(clientId, secretId, null);
                 InstallmentPlanApi api = new InstallmentPlanApi(defaultClient);
-                InstallmentPlanInitiateRequest installmentPlanCreateRequest = new InstallmentPlanInitiateRequest();
-                installmentPlanCreateRequest.attempt3dSecure(true)
-                                .autoCapture(true)
+                InitiatePlanResponse result = api
+                                .post(true, new Date().toString())
                                 .attempt3dSecure(true)
                                 .planData(new PlanDataModel()
-                                                .totalAmount(new BigDecimal(10))
+                                                .totalAmount(10)
                                                 .numberOfInstallments(10)
                                                 .currency("USD")
                                                 .purchaseMethod(PurchaseMethod.INSTORE))
@@ -38,8 +36,8 @@ public class SimpleInstallmentPlanApiTest {
                                                 .state("North Dakota")
                                                 .zip("11231")
                                                 .country("United States"))
-                                .redirectUrls(new InitiateRedirectionEndpointsModel());
-                InitiatePlanResponse result = api.post(new Date().toString(), installmentPlanCreateRequest).execute();
+                                .redirectUrls(new InitiateRedirectionEndpointsModel())
+                                .execute();
                 System.out.println(result);
                 assertNotNull("Received null response", result);
         }
