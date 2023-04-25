@@ -58,6 +58,39 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
         print(response)
         assert response is not None, "Received null response"
 
+    def test_post_with_int_total_amount(self):
+        """Test case for post but with the PlanData.TotalAmount as an int to
+        ensure NumberSchema can handle both float/int
+        """
+        response = self.api.installment_plan.post(
+            header_params={
+                'X-Splitit-IdempotencyKey': str(uuid.uuid4()),
+            },
+            body={
+                "AutoCapture": True,
+                "Attempt3dSecure": True,
+                "Shopper": {
+                    "Email": "fake@email.com"
+                },
+                "BillingAddress": {
+                    "AddressLine1": "144 Union St",
+                    "City": "Brooklyn",
+                    "State": "North Dakota",
+                    "Zip": "11231",
+                    "Country": "United States",
+                },
+                "PlanData": {
+                    "TotalAmount": 10,
+                    "NumberOfInstallements": 10,
+                    "Currency": "USD",
+                    "PurchaseMethod": "InStore",
+                },
+                "RedirectUrls": {}
+            }
+        )
+        print(response)
+        assert response is not None, "Received null response"
+
 
 if __name__ == '__main__':
     unittest.main()
