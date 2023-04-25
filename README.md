@@ -7,7 +7,7 @@
 |Python|2.0.0|[PyPI](https://pypi.org/project/splitit-web-python-sdk/2.0.0)|[Documentation](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python/README.md)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python)|
 |TypeScript|2.0.0|[npm](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/2.0.0)|[Documentation](https://github.com/konfig-dev/splitit-web-sdks/tree/main/typescript/README.md)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/typescript)|
 |C#|2.0.0|[NuGet](https://nuget.org/packages/Splitit.Web.Net/2.0.0)|[Documentation](https://github.com/konfig-dev/splitit-web-sdks/tree/main/csharp/README.md)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/csharp)|
-|PHP|1.2.0|[Packagist](https://packagist.org/packages/konfig/splitit-web-php-sdk)|[Documentation](https://github.com/konfig-dev/splitit-web-php-sdk)|[Source](https://github.com/konfig-dev/splitit-web-php-sdk)|
+|PHP|1.3.0|[Packagist](https://packagist.org/packages/konfig/splitit-web-php-sdk)|[Documentation](https://github.com/konfig-dev/splitit-web-php-sdk)|[Source](https://github.com/konfig-dev/splitit-web-php-sdk)|
 |Go|1.1.0|[Go Packages](https://pkg.go.dev/github.com/konfig-dev/splitit-web-sdks/go)|[Documentation](https://github.com/konfig-dev/splitit-web-sdks/tree/main/go/README.md)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/go)|
 
 
@@ -28,7 +28,7 @@
 Logging into https://api.konfigthis.com
 Email: dylan@konfigthis.com
 Password: **************
-Successfuly logged in as dylan@konfigthis.com
+Successfully logged in as dylan@konfigthis.com
 ```
 
 4. Generate SDKs with `konfig generate`
