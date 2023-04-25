@@ -2245,8 +2245,7 @@
       "InstallmentPlanInitiateRequest": {
         "type": "object",
         "required": [
-          "AutoCapture",
-          "Attempt3dSecure"
+          "AutoCapture"
         ],
         "properties": {
           "AutoCapture": {
