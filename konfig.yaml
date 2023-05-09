@@ -13,10 +13,9 @@ fixConfig:
       url: https://web-api-v3.production.splitit.com
     $.components.securitySchemes.oauth.flows.clientCredentials:
       tokenUrl: https://id.production.splitit.com/connect/token
-
 generators:
   php:
-    version: 1.4.0
+    version: 1.5.0
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
