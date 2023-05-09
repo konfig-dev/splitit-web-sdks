@@ -7,6 +7,13 @@ specPath: swagger-fixed.json
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
+fixConfig:
+  update:
+    $.servers.0:
+      url: https://web-api-v3.production.splitit.com
+    $.components.securitySchemes.oauth.flows.clientCredentials:
+      tokenUrl: https://id.production.splitit.com/connect/token
+
 generators:
   php:
     version: 1.4.0

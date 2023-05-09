@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://web-api-v3.sandbox.splitit.com"
+      "url": "https://web-api-v3.production.splitit.com"
     }
   ],
   "tags": [
@@ -2838,7 +2838,7 @@
         "type": "oauth2",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://id.sandbox.splitit.com/connect/token",
+            "tokenUrl": "https://id.production.splitit.com/connect/token",
             "scopes": {
               "api.v3": ""
             }
