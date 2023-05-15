@@ -15,7 +15,7 @@ fixConfig:
       tokenUrl: https://id.production.splitit.com/connect/token
 generators:
   php:
-    version: 1.5.0
+    version: 1.6.0
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
