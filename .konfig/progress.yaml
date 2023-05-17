@@ -15,7 +15,7 @@ securityParameters:
         clientCredentials:
           scopes:
             api.v3: ''
-          tokenUrl: https://id.sandbox.splitit.com/connect/token
+          tokenUrl: https://id.production.splitit.com/connect/token
       securityName: oauth
       type: oauth2
   X-Splitit-IdempotencyKey:

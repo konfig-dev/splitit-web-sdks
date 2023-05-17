@@ -5,7 +5,7 @@
     "title": "splitit-web-api-v3",
     "version": "1.0.0"
   },
-  "host": "web-api-v3.sandbox.splitit.com",
+  "host": "web-api-v3.production.splitit.com",
   "schemes": [
     "https"
   ],
