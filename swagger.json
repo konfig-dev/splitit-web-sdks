@@ -1482,6 +1482,9 @@
         },
         "UxSettings": {
           "$ref": "#/definitions/UxSettingsModel"
+        },
+        "EventsEndpoints": {
+          "$ref": "#/definitions/EventsEndpointsModel"
         }
       }
     },
@@ -1574,6 +1577,14 @@
             "type": "integer",
             "format": "int32"
           }
+        }
+      }
+    },
+    "EventsEndpointsModel": {
+      "type": "object",
+      "properties": {
+        "CreateSucceeded": {
+          "type": "string"
         }
       }
     },
@@ -1686,6 +1697,9 @@
         },
         "RedirectUrls": {
           "$ref": "#/definitions/RedirectionEndpointsModel"
+        },
+        "EventsEndpoints": {
+          "$ref": "#/definitions/EventsEndpointsModel"
         }
       }
     },
