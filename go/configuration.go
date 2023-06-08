@@ -90,7 +90,7 @@ type ServerConfigurations []ServerConfiguration
 type Configuration struct {
 	Host             string            `json:"host,omitempty"`
 	Scheme           string            `json:"scheme,omitempty"`
-	TokenUrl    	 string 		   `json:"tokenUrl,omitempty"`
+    TokenUrl    	 string 		   `json:"tokenUrl,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
@@ -105,7 +105,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "Konfig/1.2.0/go",
-		TokenUrl: 		  "https://id.production.splitit.com/connect/token",
+		TokenUrl:   	  "https://id.production.splitit.com/connect/token",
 		Debug:            false,
         Context: context.Background(),
 		Servers:          ServerConfigurations{
