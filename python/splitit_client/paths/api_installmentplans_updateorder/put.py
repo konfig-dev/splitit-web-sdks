@@ -246,7 +246,6 @@ class BaseApi(api_client.Api):
 
     def _update_order2_mapped_args(
         self,
-        body: typing.Optional[InstallmentPlanUpdateRequestByIdentifier] = None,
         x_splitit_idempotency_key: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
@@ -267,7 +266,7 @@ class BaseApi(api_client.Api):
             _body["ShippingStatus"] = shipping_status
         if identifier is not None:
             _body["Identifier"] = identifier
-        args.body = body if body is not None else _body
+        args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
         args.header = _header_params
@@ -461,7 +460,6 @@ class UpdateOrder2(BaseApi):
 
     async def aupdate_order2(
         self,
-        body: typing.Optional[InstallmentPlanUpdateRequestByIdentifier] = None,
         x_splitit_idempotency_key: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
@@ -489,7 +487,6 @@ class UpdateOrder2(BaseApi):
     
     def update_order2(
         self,
-        body: typing.Optional[InstallmentPlanUpdateRequestByIdentifier] = None,
         x_splitit_idempotency_key: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
@@ -519,7 +516,6 @@ class ApiForput(BaseApi):
 
     async def aput(
         self,
-        body: typing.Optional[InstallmentPlanUpdateRequestByIdentifier] = None,
         x_splitit_idempotency_key: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
@@ -547,7 +543,6 @@ class ApiForput(BaseApi):
     
     def put(
         self,
-        body: typing.Optional[InstallmentPlanUpdateRequestByIdentifier] = None,
         x_splitit_idempotency_key: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
