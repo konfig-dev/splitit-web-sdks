@@ -21,39 +21,37 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     def setUp(self):
         client_id = os.environ["SPLITIT_CLIENT_ID"]
         client_secret = os.environ["SPLITIT_CLIENT_SECRET"]
-        self.api = Splitit(client_id=client_id, client_secret=client_secret)
+        self.splitit = Splitit(
+            client_id=client_id,
+            client_secret=client_secret,
+            host="https://web-api-v3.sandbox.splitit.com",
+            token_url="https://id.sandbox.splitit.com/connect/token"
+        )
 
     def tearDown(self):
         pass
 
     def test_post(self):
-        """Test case for post
-        """
-        response = self.api.installment_plan.post(
-            header_params={
-                'X-Splitit-IdempotencyKey': str(uuid.uuid4()),
+        """Test case for post"""
+        response = self.splitit.installment_plan.post(
+            x_splitit_idempotency_key=str(uuid.uuid4()),
+            auto_capture=True,
+            attempt3d_secure=True,
+            shopper={"Email": "fake@email.com"},
+            billing_address={
+                "AddressLine1": "144 Union St",
+                "City": "Brooklyn",
+                "State": "North Dakota",
+                "Zip": "11231",
+                "Country": "United States",
             },
-            body={
-                "AutoCapture": True,
-                "Attempt3dSecure": True,
-                "Shopper": {
-                    "Email": "fake@email.com"
-                },
-                "BillingAddress": {
-                    "AddressLine1": "144 Union St",
-                    "City": "Brooklyn",
-                    "State": "North Dakota",
-                    "Zip": "11231",
-                    "Country": "United States",
-                },
-                "PlanData": {
-                    "TotalAmount": 10.0,
-                    "NumberOfInstallements": 10,
-                    "Currency": "USD",
-                    "PurchaseMethod": "InStore",
-                },
-                "RedirectUrls": {}
-            }
+            plan_data={
+                "TotalAmount": 10.0,
+                "NumberOfInstallments": 10,
+                "Currency": "USD",
+                "PurchaseMethod": "InStore",
+            },
+            redirect_urls={},
         )
         print(response)
         assert response is not None, "Received null response"
@@ -62,35 +60,29 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
         """Test case for post but with the PlanData.TotalAmount as an int to
         ensure NumberSchema can handle both float/int
         """
-        response = self.api.installment_plan.post(
-            header_params={
-                'X-Splitit-IdempotencyKey': str(uuid.uuid4()),
+        response = self.splitit.installment_plan.post(
+            x_splitit_idempotency_key=str(uuid.uuid4()),
+            auto_capture=True,
+            attempt3d_secure=True,
+            shopper={"Email": "fake@email.com"},
+            billing_address={
+                "AddressLine1": "144 Union St",
+                "City": "Brooklyn",
+                "State": "North Dakota",
+                "Zip": "11231",
+                "Country": "United States",
             },
-            body={
-                "AutoCapture": True,
-                "Attempt3dSecure": True,
-                "Shopper": {
-                    "Email": "fake@email.com"
-                },
-                "BillingAddress": {
-                    "AddressLine1": "144 Union St",
-                    "City": "Brooklyn",
-                    "State": "North Dakota",
-                    "Zip": "11231",
-                    "Country": "United States",
-                },
-                "PlanData": {
-                    "TotalAmount": 10,
-                    "NumberOfInstallements": 10,
-                    "Currency": "USD",
-                    "PurchaseMethod": "InStore",
-                },
-                "RedirectUrls": {}
-            }
+            plan_data={
+                "TotalAmount": 10,
+                "NumberOfInstallments": 10,
+                "Currency": "USD",
+                "PurchaseMethod": "InStore",
+            },
+            redirect_urls={},
         )
         print(response)
         assert response is not None, "Received null response"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
