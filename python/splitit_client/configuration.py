@@ -466,7 +466,7 @@ class Configuration(object):
         """Fix base path."""
         self._base_path = check_url(value)
         self.server_index = None
-        
+
 def check_url(url: str):
     parsed = urlparse(url)
     if parsed.query != '':
@@ -487,10 +487,10 @@ class OAuth:
         self._client_secret = client_secret
         self.token_url = token_url
         self.access_token = None
-    
+
     def refresh_access_token(self) -> None:
         self.access_token = self.retrieve_access_token()
-    
+
     def retrieve_access_token(self) -> typing.AnyStr:
         request = urllib.request.Request(self.token_url)
         request.add_header("Content-Type", "application/x-www-form-urlencoded")
