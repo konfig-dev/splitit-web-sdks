@@ -31,6 +31,31 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
     def tearDown(self):
         pass
 
+    async def test_async_post(self):
+        """Test case for post"""
+        response = await self.splitit.installment_plan.apost(
+            x_splitit_idempotency_key=str(uuid.uuid4()),
+            auto_capture=True,
+            attempt3d_secure=True,
+            shopper={"Email": "fake@email.com"},
+            billing_address={
+                "AddressLine1": "144 Union St",
+                "City": "Brooklyn",
+                "State": "North Dakota",
+                "Zip": "11231",
+                "Country": "United States",
+            },
+            plan_data={
+                "TotalAmount": 10.0,
+                "NumberOfInstallments": 10,
+                "Currency": "USD",
+                "PurchaseMethod": "InStore",
+            },
+            redirect_urls={},
+        )
+        print(response)
+        assert response is not None, "Received null response"
+
     def test_post(self):
         """Test case for post"""
         response = self.splitit.installment_plan.post(
