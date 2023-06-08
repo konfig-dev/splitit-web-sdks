@@ -1,7 +1,7 @@
 <a name="__pageTop"></a>
 # splitit_client.apis.tags.installment_plan_api.InstallmentPlanApi
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,8 +17,6 @@ Method | HTTP request | Description
 [**verify_authorization**](#verify_authorization) | **get** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
 
 # **cancel**
-<a name="cancel"></a>
-> InstallmentPlanCancelResponse cancel(installment_plan_numberx_splitit_idempotency_key)
 
 
 
@@ -26,25 +24,20 @@ Method | HTTP request | Description
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
 try:
     cancel_response = splitit.installment_plan.cancel(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
@@ -253,8 +246,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **check_eligibility**
-<a name="check_eligibility"></a>
-> InstallmentsEligibilityResponse check_eligibility(x_splitit_idempotency_keycheck_installments_eligibility_request)
 
 
 
@@ -262,25 +253,29 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = {
-    }
 try:
     check_eligibility_response = splitit.installment_plan.check_eligibility(
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        plan_data={
+            "total_amount": 3.14,
+            "number_of_installments": 1,
+            "purchase_method": "InStore",
+        },  # optional
+        card_details={
+            "card_brand": "Mastercard",
+            "card_type": "Credit",
+        },  # optional
+        billing_address={},  # optional
     )
     pprint(check_eligibility_response.body)
     pprint(check_eligibility_response.body["payment_plan_options"])
@@ -502,8 +497,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **get**
-<a name="get"></a>
-> InstallmentPlanGetResponse get(installment_plan_numberx_splitit_idempotency_key)
 
 
 
@@ -511,25 +504,20 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
 try:
     get_response = splitit.installment_plan.get(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
     )
     pprint(get_response.body)
     pprint(get_response.body["date_created"])
@@ -753,8 +741,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **post**
-<a name="post"></a>
-> InitiatePlanResponse post(x_splitit_idempotency_keyinstallment_plan_initiate_request)
 
 
 
@@ -762,27 +748,31 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = {
-        "auto_capture": True,
-    }
 try:
     post_response = splitit.installment_plan.post(
-        header_params = {
-            'X-Splitit-TestMode': "None",
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        auto_capture=True,  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        attempt3d_secure=True,  # optional
+        shopper={},  # optional
+        plan_data={
+            "total_amount": 3.14,
+            "purchase_method": "InStore",
+        },  # optional
+        billing_address={},  # optional
+        redirect_urls={},  # optional
+        ux_settings={},  # optional
+        events_endpoints={},  # optional
+        x_splitit_test_mode="None",  # optional
     )
     pprint(post_response.body)
     pprint(post_response.body["status"])
@@ -801,7 +791,6 @@ try:
 except ApiException as e:
     print("Exception when calling InstallmentPlanApi.post: %s\n" % e)
     pprint(e.body)
-    if e.status == 400:
     if e.status == 401:
         pprint(e.body["trace_id"])
         pprint(e.body["error"])
@@ -1048,8 +1037,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **post2**
-<a name="post2"></a>
-> InstallmentPlanCreateResponse post2(x_splitit_idempotency_keyinstallment_plan_create_request)
 
 
 
@@ -1057,28 +1044,34 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = {
-        "auto_capture": True,
-        "terms_and_conditions_accepted": True,
-    }
 try:
     post2_response = splitit.installment_plan.post2(
-        header_params = {
-            'X-Splitit-TestMode': "None",
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        auto_capture=True,  # required
+        terms_and_conditions_accepted=True,  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        attempt3d_secure=True,  # optional
+        shopper={},  # optional
+        plan_data={
+            "total_amount": 3.14,
+            "purchase_method": "InStore",
+        },  # optional
+        billing_address={},  # optional
+        payment_method={
+            "type": "Card",
+        },  # optional
+        redirect_urls={},  # optional
+        events_endpoints={},  # optional
+        x_splitit_test_mode="None",  # optional
     )
     pprint(post2_response.body)
     pprint(post2_response.body["date_created"])
@@ -1102,7 +1095,6 @@ try:
 except ApiException as e:
     print("Exception when calling InstallmentPlanApi.post2: %s\n" % e)
     pprint(e.body)
-    if e.status == 400:
     if e.status == 401:
         pprint(e.body["trace_id"])
         pprint(e.body["error"])
@@ -1349,8 +1341,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **refund**
-<a name="refund"></a>
-> InstallmentPlanRefundResponse refund(installment_plan_numberx_splitit_idempotency_keyinstallment_plan_refund_request)
 
 
 
@@ -1358,30 +1348,22 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = {
-        "amount": 3.14,
-        "refund_strategy": "FutureInstallmentsFirst",
-    }
 try:
     refund_response = splitit.installment_plan.refund(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        amount=3.14,  # required
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        refund_strategy="FutureInstallmentsFirst",  # optional
     )
     pprint(refund_response.body)
     pprint(refund_response.body["refund_id"])
@@ -1623,8 +1605,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **search**
-<a name="search"></a>
-> InstallmentPlanSearchResponse search(x_splitit_idempotency_key)
 
 
 
@@ -1632,29 +1612,24 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
 try:
     search_response = splitit.installment_plan.search(
-        query_params = {
-            'installmentPlanNumber': "string_example",
-            'refOrderNumber': "string_example",
-            'extendedParams': {
-        "key": "string_example",
-    },
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        installment_plan_number="string_example",  # optional
+        ref_order_number="string_example",  # optional
+        extended_params={
+            "key": "string_example",
+        },  # optional
     )
     pprint(search_response.body)
     pprint(search_response.body["plan_list"])
@@ -1885,8 +1860,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **update_order**
-<a name="update_order"></a>
-> InstallmentPlanUpdateResponse update_order(installment_plan_numberx_splitit_idempotency_keyupdate_order_request)
 
 
 
@@ -1894,29 +1867,24 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = {
-        "shipping_status": "Pending",
-    }
 try:
     update_order_response = splitit.installment_plan.update_order(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        tracking_number="string_example",  # optional
+        ref_order_number="string_example",  # optional
+        shipping_status="Pending",  # optional
+        capture=True,  # optional
     )
     pprint(update_order_response.body)
     pprint(update_order_response.body["status"])
@@ -2156,8 +2124,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **update_order2**
-<a name="update_order2"></a>
-> InstallmentPlanUpdateResponse update_order2(x_splitit_idempotency_keyinstallment_plan_update_request_by_identifier)
 
 
 
@@ -2165,24 +2131,25 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
-body = None
 try:
     update_order2_response = splitit.installment_plan.update_order2(
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
-        body=body
+        body=None,  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        ref_order_number="string_example",  # optional
+        tracking_number="string_example",  # optional
+        capture=True,  # optional
+        shipping_status="Shipped",  # optional
+        identifier={},  # optional
     )
     pprint(update_order2_response.body)
     pprint(update_order2_response.body["status"])
@@ -2407,8 +2374,6 @@ Type | Description  | Notes
 [[Back to top]](#__pageTop) [[Back to API list]](../../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../../README.md#documentation-for-models) [[Back to README]](../../../README.md)
 
 # **verify_authorization**
-<a name="verify_authorization"></a>
-> VerifyAuthorizationResponse verify_authorization(installment_plan_numberx_splitit_idempotency_key)
 
 
 
@@ -2416,25 +2381,20 @@ Type | Description  | Notes
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
 try:
     verify_authorization_response = splitit.installment_plan.verify_authorization(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
     )
     pprint(verify_authorization_response.body)
     pprint(verify_authorization_response.body["is_authorized"])

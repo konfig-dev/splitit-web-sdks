@@ -11,7 +11,7 @@
 
 
 import typing
-from splitit_client.api_response import ApiResponse
+from splitit_client.api_response import ApiResponse, AsyncApiResponse
 from splitit_client.exceptions_base import OpenApiException, ApiTypeError, ApiValueError, render_path
 
 class ClientConfigurationError(OpenApiException):
@@ -57,12 +57,12 @@ class ApiKeyError(OpenApiException, KeyError):
 
 class ApiException(OpenApiException):
 
-    def __init__(self, status=None, reason=None, api_response: ApiResponse = None):
+    def __init__(self, status=None, reason=None, api_response: typing.Optional[typing.Union[ApiResponse, AsyncApiResponse]] = None):
         if api_response:
             self.status = api_response.status
             self.reason = api_response.response.reason
             self.body = api_response.body
-            self.headers = api_response.response.getheaders()
+            self.headers = api_response.response.headers
             self.round_trip_time = api_response.round_trip_time
         else:
             self.status = status
@@ -85,6 +85,24 @@ class ApiException(OpenApiException):
         return error_message
 
 
+class AnyOfValidationError(OpenApiException):
+    def __init__(self, error_list: typing.List[typing.Union[ApiTypeError, ApiValueError]]):
+        self.error_list = error_list
+        sub_msgs: typing.List[str] = []
+        for type_error in error_list:
+            sub_msgs.append(str(type_error))
+        num_validation_errors = len(self.error_list)
+        if num_validation_errors == 1:
+            super().__init__(sub_msgs[0])
+        else:
+            # create a string that says how many validation errors there were and
+            # prints each sub_msg out using a bulleted list of messages
+            msg = "{} validation error{} detected: \n".format(num_validation_errors, "s" if num_validation_errors > 1 else "")
+            for i, sub_msg in enumerate(sub_msgs):
+                msg += " {}. {}\n".format(i+1, sub_msg)
+            super().__init__(msg)
+
+
 class InvalidHostConfigurationError(ClientConfigurationError):
     def __init__(self, host: str, reason: str):
         self.host = host
@@ -92,7 +110,12 @@ class InvalidHostConfigurationError(ClientConfigurationError):
         super().__init__('Invalid host: "{}", {}'.format(self.host, self.reason))
 
 
-class MissingRequiredParametersError(TypeError):
+class MissingRequiredPropertiesError(ApiTypeError):
+    def __init__(self, msg: str):
+        super().__init__(msg)
+
+
+class MissingRequiredParametersError(ApiTypeError):
     def __init__(self, error: TypeError):
         self.error = error
         error_str = str(error)
@@ -126,18 +149,27 @@ class SchemaValidationError(OpenApiException):
         self.validation_errors = validation_errors
         self.type_errors: typing.List[ApiTypeError] = []
         self.value_errors: typing.List[ApiValueError] = []
+        self.missing_required_properties_errors: typing.List[MissingRequiredPropertiesError] = []
         for error in validation_errors:
             if isinstance(error, ApiTypeError):
                 self.type_errors.append(error)
             elif isinstance(error, ApiValueError):
                 self.value_errors.append(error)
+            elif isinstance(error, MissingRequiredPropertiesError):
+                self.missing_required_properties_errors.append(error)
         sub_msgs: typing.List[str] = []
+        if len(self.missing_required_properties_errors) > 0:
+            for error in self.missing_required_properties_errors:
+                sub_msgs.append(str(error))
         if len(self.type_errors) > 0:
             for type_error in self.type_errors:
-                classes = ", ".join([cls.__name__ for cls in type_error.valid_classes])
-                msg = 'Got {}({}) for required type {} at {}'.format(
-                    type(type_error.invalid_value).__name__, type_error.invalid_value, classes, render_path(type_error.path_to_item))
-                sub_msgs.append(msg)
+                if isinstance(type_error, MissingRequiredPropertiesError) or isinstance(type_error, MissingRequiredParametersError):
+                    sub_msgs.append(str(type_error))
+                else:
+                    classes = ", ".join([cls.__name__ for cls in type_error.valid_classes])
+                    msg = 'Got {}({}) for required type {} at {}'.format(
+                        type(type_error.invalid_value).__name__, type_error.invalid_value, classes, render_path(type_error.path_to_item))
+                    sub_msgs.append(msg)
         if len(self.value_errors) > 0:
             for value_error in self.value_errors:
                 sub_msgs.append(value_error.full_msg)

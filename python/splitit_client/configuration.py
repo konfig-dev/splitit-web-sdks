@@ -99,7 +99,7 @@ class Configuration(object):
                  ):
         """Constructor
         """
-        self.host = "https://web-api-v3.sandbox.splitit.com" if host is None else host
+        self.host = "https://web-api-v3.production.splitit.com" if host is None else host
         """Default Base url
         """
         self.server_index = 0 if server_index is None and host is None else server_index
@@ -410,7 +410,7 @@ class Configuration(object):
         """
         return [
             {
-                'url': "https://web-api-v3.sandbox.splitit.com",
+                'url': "https://web-api-v3.production.splitit.com",
                 'description': "No description provided",
             }
         ]
@@ -467,9 +467,9 @@ class Configuration(object):
         
 def check_url(url: str):
     parsed = urlparse(url)
-    if parsed.query is not '':
+    if parsed.query != '':
         raise InvalidHostConfigurationError(url, "query string is not allowed")
-    if parsed.fragment is not '':
+    if parsed.fragment != '':
         raise InvalidHostConfigurationError(url, "fragment is not allowed")
     if parsed.scheme not in ["http", "https"]:
         raise InvalidHostConfigurationError(url, 'scheme must be "http" or "https"'.format(parsed.scheme))
@@ -489,7 +489,7 @@ class OAuth:
         self.access_token = self.retrieve_access_token()
     
     def retrieve_access_token(self) -> typing.AnyStr:
-        request = urllib.request.Request("https://id.sandbox.splitit.com/connect/token")
+        request = urllib.request.Request("https://id.production.splitit.com/connect/token")
         request.add_header("Content-Type", "application/x-www-form-urlencoded")
         params = {
                 "grant_type": "client_credentials",

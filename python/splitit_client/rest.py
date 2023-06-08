@@ -14,6 +14,7 @@ import logging
 import ssl
 from urllib.parse import urlencode
 import typing
+import aiohttp
 
 import certifi
 import urllib3
@@ -26,9 +27,15 @@ from splitit_client.exceptions import ApiException, ApiValueError
 logger = logging.getLogger(__name__)
 
 class ResponseWrapper:
-    def __init__(self, http_response: urllib3.HTTPResponse, round_trip_time: int):
+    def __init__(self, http_response: urllib3.HTTPResponse, round_trip_time: float):
         self.http_response = http_response
         self.round_trip_time = round_trip_time
+
+class AsyncResponseWrapper:
+    def __init__(self, http_response: aiohttp.ClientResponse, round_trip_time: float, session: aiohttp.ClientSession):
+        self.http_response = http_response
+        self.round_trip_time = round_trip_time
+        self.session = session
 
 class RESTClientObject(object):
 

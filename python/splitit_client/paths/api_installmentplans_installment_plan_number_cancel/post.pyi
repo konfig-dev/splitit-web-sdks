@@ -15,6 +15,7 @@ import urllib3
 import json
 from urllib3._collections import HTTPHeaderDict
 
+from splitit_client.api_response import AsyncGeneratorResponse
 from splitit_client import api_client, exceptions
 from datetime import date, datetime  # noqa: F401
 import decimal  # noqa: F401
@@ -29,8 +30,11 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.failed_response import FailedResponse
-from splitit_client.model.installment_plan_cancel_response import InstallmentPlanCancelResponse
+from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
+from splitit_client.model.installment_plan_cancel_response import InstallmentPlanCancelResponse as InstallmentPlanCancelResponseSchema
+
+from splitit_client.type.failed_response import FailedResponse
+from splitit_client.type.installment_plan_cancel_response import InstallmentPlanCancelResponse
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema
@@ -84,22 +88,24 @@ request_path_installment_plan_number = api_client.PathParameter(
     schema=InstallmentPlanNumberSchema,
     required=True,
 )
-SchemaFor200ResponseBodyTextPlain = InstallmentPlanCancelResponse
-SchemaFor200ResponseBodyApplicationJson = InstallmentPlanCancelResponse
-SchemaFor200ResponseBodyTextJson = InstallmentPlanCancelResponse
+SchemaFor200ResponseBodyTextPlain = InstallmentPlanCancelResponseSchema
+SchemaFor200ResponseBodyApplicationJson = InstallmentPlanCancelResponseSchema
+SchemaFor200ResponseBodyTextJson = InstallmentPlanCancelResponseSchema
 
 
 @dataclass
 class ApiResponseFor200(api_client.ApiResponse):
-    body: typing.Union[
-        SchemaFor200ResponseBodyTextPlain,
-        SchemaFor200ResponseBodyApplicationJson,
-        SchemaFor200ResponseBodyTextJson,
-    ]
+    body: InstallmentPlanCancelResponse
+
+
+@dataclass
+class ApiResponseFor200Async(api_client.AsyncApiResponse):
+    body: InstallmentPlanCancelResponse
 
 
 _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
+    response_cls_async=ApiResponseFor200Async,
     content={
         'text/plain': api_client.MediaType(
             schema=SchemaFor200ResponseBodyTextPlain),
@@ -109,22 +115,24 @@ _response_for_200 = api_client.OpenApiResponse(
             schema=SchemaFor200ResponseBodyTextJson),
     },
 )
-SchemaFor401ResponseBodyTextPlain = FailedResponse
-SchemaFor401ResponseBodyApplicationJson = FailedResponse
-SchemaFor401ResponseBodyTextJson = FailedResponse
+SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
+SchemaFor401ResponseBodyApplicationJson = FailedResponseSchema
+SchemaFor401ResponseBodyTextJson = FailedResponseSchema
 
 
 @dataclass
 class ApiResponseFor401(api_client.ApiResponse):
-    body: typing.Union[
-        SchemaFor401ResponseBodyTextPlain,
-        SchemaFor401ResponseBodyApplicationJson,
-        SchemaFor401ResponseBodyTextJson,
-    ]
+    body: FailedResponse
+
+
+@dataclass
+class ApiResponseFor401Async(api_client.AsyncApiResponse):
+    body: FailedResponse
 
 
 _response_for_401 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor401,
+    response_cls_async=ApiResponseFor401Async,
     content={
         'text/plain': api_client.MediaType(
             schema=SchemaFor401ResponseBodyTextPlain),
@@ -134,22 +142,24 @@ _response_for_401 = api_client.OpenApiResponse(
             schema=SchemaFor401ResponseBodyTextJson),
     },
 )
-SchemaFor403ResponseBodyTextPlain = FailedResponse
-SchemaFor403ResponseBodyApplicationJson = FailedResponse
-SchemaFor403ResponseBodyTextJson = FailedResponse
+SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
+SchemaFor403ResponseBodyApplicationJson = FailedResponseSchema
+SchemaFor403ResponseBodyTextJson = FailedResponseSchema
 
 
 @dataclass
 class ApiResponseFor403(api_client.ApiResponse):
-    body: typing.Union[
-        SchemaFor403ResponseBodyTextPlain,
-        SchemaFor403ResponseBodyApplicationJson,
-        SchemaFor403ResponseBodyTextJson,
-    ]
+    body: FailedResponse
+
+
+@dataclass
+class ApiResponseFor403Async(api_client.AsyncApiResponse):
+    body: FailedResponse
 
 
 _response_for_403 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor403,
+    response_cls_async=ApiResponseFor403Async,
     content={
         'text/plain': api_client.MediaType(
             schema=SchemaFor403ResponseBodyTextPlain),
@@ -159,22 +169,24 @@ _response_for_403 = api_client.OpenApiResponse(
             schema=SchemaFor403ResponseBodyTextJson),
     },
 )
-SchemaFor404ResponseBodyTextPlain = FailedResponse
-SchemaFor404ResponseBodyApplicationJson = FailedResponse
-SchemaFor404ResponseBodyTextJson = FailedResponse
+SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
+SchemaFor404ResponseBodyApplicationJson = FailedResponseSchema
+SchemaFor404ResponseBodyTextJson = FailedResponseSchema
 
 
 @dataclass
 class ApiResponseFor404(api_client.ApiResponse):
-    body: typing.Union[
-        SchemaFor404ResponseBodyTextPlain,
-        SchemaFor404ResponseBodyApplicationJson,
-        SchemaFor404ResponseBodyTextJson,
-    ]
+    body: FailedResponse
+
+
+@dataclass
+class ApiResponseFor404Async(api_client.AsyncApiResponse):
+    body: FailedResponse
 
 
 _response_for_404 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor404,
+    response_cls_async=ApiResponseFor404Async,
     content={
         'text/plain': api_client.MediaType(
             schema=SchemaFor404ResponseBodyTextPlain),
@@ -184,22 +196,24 @@ _response_for_404 = api_client.OpenApiResponse(
             schema=SchemaFor404ResponseBodyTextJson),
     },
 )
-SchemaFor500ResponseBodyTextPlain = FailedResponse
-SchemaFor500ResponseBodyApplicationJson = FailedResponse
-SchemaFor500ResponseBodyTextJson = FailedResponse
+SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
+SchemaFor500ResponseBodyApplicationJson = FailedResponseSchema
+SchemaFor500ResponseBodyTextJson = FailedResponseSchema
 
 
 @dataclass
 class ApiResponseFor500(api_client.ApiResponse):
-    body: typing.Union[
-        SchemaFor500ResponseBodyTextPlain,
-        SchemaFor500ResponseBodyApplicationJson,
-        SchemaFor500ResponseBodyTextJson,
-    ]
+    body: FailedResponse
+
+
+@dataclass
+class ApiResponseFor500Async(api_client.AsyncApiResponse):
+    body: FailedResponse
 
 
 _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
+    response_cls_async=ApiResponseFor500Async,
     content={
         'text/plain': api_client.MediaType(
             schema=SchemaFor500ResponseBodyTextPlain),
@@ -217,53 +231,36 @@ _all_accept_content_types = (
 
 
 class BaseApi(api_client.Api):
-    @typing.overload
-    def _cancel_oapg(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
-    ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
 
-    @typing.overload
-    def _cancel_oapg(
+    def _cancel_mapped_args(
         self,
-        skip_deserialization: typing_extensions.Literal[True],
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-    ) -> api_client.ApiResponseWithoutDeserialization: ...
+        installment_plan_number: str,
+        x_splitit_idempotency_key: str,
+    ) -> api_client.MappedArgs:
+        args: api_client.MappedArgs = api_client.MappedArgs()
+        _header_params = {}
+        _path_params = {}
+        if x_splitit_idempotency_key is not None:
+            _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
+        if installment_plan_number is not None:
+            _path_params["installmentPlanNumber"] = installment_plan_number
+        args.header = _header_params
+        args.path = _path_params
+        return args
 
-    @typing.overload
-    def _cancel_oapg(
+    async def _acancel_oapg(
         self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: bool = ...,
-    ) -> typing.Union[
-        ApiResponseFor200,
-        api_client.ApiResponseWithoutDeserialization,
-    ]: ...
-
-    def _cancel_oapg(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+            header_params: typing.Optional[dict] = {},
+            path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-    ):
+        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        stream: bool = False,
+    ) -> typing.Union[
+        ApiResponseFor200Async,
+        api_client.ApiResponseWithoutDeserializationAsync,
+        AsyncGeneratorResponse,
+    ]:
         """
         :param skip_deserialization: If true then api_response.response will be set but
             api_response.body and api_response.headers will not be deserialized into schema
@@ -272,7 +269,7 @@ class BaseApi(api_client.Api):
         self._verify_typed_dict_inputs_oapg(RequestHeaderParams, header_params)
         self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
         used_path = path.value
-
+    
         _path_params = {}
         for parameter in (
             request_path_installment_plan_number,
@@ -282,10 +279,10 @@ class BaseApi(api_client.Api):
                 continue
             serialized_data = parameter.serialize(parameter_data)
             _path_params.update(serialized_data)
-
+    
         for k, v in _path_params.items():
             used_path = used_path.replace('{%s}' % k, v)
-
+    
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
@@ -299,23 +296,123 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+    
+        response = await self.api_client.async_call_api(
+            resource_path=used_path,
+            method='post'.upper(),
+            headers=_headers,
+            auth_settings=_auth,
+            timeout=timeout,
+        )
+        
+        if stream:
+            async def stream_iterator():
+                """
+                iterates over response.http_response.content and closes connection once iteration has finished
+                """
+                async for line in response.http_response.content:
+                    if line == b'\r\n':
+                        continue
+                    yield line
+                response.http_response.close()
+                await response.session.close()
+            return AsyncGeneratorResponse(
+                content=stream_iterator(),
+                headers=response.http_response.headers,
+                status=response.http_response.status,
+                response=response.http_response
+            )
+    
+        response_for_status = _status_code_to_response.get(str(response.http_response.status))
+        if response_for_status:
+            api_response = await response_for_status.deserialize_async(
+                                                    response,
+                                                    self.api_client.configuration,
+                                                    skip_deserialization=skip_deserialization
+                                                )
+        else:
+            # If response data is JSON then deserialize for SDK consumer convenience
+            is_json = api_client.JSONDetector._content_type_is_json(response.http_response.headers.get('Content-Type', ''))
+            api_response = api_client.ApiResponseWithoutDeserializationAsync(
+                body=await response.http_response.json() if is_json else await response.http_response.text(),
+                response=response.http_response,
+                round_trip_time=response.round_trip_time,
+                status=response.http_response.status,
+                headers=response.http_response.headers,
+            )
+    
+        if not 200 <= api_response.status <= 299:
+            raise exceptions.ApiException(api_response=api_response)
+    
+        # cleanup session / response
+        response.http_response.close()
+        await response.session.close()
+    
+        return api_response
 
+    def _cancel_oapg(
+        self,
+            header_params: typing.Optional[dict] = {},
+            path_params: typing.Optional[dict] = {},
+        skip_deserialization: bool = True,
+        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        stream: bool = False,
+    ) -> typing.Union[
+        ApiResponseFor200,
+        api_client.ApiResponseWithoutDeserialization,
+    ]:
+        """
+        :param skip_deserialization: If true then api_response.response will be set but
+            api_response.body and api_response.headers will not be deserialized into schema
+            class instances
+        """
+        self._verify_typed_dict_inputs_oapg(RequestHeaderParams, header_params)
+        self._verify_typed_dict_inputs_oapg(RequestPathParams, path_params)
+        used_path = path.value
+    
+        _path_params = {}
+        for parameter in (
+            request_path_installment_plan_number,
+        ):
+            parameter_data = path_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            serialized_data = parameter.serialize(parameter_data)
+            _path_params.update(serialized_data)
+    
+        for k, v in _path_params.items():
+            used_path = used_path.replace('{%s}' % k, v)
+    
+        _headers = HTTPHeaderDict()
+        for parameter in (
+            request_header_x_splitit_idempotency_key,
+        ):
+            parameter_data = header_params.get(parameter.name, schemas.unset)
+            if parameter_data is schemas.unset:
+                continue
+            serialized_data = parameter.serialize(parameter_data)
+            _headers.extend(serialized_data)
+        # TODO add cookie handling
+        if accept_content_types:
+            for accept_content_type in accept_content_types:
+                _headers.add('Accept', accept_content_type)
+    
         response = self.api_client.call_api(
             resource_path=used_path,
             method='post'.upper(),
             headers=_headers,
             auth_settings=_auth,
-            stream=stream,
             timeout=timeout,
         )
-
+    
         response_for_status = _status_code_to_response.get(str(response.http_response.status))
         if response_for_status:
             api_response = response_for_status.deserialize(
-                                                   response,
-                                                   self.api_client.configuration,
-                                                   skip_deserialization=skip_deserialization
-                                               )
+                                                    response,
+                                                    self.api_client.configuration,
+                                                    skip_deserialization=skip_deserialization
+                                                )
         else:
             # If response data is JSON then deserialize for SDK consumer convenience
             is_json = api_client.JSONDetector._content_type_is_json(response.http_response.headers.get('Content-Type', ''))
@@ -326,130 +423,85 @@ class BaseApi(api_client.Api):
                 status=response.http_response.status,
                 headers=response.http_response.headers,
             )
-
+    
         if not 200 <= api_response.status <= 299:
             raise exceptions.ApiException(api_response=api_response)
-
+    
         return api_response
-
 
 class Cancel(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
-    @typing.overload
-    def cancel(
+    async def acancel(
         self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
+        installment_plan_number: str,
+        x_splitit_idempotency_key: str,
     ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
-
-    @typing.overload
+        ApiResponseFor200Async,
+        api_client.ApiResponseWithoutDeserializationAsync,
+        AsyncGeneratorResponse,
+    ]:
+        args = self._cancel_mapped_args(
+            installment_plan_number=installment_plan_number,
+            x_splitit_idempotency_key=x_splitit_idempotency_key,
+        )
+        return await self._acancel_oapg(
+            header_params=args.header,
+            path_params=args.path,
+        )
+    
     def cancel(
         self,
-        skip_deserialization: typing_extensions.Literal[True],
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-    ) -> api_client.ApiResponseWithoutDeserialization: ...
-
-    @typing.overload
-    def cancel(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: bool = ...,
+        installment_plan_number: str,
+        x_splitit_idempotency_key: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
-    ]: ...
-
-    def cancel(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: bool = True,
-    ):
-        return self._cancel_oapg(
-            header_params=header_params,
-            path_params=path_params,
-            accept_content_types=accept_content_types,
-            stream=stream,
-            timeout=timeout,
-            skip_deserialization=skip_deserialization
+    ]:
+        args = self._cancel_mapped_args(
+            installment_plan_number=installment_plan_number,
+            x_splitit_idempotency_key=x_splitit_idempotency_key,
         )
-
+        return self._cancel_oapg(
+            header_params=args.header,
+            path_params=args.path,
+        )
 
 class ApiForpost(BaseApi):
     # this class is used by api classes that refer to endpoints by path and http method names
 
-    @typing.overload
-    def post(
+    async def apost(
         self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: typing_extensions.Literal[False] = ...,
+        installment_plan_number: str,
+        x_splitit_idempotency_key: str,
     ) -> typing.Union[
-        ApiResponseFor200,
-    ]: ...
-
-    @typing.overload
+        ApiResponseFor200Async,
+        api_client.ApiResponseWithoutDeserializationAsync,
+        AsyncGeneratorResponse,
+    ]:
+        args = self._cancel_mapped_args(
+            installment_plan_number=installment_plan_number,
+            x_splitit_idempotency_key=x_splitit_idempotency_key,
+        )
+        return await self._acancel_oapg(
+            header_params=args.header,
+            path_params=args.path,
+        )
+    
     def post(
         self,
-        skip_deserialization: typing_extensions.Literal[True],
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-    ) -> api_client.ApiResponseWithoutDeserialization: ...
-
-    @typing.overload
-    def post(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: bool = ...,
+        installment_plan_number: str,
+        x_splitit_idempotency_key: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
-    ]: ...
-
-    def post(
-        self,
-        header_params: RequestHeaderParams = frozendict.frozendict(),
-        path_params: RequestPathParams = frozendict.frozendict(),
-        accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        stream: bool = False,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
-        skip_deserialization: bool = True,
-    ):
-        return self._cancel_oapg(
-            header_params=header_params,
-            path_params=path_params,
-            accept_content_types=accept_content_types,
-            stream=stream,
-            timeout=timeout,
-            skip_deserialization=skip_deserialization
+    ]:
+        args = self._cancel_mapped_args(
+            installment_plan_number=installment_plan_number,
+            x_splitit_idempotency_key=x_splitit_idempotency_key,
         )
-
+        return self._cancel_oapg(
+            header_params=args.header,
+            path_params=args.path,
+        )
 

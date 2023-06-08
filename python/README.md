@@ -1,52 +1,35 @@
-# splitit-web-python-sdk
+# splitit-web-python-sdk@2.1.0
 Splitit's Web API
 
-- API version: 1.0.0
-- Package version: 2.1.0
 
-## Requirements.
+## Requirements
 
 Python >=3.7
 
-## Installation & Usage
-### pip install
-
-If the python package is hosted on a repository, you can install directly using:
+## Installing
 
 ```sh
 pip install splitit-web-python-sdk==2.1.0
 ```
-(you may need to run `pip` with root permission: `sudo pip install splitit-web-python-sdk==2.1.0`)
 
-Then import the package:
-```python
-import splitit_client
-```
 ## Getting Started
-
-Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
 from pprint import pprint
-from splitit_client import Splitit
+from splitit_client import Splitit, ApiException
 
 splitit = Splitit(
-    # Defining the host is optional and defaults to https://web-api-v3.sandbox.splitit.com
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
     # See configuration.py for a list of all supported configuration parameters.
-    host = "https://web-api-v3.sandbox.splitit.com",
-
+    host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token = 'YOUR_ACCESS_TOKEN'
+    access_token="YOUR_ACCESS_TOKEN",
 )
 
 try:
     cancel_response = splitit.installment_plan.cancel(
-        path_params = {
-            'installmentPlanNumber': "installmentPlanNumber_example",
-        },
-        header_params = {
-            'X-Splitit-IdempotencyKey': "X-Splitit-IdempotencyKey_example",
-        },
+        installment_plan_number="installmentPlanNumber_example",  # required
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
@@ -74,9 +57,63 @@ except ApiException as e:
     pprint(e.round_trip_time)
 ```
 
+## Async
+
+`async` support is available by prepending `a` to any method.
+
+```python
+import asyncio
+from pprint import pprint
+from splitit_client import Splitit, ApiException
+
+splitit = Splitit(
+    # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
+    # See configuration.py for a list of all supported configuration parameters.
+    host="https://web-api-v3.production.splitit.com",
+    # Configure OAuth2 access token for authorization: oauth
+    access_token="YOUR_ACCESS_TOKEN",
+)
+
+
+async def main():
+    try:
+        cancel_response = await splitit.installment_plan.acancel(
+            installment_plan_number="installmentPlanNumber_example",  # required
+            x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        )
+        pprint(cancel_response.body)
+        pprint(cancel_response.body["installment_plan_number"])
+        pprint(cancel_response.headers)
+        pprint(cancel_response.status)
+        pprint(cancel_response.round_trip_time)
+    except ApiException as e:
+        print("Exception when calling InstallmentPlanApi.cancel: %s\n" % e)
+        pprint(e.body)
+        if e.status == 401:
+            pprint(e.body["trace_id"])
+            pprint(e.body["error"])
+        if e.status == 500:
+            pprint(e.body["trace_id"])
+            pprint(e.body["error"])
+        if e.status == 403:
+            pprint(e.body["trace_id"])
+            pprint(e.body["error"])
+        if e.status == 404:
+            pprint(e.body["trace_id"])
+            pprint(e.body["error"])
+        pprint(e.headers)
+        pprint(e.status)
+        pprint(e.reason)
+        pprint(e.round_trip_time)
+
+
+asyncio.run(main())
+```
+
+
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -102,6 +139,7 @@ Class | Method | HTTP request | Description
  - [CheckInstallmentsEligibilityRequest](docs/models/CheckInstallmentsEligibilityRequest.md)
  - [Error](docs/models/Error.md)
  - [ErrorExtended](docs/models/ErrorExtended.md)
+ - [EventsEndpointsModel](docs/models/EventsEndpointsModel.md)
  - [FailedResponse](docs/models/FailedResponse.md)
  - [GwAuthorizationStatus](docs/models/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/models/IdentifierContract.md)
@@ -145,18 +183,6 @@ Class | Method | HTTP request | Description
  - [UpdateOrderRequest](docs/models/UpdateOrderRequest.md)
  - [UxSettingsModel](docs/models/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/models/VerifyAuthorizationResponse.md)
-
-## Documentation For Authorization
-
- Authentication schemes defined for the API:
-## oauth
-
-- **Type**: OAuth
-- **Flow**: application
-- **Authorization URL**: 
-- **Scopes**: 
- - **api.v3**: 
-
 
 
 ## Author
