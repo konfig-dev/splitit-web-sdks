@@ -25,7 +25,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 2.1.0
+    version: 2.2.0
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
@@ -52,7 +52,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    version: 1.2.0
+    version: 1.3.0
     packageName: splitit
     outputDirectory: go
     git:

@@ -1,4 +1,4 @@
-# splitit-web-python-sdk@2.1.0
+# splitit-web-python-sdk@2.2.0
 Splitit's Web API
 
 
@@ -9,7 +9,7 @@ Python >=3.7
 ## Installing
 
 ```sh
-pip install splitit-web-python-sdk==2.1.0
+pip install splitit-web-python-sdk==2.2.0
 ```
 
 ## Getting Started
