@@ -24,6 +24,7 @@ type InstallmentPlanCreateRequest struct {
 	BillingAddress *AddressDataModel `json:"BillingAddress,omitempty"`
 	PaymentMethod *PaymentMethodModel `json:"PaymentMethod,omitempty"`
 	RedirectUrls *RedirectionEndpointsModel `json:"RedirectUrls,omitempty"`
+	EventsEndpoints *EventsEndpointsModel `json:"EventsEndpoints,omitempty"`
 }
 
 // NewInstallmentPlanCreateRequest instantiates a new InstallmentPlanCreateRequest object
@@ -285,6 +286,38 @@ func (o *InstallmentPlanCreateRequest) SetRedirectUrls(v RedirectionEndpointsMod
 	o.RedirectUrls = &v
 }
 
+// GetEventsEndpoints returns the EventsEndpoints field value if set, zero value otherwise.
+func (o *InstallmentPlanCreateRequest) GetEventsEndpoints() EventsEndpointsModel {
+	if o == nil || isNil(o.EventsEndpoints) {
+		var ret EventsEndpointsModel
+		return ret
+	}
+	return *o.EventsEndpoints
+}
+
+// GetEventsEndpointsOk returns a tuple with the EventsEndpoints field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanCreateRequest) GetEventsEndpointsOk() (*EventsEndpointsModel, bool) {
+	if o == nil || isNil(o.EventsEndpoints) {
+    return nil, false
+	}
+	return o.EventsEndpoints, true
+}
+
+// HasEventsEndpoints returns a boolean if a field has been set.
+func (o *InstallmentPlanCreateRequest) HasEventsEndpoints() bool {
+	if o != nil && !isNil(o.EventsEndpoints) {
+		return true
+	}
+
+	return false
+}
+
+// SetEventsEndpoints gets a reference to the given EventsEndpointsModel and assigns it to the EventsEndpoints field.
+func (o *InstallmentPlanCreateRequest) SetEventsEndpoints(v EventsEndpointsModel) {
+	o.EventsEndpoints = &v
+}
+
 func (o InstallmentPlanCreateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -310,6 +343,9 @@ func (o InstallmentPlanCreateRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.RedirectUrls) {
 		toSerialize["RedirectUrls"] = o.RedirectUrls
+	}
+	if !isNil(o.EventsEndpoints) {
+		toSerialize["EventsEndpoints"] = o.EventsEndpoints
 	}
 	return json.Marshal(toSerialize)
 }

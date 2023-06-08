@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **BillingAddress** | Pointer to [**AddressDataModel**](AddressDataModel.md) |  | [optional] 
 **RedirectUrls** | Pointer to [**InitiateRedirectionEndpointsModel**](InitiateRedirectionEndpointsModel.md) |  | [optional] 
 **UxSettings** | Pointer to [**UxSettingsModel**](UxSettingsModel.md) |  | [optional] 
+**EventsEndpoints** | Pointer to [**EventsEndpointsModel**](EventsEndpointsModel.md) |  | [optional] 
 
 ## Methods
 
@@ -200,6 +201,31 @@ SetUxSettings sets UxSettings field to given value.
 `func (o *InstallmentPlanInitiateRequest) HasUxSettings() bool`
 
 HasUxSettings returns a boolean if a field has been set.
+
+### GetEventsEndpoints
+
+`func (o *InstallmentPlanInitiateRequest) GetEventsEndpoints() EventsEndpointsModel`
+
+GetEventsEndpoints returns the EventsEndpoints field if non-nil, zero value otherwise.
+
+### GetEventsEndpointsOk
+
+`func (o *InstallmentPlanInitiateRequest) GetEventsEndpointsOk() (*EventsEndpointsModel, bool)`
+
+GetEventsEndpointsOk returns a tuple with the EventsEndpoints field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEventsEndpoints
+
+`func (o *InstallmentPlanInitiateRequest) SetEventsEndpoints(v EventsEndpointsModel)`
+
+SetEventsEndpoints sets EventsEndpoints field to given value.
+
+### HasEventsEndpoints
+
+`func (o *InstallmentPlanInitiateRequest) HasEventsEndpoints() bool`
+
+HasEventsEndpoints returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

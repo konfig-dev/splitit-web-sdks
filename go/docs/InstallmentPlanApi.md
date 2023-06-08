@@ -1,6 +1,6 @@
 # \InstallmentPlanApi
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

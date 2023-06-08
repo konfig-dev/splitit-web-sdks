@@ -108,7 +108,7 @@ func NewConfiguration() *Configuration {
         Context: context.Background(),
 		Servers:          ServerConfigurations{
 			{
-				URL: "https://web-api-v3.sandbox.splitit.com",
+				URL: "https://web-api-v3.production.splitit.com",
 				Description: "No description provided",
 			},
 		},

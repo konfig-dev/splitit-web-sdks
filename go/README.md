@@ -77,7 +77,7 @@ configuration.Context = context.WithValue(configuration.Context, splitit.Context
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -105,6 +105,7 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [ErrorExtended](docs/ErrorExtended.md)
  - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
+ - [EventsEndpointsModel](docs/EventsEndpointsModel.md)
  - [FailedResponse](docs/FailedResponse.md)
  - [GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/IdentifierContract.md)

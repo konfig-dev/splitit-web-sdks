@@ -4,7 +4,7 @@ info:
   title: splitit-web-api-v3
   version: 1.0.0
 servers:
-- url: https://web-api-v3.sandbox.splitit.com
+- url: https://web-api-v3.production.splitit.com
 tags:
 - name: InstallmentPlan
 paths:
@@ -1891,6 +1891,8 @@ components:
           DisplayedInstallmentOptions:
           - 5
           - 5
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
         AutoCapture: true
         Shopper:
           Email: Email
@@ -1917,6 +1919,8 @@ components:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
         UxSettings:
           $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       type: object
@@ -2007,6 +2011,13 @@ components:
             format: int32
             type: integer
           type: array
+      type: object
+    EventsEndpointsModel:
+      example:
+        CreateSucceeded: CreateSucceeded
+      properties:
+        CreateSucceeded:
+          type: string
       type: object
     TestModes:
       description: ""
@@ -2147,6 +2158,8 @@ components:
           Country: Country
           City: City
         TermsAndConditionsAccepted: true
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
         AutoCapture: true
         Shopper:
           Email: Email
@@ -2187,6 +2200,8 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       - TermsAndConditionsAccepted
@@ -2620,6 +2635,8 @@ components:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
         UxSettings:
           $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       - X-Splitit-IdempotencyKey
@@ -2655,6 +2672,8 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       - TermsAndConditionsAccepted
@@ -2796,7 +2815,7 @@ components:
         clientCredentials:
           scopes:
             api.v3: ""
-          tokenUrl: https://id.sandbox.splitit.com/connect/token
+          tokenUrl: https://id.production.splitit.com/connect/token
       type: oauth2
       x-konfig-globally-required-security: true
 x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))
