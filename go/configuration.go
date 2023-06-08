@@ -90,6 +90,7 @@ type ServerConfigurations []ServerConfiguration
 type Configuration struct {
 	Host             string            `json:"host,omitempty"`
 	Scheme           string            `json:"scheme,omitempty"`
+	TokenUrl    	 string 		   `json:"tokenUrl,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
 	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
@@ -104,6 +105,7 @@ func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
 		UserAgent:        "Konfig/1.2.0/go",
+		TokenUrl: 		  "https://id.production.splitit.com/connect/token",
 		Debug:            false,
         Context: context.Background(),
 		Servers:          ServerConfigurations{
@@ -123,9 +125,13 @@ func (c *Configuration) SetOAuthClientCredentials(clientId string, clientSecret 
        config := &clientcredentials.Config{
                ClientID: clientId,
                ClientSecret: clientSecret,
-               TokenURL: "https://id.sandbox.splitit.com/connect/token",
+               TokenURL: c.TokenUrl,
        }
        c.Context = context.WithValue(c.Context, ContextOAuth2, config.TokenSource(c.Context))
+}
+
+func (c *Configuration) SetTokenUrl(tokenUrl string) {
+	c.TokenUrl = tokenUrl;
 }
 
 // AddDefaultHeader adds a new HTTP header to the default header in the request
