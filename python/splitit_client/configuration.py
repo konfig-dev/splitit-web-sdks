@@ -90,7 +90,7 @@ class Configuration(object):
 
     def __init__(self, host=None,
                  api_key=None, api_key_prefix=None,
-                 client_id=None, client_secret=None,
+                 client_id=None, client_secret=None, token_url: typing.Optional[str] = None,
                  username=None, password=None,
                  discard_unknown_keys=False,
                  disabled_client_side_validations="",
@@ -108,6 +108,8 @@ class Configuration(object):
         """
         if client_id is not None and client_secret is not None:
             self.oauth = OAuth(client_id=client_id, client_secret=client_secret)
+        if token_url is not None and self.oauth is not None:
+            self.oauth.token_url = token_url
         """OAuth2 Client Credentials
         """
         self.server_variables = server_variables or {}
@@ -480,16 +482,17 @@ def check_url(url: str):
     return url
 
 class OAuth:
-    def __init__(self, client_id: typing.AnyStr, client_secret: typing.AnyStr) -> None:
+    def __init__(self, client_id: typing.AnyStr, client_secret: typing.AnyStr, token_url: str = "https://id.production.splitit.com/connect/token") -> None:
         self._client_id = client_id
         self._client_secret = client_secret
+        self.token_url = token_url
         self.access_token = None
     
     def refresh_access_token(self) -> None:
         self.access_token = self.retrieve_access_token()
     
     def retrieve_access_token(self) -> typing.AnyStr:
-        request = urllib.request.Request("https://id.production.splitit.com/connect/token")
+        request = urllib.request.Request(self.token_url)
         request.add_header("Content-Type", "application/x-www-form-urlencoded")
         params = {
                 "grant_type": "client_credentials",
