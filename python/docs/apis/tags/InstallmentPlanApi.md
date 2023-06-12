@@ -278,6 +278,7 @@ try:
         billing_address={},  # optional
     )
     pprint(check_eligibility_response.body)
+    pprint(check_eligibility_response.body["installment_provider"])
     pprint(check_eligibility_response.body["payment_plan_options"])
     pprint(check_eligibility_response.headers)
     pprint(check_eligibility_response.status)

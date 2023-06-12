@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **InstallmentAmount** | **float32** |  | 
 **LastInstallmentAmount** | **float32** |  | 
 **Links** | Pointer to [**LinksModel**](LinksModel.md) |  | [optional] 
+**TermsAndConditionsBrief** | Pointer to **string** |  | [optional] 
+**InstallmentFrequency** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -133,6 +135,56 @@ SetLinks sets Links field to given value.
 `func (o *PaymentPlanOptionModel) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetTermsAndConditionsBrief
+
+`func (o *PaymentPlanOptionModel) GetTermsAndConditionsBrief() string`
+
+GetTermsAndConditionsBrief returns the TermsAndConditionsBrief field if non-nil, zero value otherwise.
+
+### GetTermsAndConditionsBriefOk
+
+`func (o *PaymentPlanOptionModel) GetTermsAndConditionsBriefOk() (*string, bool)`
+
+GetTermsAndConditionsBriefOk returns a tuple with the TermsAndConditionsBrief field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTermsAndConditionsBrief
+
+`func (o *PaymentPlanOptionModel) SetTermsAndConditionsBrief(v string)`
+
+SetTermsAndConditionsBrief sets TermsAndConditionsBrief field to given value.
+
+### HasTermsAndConditionsBrief
+
+`func (o *PaymentPlanOptionModel) HasTermsAndConditionsBrief() bool`
+
+HasTermsAndConditionsBrief returns a boolean if a field has been set.
+
+### GetInstallmentFrequency
+
+`func (o *PaymentPlanOptionModel) GetInstallmentFrequency() string`
+
+GetInstallmentFrequency returns the InstallmentFrequency field if non-nil, zero value otherwise.
+
+### GetInstallmentFrequencyOk
+
+`func (o *PaymentPlanOptionModel) GetInstallmentFrequencyOk() (*string, bool)`
+
+GetInstallmentFrequencyOk returns a tuple with the InstallmentFrequency field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInstallmentFrequency
+
+`func (o *PaymentPlanOptionModel) SetInstallmentFrequency(v string)`
+
+SetInstallmentFrequency sets InstallmentFrequency field to given value.
+
+### HasInstallmentFrequency
+
+`func (o *PaymentPlanOptionModel) HasInstallmentFrequency() bool`
+
+HasInstallmentFrequency returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

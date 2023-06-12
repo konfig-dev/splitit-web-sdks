@@ -21,6 +21,8 @@ type PaymentPlanOptionModel struct {
 	InstallmentAmount float32 `json:"InstallmentAmount"`
 	LastInstallmentAmount float32 `json:"LastInstallmentAmount"`
 	Links *LinksModel `json:"Links,omitempty"`
+	TermsAndConditionsBrief *string `json:"TermsAndConditionsBrief,omitempty"`
+	InstallmentFrequency *string `json:"InstallmentFrequency,omitempty"`
 }
 
 // NewPaymentPlanOptionModel instantiates a new PaymentPlanOptionModel object
@@ -172,6 +174,70 @@ func (o *PaymentPlanOptionModel) SetLinks(v LinksModel) {
 	o.Links = &v
 }
 
+// GetTermsAndConditionsBrief returns the TermsAndConditionsBrief field value if set, zero value otherwise.
+func (o *PaymentPlanOptionModel) GetTermsAndConditionsBrief() string {
+	if o == nil || isNil(o.TermsAndConditionsBrief) {
+		var ret string
+		return ret
+	}
+	return *o.TermsAndConditionsBrief
+}
+
+// GetTermsAndConditionsBriefOk returns a tuple with the TermsAndConditionsBrief field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentPlanOptionModel) GetTermsAndConditionsBriefOk() (*string, bool) {
+	if o == nil || isNil(o.TermsAndConditionsBrief) {
+    return nil, false
+	}
+	return o.TermsAndConditionsBrief, true
+}
+
+// HasTermsAndConditionsBrief returns a boolean if a field has been set.
+func (o *PaymentPlanOptionModel) HasTermsAndConditionsBrief() bool {
+	if o != nil && !isNil(o.TermsAndConditionsBrief) {
+		return true
+	}
+
+	return false
+}
+
+// SetTermsAndConditionsBrief gets a reference to the given string and assigns it to the TermsAndConditionsBrief field.
+func (o *PaymentPlanOptionModel) SetTermsAndConditionsBrief(v string) {
+	o.TermsAndConditionsBrief = &v
+}
+
+// GetInstallmentFrequency returns the InstallmentFrequency field value if set, zero value otherwise.
+func (o *PaymentPlanOptionModel) GetInstallmentFrequency() string {
+	if o == nil || isNil(o.InstallmentFrequency) {
+		var ret string
+		return ret
+	}
+	return *o.InstallmentFrequency
+}
+
+// GetInstallmentFrequencyOk returns a tuple with the InstallmentFrequency field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentPlanOptionModel) GetInstallmentFrequencyOk() (*string, bool) {
+	if o == nil || isNil(o.InstallmentFrequency) {
+    return nil, false
+	}
+	return o.InstallmentFrequency, true
+}
+
+// HasInstallmentFrequency returns a boolean if a field has been set.
+func (o *PaymentPlanOptionModel) HasInstallmentFrequency() bool {
+	if o != nil && !isNil(o.InstallmentFrequency) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentFrequency gets a reference to the given string and assigns it to the InstallmentFrequency field.
+func (o *PaymentPlanOptionModel) SetInstallmentFrequency(v string) {
+	o.InstallmentFrequency = &v
+}
+
 func (o PaymentPlanOptionModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -188,6 +254,12 @@ func (o PaymentPlanOptionModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Links) {
 		toSerialize["Links"] = o.Links
+	}
+	if !isNil(o.TermsAndConditionsBrief) {
+		toSerialize["TermsAndConditionsBrief"] = o.TermsAndConditionsBrief
+	}
+	if !isNil(o.InstallmentFrequency) {
+		toSerialize["InstallmentFrequency"] = o.InstallmentFrequency
 	}
 	return json.Marshal(toSerialize)
 }

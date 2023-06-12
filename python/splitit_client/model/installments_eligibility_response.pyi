@@ -34,6 +34,7 @@ class InstallmentsEligibilityResponse(
     class MetaOapg:
         
         class properties:
+            InstallmentProvider = schemas.StrSchema
             
             
             class PaymentPlanOptions(
@@ -61,8 +62,12 @@ class InstallmentsEligibilityResponse(
                 def __getitem__(self, i: int) -> 'PaymentPlanOptionModel':
                     return super().__getitem__(i)
             __annotations__ = {
+                "InstallmentProvider": InstallmentProvider,
                 "PaymentPlanOptions": PaymentPlanOptions,
             }
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["InstallmentProvider"]) -> MetaOapg.properties.InstallmentProvider: ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["PaymentPlanOptions"]) -> MetaOapg.properties.PaymentPlanOptions: ...
@@ -70,10 +75,13 @@ class InstallmentsEligibilityResponse(
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["PaymentPlanOptions", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentProvider", "PaymentPlanOptions", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["InstallmentProvider"]) -> typing.Union[MetaOapg.properties.InstallmentProvider, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["PaymentPlanOptions"]) -> typing.Union[MetaOapg.properties.PaymentPlanOptions, schemas.Unset]: ...
@@ -81,13 +89,14 @@ class InstallmentsEligibilityResponse(
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["PaymentPlanOptions", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentProvider", "PaymentPlanOptions", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
+        InstallmentProvider: typing.Union[MetaOapg.properties.InstallmentProvider, str, schemas.Unset] = schemas.unset,
         PaymentPlanOptions: typing.Union[MetaOapg.properties.PaymentPlanOptions, list, tuple, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -95,6 +104,7 @@ class InstallmentsEligibilityResponse(
         return super().__new__(
             cls,
             *args,
+            InstallmentProvider=InstallmentProvider,
             PaymentPlanOptions=PaymentPlanOptions,
             _configuration=_configuration,
             **kwargs,

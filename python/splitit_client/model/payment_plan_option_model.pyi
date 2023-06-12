@@ -48,12 +48,16 @@ class PaymentPlanOptionModel(
             @staticmethod
             def Links() -> typing.Type['LinksModel']:
                 return LinksModel
+            TermsAndConditionsBrief = schemas.StrSchema
+            InstallmentFrequency = schemas.StrSchema
             __annotations__ = {
                 "NumberOfInstallments": NumberOfInstallments,
                 "FirstInstallmentAmount": FirstInstallmentAmount,
                 "InstallmentAmount": InstallmentAmount,
                 "LastInstallmentAmount": LastInstallmentAmount,
                 "Links": Links,
+                "TermsAndConditionsBrief": TermsAndConditionsBrief,
+                "InstallmentFrequency": InstallmentFrequency,
             }
     
     LastInstallmentAmount: MetaOapg.properties.LastInstallmentAmount
@@ -77,9 +81,15 @@ class PaymentPlanOptionModel(
     def __getitem__(self, name: typing_extensions.Literal["Links"]) -> 'LinksModel': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["TermsAndConditionsBrief"]) -> MetaOapg.properties.TermsAndConditionsBrief: ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["InstallmentFrequency"]) -> MetaOapg.properties.InstallmentFrequency: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["NumberOfInstallments", "FirstInstallmentAmount", "InstallmentAmount", "LastInstallmentAmount", "Links", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["NumberOfInstallments", "FirstInstallmentAmount", "InstallmentAmount", "LastInstallmentAmount", "Links", "TermsAndConditionsBrief", "InstallmentFrequency", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -100,9 +110,15 @@ class PaymentPlanOptionModel(
     def get_item_oapg(self, name: typing_extensions.Literal["Links"]) -> typing.Union['LinksModel', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["TermsAndConditionsBrief"]) -> typing.Union[MetaOapg.properties.TermsAndConditionsBrief, schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["InstallmentFrequency"]) -> typing.Union[MetaOapg.properties.InstallmentFrequency, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["NumberOfInstallments", "FirstInstallmentAmount", "InstallmentAmount", "LastInstallmentAmount", "Links", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["NumberOfInstallments", "FirstInstallmentAmount", "InstallmentAmount", "LastInstallmentAmount", "Links", "TermsAndConditionsBrief", "InstallmentFrequency", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -114,6 +130,8 @@ class PaymentPlanOptionModel(
         FirstInstallmentAmount: typing.Union[MetaOapg.properties.FirstInstallmentAmount, decimal.Decimal, int, float, ],
         NumberOfInstallments: typing.Union[MetaOapg.properties.NumberOfInstallments, decimal.Decimal, int, ],
         Links: typing.Union['LinksModel', schemas.Unset] = schemas.unset,
+        TermsAndConditionsBrief: typing.Union[MetaOapg.properties.TermsAndConditionsBrief, str, schemas.Unset] = schemas.unset,
+        InstallmentFrequency: typing.Union[MetaOapg.properties.InstallmentFrequency, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'PaymentPlanOptionModel':
@@ -125,6 +143,8 @@ class PaymentPlanOptionModel(
             FirstInstallmentAmount=FirstInstallmentAmount,
             NumberOfInstallments=NumberOfInstallments,
             Links=Links,
+            TermsAndConditionsBrief=TermsAndConditionsBrief,
+            InstallmentFrequency=InstallmentFrequency,
             _configuration=_configuration,
             **kwargs,
         )

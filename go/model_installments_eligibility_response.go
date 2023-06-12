@@ -16,6 +16,7 @@ import (
 
 // InstallmentsEligibilityResponse struct for InstallmentsEligibilityResponse
 type InstallmentsEligibilityResponse struct {
+	InstallmentProvider *string `json:"InstallmentProvider,omitempty"`
 	PaymentPlanOptions []PaymentPlanOptionModel `json:"PaymentPlanOptions,omitempty"`
 }
 
@@ -34,6 +35,38 @@ func NewInstallmentsEligibilityResponse() *InstallmentsEligibilityResponse {
 func NewInstallmentsEligibilityResponseWithDefaults() *InstallmentsEligibilityResponse {
 	this := InstallmentsEligibilityResponse{}
 	return &this
+}
+
+// GetInstallmentProvider returns the InstallmentProvider field value if set, zero value otherwise.
+func (o *InstallmentsEligibilityResponse) GetInstallmentProvider() string {
+	if o == nil || isNil(o.InstallmentProvider) {
+		var ret string
+		return ret
+	}
+	return *o.InstallmentProvider
+}
+
+// GetInstallmentProviderOk returns a tuple with the InstallmentProvider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentsEligibilityResponse) GetInstallmentProviderOk() (*string, bool) {
+	if o == nil || isNil(o.InstallmentProvider) {
+    return nil, false
+	}
+	return o.InstallmentProvider, true
+}
+
+// HasInstallmentProvider returns a boolean if a field has been set.
+func (o *InstallmentsEligibilityResponse) HasInstallmentProvider() bool {
+	if o != nil && !isNil(o.InstallmentProvider) {
+		return true
+	}
+
+	return false
+}
+
+// SetInstallmentProvider gets a reference to the given string and assigns it to the InstallmentProvider field.
+func (o *InstallmentsEligibilityResponse) SetInstallmentProvider(v string) {
+	o.InstallmentProvider = &v
 }
 
 // GetPaymentPlanOptions returns the PaymentPlanOptions field value if set, zero value otherwise.
@@ -70,6 +103,9 @@ func (o *InstallmentsEligibilityResponse) SetPaymentPlanOptions(v []PaymentPlanO
 
 func (o InstallmentsEligibilityResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	if !isNil(o.InstallmentProvider) {
+		toSerialize["InstallmentProvider"] = o.InstallmentProvider
+	}
 	if !isNil(o.PaymentPlanOptions) {
 		toSerialize["PaymentPlanOptions"] = o.PaymentPlanOptions
 	}

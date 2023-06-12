@@ -372,6 +372,9 @@ class BaseApi(api_client.Api):
         )
         
         if stream:
+            if not 200 <= response.http_response.status <= 299:
+                raise exceptions.ApiStreamingException(status=response.http_response.status, reason=response.http_response.reason)
+        
             async def stream_iterator():
                 """
                 iterates over response.http_response.content and closes connection once iteration has finished

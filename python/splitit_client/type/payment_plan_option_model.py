@@ -28,5 +28,9 @@ class RequiredPaymentPlanOptionModel(TypedDict):
 class OptionalPaymentPlanOptionModel(TypedDict, total=False):
     Links: LinksModel
 
+    TermsAndConditionsBrief: str
+
+    InstallmentFrequency: str
+
 class PaymentPlanOptionModel(RequiredPaymentPlanOptionModel, OptionalPaymentPlanOptionModel):
     pass

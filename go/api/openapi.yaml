@@ -2419,24 +2419,31 @@ components:
       type: object
     InstallmentsEligibilityResponse:
       example:
+        InstallmentProvider: InstallmentProvider
         PaymentPlanOptions:
         - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
           InstallmentAmount: 1.4658129805029452
           Links:
             TermsAndConditionsUrl: TermsAndConditionsUrl
             LearnMoreUrl: LearnMoreUrl
             PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
           FirstInstallmentAmount: 6.027456183070403
           NumberOfInstallments: 0
         - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
           InstallmentAmount: 1.4658129805029452
           Links:
             TermsAndConditionsUrl: TermsAndConditionsUrl
             LearnMoreUrl: LearnMoreUrl
             PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
           FirstInstallmentAmount: 6.027456183070403
           NumberOfInstallments: 0
       properties:
+        InstallmentProvider:
+          type: string
         PaymentPlanOptions:
           items:
             $ref: '#/components/schemas/PaymentPlanOptionModel'
@@ -2445,11 +2452,13 @@ components:
     PaymentPlanOptionModel:
       example:
         LastInstallmentAmount: 5.962133916683182
+        InstallmentFrequency: InstallmentFrequency
         InstallmentAmount: 1.4658129805029452
         Links:
           TermsAndConditionsUrl: TermsAndConditionsUrl
           LearnMoreUrl: LearnMoreUrl
           PrivacyPolicyUrl: PrivacyPolicyUrl
+        TermsAndConditionsBrief: TermsAndConditionsBrief
         FirstInstallmentAmount: 6.027456183070403
         NumberOfInstallments: 0
       properties:
@@ -2467,6 +2476,10 @@ components:
           type: number
         Links:
           $ref: '#/components/schemas/LinksModel'
+        TermsAndConditionsBrief:
+          type: string
+        InstallmentFrequency:
+          type: string
       required:
       - FirstInstallmentAmount
       - InstallmentAmount
