@@ -1943,6 +1943,9 @@
     "InstallmentsEligibilityResponse": {
       "type": "object",
       "properties": {
+        "InstallmentProvider": {
+          "type": "string"
+        },
         "PaymentPlanOptions": {
           "type": "array",
           "items": {
@@ -1978,6 +1981,12 @@
         },
         "Links": {
           "$ref": "#/definitions/LinksModel"
+        },
+        "TermsAndConditionsBrief": {
+          "type": "string"
+        },
+        "InstallmentFrequency": {
+          "type": "string"
         }
       }
     },
