@@ -37,7 +37,6 @@ from splitit_client.rest import AsyncResponseWrapper, ResponseWrapper
 from splitit_client.configuration import Configuration
 from splitit_client.exceptions import ApiTypeError, ApiValueError, MissingRequiredParametersError
 from splitit_client.request_after_hook import request_after_hook
-from splitit_client.request_before_hook import request_before_hook
 from splitit_client.schemas import (
     NoneClass,
     BoolClass,
@@ -1189,16 +1188,6 @@ class ApiClient:
         prefix_separator_iterator: PrefixSeparatorIterator = None,
     ) -> AsyncResponseWrapper:
 
-        request_before_hook(
-            resource_path=resource_path,
-            method=method,
-            configuration=self.configuration,
-            body=body,
-            fields=fields,
-            auth_settings=auth_settings,
-            headers=headers,
-        )
-
         # header parameters
         used_headers = HTTPHeaderDict(self.default_headers)
         if self.cookie:
@@ -1264,16 +1253,6 @@ class ApiClient:
         prefix_separator_iterator: PrefixSeparatorIterator = None,
         _retry_oauth = True,
     ) -> ResponseWrapper:
-
-        request_before_hook(
-            resource_path=resource_path,
-            method=method,
-            configuration=self.configuration,
-            body=body,
-            fields=fields,
-            auth_settings=auth_settings,
-            headers=headers,
-        )
 
         # header parameters
         used_headers = HTTPHeaderDict(self.default_headers)

@@ -12,6 +12,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from splitit_client.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict
 
@@ -108,10 +109,12 @@ request_query_extended_params = api_client.QueryParameter(
 )
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema
+XSplititTouchPointSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
     'RequestRequiredHeaderParams',
     {
         'X-Splitit-IdempotencyKey': typing.Union[XSplititIdempotencyKeySchema, str, ],
+        'X-Splitit-TouchPoint': typing.Union[XSplititTouchPointSchema, str, ],
     }
 )
 RequestOptionalHeaderParams = typing_extensions.TypedDict(
@@ -130,6 +133,12 @@ request_header_x_splitit_idempotency_key = api_client.HeaderParameter(
     name="X-Splitit-IdempotencyKey",
     style=api_client.ParameterStyle.SIMPLE,
     schema=XSplititIdempotencyKeySchema,
+    required=True,
+)
+request_header_x_splitit_touch_point = api_client.HeaderParameter(
+    name="X-Splitit-TouchPoint",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=XSplititTouchPointSchema,
     required=True,
 )
 SchemaFor200ResponseBodyTextPlain = InstallmentPlanSearchResponseSchema
@@ -279,6 +288,7 @@ class BaseApi(api_client.Api):
     def _search_mapped_args(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
@@ -294,6 +304,8 @@ class BaseApi(api_client.Api):
             _query_params["extendedParams"] = extended_params
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
+        if x_splitit_touch_point is not None:
+            _header_params["X-Splitit-TouchPoint"] = x_splitit_touch_point
         args.query = _query_params
         args.header = _header_params
         return args
@@ -338,6 +350,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -348,20 +361,33 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'get'.upper()
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            auth_settings=_auth,
+            headers=_headers,
+        )
     
         response = await self.api_client.async_call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method=method,
             headers=_headers,
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
         )
-        
+    
         if stream:
             if not 200 <= response.http_response.status <= 299:
-                raise exceptions.ApiStreamingException(status=response.http_response.status, reason=response.http_response.reason)
-        
+                body = (await response.http_response.content.read()).decode("utf-8")
+                raise exceptions.ApiStreamingException(
+                    status=response.http_response.status,
+                    reason=response.http_response.reason,
+                    body=body,
+                )
+    
             async def stream_iterator():
                 """
                 iterates over response.http_response.content and closes connection once iteration has finished
@@ -406,6 +432,7 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
     def _search_oapg(
         self,
             query_params: typing.Optional[dict] = {},
@@ -445,6 +472,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -455,10 +483,18 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'get'.upper()
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            auth_settings=_auth,
+            headers=_headers,
+        )
     
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method=method,
             headers=_headers,
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
@@ -488,12 +524,14 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
 class Search(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def asearch(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
@@ -504,6 +542,7 @@ class Search(BaseApi):
     ]:
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             installment_plan_number=installment_plan_number,
             ref_order_number=ref_order_number,
             extended_params=extended_params,
@@ -516,6 +555,7 @@ class Search(BaseApi):
     def search(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
@@ -525,6 +565,7 @@ class Search(BaseApi):
     ]:
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             installment_plan_number=installment_plan_number,
             ref_order_number=ref_order_number,
             extended_params=extended_params,
@@ -540,6 +581,7 @@ class ApiForget(BaseApi):
     async def aget(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
@@ -550,6 +592,7 @@ class ApiForget(BaseApi):
     ]:
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             installment_plan_number=installment_plan_number,
             ref_order_number=ref_order_number,
             extended_params=extended_params,
@@ -562,6 +605,7 @@ class ApiForget(BaseApi):
     def get(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
@@ -571,6 +615,7 @@ class ApiForget(BaseApi):
     ]:
         args = self._search_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             installment_plan_number=installment_plan_number,
             ref_order_number=ref_order_number,
             extended_params=extended_params,

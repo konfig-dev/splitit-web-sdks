@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 ## Cancel
 
-> InstallmentPlanCancelResponse Cancel(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+> InstallmentPlanCancelResponse Cancel(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
 
 
 
@@ -38,10 +38,11 @@ import (
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Cancel(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Cancel(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Cancel``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,6 +69,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
 
 ### Return type
 
@@ -89,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## CheckEligibility
 
-> InstallmentsEligibilityResponse CheckEligibility(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
+> InstallmentsEligibilityResponse CheckEligibility(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
 
 
 
@@ -107,11 +109,12 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     checkInstallmentsEligibilityRequest := *splitit.NewCheckInstallmentsEligibilityRequest() // CheckInstallmentsEligibilityRequest | 
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.CheckEligibility(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.CheckEligibility(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.CheckEligibility``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -133,6 +136,7 @@ Other parameters are passed through a pointer to a apiCheckEligibilityRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **checkInstallmentsEligibilityRequest** | [**CheckInstallmentsEligibilityRequest**](CheckInstallmentsEligibilityRequest.md) |  | 
 
 ### Return type
@@ -155,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## Get
 
-> InstallmentPlanGetResponse Get(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+> InstallmentPlanGetResponse Get(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
 
 
 
@@ -174,10 +178,11 @@ import (
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Get(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Get(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Get``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,6 +209,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
 
 ### Return type
 
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## Post
 
-> InitiatePlanResponse Post(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
+> InitiatePlanResponse Post(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
 
 
 
@@ -243,12 +249,13 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     installmentPlanInitiateRequest := *splitit.NewInstallmentPlanInitiateRequest(false) // InstallmentPlanInitiateRequest | 
     xSplititTestMode := "xSplititTestMode_example" // string |  (optional)
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Post(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Post(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanInitiateRequest(installmentPlanInitiateRequest).XSplititTestMode(xSplititTestMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Post``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -270,6 +277,7 @@ Other parameters are passed through a pointer to a apiPostRequest struct via the
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md) |  | 
  **xSplititTestMode** | **string** |  | 
 
@@ -293,7 +301,7 @@ Name | Type | Description  | Notes
 
 ## Post2
 
-> InstallmentPlanCreateResponse Post2(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+> InstallmentPlanCreateResponse Post2(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
 
 
 
@@ -311,12 +319,13 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     installmentPlanCreateRequest := *splitit.NewInstallmentPlanCreateRequest(false, false) // InstallmentPlanCreateRequest | 
     xSplititTestMode := "xSplititTestMode_example" // string |  (optional)
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Post2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Post2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanCreateRequest(installmentPlanCreateRequest).XSplititTestMode(xSplititTestMode).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Post2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,6 +347,7 @@ Other parameters are passed through a pointer to a apiPost2Request struct via th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md) |  | 
  **xSplititTestMode** | **string** |  | 
 
@@ -361,7 +371,7 @@ Name | Type | Description  | Notes
 
 ## Refund
 
-> InstallmentPlanRefundResponse Refund(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanRefundRequest(installmentPlanRefundRequest).Execute()
+> InstallmentPlanRefundResponse Refund(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanRefundRequest(installmentPlanRefundRequest).Execute()
 
 
 
@@ -380,11 +390,12 @@ import (
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     installmentPlanRefundRequest := *splitit.NewInstallmentPlanRefundRequest(float32(123)) // InstallmentPlanRefundRequest | 
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Refund(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanRefundRequest(installmentPlanRefundRequest).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Refund(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanRefundRequest(installmentPlanRefundRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Refund``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -411,6 +422,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **installmentPlanRefundRequest** | [**InstallmentPlanRefundRequest**](InstallmentPlanRefundRequest.md) |  | 
 
 ### Return type
@@ -433,7 +445,7 @@ Name | Type | Description  | Notes
 
 ## Search
 
-> InstallmentPlanSearchResponse Search(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
+> InstallmentPlanSearchResponse Search(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
 
 
 
@@ -451,13 +463,14 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     installmentPlanNumber := "installmentPlanNumber_example" // string |  (optional)
     refOrderNumber := "refOrderNumber_example" // string |  (optional)
     extendedParams := map[string]string{"key": "Inner_example"} // map[string]string |  (optional)
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.Search(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.Search(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanNumber(installmentPlanNumber).RefOrderNumber(refOrderNumber).ExtendedParams(extendedParams).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Search``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -479,6 +492,7 @@ Other parameters are passed through a pointer to a apiSearchRequest struct via t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **installmentPlanNumber** | **string** |  | 
  **refOrderNumber** | **string** |  | 
  **extendedParams** | **map[string]string** |  | 
@@ -503,7 +517,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrder
 
-> InstallmentPlanUpdateResponse UpdateOrder(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).UpdateOrderRequest(updateOrderRequest).Execute()
+> InstallmentPlanUpdateResponse UpdateOrder(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).UpdateOrderRequest(updateOrderRequest).Execute()
 
 
 
@@ -522,11 +536,12 @@ import (
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     updateOrderRequest := *splitit.NewUpdateOrderRequest() // UpdateOrderRequest | 
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).UpdateOrderRequest(updateOrderRequest).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).UpdateOrderRequest(updateOrderRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.UpdateOrder``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -553,6 +568,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  | 
 
 ### Return type
@@ -575,7 +591,7 @@ Name | Type | Description  | Notes
 
 ## UpdateOrder2
 
-> InstallmentPlanUpdateResponse UpdateOrder2(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier).Execute()
+> InstallmentPlanUpdateResponse UpdateOrder2(ctx).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier).Execute()
 
 
 
@@ -593,11 +609,12 @@ import (
 
 func main() {
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
     installmentPlanUpdateRequestByIdentifier := *splitit.NewInstallmentPlanUpdateRequestByIdentifier() // InstallmentPlanUpdateRequestByIdentifier | 
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.UpdateOrder2(context.Background()).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.UpdateOrder2``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -619,6 +636,7 @@ Other parameters are passed through a pointer to a apiUpdateOrder2Request struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
  **installmentPlanUpdateRequestByIdentifier** | [**InstallmentPlanUpdateRequestByIdentifier**](InstallmentPlanUpdateRequestByIdentifier.md) |  | 
 
 ### Return type
@@ -641,7 +659,7 @@ Name | Type | Description  | Notes
 
 ## VerifyAuthorization
 
-> VerifyAuthorizationResponse VerifyAuthorization(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+> VerifyAuthorizationResponse VerifyAuthorization(ctx, installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
 
 
 
@@ -660,10 +678,11 @@ import (
 func main() {
     installmentPlanNumber := "installmentPlanNumber_example" // string | 
     xSplititIdempotencyKey := "xSplititIdempotencyKey_example" // string | 
+    xSplititTouchPoint := "xSplititTouchPoint_example" // string | TouchPoint (default to "")
 
     configuration := splitit.NewConfiguration()
     apiClient := splitit.NewAPIClient(configuration)
-    resp, r, err := apiClient.InstallmentPlanApi.VerifyAuthorization(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).Execute()
+    resp, r, err := apiClient.InstallmentPlanApi.VerifyAuthorization(context.Background(), installmentPlanNumber).XSplititIdempotencyKey(xSplititIdempotencyKey).XSplititTouchPoint(xSplititTouchPoint).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.VerifyAuthorization``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -690,6 +709,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **xSplititIdempotencyKey** | **string** |  | 
+ **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;]
 
 ### Return type
 

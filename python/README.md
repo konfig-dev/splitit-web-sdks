@@ -30,6 +30,7 @@ try:
     cancel_response = splitit.installment_plan.cancel(
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
@@ -80,6 +81,7 @@ async def main():
         cancel_response = await splitit.installment_plan.acancel(
             installment_plan_number="installmentPlanNumber_example",  # required
             x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+            x_splitit_touch_point="",  # required
         )
         pprint(cancel_response.body)
         pprint(cancel_response.body["installment_plan_number"])

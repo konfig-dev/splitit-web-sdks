@@ -12,6 +12,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from splitit_client.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict
 
@@ -40,10 +41,12 @@ from . import path
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema
+XSplititTouchPointSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
     'RequestRequiredHeaderParams',
     {
         'X-Splitit-IdempotencyKey': typing.Union[XSplititIdempotencyKeySchema, str, ],
+        'X-Splitit-TouchPoint': typing.Union[XSplititTouchPointSchema, str, ],
     }
 )
 RequestOptionalHeaderParams = typing_extensions.TypedDict(
@@ -62,6 +65,12 @@ request_header_x_splitit_idempotency_key = api_client.HeaderParameter(
     name="X-Splitit-IdempotencyKey",
     style=api_client.ParameterStyle.SIMPLE,
     schema=XSplititIdempotencyKeySchema,
+    required=True,
+)
+request_header_x_splitit_touch_point = api_client.HeaderParameter(
+    name="X-Splitit-TouchPoint",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=XSplititTouchPointSchema,
     required=True,
 )
 # Path params
@@ -248,12 +257,15 @@ class BaseApi(api_client.Api):
         self,
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
         _path_params = {}
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
+        if x_splitit_touch_point is not None:
+            _header_params["X-Splitit-TouchPoint"] = x_splitit_touch_point
         if installment_plan_number is not None:
             _path_params["installmentPlanNumber"] = installment_plan_number
         args.header = _header_params
@@ -298,6 +310,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -308,19 +321,32 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'get'.upper()
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            auth_settings=_auth,
+            headers=_headers,
+        )
     
         response = await self.api_client.async_call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method=method,
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
         )
-        
+    
         if stream:
             if not 200 <= response.http_response.status <= 299:
-                raise exceptions.ApiStreamingException(status=response.http_response.status, reason=response.http_response.reason)
-        
+                body = (await response.http_response.content.read()).decode("utf-8")
+                raise exceptions.ApiStreamingException(
+                    status=response.http_response.status,
+                    reason=response.http_response.reason,
+                    body=body,
+                )
+    
             async def stream_iterator():
                 """
                 iterates over response.http_response.content and closes connection once iteration has finished
@@ -365,6 +391,7 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
     def _get_oapg(
         self,
             header_params: typing.Optional[dict] = {},
@@ -402,6 +429,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -412,10 +440,18 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'get'.upper()
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            auth_settings=_auth,
+            headers=_headers,
+        )
     
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='get'.upper(),
+            method=method,
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
@@ -444,6 +480,7 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
 class Get(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
@@ -451,6 +488,7 @@ class Get(BaseApi):
         self,
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -459,6 +497,7 @@ class Get(BaseApi):
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
         )
         return await self._aget_oapg(
             header_params=args.header,
@@ -469,6 +508,7 @@ class Get(BaseApi):
         self,
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -476,6 +516,7 @@ class Get(BaseApi):
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
         )
         return self._get_oapg(
             header_params=args.header,
@@ -489,6 +530,7 @@ class ApiForget(BaseApi):
         self,
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -497,6 +539,7 @@ class ApiForget(BaseApi):
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
         )
         return await self._aget_oapg(
             header_params=args.header,
@@ -507,6 +550,7 @@ class ApiForget(BaseApi):
         self,
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -514,6 +558,7 @@ class ApiForget(BaseApi):
         args = self._get_mapped_args(
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
         )
         return self._get_oapg(
             header_params=args.header,

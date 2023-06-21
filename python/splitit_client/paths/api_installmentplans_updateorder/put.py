@@ -12,6 +12,7 @@
 from dataclasses import dataclass
 import typing_extensions
 import urllib3
+from splitit_client.request_before_hook import request_before_hook
 import json
 from urllib3._collections import HTTPHeaderDict
 
@@ -46,10 +47,12 @@ from . import path
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema
+XSplititTouchPointSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
     'RequestRequiredHeaderParams',
     {
         'X-Splitit-IdempotencyKey': typing.Union[XSplititIdempotencyKeySchema, str, ],
+        'X-Splitit-TouchPoint': typing.Union[XSplititTouchPointSchema, str, ],
     }
 )
 RequestOptionalHeaderParams = typing_extensions.TypedDict(
@@ -68,6 +71,12 @@ request_header_x_splitit_idempotency_key = api_client.HeaderParameter(
     name="X-Splitit-IdempotencyKey",
     style=api_client.ParameterStyle.SIMPLE,
     schema=XSplititIdempotencyKeySchema,
+    required=True,
+)
+request_header_x_splitit_touch_point = api_client.HeaderParameter(
+    name="X-Splitit-TouchPoint",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=XSplititTouchPointSchema,
     required=True,
 )
 # body param
@@ -247,6 +256,7 @@ class BaseApi(api_client.Api):
     def _update_order2_mapped_args(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
@@ -269,6 +279,8 @@ class BaseApi(api_client.Api):
         args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
+        if x_splitit_touch_point is not None:
+            _header_params["X-Splitit-TouchPoint"] = x_splitit_touch_point
         args.header = _header_params
         return args
 
@@ -297,6 +309,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -307,21 +320,31 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'put'.upper()
+        _headers.add('Content-Type', content_type)
     
         if body is schemas.unset:
             raise exceptions.ApiValueError(
                 'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            body=body,
+            auth_settings=_auth,
+            headers=_headers,
+        )
         serialized_data = request_body_installment_plan_update_request_by_identifier.serialize(body, content_type)
-        _headers.add('Content-Type', content_type)
         if 'fields' in serialized_data:
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
-            _body = serialized_data['body']    
+            _body = serialized_data['body']
+    
         response = await self.api_client.async_call_api(
             resource_path=used_path,
-            method='put'.upper(),
+            method=method,
             headers=_headers,
             fields=_fields,
             serialized_body=_body,
@@ -329,11 +352,16 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             timeout=timeout,
         )
-        
+    
         if stream:
             if not 200 <= response.http_response.status <= 299:
-                raise exceptions.ApiStreamingException(status=response.http_response.status, reason=response.http_response.reason)
-        
+                body = (await response.http_response.content.read()).decode("utf-8")
+                raise exceptions.ApiStreamingException(
+                    status=response.http_response.status,
+                    reason=response.http_response.reason,
+                    body=body,
+                )
+    
             async def stream_iterator():
                 """
                 iterates over response.http_response.content and closes connection once iteration has finished
@@ -378,6 +406,7 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
     def _update_order2_oapg(
         self,
         body: typing.Any = None,
@@ -402,6 +431,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_idempotency_key,
+            request_header_x_splitit_touch_point,
         ):
             parameter_data = header_params.get(parameter.name, schemas.unset)
             if parameter_data is schemas.unset:
@@ -412,21 +442,31 @@ class BaseApi(api_client.Api):
         if accept_content_types:
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
+        method = 'put'.upper()
+        _headers.add('Content-Type', content_type)
     
         if body is schemas.unset:
             raise exceptions.ApiValueError(
                 'The required body parameter has an invalid value of: unset. Set a valid value instead')
         _fields = None
         _body = None
+        request_before_hook(
+            resource_path=used_path,
+            method=method,
+            configuration=self.api_client.configuration,
+            body=body,
+            auth_settings=_auth,
+            headers=_headers,
+        )
         serialized_data = request_body_installment_plan_update_request_by_identifier.serialize(body, content_type)
-        _headers.add('Content-Type', content_type)
         if 'fields' in serialized_data:
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
-            _body = serialized_data['body']    
+            _body = serialized_data['body']
+    
         response = self.api_client.call_api(
             resource_path=used_path,
-            method='put'.upper(),
+            method=method,
             headers=_headers,
             fields=_fields,
             serialized_body=_body,
@@ -458,12 +498,14 @@ class BaseApi(api_client.Api):
     
         return api_response
 
+
 class UpdateOrder2(BaseApi):
     # this class is used by api classes that refer to endpoints with operationId fn names
 
     async def aupdate_order2(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
@@ -477,6 +519,7 @@ class UpdateOrder2(BaseApi):
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             ref_order_number=ref_order_number,
             tracking_number=tracking_number,
             capture=capture,
@@ -491,6 +534,7 @@ class UpdateOrder2(BaseApi):
     def update_order2(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
@@ -503,6 +547,7 @@ class UpdateOrder2(BaseApi):
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             ref_order_number=ref_order_number,
             tracking_number=tracking_number,
             capture=capture,
@@ -520,6 +565,7 @@ class ApiForput(BaseApi):
     async def aput(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
@@ -533,6 +579,7 @@ class ApiForput(BaseApi):
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             ref_order_number=ref_order_number,
             tracking_number=tracking_number,
             capture=capture,
@@ -547,6 +594,7 @@ class ApiForput(BaseApi):
     def put(
         self,
         x_splitit_idempotency_key: str,
+        x_splitit_touch_point: str,
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
@@ -559,6 +607,7 @@ class ApiForput(BaseApi):
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
+            x_splitit_touch_point=x_splitit_touch_point,
             ref_order_number=ref_order_number,
             tracking_number=tracking_number,
             capture=capture,

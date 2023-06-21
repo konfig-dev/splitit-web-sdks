@@ -27,6 +27,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -137,6 +146,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -235,6 +253,15 @@ paths:
         name: X-Splitit-IdempotencyKey
         required: true
         schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
           type: string
         style: simple
       requestBody:
@@ -366,6 +393,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -487,6 +523,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -577,6 +622,15 @@ paths:
         name: X-Splitit-IdempotencyKey
         required: true
         schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
           type: string
         style: simple
       requestBody:
@@ -677,6 +731,15 @@ paths:
         name: X-Splitit-IdempotencyKey
         required: true
         schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
           type: string
         style: simple
       requestBody:
@@ -787,6 +850,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -895,6 +967,15 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -977,6 +1058,15 @@ paths:
         name: X-Splitit-IdempotencyKey
         required: true
         schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
           type: string
         style: simple
       requestBody:
@@ -2594,14 +2684,19 @@ components:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          type: string
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-search:
       properties:
         installmentPlanNumber:
@@ -2614,8 +2709,12 @@ components:
           type: object
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          type: string
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
@@ -2623,6 +2722,7 @@ components:
       - refOrderNumber
       - extendedParams
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-initiate:
       properties:
         X-Splitit-TestMode:
@@ -2633,6 +2733,9 @@ components:
           - Automation
           type: string
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         AutoCapture:
           type: boolean
@@ -2653,11 +2756,13 @@ components:
       required:
       - AutoCapture
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans:
       properties:
         X-Splitit-TestMode:
@@ -2668,6 +2773,9 @@ components:
           - Automation
           type: string
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         AutoCapture:
           type: boolean
@@ -2691,30 +2799,40 @@ components:
       - AutoCapture
       - TermsAndConditionsAccepted
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber-verifyauthorization:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          type: string
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-put--api-installmentplans-installmentPlanNumber-updateorder:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         TrackingNumber:
           type: string
@@ -2726,15 +2844,20 @@ components:
           type: boolean
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-put--api-installmentplans-updateorder:
       properties:
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         RefOrderNumber:
           type: string
@@ -2748,15 +2871,20 @@ components:
           $ref: '#/components/schemas/IdentifierContract'
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-refund:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         Amount:
           format: decimal
@@ -2766,29 +2894,39 @@ components:
       required:
       - Amount
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          type: string
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-check-eligibility:
       properties:
         X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
           type: string
         PlanData:
           $ref: '#/components/schemas/PlanData'
@@ -2798,10 +2936,12 @@ components:
           $ref: '#/components/schemas/AddressData'
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     ErrorExtended_allOf:
       properties:
         ExtraData:

@@ -38,6 +38,7 @@ try:
     cancel_response = splitit.installment_plan.cancel(
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
@@ -81,6 +82,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -88,6 +90,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### path_params
 #### RequestPathParams
@@ -266,6 +275,7 @@ splitit = Splitit(
 try:
     check_eligibility_response = splitit.installment_plan.check_eligibility(
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         plan_data={
             "total_amount": 3.14,
             "number_of_installments": 1,
@@ -347,6 +357,7 @@ Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -354,6 +365,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### Return Types, Responses
 
@@ -519,6 +537,7 @@ try:
     get_response = splitit.installment_plan.get(
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
     )
     pprint(get_response.body)
     pprint(get_response.body["date_created"])
@@ -577,6 +596,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -584,6 +604,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### path_params
 #### RequestPathParams
@@ -763,6 +790,7 @@ try:
     post_response = splitit.installment_plan.post(
         auto_capture=True,  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         attempt3d_secure=True,  # optional
         shopper={},  # optional
         plan_data={
@@ -854,6 +882,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-TestMode | XSplititTestModeSchema | | optional
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititTestModeSchema
 
@@ -868,6 +897,13 @@ str,  | str,  |  | must be one of ["None", "Regular", "Fast", "Automation", ]
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### Return Types, Responses
 
@@ -1060,6 +1096,7 @@ try:
         auto_capture=True,  # required
         terms_and_conditions_accepted=True,  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         attempt3d_secure=True,  # optional
         shopper={},  # optional
         plan_data={
@@ -1158,6 +1195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-TestMode | XSplititTestModeSchema | | optional
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititTestModeSchema
 
@@ -1172,6 +1210,13 @@ str,  | str,  |  | must be one of ["None", "Regular", "Fast", "Automation", ]
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### Return Types, Responses
 
@@ -1364,6 +1409,7 @@ try:
         amount=3.14,  # required
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         refund_strategy="FutureInstallmentsFirst",  # optional
     )
     pprint(refund_response.body)
@@ -1441,6 +1487,7 @@ Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -1448,6 +1495,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### path_params
 #### RequestPathParams
@@ -1626,6 +1680,7 @@ splitit = Splitit(
 try:
     search_response = splitit.installment_plan.search(
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         installment_plan_number="string_example",  # optional
         ref_order_number="string_example",  # optional
         extended_params={
@@ -1710,6 +1765,7 @@ Key | Input Type | Accessed Type | Description | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -1717,6 +1773,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### Return Types, Responses
 
@@ -1882,6 +1945,7 @@ try:
     update_order_response = splitit.installment_plan.update_order(
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         tracking_number="string_example",  # optional
         ref_order_number="string_example",  # optional
         shipping_status="Pending",  # optional
@@ -1960,6 +2024,7 @@ Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -1967,6 +2032,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### path_params
 #### RequestPathParams
@@ -2146,6 +2218,7 @@ try:
     update_order2_response = splitit.installment_plan.update_order2(
         body=None,  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
         ref_order_number="string_example",  # optional
         tracking_number="string_example",  # optional
         capture=True,  # optional
@@ -2224,6 +2297,7 @@ Type | Description  | Notes
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -2231,6 +2305,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### Return Types, Responses
 
@@ -2396,6 +2477,7 @@ try:
     verify_authorization_response = splitit.installment_plan.verify_authorization(
         installment_plan_number="installmentPlanNumber_example",  # required
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",  # required
+        x_splitit_touch_point="",  # required
     )
     pprint(verify_authorization_response.body)
     pprint(verify_authorization_response.body["is_authorized"])
@@ -2441,6 +2523,7 @@ skip_deserialization | bool | default is False | when True, headers and body wil
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | | 
+X-Splitit-TouchPoint | XSplititTouchPointSchema | | 
 
 # XSplititIdempotencyKeySchema
 
@@ -2448,6 +2531,13 @@ X-Splitit-IdempotencyKey | XSplititIdempotencyKeySchema | |
 Input Type | Accessed Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 str,  | str,  |  | 
+
+# XSplititTouchPointSchema
+
+## Model Type Info
+Input Type | Accessed Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+str,  | str,  |  | if omitted the server will use the default value of ""
 
 ### path_params
 #### RequestPathParams
