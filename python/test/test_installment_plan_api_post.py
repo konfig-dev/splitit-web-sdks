@@ -35,6 +35,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
         """Test case for post"""
         response = await self.splitit.installment_plan.apost(
             x_splitit_idempotency_key=str(uuid.uuid4()),
+            x_splitit_touch_point=str(uuid.uuid4()),
             auto_capture=True,
             attempt3d_secure=True,
             shopper={"Email": "fake@email.com"},
@@ -60,6 +61,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
         """Test case for post"""
         response = self.splitit.installment_plan.post(
             x_splitit_idempotency_key=str(uuid.uuid4()),
+            x_splitit_touch_point=str(uuid.uuid4()),
             auto_capture=True,
             attempt3d_secure=True,
             shopper={"Email": "fake@email.com"},
@@ -87,6 +89,7 @@ class TestInstallmentPlanApiSimple(unittest.TestCase):
         """
         response = self.splitit.installment_plan.post(
             x_splitit_idempotency_key=str(uuid.uuid4()),
+            x_splitit_touch_point=str(uuid.uuid4()),
             auto_capture=True,
             attempt3d_secure=True,
             shopper={"Email": "fake@email.com"},
