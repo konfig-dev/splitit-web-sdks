@@ -64,7 +64,9 @@ func Test_simple(t *testing.T) {
 		r := client.InstallmentPlanApi.Post()
 		r = r.InstallmentPlanInitiateRequest(*installmentPlanCreateRequest)
 		xSplititIdempotencyKey := "1234"
+		xSplititTouchPoint := "1234"
 		r = r.XSplititIdempotencyKey(xSplititIdempotencyKey)
+		r = r.XSplititTouchPoint(xSplititTouchPoint)
 		fmt.Printf("%+v\n", r)
 
 		resp, httpRes, err := r.Execute()
