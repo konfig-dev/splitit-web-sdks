@@ -46,6 +46,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "responses": {
@@ -205,6 +215,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "responses": {
@@ -354,6 +374,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
             }
           }
         ],
@@ -552,6 +582,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "requestBody": {
@@ -740,6 +780,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "responses": {
@@ -880,6 +930,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
             }
           }
         ],
@@ -1038,6 +1098,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
             }
           }
         ],
@@ -1206,6 +1276,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "requestBody": {
@@ -1373,6 +1453,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
           }
         ],
         "responses": {
@@ -1504,6 +1594,16 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
             }
           }
         ],

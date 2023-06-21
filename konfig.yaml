@@ -7,6 +7,10 @@ specPath: swagger-fixed.json
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
+fixConfig:
+  modify:
+    $.servers[0]:
+      url: https://web-api-v3.production.splitit.com
 generators:
   php:
     version: 1.12.0

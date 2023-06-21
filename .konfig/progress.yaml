@@ -22,6 +22,8 @@ securityParameters:
     header: false
   X-Splitit-TestMode:
     header: false
+  X-Splitit-TouchPoint:
+    header: false
   extendedParams:
     query: false
   installmentPlanNumber:
