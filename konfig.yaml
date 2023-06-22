@@ -43,6 +43,7 @@ generators:
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
+    clientName: Splitit
     outputDirectory: java
     git:
       userId: konfig-dev
