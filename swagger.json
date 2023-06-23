@@ -5,7 +5,7 @@
     "title": "splitit-web-api-v3",
     "version": "1.0.0"
   },
-  "host": "web-api-v3.sandbox.splitit.com",
+  "host": "web-api-v3.production.splitit.com",
   "schemes": [
     "https"
   ],
@@ -46,24 +46,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanGetResponse"
             }
           },
           "401": {
@@ -80,18 +70,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanGetResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -142,24 +132,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanSearchResponse"
             }
           },
           "401": {
@@ -176,18 +156,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanSearchResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -248,24 +228,21 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InitiatePlanResponse"
+            }
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PlanErrorResponse"
             }
           },
           "401": {
@@ -282,25 +259,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InitiatePlanResponse"
-            }
-          },
-          "400": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PlanErrorResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -361,24 +331,21 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanCreateResponse"
+            }
+          },
+          "400": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/PlanErrorResponse"
             }
           },
           "401": {
@@ -395,25 +362,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanCreateResponse"
-            }
-          },
-          "400": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/PlanErrorResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -450,24 +410,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/VerifyAuthorizationResponse"
             }
           },
           "401": {
@@ -484,18 +434,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/VerifyAuthorizationResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -547,24 +497,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
             }
           },
           "401": {
@@ -581,18 +521,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -637,24 +577,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
             }
           },
           "401": {
@@ -671,18 +601,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanUpdateResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -734,24 +664,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanRefundResponse"
             }
           },
           "401": {
@@ -768,18 +688,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanRefundResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -816,24 +736,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentPlanCancelResponse"
             }
           },
           "401": {
@@ -850,18 +760,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentPlanCancelResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
@@ -906,24 +816,14 @@
               "type": "string"
             },
             "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
           }
         ],
         "responses": {
-          "404": {
+          "200": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/FailedResponse"
+              "$ref": "#/definitions/InstallmentsEligibilityResponse"
             }
           },
           "401": {
@@ -940,18 +840,18 @@
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "500": {
+          "404": {
             "x-nullable": false,
             "description": "",
             "schema": {
               "$ref": "#/definitions/FailedResponse"
             }
           },
-          "200": {
+          "500": {
             "x-nullable": false,
             "description": "",
             "schema": {
-              "$ref": "#/definitions/InstallmentsEligibilityResponse"
+              "$ref": "#/definitions/FailedResponse"
             }
           }
         }
