@@ -36,6 +36,8 @@ class PaymentMethodType(
         enum_value_to_name = {
             "Card": "CARD",
             "SplititToken": "SPLITIT_TOKEN",
+            "BluesnapVaultedShopperToken": "BLUESNAP_VAULTED_SHOPPER_TOKEN",
+            "SplititMockerV2Token": "SPLITIT_MOCKER_V2TOKEN",
         }
     
     @schemas.classproperty
@@ -45,3 +47,11 @@ class PaymentMethodType(
     @schemas.classproperty
     def SPLITIT_TOKEN(cls):
         return cls("SplititToken")
+    
+    @schemas.classproperty
+    def BLUESNAP_VAULTED_SHOPPER_TOKEN(cls):
+        return cls("BluesnapVaultedShopperToken")
+    
+    @schemas.classproperty
+    def SPLITIT_MOCKER_V2TOKEN(cls):
+        return cls("SplititMockerV2Token")

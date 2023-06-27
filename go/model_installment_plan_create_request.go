@@ -24,6 +24,7 @@ type InstallmentPlanCreateRequest struct {
 	BillingAddress *AddressDataModel `json:"BillingAddress,omitempty"`
 	PaymentMethod *PaymentMethodModel `json:"PaymentMethod,omitempty"`
 	RedirectUrls *RedirectionEndpointsModel `json:"RedirectUrls,omitempty"`
+	ProcessingData *ProcessingData `json:"ProcessingData,omitempty"`
 	EventsEndpoints *EventsEndpointsModel `json:"EventsEndpoints,omitempty"`
 }
 
@@ -286,6 +287,38 @@ func (o *InstallmentPlanCreateRequest) SetRedirectUrls(v RedirectionEndpointsMod
 	o.RedirectUrls = &v
 }
 
+// GetProcessingData returns the ProcessingData field value if set, zero value otherwise.
+func (o *InstallmentPlanCreateRequest) GetProcessingData() ProcessingData {
+	if o == nil || isNil(o.ProcessingData) {
+		var ret ProcessingData
+		return ret
+	}
+	return *o.ProcessingData
+}
+
+// GetProcessingDataOk returns a tuple with the ProcessingData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanCreateRequest) GetProcessingDataOk() (*ProcessingData, bool) {
+	if o == nil || isNil(o.ProcessingData) {
+    return nil, false
+	}
+	return o.ProcessingData, true
+}
+
+// HasProcessingData returns a boolean if a field has been set.
+func (o *InstallmentPlanCreateRequest) HasProcessingData() bool {
+	if o != nil && !isNil(o.ProcessingData) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingData gets a reference to the given ProcessingData and assigns it to the ProcessingData field.
+func (o *InstallmentPlanCreateRequest) SetProcessingData(v ProcessingData) {
+	o.ProcessingData = &v
+}
+
 // GetEventsEndpoints returns the EventsEndpoints field value if set, zero value otherwise.
 func (o *InstallmentPlanCreateRequest) GetEventsEndpoints() EventsEndpointsModel {
 	if o == nil || isNil(o.EventsEndpoints) {
@@ -343,6 +376,9 @@ func (o InstallmentPlanCreateRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.RedirectUrls) {
 		toSerialize["RedirectUrls"] = o.RedirectUrls
+	}
+	if !isNil(o.ProcessingData) {
+		toSerialize["ProcessingData"] = o.ProcessingData
 	}
 	if !isNil(o.EventsEndpoints) {
 		toSerialize["EventsEndpoints"] = o.EventsEndpoints

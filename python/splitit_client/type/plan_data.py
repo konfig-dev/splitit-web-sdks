@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.processing_data2 import ProcessingData2
 from splitit_client.type.purchase_method import PurchaseMethod
 
 class RequiredPlanData(TypedDict):
@@ -35,6 +36,8 @@ class OptionalPlanData(TypedDict, total=False):
     AllowedInstallmentOptions: typing.List[int]
 
     Tags: typing.Dict[str, str]
+
+    ProcessingData: ProcessingData2
 
     FirstInstallmentDate: datetime
 

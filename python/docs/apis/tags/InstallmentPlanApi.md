@@ -801,6 +801,7 @@ try:
         redirect_urls={},  # optional
         ux_settings={},  # optional
         events_endpoints={},  # optional
+        processing_data={},  # optional
         x_splitit_test_mode="None",  # optional
     )
     pprint(post_response.body)
@@ -1108,6 +1109,7 @@ try:
             "type": "Card",
         },  # optional
         redirect_urls={},  # optional
+        processing_data={},  # optional
         events_endpoints={},  # optional
         x_splitit_test_mode="None",  # optional
     )

@@ -19,6 +19,8 @@ type PaymentMethodModel struct {
 	Type PaymentMethodType `json:"Type"`
 	Card *CardData `json:"Card,omitempty"`
 	Token *string `json:"Token,omitempty"`
+	BluesnapVaultedShopperToken *BluesnapVaultedShopperToken `json:"BluesnapVaultedShopperToken,omitempty"`
+	MockerShopperToken *MockerShopperToken `json:"MockerShopperToken,omitempty"`
 }
 
 // NewPaymentMethodModel instantiates a new PaymentMethodModel object
@@ -127,6 +129,70 @@ func (o *PaymentMethodModel) SetToken(v string) {
 	o.Token = &v
 }
 
+// GetBluesnapVaultedShopperToken returns the BluesnapVaultedShopperToken field value if set, zero value otherwise.
+func (o *PaymentMethodModel) GetBluesnapVaultedShopperToken() BluesnapVaultedShopperToken {
+	if o == nil || isNil(o.BluesnapVaultedShopperToken) {
+		var ret BluesnapVaultedShopperToken
+		return ret
+	}
+	return *o.BluesnapVaultedShopperToken
+}
+
+// GetBluesnapVaultedShopperTokenOk returns a tuple with the BluesnapVaultedShopperToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentMethodModel) GetBluesnapVaultedShopperTokenOk() (*BluesnapVaultedShopperToken, bool) {
+	if o == nil || isNil(o.BluesnapVaultedShopperToken) {
+    return nil, false
+	}
+	return o.BluesnapVaultedShopperToken, true
+}
+
+// HasBluesnapVaultedShopperToken returns a boolean if a field has been set.
+func (o *PaymentMethodModel) HasBluesnapVaultedShopperToken() bool {
+	if o != nil && !isNil(o.BluesnapVaultedShopperToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetBluesnapVaultedShopperToken gets a reference to the given BluesnapVaultedShopperToken and assigns it to the BluesnapVaultedShopperToken field.
+func (o *PaymentMethodModel) SetBluesnapVaultedShopperToken(v BluesnapVaultedShopperToken) {
+	o.BluesnapVaultedShopperToken = &v
+}
+
+// GetMockerShopperToken returns the MockerShopperToken field value if set, zero value otherwise.
+func (o *PaymentMethodModel) GetMockerShopperToken() MockerShopperToken {
+	if o == nil || isNil(o.MockerShopperToken) {
+		var ret MockerShopperToken
+		return ret
+	}
+	return *o.MockerShopperToken
+}
+
+// GetMockerShopperTokenOk returns a tuple with the MockerShopperToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentMethodModel) GetMockerShopperTokenOk() (*MockerShopperToken, bool) {
+	if o == nil || isNil(o.MockerShopperToken) {
+    return nil, false
+	}
+	return o.MockerShopperToken, true
+}
+
+// HasMockerShopperToken returns a boolean if a field has been set.
+func (o *PaymentMethodModel) HasMockerShopperToken() bool {
+	if o != nil && !isNil(o.MockerShopperToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetMockerShopperToken gets a reference to the given MockerShopperToken and assigns it to the MockerShopperToken field.
+func (o *PaymentMethodModel) SetMockerShopperToken(v MockerShopperToken) {
+	o.MockerShopperToken = &v
+}
+
 func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -137,6 +203,12 @@ func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Token) {
 		toSerialize["Token"] = o.Token
+	}
+	if !isNil(o.BluesnapVaultedShopperToken) {
+		toSerialize["BluesnapVaultedShopperToken"] = o.BluesnapVaultedShopperToken
+	}
+	if !isNil(o.MockerShopperToken) {
+		toSerialize["MockerShopperToken"] = o.MockerShopperToken
 	}
 	return json.Marshal(toSerialize)
 }

@@ -1922,6 +1922,9 @@
           },
           "ECI": {
             "type": "string"
+          },
+          "GatewaySourceResponse": {
+            "type": "string"
           }
         }
       },
@@ -2012,6 +2015,12 @@
           },
           "Token": {
             "type": "string"
+          },
+          "BluesnapVaultedShopperToken": {
+            "$ref": "#/components/schemas/BluesnapVaultedShopperToken"
+          },
+          "MockerShopperToken": {
+            "$ref": "#/components/schemas/MockerShopperToken"
           }
         }
       },
@@ -2020,11 +2029,15 @@
         "type": "string",
         "x-enumNames": [
           "Card",
-          "SplititToken"
+          "SplititToken",
+          "BluesnapVaultedShopperToken",
+          "SplititMockerV2Token"
         ],
         "enum": [
           "Card",
-          "SplititToken"
+          "SplititToken",
+          "BluesnapVaultedShopperToken",
+          "SplititMockerV2Token"
         ]
       },
       "CardData": {
@@ -2099,6 +2112,38 @@
           "Prepaid",
           "VisaDeferredDebit",
           "NetworkOnly"
+        ]
+      },
+      "BluesnapVaultedShopperToken": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GatewayTokenData"
+          },
+          {
+            "type": "object"
+          }
+        ]
+      },
+      "GatewayTokenData": {
+        "type": "object",
+        "x-abstract": true,
+        "properties": {
+          "Token": {
+            "type": "string"
+          },
+          "Last4Digit": {
+            "type": "string"
+          }
+        }
+      },
+      "MockerShopperToken": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/GatewayTokenData"
+          },
+          {
+            "type": "object"
+          }
         ]
       },
       "Installment": {
@@ -2371,6 +2416,9 @@
           },
           "EventsEndpoints": {
             "$ref": "#/components/schemas/EventsEndpointsModel"
+          },
+          "ProcessingData": {
+            "$ref": "#/components/schemas/ProcessingData"
           }
         }
       },
@@ -2470,6 +2518,43 @@
         "type": "object",
         "properties": {
           "CreateSucceeded": {
+            "type": "string"
+          }
+        }
+      },
+      "ProcessingData": {
+        "type": "object",
+        "properties": {
+          "AttemptThreeDSecured": {
+            "type": "boolean"
+          },
+          "SoftDescriptor": {
+            "type": "string"
+          },
+          "ThreeDSData": {
+            "$ref": "#/components/schemas/ThreeDSData"
+          }
+        }
+      },
+      "ThreeDSData": {
+        "type": "object",
+        "properties": {
+          "ECI": {
+            "type": "string"
+          },
+          "CAVV": {
+            "type": "string"
+          },
+          "XID": {
+            "type": "string"
+          },
+          "DirectoryServerTxnId": {
+            "type": "string"
+          },
+          "ThreeDSVersion": {
+            "type": "string"
+          },
+          "TransactionId": {
             "type": "string"
           }
         }
@@ -2583,6 +2668,9 @@
           },
           "RedirectUrls": {
             "$ref": "#/components/schemas/RedirectionEndpointsModel"
+          },
+          "ProcessingData": {
+            "$ref": "#/components/schemas/ProcessingData"
           },
           "EventsEndpoints": {
             "$ref": "#/components/schemas/EventsEndpointsModel"
@@ -2949,9 +3037,49 @@
               "type": "string"
             }
           },
+          "ProcessingData": {
+            "$ref": "#/components/schemas/ProcessingData2"
+          },
           "FirstInstallmentDate": {
             "type": "string",
             "format": "date-time"
+          }
+        }
+      },
+      "ProcessingData2": {
+        "type": "object",
+        "properties": {
+          "AttemptThreeDSecured": {
+            "type": "boolean"
+          },
+          "SoftDescriptor": {
+            "type": "string"
+          },
+          "ThreeDSData": {
+            "$ref": "#/components/schemas/ThreeDSData2"
+          }
+        }
+      },
+      "ThreeDSData2": {
+        "type": "object",
+        "properties": {
+          "ECI": {
+            "type": "string"
+          },
+          "CAVV": {
+            "type": "string"
+          },
+          "XID": {
+            "type": "string"
+          },
+          "DirectoryServerTxnId": {
+            "type": "string"
+          },
+          "ThreeDSVersion": {
+            "type": "string"
+          },
+          "TransactionId": {
+            "type": "string"
           }
         }
       }

@@ -63,6 +63,10 @@ class InstallmentPlanCreateRequest(
                 return RedirectionEndpointsModel
         
             @staticmethod
+            def ProcessingData() -> typing.Type['ProcessingData']:
+                return ProcessingData
+        
+            @staticmethod
             def EventsEndpoints() -> typing.Type['EventsEndpointsModel']:
                 return EventsEndpointsModel
             __annotations__ = {
@@ -74,6 +78,7 @@ class InstallmentPlanCreateRequest(
                 "BillingAddress": BillingAddress,
                 "PaymentMethod": PaymentMethod,
                 "RedirectUrls": RedirectUrls,
+                "ProcessingData": ProcessingData,
                 "EventsEndpoints": EventsEndpoints,
             }
     
@@ -105,12 +110,15 @@ class InstallmentPlanCreateRequest(
     def __getitem__(self, name: typing_extensions.Literal["RedirectUrls"]) -> 'RedirectionEndpointsModel': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ProcessingData"]) -> 'ProcessingData': ...
+    
+    @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["EventsEndpoints"]) -> 'EventsEndpointsModel': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "TermsAndConditionsAccepted", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "PaymentMethod", "RedirectUrls", "EventsEndpoints", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "TermsAndConditionsAccepted", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "PaymentMethod", "RedirectUrls", "ProcessingData", "EventsEndpoints", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -140,12 +148,15 @@ class InstallmentPlanCreateRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["RedirectUrls"]) -> typing.Union['RedirectionEndpointsModel', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ProcessingData"]) -> typing.Union['ProcessingData', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["EventsEndpoints"]) -> typing.Union['EventsEndpointsModel', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "TermsAndConditionsAccepted", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "PaymentMethod", "RedirectUrls", "EventsEndpoints", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "TermsAndConditionsAccepted", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "PaymentMethod", "RedirectUrls", "ProcessingData", "EventsEndpoints", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -160,6 +171,7 @@ class InstallmentPlanCreateRequest(
         BillingAddress: typing.Union['AddressDataModel', schemas.Unset] = schemas.unset,
         PaymentMethod: typing.Union['PaymentMethodModel', schemas.Unset] = schemas.unset,
         RedirectUrls: typing.Union['RedirectionEndpointsModel', schemas.Unset] = schemas.unset,
+        ProcessingData: typing.Union['ProcessingData', schemas.Unset] = schemas.unset,
         EventsEndpoints: typing.Union['EventsEndpointsModel', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
@@ -175,6 +187,7 @@ class InstallmentPlanCreateRequest(
             BillingAddress=BillingAddress,
             PaymentMethod=PaymentMethod,
             RedirectUrls=RedirectUrls,
+            ProcessingData=ProcessingData,
             EventsEndpoints=EventsEndpoints,
             _configuration=_configuration,
             **kwargs,
@@ -184,5 +197,6 @@ from splitit_client.model.address_data_model import AddressDataModel
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel
 from splitit_client.model.payment_method_model import PaymentMethodModel
 from splitit_client.model.plan_data_model import PlanDataModel
+from splitit_client.model.processing_data import ProcessingData
 from splitit_client.model.redirection_endpoints_model import RedirectionEndpointsModel
 from splitit_client.model.shopper_data import ShopperData

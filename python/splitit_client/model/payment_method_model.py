@@ -46,10 +46,20 @@ class PaymentMethodModel(
             def Card() -> typing.Type['CardData']:
                 return CardData
             Token = schemas.StrSchema
+        
+            @staticmethod
+            def BluesnapVaultedShopperToken() -> typing.Type['BluesnapVaultedShopperToken']:
+                return BluesnapVaultedShopperToken
+        
+            @staticmethod
+            def MockerShopperToken() -> typing.Type['MockerShopperToken']:
+                return MockerShopperToken
             __annotations__ = {
                 "Type": Type,
                 "Card": Card,
                 "Token": Token,
+                "BluesnapVaultedShopperToken": BluesnapVaultedShopperToken,
+                "MockerShopperToken": MockerShopperToken,
             }
     
     Type: 'PaymentMethodType'
@@ -64,9 +74,15 @@ class PaymentMethodModel(
     def __getitem__(self, name: typing_extensions.Literal["Token"]) -> MetaOapg.properties.Token: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["BluesnapVaultedShopperToken"]) -> 'BluesnapVaultedShopperToken': ...
+    
+    @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["MockerShopperToken"]) -> 'MockerShopperToken': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Type", "Card", "Token", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Type", "Card", "Token", "BluesnapVaultedShopperToken", "MockerShopperToken", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -81,9 +97,15 @@ class PaymentMethodModel(
     def get_item_oapg(self, name: typing_extensions.Literal["Token"]) -> typing.Union[MetaOapg.properties.Token, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["BluesnapVaultedShopperToken"]) -> typing.Union['BluesnapVaultedShopperToken', schemas.Unset]: ...
+    
+    @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["MockerShopperToken"]) -> typing.Union['MockerShopperToken', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Type", "Card", "Token", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Type", "Card", "Token", "BluesnapVaultedShopperToken", "MockerShopperToken", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -93,6 +115,8 @@ class PaymentMethodModel(
         Type: 'PaymentMethodType',
         Card: typing.Union['CardData', schemas.Unset] = schemas.unset,
         Token: typing.Union[MetaOapg.properties.Token, str, schemas.Unset] = schemas.unset,
+        BluesnapVaultedShopperToken: typing.Union['BluesnapVaultedShopperToken', schemas.Unset] = schemas.unset,
+        MockerShopperToken: typing.Union['MockerShopperToken', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'PaymentMethodModel':
@@ -102,9 +126,13 @@ class PaymentMethodModel(
             Type=Type,
             Card=Card,
             Token=Token,
+            BluesnapVaultedShopperToken=BluesnapVaultedShopperToken,
+            MockerShopperToken=MockerShopperToken,
             _configuration=_configuration,
             **kwargs,
         )
 
+from splitit_client.model.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
 from splitit_client.model.card_data import CardData
+from splitit_client.model.mocker_shopper_token import MockerShopperToken
 from splitit_client.model.payment_method_type import PaymentMethodType

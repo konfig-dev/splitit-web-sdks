@@ -26,6 +26,7 @@ type AuthorizationModel struct {
 	ThreeDSRedirect *ThreeDsRedirectDataV3 `json:"ThreeDSRedirect,omitempty"`
 	CAVV *string `json:"CAVV,omitempty"`
 	ECI *string `json:"ECI,omitempty"`
+	GatewaySourceResponse *string `json:"GatewaySourceResponse,omitempty"`
 }
 
 // NewAuthorizationModel instantiates a new AuthorizationModel object
@@ -326,6 +327,38 @@ func (o *AuthorizationModel) SetECI(v string) {
 	o.ECI = &v
 }
 
+// GetGatewaySourceResponse returns the GatewaySourceResponse field value if set, zero value otherwise.
+func (o *AuthorizationModel) GetGatewaySourceResponse() string {
+	if o == nil || isNil(o.GatewaySourceResponse) {
+		var ret string
+		return ret
+	}
+	return *o.GatewaySourceResponse
+}
+
+// GetGatewaySourceResponseOk returns a tuple with the GatewaySourceResponse field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AuthorizationModel) GetGatewaySourceResponseOk() (*string, bool) {
+	if o == nil || isNil(o.GatewaySourceResponse) {
+    return nil, false
+	}
+	return o.GatewaySourceResponse, true
+}
+
+// HasGatewaySourceResponse returns a boolean if a field has been set.
+func (o *AuthorizationModel) HasGatewaySourceResponse() bool {
+	if o != nil && !isNil(o.GatewaySourceResponse) {
+		return true
+	}
+
+	return false
+}
+
+// SetGatewaySourceResponse gets a reference to the given string and assigns it to the GatewaySourceResponse field.
+func (o *AuthorizationModel) SetGatewaySourceResponse(v string) {
+	o.GatewaySourceResponse = &v
+}
+
 func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -354,6 +387,9 @@ func (o AuthorizationModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ECI) {
 		toSerialize["ECI"] = o.ECI
+	}
+	if !isNil(o.GatewaySourceResponse) {
+		toSerialize["GatewaySourceResponse"] = o.GatewaySourceResponse
 	}
 	return json.Marshal(toSerialize)
 }

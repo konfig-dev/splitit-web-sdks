@@ -37,5 +37,7 @@ class OptionalAuthorizationModel(TypedDict, total=False):
 
     ECI: str
 
+    GatewaySourceResponse: str
+
 class AuthorizationModel(RequiredAuthorizationModel, OptionalAuthorizationModel):
     pass

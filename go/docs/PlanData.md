@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **RefOrderNumber** | Pointer to **string** |  | [optional] 
 **AllowedInstallmentOptions** | Pointer to **[]int32** |  | [optional] 
 **Tags** | Pointer to **map[string]string** |  | [optional] 
+**ProcessingData** | Pointer to [**ProcessingData2**](ProcessingData2.md) |  | [optional] 
 **FirstInstallmentDate** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
@@ -243,6 +244,31 @@ SetTags sets Tags field to given value.
 `func (o *PlanData) HasTags() bool`
 
 HasTags returns a boolean if a field has been set.
+
+### GetProcessingData
+
+`func (o *PlanData) GetProcessingData() ProcessingData2`
+
+GetProcessingData returns the ProcessingData field if non-nil, zero value otherwise.
+
+### GetProcessingDataOk
+
+`func (o *PlanData) GetProcessingDataOk() (*ProcessingData2, bool)`
+
+GetProcessingDataOk returns a tuple with the ProcessingData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingData
+
+`func (o *PlanData) SetProcessingData(v ProcessingData2)`
+
+SetProcessingData sets ProcessingData field to given value.
+
+### HasProcessingData
+
+`func (o *PlanData) HasProcessingData() bool`
+
+HasProcessingData returns a boolean if a field has been set.
 
 ### GetFirstInstallmentDate
 

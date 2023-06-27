@@ -24,6 +24,7 @@ type InstallmentPlanInitiateRequest struct {
 	RedirectUrls *InitiateRedirectionEndpointsModel `json:"RedirectUrls,omitempty"`
 	UxSettings *UxSettingsModel `json:"UxSettings,omitempty"`
 	EventsEndpoints *EventsEndpointsModel `json:"EventsEndpoints,omitempty"`
+	ProcessingData *ProcessingData `json:"ProcessingData,omitempty"`
 }
 
 // NewInstallmentPlanInitiateRequest instantiates a new InstallmentPlanInitiateRequest object
@@ -292,6 +293,38 @@ func (o *InstallmentPlanInitiateRequest) SetEventsEndpoints(v EventsEndpointsMod
 	o.EventsEndpoints = &v
 }
 
+// GetProcessingData returns the ProcessingData field value if set, zero value otherwise.
+func (o *InstallmentPlanInitiateRequest) GetProcessingData() ProcessingData {
+	if o == nil || isNil(o.ProcessingData) {
+		var ret ProcessingData
+		return ret
+	}
+	return *o.ProcessingData
+}
+
+// GetProcessingDataOk returns a tuple with the ProcessingData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanInitiateRequest) GetProcessingDataOk() (*ProcessingData, bool) {
+	if o == nil || isNil(o.ProcessingData) {
+    return nil, false
+	}
+	return o.ProcessingData, true
+}
+
+// HasProcessingData returns a boolean if a field has been set.
+func (o *InstallmentPlanInitiateRequest) HasProcessingData() bool {
+	if o != nil && !isNil(o.ProcessingData) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingData gets a reference to the given ProcessingData and assigns it to the ProcessingData field.
+func (o *InstallmentPlanInitiateRequest) SetProcessingData(v ProcessingData) {
+	o.ProcessingData = &v
+}
+
 func (o InstallmentPlanInitiateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -317,6 +350,9 @@ func (o InstallmentPlanInitiateRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.EventsEndpoints) {
 		toSerialize["EventsEndpoints"] = o.EventsEndpoints
+	}
+	if !isNil(o.ProcessingData) {
+		toSerialize["ProcessingData"] = o.ProcessingData
 	}
 	return json.Marshal(toSerialize)
 }

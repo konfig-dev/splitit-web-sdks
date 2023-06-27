@@ -32,6 +32,7 @@ import frozendict  # noqa: F401
 from splitit_client import schemas  # noqa: F401
 
 from splitit_client.model.installment_plan_initiate_request import InstallmentPlanInitiateRequest as InstallmentPlanInitiateRequestSchema
+from splitit_client.model.processing_data import ProcessingData as ProcessingDataSchema
 from splitit_client.model.plan_error_response import PlanErrorResponse as PlanErrorResponseSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel as InitiateRedirectionEndpointsModelSchema
@@ -47,6 +48,7 @@ from splitit_client.type.initiate_redirection_endpoints_model import InitiateRed
 from splitit_client.type.address_data_model import AddressDataModel
 from splitit_client.type.installment_plan_initiate_request import InstallmentPlanInitiateRequest
 from splitit_client.type.plan_error_response import PlanErrorResponse
+from splitit_client.type.processing_data import ProcessingData
 from splitit_client.type.events_endpoints_model import EventsEndpointsModel
 from splitit_client.type.initiate_plan_response import InitiatePlanResponse
 from splitit_client.type.plan_data_model import PlanDataModel
@@ -318,6 +320,7 @@ class BaseApi(api_client.Api):
         redirect_urls: typing.Optional[InitiateRedirectionEndpointsModel] = None,
         ux_settings: typing.Optional[UxSettingsModel] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -339,6 +342,8 @@ class BaseApi(api_client.Api):
             _body["UxSettings"] = ux_settings
         if events_endpoints is not None:
             _body["EventsEndpoints"] = events_endpoints
+        if processing_data is not None:
+            _body["ProcessingData"] = processing_data
         args.body = _body
         if x_splitit_test_mode is not None:
             _header_params["X-Splitit-TestMode"] = x_splitit_test_mode
@@ -581,6 +586,7 @@ class Post(BaseApi):
         redirect_urls: typing.Optional[InitiateRedirectionEndpointsModel] = None,
         ux_settings: typing.Optional[UxSettingsModel] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -598,6 +604,7 @@ class Post(BaseApi):
             redirect_urls=redirect_urls,
             ux_settings=ux_settings,
             events_endpoints=events_endpoints,
+            processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
         )
         return await self._apost_oapg(
@@ -617,6 +624,7 @@ class Post(BaseApi):
         redirect_urls: typing.Optional[InitiateRedirectionEndpointsModel] = None,
         ux_settings: typing.Optional[UxSettingsModel] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -633,6 +641,7 @@ class Post(BaseApi):
             redirect_urls=redirect_urls,
             ux_settings=ux_settings,
             events_endpoints=events_endpoints,
+            processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
         )
         return self._post_oapg(
@@ -655,6 +664,7 @@ class ApiForpost(BaseApi):
         redirect_urls: typing.Optional[InitiateRedirectionEndpointsModel] = None,
         ux_settings: typing.Optional[UxSettingsModel] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -672,6 +682,7 @@ class ApiForpost(BaseApi):
             redirect_urls=redirect_urls,
             ux_settings=ux_settings,
             events_endpoints=events_endpoints,
+            processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
         )
         return await self._apost_oapg(
@@ -691,6 +702,7 @@ class ApiForpost(BaseApi):
         redirect_urls: typing.Optional[InitiateRedirectionEndpointsModel] = None,
         ux_settings: typing.Optional[UxSettingsModel] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -707,6 +719,7 @@ class ApiForpost(BaseApi):
             redirect_urls=redirect_urls,
             ux_settings=ux_settings,
             events_endpoints=events_endpoints,
+            processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
         )
         return self._post_oapg(

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **RedirectUrls** | Pointer to [**InitiateRedirectionEndpointsModel**](InitiateRedirectionEndpointsModel.md) |  | [optional] 
 **UxSettings** | Pointer to [**UxSettingsModel**](UxSettingsModel.md) |  | [optional] 
 **EventsEndpoints** | Pointer to [**EventsEndpointsModel**](EventsEndpointsModel.md) |  | [optional] 
+**ProcessingData** | Pointer to [**ProcessingData**](ProcessingData.md) |  | [optional] 
 
 ## Methods
 
@@ -226,6 +227,31 @@ SetEventsEndpoints sets EventsEndpoints field to given value.
 `func (o *InstallmentPlanInitiateRequest) HasEventsEndpoints() bool`
 
 HasEventsEndpoints returns a boolean if a field has been set.
+
+### GetProcessingData
+
+`func (o *InstallmentPlanInitiateRequest) GetProcessingData() ProcessingData`
+
+GetProcessingData returns the ProcessingData field if non-nil, zero value otherwise.
+
+### GetProcessingDataOk
+
+`func (o *InstallmentPlanInitiateRequest) GetProcessingDataOk() (*ProcessingData, bool)`
+
+GetProcessingDataOk returns a tuple with the ProcessingData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingData
+
+`func (o *InstallmentPlanInitiateRequest) SetProcessingData(v ProcessingData)`
+
+SetProcessingData sets ProcessingData field to given value.
+
+### HasProcessingData
+
+`func (o *InstallmentPlanInitiateRequest) HasProcessingData() bool`
+
+HasProcessingData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

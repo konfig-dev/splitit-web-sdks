@@ -63,6 +63,10 @@ class InstallmentPlanInitiateRequest(
             @staticmethod
             def EventsEndpoints() -> typing.Type['EventsEndpointsModel']:
                 return EventsEndpointsModel
+        
+            @staticmethod
+            def ProcessingData() -> typing.Type['ProcessingData']:
+                return ProcessingData
             __annotations__ = {
                 "AutoCapture": AutoCapture,
                 "Attempt3dSecure": Attempt3dSecure,
@@ -72,6 +76,7 @@ class InstallmentPlanInitiateRequest(
                 "RedirectUrls": RedirectUrls,
                 "UxSettings": UxSettings,
                 "EventsEndpoints": EventsEndpoints,
+                "ProcessingData": ProcessingData,
             }
     
     AutoCapture: MetaOapg.properties.AutoCapture
@@ -101,9 +106,12 @@ class InstallmentPlanInitiateRequest(
     def __getitem__(self, name: typing_extensions.Literal["EventsEndpoints"]) -> 'EventsEndpointsModel': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ProcessingData"]) -> 'ProcessingData': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "RedirectUrls", "UxSettings", "EventsEndpoints", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "RedirectUrls", "UxSettings", "EventsEndpoints", "ProcessingData", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -133,9 +141,12 @@ class InstallmentPlanInitiateRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["EventsEndpoints"]) -> typing.Union['EventsEndpointsModel', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ProcessingData"]) -> typing.Union['ProcessingData', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "RedirectUrls", "UxSettings", "EventsEndpoints", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["AutoCapture", "Attempt3dSecure", "Shopper", "PlanData", "BillingAddress", "RedirectUrls", "UxSettings", "EventsEndpoints", "ProcessingData", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -150,6 +161,7 @@ class InstallmentPlanInitiateRequest(
         RedirectUrls: typing.Union['InitiateRedirectionEndpointsModel', schemas.Unset] = schemas.unset,
         UxSettings: typing.Union['UxSettingsModel', schemas.Unset] = schemas.unset,
         EventsEndpoints: typing.Union['EventsEndpointsModel', schemas.Unset] = schemas.unset,
+        ProcessingData: typing.Union['ProcessingData', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InstallmentPlanInitiateRequest':
@@ -164,6 +176,7 @@ class InstallmentPlanInitiateRequest(
             RedirectUrls=RedirectUrls,
             UxSettings=UxSettings,
             EventsEndpoints=EventsEndpoints,
+            ProcessingData=ProcessingData,
             _configuration=_configuration,
             **kwargs,
         )
@@ -172,5 +185,6 @@ from splitit_client.model.address_data_model import AddressDataModel
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel
 from splitit_client.model.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel
 from splitit_client.model.plan_data_model import PlanDataModel
+from splitit_client.model.processing_data import ProcessingData
 from splitit_client.model.shopper_data import ShopperData
 from splitit_client.model.ux_settings_model import UxSettingsModel

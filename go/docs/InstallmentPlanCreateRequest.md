@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **BillingAddress** | Pointer to [**AddressDataModel**](AddressDataModel.md) |  | [optional] 
 **PaymentMethod** | Pointer to [**PaymentMethodModel**](PaymentMethodModel.md) |  | [optional] 
 **RedirectUrls** | Pointer to [**RedirectionEndpointsModel**](RedirectionEndpointsModel.md) |  | [optional] 
+**ProcessingData** | Pointer to [**ProcessingData**](ProcessingData.md) |  | [optional] 
 **EventsEndpoints** | Pointer to [**EventsEndpointsModel**](EventsEndpointsModel.md) |  | [optional] 
 
 ## Methods
@@ -222,6 +223,31 @@ SetRedirectUrls sets RedirectUrls field to given value.
 `func (o *InstallmentPlanCreateRequest) HasRedirectUrls() bool`
 
 HasRedirectUrls returns a boolean if a field has been set.
+
+### GetProcessingData
+
+`func (o *InstallmentPlanCreateRequest) GetProcessingData() ProcessingData`
+
+GetProcessingData returns the ProcessingData field if non-nil, zero value otherwise.
+
+### GetProcessingDataOk
+
+`func (o *InstallmentPlanCreateRequest) GetProcessingDataOk() (*ProcessingData, bool)`
+
+GetProcessingDataOk returns a tuple with the ProcessingData field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProcessingData
+
+`func (o *InstallmentPlanCreateRequest) SetProcessingData(v ProcessingData)`
+
+SetProcessingData sets ProcessingData field to given value.
+
+### HasProcessingData
+
+`func (o *InstallmentPlanCreateRequest) HasProcessingData() bool`
+
+HasProcessingData returns a boolean if a field has been set.
 
 ### GetEventsEndpoints
 

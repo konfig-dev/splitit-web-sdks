@@ -26,6 +26,7 @@ type PlanData struct {
 	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
 	AllowedInstallmentOptions []int32 `json:"AllowedInstallmentOptions,omitempty"`
 	Tags *map[string]string `json:"Tags,omitempty"`
+	ProcessingData *ProcessingData2 `json:"ProcessingData,omitempty"`
 	FirstInstallmentDate *time.Time `json:"FirstInstallmentDate,omitempty"`
 }
 
@@ -313,6 +314,38 @@ func (o *PlanData) SetTags(v map[string]string) {
 	o.Tags = &v
 }
 
+// GetProcessingData returns the ProcessingData field value if set, zero value otherwise.
+func (o *PlanData) GetProcessingData() ProcessingData2 {
+	if o == nil || isNil(o.ProcessingData) {
+		var ret ProcessingData2
+		return ret
+	}
+	return *o.ProcessingData
+}
+
+// GetProcessingDataOk returns a tuple with the ProcessingData field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanData) GetProcessingDataOk() (*ProcessingData2, bool) {
+	if o == nil || isNil(o.ProcessingData) {
+    return nil, false
+	}
+	return o.ProcessingData, true
+}
+
+// HasProcessingData returns a boolean if a field has been set.
+func (o *PlanData) HasProcessingData() bool {
+	if o != nil && !isNil(o.ProcessingData) {
+		return true
+	}
+
+	return false
+}
+
+// SetProcessingData gets a reference to the given ProcessingData2 and assigns it to the ProcessingData field.
+func (o *PlanData) SetProcessingData(v ProcessingData2) {
+	o.ProcessingData = &v
+}
+
 // GetFirstInstallmentDate returns the FirstInstallmentDate field value if set, zero value otherwise.
 func (o *PlanData) GetFirstInstallmentDate() time.Time {
 	if o == nil || isNil(o.FirstInstallmentDate) {
@@ -373,6 +406,9 @@ func (o PlanData) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Tags) {
 		toSerialize["Tags"] = o.Tags
+	}
+	if !isNil(o.ProcessingData) {
+		toSerialize["ProcessingData"] = o.ProcessingData
 	}
 	if !isNil(o.FirstInstallmentDate) {
 		toSerialize["FirstInstallmentDate"] = o.FirstInstallmentDate

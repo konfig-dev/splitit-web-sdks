@@ -52,6 +52,7 @@ class AuthorizationModel(
                 return ThreeDsRedirectDataV3
             CAVV = schemas.StrSchema
             ECI = schemas.StrSchema
+            GatewaySourceResponse = schemas.StrSchema
             __annotations__ = {
                 "Status": Status,
                 "Date": Date,
@@ -62,6 +63,7 @@ class AuthorizationModel(
                 "ThreeDSRedirect": ThreeDSRedirect,
                 "CAVV": CAVV,
                 "ECI": ECI,
+                "GatewaySourceResponse": GatewaySourceResponse,
             }
     
     Status: 'GwAuthorizationStatus'
@@ -94,9 +96,12 @@ class AuthorizationModel(
     def __getitem__(self, name: typing_extensions.Literal["ECI"]) -> MetaOapg.properties.ECI: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["GatewaySourceResponse"]) -> MetaOapg.properties.GatewaySourceResponse: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "Date", "SplititErrorResultCode", "GatewayTransactionID", "GatewayResultCode", "GatewayResultMessage", "ThreeDSRedirect", "CAVV", "ECI", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "Date", "SplititErrorResultCode", "GatewayTransactionID", "GatewayResultCode", "GatewayResultMessage", "ThreeDSRedirect", "CAVV", "ECI", "GatewaySourceResponse", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -129,9 +134,12 @@ class AuthorizationModel(
     def get_item_oapg(self, name: typing_extensions.Literal["ECI"]) -> typing.Union[MetaOapg.properties.ECI, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["GatewaySourceResponse"]) -> typing.Union[MetaOapg.properties.GatewaySourceResponse, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "Date", "SplititErrorResultCode", "GatewayTransactionID", "GatewayResultCode", "GatewayResultMessage", "ThreeDSRedirect", "CAVV", "ECI", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "Date", "SplititErrorResultCode", "GatewayTransactionID", "GatewayResultCode", "GatewayResultMessage", "ThreeDSRedirect", "CAVV", "ECI", "GatewaySourceResponse", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -147,6 +155,7 @@ class AuthorizationModel(
         ThreeDSRedirect: typing.Union['ThreeDsRedirectDataV3', schemas.Unset] = schemas.unset,
         CAVV: typing.Union[MetaOapg.properties.CAVV, str, schemas.Unset] = schemas.unset,
         ECI: typing.Union[MetaOapg.properties.ECI, str, schemas.Unset] = schemas.unset,
+        GatewaySourceResponse: typing.Union[MetaOapg.properties.GatewaySourceResponse, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'AuthorizationModel':
@@ -162,6 +171,7 @@ class AuthorizationModel(
             ThreeDSRedirect=ThreeDSRedirect,
             CAVV=CAVV,
             ECI=ECI,
+            GatewaySourceResponse=GatewaySourceResponse,
             _configuration=_configuration,
             **kwargs,
         )

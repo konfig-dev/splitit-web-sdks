@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ThreeDSRedirect** | Pointer to [**ThreeDsRedirectDataV3**](ThreeDsRedirectDataV3.md) |  | [optional] 
 **CAVV** | Pointer to **string** |  | [optional] 
 **ECI** | Pointer to **string** |  | [optional] 
+**GatewaySourceResponse** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -252,6 +253,31 @@ SetECI sets ECI field to given value.
 `func (o *AuthorizationModel) HasECI() bool`
 
 HasECI returns a boolean if a field has been set.
+
+### GetGatewaySourceResponse
+
+`func (o *AuthorizationModel) GetGatewaySourceResponse() string`
+
+GetGatewaySourceResponse returns the GatewaySourceResponse field if non-nil, zero value otherwise.
+
+### GetGatewaySourceResponseOk
+
+`func (o *AuthorizationModel) GetGatewaySourceResponseOk() (*string, bool)`
+
+GetGatewaySourceResponseOk returns a tuple with the GatewaySourceResponse field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGatewaySourceResponse
+
+`func (o *AuthorizationModel) SetGatewaySourceResponse(v string)`
+
+SetGatewaySourceResponse sets GatewaySourceResponse field to given value.
+
+### HasGatewaySourceResponse
+
+`func (o *AuthorizationModel) HasGatewaySourceResponse() bool`
+
+HasGatewaySourceResponse returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

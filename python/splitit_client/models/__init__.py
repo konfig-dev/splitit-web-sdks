@@ -14,6 +14,7 @@
 from splitit_client.model.address_data import AddressData
 from splitit_client.model.address_data_model import AddressDataModel
 from splitit_client.model.authorization_model import AuthorizationModel
+from splitit_client.model.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
 from splitit_client.model.card_brand import CardBrand
 from splitit_client.model.card_data import CardData
 from splitit_client.model.card_type import CardType
@@ -22,6 +23,7 @@ from splitit_client.model.error import Error
 from splitit_client.model.error_extended import ErrorExtended
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel
 from splitit_client.model.failed_response import FailedResponse
+from splitit_client.model.gateway_token_data import GatewayTokenData
 from splitit_client.model.gw_authorization_status import GwAuthorizationStatus
 from splitit_client.model.identifier_contract import IdentifierContract
 from splitit_client.model.initiate_plan_response import InitiatePlanResponse
@@ -42,6 +44,7 @@ from splitit_client.model.installment_status import InstallmentStatus
 from splitit_client.model.installments_eligibility_response import InstallmentsEligibilityResponse
 from splitit_client.model.links_data import LinksData
 from splitit_client.model.links_model import LinksModel
+from splitit_client.model.mocker_shopper_token import MockerShopperToken
 from splitit_client.model.payment_method_model import PaymentMethodModel
 from splitit_client.model.payment_method_type import PaymentMethodType
 from splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel
@@ -49,6 +52,8 @@ from splitit_client.model.plan_data import PlanData
 from splitit_client.model.plan_data_model import PlanDataModel
 from splitit_client.model.plan_error_response import PlanErrorResponse
 from splitit_client.model.plan_status import PlanStatus
+from splitit_client.model.processing_data import ProcessingData
+from splitit_client.model.processing_data2 import ProcessingData2
 from splitit_client.model.purchase_method import PurchaseMethod
 from splitit_client.model.redirection_endpoints_model import RedirectionEndpointsModel
 from splitit_client.model.refund_model import RefundModel
@@ -60,6 +65,8 @@ from splitit_client.model.shipping_status import ShippingStatus
 from splitit_client.model.shipping_status2 import ShippingStatus2
 from splitit_client.model.shopper_data import ShopperData
 from splitit_client.model.test_modes import TestModes
+from splitit_client.model.three_ds_data import ThreeDSData
+from splitit_client.model.three_ds_data2 import ThreeDSData2
 from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 from splitit_client.model.update_order_request import UpdateOrderRequest
 from splitit_client.model.ux_settings_model import UxSettingsModel

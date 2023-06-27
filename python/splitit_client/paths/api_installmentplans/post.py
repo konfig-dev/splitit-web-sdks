@@ -31,6 +31,7 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
+from splitit_client.model.processing_data import ProcessingData as ProcessingDataSchema
 from splitit_client.model.plan_error_response import PlanErrorResponse as PlanErrorResponseSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.address_data_model import AddressDataModel as AddressDataModelSchema
@@ -46,6 +47,7 @@ from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.address_data_model import AddressDataModel
 from splitit_client.type.plan_error_response import PlanErrorResponse
 from splitit_client.type.installment_plan_create_response import InstallmentPlanCreateResponse
+from splitit_client.type.processing_data import ProcessingData
 from splitit_client.type.installment_plan_create_request import InstallmentPlanCreateRequest
 from splitit_client.type.events_endpoints_model import EventsEndpointsModel
 from splitit_client.type.plan_data_model import PlanDataModel
@@ -340,6 +342,7 @@ class BaseApi(api_client.Api):
         billing_address: typing.Optional[AddressDataModel] = None,
         payment_method: typing.Optional[PaymentMethodModel] = None,
         redirect_urls: typing.Optional[RedirectionEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
@@ -362,6 +365,8 @@ class BaseApi(api_client.Api):
             _body["PaymentMethod"] = payment_method
         if redirect_urls is not None:
             _body["RedirectUrls"] = redirect_urls
+        if processing_data is not None:
+            _body["ProcessingData"] = processing_data
         if events_endpoints is not None:
             _body["EventsEndpoints"] = events_endpoints
         args.body = _body
@@ -606,6 +611,7 @@ class Post2(BaseApi):
         billing_address: typing.Optional[AddressDataModel] = None,
         payment_method: typing.Optional[PaymentMethodModel] = None,
         redirect_urls: typing.Optional[RedirectionEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
@@ -624,6 +630,7 @@ class Post2(BaseApi):
             billing_address=billing_address,
             payment_method=payment_method,
             redirect_urls=redirect_urls,
+            processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
         )
@@ -644,6 +651,7 @@ class Post2(BaseApi):
         billing_address: typing.Optional[AddressDataModel] = None,
         payment_method: typing.Optional[PaymentMethodModel] = None,
         redirect_urls: typing.Optional[RedirectionEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
@@ -661,6 +669,7 @@ class Post2(BaseApi):
             billing_address=billing_address,
             payment_method=payment_method,
             redirect_urls=redirect_urls,
+            processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
         )
@@ -684,6 +693,7 @@ class ApiForpost(BaseApi):
         billing_address: typing.Optional[AddressDataModel] = None,
         payment_method: typing.Optional[PaymentMethodModel] = None,
         redirect_urls: typing.Optional[RedirectionEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
@@ -702,6 +712,7 @@ class ApiForpost(BaseApi):
             billing_address=billing_address,
             payment_method=payment_method,
             redirect_urls=redirect_urls,
+            processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
         )
@@ -722,6 +733,7 @@ class ApiForpost(BaseApi):
         billing_address: typing.Optional[AddressDataModel] = None,
         payment_method: typing.Optional[PaymentMethodModel] = None,
         redirect_urls: typing.Optional[RedirectionEndpointsModel] = None,
+        processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
     ) -> typing.Union[
@@ -739,6 +751,7 @@ class ApiForpost(BaseApi):
             billing_address=billing_address,
             payment_method=payment_method,
             redirect_urls=redirect_urls,
+            processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
         )

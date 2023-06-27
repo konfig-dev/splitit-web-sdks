@@ -1212,6 +1212,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -1242,6 +1243,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -1251,6 +1253,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -1338,6 +1341,7 @@ components:
             key: Params
           Url: Url
         GatewayTransactionID: GatewayTransactionID
+        GatewaySourceResponse: GatewaySourceResponse
         GatewayResultMessage: GatewayResultMessage
         ECI: ECI
         SplititErrorResultCode: SplititErrorResultCode
@@ -1362,6 +1366,8 @@ components:
         CAVV:
           type: string
         ECI:
+          type: string
+        GatewaySourceResponse:
           type: string
       required:
       - Status
@@ -1436,6 +1442,7 @@ components:
     PaymentMethodModel:
       example:
         Type: null
+        MockerShopperToken: null
         Token: Token
         Card:
           CardNumber: CardNumber
@@ -1445,6 +1452,7 @@ components:
           CardBrand: null
           CardExpYear: CardExpYear
           CardCvv: CardCvv
+        BluesnapVaultedShopperToken: null
       properties:
         Type:
           $ref: '#/components/schemas/PaymentMethodType'
@@ -1452,6 +1460,10 @@ components:
           $ref: '#/components/schemas/CardData'
         Token:
           type: string
+        BluesnapVaultedShopperToken:
+          $ref: '#/components/schemas/BluesnapVaultedShopperToken'
+        MockerShopperToken:
+          $ref: '#/components/schemas/MockerShopperToken'
       required:
       - Type
       type: object
@@ -1460,10 +1472,14 @@ components:
       enum:
       - Card
       - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
       type: string
       x-enumNames:
       - Card
       - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
     CardData:
       example:
         CardNumber: CardNumber
@@ -1531,6 +1547,22 @@ components:
       - Prepaid
       - VisaDeferredDebit
       - NetworkOnly
+    BluesnapVaultedShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    GatewayTokenData:
+      properties:
+        Token:
+          type: string
+        Last4Digit:
+          type: string
+      type: object
+      x-abstract: true
+    MockerShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
     Installment:
       example:
         Status: null
@@ -1657,6 +1689,7 @@ components:
                 key: Params
               Url: Url
             GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
             GatewayResultMessage: GatewayResultMessage
             ECI: ECI
             SplititErrorResultCode: SplititErrorResultCode
@@ -1687,6 +1720,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            MockerShopperToken: null
             Token: Token
             Card:
               CardNumber: CardNumber
@@ -1696,6 +1730,7 @@ components:
               CardBrand: null
               CardExpYear: CardExpYear
               CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
           Links:
             TermsConditions: TermsConditions
             Checkout: Checkout
@@ -1731,6 +1766,7 @@ components:
                 key: Params
               Url: Url
             GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
             GatewayResultMessage: GatewayResultMessage
             ECI: ECI
             SplititErrorResultCode: SplititErrorResultCode
@@ -1761,6 +1797,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            MockerShopperToken: null
             Token: Token
             Card:
               CardNumber: CardNumber
@@ -1770,6 +1807,7 @@ components:
               CardBrand: null
               CardExpYear: CardExpYear
               CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
           Links:
             TermsConditions: TermsConditions
             Checkout: Checkout
@@ -1813,6 +1851,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -1843,6 +1882,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -1852,6 +1892,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -1977,6 +2018,16 @@ components:
           State: State
           Country: Country
           City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         UxSettings:
           DisplayedInstallmentOptions:
           - 5
@@ -2011,6 +2062,8 @@ components:
           $ref: '#/components/schemas/UxSettingsModel'
         EventsEndpoints:
           $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
       required:
       - AutoCapture
       type: object
@@ -2109,6 +2162,47 @@ components:
         CreateSucceeded:
           type: string
       type: object
+    ProcessingData:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData'
+      type: object
+    ThreeDSData:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
+      type: object
     TestModes:
       description: ""
       enum:
@@ -2154,6 +2248,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -2171,6 +2266,7 @@ components:
         Currency: Currency
         PaymentMethod:
           Type: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -2180,6 +2276,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -2247,6 +2344,16 @@ components:
           State: State
           Country: Country
           City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         TermsAndConditionsAccepted: true
         EventsEndpoints:
           CreateSucceeded: CreateSucceeded
@@ -2258,6 +2365,7 @@ components:
           Culture: Culture
         PaymentMethod:
           Type: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -2267,6 +2375,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         RedirectUrls:
           Succeeded: Succeeded
           Failed: Failed
@@ -2290,6 +2399,8 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
         EventsEndpoints:
           $ref: '#/components/schemas/EventsEndpointsModel'
       required:
@@ -2327,6 +2438,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -2592,6 +2704,16 @@ components:
     CheckInstallmentsEligibilityRequest:
       example:
         PlanData:
+          ProcessingData:
+            ThreeDSData:
+              CAVV: CAVV
+              XID: XID
+              DirectoryServerTxnId: DirectoryServerTxnId
+              ThreeDSVersion: ThreeDSVersion
+              ECI: ECI
+              TransactionId: TransactionId
+            AttemptThreeDSecured: true
+            SoftDescriptor: SoftDescriptor
           RefOrderNumber: RefOrderNumber
           Currency: Currency
           AllowedInstallmentOptions:
@@ -2630,6 +2752,16 @@ components:
       type: object
     PlanData:
       example:
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         RefOrderNumber: RefOrderNumber
         Currency: Currency
         AllowedInstallmentOptions:
@@ -2670,6 +2802,8 @@ components:
           additionalProperties:
             type: string
           type: object
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData2'
         FirstInstallmentDate:
           format: date-time
           type: string
@@ -2677,6 +2811,47 @@ components:
       - NumberOfInstallments
       - PurchaseMethod
       - TotalAmount
+      type: object
+    ProcessingData2:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData2'
+      type: object
+    ThreeDSData2:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
       type: object
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber:
       properties:
@@ -2753,6 +2928,8 @@ components:
           $ref: '#/components/schemas/UxSettingsModel'
         EventsEndpoints:
           $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
       required:
       - AutoCapture
       - X-Splitit-IdempotencyKey
@@ -2793,6 +2970,8 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
         EventsEndpoints:
           $ref: '#/components/schemas/EventsEndpointsModel'
       required:
