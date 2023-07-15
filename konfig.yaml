@@ -17,6 +17,7 @@ generators:
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
+    supportPhp7: true
     git:
       userId: konfig-dev
       repoId: splitit-web-php-sdk

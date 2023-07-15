@@ -1,6 +1,5 @@
 # splitit-sdks
 
-
 |Language|Version|Package Manager|Documentation|Source|
 |-|-|-|-|-|
 |Java|2.2.0|[Maven Central](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.0)|[Documentation](https://github.com/konfig-dev/splitit-web-sdks/tree/main/java/README.md)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/java)|
@@ -33,4 +32,4 @@ Successfully logged in as dylan@konfigthis.com
 
 4. Generate SDKs with `konfig generate`
 
-### [Documentation](https://docs.konfigthis.com/)
+### [Documentation](https://konfigthis.com/docs)
