@@ -13,7 +13,7 @@ fixConfig:
       url: https://web-api-v3.production.splitit.com
 generators:
   php:
-    version: 1.14.0
+    version: 2.0.0
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
