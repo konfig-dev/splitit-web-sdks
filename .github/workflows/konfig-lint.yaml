@@ -8,7 +8,7 @@ jobs:
   konfig-lint-openapi-spec: # make sure spec passes konfig lint
     runs-on: ubuntu-latest
     env:
-      CLI_VERSION: 1.0.155
+      CLI_VERSION: 1.0.217
     steps:
       - uses: actions/checkout@v3
       - name: Cache node_modules
