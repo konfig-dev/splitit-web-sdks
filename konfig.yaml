@@ -54,6 +54,7 @@ generators:
     packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
+    clientName: SplititClient
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
