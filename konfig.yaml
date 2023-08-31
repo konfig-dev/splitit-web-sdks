@@ -4,6 +4,12 @@ outputDirectory: /tmp/splitit-web-sdks-out
 specInputPath: swagger.json
 specRemotePath: https://web-api-v3.production.splitit.com/swagger/web-api-v3/swagger.json
 specPath: swagger-fixed.json
+portal:
+  primaryColor: "#642f6c"
+  title: Splitit
+  socials:
+    website: https://www.splitit.com/
+    documentation: https://developers.splitit.com/
 requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
