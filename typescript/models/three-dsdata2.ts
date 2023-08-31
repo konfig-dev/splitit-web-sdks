@@ -15,44 +15,44 @@
 /**
  * 
  * @export
- * @interface AddressDataModel
+ * @interface ThreeDSData2
  */
-export interface AddressDataModel {
+export interface ThreeDSData2 {
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'AddressLine1'?: string;
+    'ECI'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'AddressLine2'?: string;
+    'CAVV'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'City'?: string;
+    'XID'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'Country'?: string;
+    'DirectoryServerTxnId'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'State'?: string;
+    'ThreeDSVersion'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AddressDataModel
+     * @memberof ThreeDSData2
      */
-    'Zip'?: string;
+    'TransactionId'?: string;
 }
 

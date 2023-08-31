@@ -11,36 +11,27 @@
  * Do not edit the class manually.
  */
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { GatewayTokenData } from './gateway-token-data';
 
 /**
  * 
  * @export
- * @interface LinksData
+ * @interface MockerShopperToken
  */
-export interface LinksData {
+export interface MockerShopperToken {
     /**
      * 
      * @type {string}
-     * @memberof LinksData
+     * @memberof MockerShopperToken
      */
-    'Checkout'?: string;
+    'Token'?: string;
     /**
      * 
      * @type {string}
-     * @memberof LinksData
+     * @memberof MockerShopperToken
      */
-    'LearnMore'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LinksData
-     */
-    'TermsConditions'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof LinksData
-     */
-    'PrivacyPolicy'?: string;
+    'Last4Digit'?: string;
 }
 

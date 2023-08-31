@@ -1,6 +1,6 @@
 # InstallmentplanApi
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,23 +25,22 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const cancelResponse = await splitit.installmentplan.cancel({
-        "installmentPlanNumber": "installmentPlanNumber_example",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-    })
+  installmentPlanNumber: "installmentPlanNumber_example",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+});
 
-console.log(cancelResponse)
-
+console.log(cancelResponse);
 ```
 
 
@@ -51,6 +50,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | [**string**] |  | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -83,22 +83,23 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
-})
+const checkEligibilityResponse = await splitit.installmentplan.checkEligibility(
+  {
+    xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+    xSplititTouchPoint: "",
+  }
+);
 
-const checkEligibilityResponse = await splitit.installmentplan.checkEligibility({
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-    })
-
-console.log(checkEligibilityResponse)
-
+console.log(checkEligibilityResponse);
 ```
 
 
@@ -108,6 +109,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **checkInstallmentsEligibilityRequest** | **CheckInstallmentsEligibilityRequest**|  |
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -140,23 +142,22 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const getResponse = await splitit.installmentplan.get({
-        "installmentPlanNumber": "installmentPlanNumber_example",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-    })
+  installmentPlanNumber: "installmentPlanNumber_example",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+});
 
-console.log(getResponse)
-
+console.log(getResponse);
 ```
 
 
@@ -166,6 +167,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | [**string**] |  | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -198,24 +200,23 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const postResponse = await splitit.installmentplan.post({
-        "xSplititTestMode": "None",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-        "auto_capture": true,
-    })
+  xSplititTestMode: "None",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+  AutoCapture: true,
+});
 
-console.log(postResponse)
-
+console.log(postResponse);
 ```
 
 
@@ -225,6 +226,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanInitiateRequest** | **InstallmentPlanInitiateRequest**|  |
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
  **xSplititTestMode** | 'None', 'Regular', 'Fast', 'Automation' |  | (optional) defaults to undefined
 
 
@@ -259,25 +261,24 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const post2Response = await splitit.installmentplan.post2({
-        "xSplititTestMode": "None",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-        "auto_capture": true,
-        "terms_and_conditions_accepted": true,
-    })
+  xSplititTestMode: "None",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+  AutoCapture: true,
+  TermsAndConditionsAccepted: true,
+});
 
-console.log(post2Response)
-
+console.log(post2Response);
 ```
 
 
@@ -287,6 +288,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanCreateRequest** | **InstallmentPlanCreateRequest**|  |
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
  **xSplititTestMode** | 'None', 'Regular', 'Fast', 'Automation' |  | (optional) defaults to undefined
 
 
@@ -321,25 +323,24 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const refundResponse = await splitit.installmentplan.refund({
-        "installmentPlanNumber": "installmentPlanNumber_example",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-        "amount": 3.14,
-        "refund_strategy": "FutureInstallmentsFirst",
-    })
+  installmentPlanNumber: "installmentPlanNumber_example",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+  Amount: 3.14,
+  RefundStrategy: "FutureInstallmentsFirst",
+});
 
-console.log(refundResponse)
-
+console.log(refundResponse);
 ```
 
 
@@ -350,6 +351,7 @@ Name | Type | Description  | Notes
  **installmentPlanRefundRequest** | **InstallmentPlanRefundRequest**|  |
  **installmentPlanNumber** | [**string**] |  | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -382,22 +384,21 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const searchResponse = await splitit.installmentplan.search({
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-    })
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+});
 
-console.log(searchResponse)
-
+console.log(searchResponse);
 ```
 
 
@@ -406,6 +407,7 @@ console.log(searchResponse)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
  **installmentPlanNumber** | [**string**] |  | (optional) defaults to undefined
  **refOrderNumber** | [**string**] |  | (optional) defaults to undefined
  **extendedParams** | **{ [key: string]: string; }** |  | (optional) defaults to undefined
@@ -441,24 +443,23 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const updateOrderResponse = await splitit.installmentplan.updateOrder({
-        "installmentPlanNumber": "installmentPlanNumber_example",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-        "shipping_status": "Pending",
-    })
+  installmentPlanNumber: "installmentPlanNumber_example",
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+  ShippingStatus: "Pending",
+});
 
-console.log(updateOrderResponse)
-
+console.log(updateOrderResponse);
 ```
 
 
@@ -469,6 +470,7 @@ Name | Type | Description  | Notes
  **updateOrderRequest** | **UpdateOrderRequest**|  |
  **installmentPlanNumber** | [**string**] |  | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -501,23 +503,22 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
-
-})
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
 const updateOrder2Response = await splitit.installmentplan.updateOrder2({
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-        "shipping_status": "Shipped",
-    })
+  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+  xSplititTouchPoint: "",
+  ShippingStatus: "Shipped",
+});
 
-console.log(updateOrder2Response)
-
+console.log(updateOrder2Response);
 ```
 
 
@@ -527,6 +528,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanUpdateRequestByIdentifier** | **InstallmentPlanUpdateRequestByIdentifier**|  |
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type
@@ -559,23 +561,23 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { Splitit } from "splitit-web-typescript-sdk"
+import { Splitit } from "splitit-web-typescript-sdk";
 
 const splitit = new Splitit({
-    // Defining the base path is optional and defaults to https://web-api-v3.sandbox.splitit.com
-    // basePath: "https://web-api-v3.sandbox.splitit.com",
-    oauthClientId: 'CLIENT_ID',
-    oauthClientSecret: 'CLIENT_SECRET',
+  // Defining the base path is optional and defaults to https://web-api-v3.production.splitit.com
+  // basePath: "https://web-api-v3.production.splitit.com",
+  oauthClientId: "CLIENT_ID",
+  oauthClientSecret: "CLIENT_SECRET",
+});
 
-})
+const verifyAuthorizationResponse =
+  await splitit.installmentplan.verifyAuthorization({
+    installmentPlanNumber: "installmentPlanNumber_example",
+    xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+    xSplititTouchPoint: "",
+  });
 
-const verifyAuthorizationResponse = await splitit.installmentplan.verifyAuthorization({
-        "installmentPlanNumber": "installmentPlanNumber_example",
-        "xSplititIdempotencyKey": "xSplititIdempotencyKey_example",
-    })
-
-console.log(verifyAuthorizationResponse)
-
+console.log(verifyAuthorizationResponse);
 ```
 
 
@@ -585,6 +587,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **installmentPlanNumber** | [**string**] |  | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
+ **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
 
 ### Return type

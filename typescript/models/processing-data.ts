@@ -13,25 +13,31 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ErrorExtended } from './error-extended';
+import { ThreeDSData } from './three-dsdata';
 
 /**
  * 
  * @export
- * @interface FailedResponse
+ * @interface ProcessingData
  */
-export interface FailedResponse {
+export interface ProcessingData {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProcessingData
+     */
+    'AttemptThreeDSecured'?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof FailedResponse
+     * @memberof ProcessingData
      */
-    'TraceId'?: string;
+    'SoftDescriptor'?: string;
     /**
      * 
-     * @type {ErrorExtended}
-     * @memberof FailedResponse
+     * @type {ThreeDSData}
+     * @memberof ProcessingData
      */
-    'Error'?: ErrorExtended;
+    'ThreeDSData'?: ThreeDSData;
 }
 

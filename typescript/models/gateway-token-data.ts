@@ -15,7 +15,20 @@
 /**
  * 
  * @export
- * @enum {string}
+ * @interface GatewayTokenData
  */
-export type InstallmentStatus = 'Pending' | 'Processed' | 'Canceled'
+export interface GatewayTokenData {
+    /**
+     * 
+     * @type {string}
+     * @memberof GatewayTokenData
+     */
+    'Token'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof GatewayTokenData
+     */
+    'Last4Digit'?: string;
+}
 

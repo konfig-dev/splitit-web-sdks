@@ -15,7 +15,14 @@
 /**
  * 
  * @export
- * @enum {string}
+ * @interface EventsEndpointsModel
  */
-export type InstallmentStatus = 'Pending' | 'Processed' | 'Canceled'
+export interface EventsEndpointsModel {
+    /**
+     * 
+     * @type {string}
+     * @memberof EventsEndpointsModel
+     */
+    'CreateSucceeded'?: string;
+}
 
