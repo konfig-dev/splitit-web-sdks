@@ -5,7 +5,7 @@ specInputPath: swagger.json
 specRemotePath: https://web-api-v3.production.splitit.com/swagger/web-api-v3/swagger.json
 specPath: swagger-fixed.json
 portal:
-  primaryColor: "#642f6c"
+  primaryColor: "#411656"
   title: Splitit
   socials:
     website: https://www.splitit.com/
