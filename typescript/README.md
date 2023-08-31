@@ -1,6 +1,6 @@
 # splitit-web-typescript-sdk
 
-[![npm](https://img.shields.io/badge/npm-v2.2.0-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/2.2.0)
+[![npm](https://img.shields.io/badge/npm-v3.0.0-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.0.0)
 
 Splitit\'s Web API
 ## Installing
