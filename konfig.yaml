@@ -16,11 +16,7 @@ requiredEnvironmentVariables:
 fixConfig:
   update:
     $.:
-      tags:
-        - name: Maintain Plans
-        - name: Fetch Plans
-        - name: Start Plans (Direct API)
-        - name: Start Plans (Splitit Forms)
+      tags: undefined
     $.paths./api/installmentplans/{installmentPlanNumber}/refund.post:
       tags:
         - Maintain Plans

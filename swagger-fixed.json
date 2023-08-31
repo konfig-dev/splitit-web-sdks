@@ -10,20 +10,7 @@
       "url": "https://web-api-v3.production.splitit.com"
     }
   ],
-  "tags": [
-    {
-      "name": "Maintain Plans"
-    },
-    {
-      "name": "Fetch Plans"
-    },
-    {
-      "name": "Start Plans (Direct API)"
-    },
-    {
-      "name": "Start Plans (Splitit Forms)"
-    }
-  ],
+  "tags": "undefined",
   "paths": {
     "/api/installmentplans/{installmentPlanNumber}": {
       "get": {
