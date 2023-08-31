@@ -23,7 +23,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 2.1.0
+    version: 2.2.0
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     clientName: Splitit
