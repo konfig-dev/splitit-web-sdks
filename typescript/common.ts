@@ -105,7 +105,7 @@ export const setBearerAuthToObject = async function (object: any, configuration?
 export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
     if (configuration && configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
         const oauthResponse = await axios.request({
-            url: "https://id.production.splitit.com/connect/token",
+            url: configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token",
             method: "POST",
             headers: {
                 "content-type": "application/x-www-form-urlencoded",
