@@ -8,6 +8,7 @@ it("simple operation started", async () => {
     AutoCapture: true,
     Attempt3dSecure: true,
     xSplititIdempotencyKey: new Date().toISOString(),
+    xSplititTouchPoint: "TestSDK",
     Shopper: {
       Email: "fake@email.com",
     },
@@ -15,7 +16,7 @@ it("simple operation started", async () => {
       TotalAmount: 10,
       NumberOfInstallments: 10,
       Currency: "USD",
-      PurchaseMethod: PurchaseMethod.InStore,
+      PurchaseMethod: "InStore",
     },
     BillingAddress: {
       AddressLine1: "144 Union St",
