@@ -14,6 +14,68 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
 fixConfig:
+  update:
+    $.paths./api/installmentplans/{installmentPlanNumber}/refund.post:
+      tags:
+        - Maintain Plans
+      summary: Refund a Plan
+      description: |
+        Refund part or all of an installment Plan.
+
+        Strategies
+        There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):
+
+        - FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid
+        - FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones
+        - FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due
+        - ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6).
+    $.paths./api/installmentplans/{installmentPlanNumber}/cancel.post:
+      tags:
+        - Maintain Plans
+      description: The Cancel operation allows you to cancel an existing installment plan.
+      summary: Cancel a Plan
+    $.paths./api/installmentplans/updateorder.put:
+      tags:
+        - Maintain Plans
+      description: Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+      summary: Update Plan By Alternate Field
+    $.paths./api/installmentplans/{installmentPlanNumber}/updateorder.put:
+      tags:
+        - Maintain Plans
+      description: Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+      summary: Update Plan by Number
+    $.paths./api/installmentplans/search.get:
+      tags:
+        - Fetch Plans
+      summary: Fetch Plan(s) by Alternate Field
+      description: Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+    $.paths./api/installmentplans/{installmentPlanNumber}.get:
+      tags:
+        - Fetch Plans
+      summary: Fetch Plan by Number
+      description: Retrieve an installment plan's information by providing its number in your path.
+    $.paths./api/installmentplans/check-eligibility.post:
+      tags:
+        - Start Plans (Direct API)
+      summary: Check Eligibility
+      description: As your customer beings to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives.
+    $.paths./api/installmentplans.post:
+      tags:
+        - Start Plans (Direct API)
+      summary: Create Installment Plan
+      description: |
+        Once you are ready to check your customer out, you can use the Create endpoint. Create enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification.
+        A successful Create operation creates an authorization on a customer's credit card, and if AutoCapture has been set to true within the request body, both authorization and capture of the first installment will be completed (if AutoCapture is set to false, you will have to call Update Plan later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer's BillingAddress object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions.
+    $.paths./api/installmentplans/initiate.post:
+      tags:
+        - Start Plans (Splitit Forms)
+      summary: Initiate Installment Plan
+      description: Initiate establishes an installment plan but doesn't finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer's BillingAddress object must be filled out.
+    $.paths./api/installmentplans/{installmentPlanNumber}/verifyauthorization.get:
+      tags:
+        - Start Plans (Splitit Forms)
+      summary: Verify Authorization
+      description: You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from Initiate.
   modify:
     $.servers[0]:
       url: https://web-api-v3.production.splitit.com
