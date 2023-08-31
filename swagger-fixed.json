@@ -12,7 +12,16 @@
   ],
   "tags": [
     {
-      "name": "InstallmentPlan"
+      "name": "Maintain Plans"
+    },
+    {
+      "name": "Fetch Plans"
+    },
+    {
+      "name": "Start Plans (Direct API)"
+    },
+    {
+      "name": "Start Plans (Splitit Forms)"
     }
   ],
   "paths": {

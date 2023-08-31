@@ -15,6 +15,12 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_SECRET
 fixConfig:
   update:
+    $.:
+      tags:
+        - name: Maintain Plans
+        - name: Fetch Plans
+        - name: Start Plans (Direct API)
+        - name: Start Plans (Splitit Forms)
     $.paths./api/installmentplans/{installmentPlanNumber}/refund.post:
       tags:
         - Maintain Plans
