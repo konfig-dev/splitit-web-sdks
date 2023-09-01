@@ -104,16 +104,18 @@ export const setBearerAuthToObject = async function (object: any, configuration?
  */
 export const setOAuthToObject = async function (object: any, name: string, scopes: string[], configuration?: Configuration) {
     if (configuration && configuration.oauthClientId && configuration.oauthClientSecret && configuration.accessToken === undefined) {
-        const oauthResponse = await axios.request({
-            url: configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token",
-            method: "POST",
-            headers: {
-                "content-type": "application/x-www-form-urlencoded",
-            },
-            data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
-        });
-        const json = await oauthResponse.data;
-        configuration.accessToken = json.access_token;
+        configuration.accessToken = await wrapAxiosRequest(async () => {
+            const oauthResponse = await axios.request({
+                url: configuration.oauthTokenUrl ?? "https://id.production.splitit.com/connect/token",
+                method: "POST",
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded",
+                },
+                data: `grant_type=client_credentials&client_id=${configuration.oauthClientId}&client_secret=${configuration.oauthClientSecret}`,
+            });
+            const json = await oauthResponse.data;
+            return json.access_token;
+        })
     }
     if (configuration && configuration.accessToken) {
         const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
@@ -183,6 +185,34 @@ export const removeTrailingSlash = function (url: string) {
     return url.replace(/\/$/, "");
 }
 
+async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
+    try {
+        return await makeRequest();
+    } catch (e) {
+        if (e instanceof AxiosError && e.isAxiosError) {
+            try {
+                const responseBody =
+                    e.response?.data instanceof ReadableStream
+                    ? await readableStreamToString(e.response.data)
+                    : e.response?.data
+                throw new SplititError(e, parseIfJson(responseBody))
+            } catch (innerError) {
+                if (innerError instanceof ReferenceError) {
+                    // Got: "ReferenceError: ReadableStream is not defined"
+                    // This means we are in a Node environment so just throw the original error
+                    throw new SplititError(e, e.response?.data)
+                }
+                if (innerError instanceof SplititError) {
+                    // Got "SplititError" from the above try block
+                    throw innerError;
+                }
+                // Something unexpected happened: propagate the error
+                throw e
+            }
+        }
+    }
+}
+
 /**
  *
  * @export
@@ -192,31 +222,7 @@ export const createRequestFunction = function (axiosArgs: RequestArgs, globalAxi
         requestBeforeUrlHook({axiosArgs, basePath, configuration})
         const url = (configuration?.basePath || basePath) + axiosArgs.url
         await requestAfterHook({axiosArgs, basePath, url, configuration})
-        try {
-            return await axios.request<T, R>({ ...axiosArgs.options, url });
-        } catch (e) {
-            if (e instanceof AxiosError && e.isAxiosError) {
-                try {
-                    const responseBody =
-                        e.response?.data instanceof ReadableStream
-                        ? await readableStreamToString(e.response.data)
-                        : e.response?.data
-                    throw new SplititError(e, parseIfJson(responseBody))
-                } catch (innerError) {
-                    if (innerError instanceof ReferenceError) {
-                        // Got: "ReferenceError: ReadableStream is not defined"
-                        // This means we are in a Node environment so just throw the original error
-                        throw new SplititError(e, e.response?.data)
-                    }
-                    if (innerError instanceof SplititError) {
-                        // Got "SplititError" from the above try block
-                        throw innerError;
-                    }
-                    // Something unexpected happened: propagate the error
-                    throw e
-                }
-            }
-        }
+        return wrapAxiosRequest(async () => await axios.request<T, R>({ ...axiosArgs.options, url }));
     };
 }
 
