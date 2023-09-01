@@ -185,6 +185,9 @@ export const removeTrailingSlash = function (url: string) {
     return url.replace(/\/$/, "");
 }
 
+/**
+ * Wrap an axios request in a try/catch block to catch network errors and parse the response body
+ */
 async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
     try {
         return await makeRequest();
