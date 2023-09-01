@@ -162,7 +162,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 3.0.0
+    version: 3.1.0
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     clientName: Splitit
