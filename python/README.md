@@ -1,6 +1,6 @@
 # splitit-web-python-sdk
 
-[![PyPI](https://img.shields.io/badge/PyPI-v2.5.0-blue)](https://pypi.org/project/splitit-web-python-sdk/2.5.0)
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.0-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.0)
 
 Splitit's Web API
 
@@ -12,7 +12,7 @@ Python >=3.7
 ## Installing
 
 ```sh
-pip install splitit-web-python-sdk==2.5.0
+pip install splitit-web-python-sdk==2.6.0
 ```
 
 ## Getting Started
