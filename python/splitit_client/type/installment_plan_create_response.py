@@ -17,6 +17,7 @@ from typing_extensions import TypedDict, Literal
 from splitit_client.type.address_data import AddressData
 from splitit_client.type.authorization_model import AuthorizationModel
 from splitit_client.type.installment import Installment
+from splitit_client.type.installment_plan_create_response_extended_params import InstallmentPlanCreateResponseExtendedParams
 from splitit_client.type.links_data import LinksData
 from splitit_client.type.payment_method_model import PaymentMethodModel
 from splitit_client.type.plan_status import PlanStatus
@@ -41,7 +42,7 @@ class OptionalInstallmentPlanCreateResponse(TypedDict, total=False):
 
     Amount: typing.Union[int, float]
 
-    ExtendedParams: typing.Dict[str, str]
+    ExtendedParams: InstallmentPlanCreateResponseExtendedParams
 
     Authorization: AuthorizationModel
 

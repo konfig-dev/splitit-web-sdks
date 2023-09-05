@@ -15,35 +15,11 @@ Key | Input Type | Accessed Type | Description | Notes
 **FirstInstallmentAmount** | decimal.Decimal, int, float,  | decimal.Decimal,  |  | [optional] 
 **Currency** | str,  | str,  |  | [optional] 
 **RefOrderNumber** | str,  | str,  |  | [optional] 
-**[AllowedInstallmentOptions](#AllowedInstallmentOptions)** | list, tuple,  | tuple,  |  | [optional] 
-**[Tags](#Tags)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**AllowedInstallmentOptions** | [**PlanDataAllowedInstallmentOptions**](PlanDataAllowedInstallmentOptions.md) | [**PlanDataAllowedInstallmentOptions**](PlanDataAllowedInstallmentOptions.md) |  | [optional] 
+**Tags** | [**PlanDataTags**](PlanDataTags.md) | [**PlanDataTags**](PlanDataTags.md) |  | [optional] 
 **ProcessingData** | [**ProcessingData2**](ProcessingData2.md) | [**ProcessingData2**](ProcessingData2.md) |  | [optional] 
 **FirstInstallmentDate** | str, datetime,  | str,  |  | [optional] value must conform to RFC-3339 date-time
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-# AllowedInstallmentOptions
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-list, tuple,  | tuple,  |  | 
-
-### Tuple Items
-Class Name | Input Type | Accessed Type | Description | Notes
-------------- | ------------- | ------------- | ------------- | -------------
-items | decimal.Decimal, int,  | decimal.Decimal,  |  | value must be a 32 bit integer
-
-# Tags
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**any_string_name** | str,  | str,  | any string name can be used but the value must be the correct type | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

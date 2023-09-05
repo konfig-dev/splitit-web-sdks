@@ -16,7 +16,7 @@ Key | Input Type | Accessed Type | Description | Notes
 **Currency** | str,  | str,  |  | [optional] 
 **OriginalAmount** | decimal.Decimal, int, float,  | decimal.Decimal,  |  | [optional] 
 **Amount** | decimal.Decimal, int, float,  | decimal.Decimal,  |  | [optional] 
-**[ExtendedParams](#ExtendedParams)** | dict, frozendict.frozendict,  | frozendict.frozendict,  |  | [optional] 
+**ExtendedParams** | [**InstallmentPlanCreateResponseExtendedParams**](InstallmentPlanCreateResponseExtendedParams.md) | [**InstallmentPlanCreateResponseExtendedParams**](InstallmentPlanCreateResponseExtendedParams.md) |  | [optional] 
 **Authorization** | [**AuthorizationModel**](AuthorizationModel.md) | [**AuthorizationModel**](AuthorizationModel.md) |  | [optional] 
 **Shopper** | [**ShopperData**](ShopperData.md) | [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | [**AddressData**](AddressData.md) | [**AddressData**](AddressData.md) |  | [optional] 
@@ -24,18 +24,6 @@ Key | Input Type | Accessed Type | Description | Notes
 **[Installments](#Installments)** | list, tuple,  | tuple,  |  | [optional] 
 **Links** | [**LinksData**](LinksData.md) | [**LinksData**](LinksData.md) |  | [optional] 
 **any_string_name** | dict, frozendict.frozendict, str, date, datetime, int, float, bool, decimal.Decimal, None, list, tuple, bytes, io.FileIO, io.BufferedReader | frozendict.frozendict, str, BoolClass, decimal.Decimal, NoneClass, tuple, bytes, FileIO | any string name can be used but the value must be the correct type | [optional]
-
-# ExtendedParams
-
-## Model Type Info
-Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | -------------
-dict, frozendict.frozendict,  | frozendict.frozendict,  |  | 
-
-### Dictionary Keys
-Key | Input Type | Accessed Type | Description | Notes
------------- | ------------- | ------------- | ------------- | -------------
-**any_string_name** | str,  | str,  | any string name can be used but the value must be the correct type | [optional] 
 
 # Installments
 

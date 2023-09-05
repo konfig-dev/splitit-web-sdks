@@ -21,6 +21,7 @@ type PaymentMethodModel struct {
 	Token *string `json:"Token,omitempty"`
 	BluesnapVaultedShopperToken *BluesnapVaultedShopperToken `json:"BluesnapVaultedShopperToken,omitempty"`
 	MockerShopperToken *MockerShopperToken `json:"MockerShopperToken,omitempty"`
+	SpreedlyToken *SpreedlyToken `json:"SpreedlyToken,omitempty"`
 }
 
 // NewPaymentMethodModel instantiates a new PaymentMethodModel object
@@ -193,6 +194,38 @@ func (o *PaymentMethodModel) SetMockerShopperToken(v MockerShopperToken) {
 	o.MockerShopperToken = &v
 }
 
+// GetSpreedlyToken returns the SpreedlyToken field value if set, zero value otherwise.
+func (o *PaymentMethodModel) GetSpreedlyToken() SpreedlyToken {
+	if o == nil || isNil(o.SpreedlyToken) {
+		var ret SpreedlyToken
+		return ret
+	}
+	return *o.SpreedlyToken
+}
+
+// GetSpreedlyTokenOk returns a tuple with the SpreedlyToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentMethodModel) GetSpreedlyTokenOk() (*SpreedlyToken, bool) {
+	if o == nil || isNil(o.SpreedlyToken) {
+    return nil, false
+	}
+	return o.SpreedlyToken, true
+}
+
+// HasSpreedlyToken returns a boolean if a field has been set.
+func (o *PaymentMethodModel) HasSpreedlyToken() bool {
+	if o != nil && !isNil(o.SpreedlyToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpreedlyToken gets a reference to the given SpreedlyToken and assigns it to the SpreedlyToken field.
+func (o *PaymentMethodModel) SetSpreedlyToken(v SpreedlyToken) {
+	o.SpreedlyToken = &v
+}
+
 func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -209,6 +242,9 @@ func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.MockerShopperToken) {
 		toSerialize["MockerShopperToken"] = o.MockerShopperToken
+	}
+	if !isNil(o.SpreedlyToken) {
+		toSerialize["SpreedlyToken"] = o.SpreedlyToken
 	}
 	return json.Marshal(toSerialize)
 }

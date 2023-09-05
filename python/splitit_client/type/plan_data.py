@@ -14,6 +14,8 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
+from splitit_client.type.plan_data_tags import PlanDataTags
 from splitit_client.type.processing_data2 import ProcessingData2
 from splitit_client.type.purchase_method import PurchaseMethod
 
@@ -33,9 +35,9 @@ class OptionalPlanData(TypedDict, total=False):
 
     RefOrderNumber: str
 
-    AllowedInstallmentOptions: typing.List[int]
+    AllowedInstallmentOptions: PlanDataAllowedInstallmentOptions
 
-    Tags: typing.Dict[str, str]
+    Tags: PlanDataTags
 
     ProcessingData: ProcessingData2
 

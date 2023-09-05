@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
  - [ShippingStatus](docs/ShippingStatus.md)
  - [ShippingStatus2](docs/ShippingStatus2.md)
  - [ShopperData](docs/ShopperData.md)
+ - [SpreedlyToken](docs/SpreedlyToken.md)
  - [TestModes](docs/TestModes.md)
  - [ThreeDSData](docs/ThreeDSData.md)
  - [ThreeDSData2](docs/ThreeDSData2.md)

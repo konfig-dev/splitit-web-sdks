@@ -213,6 +213,7 @@ async function wrapAxiosRequest<R>(makeRequest: () => Promise<R>): Promise<R> {
                 throw e
             }
         }
+        throw e
     }
 }
 

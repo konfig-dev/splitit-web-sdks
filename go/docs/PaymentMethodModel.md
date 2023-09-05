@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Token** | Pointer to **string** |  | [optional] 
 **BluesnapVaultedShopperToken** | Pointer to [**BluesnapVaultedShopperToken**](BluesnapVaultedShopperToken.md) |  | [optional] 
 **MockerShopperToken** | Pointer to [**MockerShopperToken**](MockerShopperToken.md) |  | [optional] 
+**SpreedlyToken** | Pointer to [**SpreedlyToken**](SpreedlyToken.md) |  | [optional] 
 
 ## Methods
 
@@ -148,6 +149,31 @@ SetMockerShopperToken sets MockerShopperToken field to given value.
 `func (o *PaymentMethodModel) HasMockerShopperToken() bool`
 
 HasMockerShopperToken returns a boolean if a field has been set.
+
+### GetSpreedlyToken
+
+`func (o *PaymentMethodModel) GetSpreedlyToken() SpreedlyToken`
+
+GetSpreedlyToken returns the SpreedlyToken field if non-nil, zero value otherwise.
+
+### GetSpreedlyTokenOk
+
+`func (o *PaymentMethodModel) GetSpreedlyTokenOk() (*SpreedlyToken, bool)`
+
+GetSpreedlyTokenOk returns a tuple with the SpreedlyToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSpreedlyToken
+
+`func (o *PaymentMethodModel) SetSpreedlyToken(v SpreedlyToken)`
+
+SetSpreedlyToken sets SpreedlyToken field to given value.
+
+### HasSpreedlyToken
+
+`func (o *PaymentMethodModel) HasSpreedlyToken() bool`
+
+HasSpreedlyToken returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

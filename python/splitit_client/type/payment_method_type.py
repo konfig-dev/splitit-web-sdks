@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 
-PaymentMethodType = Literal["Card", "SplititToken", "BluesnapVaultedShopperToken", "SplititMockerV2Token"]
+PaymentMethodType = Literal["Card", "SplititToken", "BluesnapVaultedShopperToken", "SplititMockerV2Token", "SpreedlyToken"]

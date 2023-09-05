@@ -17,5 +17,5 @@
  * @export
  * @enum {string}
  */
-export type PaymentMethodType = 'Card' | 'SplititToken' | 'BluesnapVaultedShopperToken' | 'SplititMockerV2Token'
+export type PaymentMethodType = 'Card' | 'SplititToken' | 'BluesnapVaultedShopperToken' | 'SplititMockerV2Token' | 'SpreedlyToken'
 

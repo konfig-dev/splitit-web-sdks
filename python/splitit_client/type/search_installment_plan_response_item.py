@@ -22,6 +22,7 @@ from splitit_client.type.payment_method_model import PaymentMethodModel
 from splitit_client.type.plan_status import PlanStatus
 from splitit_client.type.purchase_method import PurchaseMethod
 from splitit_client.type.refund_model import RefundModel
+from splitit_client.type.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams
 from splitit_client.type.shopper_data import ShopperData
 
 class RequiredSearchInstallmentPlanResponseItem(TypedDict):
@@ -50,7 +51,7 @@ class OptionalSearchInstallmentPlanResponseItem(TypedDict, total=False):
 
     PaymentMethod: PaymentMethodModel
 
-    ExtendedParams: typing.Dict[str, str]
+    ExtendedParams: SearchInstallmentPlanResponseItemExtendedParams
 
     Installments: typing.List[Installment]
 

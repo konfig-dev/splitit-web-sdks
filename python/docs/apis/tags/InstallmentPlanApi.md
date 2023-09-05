@@ -31,7 +31,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -269,7 +270,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -530,7 +532,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -783,7 +786,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -1089,7 +1093,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -1403,7 +1408,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -1676,7 +1682,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -1940,7 +1947,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -2213,7 +2221,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -2472,7 +2481,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
