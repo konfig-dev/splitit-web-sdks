@@ -52,35 +52,10 @@ class InstallmentPlanCreateResponse(
             Currency = schemas.StrSchema
             OriginalAmount = schemas.NumberSchema
             Amount = schemas.NumberSchema
-            
-            
-            class ExtendedParams(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    additional_properties = schemas.StrSchema
-                
-                def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    return super().get_item_oapg(name)
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[MetaOapg.additional_properties, str, ],
-                ) -> 'ExtendedParams':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
+        
+            @staticmethod
+            def ExtendedParams() -> typing.Type['InstallmentPlanCreateResponseExtendedParams']:
+                return InstallmentPlanCreateResponseExtendedParams
         
             @staticmethod
             def Authorization() -> typing.Type['AuthorizationModel']:
@@ -173,7 +148,7 @@ class InstallmentPlanCreateResponse(
     def __getitem__(self, name: typing_extensions.Literal["Amount"]) -> MetaOapg.properties.Amount: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> MetaOapg.properties.ExtendedParams: ...
+    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> 'InstallmentPlanCreateResponseExtendedParams': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["Authorization"]) -> 'AuthorizationModel': ...
@@ -226,7 +201,7 @@ class InstallmentPlanCreateResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["Amount"]) -> typing.Union[MetaOapg.properties.Amount, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union[MetaOapg.properties.ExtendedParams, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union['InstallmentPlanCreateResponseExtendedParams', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["Authorization"]) -> typing.Union['AuthorizationModel', schemas.Unset]: ...
@@ -264,7 +239,7 @@ class InstallmentPlanCreateResponse(
         Currency: typing.Union[MetaOapg.properties.Currency, str, schemas.Unset] = schemas.unset,
         OriginalAmount: typing.Union[MetaOapg.properties.OriginalAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         Amount: typing.Union[MetaOapg.properties.Amount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
-        ExtendedParams: typing.Union[MetaOapg.properties.ExtendedParams, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        ExtendedParams: typing.Union['InstallmentPlanCreateResponseExtendedParams', schemas.Unset] = schemas.unset,
         Authorization: typing.Union['AuthorizationModel', schemas.Unset] = schemas.unset,
         Shopper: typing.Union['ShopperData', schemas.Unset] = schemas.unset,
         BillingAddress: typing.Union['AddressData', schemas.Unset] = schemas.unset,
@@ -299,6 +274,7 @@ class InstallmentPlanCreateResponse(
 from splitit_client.model.address_data import AddressData
 from splitit_client.model.authorization_model import AuthorizationModel
 from splitit_client.model.installment import Installment
+from splitit_client.model.installment_plan_create_response_extended_params import InstallmentPlanCreateResponseExtendedParams
 from splitit_client.model.links_data import LinksData
 from splitit_client.model.payment_method_model import PaymentMethodModel
 from splitit_client.model.plan_status import PlanStatus

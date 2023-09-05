@@ -54,6 +54,7 @@ export * from './search-installment-plan-response-item';
 export * from './shipping-status';
 export * from './shipping-status2';
 export * from './shopper-data';
+export * from './spreedly-token';
 export * from './test-modes';
 export * from './three-dsdata';
 export * from './three-dsdata2';

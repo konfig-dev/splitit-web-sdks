@@ -38,6 +38,7 @@ class PaymentMethodType(
             "SplititToken": "SPLITIT_TOKEN",
             "BluesnapVaultedShopperToken": "BLUESNAP_VAULTED_SHOPPER_TOKEN",
             "SplititMockerV2Token": "SPLITIT_MOCKER_V2TOKEN",
+            "SpreedlyToken": "SPREEDLY_TOKEN",
         }
     
     @schemas.classproperty
@@ -55,3 +56,7 @@ class PaymentMethodType(
     @schemas.classproperty
     def SPLITIT_MOCKER_V2TOKEN(cls):
         return cls("SplititMockerV2Token")
+    
+    @schemas.classproperty
+    def SPREEDLY_TOKEN(cls):
+        return cls("SpreedlyToken")

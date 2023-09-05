@@ -46,3 +46,7 @@ class PaymentMethodType(
     @schemas.classproperty
     def SPLITIT_MOCKER_V2TOKEN(cls):
         return cls("SplititMockerV2Token")
+    
+    @schemas.classproperty
+    def SPREEDLY_TOKEN(cls):
+        return cls("SpreedlyToken")

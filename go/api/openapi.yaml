@@ -1243,6 +1243,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
           Card:
@@ -1442,6 +1443,7 @@ components:
     PaymentMethodModel:
       example:
         Type: null
+        SpreedlyToken: null
         MockerShopperToken: null
         Token: Token
         Card:
@@ -1464,6 +1466,8 @@ components:
           $ref: '#/components/schemas/BluesnapVaultedShopperToken'
         MockerShopperToken:
           $ref: '#/components/schemas/MockerShopperToken'
+        SpreedlyToken:
+          $ref: '#/components/schemas/SpreedlyToken'
       required:
       - Type
       type: object
@@ -1474,12 +1478,14 @@ components:
       - SplititToken
       - BluesnapVaultedShopperToken
       - SplititMockerV2Token
+      - SpreedlyToken
       type: string
       x-enumNames:
       - Card
       - SplititToken
       - BluesnapVaultedShopperToken
       - SplititMockerV2Token
+      - SpreedlyToken
     CardData:
       example:
         CardNumber: CardNumber
@@ -1560,6 +1566,10 @@ components:
       type: object
       x-abstract: true
     MockerShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    SpreedlyToken:
       allOf:
       - $ref: '#/components/schemas/GatewayTokenData'
       - type: object
@@ -1720,6 +1730,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            SpreedlyToken: null
             MockerShopperToken: null
             Token: Token
             Card:
@@ -1797,6 +1808,7 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            SpreedlyToken: null
             MockerShopperToken: null
             Token: Token
             Card:
@@ -1882,6 +1894,7 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
           Card:
@@ -2266,6 +2279,7 @@ components:
         Currency: Currency
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
           Card:
@@ -2365,6 +2379,7 @@ components:
           Culture: Culture
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
           Card:

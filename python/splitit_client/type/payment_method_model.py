@@ -18,6 +18,7 @@ from splitit_client.type.bluesnap_vaulted_shopper_token import BluesnapVaultedSh
 from splitit_client.type.card_data import CardData
 from splitit_client.type.mocker_shopper_token import MockerShopperToken
 from splitit_client.type.payment_method_type import PaymentMethodType
+from splitit_client.type.spreedly_token import SpreedlyToken
 
 class RequiredPaymentMethodModel(TypedDict):
     Type: PaymentMethodType
@@ -30,6 +31,8 @@ class OptionalPaymentMethodModel(TypedDict, total=False):
     BluesnapVaultedShopperToken: BluesnapVaultedShopperToken
 
     MockerShopperToken: MockerShopperToken
+
+    SpreedlyToken: SpreedlyToken
 
 class PaymentMethodModel(RequiredPaymentMethodModel, OptionalPaymentMethodModel):
     pass

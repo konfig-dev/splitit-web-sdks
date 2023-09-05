@@ -14,12 +14,13 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions
 
 class RequiredUxSettingsModel(TypedDict):
     pass
 
 class OptionalUxSettingsModel(TypedDict, total=False):
-    DisplayedInstallmentOptions: typing.List[int]
+    DisplayedInstallmentOptions: UxSettingsModelDisplayedInstallmentOptions
 
 class UxSettingsModel(RequiredUxSettingsModel, OptionalUxSettingsModel):
     pass

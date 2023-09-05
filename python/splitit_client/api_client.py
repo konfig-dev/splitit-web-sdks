@@ -37,6 +37,7 @@ from splitit_client.rest import AsyncResponseWrapper, ResponseWrapper
 from splitit_client.configuration import Configuration
 from splitit_client.exceptions import ApiTypeError, ApiValueError, MissingRequiredParametersError
 from splitit_client.request_after_hook import request_after_hook
+from splitit_client.request_before_url_hook import request_before_url_hook
 from splitit_client.schemas import (
     NoneClass,
     BoolClass,
@@ -64,6 +65,23 @@ class RequestField(RequestFieldBase):
             return False
         return self.__dict__ == other.__dict__
 
+def DeprecationWarningOnce(func=None, *, prefix=None):
+    def decorator(func):
+        warned = False
+        def wrapper(instance, *args, **kwargs):
+            nonlocal warned
+            if not warned:
+                msg = f"{func.__name__} is deprecated"
+                if prefix:
+                    msg = f"{prefix}.{msg}"
+                instance.api_client.configuration.logger.warning(msg)
+                warned = True
+            return func(instance, *args, **kwargs)
+        return wrapper
+    if func is None:
+        return decorator
+    else:
+        return decorator(func)
 
 class JSONEncoder(json.JSONEncoder):
     compact_separators = (',', ':')
@@ -1135,7 +1153,7 @@ class ApiClient:
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Konfig/2.5.0/python'
+        self.user_agent = 'Konfig/2.6.0/python'
 
     def __enter__(self):
         return self
@@ -1194,28 +1212,38 @@ class ApiClient:
             headers['Cookie'] = self.cookie
 
         # auth setting
-        resource_path = self.update_params_for_auth(
+        resource_path_ref = [self.update_params_for_auth(
             used_headers,
             auth_settings,
             resource_path,
             method,
             body,
             prefix_separator_iterator
-        )
+        )]
 
         # must happen after cookie setting and auth setting in case user is overriding those
         if headers:
             used_headers.update(headers)
 
+        request_before_url_hook(
+            resource_path_ref=resource_path_ref,
+            method=method,
+            configuration=self.configuration,
+            body=body,
+            fields=fields,
+            auth_settings=auth_settings,
+            headers=used_headers,
+        )
+
         # request url
         if host is None:
-            url = self.configuration.host + resource_path
+            url = self.configuration.host + resource_path_ref[0]
         else:
             # use server/host defined in path or operation instead
-            url = host + resource_path
+            url = host + resource_path_ref[0]
 
         request_after_hook(
-            resource_path=resource_path,
+            resource_path=resource_path_ref[0],
             method=method,
             configuration=self.configuration,
             body=body,
@@ -1260,28 +1288,38 @@ class ApiClient:
             headers['Cookie'] = self.cookie
 
         # auth setting
-        resource_path = self.update_params_for_auth(
+        resource_path_ref = [self.update_params_for_auth(
             used_headers,
             auth_settings,
             resource_path,
             method,
             body,
             prefix_separator_iterator
-        )
+        )]
 
         # must happen after cookie setting and auth setting in case user is overriding those
         if headers:
             used_headers.update(headers)
 
+        request_before_url_hook(
+            resource_path_ref=resource_path_ref,
+            method=method,
+            configuration=self.configuration,
+            body=body,
+            fields=fields,
+            auth_settings=auth_settings,
+            headers=used_headers,
+        )
+
         # request url
         if host is None:
-            url = self.configuration.host + resource_path
+            url = self.configuration.host + resource_path_ref[0]
         else:
             # use server/host defined in path or operation instead
-            url = host + resource_path
+            url = host + resource_path_ref[0]
 
         request_after_hook(
-            resource_path=resource_path,
+            resource_path=resource_path_ref[0],
             method=method,
             configuration=self.configuration,
             body=body,

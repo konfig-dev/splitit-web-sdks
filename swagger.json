@@ -1235,6 +1235,9 @@
         },
         "MockerShopperToken": {
           "$ref": "#/definitions/MockerShopperToken"
+        },
+        "SpreedlyToken": {
+          "$ref": "#/definitions/SpreedlyToken"
         }
       }
     },
@@ -1245,13 +1248,15 @@
         "Card",
         "SplititToken",
         "BluesnapVaultedShopperToken",
-        "SplititMockerV2Token"
+        "SplititMockerV2Token",
+        "SpreedlyToken"
       ],
       "enum": [
         "Card",
         "SplititToken",
         "BluesnapVaultedShopperToken",
-        "SplititMockerV2Token"
+        "SplititMockerV2Token",
+        "SpreedlyToken"
       ]
     },
     "CardData": {
@@ -1351,6 +1356,16 @@
       }
     },
     "MockerShopperToken": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/GatewayTokenData"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "SpreedlyToken": {
       "allOf": [
         {
           "$ref": "#/definitions/GatewayTokenData"

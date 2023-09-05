@@ -1,4 +1,7 @@
-# splitit-web-python-sdk@2.5.0
+# splitit-web-python-sdk
+
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.0-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.0)
+
 Splitit's Web API
 
 
@@ -9,7 +12,7 @@ Python >=3.7
 ## Installing
 
 ```sh
-pip install splitit-web-python-sdk==2.5.0
+pip install splitit-web-python-sdk==2.6.0
 ```
 
 ## Getting Started
@@ -23,7 +26,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 try:
@@ -72,7 +76,8 @@ splitit = Splitit(
     # See configuration.py for a list of all supported configuration parameters.
     host="https://web-api-v3.production.splitit.com",
     # Configure OAuth2 access token for authorization: oauth
-    access_token="YOUR_ACCESS_TOKEN",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
 )
 
 
@@ -117,18 +122,18 @@ asyncio.run(main())
 
 All URIs are relative to *https://web-api-v3.production.splitit.com*
 
-Class | Method | HTTP request | Description
+Tag | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InstallmentPlanApi* | [**cancel**](docs/apis/tags/InstallmentPlanApi.md#cancel) | **post** /api/installmentplans/{installmentPlanNumber}/cancel | 
-*InstallmentPlanApi* | [**check_eligibility**](docs/apis/tags/InstallmentPlanApi.md#check_eligibility) | **post** /api/installmentplans/check-eligibility | 
-*InstallmentPlanApi* | [**get**](docs/apis/tags/InstallmentPlanApi.md#get) | **get** /api/installmentplans/{installmentPlanNumber} | 
-*InstallmentPlanApi* | [**post**](docs/apis/tags/InstallmentPlanApi.md#post) | **post** /api/installmentplans/initiate | 
-*InstallmentPlanApi* | [**post2**](docs/apis/tags/InstallmentPlanApi.md#post2) | **post** /api/installmentplans | 
-*InstallmentPlanApi* | [**refund**](docs/apis/tags/InstallmentPlanApi.md#refund) | **post** /api/installmentplans/{installmentPlanNumber}/refund | 
-*InstallmentPlanApi* | [**search**](docs/apis/tags/InstallmentPlanApi.md#search) | **get** /api/installmentplans/search | 
-*InstallmentPlanApi* | [**update_order**](docs/apis/tags/InstallmentPlanApi.md#update_order) | **put** /api/installmentplans/{installmentPlanNumber}/updateorder | 
-*InstallmentPlanApi* | [**update_order2**](docs/apis/tags/InstallmentPlanApi.md#update_order2) | **put** /api/installmentplans/updateorder | 
-*InstallmentPlanApi* | [**verify_authorization**](docs/apis/tags/InstallmentPlanApi.md#verify_authorization) | **get** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
+*InstallmentPlan* | [**cancel**](docs/apis/tags/InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel | 
+*InstallmentPlan* | [**check_eligibility**](docs/apis/tags/InstallmentPlanApi.md#check_eligibility) | **POST** /api/installmentplans/check-eligibility | 
+*InstallmentPlan* | [**get**](docs/apis/tags/InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
+*InstallmentPlan* | [**post**](docs/apis/tags/InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate | 
+*InstallmentPlan* | [**post2**](docs/apis/tags/InstallmentPlanApi.md#post2) | **POST** /api/installmentplans | 
+*InstallmentPlan* | [**refund**](docs/apis/tags/InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund | 
+*InstallmentPlan* | [**search**](docs/apis/tags/InstallmentPlanApi.md#search) | **GET** /api/installmentplans/search | 
+*InstallmentPlan* | [**update_order**](docs/apis/tags/InstallmentPlanApi.md#update_order) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder | 
+*InstallmentPlan* | [**update_order2**](docs/apis/tags/InstallmentPlanApi.md#update_order2) | **PUT** /api/installmentplans/updateorder | 
+*InstallmentPlan* | [**verify_authorization**](docs/apis/tags/InstallmentPlanApi.md#verify_authorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
 
 ## Documentation For Models
 
@@ -147,13 +152,17 @@ Class | Method | HTTP request | Description
  - [GatewayTokenData](docs/models/GatewayTokenData.md)
  - [GwAuthorizationStatus](docs/models/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/models/IdentifierContract.md)
+ - [IdentifierContractExtendedParams](docs/models/IdentifierContractExtendedParams.md)
  - [InitiatePlanResponse](docs/models/InitiatePlanResponse.md)
+ - [InitiatePlanResponseExtendedParams](docs/models/InitiatePlanResponseExtendedParams.md)
  - [InitiateRedirectionEndpointsModel](docs/models/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/models/Installment.md)
  - [InstallmentPlanCancelResponse](docs/models/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/models/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/models/InstallmentPlanCreateResponse.md)
+ - [InstallmentPlanCreateResponseExtendedParams](docs/models/InstallmentPlanCreateResponseExtendedParams.md)
  - [InstallmentPlanGetResponse](docs/models/InstallmentPlanGetResponse.md)
+ - [InstallmentPlanGetResponseExtendedParams](docs/models/InstallmentPlanGetResponseExtendedParams.md)
  - [InstallmentPlanInitiateRequest](docs/models/InstallmentPlanInitiateRequest.md)
  - [InstallmentPlanRefundRequest](docs/models/InstallmentPlanRefundRequest.md)
  - [InstallmentPlanRefundResponse](docs/models/InstallmentPlanRefundResponse.md)
@@ -170,7 +179,10 @@ Class | Method | HTTP request | Description
  - [PaymentMethodType](docs/models/PaymentMethodType.md)
  - [PaymentPlanOptionModel](docs/models/PaymentPlanOptionModel.md)
  - [PlanData](docs/models/PlanData.md)
+ - [PlanDataAllowedInstallmentOptions](docs/models/PlanDataAllowedInstallmentOptions.md)
  - [PlanDataModel](docs/models/PlanDataModel.md)
+ - [PlanDataModelExtendedParams](docs/models/PlanDataModelExtendedParams.md)
+ - [PlanDataTags](docs/models/PlanDataTags.md)
  - [PlanErrorResponse](docs/models/PlanErrorResponse.md)
  - [PlanStatus](docs/models/PlanStatus.md)
  - [ProcessingData](docs/models/ProcessingData.md)
@@ -182,15 +194,19 @@ Class | Method | HTTP request | Description
  - [RefundStrategy](docs/models/RefundStrategy.md)
  - [RefundSummary](docs/models/RefundSummary.md)
  - [SearchInstallmentPlanResponseItem](docs/models/SearchInstallmentPlanResponseItem.md)
+ - [SearchInstallmentPlanResponseItemExtendedParams](docs/models/SearchInstallmentPlanResponseItemExtendedParams.md)
  - [ShippingStatus](docs/models/ShippingStatus.md)
  - [ShippingStatus2](docs/models/ShippingStatus2.md)
  - [ShopperData](docs/models/ShopperData.md)
+ - [SpreedlyToken](docs/models/SpreedlyToken.md)
  - [TestModes](docs/models/TestModes.md)
  - [ThreeDSData](docs/models/ThreeDSData.md)
  - [ThreeDSData2](docs/models/ThreeDSData2.md)
  - [ThreeDsRedirectDataV3](docs/models/ThreeDsRedirectDataV3.md)
+ - [ThreeDsRedirectDataV3Params](docs/models/ThreeDsRedirectDataV3Params.md)
  - [UpdateOrderRequest](docs/models/UpdateOrderRequest.md)
  - [UxSettingsModel](docs/models/UxSettingsModel.md)
+ - [UxSettingsModelDisplayedInstallmentOptions](docs/models/UxSettingsModelDisplayedInstallmentOptions.md)
  - [VerifyAuthorizationResponse](docs/models/VerifyAuthorizationResponse.md)
 
 

@@ -47,35 +47,10 @@ class PlanDataModel(
             NumberOfInstallments = schemas.Int32Schema
             TerminalId = schemas.StrSchema
             RefOrderNumber = schemas.StrSchema
-            
-            
-            class ExtendedParams(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    additional_properties = schemas.StrSchema
-                
-                def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    return super().get_item_oapg(name)
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[MetaOapg.additional_properties, str, ],
-                ) -> 'ExtendedParams':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
+        
+            @staticmethod
+            def ExtendedParams() -> typing.Type['PlanDataModelExtendedParams']:
+                return PlanDataModelExtendedParams
             FirstInstallmentAmount = schemas.NumberSchema
             FirstInstallmentDate = schemas.DateTimeSchema
             __annotations__ = {
@@ -112,7 +87,7 @@ class PlanDataModel(
     def __getitem__(self, name: typing_extensions.Literal["RefOrderNumber"]) -> MetaOapg.properties.RefOrderNumber: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> MetaOapg.properties.ExtendedParams: ...
+    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> 'PlanDataModelExtendedParams': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["FirstInstallmentAmount"]) -> MetaOapg.properties.FirstInstallmentAmount: ...
@@ -147,7 +122,7 @@ class PlanDataModel(
     def get_item_oapg(self, name: typing_extensions.Literal["RefOrderNumber"]) -> typing.Union[MetaOapg.properties.RefOrderNumber, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union[MetaOapg.properties.ExtendedParams, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union['PlanDataModelExtendedParams', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["FirstInstallmentAmount"]) -> typing.Union[MetaOapg.properties.FirstInstallmentAmount, schemas.Unset]: ...
@@ -171,7 +146,7 @@ class PlanDataModel(
         NumberOfInstallments: typing.Union[MetaOapg.properties.NumberOfInstallments, decimal.Decimal, int, schemas.Unset] = schemas.unset,
         TerminalId: typing.Union[MetaOapg.properties.TerminalId, str, schemas.Unset] = schemas.unset,
         RefOrderNumber: typing.Union[MetaOapg.properties.RefOrderNumber, str, schemas.Unset] = schemas.unset,
-        ExtendedParams: typing.Union[MetaOapg.properties.ExtendedParams, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        ExtendedParams: typing.Union['PlanDataModelExtendedParams', schemas.Unset] = schemas.unset,
         FirstInstallmentAmount: typing.Union[MetaOapg.properties.FirstInstallmentAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         FirstInstallmentDate: typing.Union[MetaOapg.properties.FirstInstallmentDate, str, datetime, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -193,4 +168,5 @@ class PlanDataModel(
             **kwargs,
         )
 
+from splitit_client.model.plan_data_model_extended_params import PlanDataModelExtendedParams
 from splitit_client.model.purchase_method import PurchaseMethod

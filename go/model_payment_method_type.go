@@ -24,6 +24,7 @@ const (
 	PAYMENTMETHODTYPE_SPLITIT_TOKEN PaymentMethodType = "SplititToken"
 	PAYMENTMETHODTYPE_BLUESNAP_VAULTED_SHOPPER_TOKEN PaymentMethodType = "BluesnapVaultedShopperToken"
 	PAYMENTMETHODTYPE_SPLITIT_MOCKER_V2_TOKEN PaymentMethodType = "SplititMockerV2Token"
+	PAYMENTMETHODTYPE_SPREEDLY_TOKEN PaymentMethodType = "SpreedlyToken"
 )
 
 // All allowed values of PaymentMethodType enum
@@ -32,6 +33,7 @@ var AllowedPaymentMethodTypeEnumValues = []PaymentMethodType{
 	"SplititToken",
 	"BluesnapVaultedShopperToken",
 	"SplititMockerV2Token",
+	"SpreedlyToken",
 }
 
 func (v *PaymentMethodType) UnmarshalJSON(src []byte) error {

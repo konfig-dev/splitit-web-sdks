@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.identifier_contract_extended_params import IdentifierContractExtendedParams
 
 class RequiredIdentifierContract(TypedDict):
     pass
@@ -23,7 +24,7 @@ class OptionalIdentifierContract(TypedDict, total=False):
 
     InstallmentPlanNumber: str
 
-    ExtendedParams: typing.Dict[str, str]
+    ExtendedParams: IdentifierContractExtendedParams
 
 class IdentifierContract(RequiredIdentifierContract, OptionalIdentifierContract):
     pass

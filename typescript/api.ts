@@ -12,8 +12,5 @@
  */
 
 
-export * from './api/fetch-plans-api';
-export * from './api/maintain-plans-api';
-export * from './api/start-plans-direct-api-api';
-export * from './api/start-plans-splitit-forms-api';
+export * from './api/installmentplan-api';
 

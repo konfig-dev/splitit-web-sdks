@@ -36,35 +36,10 @@ class ThreeDsRedirectDataV3(
         class properties:
             Url = schemas.StrSchema
             Verb = schemas.StrSchema
-            
-            
-            class Params(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    additional_properties = schemas.StrSchema
-                
-                def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    return super().get_item_oapg(name)
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[MetaOapg.additional_properties, str, ],
-                ) -> 'Params':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
+        
+            @staticmethod
+            def Params() -> typing.Type['ThreeDsRedirectDataV3Params']:
+                return ThreeDsRedirectDataV3Params
             __annotations__ = {
                 "Url": Url,
                 "Verb": Verb,
@@ -78,7 +53,7 @@ class ThreeDsRedirectDataV3(
     def __getitem__(self, name: typing_extensions.Literal["Verb"]) -> MetaOapg.properties.Verb: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["Params"]) -> MetaOapg.properties.Params: ...
+    def __getitem__(self, name: typing_extensions.Literal["Params"]) -> 'ThreeDsRedirectDataV3Params': ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
@@ -95,7 +70,7 @@ class ThreeDsRedirectDataV3(
     def get_item_oapg(self, name: typing_extensions.Literal["Verb"]) -> typing.Union[MetaOapg.properties.Verb, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["Params"]) -> typing.Union[MetaOapg.properties.Params, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["Params"]) -> typing.Union['ThreeDsRedirectDataV3Params', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
@@ -109,7 +84,7 @@ class ThreeDsRedirectDataV3(
         *args: typing.Union[dict, frozendict.frozendict, ],
         Url: typing.Union[MetaOapg.properties.Url, str, schemas.Unset] = schemas.unset,
         Verb: typing.Union[MetaOapg.properties.Verb, str, schemas.Unset] = schemas.unset,
-        Params: typing.Union[MetaOapg.properties.Params, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        Params: typing.Union['ThreeDsRedirectDataV3Params', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ThreeDsRedirectDataV3':
@@ -122,3 +97,5 @@ class ThreeDsRedirectDataV3(
             _configuration=_configuration,
             **kwargs,
         )
+
+from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params

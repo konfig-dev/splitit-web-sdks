@@ -9,7 +9,7 @@ it("simple operation started", async () => {
     oauthTokenUrl: "https://id.sandbox.splitit.com/connect/token",
     basePath: "https://web-api-v3.sandbox.splitit.com",
   });
-  const result = await splitit.startPlansSplititForms.post({
+  const result = await splitit.installmentplan.post({
     AutoCapture: true,
     Attempt3dSecure: true,
     xSplititIdempotencyKey: new Date().toISOString(),

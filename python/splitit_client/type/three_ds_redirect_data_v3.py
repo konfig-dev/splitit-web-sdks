@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 
 class RequiredThreeDsRedirectDataV3(TypedDict):
     pass
@@ -23,7 +24,7 @@ class OptionalThreeDsRedirectDataV3(TypedDict, total=False):
 
     Verb: str
 
-    Params: typing.Dict[str, str]
+    Params: ThreeDsRedirectDataV3Params
 
 class ThreeDsRedirectDataV3(RequiredThreeDsRedirectDataV3, OptionalThreeDsRedirectDataV3):
     pass

@@ -49,58 +49,14 @@ class PlanData(
             FirstInstallmentAmount = schemas.NumberSchema
             Currency = schemas.StrSchema
             RefOrderNumber = schemas.StrSchema
-            
-            
-            class AllowedInstallmentOptions(
-                schemas.ListSchema
-            ):
-            
-            
-                class MetaOapg:
-                    items = schemas.Int32Schema
-            
-                def __new__(
-                    cls,
-                    arg: typing.Union[typing.Tuple[typing.Union[MetaOapg.items, decimal.Decimal, int, ]], typing.List[typing.Union[MetaOapg.items, decimal.Decimal, int, ]]],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                ) -> 'AllowedInstallmentOptions':
-                    return super().__new__(
-                        cls,
-                        arg,
-                        _configuration=_configuration,
-                    )
-            
-                def __getitem__(self, i: int) -> MetaOapg.items:
-                    return super().__getitem__(i)
-            
-            
-            class Tags(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    additional_properties = schemas.StrSchema
-                
-                def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    return super().get_item_oapg(name)
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[MetaOapg.additional_properties, str, ],
-                ) -> 'Tags':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
+        
+            @staticmethod
+            def AllowedInstallmentOptions() -> typing.Type['PlanDataAllowedInstallmentOptions']:
+                return PlanDataAllowedInstallmentOptions
+        
+            @staticmethod
+            def Tags() -> typing.Type['PlanDataTags']:
+                return PlanDataTags
         
             @staticmethod
             def ProcessingData() -> typing.Type['ProcessingData2']:
@@ -146,10 +102,10 @@ class PlanData(
     def __getitem__(self, name: typing_extensions.Literal["RefOrderNumber"]) -> MetaOapg.properties.RefOrderNumber: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["AllowedInstallmentOptions"]) -> MetaOapg.properties.AllowedInstallmentOptions: ...
+    def __getitem__(self, name: typing_extensions.Literal["AllowedInstallmentOptions"]) -> 'PlanDataAllowedInstallmentOptions': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["Tags"]) -> MetaOapg.properties.Tags: ...
+    def __getitem__(self, name: typing_extensions.Literal["Tags"]) -> 'PlanDataTags': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["ProcessingData"]) -> 'ProcessingData2': ...
@@ -187,10 +143,10 @@ class PlanData(
     def get_item_oapg(self, name: typing_extensions.Literal["RefOrderNumber"]) -> typing.Union[MetaOapg.properties.RefOrderNumber, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["AllowedInstallmentOptions"]) -> typing.Union[MetaOapg.properties.AllowedInstallmentOptions, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["AllowedInstallmentOptions"]) -> typing.Union['PlanDataAllowedInstallmentOptions', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["Tags"]) -> typing.Union[MetaOapg.properties.Tags, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["Tags"]) -> typing.Union['PlanDataTags', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["ProcessingData"]) -> typing.Union['ProcessingData2', schemas.Unset]: ...
@@ -215,8 +171,8 @@ class PlanData(
         FirstInstallmentAmount: typing.Union[MetaOapg.properties.FirstInstallmentAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         Currency: typing.Union[MetaOapg.properties.Currency, str, schemas.Unset] = schemas.unset,
         RefOrderNumber: typing.Union[MetaOapg.properties.RefOrderNumber, str, schemas.Unset] = schemas.unset,
-        AllowedInstallmentOptions: typing.Union[MetaOapg.properties.AllowedInstallmentOptions, list, tuple, schemas.Unset] = schemas.unset,
-        Tags: typing.Union[MetaOapg.properties.Tags, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        AllowedInstallmentOptions: typing.Union['PlanDataAllowedInstallmentOptions', schemas.Unset] = schemas.unset,
+        Tags: typing.Union['PlanDataTags', schemas.Unset] = schemas.unset,
         ProcessingData: typing.Union['ProcessingData2', schemas.Unset] = schemas.unset,
         FirstInstallmentDate: typing.Union[MetaOapg.properties.FirstInstallmentDate, str, datetime, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
@@ -240,5 +196,7 @@ class PlanData(
             **kwargs,
         )
 
+from splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
+from splitit_client.model.plan_data_tags import PlanDataTags
 from splitit_client.model.processing_data2 import ProcessingData2
 from splitit_client.model.purchase_method import PurchaseMethod

@@ -15,6 +15,7 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal
 
 from splitit_client.type.address_data import AddressData
+from splitit_client.type.initiate_plan_response_extended_params import InitiatePlanResponseExtendedParams
 from splitit_client.type.plan_status import PlanStatus
 from splitit_client.type.purchase_method import PurchaseMethod
 from splitit_client.type.shopper_data import ShopperData
@@ -33,7 +34,7 @@ class OptionalInitiatePlanResponse(TypedDict, total=False):
 
     Amount: typing.Union[int, float]
 
-    ExtendedParams: typing.Dict[str, str]
+    ExtendedParams: InitiatePlanResponseExtendedParams
 
     Shopper: ShopperData
 

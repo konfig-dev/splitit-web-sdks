@@ -68,35 +68,10 @@ class SearchInstallmentPlanResponseItem(
             @staticmethod
             def PaymentMethod() -> typing.Type['PaymentMethodModel']:
                 return PaymentMethodModel
-            
-            
-            class ExtendedParams(
-                schemas.DictSchema
-            ):
-            
-            
-                class MetaOapg:
-                    additional_properties = schemas.StrSchema
-                
-                def __getitem__(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    # dict_instance[name] accessor
-                    return super().__getitem__(name)
-                
-                def get_item_oapg(self, name: typing.Union[str, ]) -> MetaOapg.additional_properties:
-                    return super().get_item_oapg(name)
-            
-                def __new__(
-                    cls,
-                    *args: typing.Union[dict, frozendict.frozendict, ],
-                    _configuration: typing.Optional[schemas.Configuration] = None,
-                    **kwargs: typing.Union[MetaOapg.additional_properties, str, ],
-                ) -> 'ExtendedParams':
-                    return super().__new__(
-                        cls,
-                        *args,
-                        _configuration=_configuration,
-                        **kwargs,
-                    )
+        
+            @staticmethod
+            def ExtendedParams() -> typing.Type['SearchInstallmentPlanResponseItemExtendedParams']:
+                return SearchInstallmentPlanResponseItemExtendedParams
             
             
             class Installments(
@@ -212,7 +187,7 @@ class SearchInstallmentPlanResponseItem(
     def __getitem__(self, name: typing_extensions.Literal["PaymentMethod"]) -> 'PaymentMethodModel': ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> MetaOapg.properties.ExtendedParams: ...
+    def __getitem__(self, name: typing_extensions.Literal["ExtendedParams"]) -> 'SearchInstallmentPlanResponseItemExtendedParams': ...
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["Installments"]) -> MetaOapg.properties.Installments: ...
@@ -268,7 +243,7 @@ class SearchInstallmentPlanResponseItem(
     def get_item_oapg(self, name: typing_extensions.Literal["PaymentMethod"]) -> typing.Union['PaymentMethodModel', schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union[MetaOapg.properties.ExtendedParams, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["ExtendedParams"]) -> typing.Union['SearchInstallmentPlanResponseItemExtendedParams', schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["Installments"]) -> typing.Union[MetaOapg.properties.Installments, schemas.Unset]: ...
@@ -301,7 +276,7 @@ class SearchInstallmentPlanResponseItem(
         Shopper: typing.Union['ShopperData', schemas.Unset] = schemas.unset,
         BillingAddress: typing.Union['AddressData', schemas.Unset] = schemas.unset,
         PaymentMethod: typing.Union['PaymentMethodModel', schemas.Unset] = schemas.unset,
-        ExtendedParams: typing.Union[MetaOapg.properties.ExtendedParams, dict, frozendict.frozendict, schemas.Unset] = schemas.unset,
+        ExtendedParams: typing.Union['SearchInstallmentPlanResponseItemExtendedParams', schemas.Unset] = schemas.unset,
         Installments: typing.Union[MetaOapg.properties.Installments, list, tuple, schemas.Unset] = schemas.unset,
         Refunds: typing.Union[MetaOapg.properties.Refunds, list, tuple, schemas.Unset] = schemas.unset,
         Links: typing.Union['LinksData', schemas.Unset] = schemas.unset,
@@ -339,4 +314,5 @@ from splitit_client.model.payment_method_model import PaymentMethodModel
 from splitit_client.model.plan_status import PlanStatus
 from splitit_client.model.purchase_method import PurchaseMethod
 from splitit_client.model.refund_model import RefundModel
+from splitit_client.model.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams
 from splitit_client.model.shopper_data import ShopperData

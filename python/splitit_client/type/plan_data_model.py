@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.plan_data_model_extended_params import PlanDataModelExtendedParams
 from splitit_client.type.purchase_method import PurchaseMethod
 
 class RequiredPlanDataModel(TypedDict):
@@ -30,7 +31,7 @@ class OptionalPlanDataModel(TypedDict, total=False):
 
     RefOrderNumber: str
 
-    ExtendedParams: typing.Dict[str, str]
+    ExtendedParams: PlanDataModelExtendedParams
 
     FirstInstallmentAmount: typing.Union[int, float]
 

@@ -23,6 +23,9 @@ import { MockerShopperToken } from './mocker-shopper-token';
 // May contain unused imports in some cases
 // @ts-ignore
 import { PaymentMethodType } from './payment-method-type';
+// May contain unused imports in some cases
+// @ts-ignore
+import { SpreedlyToken } from './spreedly-token';
 
 /**
  * 
@@ -60,5 +63,11 @@ export interface PaymentMethodModel {
      * @memberof PaymentMethodModel
      */
     'MockerShopperToken'?: MockerShopperToken;
+    /**
+     * 
+     * @type {SpreedlyToken}
+     * @memberof PaymentMethodModel
+     */
+    'SpreedlyToken'?: SpreedlyToken;
 }
 
