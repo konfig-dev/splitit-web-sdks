@@ -11,18 +11,27 @@
 
 import { AxiosRequestConfig } from "axios";
 import {
-  InstallmentplanApi,
+  FetchPlansApi,
+  MaintainPlansApi,
+  StartPlansDirectApiApi,
+  StartPlansSplititFormsApi,
 } from "./api";
 import { Configuration, ConfigurationParameters } from "./configuration";
 import { SplititCustom } from "./client-custom";
 
 export class Splitit extends SplititCustom {
-  readonly installmentplan: InstallmentplanApi;
+  readonly fetchPlans: FetchPlansApi;
+  readonly maintainPlans: MaintainPlansApi;
+  readonly startPlansDirectApi: StartPlansDirectApiApi;
+  readonly startPlansSplititForms: StartPlansSplititFormsApi;
 
   constructor(configurationParameters: ConfigurationParameters = {}) {
     super(configurationParameters);
     const configuration = new Configuration(configurationParameters);
-    this.installmentplan = new InstallmentplanApi(configuration);
+    this.fetchPlans = new FetchPlansApi(configuration);
+    this.maintainPlans = new MaintainPlansApi(configuration);
+    this.startPlansDirectApi = new StartPlansDirectApiApi(configuration);
+    this.startPlansSplititForms = new StartPlansSplititFormsApi(configuration);
   }
 
 }
