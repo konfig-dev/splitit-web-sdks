@@ -1,0 +1,2617 @@
+openapi: '3.0.0'
+info:
+  title: "Installments API"
+  description: |
+    Splitit's Installments API is the primary Splitit tool for establishing and maintaining installment plans. Use it to verify shopper eligibility, create plans with or without immediate authorization, get plan
+    information, update plan status, and process refunds and cancellations.
+
+    <details>
+    <summary><b><u><font size="+1">API Basics</font></u></b></summary>
+
+    * Each Splitit API request requires HTTPS as well as the header parameter `Content-Type = application/json`
+    * Each API request must include a token attached as a bearer header, which you must fetch from Splitit's ID server (see <em>Authentication</em> below)
+    * Make sure to address the API URL appropriate for your intended environment, sandbox (testing) calls should be directed to `https://web-api-v3.sandbox.splitit.com/api/installmentplans` while
+    production calls go to `https://web-api-v3.production.splitit.com/api/installmentplans` (calls in this API spec default to sandbox)
+    * It is recommended, but not required, to attach an idempotency key to your API calls to ensure that operations aren't duplicated
+    * Note that the API V3 endpoints you call to establish a plan will differ depending on whether you are using your own checkout form ("Direct API") or are using a premade Splitit product such as a
+    Payment Form or a Flex Form ("Splitit Forms")
+
+    </details>
+
+    <details>
+    <summary><b><u><font size="+1">Authentication</font></u></b></summary>
+
+    Begin by fetching a bearer token by POSTing to Splitit's ID server with the parameters below, making sure to add the `client_id` and `client_secret` that you received from onboarding (or from your
+    [Merchant Portal](https://merchant.splitit.com)), along with a `Content-Type` header using `application/x-www-form-urlencoded`, and the API scope (version). The token you receive must be added as a bearer header to all of your subsequent calls to the API.
+
+    ```bash
+    curl --request POST \
+      --url https://id.sandbox.splitit.com/connect/token \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --data grant_type=client_credentials \
+      --data scope=api.v3 \
+      --data client_id=xxxxxxxxx \
+      --data client_secret=xxxxxxxx
+    ```
+
+    <span class="badge badge--danger">Important</span>
+
+    In the API reference, add your bearer token using the <b>Authorize</b> button. This will make it available in all of the code samples. FYI, in the fields below the <b>Authorize</b> button, including <em>Body</em>, you can also enter other parameters that will become part of the copyable sample.
+    </details>
+
+    <details>
+    <summary><b><u><font size="+1">Plan Statuses</font></u></b></summary>
+
+    `Initialized` - plan was initialized but wasn't authorized (an authorization attempt failed or authorization is pending 3DS)
+
+    `PendingCapture` - plan was authorized and is pending capture
+
+    `Active` - plan is in the progress of running installments (still has outstanding amounts to capture)
+
+    `Cleared` - plan was cleared (outstanding amount is $0)
+
+    `Canceled` -  plan was canceled before becoming active, or canceled before the outstanding amount was reduced to $0
+
+    </details>
+
+  version: '3.0'
+servers:
+- url: https://web-api-v3.sandbox.splitit.com/api/installmentplans
+  description: "Substitute <em>production</em> for sandbox if applicable"
+- url: https://id.sandbox.splitit.com/connect
+  description: "Used to fetch authorization token that must be added to bearer header"
+components:
+  schemas:
+    FailedResponse:
+      type: object
+      properties:
+        TraceId:
+          type: string
+        Error:
+          $ref: '#/components/schemas/ErrorExtended'
+    ErrorExtended:
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          properties:
+            ExtraData:
+              type: object
+              additionalProperties:
+                type: string
+    Error:
+      type: object
+      properties:
+        Code:
+          type: string
+        Message:
+          type: string
+        AdditionalInfo:
+          type: string
+    InstallmentPlanGetResponse:
+      type: object
+      required:
+        - DateCreated
+        - Status
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          type: string
+          format: date-time
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          type: number
+          format: decimal
+        Amount:
+          type: number
+          format: decimal
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)
+        Installments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Installment'
+        Refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefundModel'
+        Links:
+          $ref: '#/components/schemas/LinksData'
+    PurchaseMethod:
+      type: string
+      description: How purchase was made (default is `ECommerce`)
+      x-enumNames:
+        - InStore
+        - PhoneOrder
+        - ECommerce
+      enum:
+        - InStore
+        - PhoneOrder
+        - ECommerce
+    PlanStatus:
+      type: string
+      description: ''
+      x-enumNames:
+        - Initialized
+        - PendingCapture
+        - Active
+        - Cleared
+        - Canceled
+      enum:
+        - Initialized
+        - PendingCapture
+        - Active
+        - Cleared
+        - Canceled
+    AuthorizationModel:
+      type: object
+      required:
+        - Status
+      properties:
+        Status:
+          $ref: '#/components/schemas/GwAuthorizationStatus'
+        Date:
+          type: string
+          format: date-time
+        SplititErrorResultCode:
+          type: string
+        GatewayTransactionID:
+          type: string
+        GatewayResultCode:
+          type: string
+        GatewayResultMessage:
+          type: string
+        ThreeDSRedirect:
+          $ref: '#/components/schemas/ThreeDsRedirectDataV3'
+        CAVV:
+          type: string
+        ECI:
+          type: string
+    GwAuthorizationStatus:
+      type: string
+      description: ''
+      x-enumNames:
+        - NA
+        - Succeeded
+        - Pending3DS
+        - Failed
+      enum:
+        - NA
+        - Succeeded
+        - Pending3DS
+        - Failed
+    ThreeDsRedirectDataV3:
+      type: object
+      properties:
+        Url:
+          type: string
+        Verb:
+          type: string
+        Params:
+          type: object
+          additionalProperties:
+            type: string
+    ShopperData:
+      required:
+      - Email
+      type: object
+      properties:
+        FullName:
+          type: string
+        Email:
+          type: string
+        PhoneNumber:
+          type: string
+        Culture:
+          type: string
+    ShopperDataInitiate:
+      type: object
+      properties:
+        FullName:
+          type: string
+        Email:
+          type: string
+        PhoneNumber:
+          type: string
+        Culture:
+          type: string
+    AddressData:
+      type: object
+      properties:
+        AddressLine:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+          description: ISO 3166 Country name OR 2-character code OR 3-character code
+        State:
+          type: string
+          description: ISO 3166-2 State
+        Zip:
+          type: string
+    PaymentMethodModel:
+      type: object
+      required:
+        - Card
+      properties:
+        Type:
+          $ref: '#/components/schemas/PaymentMethodType'
+        Card:
+          $ref: '#/components/schemas/CardData'
+        Token:
+          type: string
+    PaymentMethodType:
+      schema:
+        type: string
+      description: ''
+      x-enumNames:
+        - Card
+        - SplititToken
+      enum:
+        - Card
+        - SplititToken
+    CardData:
+      type: object
+      required:
+        - CardNumber
+        - CardExpYear
+        - CardExpMonth
+      properties:
+        CardHolderFullName:
+          type: string
+        CardNumber:
+          type: string
+        CardExpYear:
+          type: string
+        CardExpMonth:
+          type: string
+        CardCvv:
+          type: string
+        CardBrand:
+          $ref: '#/components/schemas/CardBrand'
+        CardType:
+          $ref: '#/components/schemas/CardType'
+    CardDataForCheckEligibility:
+      type: object
+      properties:
+        CardHolderFullName:
+          type: string
+        CardNumber:
+          type: string
+        CardExpYear:
+          type: string
+        CardExpMonth:
+          type: string
+        CardCvv:
+          type: string
+        CardBrand:
+          $ref: '#/components/schemas/CardBrand'
+        CardType:
+          $ref: '#/components/schemas/CardType'
+    CardBrand:
+      type: string
+      description: ''
+      x-enumNames:
+        - Mastercard
+        - Visa
+        - AmericanExpress
+        - Maestro
+        - JCB
+        - CUP
+        - UPI
+        - Discover
+        - Other
+      enum:
+        - Mastercard
+        - Visa
+        - AmericanExpress
+        - Maestro
+        - JCB
+        - CUP
+        - UPI
+        - Discover
+        - Other
+    CardType:
+      type: string
+      description: ''
+      x-enumNames:
+        - Credit
+        - Debit
+        - Charge
+        - Other
+        - Prepaid
+        - VisaDeferredDebit
+        - NetworkOnly
+      enum:
+        - Credit
+        - Debit
+        - Charge
+        - Other
+        - Prepaid
+        - VisaDeferredDebit
+        - NetworkOnly
+    Installment:
+      type: object
+      required:
+        - InstallmentNumber
+        - Amount
+        - Status
+      properties:
+        InstallmentNumber:
+          type: integer
+          format: int32
+        Amount:
+          type: number
+          format: decimal
+        ProcessDateTime:
+          type: string
+          format: date-time
+        Status:
+          $ref: '#/components/schemas/InstallmentStatus'
+    InstallmentStatus:
+      type: string
+      description: ''
+      x-enumNames:
+        - Pending
+        - Processed
+        - Canceled
+      enum:
+        - Pending
+        - Processed
+        - Canceled
+    RefundModel:
+      type: object
+      required:
+        - SubmitDate
+        - TotalAmount
+        - Status
+        - NonCreditRefundAmount
+        - CreditRefundAmount
+      properties:
+        RefundId:
+          type: string
+        SubmitDate:
+          type: string
+          format: date-time
+        TotalAmount:
+          type: number
+          format: decimal
+        Status:
+          $ref: '#/components/schemas/RefundStatus'
+        NonCreditRefundAmount:
+          type: number
+          format: decimal
+        CreditRefundAmount:
+          type: number
+          format: decimal
+    RefundStatus:
+      type: string
+      description: ''
+      x-enumNames:
+        - Pending
+        - Succeeded
+        - Failed
+      enum:
+        - Pending
+        - Succeeded
+        - Failed
+    LinksData:
+      type: object
+      properties:
+        Checkout:
+          type: string
+        LearnMore:
+          type: string
+        TermsConditions:
+          type: string
+        PrivacyPolicy:
+          type: string
+    InstallmentPlanSearchResponse:
+      type: object
+      properties:
+        PlanList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchInstallmentPlanResponseItem'
+    SearchInstallmentPlanResponseItem:
+      type: object
+      required:
+        - DateCreated
+        - Status
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          type: string
+          format: date-time
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          type: number
+          format: decimal
+        Amount:
+          type: number
+          format: decimal
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+        Installments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Installment'
+        Refunds:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefundModel'
+        Links:
+          $ref: '#/components/schemas/LinksData'
+    InitiatePlanResponse:
+      type: object
+      required:
+        - Status
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        Amount:
+          type: number
+          format: decimal
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        CheckoutUrl:
+          type: string
+    PlanErrorResponse:
+      allOf:
+        - $ref: '#/components/schemas/FailedResponse'
+        - type: object
+          properties:
+            InstallmentPlanNumber:
+              type: string
+    InstallmentPlanInitiateRequest:
+      type: object
+      required:
+        - AutoCapture
+        - PlanData
+      properties:
+        AutoCapture:
+          type: boolean
+          description: Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)
+        Attempt3dSecure:
+          type: boolean
+          description: Indicates whether to run a 3D secure verification (default is false)
+        Shopper:
+          $ref: '#/components/schemas/ShopperDataInitiate'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModelInitiate'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
+        UxSettings:
+          $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+    PlanDataModel:
+      type: object
+      required:
+        - Currency
+        - TerminalId
+        - NumberOfInstallments
+        - TotalAmount
+      properties:
+        TotalAmount:
+          type: number
+          format: decimal
+          description: The total order amount
+        Currency:
+          type: string
+        NumberOfInstallments:
+          type: integer
+          format: int32
+          description: When populated will be used to display as default in Payment Form
+        TerminalId:
+          type: string
+          description: The merchant terminal identifier
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+          description: Reference order number for merchant's use
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)
+        FirstInstallmentAmount:
+          type: number
+          format: decimal
+        FirstInstallmentDate:
+          type: string
+          format: date-time
+    PlanDataModelInitiate:
+      type: object
+      required:
+        - Currency
+        - TerminalId
+      properties:
+        TotalAmount:
+          type: number
+          format: decimal
+          description: The total order amount
+        Currency:
+          type: string
+        NumberOfInstallments:
+          type: integer
+          format: int32
+          description: When populated will be used to display as default in Payment Form
+        TerminalId:
+          type: string
+          description: The merchant terminal identifier
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+          description: Reference order number for merchant's use
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+          description: Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)
+        FirstInstallmentAmount:
+          type: number
+          format: decimal
+        FirstInstallmentDate:
+          type: string
+          format: date-time
+    AddressDataModel:
+      type: object
+      properties:
+        AddressLine1:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+          description: ISO 3166-3 code
+        State:
+          type: string
+          description: ISO 3166-2 code
+        Zip:
+          type: string
+    InitiateRedirectionEndpointsModel:
+      type: object
+      description: Used for 3DS redirection back to success or failure page
+      properties:
+        Succeeded:
+          type: string
+        Failed:
+          type: string
+        Cancel:
+          type: string
+    UxSettingsModel:
+      type: object
+      properties:
+        DisplayedInstallmentOptions:
+          type: array
+          items:
+            type: integer
+            format: int32
+    EventsEndpointsModel:
+      type: object
+      properties:
+        CreateSucceeded:
+          type: string
+    TestModes:
+      type: string
+      description: ''
+      x-enumNames:
+        - None
+        - Regular
+        - Fast
+        - Automation
+      enum:
+        - None
+        - Regular
+        - Fast
+        - Automation
+    InstallmentPlanCreateResponse:
+      type: object
+      required:
+        - DateCreated
+        - Status
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        DateCreated:
+          type: string
+          format: date-time
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        Currency:
+          type: string
+        OriginalAmount:
+          type: number
+          format: decimal
+        Amount:
+          type: number
+          format: decimal
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        Installments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Installment'
+        Links:
+          $ref: '#/components/schemas/LinksData'
+    InstallmentPlanCreateRequest:
+      type: object
+      required:
+        - TermsAndConditionsAccepted
+        - Shopper
+        - PlanData
+        - PaymentMethod
+      properties:
+        AutoCapture:
+          type: boolean
+          description: Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)
+        Attempt3dSecure:
+          type: boolean
+          description: Indicates whether to run a 3D secure verification (default is `false`)
+        TermsAndConditionsAccepted:
+          type: boolean
+          description: Indicates that the shopper accepted your Terms and Conditions
+        Shopper:
+          $ref: '#/components/schemas/ShopperData'
+        PlanData:
+          $ref: '#/components/schemas/PlanDataModel'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressDataModel'
+        PaymentMethod:
+          $ref: '#/components/schemas/PaymentMethodModel'
+        RedirectUrls:
+          $ref: '#/components/schemas/RedirectionEndpointsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+    RedirectionEndpointsModel:
+      type: object
+      properties:
+        AuthorizeSucceeded:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Succeeded property
+
+        Succeeded:
+          type: string
+        AuthorizeFailed:
+          type: string
+          x-deprecated: true
+          x-deprecatedMessage: Please use Failed property
+        Failed:
+          type: string
+    VerifyAuthorizationResponse:
+      type: object
+      required:
+        - IsAuthorized
+      properties:
+        IsAuthorized:
+          type: boolean
+        AuthorizationAmount:
+          type: number
+          format: decimal
+        Authorization:
+          $ref: '#/components/schemas/AuthorizationModel'
+    InstallmentPlanUpdateResponse:
+      type: object
+      required:
+        - Status
+        - ShippingStatus
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Status:
+          $ref: '#/components/schemas/PlanStatus'
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+    ShippingStatus:
+      type: string
+      description: ''
+      x-enumNames:
+        - Pending
+        - Shipped
+        - Delivered
+      enum:
+        - Pending
+        - Shipped
+        - Delivered
+    UpdateOrderRequest:
+      type: object
+      properties:
+        TrackingNumber:
+          type: string
+        RefOrderNumber:
+          type: string
+          description: A merchant-specific identifier value provided at creation of the plan by the merchant
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus'
+        Capture:
+          type: boolean
+          description: Set this as `true` to capture the first payment for a plan that has been authorized but not captured.
+    InstallmentPlanUpdateRequestByIdentifier:
+      allOf:
+        - $ref: '#/components/schemas/InstallmentPlanUpdateRequest'
+        - type: object
+          properties:
+              Identifier:
+                $ref: '#/components/schemas/IdentifierContract'
+    IdentifierContract:
+      type: object
+      description: Use the fields in this object to locate your plan
+      properties:
+        RefOrderNumber:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        ExtendedParams:
+          type: object
+          additionalProperties:
+            type: string
+    InstallmentPlanUpdateRequest:
+      type: object
+      properties:
+        RefOrderNumber:
+          type: string
+        TrackingNumber:
+          type: string
+        Capture:
+          type: boolean
+        ShippingStatus:
+          $ref: '#/components/schemas/ShippingStatus2'
+    ShippingStatus2:
+      type: string
+      description: ''
+      x-enumNames:
+        - Shipped
+        - Delivered
+      enum:
+        - Shipped
+        - Delivered
+    InstallmentPlanRefundResponse:
+      type: object
+      properties:
+        RefundId:
+          type: string
+        InstallmentPlanNumber:
+          type: string
+        Currency:
+          type: string
+        NonCreditRefundAmount:
+          type: number
+          format: decimal
+        CreditRefundAmount:
+          type: number
+          format: decimal
+        Summary:
+          $ref: '#/components/schemas/RefundSummary'
+    RefundSummary:
+      type: object
+      properties:
+        TotalAmount:
+          type: number
+          format: decimal
+        FailedAmount:
+          type: number
+          format: decimal
+        SucceededAmount:
+          type: number
+          format: decimal
+        PendingAmount:
+          type: number
+          format: decimal
+    InstallmentPlanRefundRequest:
+      type: object
+      required:
+        - Amount
+      properties:
+        Amount:
+          type: number
+          format: decimal
+        RefundStrategy:
+          $ref: '#/components/schemas/RefundStrategy'
+    RefundStrategy:
+      type: string
+      description: ''
+      x-enumNames:
+        - FutureInstallmentsFirst
+        - FutureInstallmentsLast
+        - FutureInstallmentsNotAllowed
+        - ReduceFromLastInstallment
+      enum:
+        - FutureInstallmentsFirst
+        - FutureInstallmentsLast
+        - FutureInstallmentsNotAllowed
+        - ReduceFromLastInstallment
+    InstallmentPlanCancelResponse:
+      type: object
+      properties:
+        InstallmentPlanNumber:
+          type: string
+    InstallmentsEligibilityResponse:
+      type: object
+      properties:
+        PaymentPlanOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentPlanOptionModel'
+    PaymentPlanOptionModel:
+      type: object
+      required:
+        - NumberOfInstallments
+        - FirstInstallmentAmount
+        - InstallmentAmount
+        - LastInstallmentAmount
+      properties:
+        NumberOfInstallments:
+          type: integer
+          format: int32
+        FirstInstallmentAmount:
+          type: number
+          format: decimal
+        InstallmentAmount:
+          type: number
+          format: decimal
+        LastInstallmentAmount:
+          type: number
+          format: decimal
+        Links:
+          $ref: '#/components/schemas/LinksModel'
+    LinksModel:
+      type: object
+      properties:
+        PrivacyPolicyUrl:
+          type: string
+        TermsAndConditionsUrl:
+          type: string
+        LearnMoreUrl:
+          type: string
+    CheckInstallmentsEligibilityRequest:
+      required:
+          - PlanData
+      type: object
+      properties:
+        PlanData:
+          $ref: '#/components/schemas/PlanData'
+        CardDetails:
+          $ref: '#/components/schemas/CardDataForCheckEligibility'
+        BillingAddress:
+          $ref: '#/components/schemas/AddressData'
+    PlanData:
+      type: object
+      required:
+        - TerminalId
+        - TotalAmount
+        - Currency
+        - NumberOfInstallments
+      properties:
+        TerminalId:
+          type: string
+          description: The merchant terminal identifier
+        TotalAmount:
+          type: number
+          format: decimal
+          description: The order total amount
+        FirstInstallmentAmount:
+          type: number
+          format: decimal
+        Currency:
+          type: string
+        NumberOfInstallments:
+          type: integer
+          format: int32
+        PurchaseMethod:
+          $ref: '#/components/schemas/PurchaseMethod'
+        RefOrderNumber:
+          type: string
+          description: Reference order number for merchant's use
+        AllowedInstallmentOptions:
+          type: array
+          items:
+            type: integer
+            format: int32
+        Tags:
+          type: object
+          additionalProperties:
+            type: string
+        FirstInstallmentDate:
+          type: string
+          format: date-time
+    TokenRequest:
+          required:
+                - grant_type
+                - scope
+                - client_id
+                - client_secret
+          type: object
+          properties:
+                grant_type:
+                  type: string
+                  description: OAuth grant type, typically used for machine-machine communication
+                scope:
+                  type: string
+                  description: the API version
+                client_id:
+                  type: string
+                  description: get from your merchant portal
+                client_secret:
+                  type: string
+                  description: get from your merchant portal
+    RefundExceededError:
+        type: object
+        properties:
+          Code:
+            type: string
+            description: 400-562
+        Message:
+          type: string
+          description: RefundRequestedAmountExceededPlanRefundableAmount
+        AdditionalInfo:
+          type: string
+          description: The refund amount requested exceeded the plan's refundable amount.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      in: header
+      scheme: bearer
+security:
+  - bearerAuth: []
+paths:
+  /check-eligibility:
+    post:
+
+      tags:
+        - Start Plans (Direct API)
+      operationId: CheckInstallmentsEligibility
+      description: |
+        As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit
+        installment plans and to determine plans for which they are eligible.
+        This endpoint can be called repeatedly before and during checkout, for example you may
+        call it after each field on a page is filled out. The Splitit API compares and updates the plan
+        based on each new body as it arrives.
+      summary: Check Eligibility
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: bearer
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CheckInstallmentsEligibilityRequest'
+              - example:
+                  PlanData:
+                    TerminalId: b628b9a4-4c21-4691-97c4-c9f8da665a60
+                    TotalAmount: 50.25
+                    FirstInstallmentAmount: 25.12
+                    Currency: USD
+                    NumberOfInstallments: 2
+                    PurchaseMethod: Ecommerce
+                    RefOrderNumber: MerchantOrder123
+                  BillingAddress:
+                    Country: USA
+                    State: NY
+                    Zip: '12345'
+                  PaymentMethod:
+                    Type: Card
+                    Card:
+                      CardNumber: '1234123412341234'
+                    ApplePay: {}
+                    GooglePay: {}
+                    PaySafe: {}
+                    BlueSnap: {}
+                    Splitit: {}
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                oneOf:
+                $ref: '#/components/schemas/InstallmentsEligibilityResponse'
+        '400-511':
+          x-nullable: false
+          description: 'InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-542':
+          x-nullable: false
+          description: 'InvalidCCCardBrandNotSupported: Sorry but we do not accept this type of credit card. Please use {{SupportedCardBrands}} to complete your purchase.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-563':
+          x-nullable: false
+          description: 'InvalidCurrency_NotSupportedByTerminal: Sorry, but this currency is not currently accepted at this terminal.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-564':
+          x-nullable: false
+          description: 'CreditCardIsMissing: Some information is missing. Please enter all requested credit card details.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-806':
+          x-nullable: false
+          description: "TerminalApiKeyMissing: Terminal ID not found."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: For all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'General Server Error : Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /:
+    post:
+      tags:
+        - Start Plans (Direct API)
+      summary: Create Installment Plan
+      operationId: InstallmentPlan
+      description: |
+        Once you are ready to check your customer out, you can use the `Create` endpoint.
+        `Create` enables you to pass in PCI sensitive data directly to the Splitit API,
+        and thus requires SAQ-D PCI certification.
+
+        A successful `Create` operation creates an authorization on a customer's credit
+        card, and if `AutoCapture` has been set to `true` within the request body, both
+        authorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will
+        have to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable
+        to successfully secure an authorization on
+        a credit card, an error message will be returned in the response. Note that for funded
+        plans, a customer's `BillingAddress` object must be filled out.
+        In addition, if you are completely managing the input of PCI sensitive data on
+        your side, it’s essential to ensure your customer has approved the Splitit
+        specific terms and conditions.
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: X-Splitit-TestMode
+          x-originalName: testMode
+          in: header
+          schema:
+            $ref: '#/components/schemas/TestModes'
+          x-nullable: true
+          enum:
+            - None
+            - Regular
+            - Fast
+            - Automation
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/InstallmentPlanCreateRequest'
+              - example:
+                  AutoCapture: true
+                  Attempt3DSecure: false
+                  TermsAndConditionsAccepted: true
+                  PlanData:
+                    TotalAmount: 50.25
+                    Currency: USD
+                    NumberOfInstallments: 3
+                    PurchaseMethod: Ecommerce
+                    RefOrderNumber: MerchantOrder123
+                    TerminalId: b628b9a4-4c21-4691-97c4-c9f8da665a60
+                    FirstInstallmentAmount: null
+                    ExtendedParams:
+                      AnyParameterKey1: AnyParameterVal1
+                      AnyParameterKey2: AnyParameterVal2
+                  Shopper:
+                    FullName: John Doe
+                    Email: John.Doe@email.com
+                    PhoneNumber: +1-972-111-1111
+                    Culture: en-US
+                  BillingAddress:
+                    AddressLine1: street name and number
+                    AddressLine2: ''
+                    City: NYC
+                    Country: USA
+                    State: NY
+                    Zip: '12345'
+                  PaymentMethod:
+                    Type: Card
+                    Card:
+                      CardHolderFullName: John Doe
+                      CardNumber: '4111111111111111'
+                      CardExpYear: 2025
+                      CardExpMonth: 10
+                      CardCvv: '123'
+            required: true
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCreateResponse'
+        '400-503':
+          x-nullable: false
+          description: "InvalidInstallmentPlanStatus: Please close this window. Then click 'Splitit Payment' to create your payment plan (you haven't been charged yet)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-504':
+          x-nullable: false
+          description: 'InvalidCCCardTypeNotSupported: Sorry, but we do not accept debit cards. We can only accept Visa and MasterCard credit cards at this time.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-505':
+          x-nullable: false
+          description: 'InvalidNumberOfInstallments: The number of installments is not available at this store. Please check available options and try again. Thank you!'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-510':
+          x-nullable: false
+          description: 'InvalidCardholderName: The cardholder name must include at least 3 characters. Please check and try again'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-511':
+          x-nullable: false
+          description: 'InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-520':
+          x-nullable: false
+          description: 'InvalidCVV: The CVV number must include at least 3 characters. Please check and try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-521':
+          x-nullable: false
+          description: 'InvalidCardNumber: This credit card number is not valid. Please check your card and try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-522':
+          x-nullable: false
+          description: 'InvalidExpirationDate: The entered expiration date is not a valid date. Please check your card and try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-524':
+          x-nullable: false
+          description: 'InvalidEmailFormat: Invalid email. Please check that the email address is entered in the correct format. (For example: name@mail.com)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-526':
+          x-nullable: false
+          description: 'InvalidZIPCode: The ZIP code must include at least 3 characters. Please check and try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-528':
+          x-nullable: false
+          description: 'InvalidCCIssueCountryNotSupportedByTerminal: We are sorry, but we currently do not accept cards issued by this country.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-529':
+          x-nullable: false
+          description: 'CurrencyNotSupported: We are sorry, but we currently do not accept this currency.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-532':
+          x-nullable: false
+          description: "CountrySubdivisionNotSupported: Sorry, but Splitit is currently not available in your state. Please contact Splitit's customer service desk for help"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-540':
+          x-nullable: false
+          description: 'InvalidExpirationDateFormat: Please enter the expiration date as MM/DD/YYYY.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-542':
+          x-nullable: false
+          description: 'InvalidCCCardBrandNotSupported: Sorry but we do not accept this type of credit card. Please use {{SupportedCardBrands}} to complete your purchase.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-543':
+          x-nullable: false
+          description: 'ApprovePlan_NoApprovalEvidence: Evidence of customer approval not provided.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-544':
+          x-nullable: false
+          description: "PlanWithTheSamePaymentDataAlreadyBeenCreatedLately: A similar purchase has been processed with this credit card. Please contact your merchant's customer support number for more information."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-550':
+          x-nullable: false
+          description: "CultureNameNotValid: Culture (language used in interfaces and communications) not valid."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-551':
+          x-nullable: false
+          description: "CultureNotSupported: Culture (language used in interfaces and communications) not supported."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-554':
+          x-nullable: false
+          description: "UnknownZipCode: The ZIP code you entered is not valid. Please try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-566':
+          x-nullable: false
+          description: "AddressDataIsMissingOrPartiallyInitiated: Please enter the cardholder's complete address."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-567':
+          x-nullable: false
+          description: "CardHolderNameIsMissing: Please enter the cardholder's name."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-568':
+          x-nullable: false
+          description: "CardNumberIsMissing: Please enter the full credit card number."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-569':
+          x-nullable: false
+          description: "CardExpirationMonthIsMissing: Please enter the credit card's expiration month."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-570':
+          x-nullable: false
+          description: "CardExpirationYearIsMissing: Please insert credit card's expiration year."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-571':
+          x-nullable: false
+          description: "NumberOfInstallmentNotDefined: Please select the number of installments for this purchase."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-572':
+          x-nullable: false
+          description: "InvalidStateCode: We were unable to find this state code."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-573':
+          x-nullable: false
+          description: "EmailsMissing: Please enter your email address."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-574':
+          x-nullable: false
+          description: "ConsumerFullNameIsMissing: Please enter your full name."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-575':
+          x-nullable: false
+          description: "CurrencyMustBeDefinedOnTransaction: Please select the currency you wish to use."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-578':
+          x-nullable: false
+          description: "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-580':
+          x-nullable: false
+          description: "InvalidCcPrepaidCardNotSupported: We do not currently accept prepaid cards, but we do accept credit cards."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-594':
+          x-nullable: false
+          description: "FraudDetected: Sorry, but we were unable to process your payment. Please reach out to our customer support team at support@splitit.com."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-595':
+          x-nullable: false
+          description: "PhoneIsMissing: Please enter your phone number."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-596':
+          x-nullable: false
+          description: "InvalidPhoneFormat: Please enter your phone number in this format: +1-321-555-1234."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-600':
+          x-nullable: false
+          description: 'GtwyResultGeneralError: Gateway was unable to process this request. Please try using a different card.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-601':
+          x-nullable: false
+          description: "GtwyResultCCDataAVSZip: The ZIP code you entered is not valid. Please try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-602':
+          x-nullable: false
+          description: "GtwyResultCCDataAVSAddress: The address does not match. Please check your card and try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-603':
+          x-nullable: false
+          description: "GtwyResultCCDataCVV: The CVV number does not match. Please check your card and try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-606':
+          x-nullable: false
+          description: "GtwyResultCCDataAVS: Address or zip/post code failed validation. Please try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-607':
+          x-nullable: false
+          description: "GtwyResultCCDataNumber: This credit card number is not valid. Please check your card and try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-608':
+          x-nullable: false
+          description: "GtwyResultCCDataGeneralProblem: Sorry, but your card was not able to be processed. Please try a different card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-609':
+          x-nullable: false
+          description: "GtwyResultCCDataInsufficientFunds: Sorry, but there is not enough available credit on this card to cover the full amount of your purchase. Please try a different card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-610':
+          x-nullable: false
+          description: "GtwyResultCCWasDeclined: Sorry, but your card was not accepted. Please try a different card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-630':
+          x-nullable: false
+          description: "GtwyConnectivityProblem: Sorry, but there was an error processing your payment. Please try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-640':
+          x-nullable: false
+          description: "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-641':
+          x-nullable: false
+          description: "Gtwy3DSRequired: 3D secure verification is required."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-806':
+          x-nullable: false
+          description: "TerminalApiKeyMissing: Terminal ID not found."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-1041':
+          x-nullable: false
+          description: "IdempotencyHashMismatchError: Same Idempotency key with different payload identified."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5041':
+          x-nullable: false
+          description: "InvalidCCCardTypeNotSupportedMoreThanXInstallments: {{CardType}} cards support only up to {{MaxInstallmentsLimit}} installments. Please reduce the number of installments or provide payment details for a supported credit card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5042':
+          x-nullable: false
+          description: "InvalidCCCardTypeNotSupportedMoreThanXAmount: {{CardType}} cards are only supported for purchases up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5421':
+          x-nullable: false
+          description: "InvalidCCCardBrandNotSupportedMoreThanXInstallments: {{CardBrand}} cards are supported only up to {{MaxInstallmentsLimit}} installments. Please reduce the number of installments or provide payment details for a supported credit card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5422':
+          x-nullable: false
+          description: "InvalidCCCardBrandNotSupportedMoreThanXAmount: {{CardBrand}} cards are only supported for purchases up to {{Currency}}{{MaxPlanAmount}}. Please try a different card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5801':
+          x-nullable: false
+          description: "InvalidCcPrepaidCardNotSupportedMoreThanXInstallments: {{CardType}} cards allow a maximum of {{MaxInstallmentsLimit}} installments. Please choose fewer installments or try a different credit card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5802':
+          x-nullable: false
+          description: "InvalidCcPrepaidCardNotSupportedMoreThanXAmount: The maximum purchase for {{CardType}} cards is {{Currency}}{{MaxPlanAmount}}. Please try a different card."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5911':
+          x-nullable: false
+          description: "PlanContextNotValidForAmount: Purchase is only supported for up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5982':
+          x-nullable: false
+          description: "PlanContextNotValidForAmount: Purchase is only supported for up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: "General Server Error: Server encountered an unexpected condition"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /initiate:
+    post:
+      tags:
+        - Start Plans (Splitit Forms)
+      operationId: Initiate Installment Plan
+      description: |
+        Initiate establishes an installment plan but doesn't finalize it, and is thus intended for use
+        with Splitit premade checkout solutions such as Payment Forms or Flex Form.
+        Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan.
+        Note that for funded plans, a customer's `BillingAddress` object must be filled out.
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - schema:
+            type: string
+          name: X-Splitit-TestMode
+          x-originalName: testMode
+          in: header
+          x-schema:
+            $ref: '#/components/schemas/TestModes'
+          x-nullable: true
+          enum:
+            - None
+            - Regular
+            - Fast
+            - Automation
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/InstallmentPlanInitiateRequest'
+              - example:
+                  AutoCapture: true
+                  Attempt3DSecure: false
+                  PlanData:
+                    TotalAmount: 50.25
+                    Currency: USD
+                    NumberOfInstallments: 3
+                    PurchaseMethod: Ecommerce
+                    RefOrderNumber: MerchantOrder123
+                    TerminalId: b628b9a4-4c21-4691-97c4-c9f8da665a60
+                    FirstInstallmentAmount: null
+                    ExtendedParams:
+                      AnyParameterKey1: AnyParameterVal1
+                      AnyParameterKey2: AnyParameterVal2
+                  Shopper:
+                    FullName: John Doe
+                    Email: John.Doe@email.com
+                    PhoneNumber: +1-972-111-1111
+                    Culture: en-US
+                  BillingAddress:
+                    AddressLine1: street name and number
+                    AddressLine2: ''
+                    City: NYC
+                    Country: USA
+                    State: NY
+                    Zip: '12345'
+                  RedirectUrls:
+                    Succeeded: https://www.success.com
+                    Failed: https://www.fail.com
+                    Canceled: https://www.cancel.com
+        required: false
+        x-nullable: false
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiatePlanResponse'
+        '400-503':
+          x-nullable: false
+          description: "InvalidInstallmentPlanStatus: Please close this window. Then click 'Splitit Payment' to create your payment plan (you haven't been charged yet)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-505':
+          x-nullable: false
+          description: 'InvalidNumberOfInstallments: The number of installments is not available at this store. Please check available options and try again. Thank you!'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-511':
+          x-nullable: false
+          description: 'InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-524':
+          x-nullable: false
+          description: 'InvalidEmailFormat: Invalid email. Please check that the email address is entered in the correct format. (For example: name@mail.com)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-526':
+          x-nullable: false
+          description: 'InvalidZIPCode: The ZIP code must include at least 3 characters. Please check and try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-528':
+          x-nullable: false
+          description: 'InvalidCCIssueCountryNotSupportedByTerminal: We are sorry, but we currently do not accept cards issued by this country.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-529':
+          x-nullable: false
+          description: 'CurrencyNotSupported: We are sorry, but we currently do not accept this currency.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-532':
+          x-nullable: false
+          description: "CountrySubdivisionNotSupported: Sorry, but Splitit is currently not available in your state. Please contact Splitit's customer service desk for help"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-550':
+          x-nullable: false
+          description: "CultureNameNotValid: Culture (language used in interfaces and communications) not valid."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-551':
+          x-nullable: false
+          description: "CultureNotSupported: Culture (language used in interfaces and communications) not supported."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-554':
+          x-nullable: false
+          description: "UnknownZipCode: The ZIP code you entered is not valid. Please try again."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-566':
+          x-nullable: false
+          description: "AddressDataIsMissingOrPartiallyInitiated: Please enter the cardholder's complete address."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-572':
+          x-nullable: false
+          description: "InvalidStateCode: We were unable to find this state code."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-575':
+          x-nullable: false
+          description: "CurrencyMustBeDefinedOnTransaction: Please select the currency you wish to use."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-595':
+          x-nullable: false
+          description: "PhoneIsMissing: Please enter your phone number."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-596':
+          x-nullable: false
+          description: "InvalidPhoneFormat: Please enter your phone number in this format: +1-321-555-1234."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-806':
+          x-nullable: false
+          description: "TerminalApiKeyMissing: Terminal ID not found."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: "General Server Error: Server encountered an unexpected condition"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /{installmentPlanNumber}/verifyauthorization:
+    get:
+      tags:
+        - Start Plans (Splitit Forms)
+      description: |
+       You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan).
+      operationId: Verify Authorization
+      parameters:
+        - name: installmentPlanNumber
+          schema:
+            type: string
+          in: path
+          required: true
+          allowEmptyValue: false
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyAuthorizationResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'General Server Error: Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /{installmentPlanNumber}:
+    get:
+      tags:
+        - Fetch Plans
+      summary: Fetch Plan by Number
+      description: |
+         Retrieve an installment plan's information by providing its number in your path.
+      operationId: GetInstallmentPlan
+      parameters:
+        - name: installmentPlanNumber
+          in: path
+          description: The number of the installment plan for which you'd like information
+          schema:
+            type: string
+          required: true
+          x-nullable: true
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanGetResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: "General Server Error: Server encountered an unexpected condition"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /search:
+    get:
+      tags:
+      - Fetch Plans
+      summary: Fetch Plan(s) by Alternate Field
+      description: |
+        Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.
+      operationId: InstallmentPlan-Search
+      parameters:
+        - name: refOrderNumber
+          schema:
+            type: string
+          in: query
+          x-nullable: true
+          required: false
+        - name: extendedParams
+          description: 'Specify the key and value you used when establishing the plan. For example `ExtendedParams["MerchantInternalID"]="5345532"` '
+          required: false
+          in: query
+          x-nullable: true
+          schema:
+              type: object
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanSearchResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'General Server Error: Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /{installmentPlanNumber}/updateorder:
+    put:
+      tags:
+      - Maintain Plans
+      summary: Update Plan by Number
+      description: |
+       Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+      operationId: UpdateOrder
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer'
+        - schema:
+            type: string
+          name: installmentPlanNumber
+          in: path
+          required: true
+          x-nullable: true
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateOrderRequest'
+              - example:
+                  RefOrderNumber: MerchantOrder123
+                  TrackingNumber: abc46265
+                  ShippingStatus: Shipped
+                  Capture: true
+        required: false
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+        '400-503':
+          x-nullable: false
+          description: "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-578':
+          x-nullable: false
+          description: "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-640':
+          x-nullable: false
+          description: "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-1041':
+          x-nullable: false
+          description: "IdempotencyHashMismatchError: Same Idempotency key with different payload identified."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5911':
+          x-nullable: false
+          description: "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'General Server Error: Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /updateorder:
+    put:
+      tags:
+      - Maintain Plans
+      summary: Update Plan By Alternate Field
+      description: |
+        Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.
+      operationId: UpdateOrderByIdentifier
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #     type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/InstallmentPlanUpdateRequestByIdentifier'
+              x-nullable: false
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanUpdateResponse'
+        '400-503':
+          x-nullable: false
+          description: "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-578':
+          x-nullable: false
+          description: "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-640':
+          x-nullable: false
+          description: "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-1041':
+          x-nullable: false
+          description: "IdempotencyHashMismatchError: Same Idempotency key with different payload identified."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5911':
+          x-nullable: false
+          description: "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'General Server Error: Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/FailedResponse'
+  /{installmentPlanNumber}/refund:
+   post:
+      tags:
+      - Maintain Plans
+      summary: Refund a Plan
+      description: |
+        Refund part or all of an installment Plan.
+
+        ### Strategies
+
+        There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):
+
+        * `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid
+        * `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones
+        * `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due
+        * `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6).
+      operationId: Refund
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+        # - name: Authorization
+        #   in: header
+        #   required: true
+        #   description: Bearer token
+        #   schema:
+        #       type: string
+        #   default: 'Bearer '
+        - name: X-Splitit-IdempotencyKey
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: installmentPlanNumber
+          schema:
+            type: string
+          in: path
+          required: true
+          x-nullable: true
+      requestBody:
+          content:
+              application/json:
+                schema:
+                  allOf:
+                  - $ref: '#/components/schemas/InstallmentPlanRefundRequest'
+                  - example:
+                      Amount: 1200
+                      RefundStrategy: FutureInstallmentsFirst
+          x-nullable: false
+      responses:
+        '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanRefundResponse'
+        '400-503':
+          x-nullable: false
+          description: "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured)."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-511':
+          x-nullable: false
+          description: 'InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-562':
+          x-nullable: false
+          description: "RefundRequestedAmountExceededPlanRefundableAmount: The refund amount requested exceeded the plan's refundable amount."
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/FailedResponse'
+        '400-578':
+          x-nullable: false
+          description: "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-594':
+          x-nullable: false
+          description: "FraudDetected: Sorry, but we were unable to process your payment. Please reach out to our customer support team at support@splitit.com."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-640':
+          x-nullable: false
+          description: "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-1041':
+          x-nullable: false
+          description: "IdempotencyHashMismatchError: Same Idempotency key with different payload identified."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '400-5911':
+          x-nullable: false
+          description: "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request."
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '401':
+          x-nullable: false
+          description: 'Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '404':
+          x-nullable: false
+          description: 'Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+        '500':
+          x-nullable: false
+          description: 'Server encountered an unexpected condition'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+  /{installmentPlanNumber}/cancel:
+    post:
+      tags:
+      - Maintain Plans
+      summary: Cancel a Plan
+      description: |
+        The Cancel operation allows you to cancel an existing installment plan.
+      operationId: Cancel
+      consumes:
+        - application/json-patch+json
+        - application/json
+        - text/json
+        - application/*+json
+      parameters:
+      - schema:
+          type: string
+        name: installmentPlanNumber
+        in: path
+        required: true
+        x-nullable: true
+      # - name: Authorization
+      #   in: header
+      #   required: true
+      #   description: Bearer token
+      #   schema:
+      #     type: string
+      #   default: 'Bearer '
+      - name: X-Splitit-IdempotencyKey
+        in: header
+        required: false
+        schema:
+          type: string
+      responses:
+         '200':
+          x-nullable: false
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
+         '400-599':
+          x-nullable: false
+          description: 'General Error: Sorry. There has been an error. Please try again.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+         '401':
+          x-nullable: false
+          description: 'Unauthorized Request: Token is not authorized or is expired'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+         '403':
+          x-nullable: false
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+         '404':
+          x-nullable: false
+          description: 'Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+         '500':
+          x-nullable: false
+          description: "General Server Error: Server encountered an unexpected condition"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
