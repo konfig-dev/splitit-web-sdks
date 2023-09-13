@@ -22,7 +22,7 @@ import { PurchaseMethod } from './purchase-method';
  */
 export interface PlanDataModel {
     /**
-     * 
+     * The total order amount
      * @type {number}
      * @memberof PlanDataModel
      */
@@ -34,13 +34,13 @@ export interface PlanDataModel {
      */
     'Currency'?: string;
     /**
-     * 
+     * When populated will be used to display as default in Payment Form
      * @type {number}
      * @memberof PlanDataModel
      */
     'NumberOfInstallments'?: number;
     /**
-     * 
+     * The merchant terminal identifier
      * @type {string}
      * @memberof PlanDataModel
      */
@@ -52,13 +52,13 @@ export interface PlanDataModel {
      */
     'PurchaseMethod': PurchaseMethod;
     /**
-     * 
+     * Reference order number for merchant\'s use
      * @type {string}
      * @memberof PlanDataModel
      */
     'RefOrderNumber'?: string;
     /**
-     * 
+     * Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)
      * @type {{ [key: string]: string; }}
      * @memberof PlanDataModel
      */

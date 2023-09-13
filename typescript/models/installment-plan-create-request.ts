@@ -40,19 +40,19 @@ import { ShopperData } from './shopper-data';
  */
 export interface InstallmentPlanCreateRequest {
     /**
-     * 
+     * Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)
      * @type {boolean}
      * @memberof InstallmentPlanCreateRequest
      */
     'AutoCapture': boolean;
     /**
-     * 
+     * Indicates whether to run a 3D secure verification (default is `false`)
      * @type {boolean}
      * @memberof InstallmentPlanCreateRequest
      */
     'Attempt3dSecure'?: boolean;
     /**
-     * 
+     * Indicates that the shopper accepted your Terms and Conditions
      * @type {boolean}
      * @memberof InstallmentPlanCreateRequest
      */

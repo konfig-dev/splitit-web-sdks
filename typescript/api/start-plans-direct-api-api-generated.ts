@@ -60,7 +60,7 @@ import { requestBeforeHook } from '../requestBeforeHook';
 export const StartPlansDirectApiApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * As your customer beings to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives.
+         * As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives. 
          * @summary Check Eligibility
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
@@ -120,7 +120,7 @@ export const StartPlansDirectApiApiAxiosParamCreator = function (configuration?:
             };
         },
         /**
-         * Once you are ready to check your customer out, you can use the Create endpoint. Create enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification. A successful Create operation creates an authorization on a customer\'s credit card, and if AutoCapture has been set to true within the request body, both authorization and capture of the first installment will be completed (if AutoCapture is set to false, you will have to call Update Plan later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s BillingAddress object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
+         * Once you are ready to check your customer out, you can use the `Create` endpoint. `Create` enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification.  A successful `Create` operation creates an authorization on a customer\'s credit card, and if `AutoCapture` has been set to `true` within the request body, both authorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will have to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
          * @summary Create Installment Plan
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
@@ -195,7 +195,7 @@ export const StartPlansDirectApiApiFp = function(configuration?: Configuration) 
     const localVarAxiosParamCreator = StartPlansDirectApiApiAxiosParamCreator(configuration)
     return {
         /**
-         * As your customer beings to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives.
+         * As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives. 
          * @summary Check Eligibility
          * @param {StartPlansDirectApiApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -206,7 +206,7 @@ export const StartPlansDirectApiApiFp = function(configuration?: Configuration) 
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Once you are ready to check your customer out, you can use the Create endpoint. Create enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification. A successful Create operation creates an authorization on a customer\'s credit card, and if AutoCapture has been set to true within the request body, both authorization and capture of the first installment will be completed (if AutoCapture is set to false, you will have to call Update Plan later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s BillingAddress object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
+         * Once you are ready to check your customer out, you can use the `Create` endpoint. `Create` enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification.  A successful `Create` operation creates an authorization on a customer\'s credit card, and if `AutoCapture` has been set to `true` within the request body, both authorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will have to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
          * @summary Create Installment Plan
          * @param {StartPlansDirectApiApiPost2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -227,7 +227,7 @@ export const StartPlansDirectApiApiFactory = function (configuration?: Configura
     const localVarFp = StartPlansDirectApiApiFp(configuration)
     return {
         /**
-         * As your customer beings to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives.
+         * As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives. 
          * @summary Check Eligibility
          * @param {StartPlansDirectApiApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -237,7 +237,7 @@ export const StartPlansDirectApiApiFactory = function (configuration?: Configura
             return localVarFp.checkEligibility(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Once you are ready to check your customer out, you can use the Create endpoint. Create enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification. A successful Create operation creates an authorization on a customer\'s credit card, and if AutoCapture has been set to true within the request body, both authorization and capture of the first installment will be completed (if AutoCapture is set to false, you will have to call Update Plan later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s BillingAddress object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
+         * Once you are ready to check your customer out, you can use the `Create` endpoint. `Create` enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification.  A successful `Create` operation creates an authorization on a customer\'s credit card, and if `AutoCapture` has been set to `true` within the request body, both authorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will have to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
          * @summary Create Installment Plan
          * @param {StartPlansDirectApiApiPost2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -310,7 +310,7 @@ export type StartPlansDirectApiApiPost2Request = {
  */
 export class StartPlansDirectApiApiGenerated extends BaseAPI {
     /**
-     * As your customer beings to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives.
+     * As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit installment plans and to determine plans for which they are eligible. This endpoint can be called repeatedly before and during checkout, for example you may call it after each field on a page is filled out. The Splitit API compares and updates the plan based on each new body as it arrives. 
      * @summary Check Eligibility
      * @param {StartPlansDirectApiApiCheckEligibilityRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -322,7 +322,7 @@ export class StartPlansDirectApiApiGenerated extends BaseAPI {
     }
 
     /**
-     * Once you are ready to check your customer out, you can use the Create endpoint. Create enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification. A successful Create operation creates an authorization on a customer\'s credit card, and if AutoCapture has been set to true within the request body, both authorization and capture of the first installment will be completed (if AutoCapture is set to false, you will have to call Update Plan later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s BillingAddress object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
+     * Once you are ready to check your customer out, you can use the `Create` endpoint. `Create` enables you to pass in PCI sensitive data directly to the Splitit API, and thus requires SAQ-D PCI certification.  A successful `Create` operation creates an authorization on a customer\'s credit card, and if `AutoCapture` has been set to `true` within the request body, both authorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will have to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable to successfully secure an authorization on a credit card, an error message will be returned in the response. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. In addition, if you are completely managing the input of PCI sensitive data on your side, it’s essential to ensure your customer has approved the Splitit specific terms and conditions. 
      * @summary Create Installment Plan
      * @param {StartPlansDirectApiApiPost2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

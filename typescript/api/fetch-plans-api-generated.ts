@@ -34,9 +34,9 @@ import { requestBeforeHook } from '../requestBeforeHook';
 export const FetchPlansApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Retrieve an installment plan\'s information by providing its number in your path.
+         * Retrieve an installment plan\'s information by providing its number in your path. 
          * @summary Fetch Plan by Number
-         * @param {string} installmentPlanNumber 
+         * @param {string} installmentPlanNumber The number of the installment plan for which you\&#39;d like information
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {*} [options] Override http request option.
@@ -91,13 +91,13 @@ export const FetchPlansApiAxiosParamCreator = function (configuration?: Configur
             };
         },
         /**
-         * Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Fetch Plan(s) by Alternate Field
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {string} [installmentPlanNumber] 
          * @param {string} [refOrderNumber] 
-         * @param {{ [key: string]: string; }} [extendedParams] 
+         * @param {{ [key: string]: string; }} [extendedParams] Specify the key and value you used when establishing the plan. For example &#x60;ExtendedParams[\&quot;MerchantInternalID\&quot;]&#x3D;\&quot;5345532\&quot;&#x60; 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -169,7 +169,7 @@ export const FetchPlansApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = FetchPlansApiAxiosParamCreator(configuration)
     return {
         /**
-         * Retrieve an installment plan\'s information by providing its number in your path.
+         * Retrieve an installment plan\'s information by providing its number in your path. 
          * @summary Fetch Plan by Number
          * @param {FetchPlansApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -180,7 +180,7 @@ export const FetchPlansApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Fetch Plan(s) by Alternate Field
          * @param {FetchPlansApiSearchRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -201,7 +201,7 @@ export const FetchPlansApiFactory = function (configuration?: Configuration, bas
     const localVarFp = FetchPlansApiFp(configuration)
     return {
         /**
-         * Retrieve an installment plan\'s information by providing its number in your path.
+         * Retrieve an installment plan\'s information by providing its number in your path. 
          * @summary Fetch Plan by Number
          * @param {FetchPlansApiGetRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -211,7 +211,7 @@ export const FetchPlansApiFactory = function (configuration?: Configuration, bas
             return localVarFp.get(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Fetch Plan(s) by Alternate Field
          * @param {FetchPlansApiSearchRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -231,7 +231,7 @@ export const FetchPlansApiFactory = function (configuration?: Configuration, bas
 export type FetchPlansApiGetRequest = {
     
     /**
-    * 
+    * The number of the installment plan for which you\'d like information
     * @type {string}
     * @memberof FetchPlansApiGet
     */
@@ -289,7 +289,7 @@ export type FetchPlansApiSearchRequest = {
     readonly refOrderNumber?: string
     
     /**
-    * 
+    * Specify the key and value you used when establishing the plan. For example `ExtendedParams[\"MerchantInternalID\"]=\"5345532\"` 
     * @type {{ [key: string]: string; }}
     * @memberof FetchPlansApiSearch
     */
@@ -305,7 +305,7 @@ export type FetchPlansApiSearchRequest = {
  */
 export class FetchPlansApiGenerated extends BaseAPI {
     /**
-     * Retrieve an installment plan\'s information by providing its number in your path.
+     * Retrieve an installment plan\'s information by providing its number in your path. 
      * @summary Fetch Plan by Number
      * @param {FetchPlansApiGetRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -317,7 +317,7 @@ export class FetchPlansApiGenerated extends BaseAPI {
     }
 
     /**
-     * Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+     * Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
      * @summary Fetch Plan(s) by Alternate Field
      * @param {FetchPlansApiSearchRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

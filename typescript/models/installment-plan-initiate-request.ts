@@ -40,13 +40,13 @@ import { UxSettingsModel } from './ux-settings-model';
  */
 export interface InstallmentPlanInitiateRequest {
     /**
-     * 
+     * Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)
      * @type {boolean}
      * @memberof InstallmentPlanInitiateRequest
      */
     'AutoCapture': boolean;
     /**
-     * 
+     * Indicates whether to run a 3D secure verification (default is false)
      * @type {boolean}
      * @memberof InstallmentPlanInitiateRequest
      */

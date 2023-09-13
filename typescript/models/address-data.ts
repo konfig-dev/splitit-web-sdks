@@ -37,13 +37,13 @@ export interface AddressData {
      */
     'City'?: string;
     /**
-     * 
+     * ISO 3166 Country name OR 2-character code OR 3-character code
      * @type {string}
      * @memberof AddressData
      */
     'Country'?: string;
     /**
-     * 
+     * ISO 3166-2 State
      * @type {string}
      * @memberof AddressData
      */

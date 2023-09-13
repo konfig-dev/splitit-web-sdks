@@ -15,8 +15,9 @@
     "/api/installmentplans/{installmentPlanNumber}": {
       "get": {
         "tags": [
-          "InstallmentPlan"
+          "Fetch Plans"
         ],
+        "summary": "Fetch Plan by Number",
         "operationId": "InstallmentPlan_Get",
         "security": [
           {
@@ -25,8 +26,10 @@
             ]
           }
         ],
+        "description": "Retrieve an installment plan's information by providing its number in your path.\n",
         "parameters": [
           {
+            "description": "The number of the installment plan for which you'd like information",
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
@@ -56,7 +59,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -77,7 +80,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -119,7 +122,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -140,7 +143,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -159,6 +162,17 @@
                 }
               }
             }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -166,8 +180,9 @@
     "/api/installmentplans/search": {
       "get": {
         "tags": [
-          "InstallmentPlan"
+          "Fetch Plans"
         ],
+        "summary": "Fetch Plan(s) by Alternate Field",
         "operationId": "InstallmentPlan_Search",
         "security": [
           {
@@ -176,6 +191,7 @@
             ]
           }
         ],
+        "description": "Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.\n",
         "parameters": [
           {
             "name": "installmentPlanNumber",
@@ -194,6 +210,7 @@
             }
           },
           {
+            "description": "Specify the key and value you used when establishing the plan. For example `ExtendedParams[\"MerchantInternalID\"]=\"5345532\"` ",
             "name": "extendedParams",
             "in": "query",
             "x-nullable": true,
@@ -225,7 +242,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -246,7 +263,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -288,7 +305,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -309,7 +326,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -323,6 +340,17 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -335,8 +363,9 @@
     "/api/installmentplans/initiate": {
       "post": {
         "tags": [
-          "InstallmentPlan"
+          "Start Plans (Splitit Forms)"
         ],
+        "summary": "Initiate Installment Plan",
         "operationId": "InstallmentPlan_Post",
         "security": [
           {
@@ -345,6 +374,7 @@
             ]
           }
         ],
+        "description": "Initiate establishes an installment plan but doesn't finalize it, and is thus intended for use\nwith Splitit premade checkout solutions such as Payment Forms or Flex Form.\nInitiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan.\nNote that for funded plans, a customer's `BillingAddress` object must be filled out.\n",
         "parameters": [
           {
             "name": "X-Splitit-TestMode",
@@ -411,7 +441,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -453,7 +483,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -495,7 +525,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -516,7 +546,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -530,6 +560,204 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-503": {
+            "description": "InvalidInstallmentPlanStatus: Please close this window. Then click 'Splitit Payment' to create your payment plan (you haven't been charged yet).",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-505": {
+            "description": "InvalidNumberOfInstallments: The number of installments is not available at this store. Please check available options and try again. Thank you!",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-511": {
+            "description": "InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-524": {
+            "description": "InvalidEmailFormat: Invalid email. Please check that the email address is entered in the correct format. (For example: name@mail.com)",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-526": {
+            "description": "InvalidZIPCode: The ZIP code must include at least 3 characters. Please check and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-528": {
+            "description": "InvalidCCIssueCountryNotSupportedByTerminal: We are sorry, but we currently do not accept cards issued by this country.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-529": {
+            "description": "CurrencyNotSupported: We are sorry, but we currently do not accept this currency.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-532": {
+            "description": "CountrySubdivisionNotSupported: Sorry, but Splitit is currently not available in your state. Please contact Splitit's customer service desk for help",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-550": {
+            "description": "CultureNameNotValid: Culture (language used in interfaces and communications) not valid.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-551": {
+            "description": "CultureNotSupported: Culture (language used in interfaces and communications) not supported.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-554": {
+            "description": "UnknownZipCode: The ZIP code you entered is not valid. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-566": {
+            "description": "AddressDataIsMissingOrPartiallyInitiated: Please enter the cardholder's complete address.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-572": {
+            "description": "InvalidStateCode: We were unable to find this state code.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-575": {
+            "description": "CurrencyMustBeDefinedOnTransaction: Please select the currency you wish to use.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-595": {
+            "description": "PhoneIsMissing: Please enter your phone number.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-596": {
+            "description": "InvalidPhoneFormat: Please enter your phone number in this format: +1-321-555-1234.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-806": {
+            "description": "TerminalApiKeyMissing: Terminal ID not found.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -542,8 +770,9 @@
     "/api/installmentplans": {
       "post": {
         "tags": [
-          "InstallmentPlan"
+          "Start Plans (Direct API)"
         ],
+        "summary": "Create Installment Plan",
         "operationId": "InstallmentPlan_Post2",
         "security": [
           {
@@ -552,6 +781,7 @@
             ]
           }
         ],
+        "description": "Once you are ready to check your customer out, you can use the `Create` endpoint.\n`Create` enables you to pass in PCI sensitive data directly to the Splitit API,\nand thus requires SAQ-D PCI certification.\n\nA successful `Create` operation creates an authorization on a customer's credit\ncard, and if `AutoCapture` has been set to `true` within the request body, both\nauthorization and capture of the first installment will be completed (if `AutoCapture` is set to false, you will\nhave to call [Update Plan](/api-v3/update-plan-by-number) later). If Splitit is unable\nto successfully secure an authorization on\na credit card, an error message will be returned in the response. Note that for funded\nplans, a customer's `BillingAddress` object must be filled out.\nIn addition, if you are completely managing the input of PCI sensitive data on\nyour side, it’s essential to ensure your customer has approved the Splitit\nspecific terms and conditions.\n",
         "parameters": [
           {
             "name": "X-Splitit-TestMode",
@@ -591,6 +821,7 @@
           }
         ],
         "requestBody": {
+          "description": "",
           "content": {
             "application/json-patch+json": {
               "schema": {
@@ -618,7 +849,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -660,7 +891,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -702,7 +933,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -723,7 +954,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -737,6 +968,644 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-503": {
+            "description": "InvalidInstallmentPlanStatus: Please close this window. Then click 'Splitit Payment' to create your payment plan (you haven't been charged yet).",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-504": {
+            "description": "InvalidCCCardTypeNotSupported: Sorry, but we do not accept debit cards. We can only accept Visa and MasterCard credit cards at this time.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-505": {
+            "description": "InvalidNumberOfInstallments: The number of installments is not available at this store. Please check available options and try again. Thank you!",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-510": {
+            "description": "InvalidCardholderName: The cardholder name must include at least 3 characters. Please check and try again",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-511": {
+            "description": "InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-520": {
+            "description": "InvalidCVV: The CVV number must include at least 3 characters. Please check and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-521": {
+            "description": "InvalidCardNumber: This credit card number is not valid. Please check your card and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-522": {
+            "description": "InvalidExpirationDate: The entered expiration date is not a valid date. Please check your card and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-524": {
+            "description": "InvalidEmailFormat: Invalid email. Please check that the email address is entered in the correct format. (For example: name@mail.com)",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-526": {
+            "description": "InvalidZIPCode: The ZIP code must include at least 3 characters. Please check and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-528": {
+            "description": "InvalidCCIssueCountryNotSupportedByTerminal: We are sorry, but we currently do not accept cards issued by this country.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-529": {
+            "description": "CurrencyNotSupported: We are sorry, but we currently do not accept this currency.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-532": {
+            "description": "CountrySubdivisionNotSupported: Sorry, but Splitit is currently not available in your state. Please contact Splitit's customer service desk for help",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-540": {
+            "description": "InvalidExpirationDateFormat: Please enter the expiration date as MM/DD/YYYY.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-542": {
+            "description": "InvalidCCCardBrandNotSupported: Sorry but we do not accept this type of credit card. Please use {{SupportedCardBrands}} to complete your purchase.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-543": {
+            "description": "ApprovePlan_NoApprovalEvidence: Evidence of customer approval not provided.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-544": {
+            "description": "PlanWithTheSamePaymentDataAlreadyBeenCreatedLately: A similar purchase has been processed with this credit card. Please contact your merchant's customer support number for more information.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-550": {
+            "description": "CultureNameNotValid: Culture (language used in interfaces and communications) not valid.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-551": {
+            "description": "CultureNotSupported: Culture (language used in interfaces and communications) not supported.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-554": {
+            "description": "UnknownZipCode: The ZIP code you entered is not valid. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-566": {
+            "description": "AddressDataIsMissingOrPartiallyInitiated: Please enter the cardholder's complete address.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-567": {
+            "description": "CardHolderNameIsMissing: Please enter the cardholder's name.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-568": {
+            "description": "CardNumberIsMissing: Please enter the full credit card number.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-569": {
+            "description": "CardExpirationMonthIsMissing: Please enter the credit card's expiration month.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-570": {
+            "description": "CardExpirationYearIsMissing: Please insert credit card's expiration year.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-571": {
+            "description": "NumberOfInstallmentNotDefined: Please select the number of installments for this purchase.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-572": {
+            "description": "InvalidStateCode: We were unable to find this state code.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-573": {
+            "description": "EmailsMissing: Please enter your email address.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-574": {
+            "description": "ConsumerFullNameIsMissing: Please enter your full name.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-575": {
+            "description": "CurrencyMustBeDefinedOnTransaction: Please select the currency you wish to use.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-578": {
+            "description": "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-580": {
+            "description": "InvalidCcPrepaidCardNotSupported: We do not currently accept prepaid cards, but we do accept credit cards.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-594": {
+            "description": "FraudDetected: Sorry, but we were unable to process your payment. Please reach out to our customer support team at support@splitit.com.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-595": {
+            "description": "PhoneIsMissing: Please enter your phone number.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-596": {
+            "description": "InvalidPhoneFormat: Please enter your phone number in this format: +1-321-555-1234.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-600": {
+            "description": "GtwyResultGeneralError: Gateway was unable to process this request. Please try using a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-601": {
+            "description": "GtwyResultCCDataAVSZip: The ZIP code you entered is not valid. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-602": {
+            "description": "GtwyResultCCDataAVSAddress: The address does not match. Please check your card and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-603": {
+            "description": "GtwyResultCCDataCVV: The CVV number does not match. Please check your card and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-606": {
+            "description": "GtwyResultCCDataAVS: Address or zip/post code failed validation. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-607": {
+            "description": "GtwyResultCCDataNumber: This credit card number is not valid. Please check your card and try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-608": {
+            "description": "GtwyResultCCDataGeneralProblem: Sorry, but your card was not able to be processed. Please try a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-609": {
+            "description": "GtwyResultCCDataInsufficientFunds: Sorry, but there is not enough available credit on this card to cover the full amount of your purchase. Please try a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-610": {
+            "description": "GtwyResultCCWasDeclined: Sorry, but your card was not accepted. Please try a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-630": {
+            "description": "GtwyConnectivityProblem: Sorry, but there was an error processing your payment. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-640": {
+            "description": "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-641": {
+            "description": "Gtwy3DSRequired: 3D secure verification is required.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-806": {
+            "description": "TerminalApiKeyMissing: Terminal ID not found.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-1041": {
+            "description": "IdempotencyHashMismatchError: Same Idempotency key with different payload identified.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5041": {
+            "description": "InvalidCCCardTypeNotSupportedMoreThanXInstallments: {{CardType}} cards support only up to {{MaxInstallmentsLimit}} installments. Please reduce the number of installments or provide payment details for a supported credit card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5042": {
+            "description": "InvalidCCCardTypeNotSupportedMoreThanXAmount: {{CardType}} cards are only supported for purchases up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5421": {
+            "description": "InvalidCCCardBrandNotSupportedMoreThanXInstallments: {{CardBrand}} cards are supported only up to {{MaxInstallmentsLimit}} installments. Please reduce the number of installments or provide payment details for a supported credit card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5422": {
+            "description": "InvalidCCCardBrandNotSupportedMoreThanXAmount: {{CardBrand}} cards are only supported for purchases up to {{Currency}}{{MaxPlanAmount}}. Please try a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5801": {
+            "description": "InvalidCcPrepaidCardNotSupportedMoreThanXInstallments: {{CardType}} cards allow a maximum of {{MaxInstallmentsLimit}} installments. Please choose fewer installments or try a different credit card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5802": {
+            "description": "InvalidCcPrepaidCardNotSupportedMoreThanXAmount: The maximum purchase for {{CardType}} cards is {{Currency}}{{MaxPlanAmount}}. Please try a different card.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5911": {
+            "description": "PlanContextNotValidForAmount: Purchase is only supported for up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5982": {
+            "description": "PlanContextNotValidForAmount: Purchase is only supported for up to {{Currency}}{{MaxPlanAmount}}. Please provide payment details for a credit card in order to support your total purchase amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -749,8 +1618,9 @@
     "/api/installmentplans/{installmentPlanNumber}/verifyauthorization": {
       "get": {
         "tags": [
-          "InstallmentPlan"
+          "Start Plans (Splitit Forms)"
         ],
+        "summary": "Verify Authorization",
         "operationId": "InstallmentPlan_VerifyAuthorization",
         "security": [
           {
@@ -759,6 +1629,7 @@
             ]
           }
         ],
+        "description": "You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan).\n",
         "parameters": [
           {
             "name": "installmentPlanNumber",
@@ -790,7 +1661,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -811,7 +1682,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -853,7 +1724,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -874,7 +1745,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -888,6 +1759,17 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -900,8 +1782,9 @@
     "/api/installmentplans/{installmentPlanNumber}/updateorder": {
       "put": {
         "tags": [
-          "InstallmentPlan"
+          "Maintain Plans"
         ],
+        "summary": "Update Plan by Number",
         "operationId": "InstallmentPlan_UpdateOrder",
         "security": [
           {
@@ -910,6 +1793,7 @@
             ]
           }
         ],
+        "description": "Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.\n",
         "parameters": [
           {
             "name": "installmentPlanNumber",
@@ -967,7 +1851,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -988,7 +1872,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1030,7 +1914,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1051,7 +1935,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1065,6 +1949,72 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-503": {
+            "description": "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured).",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-578": {
+            "description": "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-640": {
+            "description": "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-1041": {
+            "description": "IdempotencyHashMismatchError: Same Idempotency key with different payload identified.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5911": {
+            "description": "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -1077,8 +2027,9 @@
     "/api/installmentplans/updateorder": {
       "put": {
         "tags": [
-          "InstallmentPlan"
+          "Maintain Plans"
         ],
+        "summary": "Update Plan By Alternate Field",
         "operationId": "InstallmentPlan_UpdateOrder2",
         "security": [
           {
@@ -1087,6 +2038,7 @@
             ]
           }
         ],
+        "description": "Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.\n",
         "parameters": [
           {
             "name": "X-Splitit-IdempotencyKey",
@@ -1135,7 +2087,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1156,7 +2108,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1198,7 +2150,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1219,7 +2171,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1233,6 +2185,72 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-503": {
+            "description": "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured).",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-578": {
+            "description": "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-640": {
+            "description": "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-1041": {
+            "description": "IdempotencyHashMismatchError: Same Idempotency key with different payload identified.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5911": {
+            "description": "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -1245,8 +2263,9 @@
     "/api/installmentplans/{installmentPlanNumber}/refund": {
       "post": {
         "tags": [
-          "InstallmentPlan"
+          "Maintain Plans"
         ],
+        "summary": "Refund a Plan",
         "operationId": "InstallmentPlan_Refund",
         "security": [
           {
@@ -1255,6 +2274,7 @@
             ]
           }
         ],
+        "description": "Refund part or all of an installment Plan.\n\n### Strategies\n\nThere are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):\n\n* `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid\n* `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones\n* `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due\n* `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6).\n",
         "parameters": [
           {
             "name": "installmentPlanNumber",
@@ -1312,7 +2332,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1333,7 +2353,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1375,7 +2395,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1396,7 +2416,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1410,6 +2430,105 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-503": {
+            "description": "InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured).",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-511": {
+            "description": "InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-562": {
+            "description": "RefundRequestedAmountExceededPlanRefundableAmount: The refund amount requested exceeded the plan's refundable amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-578": {
+            "description": "InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-594": {
+            "description": "FraudDetected: Sorry, but we were unable to process your payment. Please reach out to our customer support team at support@splitit.com.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-640": {
+            "description": "GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-1041": {
+            "description": "IdempotencyHashMismatchError: Same Idempotency key with different payload identified.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-5911": {
+            "description": "InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -1422,8 +2541,9 @@
     "/api/installmentplans/{installmentPlanNumber}/cancel": {
       "post": {
         "tags": [
-          "InstallmentPlan"
+          "Maintain Plans"
         ],
+        "summary": "Cancel a Plan",
         "operationId": "InstallmentPlan_Cancel",
         "security": [
           {
@@ -1432,6 +2552,7 @@
             ]
           }
         ],
+        "description": "The Cancel operation allows you to cancel an existing installment plan.\n",
         "parameters": [
           {
             "name": "installmentPlanNumber",
@@ -1463,7 +2584,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1484,7 +2605,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized Request: Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1526,7 +2647,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1547,7 +2668,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error: Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1566,6 +2687,17 @@
                 }
               }
             }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -1573,8 +2705,9 @@
     "/api/installmentplans/check-eligibility": {
       "post": {
         "tags": [
-          "InstallmentPlan"
+          "Start Plans (Direct API)"
         ],
+        "summary": "Check Eligibility",
         "operationId": "InstallmentPlan_CheckEligibility",
         "security": [
           {
@@ -1583,6 +2716,7 @@
             ]
           }
         ],
+        "description": "As your customer begins to checkout, use this endpoint to verify their overall eligibility for Splitit\ninstallment plans and to determine plans for which they are eligible.\nThis endpoint can be called repeatedly before and during checkout, for example you may\ncall it after each field on a page is filled out. The Splitit API compares and updates the plan\nbased on each new body as it arrives.\n",
         "parameters": [
           {
             "name": "X-Splitit-IdempotencyKey",
@@ -1631,7 +2765,7 @@
         },
         "responses": {
           "200": {
-            "description": "",
+            "description": "Success",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1652,7 +2786,7 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Token is not authorized or is expired",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1694,7 +2828,7 @@
             }
           },
           "404": {
-            "description": "",
+            "description": "Resource Does Not Exist: For all APIs, if an invalid plan number is passed in the URL, this error will be returned",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1715,7 +2849,7 @@
             }
           },
           "500": {
-            "description": "",
+            "description": "General Server Error : Server encountered an unexpected condition",
             "x-nullable": false,
             "content": {
               "text/plain": {
@@ -1729,6 +2863,72 @@
                 }
               },
               "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-511": {
+            "description": "InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-542": {
+            "description": "InvalidCCCardBrandNotSupported: Sorry but we do not accept this type of credit card. Please use {{SupportedCardBrands}} to complete your purchase.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-563": {
+            "description": "InvalidCurrency_NotSupportedByTerminal: Sorry, but this currency is not currently accepted at this terminal.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-564": {
+            "description": "CreditCardIsMissing: Some information is missing. Please enter all requested credit card details.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-599": {
+            "description": "General Error: Sorry. There has been an error. Please try again.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "400-806": {
+            "description": "TerminalApiKeyMissing: Terminal ID not found.",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/FailedResponse"
                 }
@@ -1831,6 +3031,7 @@
             "$ref": "#/components/schemas/PaymentMethodModel"
           },
           "ExtendedParams": {
+            "description": "Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)",
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -1854,7 +3055,7 @@
         }
       },
       "PurchaseMethod": {
-        "description": "",
+        "description": "How purchase was made (default is `ECommerce`)",
         "type": "string",
         "x-enumNames": [
           "InStore",
@@ -1987,9 +3188,11 @@
             "type": "string"
           },
           "Country": {
+            "description": "ISO 3166 Country name OR 2-character code OR 3-character code",
             "type": "string"
           },
           "State": {
+            "description": "ISO 3166-2 State",
             "type": "string"
           },
           "Zip": {
@@ -2405,9 +3608,11 @@
         ],
         "properties": {
           "AutoCapture": {
+            "description": "Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)",
             "type": "boolean"
           },
           "Attempt3dSecure": {
+            "description": "Indicates whether to run a 3D secure verification (default is false)",
             "type": "boolean"
           },
           "Shopper": {
@@ -2441,6 +3646,7 @@
         ],
         "properties": {
           "TotalAmount": {
+            "description": "The total order amount",
             "type": "number",
             "format": "decimal"
           },
@@ -2448,19 +3654,23 @@
             "type": "string"
           },
           "NumberOfInstallments": {
+            "description": "When populated will be used to display as default in Payment Form",
             "type": "integer",
             "format": "int32"
           },
           "TerminalId": {
+            "description": "The merchant terminal identifier",
             "type": "string"
           },
           "PurchaseMethod": {
             "$ref": "#/components/schemas/PurchaseMethod"
           },
           "RefOrderNumber": {
+            "description": "Reference order number for merchant's use",
             "type": "string"
           },
           "ExtendedParams": {
+            "description": "Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)",
             "type": "object",
             "additionalProperties": {
               "type": "string"
@@ -2489,9 +3699,11 @@
             "type": "string"
           },
           "Country": {
+            "description": "ISO 3166-3 code",
             "type": "string"
           },
           "State": {
+            "description": "ISO 3166-2 code",
             "type": "string"
           },
           "Zip": {
@@ -2500,6 +3712,7 @@
         }
       },
       "InitiateRedirectionEndpointsModel": {
+        "description": "Used for 3DS redirection back to success or failure page",
         "type": "object",
         "properties": {
           "Succeeded": {
@@ -2657,12 +3870,15 @@
         ],
         "properties": {
           "AutoCapture": {
+            "description": "Indicates whether to capture the first installment automatically when creating the plan, or to wait for explicit indication to do the first capture (the default is true)",
             "type": "boolean"
           },
           "Attempt3dSecure": {
+            "description": "Indicates whether to run a 3D secure verification (default is `false`)",
             "type": "boolean"
           },
           "TermsAndConditionsAccepted": {
+            "description": "Indicates that the shopper accepted your Terms and Conditions",
             "type": "boolean"
           },
           "Shopper": {
@@ -2769,12 +3985,14 @@
             "type": "string"
           },
           "RefOrderNumber": {
+            "description": "A merchant-specific identifier value provided at creation of the plan by the merchant",
             "type": "string"
           },
           "ShippingStatus": {
             "$ref": "#/components/schemas/ShippingStatus"
           },
           "Capture": {
+            "description": "Set this as `true` to capture the first payment for a plan that has been authorized but not captured.",
             "type": "boolean"
           }
         }
@@ -2795,6 +4013,7 @@
         ]
       },
       "IdentifierContract": {
+        "description": "Use the fields in this object to locate your plan",
         "type": "object",
         "properties": {
           "RefOrderNumber": {
@@ -3012,9 +4231,11 @@
         ],
         "properties": {
           "TerminalId": {
+            "description": "The merchant terminal identifier",
             "type": "string"
           },
           "TotalAmount": {
+            "description": "The order total amount",
             "type": "number",
             "format": "decimal"
           },
@@ -3033,6 +4254,7 @@
             "$ref": "#/components/schemas/PurchaseMethod"
           },
           "RefOrderNumber": {
+            "description": "Reference order number for merchant's use",
             "type": "string"
           },
           "AllowedInstallmentOptions": {

@@ -25,13 +25,13 @@ import { PurchaseMethod } from './purchase-method';
  */
 export interface PlanData {
     /**
-     * 
+     * The merchant terminal identifier
      * @type {string}
      * @memberof PlanData
      */
     'TerminalId'?: string;
     /**
-     * 
+     * The order total amount
      * @type {number}
      * @memberof PlanData
      */
@@ -61,7 +61,7 @@ export interface PlanData {
      */
     'PurchaseMethod': PurchaseMethod;
     /**
-     * 
+     * Reference order number for merchant\'s use
      * @type {string}
      * @memberof PlanData
      */

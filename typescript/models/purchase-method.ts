@@ -13,7 +13,7 @@
 
 
 /**
- * 
+ * How purchase was made (default is `ECommerce`)
  * @export
  * @enum {string}
  */

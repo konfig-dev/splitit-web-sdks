@@ -118,7 +118,7 @@ export interface InstallmentPlanGetResponse {
      */
     'PaymentMethod'?: PaymentMethodModel;
     /**
-     * 
+     * Additional data that can be added as key/value pair parameters by merchant (and later can be retrieved by GET)
      * @type {{ [key: string]: string; }}
      * @memberof InstallmentPlanGetResponse
      */

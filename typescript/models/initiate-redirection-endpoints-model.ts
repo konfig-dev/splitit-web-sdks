@@ -13,7 +13,7 @@
 
 
 /**
- * 
+ * Used for 3DS redirection back to success or failure page
  * @export
  * @interface InitiateRedirectionEndpointsModel
  */

@@ -52,7 +52,7 @@ import { requestBeforeHook } from '../requestBeforeHook';
 export const StartPlansSplititFormsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s BillingAddress object must be filled out.
+         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. 
          * @summary Initiate Installment Plan
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
@@ -117,7 +117,7 @@ export const StartPlansSplititFormsApiAxiosParamCreator = function (configuratio
             };
         },
         /**
-         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from Initiate.
+         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan). 
          * @summary Verify Authorization
          * @param {string} installmentPlanNumber 
          * @param {string} xSplititIdempotencyKey 
@@ -184,7 +184,7 @@ export const StartPlansSplititFormsApiFp = function(configuration?: Configuratio
     const localVarAxiosParamCreator = StartPlansSplititFormsApiAxiosParamCreator(configuration)
     return {
         /**
-         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s BillingAddress object must be filled out.
+         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. 
          * @summary Initiate Installment Plan
          * @param {StartPlansSplititFormsApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -195,7 +195,7 @@ export const StartPlansSplititFormsApiFp = function(configuration?: Configuratio
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from Initiate.
+         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan). 
          * @summary Verify Authorization
          * @param {StartPlansSplititFormsApiVerifyAuthorizationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -216,7 +216,7 @@ export const StartPlansSplititFormsApiFactory = function (configuration?: Config
     const localVarFp = StartPlansSplititFormsApiFp(configuration)
     return {
         /**
-         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s BillingAddress object must be filled out.
+         * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. 
          * @summary Initiate Installment Plan
          * @param {StartPlansSplititFormsApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -226,7 +226,7 @@ export const StartPlansSplititFormsApiFactory = function (configuration?: Config
             return localVarFp.post(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from Initiate.
+         * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan). 
          * @summary Verify Authorization
          * @param {StartPlansSplititFormsApiVerifyAuthorizationRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -306,7 +306,7 @@ export type StartPlansSplititFormsApiVerifyAuthorizationRequest = {
  */
 export class StartPlansSplititFormsApiGenerated extends BaseAPI {
     /**
-     * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s BillingAddress object must be filled out.
+     * Initiate establishes an installment plan but doesn\'t finalize it, and is thus intended for use with Splitit premade checkout solutions such as Payment Forms or Flex Form. Initiate only requires SAQ-A certification. You can call it multiple times for the same installment plan, since each time a new API call is made, existing data will be updated and new values will be appended to the existing plan. Note that for funded plans, a customer\'s `BillingAddress` object must be filled out. 
      * @summary Initiate Installment Plan
      * @param {StartPlansSplititFormsApiPostRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -318,7 +318,7 @@ export class StartPlansSplititFormsApiGenerated extends BaseAPI {
     }
 
     /**
-     * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from Initiate.
+     * You must call Verify Authorization in cases when plan authorization and order closure do not happen simultaneously. An example of this would be when a customer checks out with a Payment Form or Flex Form, or is redirected for 3DS. To call it, you need to provide the plan number you received in the success response from [Initiate](/api-v3/initiate-installment-plan). 
      * @summary Verify Authorization
      * @param {StartPlansSplititFormsApiVerifyAuthorizationRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

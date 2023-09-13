@@ -28,7 +28,7 @@ export interface UpdateOrderRequest {
      */
     'TrackingNumber'?: string;
     /**
-     * 
+     * A merchant-specific identifier value provided at creation of the plan by the merchant
      * @type {string}
      * @memberof UpdateOrderRequest
      */
@@ -40,7 +40,7 @@ export interface UpdateOrderRequest {
      */
     'ShippingStatus'?: ShippingStatus;
     /**
-     * 
+     * Set this as `true` to capture the first payment for a plan that has been authorized but not captured.
      * @type {boolean}
      * @memberof UpdateOrderRequest
      */

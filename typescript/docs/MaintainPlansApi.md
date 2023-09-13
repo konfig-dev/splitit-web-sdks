@@ -17,6 +17,7 @@ Method | HTTP request | Description
 ### Description
 The Cancel operation allows you to cancel an existing installment plan.
 
+
 ### Example
 
 
@@ -62,11 +63,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Unauthorized Request: Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | General Server Error: Server encountered an unexpected condition |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
@@ -77,13 +79,14 @@ Name | Type | Description  | Notes
 ### Description
 Refund part or all of an installment Plan.
 
-Strategies
-There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):
+### Strategies
 
-- FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid
-- FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones
-- FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due
-- ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6).
+There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):
+
+* `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid
+* `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones
+* `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due
+* `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6).
 
 
 ### Example
@@ -134,11 +137,20 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | Server encountered an unexpected condition |  -  |
+**400-503** | InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured). |  -  |
+**400-511** | InvalidAmount: Invalid amount sent, such as below your minimum amount or above your maximum amount. |  -  |
+**400-562** | RefundRequestedAmountExceededPlanRefundableAmount: The refund amount requested exceeded the plan\&#39;s refundable amount. |  -  |
+**400-578** | InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available. |  -  |
+**400-594** | FraudDetected: Sorry, but we were unable to process your payment. Please reach out to our customer support team at support@splitit.com. |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
+**400-640** | GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance. |  -  |
+**400-1041** | IdempotencyHashMismatchError: Same Idempotency key with different payload identified. |  -  |
+**400-5911** | InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
@@ -148,6 +160,7 @@ Name | Type | Description  | Notes
 
 ### Description
 Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+
 
 ### Example
 
@@ -196,11 +209,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Unauthorized Request: Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | General Server Error: Server encountered an unexpected condition |  -  |
+**400-503** | InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured). |  -  |
+**400-578** | InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available. |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
+**400-640** | GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance. |  -  |
+**400-1041** | IdempotencyHashMismatchError: Same Idempotency key with different payload identified. |  -  |
+**400-5911** | InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
@@ -209,7 +228,8 @@ Name | Type | Description  | Notes
 #### **PUT** /api/installmentplans/updateorder
 
 ### Description
-Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.
+
 
 ### Example
 
@@ -256,11 +276,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Unauthorized Request: Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | General Server Error: Server encountered an unexpected condition |  -  |
+**400-503** | InvalidInstallmentPlanStatus: Status does not allow updating order (example: request capture for plan that was already captured). |  -  |
+**400-578** | InvalidPlanStrategy: We are sorry for the inconvenience, but this plan is not available. |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
+**400-640** | GtwyMerchantDataProblem: Sorry, but there has been a processing error with this merchant. Please contact our support for assistance. |  -  |
+**400-1041** | IdempotencyHashMismatchError: Same Idempotency key with different payload identified. |  -  |
+**400-5911** | InvalidInternalUrlSentToOms: Plan is not in the correct state to process this request. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

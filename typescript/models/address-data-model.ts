@@ -37,13 +37,13 @@ export interface AddressDataModel {
      */
     'City'?: string;
     /**
-     * 
+     * ISO 3166-3 code
      * @type {string}
      * @memberof AddressDataModel
      */
     'Country'?: string;
     /**
-     * 
+     * ISO 3166-2 code
      * @type {string}
      * @memberof AddressDataModel
      */

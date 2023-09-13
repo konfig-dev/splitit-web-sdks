@@ -50,7 +50,7 @@ import { requestBeforeHook } from '../requestBeforeHook';
 export const MaintainPlansApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * The Cancel operation allows you to cancel an existing installment plan.
+         * The Cancel operation allows you to cancel an existing installment plan. 
          * @summary Cancel a Plan
          * @param {string} installmentPlanNumber 
          * @param {string} xSplititIdempotencyKey 
@@ -107,7 +107,7 @@ export const MaintainPlansApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Refund part or all of an installment Plan.  Strategies There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):  - FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid - FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones - FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due - ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
+         * Refund part or all of an installment Plan.  ### Strategies  There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):  * `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid * `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones * `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due * `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
          * @summary Refund a Plan
          * @param {string} installmentPlanNumber 
          * @param {string} xSplititIdempotencyKey 
@@ -171,7 +171,7 @@ export const MaintainPlansApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. 
          * @summary Update Plan by Number
          * @param {string} installmentPlanNumber 
          * @param {string} xSplititIdempotencyKey 
@@ -235,7 +235,7 @@ export const MaintainPlansApiAxiosParamCreator = function (configuration?: Confi
             };
         },
         /**
-         * Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Update Plan By Alternate Field
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
@@ -305,7 +305,7 @@ export const MaintainPlansApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = MaintainPlansApiAxiosParamCreator(configuration)
     return {
         /**
-         * The Cancel operation allows you to cancel an existing installment plan.
+         * The Cancel operation allows you to cancel an existing installment plan. 
          * @summary Cancel a Plan
          * @param {MaintainPlansApiCancelRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -316,7 +316,7 @@ export const MaintainPlansApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Refund part or all of an installment Plan.  Strategies There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):  - FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid - FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones - FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due - ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
+         * Refund part or all of an installment Plan.  ### Strategies  There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):  * `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid * `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones * `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due * `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
          * @summary Refund a Plan
          * @param {MaintainPlansApiRefundRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -327,7 +327,7 @@ export const MaintainPlansApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. 
          * @summary Update Plan by Number
          * @param {MaintainPlansApiUpdateOrderRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -338,7 +338,7 @@ export const MaintainPlansApiFp = function(configuration?: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Update Plan By Alternate Field
          * @param {MaintainPlansApiUpdateOrder2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -359,7 +359,7 @@ export const MaintainPlansApiFactory = function (configuration?: Configuration, 
     const localVarFp = MaintainPlansApiFp(configuration)
     return {
         /**
-         * The Cancel operation allows you to cancel an existing installment plan.
+         * The Cancel operation allows you to cancel an existing installment plan. 
          * @summary Cancel a Plan
          * @param {MaintainPlansApiCancelRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -369,7 +369,7 @@ export const MaintainPlansApiFactory = function (configuration?: Configuration, 
             return localVarFp.cancel(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Refund part or all of an installment Plan.  Strategies There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):  - FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid - FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones - FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due - ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
+         * Refund part or all of an installment Plan.  ### Strategies  There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):  * `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid * `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones * `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due * `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
          * @summary Refund a Plan
          * @param {MaintainPlansApiRefundRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -379,7 +379,7 @@ export const MaintainPlansApiFactory = function (configuration?: Configuration, 
             return localVarFp.refund(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+         * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. 
          * @summary Update Plan by Number
          * @param {MaintainPlansApiUpdateOrderRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -389,7 +389,7 @@ export const MaintainPlansApiFactory = function (configuration?: Configuration, 
             return localVarFp.updateOrder(requestParameters, options).then((request) => request(axios, basePath));
         },
         /**
-         * Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+         * Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
          * @summary Update Plan By Alternate Field
          * @param {MaintainPlansApiUpdateOrder2Request} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -522,7 +522,7 @@ export type MaintainPlansApiUpdateOrder2Request = {
  */
 export class MaintainPlansApiGenerated extends BaseAPI {
     /**
-     * The Cancel operation allows you to cancel an existing installment plan.
+     * The Cancel operation allows you to cancel an existing installment plan. 
      * @summary Cancel a Plan
      * @param {MaintainPlansApiCancelRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -534,7 +534,7 @@ export class MaintainPlansApiGenerated extends BaseAPI {
     }
 
     /**
-     * Refund part or all of an installment Plan.  Strategies There are several refund strategies you can choose when refunding a plan (note that the default is FutureInstallmentsFirst):  - FutureInstallmentsFirst: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid - FutureInstallmentsLast: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones - FutureInstallmentsNotAllowed: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due - ReduceFromLastInstallment: This is the same as FutureInstallmentsFirst, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
+     * Refund part or all of an installment Plan.  ### Strategies  There are several refund strategies you can choose when refunding a plan (note that the default is `FutureInstallmentsFirst`):  * `FutureInstallmentsFirst`: At first customer isn’t refunded any installment money that they have already paid. Instead their refund lessens the amount of future installments they will be debited for, beginning with the next installment that is due. However, if their refund exceeds the amount of money they have left to pay (all installments), only then is the refund taken out of the installment money they have already paid * `FutureInstallmentsLast`: Customer is refunded beginning with the installment money they have already paid. If their refund amount exceeds the amount they have already paid, their amount of future installments due gets decreased, beginning with the next installment due and then proceeding to the later ones * `FutureInstallmentsNotAllowed`: Customer is only refunded from installment money that they have already paid, not from any future installments that they have due * `ReduceFromLastInstallment`: This is the same as `FutureInstallmentsFirst`, except that the refund is credited starting with the last installment first (e.g., number 6 of 6, as opposed to number 2 of 6). 
      * @summary Refund a Plan
      * @param {MaintainPlansApiRefundRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -546,7 +546,7 @@ export class MaintainPlansApiGenerated extends BaseAPI {
     }
 
     /**
-     * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured.
+     * Locate a plan by installment number then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. 
      * @summary Update Plan by Number
      * @param {MaintainPlansApiUpdateOrderRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -558,7 +558,7 @@ export class MaintainPlansApiGenerated extends BaseAPI {
     }
 
     /**
-     * Locate a plan by RefOrderNumber or ExtendedParams then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+     * Locate a plan by `RefOrderNumber` or `ExtendedParams` then carry out post-authorization activities related to the plan, such as updating the order number, updating the tracking number, or updating shipping status. You can also use this endpoint to capture the first installment from a plan that has only been authorized but not yet captured. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation. 
      * @summary Update Plan By Alternate Field
      * @param {MaintainPlansApiUpdateOrder2Request} requestParameters Request parameters.
      * @param {*} [options] Override http request option.

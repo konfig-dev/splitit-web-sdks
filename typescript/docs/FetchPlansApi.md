@@ -15,6 +15,7 @@ Method | HTTP request | Description
 ### Description
 Retrieve an installment plan's information by providing its number in your path.
 
+
 ### Example
 
 
@@ -42,7 +43,7 @@ console.log(getResponse);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **installmentPlanNumber** | [**string**] |  | defaults to undefined
+ **installmentPlanNumber** | [**string**] | The number of the installment plan for which you\'d like information | defaults to undefined
  **xSplititIdempotencyKey** | [**string**] |  | defaults to undefined
  **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
 
@@ -60,11 +61,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Unauthorized Request: Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | General Server Error: Server encountered an unexpected condition |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
@@ -73,7 +75,8 @@ Name | Type | Description  | Notes
 #### **GET** /api/installmentplans/search
 
 ### Description
-Retrieves a plan by RefOrderNumber or ExtendedParams. Note that RefOrderNumber or ExtendedParams were optionally specified by you upon plan creation.
+Retrieves a plan by `RefOrderNumber` or `ExtendedParams`. Note that `RefOrderNumber` or `ExtendedParams` were optionally specified by you upon plan creation.
+
 
 ### Example
 
@@ -105,7 +108,7 @@ Name | Type | Description  | Notes
  **xSplititTouchPoint** | [**string**] | TouchPoint | defaults to ''
  **installmentPlanNumber** | [**string**] |  | (optional) defaults to undefined
  **refOrderNumber** | [**string**] |  | (optional) defaults to undefined
- **extendedParams** | **{ [key: string]: string; }** |  | (optional) defaults to undefined
+ **extendedParams** | **{ [key: string]: string; }** | Specify the key and value you used when establishing the plan. For example `ExtendedParams[\"MerchantInternalID\"]=\"5345532\"`  | (optional) defaults to undefined
 
 
 ### Return type
@@ -121,11 +124,12 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** |  |  -  |
-**401** |  |  -  |
+**200** | Success |  -  |
+**401** | Unauthorized Request: Token is not authorized or is expired |  -  |
 **403** |  |  -  |
-**404** |  |  -  |
-**500** |  |  -  |
+**404** | Resource Does Not Exist: Plan or service does not exist; for all APIs, if an invalid plan number is passed in the URL, this error will be returned |  -  |
+**500** | General Server Error: Server encountered an unexpected condition |  -  |
+**400-599** | General Error: Sorry. There has been an error. Please try again. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

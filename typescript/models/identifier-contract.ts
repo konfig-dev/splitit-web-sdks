@@ -13,7 +13,7 @@
 
 
 /**
- * 
+ * Use the fields in this object to locate your plan
  * @export
  * @interface IdentifierContract
  */
