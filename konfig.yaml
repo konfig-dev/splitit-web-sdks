@@ -14,10 +14,10 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
 fixConfig:
-  update:
-    $.:
-      tags: undefined
-  inheritMetadataSpecPath: avishai-swagger.yaml
+  # update:
+  #   $.:
+  #     tags: undefined
+  # inheritMetadataSpecPath: avishai-swagger.yaml
   modify:
     $.servers[0]:
       url: https://web-api-v3.production.splitit.com
