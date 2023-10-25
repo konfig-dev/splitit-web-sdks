@@ -51,7 +51,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 2.2.0
+    version: 2.2.1
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
