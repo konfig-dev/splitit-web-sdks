@@ -79,4 +79,20 @@ public class PaymentPlanOptionModelTest {
         // TODO: test links
     }
 
+    /**
+     * Test the property 'termsAndConditionsBrief'
+     */
+    @Test
+    public void termsAndConditionsBriefTest() {
+        // TODO: test termsAndConditionsBrief
+    }
+
+    /**
+     * Test the property 'installmentFrequency'
+     */
+    @Test
+    public void installmentFrequencyTest() {
+        // TODO: test installmentFrequency
+    }
+
 }

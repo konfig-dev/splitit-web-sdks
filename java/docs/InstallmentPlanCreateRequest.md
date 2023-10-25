@@ -15,6 +15,8 @@
 |**billingAddress** | [**AddressDataModel**](AddressDataModel.md) |  |  [optional] |
 |**paymentMethod** | [**PaymentMethodModel**](PaymentMethodModel.md) |  |  [optional] |
 |**redirectUrls** | [**RedirectionEndpointsModel**](RedirectionEndpointsModel.md) |  |  [optional] |
+|**processingData** | [**ProcessingData**](ProcessingData.md) |  |  [optional] |
+|**eventsEndpoints** | [**EventsEndpointsModel**](EventsEndpointsModel.md) |  |  [optional] |
 
 
 

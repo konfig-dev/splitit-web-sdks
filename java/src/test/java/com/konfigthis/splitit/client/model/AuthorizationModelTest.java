@@ -23,6 +23,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -111,6 +112,14 @@ public class AuthorizationModelTest {
     @Test
     public void ECITest() {
         // TODO: test ECI
+    }
+
+    /**
+     * Test the property 'gatewaySourceResponse'
+     */
+    @Test
+    public void gatewaySourceResponseTest() {
+        // TODO: test gatewaySourceResponse
     }
 
 }

@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(CardType.Adapter.class)
-public enum CardType {
+@JsonAdapter(CardType.Adapter.class)public enum CardType {
   
   CREDIT("Credit"),
   

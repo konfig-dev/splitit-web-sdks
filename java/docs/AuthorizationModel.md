@@ -16,6 +16,7 @@
 |**threeDSRedirect** | [**ThreeDsRedirectDataV3**](ThreeDsRedirectDataV3.md) |  |  [optional] |
 |**CAVV** | **String** |  |  [optional] |
 |**ECI** | **String** |  |  [optional] |
+|**gatewaySourceResponse** | **String** |  |  [optional] |
 
 
 

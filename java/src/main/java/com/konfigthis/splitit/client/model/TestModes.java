@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(TestModes.Adapter.class)
-public enum TestModes {
+@JsonAdapter(TestModes.Adapter.class)public enum TestModes {
   
   NONE("None"),
   

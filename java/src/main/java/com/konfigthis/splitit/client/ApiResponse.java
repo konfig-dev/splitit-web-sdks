@@ -25,6 +25,7 @@ public class ApiResponse<T> {
     final private Map<String, List<String>> headers;
     final private T data;
     final private Request request;
+    final private long roundTripTime;
 
     /**
      * <p>Constructor for ApiResponse.</p>
@@ -33,11 +34,12 @@ public class ApiResponse<T> {
      * @param headers The headers of HTTP response
      * @param data The object deserialized from response bod
      */
-    public ApiResponse(Request request, int statusCode, Map<String, List<String>> headers, T data) {
+    public ApiResponse(Request request, int statusCode, Map<String, List<String>> headers, T data, long roundTripTime) {
         this.request = request;
         this.statusCode = statusCode;
         this.headers = headers;
         this.data = data;
+        this.roundTripTime = roundTripTime;
     }
 
     /**
@@ -54,7 +56,7 @@ public class ApiResponse<T> {
      *
      * @return a {@link java.util.Map} of headers 
      */
-    public Map<String, List<String>> getHeaders() {
+    public Map<String, List<String>> getResponseHeaders() {
         return headers;
     }
 
@@ -63,7 +65,7 @@ public class ApiResponse<T> {
      *
      * @return the data
      */
-    public T getData() {
+    public T getResponseBody() {
         return data;
     }
 
@@ -74,5 +76,14 @@ public class ApiResponse<T> {
      */
     public Request getRequest() {
         return request;
+    }
+
+    /**
+     * <p>Get the <code>roundTripTime</code>.</p>
+     *
+     * @return the round trip time
+     */
+    public long getRoundTripTime() {
+        return roundTripTime;
     }
 }

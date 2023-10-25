@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(InstallmentStatus.Adapter.class)
-public enum InstallmentStatus {
+@JsonAdapter(InstallmentStatus.Adapter.class)public enum InstallmentStatus {
   
   PENDING("Pending"),
   

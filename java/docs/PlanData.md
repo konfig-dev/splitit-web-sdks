@@ -16,6 +16,7 @@
 |**refOrderNumber** | **String** |  |  [optional] |
 |**allowedInstallmentOptions** | **List&lt;Integer&gt;** |  |  [optional] |
 |**tags** | **Map&lt;String, String&gt;** |  |  [optional] |
+|**processingData** | [**ProcessingData2**](ProcessingData2.md) |  |  [optional] |
 |**firstInstallmentDate** | **OffsetDateTime** |  |  [optional] |
 
 

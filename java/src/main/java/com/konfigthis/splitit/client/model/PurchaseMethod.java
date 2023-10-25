@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(PurchaseMethod.Adapter.class)
-public enum PurchaseMethod {
+@JsonAdapter(PurchaseMethod.Adapter.class)public enum PurchaseMethod {
   
   INSTORE("InStore"),
   

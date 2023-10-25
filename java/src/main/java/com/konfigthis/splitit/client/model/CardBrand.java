@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(CardBrand.Adapter.class)
-public enum CardBrand {
+@JsonAdapter(CardBrand.Adapter.class)public enum CardBrand {
   
   MASTERCARD("Mastercard"),
   

@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(RefundStrategy.Adapter.class)
-public enum RefundStrategy {
+@JsonAdapter(RefundStrategy.Adapter.class)public enum RefundStrategy {
   
   FUTUREINSTALLMENTSFIRST("FutureInstallmentsFirst"),
   

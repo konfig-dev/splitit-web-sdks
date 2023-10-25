@@ -17,7 +17,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.ProcessingData2;
 import com.konfigthis.splitit.client.model.PurchaseMethod;
+import com.konfigthis.splitit.client.model.ThreeDSData2;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -114,6 +116,14 @@ public class PlanDataTest {
     @Test
     public void tagsTest() {
         // TODO: test tags
+    }
+
+    /**
+     * Test the property 'processingData'
+     */
+    @Test
+    public void processingDataTest() {
+        // TODO: test processingData
     }
 
     /**

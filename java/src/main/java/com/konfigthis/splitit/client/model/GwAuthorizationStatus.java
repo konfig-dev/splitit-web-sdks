@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(GwAuthorizationStatus.Adapter.class)
-public enum GwAuthorizationStatus {
+@JsonAdapter(GwAuthorizationStatus.Adapter.class)public enum GwAuthorizationStatus {
   
   NA("NA"),
   

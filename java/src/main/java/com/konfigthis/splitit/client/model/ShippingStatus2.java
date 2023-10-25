@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(ShippingStatus2.Adapter.class)
-public enum ShippingStatus2 {
+@JsonAdapter(ShippingStatus2.Adapter.class)public enum ShippingStatus2 {
   
   SHIPPED("Shipped"),
   

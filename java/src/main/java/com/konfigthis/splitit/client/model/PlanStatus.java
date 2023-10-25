@@ -26,8 +26,7 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(PlanStatus.Adapter.class)
-public enum PlanStatus {
+@JsonAdapter(PlanStatus.Adapter.class)public enum PlanStatus {
   
   INITIALIZED("Initialized"),
   

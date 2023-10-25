@@ -17,6 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.LinksModel;
 import com.konfigthis.splitit.client.model.PaymentPlanOptionModel;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -39,6 +40,14 @@ public class InstallmentsEligibilityResponseTest {
     @Test
     public void testInstallmentsEligibilityResponse() {
         // TODO: test InstallmentsEligibilityResponse
+    }
+
+    /**
+     * Test the property 'installmentProvider'
+     */
+    @Test
+    public void installmentProviderTest() {
+        // TODO: test installmentProvider
     }
 
     /**

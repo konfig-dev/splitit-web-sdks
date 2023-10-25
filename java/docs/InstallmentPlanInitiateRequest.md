@@ -14,6 +14,8 @@
 |**billingAddress** | [**AddressDataModel**](AddressDataModel.md) |  |  [optional] |
 |**redirectUrls** | [**InitiateRedirectionEndpointsModel**](InitiateRedirectionEndpointsModel.md) |  |  [optional] |
 |**uxSettings** | [**UxSettingsModel**](UxSettingsModel.md) |  |  [optional] |
+|**eventsEndpoints** | [**EventsEndpointsModel**](EventsEndpointsModel.md) |  |  [optional] |
+|**processingData** | [**ProcessingData**](ProcessingData.md) |  |  [optional] |
 
 
 

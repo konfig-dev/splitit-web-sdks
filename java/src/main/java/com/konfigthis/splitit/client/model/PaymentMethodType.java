@@ -26,12 +26,17 @@ import com.google.gson.stream.JsonWriter;
 /**
  * 
  */
-@JsonAdapter(PaymentMethodType.Adapter.class)
-public enum PaymentMethodType {
+@JsonAdapter(PaymentMethodType.Adapter.class)public enum PaymentMethodType {
   
   CARD("Card"),
   
-  SPLITITTOKEN("SplititToken");
+  SPLITITTOKEN("SplititToken"),
+  
+  BLUESNAPVAULTEDSHOPPERTOKEN("BluesnapVaultedShopperToken"),
+  
+  SPLITITMOCKERV2TOKEN("SplititMockerV2Token"),
+  
+  SPREEDLYTOKEN("SpreedlyToken");
 
   private String value;
 

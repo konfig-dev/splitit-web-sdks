@@ -3,8 +3,9 @@ info:
   description: Splitit's Web API
   title: splitit-web-api-v3
   version: 1.0.0
+  x-konfig-has-globally-required-security: true
 servers:
-- url: https://web-api-v3.sandbox.splitit.com
+- url: https://web-api-v3.production.splitit.com
 tags:
 - name: InstallmentPlan
 paths:
@@ -26,6 +27,18 @@ paths:
         required: true
         schema:
           type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema
         style: simple
       responses:
         "200":
@@ -142,6 +155,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema
+        style: simple
       responses:
         "200":
           content:
@@ -246,6 +271,18 @@ paths:
         required: true
         schema:
           type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema
         style: simple
       requestBody:
         content:
@@ -383,6 +420,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -511,6 +560,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema
+        style: simple
       responses:
         "200":
           content:
@@ -607,6 +668,18 @@ paths:
         required: true
         schema:
           type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema
         style: simple
       requestBody:
         content:
@@ -713,6 +786,18 @@ paths:
         required: true
         schema:
           type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema
         style: simple
       requestBody:
         content:
@@ -828,6 +913,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema
+        style: simple
       requestBody:
         content:
           application/json-patch+json:
@@ -942,6 +1039,18 @@ paths:
         schema:
           type: string
         style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
+        style: simple
       responses:
         "200":
           content:
@@ -1030,6 +1139,18 @@ paths:
         required: true
         schema:
           type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema
         style: simple
       requestBody:
         content:
@@ -1182,6 +1303,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -1212,6 +1334,8 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -1221,6 +1345,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -1309,6 +1434,7 @@ components:
             key: Params
           Url: Url
         GatewayTransactionID: GatewayTransactionID
+        GatewaySourceResponse: GatewaySourceResponse
         GatewayResultMessage: GatewayResultMessage
         ECI: ECI
         SplititErrorResultCode: SplititErrorResultCode
@@ -1333,6 +1459,8 @@ components:
         CAVV:
           type: string
         ECI:
+          type: string
+        GatewaySourceResponse:
           type: string
       required:
       - Status
@@ -1407,6 +1535,8 @@ components:
     PaymentMethodModel:
       example:
         Type: null
+        SpreedlyToken: null
+        MockerShopperToken: null
         Token: Token
         Card:
           CardNumber: CardNumber
@@ -1416,6 +1546,7 @@ components:
           CardBrand: null
           CardExpYear: CardExpYear
           CardCvv: CardCvv
+        BluesnapVaultedShopperToken: null
       properties:
         Type:
           $ref: '#/components/schemas/PaymentMethodType'
@@ -1423,6 +1554,12 @@ components:
           $ref: '#/components/schemas/CardData'
         Token:
           type: string
+        BluesnapVaultedShopperToken:
+          $ref: '#/components/schemas/BluesnapVaultedShopperToken'
+        MockerShopperToken:
+          $ref: '#/components/schemas/MockerShopperToken'
+        SpreedlyToken:
+          $ref: '#/components/schemas/SpreedlyToken'
       required:
       - Type
       type: object
@@ -1431,10 +1568,16 @@ components:
       enum:
       - Card
       - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
+      - SpreedlyToken
       type: string
       x-enumNames:
       - Card
       - SplititToken
+      - BluesnapVaultedShopperToken
+      - SplititMockerV2Token
+      - SpreedlyToken
     CardData:
       example:
         CardNumber: CardNumber
@@ -1502,6 +1645,26 @@ components:
       - Prepaid
       - VisaDeferredDebit
       - NetworkOnly
+    BluesnapVaultedShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    GatewayTokenData:
+      properties:
+        Token:
+          type: string
+        Last4Digit:
+          type: string
+      type: object
+      x-abstract: true
+    MockerShopperToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
+    SpreedlyToken:
+      allOf:
+      - $ref: '#/components/schemas/GatewayTokenData'
+      - type: object
     Installment:
       example:
         Status: null
@@ -1628,6 +1791,7 @@ components:
                 key: Params
               Url: Url
             GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
             GatewayResultMessage: GatewayResultMessage
             ECI: ECI
             SplititErrorResultCode: SplititErrorResultCode
@@ -1658,6 +1822,8 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            SpreedlyToken: null
+            MockerShopperToken: null
             Token: Token
             Card:
               CardNumber: CardNumber
@@ -1667,6 +1833,7 @@ components:
               CardBrand: null
               CardExpYear: CardExpYear
               CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
           Links:
             TermsConditions: TermsConditions
             Checkout: Checkout
@@ -1702,6 +1869,7 @@ components:
                 key: Params
               Url: Url
             GatewayTransactionID: GatewayTransactionID
+            GatewaySourceResponse: GatewaySourceResponse
             GatewayResultMessage: GatewayResultMessage
             ECI: ECI
             SplititErrorResultCode: SplititErrorResultCode
@@ -1732,6 +1900,8 @@ components:
             CreditRefundAmount: 7.061401241503109
           PaymentMethod:
             Type: null
+            SpreedlyToken: null
+            MockerShopperToken: null
             Token: Token
             Card:
               CardNumber: CardNumber
@@ -1741,6 +1911,7 @@ components:
               CardBrand: null
               CardExpYear: CardExpYear
               CardCvv: CardCvv
+            BluesnapVaultedShopperToken: null
           Links:
             TermsConditions: TermsConditions
             Checkout: Checkout
@@ -1785,6 +1956,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -1815,6 +1987,8 @@ components:
           CreditRefundAmount: 7.061401241503109
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -1824,6 +1998,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -1951,10 +2126,22 @@ components:
           State: State
           Country: Country
           City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         UxSettings:
           DisplayedInstallmentOptions:
           - 5
           - 5
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
         AutoCapture: true
         Shopper:
           Email: Email
@@ -1981,6 +2168,10 @@ components:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
         UxSettings:
           $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
       required:
       - AutoCapture
       type: object
@@ -2072,6 +2263,54 @@ components:
             type: integer
           type: array
       type: object
+    EventsEndpointsModel:
+      example:
+        CreateSucceeded: CreateSucceeded
+      properties:
+        CreateSucceeded:
+          type: string
+      type: object
+    ProcessingData:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData'
+      type: object
+    ThreeDSData:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
+      type: object
     TestModes:
       description: ""
       enum:
@@ -2117,6 +2356,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -2134,6 +2374,8 @@ components:
         Currency: Currency
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -2143,6 +2385,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         Links:
           TermsConditions: TermsConditions
           Checkout: Checkout
@@ -2211,7 +2454,19 @@ components:
           State: State
           Country: Country
           City: City
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         TermsAndConditionsAccepted: true
+        EventsEndpoints:
+          CreateSucceeded: CreateSucceeded
         AutoCapture: true
         Shopper:
           Email: Email
@@ -2220,6 +2475,8 @@ components:
           Culture: Culture
         PaymentMethod:
           Type: null
+          SpreedlyToken: null
+          MockerShopperToken: null
           Token: Token
           Card:
             CardNumber: CardNumber
@@ -2229,6 +2486,7 @@ components:
             CardBrand: null
             CardExpYear: CardExpYear
             CardCvv: CardCvv
+          BluesnapVaultedShopperToken: null
         RedirectUrls:
           Succeeded: Succeeded
           Failed: Failed
@@ -2252,6 +2510,10 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       - TermsAndConditionsAccepted
@@ -2287,6 +2549,7 @@ components:
               key: Params
             Url: Url
           GatewayTransactionID: GatewayTransactionID
+          GatewaySourceResponse: GatewaySourceResponse
           GatewayResultMessage: GatewayResultMessage
           ECI: ECI
           SplititErrorResultCode: SplititErrorResultCode
@@ -2473,24 +2736,31 @@ components:
       x-konfig-is-used-in-successful-response: true
     InstallmentsEligibilityResponse:
       example:
+        InstallmentProvider: InstallmentProvider
         PaymentPlanOptions:
         - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
           InstallmentAmount: 1.4658129805029452
           Links:
             TermsAndConditionsUrl: TermsAndConditionsUrl
             LearnMoreUrl: LearnMoreUrl
             PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
           FirstInstallmentAmount: 6.027456183070403
           NumberOfInstallments: 0
         - LastInstallmentAmount: 5.962133916683182
+          InstallmentFrequency: InstallmentFrequency
           InstallmentAmount: 1.4658129805029452
           Links:
             TermsAndConditionsUrl: TermsAndConditionsUrl
             LearnMoreUrl: LearnMoreUrl
             PrivacyPolicyUrl: PrivacyPolicyUrl
+          TermsAndConditionsBrief: TermsAndConditionsBrief
           FirstInstallmentAmount: 6.027456183070403
           NumberOfInstallments: 0
       properties:
+        InstallmentProvider:
+          type: string
         PaymentPlanOptions:
           items:
             $ref: '#/components/schemas/PaymentPlanOptionModel'
@@ -2500,11 +2770,13 @@ components:
     PaymentPlanOptionModel:
       example:
         LastInstallmentAmount: 5.962133916683182
+        InstallmentFrequency: InstallmentFrequency
         InstallmentAmount: 1.4658129805029452
         Links:
           TermsAndConditionsUrl: TermsAndConditionsUrl
           LearnMoreUrl: LearnMoreUrl
           PrivacyPolicyUrl: PrivacyPolicyUrl
+        TermsAndConditionsBrief: TermsAndConditionsBrief
         FirstInstallmentAmount: 6.027456183070403
         NumberOfInstallments: 0
       properties:
@@ -2522,6 +2794,10 @@ components:
           type: number
         Links:
           $ref: '#/components/schemas/LinksModel'
+        TermsAndConditionsBrief:
+          type: string
+        InstallmentFrequency:
+          type: string
       required:
       - FirstInstallmentAmount
       - InstallmentAmount
@@ -2544,6 +2820,16 @@ components:
     CheckInstallmentsEligibilityRequest:
       example:
         PlanData:
+          ProcessingData:
+            ThreeDSData:
+              CAVV: CAVV
+              XID: XID
+              DirectoryServerTxnId: DirectoryServerTxnId
+              ThreeDSVersion: ThreeDSVersion
+              ECI: ECI
+              TransactionId: TransactionId
+            AttemptThreeDSecured: true
+            SoftDescriptor: SoftDescriptor
           RefOrderNumber: RefOrderNumber
           Currency: Currency
           AllowedInstallmentOptions:
@@ -2582,6 +2868,16 @@ components:
       type: object
     PlanData:
       example:
+        ProcessingData:
+          ThreeDSData:
+            CAVV: CAVV
+            XID: XID
+            DirectoryServerTxnId: DirectoryServerTxnId
+            ThreeDSVersion: ThreeDSVersion
+            ECI: ECI
+            TransactionId: TransactionId
+          AttemptThreeDSecured: true
+          SoftDescriptor: SoftDescriptor
         RefOrderNumber: RefOrderNumber
         Currency: Currency
         AllowedInstallmentOptions:
@@ -2622,6 +2918,8 @@ components:
           additionalProperties:
             type: string
           type: object
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData2'
         FirstInstallmentDate:
           format: date-time
           type: string
@@ -2630,20 +2928,109 @@ components:
       - PurchaseMethod
       - TotalAmount
       type: object
+    ProcessingData2:
+      example:
+        ThreeDSData:
+          CAVV: CAVV
+          XID: XID
+          DirectoryServerTxnId: DirectoryServerTxnId
+          ThreeDSVersion: ThreeDSVersion
+          ECI: ECI
+          TransactionId: TransactionId
+        AttemptThreeDSecured: true
+        SoftDescriptor: SoftDescriptor
+      properties:
+        AttemptThreeDSecured:
+          type: boolean
+        SoftDescriptor:
+          type: string
+        ThreeDSData:
+          $ref: '#/components/schemas/ThreeDSData2'
+      type: object
+    ThreeDSData2:
+      example:
+        CAVV: CAVV
+        XID: XID
+        DirectoryServerTxnId: DirectoryServerTxnId
+        ThreeDSVersion: ThreeDSVersion
+        ECI: ECI
+        TransactionId: TransactionId
+      properties:
+        ECI:
+          type: string
+        CAVV:
+          type: string
+        XID:
+          type: string
+        DirectoryServerTxnId:
+          type: string
+        ThreeDSVersion:
+          type: string
+        TransactionId:
+          type: string
+      type: object
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-search:
       properties:
         installmentPlanNumber:
@@ -2656,8 +3043,15 @@ components:
           type: object
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-search-get-parameters-4-schema
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
@@ -2665,6 +3059,7 @@ components:
       - refOrderNumber
       - extendedParams
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-initiate:
       properties:
         X-Splitit-TestMode:
@@ -2676,6 +3071,12 @@ components:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-2-schema
         AutoCapture:
           type: boolean
         Attempt3dSecure:
@@ -2690,14 +3091,20 @@ components:
           $ref: '#/components/schemas/InitiateRedirectionEndpointsModel'
         UxSettings:
           $ref: '#/components/schemas/UxSettingsModel'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
       required:
       - AutoCapture
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans:
       properties:
         X-Splitit-TestMode:
@@ -2709,6 +3116,12 @@ components:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-2-schema
         AutoCapture:
           type: boolean
         Attempt3dSecure:
@@ -2725,35 +3138,55 @@ components:
           $ref: '#/components/schemas/PaymentMethodModel'
         RedirectUrls:
           $ref: '#/components/schemas/RedirectionEndpointsModel'
+        ProcessingData:
+          $ref: '#/components/schemas/ProcessingData'
+        EventsEndpoints:
+          $ref: '#/components/schemas/EventsEndpointsModel'
       required:
       - AutoCapture
       - TermsAndConditionsAccepted
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-get--api-installmentplans-installmentPlanNumber-verifyauthorization:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-verifyauthorization-get-parameters-2-schema
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-put--api-installmentplans-installmentPlanNumber-updateorder:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-updateorder-put-parameters-2-schema
         TrackingNumber:
           type: string
         RefOrderNumber:
@@ -2764,16 +3197,24 @@ components:
           type: boolean
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-put--api-installmentplans-updateorder:
       properties:
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-updateorder-put-parameters-1-schema
         RefOrderNumber:
           type: string
         TrackingNumber:
@@ -2786,16 +3227,24 @@ components:
           $ref: '#/components/schemas/IdentifierContract'
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-refund:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-refund-post-parameters-2-schema
         Amount:
           format: decimal
           type: number
@@ -2804,30 +3253,46 @@ components:
       required:
       - Amount
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel:
       properties:
         installmentPlanNumber:
           type: string
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       - installmentPlanNumber
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - installmentPlanNumber
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     konfig-generated-schema-single-parameter-schema-post--api-installmentplans-check-eligibility:
       properties:
         X-Splitit-IdempotencyKey:
           type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema
         PlanData:
           $ref: '#/components/schemas/PlanData'
         CardDetails:
@@ -2836,10 +3301,12 @@ components:
           $ref: '#/components/schemas/AddressData'
       required:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
     ErrorExtended_allOf:
       properties:
         ExtraData:
@@ -2866,7 +3333,7 @@ components:
         clientCredentials:
           scopes:
             api.v3: ""
-          tokenUrl: https://id.sandbox.splitit.com/connect/token
+          tokenUrl: https://id.production.splitit.com/connect/token
       type: oauth2
       x-konfig-globally-required-security: true
 x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))

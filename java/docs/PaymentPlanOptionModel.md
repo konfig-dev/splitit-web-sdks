@@ -12,6 +12,8 @@
 |**installmentAmount** | **Double** |  |  |
 |**lastInstallmentAmount** | **Double** |  |  |
 |**links** | [**LinksModel**](LinksModel.md) |  |  [optional] |
+|**termsAndConditionsBrief** | **String** |  |  [optional] |
+|**installmentFrequency** | **String** |  |  [optional] |
 
 
 

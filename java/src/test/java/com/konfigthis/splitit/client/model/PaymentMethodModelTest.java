@@ -17,8 +17,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.BluesnapVaultedShopperToken;
+import com.konfigthis.splitit.client.model.CardBrand;
 import com.konfigthis.splitit.client.model.CardData;
+import com.konfigthis.splitit.client.model.CardType;
+import com.konfigthis.splitit.client.model.MockerShopperToken;
 import com.konfigthis.splitit.client.model.PaymentMethodType;
+import com.konfigthis.splitit.client.model.SpreedlyToken;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -62,6 +67,30 @@ public class PaymentMethodModelTest {
     @Test
     public void tokenTest() {
         // TODO: test token
+    }
+
+    /**
+     * Test the property 'bluesnapVaultedShopperToken'
+     */
+    @Test
+    public void bluesnapVaultedShopperTokenTest() {
+        // TODO: test bluesnapVaultedShopperToken
+    }
+
+    /**
+     * Test the property 'mockerShopperToken'
+     */
+    @Test
+    public void mockerShopperTokenTest() {
+        // TODO: test mockerShopperToken
+    }
+
+    /**
+     * Test the property 'spreedlyToken'
+     */
+    @Test
+    public void spreedlyTokenTest() {
+        // TODO: test spreedlyToken
     }
 
 }
