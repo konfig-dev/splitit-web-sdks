@@ -42,7 +42,7 @@ generators:
       repoId: splitit-web-sdks/tree/main/typescript
   python:
     version: 2.6.0
-    responseTypeVersion: 1
+    responseTypeVersion: '1'
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
