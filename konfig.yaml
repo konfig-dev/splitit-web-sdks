@@ -14,10 +14,6 @@ requiredEnvironmentVariables:
   - SPLITIT_CLIENT_ID
   - SPLITIT_CLIENT_SECRET
 fixConfig:
-  # update:
-  #   $.:
-  #     tags: undefined
-  # inheritMetadataSpecPath: avishai-swagger.yaml
   modify:
     $.servers[0]:
       url: https://web-api-v3.production.splitit.com
@@ -52,7 +48,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 2.2.1
+    version: 2.2.2
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk

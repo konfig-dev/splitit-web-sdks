@@ -17,6 +17,7 @@ public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
     public boolean verifyingSsl = true;
     public String host = "https://web-api-v3.production.splitit.com";
+    public String tokenUrl = "https://id.production.splitit.com/connect/token";
     public String clientId;
     public String clientSecret;
 
