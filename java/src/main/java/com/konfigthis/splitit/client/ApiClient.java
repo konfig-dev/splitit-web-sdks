@@ -65,6 +65,7 @@ import com.konfigthis.splitit.client.auth.OAuthFlow;
 public class ApiClient extends ApiClientCustom {
 
     private String basePath = "https://web-api-v3.production.splitit.com";
+    private String tokenUrl = "https://id.production.splitit.com/connect/token";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -105,21 +106,24 @@ public class ApiClient extends ApiClientCustom {
 
     public ApiClient(OkHttpClient client, Configuration configuration) {
         init();
+        if (configuration != null) {
+            // Setting up authentications, if applicable, may rely on the following, so we initialize them first
+            setBasePath(configuration.host);
+            setTokenUrl(configuration.tokenUrl);
+        }
+        // Setup authentications (key: authentication name, value: authentication).
+        RetryingOAuth oauth = configuration != null ? setupOauth(configuration.clientId, configuration.clientSecret, null) : null;
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+
         if (client == null) {
-            initHttpClient();
+            initHttpClient(oauth != null ? Collections.singletonList(oauth) : Collections.emptyList());
         } else {
             this.httpClient = client;
         }
 
-        // Setup authentications (key: authentication name, value: authentication).
-        authentications.put("oauth", new OAuth());
-        // Prevent the authentications from being modified.
-        authentications = Collections.unmodifiableMap(authentications);
-
         if (configuration != null) {
-
             setVerifyingSsl(configuration.verifyingSsl);
-            setBasePath(configuration.host);
         }
     }
     /**
@@ -165,30 +169,28 @@ public class ApiClient extends ApiClientCustom {
         if (basePath != null) {
             this.basePath = basePath;
         }
-
-        String tokenUrl = "https://id.production.splitit.com/connect/token";
-        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
-            URI uri = URI.create(getBasePath());
-            tokenUrl = uri.getScheme() + ":" +
-                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
-                tokenUrl;
-            if (!URI.create(tokenUrl).isAbsolute()) {
-                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
-            }
-        }
-        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
-        authentications.put(
-                "oauth",
-                retryingOAuth
-        );
-        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
         // Setup authentications (key: authentication name, value: authentication).
-
+        RetryingOAuth oauth = setupOauth(clientId, clientSecret, parameters);
+        initHttpClient(Collections.singletonList(oauth));
+        
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
 
-
+    private RetryingOAuth setupOauth(String clientId, String clientSecret, Map<String, String> parameters) {
+        if (!"".equals(getTokenUrl()) && !URI.create(getTokenUrl()).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            setTokenUrl(uri.getScheme() + ":"
+                    + (uri.getAuthority() != null ? "//" + uri.getAuthority() : "")
+                    + getTokenUrl());
+            if (!URI.create(getTokenUrl()).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth oauth = new RetryingOAuth(getTokenUrl(), clientId, OAuthFlow.APPLICATION, clientSecret, parameters);
+        authentications.put("oauth", oauth);
+        return oauth;
+    }
 
     private void initHttpClient() {
         initHttpClient(Collections.<Interceptor>emptyList());
@@ -228,7 +230,7 @@ public class ApiClient extends ApiClientCustom {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://web-api-v3.production.splitit.com
+     * @param basePath Base path of the URL (e.g https://web-api-v3.production.splitit.com)
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
@@ -237,6 +239,30 @@ public class ApiClient extends ApiClientCustom {
             basePath = basePath.substring(0, basePath.length() - 1);
         }
         this.basePath = basePath;
+        return this;
+    }
+
+    /**
+     * Get token url
+     *
+     * @return token url
+     */
+    public String getTokenUrl() {
+        return tokenUrl;
+    }
+
+    /**
+     * Set token url
+     *
+     * @param tokenUrl Token URL for oauth (e.g https://id.production.splitit.com/connect/token)
+     * @return An instance of OkHttpClient
+     */
+    public ApiClient setTokenUrl(String tokenUrl) {
+        // strip trailing slash from tokenUrl
+        if (tokenUrl != null && tokenUrl.endsWith("/")) {
+            tokenUrl = tokenUrl.substring(0, tokenUrl.length() - 1);
+        }
+        this.tokenUrl = tokenUrl;
         return this;
     }
 
