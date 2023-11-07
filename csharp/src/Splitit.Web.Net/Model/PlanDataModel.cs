@@ -54,7 +54,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="extendedParams">extendedParams.</param>
         /// <param name="firstInstallmentAmount">firstInstallmentAmount.</param>
         /// <param name="firstInstallmentDate">firstInstallmentDate.</param>
-        public PlanDataModel(decimal totalAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), string terminalId = default(string), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), decimal firstInstallmentAmount = default(decimal), DateTime firstInstallmentDate = default(DateTime))
+        public PlanDataModel(double totalAmount = default(double), string currency = default(string), int numberOfInstallments = default(int), string terminalId = default(string), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), double firstInstallmentAmount = default(double), DateTime firstInstallmentDate = default(DateTime))
         {
             this.TotalAmount = totalAmount;
             this.PurchaseMethod = purchaseMethod;
@@ -71,7 +71,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal TotalAmount { get; set; }
+        public double TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
@@ -107,7 +107,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets FirstInstallmentAmount
         /// </summary>
         [DataMember(Name = "FirstInstallmentAmount", EmitDefaultValue = false)]
-        public decimal FirstInstallmentAmount { get; set; }
+        public double FirstInstallmentAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets FirstInstallmentDate

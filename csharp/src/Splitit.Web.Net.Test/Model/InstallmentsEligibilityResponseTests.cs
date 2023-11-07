@@ -57,6 +57,14 @@ namespace Splitit.Web.Net.Test.Model
 
 
         /// <summary>
+        /// Test the property 'InstallmentProvider'
+        /// </summary>
+        [Fact]
+        public void InstallmentProviderTest()
+        {
+            // TODO unit test for the property 'InstallmentProvider'
+        }
+        /// <summary>
         /// Test the property 'PaymentPlanOptions'
         /// </summary>
         [Fact]

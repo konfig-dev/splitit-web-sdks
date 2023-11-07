@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ThreeDSRedirect** | [**ThreeDsRedirectDataV3**](ThreeDsRedirectDataV3.md) |  | [optional] 
 **CAVV** | **string** |  | [optional] 
 **ECI** | **string** |  | [optional] 
+**GatewaySourceResponse** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

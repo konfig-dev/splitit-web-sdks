@@ -61,7 +61,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="shopper">shopper.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="checkoutUrl">checkoutUrl.</param>
-        public InitiatePlanResponse(string installmentPlanNumber = default(string), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), decimal amount = default(decimal), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), string checkoutUrl = default(string))
+        public InitiatePlanResponse(string installmentPlanNumber = default(string), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), double amount = default(double), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), string checkoutUrl = default(string))
         {
             this.Status = status;
             this.InstallmentPlanNumber = installmentPlanNumber;
@@ -97,7 +97,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets ExtendedParams

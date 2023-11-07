@@ -38,7 +38,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="failedAmount">failedAmount.</param>
         /// <param name="succeededAmount">succeededAmount.</param>
         /// <param name="pendingAmount">pendingAmount.</param>
-        public RefundSummary(decimal totalAmount = default(decimal), decimal failedAmount = default(decimal), decimal succeededAmount = default(decimal), decimal pendingAmount = default(decimal))
+        public RefundSummary(double totalAmount = default(double), double failedAmount = default(double), double succeededAmount = default(double), double pendingAmount = default(double))
         {
             this.TotalAmount = totalAmount;
             this.FailedAmount = failedAmount;
@@ -50,25 +50,25 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", EmitDefaultValue = false)]
-        public decimal TotalAmount { get; set; }
+        public double TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets FailedAmount
         /// </summary>
         [DataMember(Name = "FailedAmount", EmitDefaultValue = false)]
-        public decimal FailedAmount { get; set; }
+        public double FailedAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets SucceededAmount
         /// </summary>
         [DataMember(Name = "SucceededAmount", EmitDefaultValue = false)]
-        public decimal SucceededAmount { get; set; }
+        public double SucceededAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets PendingAmount
         /// </summary>
         [DataMember(Name = "PendingAmount", EmitDefaultValue = false)]
-        public decimal PendingAmount { get; set; }
+        public double PendingAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

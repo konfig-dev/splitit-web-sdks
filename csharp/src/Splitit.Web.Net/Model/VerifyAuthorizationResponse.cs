@@ -42,7 +42,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="isAuthorized">isAuthorized (required).</param>
         /// <param name="authorizationAmount">authorizationAmount.</param>
         /// <param name="authorization">authorization.</param>
-        public VerifyAuthorizationResponse(bool isAuthorized = default(bool), decimal authorizationAmount = default(decimal), AuthorizationModel authorization = default(AuthorizationModel))
+        public VerifyAuthorizationResponse(bool isAuthorized = default(bool), double authorizationAmount = default(double), AuthorizationModel authorization = default(AuthorizationModel))
         {
             this.IsAuthorized = isAuthorized;
             this.AuthorizationAmount = authorizationAmount;
@@ -59,7 +59,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets AuthorizationAmount
         /// </summary>
         [DataMember(Name = "AuthorizationAmount", EmitDefaultValue = false)]
-        public decimal AuthorizationAmount { get; set; }
+        public double AuthorizationAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Authorization

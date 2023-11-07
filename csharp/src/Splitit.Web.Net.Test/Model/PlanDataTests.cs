@@ -129,6 +129,14 @@ namespace Splitit.Web.Net.Test.Model
             // TODO unit test for the property 'Tags'
         }
         /// <summary>
+        /// Test the property 'ProcessingData'
+        /// </summary>
+        [Fact]
+        public void ProcessingDataTest()
+        {
+            // TODO unit test for the property 'ProcessingData'
+        }
+        /// <summary>
         /// Test the property 'FirstInstallmentDate'
         /// </summary>
         [Fact]

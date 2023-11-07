@@ -34,11 +34,19 @@ namespace Splitit.Web.Net.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentsEligibilityResponse" /> class.
         /// </summary>
+        /// <param name="installmentProvider">installmentProvider.</param>
         /// <param name="paymentPlanOptions">paymentPlanOptions.</param>
-        public InstallmentsEligibilityResponse(List<PaymentPlanOptionModel> paymentPlanOptions = default(List<PaymentPlanOptionModel>))
+        public InstallmentsEligibilityResponse(string installmentProvider = default(string), List<PaymentPlanOptionModel> paymentPlanOptions = default(List<PaymentPlanOptionModel>))
         {
+            this.InstallmentProvider = installmentProvider;
             this.PaymentPlanOptions = paymentPlanOptions;
         }
+
+        /// <summary>
+        /// Gets or Sets InstallmentProvider
+        /// </summary>
+        [DataMember(Name = "InstallmentProvider", EmitDefaultValue = false)]
+        public string InstallmentProvider { get; set; }
 
         /// <summary>
         /// Gets or Sets PaymentPlanOptions
@@ -54,6 +62,7 @@ namespace Splitit.Web.Net.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class InstallmentsEligibilityResponse {\n");
+            sb.Append("  InstallmentProvider: ").Append(InstallmentProvider).Append("\n");
             sb.Append("  PaymentPlanOptions: ").Append(PaymentPlanOptions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -91,6 +100,11 @@ namespace Splitit.Web.Net.Model
             }
             return 
                 (
+                    this.InstallmentProvider == input.InstallmentProvider ||
+                    (this.InstallmentProvider != null &&
+                    this.InstallmentProvider.Equals(input.InstallmentProvider))
+                ) && 
+                (
                     this.PaymentPlanOptions == input.PaymentPlanOptions ||
                     this.PaymentPlanOptions != null &&
                     input.PaymentPlanOptions != null &&
@@ -107,6 +121,10 @@ namespace Splitit.Web.Net.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.InstallmentProvider != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstallmentProvider.GetHashCode();
+                }
                 if (this.PaymentPlanOptions != null)
                 {
                     hashCode = (hashCode * 59) + this.PaymentPlanOptions.GetHashCode();

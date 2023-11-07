@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **PurchaseMethod** | **PurchaseMethod** |  | [optional] 
 **Status** | **PlanStatus** |  | 
 **Currency** | **string** |  | [optional] 
-**Amount** | **decimal** |  | [optional] 
+**Amount** | **double** |  | [optional] 
 **ExtendedParams** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **Shopper** | [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | [**AddressData**](AddressData.md) |  | [optional] 

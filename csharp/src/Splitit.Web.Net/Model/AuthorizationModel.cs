@@ -54,7 +54,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="threeDSRedirect">threeDSRedirect.</param>
         /// <param name="cAVV">cAVV.</param>
         /// <param name="eCI">eCI.</param>
-        public AuthorizationModel(GwAuthorizationStatus status = default(GwAuthorizationStatus), DateTime date = default(DateTime), string splititErrorResultCode = default(string), string gatewayTransactionID = default(string), string gatewayResultCode = default(string), string gatewayResultMessage = default(string), ThreeDsRedirectDataV3 threeDSRedirect = default(ThreeDsRedirectDataV3), string cAVV = default(string), string eCI = default(string))
+        /// <param name="gatewaySourceResponse">gatewaySourceResponse.</param>
+        public AuthorizationModel(GwAuthorizationStatus status = default(GwAuthorizationStatus), DateTime date = default(DateTime), string splititErrorResultCode = default(string), string gatewayTransactionID = default(string), string gatewayResultCode = default(string), string gatewayResultMessage = default(string), ThreeDsRedirectDataV3 threeDSRedirect = default(ThreeDsRedirectDataV3), string cAVV = default(string), string eCI = default(string), string gatewaySourceResponse = default(string))
         {
             this.Status = status;
             this.Date = date;
@@ -65,6 +66,7 @@ namespace Splitit.Web.Net.Model
             this.ThreeDSRedirect = threeDSRedirect;
             this.CAVV = cAVV;
             this.ECI = eCI;
+            this.GatewaySourceResponse = gatewaySourceResponse;
         }
 
         /// <summary>
@@ -116,6 +118,12 @@ namespace Splitit.Web.Net.Model
         public string ECI { get; set; }
 
         /// <summary>
+        /// Gets or Sets GatewaySourceResponse
+        /// </summary>
+        [DataMember(Name = "GatewaySourceResponse", EmitDefaultValue = false)]
+        public string GatewaySourceResponse { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -132,6 +140,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  ThreeDSRedirect: ").Append(ThreeDSRedirect).Append("\n");
             sb.Append("  CAVV: ").Append(CAVV).Append("\n");
             sb.Append("  ECI: ").Append(ECI).Append("\n");
+            sb.Append("  GatewaySourceResponse: ").Append(GatewaySourceResponse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -210,6 +219,11 @@ namespace Splitit.Web.Net.Model
                     this.ECI == input.ECI ||
                     (this.ECI != null &&
                     this.ECI.Equals(input.ECI))
+                ) && 
+                (
+                    this.GatewaySourceResponse == input.GatewaySourceResponse ||
+                    (this.GatewaySourceResponse != null &&
+                    this.GatewaySourceResponse.Equals(input.GatewaySourceResponse))
                 );
         }
 
@@ -254,6 +268,10 @@ namespace Splitit.Web.Net.Model
                 if (this.ECI != null)
                 {
                     hashCode = (hashCode * 59) + this.ECI.GetHashCode();
+                }
+                if (this.GatewaySourceResponse != null)
+                {
+                    hashCode = (hashCode * 59) + this.GatewaySourceResponse.GetHashCode();
                 }
                 return hashCode;
             }

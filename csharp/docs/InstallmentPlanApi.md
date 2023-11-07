@@ -1,6 +1,6 @@
 # Splitit.Web.Net.Api.InstallmentPlanApi
 
-All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
+All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
@@ -15,9 +15,8 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 | [**UpdateOrder2**](InstallmentPlanApi.md#updateorder2) | **PUT** /api/installmentplans/updateorder |  |
 | [**VerifyAuthorization**](InstallmentPlanApi.md#verifyauthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization |  |
 
-<a name="cancel"></a>
+
 # **Cancel**
-> InstallmentPlanCancelResponse Cancel (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -26,7 +25,6 @@ All URIs are relative to *https://web-api-v3.sandbox.splitit.com*
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -36,24 +34,18 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
             try
             {
-                InstallmentPlanCancelResponse result = apiInstance.Cancel(installmentPlanNumber, xSplititIdempotencyKey);
+                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -79,7 +71,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanCancelResponse> response = apiInstance.CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+    ApiResponse<InstallmentPlanCancelResponse> response = apiInstance.CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -98,19 +90,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 
 ### Return type
 
 [**InstallmentPlanCancelResponse**](InstallmentPlanCancelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -124,9 +108,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="checkeligibility"></a>
+
 # **CheckEligibility**
-> InstallmentsEligibilityResponse CheckEligibility (string xSplititIdempotencyKey, CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest)
 
 
 
@@ -135,7 +118,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -145,24 +127,26 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest(); // CheckInstallmentsEligibilityRequest | 
-
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var planData = new PlanData();
+            var cardDetails = new CardData();
+            var billingAddress = new AddressData();
+            
+            var checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest(
+                planData,
+                cardDetails,
+                billingAddress
+            );
+            
             try
             {
-                InstallmentsEligibilityResponse result = apiInstance.CheckEligibility(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+                InstallmentsEligibilityResponse result = client.InstallmentPlan.CheckEligibility(xSplititIdempotencyKey, xSplititTouchPoint, checkInstallmentsEligibilityRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -188,7 +172,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentsEligibilityResponse> response = apiInstance.CheckEligibilityWithHttpInfo(xSplititIdempotencyKey, checkInstallmentsEligibilityRequest);
+    ApiResponse<InstallmentsEligibilityResponse> response = apiInstance.CheckEligibilityWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, checkInstallmentsEligibilityRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -206,20 +190,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **checkInstallmentsEligibilityRequest** | [**CheckInstallmentsEligibilityRequest**](CheckInstallmentsEligibilityRequest.md) |  |  |
 
 ### Return type
 
 [**InstallmentsEligibilityResponse**](InstallmentsEligibilityResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -233,9 +209,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="get"></a>
+
 # **Get**
-> InstallmentPlanGetResponse Get (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -244,7 +219,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -254,24 +228,18 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
             try
             {
-                InstallmentPlanGetResponse result = apiInstance.Get(installmentPlanNumber, xSplititIdempotencyKey);
+                InstallmentPlanGetResponse result = client.InstallmentPlan.Get(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -297,7 +265,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanGetResponse> response = apiInstance.GetWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+    ApiResponse<InstallmentPlanGetResponse> response = apiInstance.GetWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -316,19 +284,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 
 ### Return type
 
 [**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -342,9 +302,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="post"></a>
+
 # **Post**
-> InitiatePlanResponse Post (string xSplititIdempotencyKey, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = null)
 
 
 
@@ -353,7 +312,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -363,25 +321,39 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var installmentPlanInitiateRequest = new InstallmentPlanInitiateRequest(); // InstallmentPlanInitiateRequest | 
-            var xSplititTestMode = "None";  // string |  (optional) 
-
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var autoCapture = false;
+            var attempt3dSecure = false;
+            var shopper = new ShopperData();
+            var planData = new PlanDataModel();
+            var billingAddress = new AddressDataModel();
+            var redirectUrls = new InitiateRedirectionEndpointsModel();
+            var uxSettings = new UxSettingsModel();
+            var eventsEndpoints = new EventsEndpointsModel();
+            var processingData = new ProcessingData();
+            
+            var installmentPlanInitiateRequest = new InstallmentPlanInitiateRequest(
+                autoCapture,
+                attempt3dSecure,
+                shopper,
+                planData,
+                billingAddress,
+                redirectUrls,
+                uxSettings,
+                eventsEndpoints,
+                processingData
+            );
+            var xSplititTestMode = "None";
+            
             try
             {
-                InitiatePlanResponse result = apiInstance.Post(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
+                InitiatePlanResponse result = client.InstallmentPlan.Post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -407,7 +379,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InitiatePlanResponse> response = apiInstance.PostWithHttpInfo(xSplititIdempotencyKey, installmentPlanInitiateRequest, xSplititTestMode);
+    ApiResponse<InitiatePlanResponse> response = apiInstance.PostWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -425,21 +397,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md) |  |  |
 | **xSplititTestMode** | **string** |  | [optional]  |
 
 ### Return type
 
 [**InitiatePlanResponse**](InitiatePlanResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -454,9 +418,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="post2"></a>
+
 # **Post2**
-> InstallmentPlanCreateResponse Post2 (string xSplititIdempotencyKey, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = null)
 
 
 
@@ -465,7 +428,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -475,25 +437,41 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var installmentPlanCreateRequest = new InstallmentPlanCreateRequest(); // InstallmentPlanCreateRequest | 
-            var xSplititTestMode = "None";  // string |  (optional) 
-
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var autoCapture = false;
+            var attempt3dSecure = false;
+            var termsAndConditionsAccepted = false;
+            var shopper = new ShopperData();
+            var planData = new PlanDataModel();
+            var billingAddress = new AddressDataModel();
+            var paymentMethod = new PaymentMethodModel();
+            var redirectUrls = new RedirectionEndpointsModel();
+            var processingData = new ProcessingData();
+            var eventsEndpoints = new EventsEndpointsModel();
+            
+            var installmentPlanCreateRequest = new InstallmentPlanCreateRequest(
+                autoCapture,
+                attempt3dSecure,
+                termsAndConditionsAccepted,
+                shopper,
+                planData,
+                billingAddress,
+                paymentMethod,
+                redirectUrls,
+                processingData,
+                eventsEndpoints
+            );
+            var xSplititTestMode = "None";
+            
             try
             {
-                InstallmentPlanCreateResponse result = apiInstance.Post2(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
+                InstallmentPlanCreateResponse result = client.InstallmentPlan.Post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -519,7 +497,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanCreateResponse> response = apiInstance.Post2WithHttpInfo(xSplititIdempotencyKey, installmentPlanCreateRequest, xSplititTestMode);
+    ApiResponse<InstallmentPlanCreateResponse> response = apiInstance.Post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -537,21 +515,13 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md) |  |  |
 | **xSplititTestMode** | **string** |  | [optional]  |
 
 ### Return type
 
 [**InstallmentPlanCreateResponse**](InstallmentPlanCreateResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -566,9 +536,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="refund"></a>
+
 # **Refund**
-> InstallmentPlanRefundResponse Refund (string installmentPlanNumber, string xSplititIdempotencyKey, InstallmentPlanRefundRequest installmentPlanRefundRequest)
 
 
 
@@ -577,7 +546,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -587,25 +555,25 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var installmentPlanRefundRequest = new InstallmentPlanRefundRequest(); // InstallmentPlanRefundRequest | 
-
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var amount = default(double);
+            var refundStrategy = RefundStrategy.FutureInstallmentsFirst;
+            
+            var installmentPlanRefundRequest = new InstallmentPlanRefundRequest(
+                amount,
+                refundStrategy
+            );
+            
             try
             {
-                InstallmentPlanRefundResponse result = apiInstance.Refund(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+                InstallmentPlanRefundResponse result = client.InstallmentPlan.Refund(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanRefundRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -631,7 +599,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanRefundResponse> response = apiInstance.RefundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, installmentPlanRefundRequest);
+    ApiResponse<InstallmentPlanRefundResponse> response = apiInstance.RefundWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanRefundRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -650,20 +618,12 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanRefundRequest** | [**InstallmentPlanRefundRequest**](InstallmentPlanRefundRequest.md) |  |  |
 
 ### Return type
 
 [**InstallmentPlanRefundResponse**](InstallmentPlanRefundResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -677,9 +637,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="search"></a>
+
 # **Search**
-> InstallmentPlanSearchResponse Search (string xSplititIdempotencyKey, string installmentPlanNumber = null, string refOrderNumber = null, Dictionary<string, string> extendedParams = null)
 
 
 
@@ -688,7 +647,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -698,26 +656,21 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string |  (optional) 
-            var refOrderNumber = "refOrderNumber_example";  // string |  (optional) 
-            var extendedParams = new Dictionary<string, string>(); // Dictionary<string, string> |  (optional) 
-
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var refOrderNumber = "refOrderNumber_example";
+            var extendedParams = new Dictionary<string, string>(
+            );
+            
             try
             {
-                InstallmentPlanSearchResponse result = apiInstance.Search(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+                InstallmentPlanSearchResponse result = client.InstallmentPlan.Search(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanNumber, refOrderNumber, extendedParams);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -743,7 +696,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanSearchResponse> response = apiInstance.SearchWithHttpInfo(xSplititIdempotencyKey, installmentPlanNumber, refOrderNumber, extendedParams);
+    ApiResponse<InstallmentPlanSearchResponse> response = apiInstance.SearchWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanNumber, refOrderNumber, extendedParams);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -761,6 +714,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanNumber** | **string** |  | [optional]  |
 | **refOrderNumber** | **string** |  | [optional]  |
 | **extendedParams** | [**Dictionary&lt;string, string&gt;**](string.md) |  | [optional]  |
@@ -768,15 +722,6 @@ catch (ApiException e)
 ### Return type
 
 [**InstallmentPlanSearchResponse**](InstallmentPlanSearchResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -790,9 +735,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="updateorder"></a>
+
 # **UpdateOrder**
-> InstallmentPlanUpdateResponse UpdateOrder (string installmentPlanNumber, string xSplititIdempotencyKey, UpdateOrderRequest updateOrderRequest)
 
 
 
@@ -801,7 +745,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -811,25 +754,29 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var updateOrderRequest = new UpdateOrderRequest(); // UpdateOrderRequest | 
-
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var trackingNumber = "trackingNumber_example";
+            var refOrderNumber = "refOrderNumber_example";
+            var shippingStatus = ShippingStatus.Pending;
+            var capture = false;
+            
+            var updateOrderRequest = new UpdateOrderRequest(
+                trackingNumber,
+                refOrderNumber,
+                shippingStatus,
+                capture
+            );
+            
             try
             {
-                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -855,7 +802,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, updateOrderRequest);
+    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -874,20 +821,12 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  |  |
 
 ### Return type
 
 [**InstallmentPlanUpdateResponse**](InstallmentPlanUpdateResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -901,9 +840,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="updateorder2"></a>
+
 # **UpdateOrder2**
-> InstallmentPlanUpdateResponse UpdateOrder2 (string xSplititIdempotencyKey, InstallmentPlanUpdateRequestByIdentifier installmentPlanUpdateRequestByIdentifier)
 
 
 
@@ -912,7 +850,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -922,24 +859,20 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-            var installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier(); // InstallmentPlanUpdateRequestByIdentifier | 
-
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
+            var installmentPlanUpdateRequestByIdentifier = new InstallmentPlanUpdateRequestByIdentifier(
+            );
+            
             try
             {
-                InstallmentPlanUpdateResponse result = apiInstance.UpdateOrder2(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequestByIdentifier);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -965,7 +898,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrder2WithHttpInfo(xSplititIdempotencyKey, installmentPlanUpdateRequestByIdentifier);
+    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrder2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequestByIdentifier);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -983,20 +916,12 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanUpdateRequestByIdentifier** | [**InstallmentPlanUpdateRequestByIdentifier**](InstallmentPlanUpdateRequestByIdentifier.md) |  |  |
 
 ### Return type
 
 [**InstallmentPlanUpdateResponse**](InstallmentPlanUpdateResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details
@@ -1010,9 +935,8 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-<a name="verifyauthorization"></a>
+
 # **VerifyAuthorization**
-> VerifyAuthorizationResponse VerifyAuthorization (string installmentPlanNumber, string xSplititIdempotencyKey)
 
 
 
@@ -1021,7 +945,6 @@ catch (ApiException e)
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Splitit.Web.Net.Api;
 using Splitit.Web.Net.Client;
 using Splitit.Web.Net.Model;
 
@@ -1031,24 +954,18 @@ namespace Example
     {
         public static void Main()
         {
-            Configuration config = new Configuration();
-
-            // Configure custom BasePath if desired
-            // config.BasePath = "https://web-api-v3.sandbox.splitit.com";
-
+            SplititClient client = new SplititClient();
             // Configure OAuth2 credentials for "application" OAuth flow
-            string clientId = System.Environment.GetEnvironmentVariable("CLIENT_ID");
-            string clientSecret = System.Environment.GetEnvironmentVariable("CLIENT_SECRET");
-            config.OAuthClientId = clientId;
-            config.OAuthClientSecret = clientSecret;
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var apiInstance = new InstallmentPlanApi(config);
-            var installmentPlanNumber = "installmentPlanNumber_example";  // string | 
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";  // string | 
-
+            var installmentPlanNumber = "installmentPlanNumber_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
             try
             {
-                VerifyAuthorizationResponse result = apiInstance.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey);
+                VerifyAuthorizationResponse result = client.InstallmentPlan.VerifyAuthorization(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -1074,7 +991,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<VerifyAuthorizationResponse> response = apiInstance.VerifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey);
+    ApiResponse<VerifyAuthorizationResponse> response = apiInstance.VerifyAuthorizationWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1093,19 +1010,11 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 
 ### Return type
 
 [**VerifyAuthorizationResponse**](VerifyAuthorizationResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
 
 
 ### HTTP response details

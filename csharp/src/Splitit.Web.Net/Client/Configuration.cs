@@ -116,18 +116,19 @@ namespace Splitit.Web.Net.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = WebUtility.UrlEncode("Konfig/2.1.0/csharp");
-            BasePath = "https://web-api-v3.sandbox.splitit.com";
+            UserAgent = "Konfig/2.1.0/csharp";
+            BasePath = "https://web-api-v3.production.splitit.com";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
+            VerifySsl = true;
             OAuthFlow = Auth.OAuthFlow.APPLICATION;
-            OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
+            OAuthTokenUrl = "https://id.production.splitit.com/connect/token";
             Servers = new List<IReadOnlyDictionary<string, object>>()
             {
                 {
                     new Dictionary<string, object> {
-                        {"url", "https://web-api-v3.sandbox.splitit.com"},
+                        {"url", "https://web-api-v3.production.splitit.com"},
                         {"description", "No description provided"},
                     }
                 }
@@ -148,7 +149,7 @@ namespace Splitit.Web.Net.Client
             IDictionary<string, string> defaultHeaders,
             IDictionary<string, string> apiKey,
             IDictionary<string, string> apiKeyPrefix,
-            string basePath = "https://web-api-v3.sandbox.splitit.com") : this()
+            string basePath = "https://web-api-v3.production.splitit.com") : this()
         {
             if (string.IsNullOrWhiteSpace(basePath))
                 throw new ArgumentException("The provided basePath is invalid.", "basePath");
@@ -238,6 +239,12 @@ namespace Splitit.Web.Net.Client
         /// </summary>
         /// <value>The password.</value>
         public virtual string Password { get; set; }
+
+        /// <summary>
+        /// Gets or sets the verifySsl flag.
+        /// </summary>
+        /// <value>verifySsl flag.</value>
+        public virtual bool VerifySsl { get; set; }
 
         /// <summary>
         /// Gets the API key with prefix.
@@ -608,6 +615,7 @@ namespace Splitit.Web.Net.Client
                 UserAgent = second.UserAgent ?? first.UserAgent,
                 Username = second.Username ?? first.Username,
                 Password = second.Password ?? first.Password,
+                VerifySsl = second.VerifySsl && first.VerifySsl,
                 AccessToken = second.AccessToken ?? first.AccessToken,
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,
                 OAuthClientId = second.OAuthClientId ?? first.OAuthClientId,

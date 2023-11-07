@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InstallmentNumber** | **int** |  | 
-**Amount** | **decimal** |  | 
+**Amount** | **double** |  | 
 **ProcessDateTime** | **DateTime** |  | [optional] 
 **Status** | **InstallmentStatus** |  | 
 

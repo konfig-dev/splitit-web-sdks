@@ -80,6 +80,30 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'Token'
         }
+        /// <summary>
+        /// Test the property 'BluesnapVaultedShopperToken'
+        /// </summary>
+        [Fact]
+        public void BluesnapVaultedShopperTokenTest()
+        {
+            // TODO unit test for the property 'BluesnapVaultedShopperToken'
+        }
+        /// <summary>
+        /// Test the property 'MockerShopperToken'
+        /// </summary>
+        [Fact]
+        public void MockerShopperTokenTest()
+        {
+            // TODO unit test for the property 'MockerShopperToken'
+        }
+        /// <summary>
+        /// Test the property 'SpreedlyToken'
+        /// </summary>
+        [Fact]
+        public void SpreedlyTokenTest()
+        {
+            // TODO unit test for the property 'SpreedlyToken'
+        }
 
     }
 

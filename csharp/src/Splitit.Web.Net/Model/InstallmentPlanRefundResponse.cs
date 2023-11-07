@@ -40,7 +40,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="nonCreditRefundAmount">nonCreditRefundAmount.</param>
         /// <param name="creditRefundAmount">creditRefundAmount.</param>
         /// <param name="summary">summary.</param>
-        public InstallmentPlanRefundResponse(string refundId = default(string), string installmentPlanNumber = default(string), string currency = default(string), decimal nonCreditRefundAmount = default(decimal), decimal creditRefundAmount = default(decimal), RefundSummary summary = default(RefundSummary))
+        public InstallmentPlanRefundResponse(string refundId = default(string), string installmentPlanNumber = default(string), string currency = default(string), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double), RefundSummary summary = default(RefundSummary))
         {
             this.RefundId = refundId;
             this.InstallmentPlanNumber = installmentPlanNumber;
@@ -72,13 +72,13 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets NonCreditRefundAmount
         /// </summary>
         [DataMember(Name = "NonCreditRefundAmount", EmitDefaultValue = false)]
-        public decimal NonCreditRefundAmount { get; set; }
+        public double NonCreditRefundAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditRefundAmount
         /// </summary>
         [DataMember(Name = "CreditRefundAmount", EmitDefaultValue = false)]
-        public decimal CreditRefundAmount { get; set; }
+        public double CreditRefundAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Summary

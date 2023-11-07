@@ -120,6 +120,22 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'RedirectUrls'
         }
+        /// <summary>
+        /// Test the property 'ProcessingData'
+        /// </summary>
+        [Fact]
+        public void ProcessingDataTest()
+        {
+            // TODO unit test for the property 'ProcessingData'
+        }
+        /// <summary>
+        /// Test the property 'EventsEndpoints'
+        /// </summary>
+        [Fact]
+        public void EventsEndpointsTest()
+        {
+            // TODO unit test for the property 'EventsEndpoints'
+        }
 
     }
 

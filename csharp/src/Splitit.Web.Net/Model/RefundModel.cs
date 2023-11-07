@@ -51,7 +51,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="status">status (required).</param>
         /// <param name="nonCreditRefundAmount">nonCreditRefundAmount (required).</param>
         /// <param name="creditRefundAmount">creditRefundAmount (required).</param>
-        public RefundModel(string refundId = default(string), DateTime submitDate = default(DateTime), decimal totalAmount = default(decimal), RefundStatus status = default(RefundStatus), decimal nonCreditRefundAmount = default(decimal), decimal creditRefundAmount = default(decimal))
+        public RefundModel(string refundId = default(string), DateTime submitDate = default(DateTime), double totalAmount = default(double), RefundStatus status = default(RefundStatus), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double))
         {
             this.SubmitDate = submitDate;
             this.TotalAmount = totalAmount;
@@ -77,19 +77,19 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal TotalAmount { get; set; }
+        public double TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets NonCreditRefundAmount
         /// </summary>
         [DataMember(Name = "NonCreditRefundAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal NonCreditRefundAmount { get; set; }
+        public double NonCreditRefundAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets CreditRefundAmount
         /// </summary>
         [DataMember(Name = "CreditRefundAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal CreditRefundAmount { get; set; }
+        public double CreditRefundAmount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

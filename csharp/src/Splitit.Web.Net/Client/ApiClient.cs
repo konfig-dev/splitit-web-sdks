@@ -453,11 +453,15 @@ namespace Splitit.Web.Net.Client
                 CookieContainer = cookies,
                 MaxTimeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
+            };
+            if (!configuration.VerifySsl)
+            {
+                clientOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             };
 
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
+            client.AddDefaultHeader("User-Agent", configuration.UserAgent);
 
             if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
                 !string.IsNullOrEmpty(configuration.OAuthClientId) &&
@@ -562,11 +566,15 @@ namespace Splitit.Web.Net.Client
                 ClientCertificates = configuration.ClientCertificates,
                 MaxTimeout = configuration.Timeout,
                 Proxy = configuration.Proxy,
-                UserAgent = configuration.UserAgent
+            };
+            if (!configuration.VerifySsl)
+            {
+                clientOptions.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
             };
 
             RestClient client = new RestClient(clientOptions)
                 .UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration));
+            client.AddDefaultHeader("User-Agent", configuration.UserAgent);
 
             if (!string.IsNullOrEmpty(configuration.OAuthTokenUrl) &&
                 !string.IsNullOrEmpty(configuration.OAuthClientId) &&

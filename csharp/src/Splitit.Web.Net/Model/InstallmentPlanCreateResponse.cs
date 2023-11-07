@@ -66,7 +66,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="paymentMethod">paymentMethod.</param>
         /// <param name="installments">installments.</param>
         /// <param name="links">links.</param>
-        public InstallmentPlanCreateResponse(string installmentPlanNumber = default(string), DateTime dateCreated = default(DateTime), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), decimal originalAmount = default(decimal), decimal amount = default(decimal), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), AuthorizationModel authorization = default(AuthorizationModel), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), PaymentMethodModel paymentMethod = default(PaymentMethodModel), List<Installment> installments = default(List<Installment>), LinksData links = default(LinksData))
+        public InstallmentPlanCreateResponse(string installmentPlanNumber = default(string), DateTime dateCreated = default(DateTime), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), double originalAmount = default(double), double amount = default(double), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), AuthorizationModel authorization = default(AuthorizationModel), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), PaymentMethodModel paymentMethod = default(PaymentMethodModel), List<Installment> installments = default(List<Installment>), LinksData links = default(LinksData))
         {
             this.DateCreated = dateCreated;
             this.Status = status;
@@ -113,13 +113,13 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets OriginalAmount
         /// </summary>
         [DataMember(Name = "OriginalAmount", EmitDefaultValue = false)]
-        public decimal OriginalAmount { get; set; }
+        public double OriginalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", EmitDefaultValue = false)]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets ExtendedParams

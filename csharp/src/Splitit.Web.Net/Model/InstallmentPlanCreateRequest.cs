@@ -47,7 +47,9 @@ namespace Splitit.Web.Net.Model
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="paymentMethod">paymentMethod.</param>
         /// <param name="redirectUrls">redirectUrls.</param>
-        public InstallmentPlanCreateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), bool termsAndConditionsAccepted = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), PaymentMethodModel paymentMethod = default(PaymentMethodModel), RedirectionEndpointsModel redirectUrls = default(RedirectionEndpointsModel))
+        /// <param name="processingData">processingData.</param>
+        /// <param name="eventsEndpoints">eventsEndpoints.</param>
+        public InstallmentPlanCreateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), bool termsAndConditionsAccepted = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), PaymentMethodModel paymentMethod = default(PaymentMethodModel), RedirectionEndpointsModel redirectUrls = default(RedirectionEndpointsModel), ProcessingData processingData = default(ProcessingData), EventsEndpointsModel eventsEndpoints = default(EventsEndpointsModel))
         {
             this.AutoCapture = autoCapture;
             this.TermsAndConditionsAccepted = termsAndConditionsAccepted;
@@ -57,6 +59,8 @@ namespace Splitit.Web.Net.Model
             this.BillingAddress = billingAddress;
             this.PaymentMethod = paymentMethod;
             this.RedirectUrls = redirectUrls;
+            this.ProcessingData = processingData;
+            this.EventsEndpoints = eventsEndpoints;
         }
 
         /// <summary>
@@ -108,6 +112,18 @@ namespace Splitit.Web.Net.Model
         public RedirectionEndpointsModel RedirectUrls { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProcessingData
+        /// </summary>
+        [DataMember(Name = "ProcessingData", EmitDefaultValue = false)]
+        public ProcessingData ProcessingData { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EventsEndpoints
+        /// </summary>
+        [DataMember(Name = "EventsEndpoints", EmitDefaultValue = false)]
+        public EventsEndpointsModel EventsEndpoints { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -123,6 +139,8 @@ namespace Splitit.Web.Net.Model
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("  RedirectUrls: ").Append(RedirectUrls).Append("\n");
+            sb.Append("  ProcessingData: ").Append(ProcessingData).Append("\n");
+            sb.Append("  EventsEndpoints: ").Append(EventsEndpoints).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -194,6 +212,16 @@ namespace Splitit.Web.Net.Model
                     this.RedirectUrls == input.RedirectUrls ||
                     (this.RedirectUrls != null &&
                     this.RedirectUrls.Equals(input.RedirectUrls))
+                ) && 
+                (
+                    this.ProcessingData == input.ProcessingData ||
+                    (this.ProcessingData != null &&
+                    this.ProcessingData.Equals(input.ProcessingData))
+                ) && 
+                (
+                    this.EventsEndpoints == input.EventsEndpoints ||
+                    (this.EventsEndpoints != null &&
+                    this.EventsEndpoints.Equals(input.EventsEndpoints))
                 );
         }
 
@@ -228,6 +256,14 @@ namespace Splitit.Web.Net.Model
                 if (this.RedirectUrls != null)
                 {
                     hashCode = (hashCode * 59) + this.RedirectUrls.GetHashCode();
+                }
+                if (this.ProcessingData != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProcessingData.GetHashCode();
+                }
+                if (this.EventsEndpoints != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventsEndpoints.GetHashCode();
                 }
                 return hashCode;
             }

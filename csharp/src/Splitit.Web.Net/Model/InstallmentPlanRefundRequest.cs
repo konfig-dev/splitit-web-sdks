@@ -47,7 +47,7 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         /// <param name="amount">amount (required).</param>
         /// <param name="refundStrategy">refundStrategy.</param>
-        public InstallmentPlanRefundRequest(decimal amount = default(decimal), RefundStrategy? refundStrategy = default(RefundStrategy?))
+        public InstallmentPlanRefundRequest(double amount = default(double), RefundStrategy? refundStrategy = default(RefundStrategy?))
         {
             this.Amount = amount;
             this.RefundStrategy = refundStrategy;
@@ -57,7 +57,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

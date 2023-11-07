@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **PurchaseMethod** | **PurchaseMethod** |  | [optional] 
 **Status** | **PlanStatus** |  | 
 **Currency** | **string** |  | [optional] 
-**OriginalAmount** | **decimal** |  | [optional] 
-**Amount** | **decimal** |  | [optional] 
+**OriginalAmount** | **double** |  | [optional] 
+**Amount** | **double** |  | [optional] 
 **Authorization** | [**AuthorizationModel**](AuthorizationModel.md) |  | [optional] 
 **Shopper** | [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | [**AddressData**](AddressData.md) |  | [optional] 

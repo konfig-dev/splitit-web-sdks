@@ -41,7 +41,25 @@ namespace Splitit.Web.Net.Model
         /// Enum SplititToken for value: SplititToken
         /// </summary>
         [EnumMember(Value = "SplititToken")]
-        SplititToken = 2
+        SplititToken = 2,
+
+        /// <summary>
+        /// Enum BluesnapVaultedShopperToken for value: BluesnapVaultedShopperToken
+        /// </summary>
+        [EnumMember(Value = "BluesnapVaultedShopperToken")]
+        BluesnapVaultedShopperToken = 3,
+
+        /// <summary>
+        /// Enum SplititMockerV2Token for value: SplititMockerV2Token
+        /// </summary>
+        [EnumMember(Value = "SplititMockerV2Token")]
+        SplititMockerV2Token = 4,
+
+        /// <summary>
+        /// Enum SpreedlyToken for value: SpreedlyToken
+        /// </summary>
+        [EnumMember(Value = "SpreedlyToken")]
+        SpreedlyToken = 5
 
     }
 

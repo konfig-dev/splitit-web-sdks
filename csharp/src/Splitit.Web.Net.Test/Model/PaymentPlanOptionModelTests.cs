@@ -96,6 +96,22 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'Links'
         }
+        /// <summary>
+        /// Test the property 'TermsAndConditionsBrief'
+        /// </summary>
+        [Fact]
+        public void TermsAndConditionsBriefTest()
+        {
+            // TODO unit test for the property 'TermsAndConditionsBrief'
+        }
+        /// <summary>
+        /// Test the property 'InstallmentFrequency'
+        /// </summary>
+        [Fact]
+        public void InstallmentFrequencyTest()
+        {
+            // TODO unit test for the property 'InstallmentFrequency'
+        }
 
     }
 

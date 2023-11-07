@@ -46,7 +46,9 @@ namespace Splitit.Web.Net.Model
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="redirectUrls">redirectUrls.</param>
         /// <param name="uxSettings">uxSettings.</param>
-        public InstallmentPlanInitiateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), InitiateRedirectionEndpointsModel redirectUrls = default(InitiateRedirectionEndpointsModel), UxSettingsModel uxSettings = default(UxSettingsModel))
+        /// <param name="eventsEndpoints">eventsEndpoints.</param>
+        /// <param name="processingData">processingData.</param>
+        public InstallmentPlanInitiateRequest(bool autoCapture = default(bool), bool attempt3dSecure = default(bool), ShopperData shopper = default(ShopperData), PlanDataModel planData = default(PlanDataModel), AddressDataModel billingAddress = default(AddressDataModel), InitiateRedirectionEndpointsModel redirectUrls = default(InitiateRedirectionEndpointsModel), UxSettingsModel uxSettings = default(UxSettingsModel), EventsEndpointsModel eventsEndpoints = default(EventsEndpointsModel), ProcessingData processingData = default(ProcessingData))
         {
             this.AutoCapture = autoCapture;
             this.Attempt3dSecure = attempt3dSecure;
@@ -55,6 +57,8 @@ namespace Splitit.Web.Net.Model
             this.BillingAddress = billingAddress;
             this.RedirectUrls = redirectUrls;
             this.UxSettings = uxSettings;
+            this.EventsEndpoints = eventsEndpoints;
+            this.ProcessingData = processingData;
         }
 
         /// <summary>
@@ -100,6 +104,18 @@ namespace Splitit.Web.Net.Model
         public UxSettingsModel UxSettings { get; set; }
 
         /// <summary>
+        /// Gets or Sets EventsEndpoints
+        /// </summary>
+        [DataMember(Name = "EventsEndpoints", EmitDefaultValue = false)]
+        public EventsEndpointsModel EventsEndpoints { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProcessingData
+        /// </summary>
+        [DataMember(Name = "ProcessingData", EmitDefaultValue = false)]
+        public ProcessingData ProcessingData { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -114,6 +130,8 @@ namespace Splitit.Web.Net.Model
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  RedirectUrls: ").Append(RedirectUrls).Append("\n");
             sb.Append("  UxSettings: ").Append(UxSettings).Append("\n");
+            sb.Append("  EventsEndpoints: ").Append(EventsEndpoints).Append("\n");
+            sb.Append("  ProcessingData: ").Append(ProcessingData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -181,6 +199,16 @@ namespace Splitit.Web.Net.Model
                     this.UxSettings == input.UxSettings ||
                     (this.UxSettings != null &&
                     this.UxSettings.Equals(input.UxSettings))
+                ) && 
+                (
+                    this.EventsEndpoints == input.EventsEndpoints ||
+                    (this.EventsEndpoints != null &&
+                    this.EventsEndpoints.Equals(input.EventsEndpoints))
+                ) && 
+                (
+                    this.ProcessingData == input.ProcessingData ||
+                    (this.ProcessingData != null &&
+                    this.ProcessingData.Equals(input.ProcessingData))
                 );
         }
 
@@ -214,6 +242,14 @@ namespace Splitit.Web.Net.Model
                 if (this.UxSettings != null)
                 {
                     hashCode = (hashCode * 59) + this.UxSettings.GetHashCode();
+                }
+                if (this.EventsEndpoints != null)
+                {
+                    hashCode = (hashCode * 59) + this.EventsEndpoints.GetHashCode();
+                }
+                if (this.ProcessingData != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProcessingData.GetHashCode();
                 }
                 return hashCode;
             }

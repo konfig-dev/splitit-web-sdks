@@ -128,6 +128,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'ECI'
         }
+        /// <summary>
+        /// Test the property 'GatewaySourceResponse'
+        /// </summary>
+        [Fact]
+        public void GatewaySourceResponseTest()
+        {
+            // TODO unit test for the property 'GatewaySourceResponse'
+        }
 
     }
 

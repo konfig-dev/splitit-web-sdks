@@ -49,7 +49,7 @@ namespace Splitit.Web.Net.Model
         /// <param name="amount">amount (required).</param>
         /// <param name="processDateTime">processDateTime.</param>
         /// <param name="status">status (required).</param>
-        public Installment(int installmentNumber = default(int), decimal amount = default(decimal), DateTime processDateTime = default(DateTime), InstallmentStatus status = default(InstallmentStatus))
+        public Installment(int installmentNumber = default(int), double amount = default(double), DateTime processDateTime = default(DateTime), InstallmentStatus status = default(InstallmentStatus))
         {
             this.InstallmentNumber = installmentNumber;
             this.Amount = amount;
@@ -67,7 +67,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets Amount
         /// </summary>
         [DataMember(Name = "Amount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets ProcessDateTime

@@ -6,10 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RefundId** | **string** |  | [optional] 
 **SubmitDate** | **DateTime** |  | 
-**TotalAmount** | **decimal** |  | 
+**TotalAmount** | **double** |  | 
 **Status** | **RefundStatus** |  | 
-**NonCreditRefundAmount** | **decimal** |  | 
-**CreditRefundAmount** | **decimal** |  | 
+**NonCreditRefundAmount** | **double** |  | 
+**CreditRefundAmount** | **double** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

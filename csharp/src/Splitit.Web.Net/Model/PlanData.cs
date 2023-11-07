@@ -54,8 +54,9 @@ namespace Splitit.Web.Net.Model
         /// <param name="refOrderNumber">refOrderNumber.</param>
         /// <param name="allowedInstallmentOptions">allowedInstallmentOptions.</param>
         /// <param name="tags">tags.</param>
+        /// <param name="processingData">processingData.</param>
         /// <param name="firstInstallmentDate">firstInstallmentDate.</param>
-        public PlanData(string terminalId = default(string), decimal totalAmount = default(decimal), decimal firstInstallmentAmount = default(decimal), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), List<int> allowedInstallmentOptions = default(List<int>), Dictionary<string, string> tags = default(Dictionary<string, string>), DateTime firstInstallmentDate = default(DateTime))
+        public PlanData(string terminalId = default(string), double totalAmount = default(double), double firstInstallmentAmount = default(double), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), List<int> allowedInstallmentOptions = default(List<int>), Dictionary<string, string> tags = default(Dictionary<string, string>), ProcessingData2 processingData = default(ProcessingData2), DateTime firstInstallmentDate = default(DateTime))
         {
             this.TotalAmount = totalAmount;
             this.NumberOfInstallments = numberOfInstallments;
@@ -66,6 +67,7 @@ namespace Splitit.Web.Net.Model
             this.RefOrderNumber = refOrderNumber;
             this.AllowedInstallmentOptions = allowedInstallmentOptions;
             this.Tags = tags;
+            this.ProcessingData = processingData;
             this.FirstInstallmentDate = firstInstallmentDate;
         }
 
@@ -79,13 +81,13 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets TotalAmount
         /// </summary>
         [DataMember(Name = "TotalAmount", IsRequired = true, EmitDefaultValue = true)]
-        public decimal TotalAmount { get; set; }
+        public double TotalAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets FirstInstallmentAmount
         /// </summary>
         [DataMember(Name = "FirstInstallmentAmount", EmitDefaultValue = false)]
-        public decimal FirstInstallmentAmount { get; set; }
+        public double FirstInstallmentAmount { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
@@ -118,6 +120,12 @@ namespace Splitit.Web.Net.Model
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
+        /// Gets or Sets ProcessingData
+        /// </summary>
+        [DataMember(Name = "ProcessingData", EmitDefaultValue = false)]
+        public ProcessingData2 ProcessingData { get; set; }
+
+        /// <summary>
         /// Gets or Sets FirstInstallmentDate
         /// </summary>
         [DataMember(Name = "FirstInstallmentDate", EmitDefaultValue = false)]
@@ -140,6 +148,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  RefOrderNumber: ").Append(RefOrderNumber).Append("\n");
             sb.Append("  AllowedInstallmentOptions: ").Append(AllowedInstallmentOptions).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  ProcessingData: ").Append(ProcessingData).Append("\n");
             sb.Append("  FirstInstallmentDate: ").Append(FirstInstallmentDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -220,6 +229,11 @@ namespace Splitit.Web.Net.Model
                     this.Tags.SequenceEqual(input.Tags)
                 ) && 
                 (
+                    this.ProcessingData == input.ProcessingData ||
+                    (this.ProcessingData != null &&
+                    this.ProcessingData.Equals(input.ProcessingData))
+                ) && 
+                (
                     this.FirstInstallmentDate == input.FirstInstallmentDate ||
                     (this.FirstInstallmentDate != null &&
                     this.FirstInstallmentDate.Equals(input.FirstInstallmentDate))
@@ -258,6 +272,10 @@ namespace Splitit.Web.Net.Model
                 if (this.Tags != null)
                 {
                     hashCode = (hashCode * 59) + this.Tags.GetHashCode();
+                }
+                if (this.ProcessingData != null)
+                {
+                    hashCode = (hashCode * 59) + this.ProcessingData.GetHashCode();
                 }
                 if (this.FirstInstallmentDate != null)
                 {
