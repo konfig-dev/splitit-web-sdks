@@ -27,19 +27,8 @@ type InstallmentPlanApiCancelRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-}
-
-func (r InstallmentPlanApiCancelRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiCancelRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiCancelRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiCancelRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
 }
 
 func (r InstallmentPlanApiCancelRequest) Execute() (*InstallmentPlanCancelResponse, *http.Response, error) {
@@ -51,13 +40,17 @@ Cancel Method for Cancel
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
  @return InstallmentPlanApiCancelRequest
 */
-func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string) InstallmentPlanApiCancelRequest {
+func (a *InstallmentPlanApiService) Cancel(installmentPlanNumber string, xSplititIdempotencyKey string, xSplititTouchPoint string) InstallmentPlanApiCancelRequest {
 	return InstallmentPlanApiCancelRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
 	}
 }
 
@@ -82,12 +75,6 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -106,8 +93,8 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -191,25 +178,9 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 type InstallmentPlanApiCheckEligibilityRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	checkInstallmentsEligibilityRequest *CheckInstallmentsEligibilityRequest
-}
-
-func (r InstallmentPlanApiCheckEligibilityRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiCheckEligibilityRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiCheckEligibilityRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiCheckEligibilityRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiCheckEligibilityRequest) CheckInstallmentsEligibilityRequest(checkInstallmentsEligibilityRequest CheckInstallmentsEligibilityRequest) InstallmentPlanApiCheckEligibilityRequest {
-	r.checkInstallmentsEligibilityRequest = &checkInstallmentsEligibilityRequest
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	checkInstallmentsEligibilityRequest CheckInstallmentsEligibilityRequest
 }
 
 func (r InstallmentPlanApiCheckEligibilityRequest) Execute() (*InstallmentsEligibilityResponse, *http.Response, error) {
@@ -220,12 +191,18 @@ func (r InstallmentPlanApiCheckEligibilityRequest) Execute() (*InstallmentsEligi
 CheckEligibility Method for CheckEligibility
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param checkInstallmentsEligibilityRequest
  @return InstallmentPlanApiCheckEligibilityRequest
 */
-func (a *InstallmentPlanApiService) CheckEligibility() InstallmentPlanApiCheckEligibilityRequest {
+func (a *InstallmentPlanApiService) CheckEligibility(xSplititIdempotencyKey string, xSplititTouchPoint string, checkInstallmentsEligibilityRequest CheckInstallmentsEligibilityRequest) InstallmentPlanApiCheckEligibilityRequest {
 	return InstallmentPlanApiCheckEligibilityRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		checkInstallmentsEligibilityRequest: checkInstallmentsEligibilityRequest,
 	}
 }
 
@@ -249,15 +226,6 @@ func (a *InstallmentPlanApiService) CheckEligibilityExecute(r InstallmentPlanApi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.checkInstallmentsEligibilityRequest == nil {
-		return localVarReturnValue, nil, reportError("checkInstallmentsEligibilityRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -276,8 +244,8 @@ func (a *InstallmentPlanApiService) CheckEligibilityExecute(r InstallmentPlanApi
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.checkInstallmentsEligibilityRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -364,19 +332,8 @@ type InstallmentPlanApiGetRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-}
-
-func (r InstallmentPlanApiGetRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiGetRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiGetRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiGetRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
 }
 
 func (r InstallmentPlanApiGetRequest) Execute() (*InstallmentPlanGetResponse, *http.Response, error) {
@@ -388,13 +345,17 @@ Get Method for Get
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
  @return InstallmentPlanApiGetRequest
 */
-func (a *InstallmentPlanApiService) Get(installmentPlanNumber string) InstallmentPlanApiGetRequest {
+func (a *InstallmentPlanApiService) Get(installmentPlanNumber string, xSplititIdempotencyKey string, xSplititTouchPoint string) InstallmentPlanApiGetRequest {
 	return InstallmentPlanApiGetRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
 	}
 }
 
@@ -419,12 +380,6 @@ func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -443,8 +398,8 @@ func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -528,29 +483,13 @@ func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (
 type InstallmentPlanApiPostRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	installmentPlanInitiateRequest *InstallmentPlanInitiateRequest
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	installmentPlanInitiateRequest InstallmentPlanInitiateRequest
 	xSplititTestMode *string
 }
 
-func (r InstallmentPlanApiPostRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiPostRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiPostRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiPostRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiPostRequest) InstallmentPlanInitiateRequest(installmentPlanInitiateRequest InstallmentPlanInitiateRequest) InstallmentPlanApiPostRequest {
-	r.installmentPlanInitiateRequest = &installmentPlanInitiateRequest
-	return r
-}
-
-func (r InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string) InstallmentPlanApiPostRequest {
+func (r *InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPostRequest {
 	r.xSplititTestMode = &xSplititTestMode
 	return r
 }
@@ -563,12 +502,18 @@ func (r InstallmentPlanApiPostRequest) Execute() (*InitiatePlanResponse, *http.R
 Post Method for Post
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param installmentPlanInitiateRequest
  @return InstallmentPlanApiPostRequest
 */
-func (a *InstallmentPlanApiService) Post() InstallmentPlanApiPostRequest {
+func (a *InstallmentPlanApiService) Post(xSplititIdempotencyKey string, xSplititTouchPoint string, installmentPlanInitiateRequest InstallmentPlanInitiateRequest) InstallmentPlanApiPostRequest {
 	return InstallmentPlanApiPostRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		installmentPlanInitiateRequest: installmentPlanInitiateRequest,
 	}
 }
 
@@ -592,15 +537,6 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.installmentPlanInitiateRequest == nil {
-		return localVarReturnValue, nil, reportError("installmentPlanInitiateRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -622,8 +558,8 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.installmentPlanInitiateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -720,29 +656,13 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 type InstallmentPlanApiPost2Request struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	installmentPlanCreateRequest *InstallmentPlanCreateRequest
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	installmentPlanCreateRequest InstallmentPlanCreateRequest
 	xSplititTestMode *string
 }
 
-func (r InstallmentPlanApiPost2Request) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiPost2Request {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiPost2Request) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiPost2Request {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiPost2Request) InstallmentPlanCreateRequest(installmentPlanCreateRequest InstallmentPlanCreateRequest) InstallmentPlanApiPost2Request {
-	r.installmentPlanCreateRequest = &installmentPlanCreateRequest
-	return r
-}
-
-func (r InstallmentPlanApiPost2Request) XSplititTestMode(xSplititTestMode string) InstallmentPlanApiPost2Request {
+func (r *InstallmentPlanApiPost2Request) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPost2Request {
 	r.xSplititTestMode = &xSplititTestMode
 	return r
 }
@@ -755,12 +675,18 @@ func (r InstallmentPlanApiPost2Request) Execute() (*InstallmentPlanCreateRespons
 Post2 Method for Post2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param installmentPlanCreateRequest
  @return InstallmentPlanApiPost2Request
 */
-func (a *InstallmentPlanApiService) Post2() InstallmentPlanApiPost2Request {
+func (a *InstallmentPlanApiService) Post2(xSplititIdempotencyKey string, xSplititTouchPoint string, installmentPlanCreateRequest InstallmentPlanCreateRequest) InstallmentPlanApiPost2Request {
 	return InstallmentPlanApiPost2Request{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		installmentPlanCreateRequest: installmentPlanCreateRequest,
 	}
 }
 
@@ -784,15 +710,6 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.installmentPlanCreateRequest == nil {
-		return localVarReturnValue, nil, reportError("installmentPlanCreateRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -814,8 +731,8 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.installmentPlanCreateRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -913,25 +830,9 @@ type InstallmentPlanApiRefundRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	installmentPlanRefundRequest *InstallmentPlanRefundRequest
-}
-
-func (r InstallmentPlanApiRefundRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiRefundRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiRefundRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiRefundRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiRefundRequest) InstallmentPlanRefundRequest(installmentPlanRefundRequest InstallmentPlanRefundRequest) InstallmentPlanApiRefundRequest {
-	r.installmentPlanRefundRequest = &installmentPlanRefundRequest
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	installmentPlanRefundRequest InstallmentPlanRefundRequest
 }
 
 func (r InstallmentPlanApiRefundRequest) Execute() (*InstallmentPlanRefundResponse, *http.Response, error) {
@@ -943,13 +844,19 @@ Refund Method for Refund
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param installmentPlanRefundRequest
  @return InstallmentPlanApiRefundRequest
 */
-func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string) InstallmentPlanApiRefundRequest {
+func (a *InstallmentPlanApiService) Refund(installmentPlanNumber string, xSplititIdempotencyKey string, xSplititTouchPoint string, installmentPlanRefundRequest InstallmentPlanRefundRequest) InstallmentPlanApiRefundRequest {
 	return InstallmentPlanApiRefundRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		installmentPlanRefundRequest: installmentPlanRefundRequest,
 	}
 }
 
@@ -974,15 +881,6 @@ func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.installmentPlanRefundRequest == nil {
-		return localVarReturnValue, nil, reportError("installmentPlanRefundRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -1001,8 +899,8 @@ func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.installmentPlanRefundRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1088,35 +986,24 @@ func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequ
 type InstallmentPlanApiSearchRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
 	installmentPlanNumber *string
 	refOrderNumber *string
 	extendedParams *map[string]string
 }
 
-func (r InstallmentPlanApiSearchRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiSearchRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiSearchRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiSearchRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiSearchRequest) InstallmentPlanNumber(installmentPlanNumber string) InstallmentPlanApiSearchRequest {
+func (r *InstallmentPlanApiSearchRequest) InstallmentPlanNumber(installmentPlanNumber string) *InstallmentPlanApiSearchRequest {
 	r.installmentPlanNumber = &installmentPlanNumber
 	return r
 }
 
-func (r InstallmentPlanApiSearchRequest) RefOrderNumber(refOrderNumber string) InstallmentPlanApiSearchRequest {
+func (r *InstallmentPlanApiSearchRequest) RefOrderNumber(refOrderNumber string) *InstallmentPlanApiSearchRequest {
 	r.refOrderNumber = &refOrderNumber
 	return r
 }
 
-func (r InstallmentPlanApiSearchRequest) ExtendedParams(extendedParams map[string]string) InstallmentPlanApiSearchRequest {
+func (r *InstallmentPlanApiSearchRequest) ExtendedParams(extendedParams map[string]string) *InstallmentPlanApiSearchRequest {
 	r.extendedParams = &extendedParams
 	return r
 }
@@ -1129,12 +1016,16 @@ func (r InstallmentPlanApiSearchRequest) Execute() (*InstallmentPlanSearchRespon
 Search Method for Search
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
  @return InstallmentPlanApiSearchRequest
 */
-func (a *InstallmentPlanApiService) Search() InstallmentPlanApiSearchRequest {
+func (a *InstallmentPlanApiService) Search(xSplititIdempotencyKey string, xSplititTouchPoint string) InstallmentPlanApiSearchRequest {
 	return InstallmentPlanApiSearchRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
 	}
 }
 
@@ -1158,12 +1049,6 @@ func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
 
 	if r.installmentPlanNumber != nil {
 		localVarQueryParams.Add("installmentPlanNumber", parameterToString(*r.installmentPlanNumber, ""))
@@ -1191,8 +1076,8 @@ func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequ
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1277,25 +1162,9 @@ type InstallmentPlanApiUpdateOrderRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	updateOrderRequest *UpdateOrderRequest
-}
-
-func (r InstallmentPlanApiUpdateOrderRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiUpdateOrderRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiUpdateOrderRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiUpdateOrderRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiUpdateOrderRequest) UpdateOrderRequest(updateOrderRequest UpdateOrderRequest) InstallmentPlanApiUpdateOrderRequest {
-	r.updateOrderRequest = &updateOrderRequest
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	updateOrderRequest UpdateOrderRequest
 }
 
 func (r InstallmentPlanApiUpdateOrderRequest) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
@@ -1307,13 +1176,19 @@ UpdateOrder Method for UpdateOrder
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param updateOrderRequest
  @return InstallmentPlanApiUpdateOrderRequest
 */
-func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string) InstallmentPlanApiUpdateOrderRequest {
+func (a *InstallmentPlanApiService) UpdateOrder(installmentPlanNumber string, xSplititIdempotencyKey string, xSplititTouchPoint string, updateOrderRequest UpdateOrderRequest) InstallmentPlanApiUpdateOrderRequest {
 	return InstallmentPlanApiUpdateOrderRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		updateOrderRequest: updateOrderRequest,
 	}
 }
 
@@ -1338,15 +1213,6 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.updateOrderRequest == nil {
-		return localVarReturnValue, nil, reportError("updateOrderRequest is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -1365,8 +1231,8 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdat
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.updateOrderRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1452,25 +1318,9 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdat
 type InstallmentPlanApiUpdateOrder2Request struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-	installmentPlanUpdateRequestByIdentifier *InstallmentPlanUpdateRequestByIdentifier
-}
-
-func (r InstallmentPlanApiUpdateOrder2Request) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiUpdateOrder2Request {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiUpdateOrder2Request) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiUpdateOrder2Request {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
-}
-
-func (r InstallmentPlanApiUpdateOrder2Request) InstallmentPlanUpdateRequestByIdentifier(installmentPlanUpdateRequestByIdentifier InstallmentPlanUpdateRequestByIdentifier) InstallmentPlanApiUpdateOrder2Request {
-	r.installmentPlanUpdateRequestByIdentifier = &installmentPlanUpdateRequestByIdentifier
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
+	installmentPlanUpdateRequestByIdentifier InstallmentPlanUpdateRequestByIdentifier
 }
 
 func (r InstallmentPlanApiUpdateOrder2Request) Execute() (*InstallmentPlanUpdateResponse, *http.Response, error) {
@@ -1481,12 +1331,18 @@ func (r InstallmentPlanApiUpdateOrder2Request) Execute() (*InstallmentPlanUpdate
 UpdateOrder2 Method for UpdateOrder2
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
+ @param installmentPlanUpdateRequestByIdentifier
  @return InstallmentPlanApiUpdateOrder2Request
 */
-func (a *InstallmentPlanApiService) UpdateOrder2() InstallmentPlanApiUpdateOrder2Request {
+func (a *InstallmentPlanApiService) UpdateOrder2(xSplititIdempotencyKey string, xSplititTouchPoint string, installmentPlanUpdateRequestByIdentifier InstallmentPlanUpdateRequestByIdentifier) InstallmentPlanApiUpdateOrder2Request {
 	return InstallmentPlanApiUpdateOrder2Request{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
+		installmentPlanUpdateRequestByIdentifier: installmentPlanUpdateRequestByIdentifier,
 	}
 }
 
@@ -1510,15 +1366,6 @@ func (a *InstallmentPlanApiService) UpdateOrder2Execute(r InstallmentPlanApiUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
-	if r.installmentPlanUpdateRequestByIdentifier == nil {
-		return localVarReturnValue, nil, reportError("installmentPlanUpdateRequestByIdentifier is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json-patch+json", "application/json", "text/json", "application/*+json"}
@@ -1537,8 +1384,8 @@ func (a *InstallmentPlanApiService) UpdateOrder2Execute(r InstallmentPlanApiUpda
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
 	localVarPostBody = r.installmentPlanUpdateRequestByIdentifier
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
@@ -1625,19 +1472,8 @@ type InstallmentPlanApiVerifyAuthorizationRequest struct {
 	ctx context.Context
 	ApiService *InstallmentPlanApiService
 	installmentPlanNumber string
-	xSplititIdempotencyKey *string
-	xSplititTouchPoint *string
-}
-
-func (r InstallmentPlanApiVerifyAuthorizationRequest) XSplititIdempotencyKey(xSplititIdempotencyKey string) InstallmentPlanApiVerifyAuthorizationRequest {
-	r.xSplititIdempotencyKey = &xSplititIdempotencyKey
-	return r
-}
-
-// TouchPoint
-func (r InstallmentPlanApiVerifyAuthorizationRequest) XSplititTouchPoint(xSplititTouchPoint string) InstallmentPlanApiVerifyAuthorizationRequest {
-	r.xSplititTouchPoint = &xSplititTouchPoint
-	return r
+	xSplititIdempotencyKey string
+	xSplititTouchPoint string
 }
 
 func (r InstallmentPlanApiVerifyAuthorizationRequest) Execute() (*VerifyAuthorizationResponse, *http.Response, error) {
@@ -1649,13 +1485,17 @@ VerifyAuthorization Method for VerifyAuthorization
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param installmentPlanNumber
+ @param xSplititIdempotencyKey
+ @param xSplititTouchPoint TouchPoint
  @return InstallmentPlanApiVerifyAuthorizationRequest
 */
-func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string) InstallmentPlanApiVerifyAuthorizationRequest {
+func (a *InstallmentPlanApiService) VerifyAuthorization(installmentPlanNumber string, xSplititIdempotencyKey string, xSplititTouchPoint string) InstallmentPlanApiVerifyAuthorizationRequest {
 	return InstallmentPlanApiVerifyAuthorizationRequest{
 		ApiService: a,
 		ctx: a.client.cfg.Context,
 		installmentPlanNumber: installmentPlanNumber,
+		xSplititIdempotencyKey: xSplititIdempotencyKey,
+		xSplititTouchPoint: xSplititTouchPoint,
 	}
 }
 
@@ -1680,12 +1520,6 @@ func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r InstallmentPlan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.xSplititIdempotencyKey == nil {
-		return localVarReturnValue, nil, reportError("xSplititIdempotencyKey is required and must be specified")
-	}
-	if r.xSplititTouchPoint == nil {
-		return localVarReturnValue, nil, reportError("xSplititTouchPoint is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1704,8 +1538,8 @@ func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r InstallmentPlan
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(*r.xSplititIdempotencyKey, "")
-	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(*r.xSplititTouchPoint, "")
+	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
+	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
