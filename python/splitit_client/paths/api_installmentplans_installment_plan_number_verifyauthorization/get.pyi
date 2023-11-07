@@ -31,11 +31,21 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
+from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3 as ThreeDsRedirectDataV3Schema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
+from splitit_client.model.authorization_model import AuthorizationModel as AuthorizationModelSchema
+from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params as ThreeDsRedirectDataV3ParamsSchema
+from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
+from splitit_client.model.gw_authorization_status import GwAuthorizationStatus as GwAuthorizationStatusSchema
 from splitit_client.model.verify_authorization_response import VerifyAuthorizationResponse as VerifyAuthorizationResponseSchema
 
+from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
+from splitit_client.type.authorization_model import AuthorizationModel
+from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 from splitit_client.type.verify_authorization_response import VerifyAuthorizationResponse
+from splitit_client.type.gw_authorization_status import GwAuthorizationStatus
+from splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema

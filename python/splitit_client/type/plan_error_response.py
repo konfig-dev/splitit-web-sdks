@@ -14,6 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal
 
+from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 
 PlanErrorResponse = typing.Union[FailedResponse,typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]

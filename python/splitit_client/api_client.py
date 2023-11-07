@@ -65,6 +65,7 @@ class RequestField(RequestFieldBase):
             return False
         return self.__dict__ == other.__dict__
 
+
 def DeprecationWarningOnce(func=None, *, prefix=None):
     def decorator(func):
         warned = False
@@ -1047,60 +1048,57 @@ class OpenApiResponse(JSONDetector):
             status=response.http_response.status
         )
 
+    def deserialize_body(self, response: ResponseWrapper, content_type: str) -> (any, str):
+        if self._content_type_is_json(content_type):
+            deserialized_body = self.__deserialize_json(response.http_response.data)
+        elif content_type == 'application/octet-stream':
+            deserialized_body = self.__deserialize_application_octet_stream(response.http_response)
+        elif content_type.startswith('multipart/form-data'):
+            deserialized_body = self.__deserialize_multipart_form_data(response.http_response.data)
+            content_type = 'multipart/form-data'
+        else: # If we don't know how to deserialize, use raw body string
+            deserialized_body = response.http_response.data.decode()
+        return deserialized_body, content_type
 
     def deserialize(self, response: ResponseWrapper, configuration: Configuration, skip_deserialization = False) -> ApiResponse:
         content_type = response.http_response.headers.get('content-type')
-        deserialized_body = unset
         streamed = response.http_response.supports_chunked_reads()
 
         deserialized_headers = unset
         if self.headers is not None:
-            # TODO add header deserialiation here
+            # TODO add header deserialization here
             pass
 
-        if self.content is not None:
-            if len(self.content) == 0:
-                # some specs do not define response content media type schemas
-                return self.response_cls(
-                    round_trip_time=response.round_trip_time,
-                    response=response.http_response,
-                    body=unset,
-                    headers=response.http_response.headers,
-                    status=response.http_response.status
-                )
+        if self.content is not None and len(self.content) == 0:
+            # some specs do not define response content media type schemas
+            return self.response_cls(
+                round_trip_time=response.round_trip_time,
+                response=response.http_response,
+                body=unset,
+                headers=response.http_response.headers,
+                status=response.http_response.status
+            )
+
+        try:
+            deserialized_body, content_type = self.deserialize_body(response, content_type)
+        except Exception:
+            # Most likely content-type did not match actual body
+            deserialized_body = unset
+
+        if not skip_deserialization:
             body_schema = self.__get_schema_for_content_type(content_type)
             if body_schema is None:
                 raise ApiValueError(
                     f"Invalid content_type returned. Content_type='{content_type}' was returned "
                     f"when only {str(set(self.content))} are defined for status_code={str(response.http_response.status)}"
                 )
-
-            if self._content_type_is_json(content_type):
-                body_data = self.__deserialize_json(response.http_response.data)
-            elif content_type == 'application/octet-stream':
-                body_data = self.__deserialize_application_octet_stream(response.http_response)
-            elif content_type.startswith('multipart/form-data'):
-                body_data = self.__deserialize_multipart_form_data(response.http_response.data)
-                content_type = 'multipart/form-data'
-            else:
-                raise NotImplementedError('Deserialization of {} has not yet been implemented'.format(content_type))
-            if skip_deserialization:
-                return self.response_cls(
-                    round_trip_time=response.round_trip_time,
-                    response=response.http_response,
-                    body=body_data,
-                    headers=response.http_response.headers,
-                    status=response.http_response.status
-                )
-
             # Execute validation and throw as a side effect if validation fails
             body_schema.from_openapi_data_oapg(
                 body_data,
                 _configuration=configuration
             )
-            # Validation passed, set deserialized_body to plain old deserialized data
-            deserialized_body = body_data
-        elif streamed:
+
+        if streamed:
             response.http_response.release_conn()
 
         return self.response_cls(
@@ -1784,8 +1782,8 @@ class RequestBody(StyleFormSerializer, JSONDetector):
     def __serialize_multipart_form_data(
         self, in_data: Schema
     ) -> typing.Dict[str, typing.Tuple[RequestField, ...]]:
-        if not isinstance(in_data, frozendict.frozendict):
-            raise ValueError(f'Unable to serialize {in_data} to multipart/form-data because it is not a dict of data')
+        if not isinstance(in_data, frozendict.frozendict) and not isinstance(in_data, list) and not isinstance(in_data, tuple):
+            raise ValueError(f'Unable to serialize {in_data} to multipart/form-data because it is not a dict of data or a list of data')
         """
         In a multipart/form-data request body, each schema property, or each element of a schema array property,
         takes a section in the payload with an internal header as defined by RFC7578. The serialization strategy
@@ -1800,24 +1798,33 @@ class RequestBody(StyleFormSerializer, JSONDetector):
         If the property is a type: string with a contentEncoding, the default Content-Type is application/octet-stream
         """
         fields: typing.List[RequestField] = []
-        for key, value in in_data.items():
-            if isinstance(value, tuple):
-                if value:
-                    # values use explode = True, so the code makes a RequestField for each item with name=key
-                    for item in value:
-                        request_field = self.__multipart_form_item(key=key, value=item)
+
+        def add_field(data):
+            for key, value in data.items():
+                if isinstance(value, tuple):
+                    if value:
+                        # values use explode = True, so the code makes a RequestField for each item with name=key
+                        for item in value:
+                            request_field = self.__multipart_form_item(key=key, value=item)
+                            fields.append(request_field)
+                    else:
+                        # send an empty array as json because exploding will not send it
+                        request_field = self.__multipart_json_item(key=key, value=value)
                         fields.append(request_field)
                 else:
-                    # send an empty array as json because exploding will not send it
-                    request_field = self.__multipart_json_item(key=key, value=value)
+                    request_field = self.__multipart_form_item(key=key, value=value)
                     fields.append(request_field)
-            else:
-                request_field = self.__multipart_form_item(key=key, value=value)
-                fields.append(request_field)
+
+        if isinstance(in_data, list) or isinstance(in_data, tuple):
+            for item in in_data:
+                add_field(item)
+        else:
+            add_field(in_data)
 
         # This is necessary to fill the "Content-Disposition" header needed for naming fields in multipart
         for field in fields:
             field.make_multipart(content_type=field.headers["Content-Type"])
+
         return dict(fields=tuple(fields))
 
     def __serialize_application_octet_stream(self, in_data: BinarySchema) -> typing.Dict[str, bytes]:

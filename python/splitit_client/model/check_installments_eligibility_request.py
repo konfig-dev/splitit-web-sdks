@@ -105,5 +105,12 @@ class CheckInstallmentsEligibilityRequest(
         )
 
 from splitit_client.model.address_data import AddressData
+from splitit_client.model.card_brand import CardBrand
 from splitit_client.model.card_data import CardData
+from splitit_client.model.card_type import CardType
 from splitit_client.model.plan_data import PlanData
+from splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
+from splitit_client.model.plan_data_tags import PlanDataTags
+from splitit_client.model.processing_data2 import ProcessingData2
+from splitit_client.model.purchase_method import PurchaseMethod
+from splitit_client.model.three_ds_data2 import ThreeDSData2

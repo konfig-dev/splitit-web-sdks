@@ -33,7 +33,9 @@ from splitit_client import schemas  # noqa: F401
 
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.installment_plan_cancel_response import InstallmentPlanCancelResponse as InstallmentPlanCancelResponseSchema
+from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
+from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.installment_plan_cancel_response import InstallmentPlanCancelResponse
 

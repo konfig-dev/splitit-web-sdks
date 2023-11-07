@@ -16,6 +16,7 @@ from typing_extensions import TypedDict, Literal
 
 from splitit_client.type.gw_authorization_status import GwAuthorizationStatus
 from splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
+from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 
 class RequiredAuthorizationModel(TypedDict):
     Status: GwAuthorizationStatus

@@ -110,4 +110,5 @@ class InstallmentsEligibilityResponse(
             **kwargs,
         )
 
+from splitit_client.model.links_model import LinksModel
 from splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel

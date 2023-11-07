@@ -2,10 +2,16 @@ import unittest
 from unittest.mock import patch
 
 from splitit_client.api_client import ApiClient, DeprecationWarningOnce
+from splitit_client.configuration import Configuration
 
 
 class RandomClass:
-    api_client = ApiClient()
+    configuration = Configuration(
+    
+        client_id = 'YOUR_CLIENT_ID',
+        client_secret = 'YOUR_CLIENT_SECRET',
+    )
+    api_client = ApiClient(configuration)
 
     @DeprecationWarningOnce
     def deprecated_method(self):

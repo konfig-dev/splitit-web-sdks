@@ -34,12 +34,16 @@ from splitit_client import schemas  # noqa: F401
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.refund_strategy import RefundStrategy as RefundStrategySchema
 from splitit_client.model.installment_plan_refund_response import InstallmentPlanRefundResponse as InstallmentPlanRefundResponseSchema
+from splitit_client.model.refund_summary import RefundSummary as RefundSummarySchema
 from splitit_client.model.installment_plan_refund_request import InstallmentPlanRefundRequest as InstallmentPlanRefundRequestSchema
+from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
+from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.installment_plan_refund_response import InstallmentPlanRefundResponse
 from splitit_client.type.refund_strategy import RefundStrategy
 from splitit_client.type.installment_plan_refund_request import InstallmentPlanRefundRequest
+from splitit_client.type.refund_summary import RefundSummary
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema

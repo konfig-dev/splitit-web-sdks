@@ -104,3 +104,6 @@ class VerifyAuthorizationResponse(
         )
 
 from splitit_client.model.authorization_model import AuthorizationModel
+from splitit_client.model.gw_authorization_status import GwAuthorizationStatus
+from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
+from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params

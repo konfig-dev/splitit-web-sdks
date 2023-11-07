@@ -21,11 +21,7 @@ class TestSimple(unittest.TestCase):
 
     def test_client(self):
         splitit = Splitit(
-            # Defining the host is optional and defaults to https://web-api-v3.production.splitit.com
-            # See configuration.py for a list of all supported configuration parameters.
-            host = "https://web-api-v3.production.splitit.com",
         
-            # Configure OAuth2 access token for authorization: oauth
             client_id = 'YOUR_CLIENT_ID',
             client_secret = 'YOUR_CLIENT_SECRET',
         )

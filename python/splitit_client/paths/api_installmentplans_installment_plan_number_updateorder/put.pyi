@@ -31,13 +31,17 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
+from splitit_client.model.plan_status import PlanStatus as PlanStatusSchema
 from splitit_client.model.update_order_request import UpdateOrderRequest as UpdateOrderRequestSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse as InstallmentPlanUpdateResponseSchema
 from splitit_client.model.shipping_status import ShippingStatus as ShippingStatusSchema
+from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
+from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.update_order_request import UpdateOrderRequest
+from splitit_client.type.plan_status import PlanStatus
 from splitit_client.type.shipping_status import ShippingStatus
 from splitit_client.type.installment_plan_update_response import InstallmentPlanUpdateResponse
 
