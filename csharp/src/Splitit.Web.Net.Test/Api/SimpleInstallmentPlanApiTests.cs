@@ -34,6 +34,8 @@ namespace Splitit.Web.Net.Test.Api
             string clientSecret = System.Environment.GetEnvironmentVariable("SPLITIT_CLIENT_SECRET");
             config.OAuthClientId = clientId;
             config.OAuthClientSecret = clientSecret;
+            config.BasePath = "https://web-api-v3.sandbox.splitit.com";
+            config.OAuthTokenUrl = "https://id.sandbox.splitit.com/connect/token";
             instance = new InstallmentPlanApi(config);
         }
 
@@ -78,7 +80,7 @@ namespace Splitit.Web.Net.Test.Api
             createRequest.Shopper = shopper;
             createRequest.RedirectUrls = redirectUrls;
 
-            var response = instance.Post(Guid.NewGuid().ToString(), createRequest);
+            var response = instance.Post(Guid.NewGuid().ToString(), "", createRequest);
             Assert.NotNull(response);
         }
 
