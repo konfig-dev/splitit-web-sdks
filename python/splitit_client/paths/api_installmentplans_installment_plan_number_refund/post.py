@@ -34,16 +34,12 @@ from splitit_client import schemas  # noqa: F401
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.refund_strategy import RefundStrategy as RefundStrategySchema
 from splitit_client.model.installment_plan_refund_response import InstallmentPlanRefundResponse as InstallmentPlanRefundResponseSchema
-from splitit_client.model.refund_summary import RefundSummary as RefundSummarySchema
 from splitit_client.model.installment_plan_refund_request import InstallmentPlanRefundRequest as InstallmentPlanRefundRequestSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
-from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.installment_plan_refund_response import InstallmentPlanRefundResponse
 from splitit_client.type.refund_strategy import RefundStrategy
 from splitit_client.type.installment_plan_refund_request import InstallmentPlanRefundRequest
-from splitit_client.type.refund_summary import RefundSummary
 
 from . import path
 
@@ -314,10 +310,11 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -390,6 +387,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -452,7 +450,7 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -563,6 +561,7 @@ class Refund(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -579,6 +578,7 @@ class Refund(BaseApi):
             body=args.body,
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def refund(
@@ -615,6 +615,7 @@ class ApiForpost(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -631,6 +632,7 @@ class ApiForpost(BaseApi):
             body=args.body,
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def post(

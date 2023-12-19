@@ -31,59 +31,11 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.plan_status import PlanStatus as PlanStatusSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
-from splitit_client.model.refund_status import RefundStatus as RefundStatusSchema
-from splitit_client.model.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken as BluesnapVaultedShopperTokenSchema
-from splitit_client.model.card_data import CardData as CardDataSchema
-from splitit_client.model.installment import Installment as InstallmentSchema
-from splitit_client.model.refund_model import RefundModel as RefundModelSchema
-from splitit_client.model.links_data import LinksData as LinksDataSchema
-from splitit_client.model.card_brand import CardBrand as CardBrandSchema
-from splitit_client.model.installment_status import InstallmentStatus as InstallmentStatusSchema
-from splitit_client.model.payment_method_type import PaymentMethodType as PaymentMethodTypeSchema
-from splitit_client.model.mocker_shopper_token import MockerShopperToken as MockerShopperTokenSchema
-from splitit_client.model.spreedly_token import SpreedlyToken as SpreedlyTokenSchema
-from splitit_client.model.card_type import CardType as CardTypeSchema
-from splitit_client.model.gw_authorization_status import GwAuthorizationStatus as GwAuthorizationStatusSchema
-from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3 as ThreeDsRedirectDataV3Schema
-from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params as ThreeDsRedirectDataV3ParamsSchema
-from splitit_client.model.purchase_method import PurchaseMethod as PurchaseMethodSchema
-from splitit_client.model.shopper_data import ShopperData as ShopperDataSchema
-from splitit_client.model.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams as SearchInstallmentPlanResponseItemExtendedParamsSchema
-from splitit_client.model.authorization_model import AuthorizationModel as AuthorizationModelSchema
 from splitit_client.model.installment_plan_search_response import InstallmentPlanSearchResponse as InstallmentPlanSearchResponseSchema
-from splitit_client.model.search_installment_plan_response_item import SearchInstallmentPlanResponseItem as SearchInstallmentPlanResponseItemSchema
-from splitit_client.model.payment_method_model import PaymentMethodModel as PaymentMethodModelSchema
-from splitit_client.model.address_data import AddressData as AddressDataSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
-from splitit_client.type.error_extended import ErrorExtended
-from splitit_client.type.card_brand import CardBrand
-from splitit_client.type.refund_model import RefundModel
-from splitit_client.type.installment_status import InstallmentStatus
-from splitit_client.type.installment_plan_search_response import InstallmentPlanSearchResponse
-from splitit_client.type.links_data import LinksData
-from splitit_client.type.purchase_method import PurchaseMethod
-from splitit_client.type.spreedly_token import SpreedlyToken
-from splitit_client.type.payment_method_model import PaymentMethodModel
-from splitit_client.type.card_type import CardType
-from splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams
-from splitit_client.type.mocker_shopper_token import MockerShopperToken
-from splitit_client.type.payment_method_type import PaymentMethodType
-from splitit_client.type.installment import Installment
-from splitit_client.type.gw_authorization_status import GwAuthorizationStatus
-from splitit_client.type.authorization_model import AuthorizationModel
-from splitit_client.type.search_installment_plan_response_item import SearchInstallmentPlanResponseItem
-from splitit_client.type.card_data import CardData
-from splitit_client.type.shopper_data import ShopperData
-from splitit_client.type.address_data import AddressData
-from splitit_client.type.refund_status import RefundStatus
-from splitit_client.type.plan_status import PlanStatus
-from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
-from splitit_client.type.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
+from splitit_client.type.installment_plan_search_response import InstallmentPlanSearchResponse
 
 from . import path
 
@@ -375,9 +327,10 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -437,6 +390,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             prefix_separator_iterator=prefix_separator_iterator,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -498,7 +452,7 @@ class BaseApi(api_client.Api):
             query_params: typing.Optional[dict] = {},
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -595,6 +549,7 @@ class Search(BaseApi):
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -610,6 +565,7 @@ class Search(BaseApi):
         return await self._asearch_oapg(
             query_params=args.query,
             header_params=args.header,
+            **kwargs,
         )
     
     def search(
@@ -645,6 +601,7 @@ class ApiForget(BaseApi):
         installment_plan_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
         extended_params: typing.Optional[typing.Dict[str, str]] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -660,6 +617,7 @@ class ApiForget(BaseApi):
         return await self._asearch_oapg(
             query_params=args.query,
             header_params=args.header,
+            **kwargs,
         )
     
     def get(

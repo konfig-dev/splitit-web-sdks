@@ -12,18 +12,11 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from splitit_client.type.address_data import AddressData
-from splitit_client.type.card_brand import CardBrand
 from splitit_client.type.card_data import CardData
-from splitit_client.type.card_type import CardType
 from splitit_client.type.plan_data import PlanData
-from splitit_client.type.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
-from splitit_client.type.plan_data_tags import PlanDataTags
-from splitit_client.type.processing_data2 import ProcessingData2
-from splitit_client.type.purchase_method import PurchaseMethod
-from splitit_client.type.three_ds_data2 import ThreeDSData2
 
 class RequiredCheckInstallmentsEligibilityRequest(TypedDict):
     pass

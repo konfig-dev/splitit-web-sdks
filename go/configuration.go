@@ -104,7 +104,7 @@ type Configuration struct {
 func NewConfiguration() *Configuration {
 	cfg := &Configuration{
 		DefaultHeader:    make(map[string]string),
-		UserAgent:        "Konfig/1.7.1/go",
+		UserAgent:        "Konfig/1.7.2/go",
 		TokenUrl:   	  "https://id.production.splitit.com/connect/token",
 		Debug:            false,
         Context: context.Background(),

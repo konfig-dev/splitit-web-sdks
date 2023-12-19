@@ -80,6 +80,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'Params'
         }
+        /// <summary>
+        /// Test the property 'ClientRedirectUrl'
+        /// </summary>
+        [Fact]
+        public void ClientRedirectUrlTest()
+        {
+            // TODO unit test for the property 'ClientRedirectUrl'
+        }
 
     }
 

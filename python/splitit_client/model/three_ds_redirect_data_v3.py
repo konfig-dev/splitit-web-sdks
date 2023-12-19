@@ -40,10 +40,12 @@ class ThreeDsRedirectDataV3(
             @staticmethod
             def Params() -> typing.Type['ThreeDsRedirectDataV3Params']:
                 return ThreeDsRedirectDataV3Params
+            ClientRedirectUrl = schemas.StrSchema
             __annotations__ = {
                 "Url": Url,
                 "Verb": Verb,
                 "Params": Params,
+                "ClientRedirectUrl": ClientRedirectUrl,
             }
     
     @typing.overload
@@ -56,9 +58,12 @@ class ThreeDsRedirectDataV3(
     def __getitem__(self, name: typing_extensions.Literal["Params"]) -> 'ThreeDsRedirectDataV3Params': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ClientRedirectUrl"]) -> MetaOapg.properties.ClientRedirectUrl: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Url", "Verb", "Params", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Url", "Verb", "Params", "ClientRedirectUrl", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -73,9 +78,12 @@ class ThreeDsRedirectDataV3(
     def get_item_oapg(self, name: typing_extensions.Literal["Params"]) -> typing.Union['ThreeDsRedirectDataV3Params', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ClientRedirectUrl"]) -> typing.Union[MetaOapg.properties.ClientRedirectUrl, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Url", "Verb", "Params", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Url", "Verb", "Params", "ClientRedirectUrl", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -85,6 +93,7 @@ class ThreeDsRedirectDataV3(
         Url: typing.Union[MetaOapg.properties.Url, str, schemas.Unset] = schemas.unset,
         Verb: typing.Union[MetaOapg.properties.Verb, str, schemas.Unset] = schemas.unset,
         Params: typing.Union['ThreeDsRedirectDataV3Params', schemas.Unset] = schemas.unset,
+        ClientRedirectUrl: typing.Union[MetaOapg.properties.ClientRedirectUrl, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ThreeDsRedirectDataV3':
@@ -94,6 +103,7 @@ class ThreeDsRedirectDataV3(
             Url=Url,
             Verb=Verb,
             Params=Params,
+            ClientRedirectUrl=ClientRedirectUrl,
             _configuration=_configuration,
             **kwargs,
         )

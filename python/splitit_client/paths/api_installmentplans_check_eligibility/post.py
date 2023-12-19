@@ -31,38 +31,18 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.plan_data_tags import PlanDataTags as PlanDataTagsSchema
-from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
-from splitit_client.model.processing_data2 import ProcessingData2 as ProcessingData2Schema
-from splitit_client.model.card_data import CardData as CardDataSchema
-from splitit_client.model.three_ds_data2 import ThreeDSData2 as ThreeDSData2Schema
-from splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions as PlanDataAllowedInstallmentOptionsSchema
-from splitit_client.model.installments_eligibility_response import InstallmentsEligibilityResponse as InstallmentsEligibilityResponseSchema
-from splitit_client.model.purchase_method import PurchaseMethod as PurchaseMethodSchema
 from splitit_client.model.plan_data import PlanData as PlanDataSchema
-from splitit_client.model.card_brand import CardBrand as CardBrandSchema
-from splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel as PaymentPlanOptionModelSchema
+from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
+from splitit_client.model.card_data import CardData as CardDataSchema
 from splitit_client.model.address_data import AddressData as AddressDataSchema
 from splitit_client.model.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest as CheckInstallmentsEligibilityRequestSchema
-from splitit_client.model.links_model import LinksModel as LinksModelSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
-from splitit_client.model.card_type import CardType as CardTypeSchema
+from splitit_client.model.installments_eligibility_response import InstallmentsEligibilityResponse as InstallmentsEligibilityResponseSchema
 
-from splitit_client.type.error_extended import ErrorExtended
-from splitit_client.type.card_brand import CardBrand
+from splitit_client.type.failed_response import FailedResponse
+from splitit_client.type.address_data import AddressData
 from splitit_client.type.installments_eligibility_response import InstallmentsEligibilityResponse
 from splitit_client.type.card_data import CardData
-from splitit_client.type.purchase_method import PurchaseMethod
-from splitit_client.type.card_type import CardType
-from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.plan_data_tags import PlanDataTags
-from splitit_client.type.address_data import AddressData
-from splitit_client.type.three_ds_data2 import ThreeDSData2
-from splitit_client.type.processing_data2 import ProcessingData2
-from splitit_client.type.links_model import LinksModel
 from splitit_client.type.plan_data import PlanData
-from splitit_client.type.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
-from splitit_client.type.payment_plan_option_model import PaymentPlanOptionModel
 from splitit_client.type.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest
 
 from . import path
@@ -305,10 +285,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -367,6 +348,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -428,7 +410,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -525,6 +507,7 @@ class CheckEligibility(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -540,6 +523,7 @@ class CheckEligibility(BaseApi):
         return await self._acheck_eligibility_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def check_eligibility(
@@ -575,6 +559,7 @@ class ApiForpost(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -590,6 +575,7 @@ class ApiForpost(BaseApi):
         return await self._acheck_eligibility_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def post(

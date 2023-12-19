@@ -28,18 +28,12 @@ import java.io.IOException;
 
 import com.konfigthis.splitit.client.model.AddressData;
 import com.konfigthis.splitit.client.model.AddressDataModel;
-import com.konfigthis.splitit.client.model.AuthorizationModel;
-import com.konfigthis.splitit.client.model.BluesnapVaultedShopperToken;
-import com.konfigthis.splitit.client.model.CardBrand;
 import com.konfigthis.splitit.client.model.CardData;
-import com.konfigthis.splitit.client.model.CardType;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
 import com.konfigthis.splitit.client.model.EventsEndpointsModel;
-import com.konfigthis.splitit.client.model.GwAuthorizationStatus;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
-import com.konfigthis.splitit.client.model.Installment;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
@@ -50,34 +44,16 @@ import com.konfigthis.splitit.client.model.InstallmentPlanRefundResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
-import com.konfigthis.splitit.client.model.InstallmentStatus;
 import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
-import com.konfigthis.splitit.client.model.LinksData;
-import com.konfigthis.splitit.client.model.LinksModel;
-import com.konfigthis.splitit.client.model.MockerShopperToken;
-import java.time.OffsetDateTime;
 import com.konfigthis.splitit.client.model.PaymentMethodModel;
-import com.konfigthis.splitit.client.model.PaymentMethodType;
-import com.konfigthis.splitit.client.model.PaymentPlanOptionModel;
 import com.konfigthis.splitit.client.model.PlanData;
 import com.konfigthis.splitit.client.model.PlanDataModel;
-import com.konfigthis.splitit.client.model.PlanStatus;
 import com.konfigthis.splitit.client.model.ProcessingData;
-import com.konfigthis.splitit.client.model.ProcessingData2;
-import com.konfigthis.splitit.client.model.PurchaseMethod;
 import com.konfigthis.splitit.client.model.RedirectionEndpointsModel;
-import com.konfigthis.splitit.client.model.RefundModel;
-import com.konfigthis.splitit.client.model.RefundStatus;
 import com.konfigthis.splitit.client.model.RefundStrategy;
-import com.konfigthis.splitit.client.model.RefundSummary;
-import com.konfigthis.splitit.client.model.SearchInstallmentPlanResponseItem;
 import com.konfigthis.splitit.client.model.ShippingStatus;
 import com.konfigthis.splitit.client.model.ShippingStatus2;
 import com.konfigthis.splitit.client.model.ShopperData;
-import com.konfigthis.splitit.client.model.SpreedlyToken;
-import com.konfigthis.splitit.client.model.ThreeDSData;
-import com.konfigthis.splitit.client.model.ThreeDSData2;
-import com.konfigthis.splitit.client.model.ThreeDsRedirectDataV3;
 import com.konfigthis.splitit.client.model.UpdateOrderRequest;
 import com.konfigthis.splitit.client.model.UxSettingsModel;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
@@ -732,7 +708,7 @@ public class InstallmentPlanApiGenerated {
 
         return new GetRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
     }
-    private okhttp3.Call postCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -759,6 +735,10 @@ public class InstallmentPlanApiGenerated {
 
         if (xSplititTestMode != null) {
             localVarHeaderParams.put("X-Splitit-TestMode", localVarApiClient.parameterToString(xSplititTestMode));
+        }
+
+        if (splititclientinfo != null) {
+            localVarHeaderParams.put("Splititclientinfo", localVarApiClient.parameterToString(splititclientinfo));
         }
 
         if (xSplititIdempotencyKey != null) {
@@ -795,7 +775,7 @@ public class InstallmentPlanApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call postValidateBeforeCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call postValidateBeforeCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xSplititIdempotencyKey' is set
         if (xSplititIdempotencyKey == null) {
             throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post(Async)");
@@ -811,20 +791,20 @@ public class InstallmentPlanApiGenerated {
             throw new ApiException("Missing the required parameter 'installmentPlanInitiateRequest' when calling post(Async)");
         }
 
-        return postCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        return postCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, _callback);
 
     }
 
 
-    private ApiResponse<InitiatePlanResponse> postWithHttpInfo(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode) throws ApiException {
-        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, null);
+    private ApiResponse<InitiatePlanResponse> postWithHttpInfo(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, String splititclientinfo) throws ApiException {
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, null);
         Type localVarReturnType = new TypeToken<InitiatePlanResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call postAsync(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
+    private okhttp3.Call postAsync(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+        okhttp3.Call localVarCall = postValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, _callback);
         Type localVarReturnType = new TypeToken<InitiatePlanResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -843,6 +823,7 @@ public class InstallmentPlanApiGenerated {
         private EventsEndpointsModel eventsEndpoints;
         private ProcessingData processingData;
         private String xSplititTestMode;
+        private String splititclientinfo;
 
         private PostRequestBuilder(Boolean autoCapture, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
@@ -941,6 +922,16 @@ public class InstallmentPlanApiGenerated {
         }
         
         /**
+         * Set splititclientinfo
+         * @param splititclientinfo  (optional)
+         * @return PostRequestBuilder
+         */
+        public PostRequestBuilder splititclientinfo(String splititclientinfo) {
+            this.splititclientinfo = splititclientinfo;
+            return this;
+        }
+        
+        /**
          * Build call for post
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -953,7 +944,7 @@ public class InstallmentPlanApiGenerated {
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
-            return postCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+            return postCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, _callback);
         }
 
         private InstallmentPlanInitiateRequest buildBodyParams() {
@@ -982,7 +973,7 @@ public class InstallmentPlanApiGenerated {
          */
         public InitiatePlanResponse execute() throws ApiException {
             InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
-            ApiResponse<InitiatePlanResponse> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
+            ApiResponse<InitiatePlanResponse> localVarResp = postWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
             return localVarResp.getResponseBody();
         }
 
@@ -998,7 +989,7 @@ public class InstallmentPlanApiGenerated {
          */
         public ApiResponse<InitiatePlanResponse> executeWithHttpInfo() throws ApiException {
             InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
-            return postWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
+            return postWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
         }
 
         /**
@@ -1014,7 +1005,7 @@ public class InstallmentPlanApiGenerated {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InitiatePlanResponse> _callback) throws ApiException {
             InstallmentPlanInitiateRequest installmentPlanInitiateRequest = buildBodyParams();
-            return postAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, _callback);
+            return postAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, _callback);
         }
     }
 
@@ -1041,7 +1032,7 @@ public class InstallmentPlanApiGenerated {
 
         return new PostRequestBuilder(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint);
     }
-    private okhttp3.Call post2Call(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call post2Call(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1068,6 +1059,10 @@ public class InstallmentPlanApiGenerated {
 
         if (xSplititTestMode != null) {
             localVarHeaderParams.put("X-Splitit-TestMode", localVarApiClient.parameterToString(xSplititTestMode));
+        }
+
+        if (splititclientinfo != null) {
+            localVarHeaderParams.put("Splititclientinfo", localVarApiClient.parameterToString(splititclientinfo));
         }
 
         if (xSplititIdempotencyKey != null) {
@@ -1104,7 +1099,7 @@ public class InstallmentPlanApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call post2ValidateBeforeCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call post2ValidateBeforeCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'xSplititIdempotencyKey' is set
         if (xSplititIdempotencyKey == null) {
             throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling post2(Async)");
@@ -1120,20 +1115,20 @@ public class InstallmentPlanApiGenerated {
             throw new ApiException("Missing the required parameter 'installmentPlanCreateRequest' when calling post2(Async)");
         }
 
-        return post2Call(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        return post2Call(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, _callback);
 
     }
 
 
-    private ApiResponse<InstallmentPlanCreateResponse> post2WithHttpInfo(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode) throws ApiException {
-        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, null);
+    private ApiResponse<InstallmentPlanCreateResponse> post2WithHttpInfo(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, String splititclientinfo) throws ApiException {
+        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanCreateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call post2Async(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
+    private okhttp3.Call post2Async(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, _callback);
+        okhttp3.Call localVarCall = post2ValidateBeforeCall(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanCreateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1153,6 +1148,7 @@ public class InstallmentPlanApiGenerated {
         private ProcessingData processingData;
         private EventsEndpointsModel eventsEndpoints;
         private String xSplititTestMode;
+        private String splititclientinfo;
 
         private Post2RequestBuilder(Boolean autoCapture, Boolean termsAndConditionsAccepted, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.autoCapture = autoCapture;
@@ -1252,6 +1248,16 @@ public class InstallmentPlanApiGenerated {
         }
         
         /**
+         * Set splititclientinfo
+         * @param splititclientinfo  (optional)
+         * @return Post2RequestBuilder
+         */
+        public Post2RequestBuilder splititclientinfo(String splititclientinfo) {
+            this.splititclientinfo = splititclientinfo;
+            return this;
+        }
+        
+        /**
          * Build call for post2
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -1264,7 +1270,7 @@ public class InstallmentPlanApiGenerated {
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
             InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
-            return post2Call(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, _callback);
+            return post2Call(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, _callback);
         }
 
         private InstallmentPlanCreateRequest buildBodyParams() {
@@ -1294,7 +1300,7 @@ public class InstallmentPlanApiGenerated {
          */
         public InstallmentPlanCreateResponse execute() throws ApiException {
             InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
-            ApiResponse<InstallmentPlanCreateResponse> localVarResp = post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
+            ApiResponse<InstallmentPlanCreateResponse> localVarResp = post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
             return localVarResp.getResponseBody();
         }
 
@@ -1310,7 +1316,7 @@ public class InstallmentPlanApiGenerated {
          */
         public ApiResponse<InstallmentPlanCreateResponse> executeWithHttpInfo() throws ApiException {
             InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
-            return post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
+            return post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
         }
 
         /**
@@ -1326,7 +1332,7 @@ public class InstallmentPlanApiGenerated {
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCreateResponse> _callback) throws ApiException {
             InstallmentPlanCreateRequest installmentPlanCreateRequest = buildBodyParams();
-            return post2Async(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, _callback);
+            return post2Async(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, _callback);
         }
     }
 

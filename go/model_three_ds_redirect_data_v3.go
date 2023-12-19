@@ -19,6 +19,7 @@ type ThreeDsRedirectDataV3 struct {
 	Url *string `json:"Url,omitempty"`
 	Verb *string `json:"Verb,omitempty"`
 	Params *map[string]string `json:"Params,omitempty"`
+	ClientRedirectUrl *string `json:"ClientRedirectUrl,omitempty"`
 }
 
 // NewThreeDsRedirectDataV3 instantiates a new ThreeDsRedirectDataV3 object
@@ -134,6 +135,38 @@ func (o *ThreeDsRedirectDataV3) SetParams(v map[string]string) {
 	o.Params = &v
 }
 
+// GetClientRedirectUrl returns the ClientRedirectUrl field value if set, zero value otherwise.
+func (o *ThreeDsRedirectDataV3) GetClientRedirectUrl() string {
+	if o == nil || isNil(o.ClientRedirectUrl) {
+		var ret string
+		return ret
+	}
+	return *o.ClientRedirectUrl
+}
+
+// GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ThreeDsRedirectDataV3) GetClientRedirectUrlOk() (*string, bool) {
+	if o == nil || isNil(o.ClientRedirectUrl) {
+    return nil, false
+	}
+	return o.ClientRedirectUrl, true
+}
+
+// HasClientRedirectUrl returns a boolean if a field has been set.
+func (o *ThreeDsRedirectDataV3) HasClientRedirectUrl() bool {
+	if o != nil && !isNil(o.ClientRedirectUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetClientRedirectUrl gets a reference to the given string and assigns it to the ClientRedirectUrl field.
+func (o *ThreeDsRedirectDataV3) SetClientRedirectUrl(v string) {
+	o.ClientRedirectUrl = &v
+}
+
 func (o ThreeDsRedirectDataV3) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Url) {
@@ -144,6 +177,9 @@ func (o ThreeDsRedirectDataV3) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Params) {
 		toSerialize["Params"] = o.Params
+	}
+	if !isNil(o.ClientRedirectUrl) {
+		toSerialize["ClientRedirectUrl"] = o.ClientRedirectUrl
 	}
 	return json.Marshal(toSerialize)
 }

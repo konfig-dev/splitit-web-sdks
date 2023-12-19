@@ -185,10 +185,6 @@ from splitit_client.model.address_data_model import AddressDataModel
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel
 from splitit_client.model.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel
 from splitit_client.model.plan_data_model import PlanDataModel
-from splitit_client.model.plan_data_model_extended_params import PlanDataModelExtendedParams
 from splitit_client.model.processing_data import ProcessingData
-from splitit_client.model.purchase_method import PurchaseMethod
 from splitit_client.model.shopper_data import ShopperData
-from splitit_client.model.three_ds_data import ThreeDSData
 from splitit_client.model.ux_settings_model import UxSettingsModel
-from splitit_client.model.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions

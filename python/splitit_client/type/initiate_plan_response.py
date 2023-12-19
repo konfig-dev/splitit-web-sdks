@@ -12,7 +12,7 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from splitit_client.type.address_data import AddressData
 from splitit_client.type.initiate_plan_response_extended_params import InitiatePlanResponseExtendedParams

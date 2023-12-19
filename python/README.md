@@ -3,7 +3,7 @@
 Splitit's Web API
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v2.6.1-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.1)
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.2-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.2)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>
@@ -35,7 +35,7 @@ Python >=3.7
 ## Installing<a id="installing"></a>
 
 ```sh
-pip install splitit-web-python-sdk==2.6.1
+pip install splitit-web-python-sdk==2.6.2
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -284,6 +284,7 @@ post_response = splitit.installment_plan.post(
     events_endpoints={},
     processing_data={},
     x_splitit_test_mode="None",
+    splititclientinfo="string_example",
 )
 ```
 
@@ -321,6 +322,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -363,6 +366,7 @@ post2_response = splitit.installment_plan.post2(
     processing_data={},
     events_endpoints={},
     x_splitit_test_mode="None",
+    splititclientinfo="string_example",
 )
 ```
 
@@ -402,6 +406,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

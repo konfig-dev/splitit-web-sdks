@@ -64,4 +64,12 @@ public class ThreeDsRedirectDataV3Test {
         // TODO: test params
     }
 
+    /**
+     * Test the property 'clientRedirectUrl'
+     */
+    @Test
+    public void clientRedirectUrlTest() {
+        // TODO: test clientRedirectUrl
+    }
+
 }

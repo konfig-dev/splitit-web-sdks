@@ -369,6 +369,15 @@
             }
           },
           {
+            "name": "Splititclientinfo",
+            "x-originalName": "splititclientinfo",
+            "in": "header",
+            "x-nullable": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "X-Splitit-IdempotencyKey",
             "in": "header",
             "required": true,
@@ -573,6 +582,15 @@
                 "Fast",
                 "Automation"
               ]
+            }
+          },
+          {
+            "name": "Splititclientinfo",
+            "x-originalName": "splititclientinfo",
+            "in": "header",
+            "x-nullable": true,
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -1958,6 +1976,9 @@
             "additionalProperties": {
               "type": "string"
             }
+          },
+          "ClientRedirectUrl": {
+            "type": "string"
           }
         }
       },

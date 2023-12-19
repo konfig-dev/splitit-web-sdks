@@ -200,4 +200,3 @@ from splitit_client.model.plan_data_allowed_installment_options import PlanDataA
 from splitit_client.model.plan_data_tags import PlanDataTags
 from splitit_client.model.processing_data2 import ProcessingData2
 from splitit_client.model.purchase_method import PurchaseMethod
-from splitit_client.model.three_ds_data2 import ThreeDSData2

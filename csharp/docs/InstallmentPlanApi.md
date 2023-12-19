@@ -350,10 +350,11 @@ namespace Example
                 processingData
             );
             var xSplititTestMode = "None";
+            var splititclientinfo = "splititclientinfo_example";
             
             try
             {
-                InitiatePlanResponse result = client.InstallmentPlan.Post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
+                InitiatePlanResponse result = client.InstallmentPlan.Post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -379,7 +380,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InitiatePlanResponse> response = apiInstance.PostWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode);
+    ApiResponse<InitiatePlanResponse> response = apiInstance.PostWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -400,6 +401,7 @@ catch (ApiException e)
 | **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md) |  |  |
 | **xSplititTestMode** | **string** |  | [optional]  |
+| **splititclientinfo** | **string** |  | [optional]  |
 
 ### Return type
 
@@ -468,10 +470,11 @@ namespace Example
                 eventsEndpoints
             );
             var xSplititTestMode = "None";
+            var splititclientinfo = "splititclientinfo_example";
             
             try
             {
-                InstallmentPlanCreateResponse result = client.InstallmentPlan.Post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
+                InstallmentPlanCreateResponse result = client.InstallmentPlan.Post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -497,7 +500,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanCreateResponse> response = apiInstance.Post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode);
+    ApiResponse<InstallmentPlanCreateResponse> response = apiInstance.Post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -518,6 +521,7 @@ catch (ApiException e)
 | **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
 | **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md) |  |  |
 | **xSplititTestMode** | **string** |  | [optional]  |
+| **splititclientinfo** | **string** |  | [optional]  |
 
 ### Return type
 

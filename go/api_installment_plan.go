@@ -487,10 +487,16 @@ type InstallmentPlanApiPostRequest struct {
 	xSplititTouchPoint string
 	installmentPlanInitiateRequest InstallmentPlanInitiateRequest
 	xSplititTestMode *string
+	splititclientinfo *string
 }
 
 func (r *InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPostRequest {
 	r.xSplititTestMode = &xSplititTestMode
+	return r
+}
+
+func (r *InstallmentPlanApiPostRequest) Splititclientinfo(splititclientinfo string) *InstallmentPlanApiPostRequest {
+	r.splititclientinfo = &splititclientinfo
 	return r
 }
 
@@ -557,6 +563,9 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 	}
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
+	}
+	if r.splititclientinfo != nil {
+		localVarHeaderParams["Splititclientinfo"] = parameterToString(*r.splititclientinfo, "")
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
@@ -660,10 +669,16 @@ type InstallmentPlanApiPost2Request struct {
 	xSplititTouchPoint string
 	installmentPlanCreateRequest InstallmentPlanCreateRequest
 	xSplititTestMode *string
+	splititclientinfo *string
 }
 
 func (r *InstallmentPlanApiPost2Request) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPost2Request {
 	r.xSplititTestMode = &xSplititTestMode
+	return r
+}
+
+func (r *InstallmentPlanApiPost2Request) Splititclientinfo(splititclientinfo string) *InstallmentPlanApiPost2Request {
+	r.splititclientinfo = &splititclientinfo
 	return r
 }
 
@@ -730,6 +745,9 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 	}
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
+	}
+	if r.splititclientinfo != nil {
+		localVarHeaderParams["Splititclientinfo"] = parameterToString(*r.splititclientinfo, "")
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")

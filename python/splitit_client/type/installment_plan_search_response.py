@@ -12,31 +12,9 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from splitit_client.type.address_data import AddressData
-from splitit_client.type.authorization_model import AuthorizationModel
-from splitit_client.type.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
-from splitit_client.type.card_brand import CardBrand
-from splitit_client.type.card_data import CardData
-from splitit_client.type.card_type import CardType
-from splitit_client.type.gw_authorization_status import GwAuthorizationStatus
-from splitit_client.type.installment import Installment
-from splitit_client.type.installment_status import InstallmentStatus
-from splitit_client.type.links_data import LinksData
-from splitit_client.type.mocker_shopper_token import MockerShopperToken
-from splitit_client.type.payment_method_model import PaymentMethodModel
-from splitit_client.type.payment_method_type import PaymentMethodType
-from splitit_client.type.plan_status import PlanStatus
-from splitit_client.type.purchase_method import PurchaseMethod
-from splitit_client.type.refund_model import RefundModel
-from splitit_client.type.refund_status import RefundStatus
 from splitit_client.type.search_installment_plan_response_item import SearchInstallmentPlanResponseItem
-from splitit_client.type.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams
-from splitit_client.type.shopper_data import ShopperData
-from splitit_client.type.spreedly_token import SpreedlyToken
-from splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
-from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 
 class RequiredInstallmentPlanSearchResponse(TypedDict):
     pass

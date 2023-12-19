@@ -194,19 +194,9 @@ class InstallmentPlanCreateRequest(
         )
 
 from splitit_client.model.address_data_model import AddressDataModel
-from splitit_client.model.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
-from splitit_client.model.card_brand import CardBrand
-from splitit_client.model.card_data import CardData
-from splitit_client.model.card_type import CardType
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel
-from splitit_client.model.mocker_shopper_token import MockerShopperToken
 from splitit_client.model.payment_method_model import PaymentMethodModel
-from splitit_client.model.payment_method_type import PaymentMethodType
 from splitit_client.model.plan_data_model import PlanDataModel
-from splitit_client.model.plan_data_model_extended_params import PlanDataModelExtendedParams
 from splitit_client.model.processing_data import ProcessingData
-from splitit_client.model.purchase_method import PurchaseMethod
 from splitit_client.model.redirection_endpoints_model import RedirectionEndpointsModel
 from splitit_client.model.shopper_data import ShopperData
-from splitit_client.model.spreedly_token import SpreedlyToken
-from splitit_client.model.three_ds_data import ThreeDSData

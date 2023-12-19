@@ -12,12 +12,10 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from splitit_client.type.bluesnap_vaulted_shopper_token import BluesnapVaultedShopperToken
-from splitit_client.type.card_brand import CardBrand
 from splitit_client.type.card_data import CardData
-from splitit_client.type.card_type import CardType
 from splitit_client.type.mocker_shopper_token import MockerShopperToken
 from splitit_client.type.payment_method_type import PaymentMethodType
 from splitit_client.type.spreedly_token import SpreedlyToken

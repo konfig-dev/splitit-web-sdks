@@ -19,7 +19,7 @@ fixConfig:
       url: https://web-api-v3.production.splitit.com
 generators:
   php:
-    version: 2.3.0
+    version: 2.3.1
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
@@ -29,15 +29,17 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 3.3.2
+    version: 3.3.3
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     clientName: Splitit
+    mapTags:
+      InstallmentPlan: Installmentplan
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 2.6.1
+    version: 2.6.2
     responseTypeVersion: '1'
     packageName: splitit_client
     projectName: splitit-web-python-sdk
@@ -48,7 +50,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 2.2.2
+    version: 2.2.3
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
@@ -58,7 +60,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/java
   csharp:
-    version: 2.1.1
+    version: 2.1.2
     packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
@@ -67,7 +69,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    version: 1.7.1
+    version: 1.7.2
     packageName: splitit
     outputDirectory: go
     git:
