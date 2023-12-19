@@ -33,6 +33,8 @@ generators:
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     clientName: Splitit
+    mapTags:
+      InstallmentPlan: Installmentplan
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
