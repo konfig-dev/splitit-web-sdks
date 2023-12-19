@@ -1,6 +1,7 @@
 description: Splitit's Web API
 examples: {}
 examples_2: {}
+examples_3: {}
 fixOnlyOneTagName: false
 operationIds: {}
 operationTags: {}
@@ -18,6 +19,8 @@ securityParameters:
           tokenUrl: https://id.production.splitit.com/connect/token
       securityName: oauth
       type: oauth2
+  Splititclientinfo:
+    header: false
   X-Splitit-IdempotencyKey:
     header: false
   X-Splitit-TestMode:
@@ -30,3 +33,4 @@ securityParameters:
     query: false
   refOrderNumber:
     query: false
+validServerUrls: {}

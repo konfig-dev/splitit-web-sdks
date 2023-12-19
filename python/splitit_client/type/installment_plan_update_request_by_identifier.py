@@ -12,11 +12,9 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from splitit_client.type.identifier_contract import IdentifierContract
-from splitit_client.type.identifier_contract_extended_params import IdentifierContractExtendedParams
 from splitit_client.type.installment_plan_update_request import InstallmentPlanUpdateRequest
-from splitit_client.type.shipping_status2 import ShippingStatus2
 
 InstallmentPlanUpdateRequestByIdentifier = typing.Union[InstallmentPlanUpdateRequest,typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]

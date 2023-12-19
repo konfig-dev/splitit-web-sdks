@@ -12,9 +12,8 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from splitit_client.type.links_model import LinksModel
 from splitit_client.type.payment_plan_option_model import PaymentPlanOptionModel
 
 class RequiredInstallmentsEligibilityResponse(TypedDict):

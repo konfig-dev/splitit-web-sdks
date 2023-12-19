@@ -20,7 +20,9 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
     // configuration := splitit.NewConfiguration()
     // configuration.SetHost("http://127.0.0.1:4010")
-    // client := splitit.NewAPIClient(configuration)
+    /* 
+    client := splitit.NewAPIClient(configuration)
+    */
 
     t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
@@ -40,34 +42,9 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
 
     t.Run("Test InstallmentPlanApiService CheckEligibility", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        planData := *splitit.NewPlanData(
-            null,
-            null,
-            null,
-        )
-        planData.SetTerminalId("null")
-        planData.SetFirstInstallmentAmount(null)
-        planData.SetCurrency("null")
-        planData.SetRefOrderNumber("null")
-        planData.SetAllowedInstallmentOptions(null)
-        planData.SetTags(null)
-        planData.SetProcessingData(processingData)
-        planData.SetFirstInstallmentDate(null)
+        planData := *splitit.NewPlanData()
         cardDetails := *splitit.NewCardData()
-        cardDetails.SetCardHolderFullName("null")
-        cardDetails.SetCardNumber("null")
-        cardDetails.SetCardExpYear("null")
-        cardDetails.SetCardExpMonth("null")
-        cardDetails.SetCardCvv("null")
-        cardDetails.SetCardBrand(null)
-        cardDetails.SetCardType(null)
         billingAddress := *splitit.NewAddressData()
-        billingAddress.SetAddressLine("null")
-        billingAddress.SetAddressLine2("null")
-        billingAddress.SetCity("null")
-        billingAddress.SetCountry("null")
-        billingAddress.SetState("null")
-        billingAddress.SetZip("null")
         
         checkInstallmentsEligibilityRequest := *splitit.NewCheckInstallmentsEligibilityRequest()
         checkInstallmentsEligibilityRequest.SetPlanData(planData)
@@ -107,40 +84,12 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
     t.Run("Test InstallmentPlanApiService Post", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         shopper := *splitit.NewShopperData()
-        shopper.SetFullName("null")
-        shopper.SetEmail("null")
-        shopper.SetPhoneNumber("null")
-        shopper.SetCulture("null")
-        planData := *splitit.NewPlanDataModel(
-            null,
-            null,
-        )
-        planData.SetCurrency("null")
-        planData.SetNumberOfInstallments(null)
-        planData.SetTerminalId("null")
-        planData.SetRefOrderNumber("null")
-        planData.SetExtendedParams(null)
-        planData.SetFirstInstallmentAmount(null)
-        planData.SetFirstInstallmentDate(null)
+        planData := *splitit.NewPlanDataModel()
         billingAddress := *splitit.NewAddressDataModel()
-        billingAddress.SetAddressLine1("null")
-        billingAddress.SetAddressLine2("null")
-        billingAddress.SetCity("null")
-        billingAddress.SetCountry("null")
-        billingAddress.SetState("null")
-        billingAddress.SetZip("null")
         redirectUrls := *splitit.NewInitiateRedirectionEndpointsModel()
-        redirectUrls.SetSucceeded("null")
-        redirectUrls.SetFailed("null")
-        redirectUrls.SetCancel("null")
         uxSettings := *splitit.NewUxSettingsModel()
-        uxSettings.SetDisplayedInstallmentOptions(null)
         eventsEndpoints := *splitit.NewEventsEndpointsModel()
-        eventsEndpoints.SetCreateSucceeded("null")
         processingData := *splitit.NewProcessingData()
-        processingData.SetAttemptThreeDSecured(null)
-        processingData.SetSoftDescriptor("null")
-        processingData.SetThreeDSData(threeDSData)
         
         installmentPlanInitiateRequest := *splitit.NewInstallmentPlanInitiateRequest(
             null,
@@ -160,6 +109,7 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
             installmentPlanInitiateRequest,
         )
         request.XSplititTestMode("xSplititTestMode_example")
+        request.Splititclientinfo("splititclientinfo_example")
         
         resp, httpRes, err := request.Execute()
 
@@ -172,47 +122,12 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
     t.Run("Test InstallmentPlanApiService Post2", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         shopper := *splitit.NewShopperData()
-        shopper.SetFullName("null")
-        shopper.SetEmail("null")
-        shopper.SetPhoneNumber("null")
-        shopper.SetCulture("null")
-        planData := *splitit.NewPlanDataModel(
-            null,
-            null,
-        )
-        planData.SetCurrency("null")
-        planData.SetNumberOfInstallments(null)
-        planData.SetTerminalId("null")
-        planData.SetRefOrderNumber("null")
-        planData.SetExtendedParams(null)
-        planData.SetFirstInstallmentAmount(null)
-        planData.SetFirstInstallmentDate(null)
+        planData := *splitit.NewPlanDataModel()
         billingAddress := *splitit.NewAddressDataModel()
-        billingAddress.SetAddressLine1("null")
-        billingAddress.SetAddressLine2("null")
-        billingAddress.SetCity("null")
-        billingAddress.SetCountry("null")
-        billingAddress.SetState("null")
-        billingAddress.SetZip("null")
-        paymentMethod := *splitit.NewPaymentMethodModel(
-            null,
-        )
-        paymentMethod.SetCard(card)
-        paymentMethod.SetToken("null")
-        paymentMethod.SetBluesnapVaultedShopperToken(bluesnapVaultedShopperToken)
-        paymentMethod.SetMockerShopperToken(mockerShopperToken)
-        paymentMethod.SetSpreedlyToken(spreedlyToken)
+        paymentMethod := *splitit.NewPaymentMethodModel()
         redirectUrls := *splitit.NewRedirectionEndpointsModel()
-        redirectUrls.SetAuthorizeSucceeded("null")
-        redirectUrls.SetSucceeded("null")
-        redirectUrls.SetAuthorizeFailed("null")
-        redirectUrls.SetFailed("null")
         processingData := *splitit.NewProcessingData()
-        processingData.SetAttemptThreeDSecured(null)
-        processingData.SetSoftDescriptor("null")
-        processingData.SetThreeDSData(threeDSData)
         eventsEndpoints := *splitit.NewEventsEndpointsModel()
-        eventsEndpoints.SetCreateSucceeded("null")
         
         installmentPlanCreateRequest := *splitit.NewInstallmentPlanCreateRequest(
             null,
@@ -233,6 +148,7 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
             installmentPlanCreateRequest,
         )
         request.XSplititTestMode("xSplititTestMode_example")
+        request.Splititclientinfo("splititclientinfo_example")
         
         resp, httpRes, err := request.Execute()
 

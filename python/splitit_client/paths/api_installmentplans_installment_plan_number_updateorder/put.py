@@ -31,17 +31,13 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.plan_status import PlanStatus as PlanStatusSchema
 from splitit_client.model.update_order_request import UpdateOrderRequest as UpdateOrderRequestSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse as InstallmentPlanUpdateResponseSchema
 from splitit_client.model.shipping_status import ShippingStatus as ShippingStatusSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
 
-from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.update_order_request import UpdateOrderRequest
-from splitit_client.type.plan_status import PlanStatus
 from splitit_client.type.shipping_status import ShippingStatus
 from splitit_client.type.installment_plan_update_response import InstallmentPlanUpdateResponse
 
@@ -320,10 +316,11 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -396,6 +393,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -458,7 +456,7 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -571,6 +569,7 @@ class UpdateOrder(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         shipping_status: typing.Optional[ShippingStatus] = None,
         capture: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -589,6 +588,7 @@ class UpdateOrder(BaseApi):
             body=args.body,
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def update_order(
@@ -631,6 +631,7 @@ class ApiForput(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         shipping_status: typing.Optional[ShippingStatus] = None,
         capture: typing.Optional[bool] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -649,6 +650,7 @@ class ApiForput(BaseApi):
             body=args.body,
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def put(

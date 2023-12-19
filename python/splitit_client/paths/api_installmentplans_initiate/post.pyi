@@ -31,45 +31,29 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.plan_status import PlanStatus as PlanStatusSchema
+from splitit_client.model.installment_plan_initiate_request import InstallmentPlanInitiateRequest as InstallmentPlanInitiateRequestSchema
 from splitit_client.model.processing_data import ProcessingData as ProcessingDataSchema
 from splitit_client.model.plan_error_response import PlanErrorResponse as PlanErrorResponseSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel as InitiateRedirectionEndpointsModelSchema
 from splitit_client.model.address_data_model import AddressDataModel as AddressDataModelSchema
 from splitit_client.model.plan_data_model import PlanDataModel as PlanDataModelSchema
-from splitit_client.model.plan_data_model_extended_params import PlanDataModelExtendedParams as PlanDataModelExtendedParamsSchema
-from splitit_client.model.ux_settings_model import UxSettingsModel as UxSettingsModelSchema
-from splitit_client.model.initiate_plan_response_extended_params import InitiatePlanResponseExtendedParams as InitiatePlanResponseExtendedParamsSchema
-from splitit_client.model.initiate_plan_response import InitiatePlanResponse as InitiatePlanResponseSchema
-from splitit_client.model.purchase_method import PurchaseMethod as PurchaseMethodSchema
-from splitit_client.model.shopper_data import ShopperData as ShopperDataSchema
-from splitit_client.model.installment_plan_initiate_request import InstallmentPlanInitiateRequest as InstallmentPlanInitiateRequestSchema
-from splitit_client.model.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions as UxSettingsModelDisplayedInstallmentOptionsSchema
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel as EventsEndpointsModelSchema
-from splitit_client.model.three_ds_data import ThreeDSData as ThreeDSDataSchema
-from splitit_client.model.address_data import AddressData as AddressDataSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
+from splitit_client.model.ux_settings_model import UxSettingsModel as UxSettingsModelSchema
+from splitit_client.model.initiate_plan_response import InitiatePlanResponse as InitiatePlanResponseSchema
+from splitit_client.model.shopper_data import ShopperData as ShopperDataSchema
 
-from splitit_client.type.error_extended import ErrorExtended
-from splitit_client.type.plan_error_response import PlanErrorResponse
-from splitit_client.type.three_ds_data import ThreeDSData
-from splitit_client.type.processing_data import ProcessingData
-from splitit_client.type.initiate_plan_response import InitiatePlanResponse
-from splitit_client.type.purchase_method import PurchaseMethod
-from splitit_client.type.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions
-from splitit_client.type.shopper_data import ShopperData
 from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.address_data import AddressData
-from splitit_client.type.initiate_plan_response_extended_params import InitiatePlanResponseExtendedParams
 from splitit_client.type.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel
 from splitit_client.type.address_data_model import AddressDataModel
 from splitit_client.type.installment_plan_initiate_request import InstallmentPlanInitiateRequest
-from splitit_client.type.plan_data_model_extended_params import PlanDataModelExtendedParams
-from splitit_client.type.plan_status import PlanStatus
+from splitit_client.type.plan_error_response import PlanErrorResponse
+from splitit_client.type.processing_data import ProcessingData
 from splitit_client.type.events_endpoints_model import EventsEndpointsModel
+from splitit_client.type.initiate_plan_response import InitiatePlanResponse
 from splitit_client.type.plan_data_model import PlanDataModel
 from splitit_client.type.ux_settings_model import UxSettingsModel
+from splitit_client.type.shopper_data import ShopperData
 
 # Header params
 
@@ -94,6 +78,7 @@ class XSplititTestModeSchema(
     @schemas.classproperty
     def AUTOMATION(cls):
         return cls("Automation")
+SplititclientinfoSchema = schemas.StrSchema
 XSplititIdempotencyKeySchema = schemas.StrSchema
 XSplititTouchPointSchema = schemas.StrSchema
 RequestRequiredHeaderParams = typing_extensions.TypedDict(
@@ -107,6 +92,7 @@ RequestOptionalHeaderParams = typing_extensions.TypedDict(
     'RequestOptionalHeaderParams',
     {
         'X-Splitit-TestMode': typing.Union[XSplititTestModeSchema, str, ],
+        'Splititclientinfo': typing.Union[SplititclientinfoSchema, str, ],
     },
     total=False
 )
@@ -120,6 +106,11 @@ request_header_x_splitit_test_mode = api_client.HeaderParameter(
     name="X-Splitit-TestMode",
     style=api_client.ParameterStyle.SIMPLE,
     schema=XSplititTestModeSchema,
+)
+request_header_splititclientinfo = api_client.HeaderParameter(
+    name="Splititclientinfo",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=SplititclientinfoSchema,
 )
 request_header_x_splitit_idempotency_key = api_client.HeaderParameter(
     name="X-Splitit-IdempotencyKey",
@@ -338,6 +329,7 @@ class BaseApi(api_client.Api):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        splititclientinfo: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
@@ -363,6 +355,8 @@ class BaseApi(api_client.Api):
         args.body = _body
         if x_splitit_test_mode is not None:
             _header_params["X-Splitit-TestMode"] = x_splitit_test_mode
+        if splititclientinfo is not None:
+            _header_params["Splititclientinfo"] = splititclientinfo
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
         if x_splitit_touch_point is not None:
@@ -375,10 +369,11 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -395,6 +390,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_test_mode,
+            request_header_splititclientinfo,
             request_header_x_splitit_idempotency_key,
             request_header_x_splitit_touch_point,
         ):
@@ -438,6 +434,7 @@ class BaseApi(api_client.Api):
             body=body,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -499,7 +496,7 @@ class BaseApi(api_client.Api):
         body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         content_type: str = 'application/json-patch+json',
         stream: bool = False,
@@ -518,6 +515,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_test_mode,
+            request_header_splititclientinfo,
             request_header_x_splitit_idempotency_key,
             request_header_x_splitit_touch_point,
         ):
@@ -604,6 +602,8 @@ class Post(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        splititclientinfo: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -622,10 +622,12 @@ class Post(BaseApi):
             events_endpoints=events_endpoints,
             processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
+            splititclientinfo=splititclientinfo,
         )
         return await self._apost_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def post(
@@ -642,6 +644,7 @@ class Post(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        splititclientinfo: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -659,6 +662,7 @@ class Post(BaseApi):
             events_endpoints=events_endpoints,
             processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
+            splititclientinfo=splititclientinfo,
         )
         return self._post_oapg(
             body=args.body,
@@ -682,6 +686,8 @@ class ApiForpost(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        splititclientinfo: typing.Optional[str] = None,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -700,10 +706,12 @@ class ApiForpost(BaseApi):
             events_endpoints=events_endpoints,
             processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
+            splititclientinfo=splititclientinfo,
         )
         return await self._apost_oapg(
             body=args.body,
             header_params=args.header,
+            **kwargs,
         )
     
     def post(
@@ -720,6 +728,7 @@ class ApiForpost(BaseApi):
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         processing_data: typing.Optional[ProcessingData] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        splititclientinfo: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -737,6 +746,7 @@ class ApiForpost(BaseApi):
             events_endpoints=events_endpoints,
             processing_data=processing_data,
             x_splitit_test_mode=x_splitit_test_mode,
+            splititclientinfo=splititclientinfo,
         )
         return self._post_oapg(
             body=args.body,

@@ -63,6 +63,10 @@ public class ThreeDsRedirectDataV3 {
   @SerializedName(SERIALIZED_NAME_PARAMS)
   private Map<String, String> params = null;
 
+  public static final String SERIALIZED_NAME_CLIENT_REDIRECT_URL = "ClientRedirectUrl";
+  @SerializedName(SERIALIZED_NAME_CLIENT_REDIRECT_URL)
+  private String clientRedirectUrl;
+
   public ThreeDsRedirectDataV3() {
   }
 
@@ -160,6 +164,35 @@ public class ThreeDsRedirectDataV3 {
     this.params = params;
   }
 
+
+  public ThreeDsRedirectDataV3 clientRedirectUrl(String clientRedirectUrl) {
+    
+    
+    
+    
+    this.clientRedirectUrl = clientRedirectUrl;
+    return this;
+  }
+
+   /**
+   * Get clientRedirectUrl
+   * @return clientRedirectUrl
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getClientRedirectUrl() {
+    return clientRedirectUrl;
+  }
+
+
+  public void setClientRedirectUrl(String clientRedirectUrl) {
+    
+    
+    
+    this.clientRedirectUrl = clientRedirectUrl;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -217,13 +250,14 @@ public class ThreeDsRedirectDataV3 {
     ThreeDsRedirectDataV3 threeDsRedirectDataV3 = (ThreeDsRedirectDataV3) o;
     return Objects.equals(this.url, threeDsRedirectDataV3.url) &&
         Objects.equals(this.verb, threeDsRedirectDataV3.verb) &&
-        Objects.equals(this.params, threeDsRedirectDataV3.params)&&
+        Objects.equals(this.params, threeDsRedirectDataV3.params) &&
+        Objects.equals(this.clientRedirectUrl, threeDsRedirectDataV3.clientRedirectUrl)&&
         Objects.equals(this.additionalProperties, threeDsRedirectDataV3.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(url, verb, params, additionalProperties);
+    return Objects.hash(url, verb, params, clientRedirectUrl, additionalProperties);
   }
 
   @Override
@@ -233,6 +267,7 @@ public class ThreeDsRedirectDataV3 {
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    verb: ").append(toIndentedString(verb)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
+    sb.append("    clientRedirectUrl: ").append(toIndentedString(clientRedirectUrl)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -259,6 +294,7 @@ public class ThreeDsRedirectDataV3 {
     openapiFields.add("Url");
     openapiFields.add("Verb");
     openapiFields.add("Params");
+    openapiFields.add("ClientRedirectUrl");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -281,6 +317,9 @@ public class ThreeDsRedirectDataV3 {
       }
       if ((jsonObj.get("Verb") != null && !jsonObj.get("Verb").isJsonNull()) && !jsonObj.get("Verb").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `Verb` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Verb").toString()));
+      }
+      if ((jsonObj.get("ClientRedirectUrl") != null && !jsonObj.get("ClientRedirectUrl").isJsonNull()) && !jsonObj.get("ClientRedirectUrl").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ClientRedirectUrl` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ClientRedirectUrl").toString()));
       }
   }
 

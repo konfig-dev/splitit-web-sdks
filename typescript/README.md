@@ -1,6 +1,6 @@
 # splitit-web-typescript-sdk<a id="splitit-web-typescript-sdk"></a>
 
-Splitit\'s Web API
+Splitit's Web API
 
 [![npm](https://img.shields.io/badge/npm-v3.3.2-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.2)
 
@@ -8,9 +8,7 @@ Splitit\'s Web API
 
 <!-- toc -->
 
-- [Installing](#installing)
-  * [npm](#npm)
-  * [yarn](#yarn)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
   * [`splitit.installmentplan.cancel`](#splititinstallmentplancancel)
@@ -26,17 +24,38 @@ Splitit\'s Web API
 
 <!-- tocstop -->
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
-### npm<a id="npm"></a>
-```
-npm install splitit-web-typescript-sdk --save
+<table>
+<tr>
+<th width="292px"><code>npm</code></th>
+<th width="293px"><code>pnpm</code></th>
+<th width="292px"><code>yarn</code></th>
+</tr>
+<tr>
+<td>
+
+```bash
+npm i splitit-web-typescript-sdk
 ```
 
-### yarn<a id="yarn"></a>
+</td>
+<td>
+
+```bash
+pnpm i splitit-web-typescript-sdk
 ```
+
+</td>
+<td>
+
+```bash
 yarn add splitit-web-typescript-sdk
 ```
+
+</td>
+</tr>
+</table>
 
 ## Getting Started<a id="getting-started"></a>
 
@@ -221,6 +240,8 @@ TouchPoint
 
 ##### xSplititTestMode: `'None' | 'Regular' | 'Fast' | 'Automation'`<a id="xsplitittestmode-none--regular--fast--automation"></a>
 
+##### splititclientinfo: `string`<a id="splititclientinfo-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [InitiatePlanResponse](./models/initiate-plan-response.ts)
@@ -279,6 +300,8 @@ TouchPoint
 ##### EventsEndpoints: [`EventsEndpointsModel`](./models/events-endpoints-model.ts)<a id="eventsendpoints-eventsendpointsmodelmodelsevents-endpoints-modelts"></a>
 
 ##### xSplititTestMode: `'None' | 'Regular' | 'Fast' | 'Automation'`<a id="xsplitittestmode-none--regular--fast--automation"></a>
+
+##### splititclientinfo: `string`<a id="splititclientinfo-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

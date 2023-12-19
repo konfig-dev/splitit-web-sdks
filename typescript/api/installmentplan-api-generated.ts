@@ -24,33 +24,19 @@ import { AddressData } from '../models';
 // @ts-ignore
 import { AddressDataModel } from '../models';
 // @ts-ignore
-import { AuthorizationModel } from '../models';
-// @ts-ignore
-import { BluesnapVaultedShopperToken } from '../models';
-// @ts-ignore
-import { CardBrand } from '../models';
-// @ts-ignore
 import { CardData } from '../models';
 // @ts-ignore
-import { CardType } from '../models';
-// @ts-ignore
 import { CheckInstallmentsEligibilityRequest } from '../models';
-// @ts-ignore
-import { ErrorExtended } from '../models';
 // @ts-ignore
 import { EventsEndpointsModel } from '../models';
 // @ts-ignore
 import { FailedResponse } from '../models';
-// @ts-ignore
-import { GwAuthorizationStatus } from '../models';
 // @ts-ignore
 import { IdentifierContract } from '../models';
 // @ts-ignore
 import { InitiatePlanResponse } from '../models';
 // @ts-ignore
 import { InitiateRedirectionEndpointsModel } from '../models';
-// @ts-ignore
-import { Installment } from '../models';
 // @ts-ignore
 import { InstallmentPlanCancelResponse } from '../models';
 // @ts-ignore
@@ -72,21 +58,9 @@ import { InstallmentPlanUpdateRequestByIdentifier } from '../models';
 // @ts-ignore
 import { InstallmentPlanUpdateResponse } from '../models';
 // @ts-ignore
-import { InstallmentStatus } from '../models';
-// @ts-ignore
 import { InstallmentsEligibilityResponse } from '../models';
 // @ts-ignore
-import { LinksData } from '../models';
-// @ts-ignore
-import { LinksModel } from '../models';
-// @ts-ignore
-import { MockerShopperToken } from '../models';
-// @ts-ignore
 import { PaymentMethodModel } from '../models';
-// @ts-ignore
-import { PaymentMethodType } from '../models';
-// @ts-ignore
-import { PaymentPlanOptionModel } from '../models';
 // @ts-ignore
 import { PlanData } from '../models';
 // @ts-ignore
@@ -94,25 +68,11 @@ import { PlanDataModel } from '../models';
 // @ts-ignore
 import { PlanErrorResponse } from '../models';
 // @ts-ignore
-import { PlanStatus } from '../models';
-// @ts-ignore
 import { ProcessingData } from '../models';
-// @ts-ignore
-import { ProcessingData2 } from '../models';
-// @ts-ignore
-import { PurchaseMethod } from '../models';
 // @ts-ignore
 import { RedirectionEndpointsModel } from '../models';
 // @ts-ignore
-import { RefundModel } from '../models';
-// @ts-ignore
-import { RefundStatus } from '../models';
-// @ts-ignore
 import { RefundStrategy } from '../models';
-// @ts-ignore
-import { RefundSummary } from '../models';
-// @ts-ignore
-import { SearchInstallmentPlanResponseItem } from '../models';
 // @ts-ignore
 import { ShippingStatus } from '../models';
 // @ts-ignore
@@ -120,20 +80,13 @@ import { ShippingStatus2 } from '../models';
 // @ts-ignore
 import { ShopperData } from '../models';
 // @ts-ignore
-import { SpreedlyToken } from '../models';
-// @ts-ignore
-import { ThreeDSData } from '../models';
-// @ts-ignore
-import { ThreeDSData2 } from '../models';
-// @ts-ignore
-import { ThreeDsRedirectDataV3 } from '../models';
-// @ts-ignore
 import { UpdateOrderRequest } from '../models';
 // @ts-ignore
 import { UxSettingsModel } from '../models';
 // @ts-ignore
 import { VerifyAuthorizationResponse } from '../models';
 import { paginate } from "../pagination/paginate";
+import type * as buffer from "buffer"
 import { requestBeforeHook } from '../requestBeforeHook';
 /**
  * InstallmentplanApi - axios parameter creator
@@ -319,10 +272,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {InstallmentPlanInitiateRequest} installmentPlanInitiateRequest 
          * @param {'None' | 'Regular' | 'Fast' | 'Automation'} [xSplititTestMode] 
+         * @param {string} [splititclientinfo] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanInitiateRequest: InstallmentPlanInitiateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        post: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanInitiateRequest: InstallmentPlanInitiateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('post', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             // verify required parameter 'xSplititTouchPoint' is not null or undefined
@@ -346,6 +300,10 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
+            }
+
+            if (splititclientinfo != null) {
+                localVarHeaderParameter['Splititclientinfo'] = String(splititclientinfo);
             }
 
             if (xSplititIdempotencyKey != null) {
@@ -384,10 +342,11 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {InstallmentPlanCreateRequest} installmentPlanCreateRequest 
          * @param {'None' | 'Regular' | 'Fast' | 'Automation'} [xSplititTestMode] 
+         * @param {string} [splititclientinfo] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post2: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanCreateRequest: InstallmentPlanCreateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        post2: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanCreateRequest: InstallmentPlanCreateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('post2', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             // verify required parameter 'xSplititTouchPoint' is not null or undefined
@@ -411,6 +370,10 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
+            }
+
+            if (splititclientinfo != null) {
+                localVarHeaderParameter['Splititclientinfo'] = String(splititclientinfo);
             }
 
             if (xSplititIdempotencyKey != null) {
@@ -801,7 +764,7 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post(requestParameters: InstallmentplanApiPostRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InitiatePlanResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, requestParameters.splititclientinfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -811,7 +774,7 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
          * @throws {RequiredError}
          */
         async post2(requestParameters: InstallmentplanApiPost2Request, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCreateResponse>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, requestParameters, requestParameters.xSplititTestMode, requestParameters.splititclientinfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1078,6 +1041,13 @@ export type InstallmentplanApiPostRequest = {
     */
     readonly xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation'
     
+    /**
+    * 
+    * @type {string}
+    * @memberof InstallmentplanApiPost
+    */
+    readonly splititclientinfo?: string
+    
 } & InstallmentPlanInitiateRequest
 
 /**
@@ -1107,6 +1077,13 @@ export type InstallmentplanApiPost2Request = {
     * @memberof InstallmentplanApiPost2
     */
     readonly xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation'
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof InstallmentplanApiPost2
+    */
+    readonly splititclientinfo?: string
     
 } & InstallmentPlanCreateRequest
 

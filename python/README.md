@@ -284,6 +284,7 @@ post_response = splitit.installment_plan.post(
     events_endpoints={},
     processing_data={},
     x_splitit_test_mode="None",
+    splititclientinfo="string_example",
 )
 ```
 
@@ -321,6 +322,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
@@ -363,6 +366,7 @@ post2_response = splitit.installment_plan.post2(
     processing_data={},
     events_endpoints={},
     x_splitit_test_mode="None",
+    splititclientinfo="string_example",
 )
 ```
 
@@ -402,6 +406,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

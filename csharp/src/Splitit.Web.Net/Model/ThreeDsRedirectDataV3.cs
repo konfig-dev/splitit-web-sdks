@@ -37,11 +37,13 @@ namespace Splitit.Web.Net.Model
         /// <param name="url">url.</param>
         /// <param name="verb">verb.</param>
         /// <param name="_params">_params.</param>
-        public ThreeDsRedirectDataV3(string url = default(string), string verb = default(string), Dictionary<string, string> _params = default(Dictionary<string, string>))
+        /// <param name="clientRedirectUrl">clientRedirectUrl.</param>
+        public ThreeDsRedirectDataV3(string url = default(string), string verb = default(string), Dictionary<string, string> _params = default(Dictionary<string, string>), string clientRedirectUrl = default(string))
         {
             this.Url = url;
             this.Verb = verb;
             this.Params = _params;
+            this.ClientRedirectUrl = clientRedirectUrl;
         }
 
         /// <summary>
@@ -63,6 +65,12 @@ namespace Splitit.Web.Net.Model
         public Dictionary<string, string> Params { get; set; }
 
         /// <summary>
+        /// Gets or Sets ClientRedirectUrl
+        /// </summary>
+        [DataMember(Name = "ClientRedirectUrl", EmitDefaultValue = false)]
+        public string ClientRedirectUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,6 +81,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Verb: ").Append(Verb).Append("\n");
             sb.Append("  Params: ").Append(Params).Append("\n");
+            sb.Append("  ClientRedirectUrl: ").Append(ClientRedirectUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +132,11 @@ namespace Splitit.Web.Net.Model
                     this.Params != null &&
                     input.Params != null &&
                     this.Params.SequenceEqual(input.Params)
+                ) && 
+                (
+                    this.ClientRedirectUrl == input.ClientRedirectUrl ||
+                    (this.ClientRedirectUrl != null &&
+                    this.ClientRedirectUrl.Equals(input.ClientRedirectUrl))
                 );
         }
 
@@ -146,6 +160,10 @@ namespace Splitit.Web.Net.Model
                 if (this.Params != null)
                 {
                     hashCode = (hashCode * 59) + this.Params.GetHashCode();
+                }
+                if (this.ClientRedirectUrl != null)
+                {
+                    hashCode = (hashCode * 59) + this.ClientRedirectUrl.GetHashCode();
                 }
                 return hashCode;
             }

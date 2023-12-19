@@ -43,11 +43,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -143,11 +141,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -252,11 +248,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -342,7 +336,7 @@ public class Example {
 
 <a name="post"></a>
 # **post**
-> InitiatePlanResponse post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest).xSplititTestMode(xSplititTestMode).execute();
+> InitiatePlanResponse post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest).xSplititTestMode(xSplititTestMode).splititclientinfo(splititclientinfo).execute();
 
 
 
@@ -367,11 +361,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     Boolean autoCapture = true;
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -385,6 +377,7 @@ public class Example {
     EventsEndpointsModel eventsEndpoints = new EventsEndpointsModel();
     ProcessingData processingData = new ProcessingData();
     String xSplititTestMode = "None";
+    String splititclientinfo = "splititclientinfo_example";
     try {
       InitiatePlanResponse result = client
               .installmentPlan
@@ -398,6 +391,7 @@ public class Example {
               .eventsEndpoints(eventsEndpoints)
               .processingData(processingData)
               .xSplititTestMode(xSplititTestMode)
+              .splititclientinfo(splititclientinfo)
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentPlanNumber());
@@ -432,6 +426,7 @@ public class Example {
               .eventsEndpoints(eventsEndpoints)
               .processingData(processingData)
               .xSplititTestMode(xSplititTestMode)
+              .splititclientinfo(splititclientinfo)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -458,6 +453,7 @@ public class Example {
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
 | **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md)|  | |
 | **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
+| **splititclientinfo** | **String**|  | [optional] |
 
 ### Return type
 
@@ -479,7 +475,7 @@ public class Example {
 
 <a name="post2"></a>
 # **post2**
-> InstallmentPlanCreateResponse post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest).xSplititTestMode(xSplititTestMode).execute();
+> InstallmentPlanCreateResponse post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest).xSplititTestMode(xSplititTestMode).splititclientinfo(splititclientinfo).execute();
 
 
 
@@ -504,11 +500,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     Boolean autoCapture = true;
     Boolean termsAndConditionsAccepted = true;
@@ -523,6 +517,7 @@ public class Example {
     ProcessingData processingData = new ProcessingData();
     EventsEndpointsModel eventsEndpoints = new EventsEndpointsModel();
     String xSplititTestMode = "None";
+    String splititclientinfo = "splititclientinfo_example";
     try {
       InstallmentPlanCreateResponse result = client
               .installmentPlan
@@ -536,6 +531,7 @@ public class Example {
               .processingData(processingData)
               .eventsEndpoints(eventsEndpoints)
               .xSplititTestMode(xSplititTestMode)
+              .splititclientinfo(splititclientinfo)
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentPlanNumber());
@@ -575,6 +571,7 @@ public class Example {
               .processingData(processingData)
               .eventsEndpoints(eventsEndpoints)
               .xSplititTestMode(xSplititTestMode)
+              .splititclientinfo(splititclientinfo)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -601,6 +598,7 @@ public class Example {
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
 | **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md)|  | |
 | **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
+| **splititclientinfo** | **String**|  | [optional] |
 
 ### Return type
 
@@ -647,11 +645,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     Double amount = 3.4D;
     String installmentPlanNumber = "installmentPlanNumber_example";
@@ -757,11 +753,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -867,11 +861,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
@@ -983,11 +975,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
@@ -1100,11 +1090,9 @@ public class Example {
     // Configure OAuth2 client credentials for "application" OAuth flow
     String clientId = System.getenv("CLIENT_ID");
     String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = clientId
-    configuration.clientSecret = clientSecret
-
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
     
-
     Splitit client = new Splitit(configuration);
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";

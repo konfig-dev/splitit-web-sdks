@@ -12,19 +12,15 @@
 from datetime import datetime, date
 import typing
 from enum import Enum
-from typing_extensions import TypedDict, Literal
+from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 from splitit_client.type.address_data_model import AddressDataModel
 from splitit_client.type.events_endpoints_model import EventsEndpointsModel
 from splitit_client.type.initiate_redirection_endpoints_model import InitiateRedirectionEndpointsModel
 from splitit_client.type.plan_data_model import PlanDataModel
-from splitit_client.type.plan_data_model_extended_params import PlanDataModelExtendedParams
 from splitit_client.type.processing_data import ProcessingData
-from splitit_client.type.purchase_method import PurchaseMethod
 from splitit_client.type.shopper_data import ShopperData
-from splitit_client.type.three_ds_data import ThreeDSData
 from splitit_client.type.ux_settings_model import UxSettingsModel
-from splitit_client.type.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions
 
 class RequiredInstallmentPlanInitiateRequest(TypedDict):
     AutoCapture: bool

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** |  | [optional] 
 **Verb** | Pointer to **string** |  | [optional] 
 **Params** | Pointer to **map[string]string** |  | [optional] 
+**ClientRedirectUrl** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetParams sets Params field to given value.
 `func (o *ThreeDsRedirectDataV3) HasParams() bool`
 
 HasParams returns a boolean if a field has been set.
+
+### GetClientRedirectUrl
+
+`func (o *ThreeDsRedirectDataV3) GetClientRedirectUrl() string`
+
+GetClientRedirectUrl returns the ClientRedirectUrl field if non-nil, zero value otherwise.
+
+### GetClientRedirectUrlOk
+
+`func (o *ThreeDsRedirectDataV3) GetClientRedirectUrlOk() (*string, bool)`
+
+GetClientRedirectUrlOk returns a tuple with the ClientRedirectUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClientRedirectUrl
+
+`func (o *ThreeDsRedirectDataV3) SetClientRedirectUrl(v string)`
+
+SetClientRedirectUrl sets ClientRedirectUrl field to given value.
+
+### HasClientRedirectUrl
+
+`func (o *ThreeDsRedirectDataV3) HasClientRedirectUrl() bool`
+
+HasClientRedirectUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

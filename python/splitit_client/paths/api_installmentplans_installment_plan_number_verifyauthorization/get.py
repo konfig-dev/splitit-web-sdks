@@ -31,21 +31,11 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3 as ThreeDsRedirectDataV3Schema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
-from splitit_client.model.authorization_model import AuthorizationModel as AuthorizationModelSchema
-from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params as ThreeDsRedirectDataV3ParamsSchema
-from splitit_client.model.error_extended import ErrorExtended as ErrorExtendedSchema
-from splitit_client.model.gw_authorization_status import GwAuthorizationStatus as GwAuthorizationStatusSchema
 from splitit_client.model.verify_authorization_response import VerifyAuthorizationResponse as VerifyAuthorizationResponseSchema
 
-from splitit_client.type.error_extended import ErrorExtended
 from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.authorization_model import AuthorizationModel
-from splitit_client.type.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 from splitit_client.type.verify_authorization_response import VerifyAuthorizationResponse
-from splitit_client.type.gw_authorization_status import GwAuthorizationStatus
-from splitit_client.type.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 
 from . import path
 
@@ -287,9 +277,10 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -346,6 +337,7 @@ class BaseApi(api_client.Api):
             headers=_headers,
             auth_settings=_auth,
             timeout=timeout,
+            **kwargs
         )
     
         if stream:
@@ -407,7 +399,7 @@ class BaseApi(api_client.Api):
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
-        timeout: typing.Optional[typing.Union[int, typing.Tuple]] = None,
+        timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
         stream: bool = False,
     ) -> typing.Union[
@@ -499,6 +491,7 @@ class VerifyAuthorization(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -512,6 +505,7 @@ class VerifyAuthorization(BaseApi):
         return await self._averify_authorization_oapg(
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def verify_authorization(
@@ -541,6 +535,7 @@ class ApiForget(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
         api_client.ApiResponseWithoutDeserializationAsync,
@@ -554,6 +549,7 @@ class ApiForget(BaseApi):
         return await self._averify_authorization_oapg(
             header_params=args.header,
             path_params=args.path,
+            **kwargs,
         )
     
     def get(
