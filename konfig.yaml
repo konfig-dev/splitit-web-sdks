@@ -41,6 +41,7 @@ generators:
   python:
     version: 2.6.2
     responseTypeVersion: '1'
+    useAiohttp3_8: true
     packageName: splitit_client
     projectName: splitit-web-python-sdk
     outputDirectory: python
