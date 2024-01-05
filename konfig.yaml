@@ -32,6 +32,7 @@ generators:
     version: 3.3.3
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
+    useAxios0_27_2: true
     clientName: Splitit
     mapTags:
       InstallmentPlan: Installmentplan
