@@ -7,7 +7,7 @@ it("simple operation started", async () => {
     oauthClientId,
     oauthClientSecret,
     oauthTokenUrl: "https://id.sandbox.splitit.com/connect/token",
-    basePath: "https://web-api-v3.sandbox.splitit.com",
+    basePath: "http://127.0.0.1:4010",
   });
   const result = await splitit.installmentplan.post({
     AutoCapture: true,
