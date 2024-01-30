@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BluesnapVaultedShopperToken** | Pointer to [**BluesnapVaultedShopperToken**](BluesnapVaultedShopperToken.md) |  | [optional] 
 **MockerShopperToken** | Pointer to [**MockerShopperToken**](MockerShopperToken.md) |  | [optional] 
 **SpreedlyToken** | Pointer to [**SpreedlyToken**](SpreedlyToken.md) |  | [optional] 
+**CardPAR** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -174,6 +175,31 @@ SetSpreedlyToken sets SpreedlyToken field to given value.
 `func (o *PaymentMethodModel) HasSpreedlyToken() bool`
 
 HasSpreedlyToken returns a boolean if a field has been set.
+
+### GetCardPAR
+
+`func (o *PaymentMethodModel) GetCardPAR() string`
+
+GetCardPAR returns the CardPAR field if non-nil, zero value otherwise.
+
+### GetCardPAROk
+
+`func (o *PaymentMethodModel) GetCardPAROk() (*string, bool)`
+
+GetCardPAROk returns a tuple with the CardPAR field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCardPAR
+
+`func (o *PaymentMethodModel) SetCardPAR(v string)`
+
+SetCardPAR sets CardPAR field to given value.
+
+### HasCardPAR
+
+`func (o *PaymentMethodModel) HasCardPAR() bool`
+
+HasCardPAR returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

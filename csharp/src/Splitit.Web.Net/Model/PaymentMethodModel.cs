@@ -51,7 +51,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="bluesnapVaultedShopperToken">bluesnapVaultedShopperToken.</param>
         /// <param name="mockerShopperToken">mockerShopperToken.</param>
         /// <param name="spreedlyToken">spreedlyToken.</param>
-        public PaymentMethodModel(PaymentMethodType type = default(PaymentMethodType), CardData card = default(CardData), string token = default(string), BluesnapVaultedShopperToken bluesnapVaultedShopperToken = default(BluesnapVaultedShopperToken), MockerShopperToken mockerShopperToken = default(MockerShopperToken), SpreedlyToken spreedlyToken = default(SpreedlyToken))
+        /// <param name="cardPAR">cardPAR.</param>
+        public PaymentMethodModel(PaymentMethodType type = default(PaymentMethodType), CardData card = default(CardData), string token = default(string), BluesnapVaultedShopperToken bluesnapVaultedShopperToken = default(BluesnapVaultedShopperToken), MockerShopperToken mockerShopperToken = default(MockerShopperToken), SpreedlyToken spreedlyToken = default(SpreedlyToken), string cardPAR = default(string))
         {
             this.Type = type;
             this.Card = card;
@@ -59,6 +60,7 @@ namespace Splitit.Web.Net.Model
             this.BluesnapVaultedShopperToken = bluesnapVaultedShopperToken;
             this.MockerShopperToken = mockerShopperToken;
             this.SpreedlyToken = spreedlyToken;
+            this.CardPAR = cardPAR;
         }
 
         /// <summary>
@@ -92,6 +94,12 @@ namespace Splitit.Web.Net.Model
         public SpreedlyToken SpreedlyToken { get; set; }
 
         /// <summary>
+        /// Gets or Sets CardPAR
+        /// </summary>
+        [DataMember(Name = "CardPAR", EmitDefaultValue = false)]
+        public string CardPAR { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,6 +113,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  BluesnapVaultedShopperToken: ").Append(BluesnapVaultedShopperToken).Append("\n");
             sb.Append("  MockerShopperToken: ").Append(MockerShopperToken).Append("\n");
             sb.Append("  SpreedlyToken: ").Append(SpreedlyToken).Append("\n");
+            sb.Append("  CardPAR: ").Append(CardPAR).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,6 +177,11 @@ namespace Splitit.Web.Net.Model
                     this.SpreedlyToken == input.SpreedlyToken ||
                     (this.SpreedlyToken != null &&
                     this.SpreedlyToken.Equals(input.SpreedlyToken))
+                ) && 
+                (
+                    this.CardPAR == input.CardPAR ||
+                    (this.CardPAR != null &&
+                    this.CardPAR.Equals(input.CardPAR))
                 );
         }
 
@@ -200,6 +214,10 @@ namespace Splitit.Web.Net.Model
                 if (this.SpreedlyToken != null)
                 {
                     hashCode = (hashCode * 59) + this.SpreedlyToken.GetHashCode();
+                }
+                if (this.CardPAR != null)
+                {
+                    hashCode = (hashCode * 59) + this.CardPAR.GetHashCode();
                 }
                 return hashCode;
             }

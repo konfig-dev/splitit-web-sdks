@@ -34,7 +34,9 @@ import com.google.gson.stream.JsonWriter;
   
   PENDING3DS("Pending3DS"),
   
-  FAILED("Failed");
+  FAILED("Failed"),
+  
+  CANCELED("Canceled");
 
   private String value;
 

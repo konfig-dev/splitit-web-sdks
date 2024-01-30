@@ -58,5 +58,11 @@ export interface PaymentMethodModel {
      * @memberof PaymentMethodModel
      */
     'SpreedlyToken'?: SpreedlyToken;
+    /**
+     * 
+     * @type {string}
+     * @memberof PaymentMethodModel
+     */
+    'CardPAR'?: string;
 }
 

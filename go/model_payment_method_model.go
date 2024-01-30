@@ -22,6 +22,7 @@ type PaymentMethodModel struct {
 	BluesnapVaultedShopperToken *BluesnapVaultedShopperToken `json:"BluesnapVaultedShopperToken,omitempty"`
 	MockerShopperToken *MockerShopperToken `json:"MockerShopperToken,omitempty"`
 	SpreedlyToken *SpreedlyToken `json:"SpreedlyToken,omitempty"`
+	CardPAR *string `json:"CardPAR,omitempty"`
 }
 
 // NewPaymentMethodModel instantiates a new PaymentMethodModel object
@@ -226,6 +227,38 @@ func (o *PaymentMethodModel) SetSpreedlyToken(v SpreedlyToken) {
 	o.SpreedlyToken = &v
 }
 
+// GetCardPAR returns the CardPAR field value if set, zero value otherwise.
+func (o *PaymentMethodModel) GetCardPAR() string {
+	if o == nil || isNil(o.CardPAR) {
+		var ret string
+		return ret
+	}
+	return *o.CardPAR
+}
+
+// GetCardPAROk returns a tuple with the CardPAR field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PaymentMethodModel) GetCardPAROk() (*string, bool) {
+	if o == nil || isNil(o.CardPAR) {
+    return nil, false
+	}
+	return o.CardPAR, true
+}
+
+// HasCardPAR returns a boolean if a field has been set.
+func (o *PaymentMethodModel) HasCardPAR() bool {
+	if o != nil && !isNil(o.CardPAR) {
+		return true
+	}
+
+	return false
+}
+
+// SetCardPAR gets a reference to the given string and assigns it to the CardPAR field.
+func (o *PaymentMethodModel) SetCardPAR(v string) {
+	o.CardPAR = &v
+}
+
 func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -245,6 +278,9 @@ func (o PaymentMethodModel) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.SpreedlyToken) {
 		toSerialize["SpreedlyToken"] = o.SpreedlyToken
+	}
+	if !isNil(o.CardPAR) {
+		toSerialize["CardPAR"] = o.CardPAR
 	}
 	return json.Marshal(toSerialize)
 }

@@ -46,3 +46,7 @@ class GwAuthorizationStatus(
     @schemas.classproperty
     def FAILED(cls):
         return cls("Failed")
+    
+    @schemas.classproperty
+    def CANCELED(cls):
+        return cls("Canceled")

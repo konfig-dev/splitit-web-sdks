@@ -15,4 +15,4 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-GwAuthorizationStatus = Literal["NA", "Succeeded", "Pending3DS", "Failed"]
+GwAuthorizationStatus = Literal["NA", "Succeeded", "Pending3DS", "Failed", "Canceled"]

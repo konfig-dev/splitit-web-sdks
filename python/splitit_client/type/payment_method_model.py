@@ -34,5 +34,7 @@ class OptionalPaymentMethodModel(TypedDict, total=False):
 
     SpreedlyToken: SpreedlyToken
 
+    CardPAR: str
+
 class PaymentMethodModel(RequiredPaymentMethodModel, OptionalPaymentMethodModel):
     pass

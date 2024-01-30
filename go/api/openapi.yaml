@@ -1296,6 +1296,7 @@ components:
           SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
+          CardPAR: CardPAR
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -1431,12 +1432,14 @@ components:
       - Succeeded
       - Pending3DS
       - Failed
+      - Canceled
       type: string
       x-enumNames:
       - NA
       - Succeeded
       - Pending3DS
       - Failed
+      - Canceled
     ThreeDsRedirectDataV3:
       example:
         Verb: Verb
@@ -1500,6 +1503,7 @@ components:
         SpreedlyToken: null
         MockerShopperToken: null
         Token: Token
+        CardPAR: CardPAR
         Card:
           CardNumber: CardNumber
           CardExpMonth: CardExpMonth
@@ -1522,6 +1526,8 @@ components:
           $ref: '#/components/schemas/MockerShopperToken'
         SpreedlyToken:
           $ref: '#/components/schemas/SpreedlyToken'
+        CardPAR:
+          type: string
       required:
       - Type
       type: object
@@ -1788,6 +1794,7 @@ components:
             SpreedlyToken: null
             MockerShopperToken: null
             Token: Token
+            CardPAR: CardPAR
             Card:
               CardNumber: CardNumber
               CardExpMonth: CardExpMonth
@@ -1867,6 +1874,7 @@ components:
             SpreedlyToken: null
             MockerShopperToken: null
             Token: Token
+            CardPAR: CardPAR
             Card:
               CardNumber: CardNumber
               CardExpMonth: CardExpMonth
@@ -1954,6 +1962,7 @@ components:
           SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
+          CardPAR: CardPAR
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -2340,6 +2349,7 @@ components:
           SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
+          CardPAR: CardPAR
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth
@@ -2440,6 +2450,7 @@ components:
           SpreedlyToken: null
           MockerShopperToken: null
           Token: Token
+          CardPAR: CardPAR
           Card:
             CardNumber: CardNumber
             CardExpMonth: CardExpMonth

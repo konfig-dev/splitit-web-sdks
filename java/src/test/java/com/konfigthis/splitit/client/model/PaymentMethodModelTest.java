@@ -91,4 +91,12 @@ public class PaymentMethodModelTest {
         // TODO: test spreedlyToken
     }
 
+    /**
+     * Test the property 'cardPAR'
+     */
+    @Test
+    public void cardPARTest() {
+        // TODO: test cardPAR
+    }
+
 }
