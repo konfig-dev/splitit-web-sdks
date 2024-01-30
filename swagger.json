@@ -1163,13 +1163,15 @@
         "NA",
         "Succeeded",
         "Pending3DS",
-        "Failed"
+        "Failed",
+        "Canceled"
       ],
       "enum": [
         "NA",
         "Succeeded",
         "Pending3DS",
-        "Failed"
+        "Failed",
+        "Canceled"
       ]
     },
     "ThreeDsRedirectDataV3": {
@@ -1255,6 +1257,9 @@
         },
         "SpreedlyToken": {
           "$ref": "#/definitions/SpreedlyToken"
+        },
+        "CardPAR": {
+          "type": "string"
         }
       }
     },
