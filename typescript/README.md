@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v3.3.3-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.3)
+[![npm](https://img.shields.io/badge/npm-v3.3.4-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.4)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -328,7 +328,6 @@ const refundResponse = await splitit.installmentplan.refund({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
   Amount: 3.14,
-  RefundStrategy: "FutureInstallmentsFirst",
 });
 ```
 
@@ -344,7 +343,9 @@ const refundResponse = await splitit.installmentplan.refund({
 
 TouchPoint
 
-##### RefundStrategy:<a id="refundstrategy"></a>
+##### RefundStrategy: [`RefundStrategy`](./models/refund-strategy.ts)<a id="refundstrategy-refundstrategymodelsrefund-strategyts"></a>
+
+
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -410,7 +411,6 @@ const updateOrderResponse = await splitit.installmentplan.updateOrder({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
-  ShippingStatus: "Pending",
 });
 ```
 
@@ -428,7 +428,9 @@ TouchPoint
 
 ##### RefOrderNumber: `string`<a id="refordernumber-string"></a>
 
-##### ShippingStatus:<a id="shippingstatus"></a>
+##### ShippingStatus: [`ShippingStatus`](./models/shipping-status.ts)<a id="shippingstatus-shippingstatusmodelsshipping-statusts"></a>
+
+
 
 ##### Capture: `boolean`<a id="capture-boolean"></a>
 
@@ -455,7 +457,6 @@ TouchPoint
 const updateOrder2Response = await splitit.installmentplan.updateOrder2({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
-  ShippingStatus: "Shipped",
 });
 ```
 
@@ -473,7 +474,9 @@ TouchPoint
 
 ##### Capture: `boolean`<a id="capture-boolean"></a>
 
-##### ShippingStatus:<a id="shippingstatus"></a>
+##### ShippingStatus: [`ShippingStatus2`](./models/shipping-status2.ts)<a id="shippingstatus-shippingstatus2modelsshipping-status2ts"></a>
+
+
 
 ##### Identifier: [`IdentifierContract`](./models/identifier-contract.ts)<a id="identifier-identifiercontractmodelsidentifier-contractts"></a>
 

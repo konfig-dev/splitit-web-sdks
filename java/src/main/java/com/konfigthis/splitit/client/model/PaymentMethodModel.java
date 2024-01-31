@@ -78,6 +78,10 @@ public class PaymentMethodModel {
   @SerializedName(SERIALIZED_NAME_SPREEDLY_TOKEN)
   private SpreedlyToken spreedlyToken;
 
+  public static final String SERIALIZED_NAME_CARD_P_A_R = "CardPAR";
+  @SerializedName(SERIALIZED_NAME_CARD_P_A_R)
+  private String cardPAR;
+
   public PaymentMethodModel() {
   }
 
@@ -254,6 +258,35 @@ public class PaymentMethodModel {
     this.spreedlyToken = spreedlyToken;
   }
 
+
+  public PaymentMethodModel cardPAR(String cardPAR) {
+    
+    
+    
+    
+    this.cardPAR = cardPAR;
+    return this;
+  }
+
+   /**
+   * Get cardPAR
+   * @return cardPAR
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getCardPAR() {
+    return cardPAR;
+  }
+
+
+  public void setCardPAR(String cardPAR) {
+    
+    
+    
+    this.cardPAR = cardPAR;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -314,13 +347,14 @@ public class PaymentMethodModel {
         Objects.equals(this.token, paymentMethodModel.token) &&
         Objects.equals(this.bluesnapVaultedShopperToken, paymentMethodModel.bluesnapVaultedShopperToken) &&
         Objects.equals(this.mockerShopperToken, paymentMethodModel.mockerShopperToken) &&
-        Objects.equals(this.spreedlyToken, paymentMethodModel.spreedlyToken)&&
+        Objects.equals(this.spreedlyToken, paymentMethodModel.spreedlyToken) &&
+        Objects.equals(this.cardPAR, paymentMethodModel.cardPAR)&&
         Objects.equals(this.additionalProperties, paymentMethodModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, card, token, bluesnapVaultedShopperToken, mockerShopperToken, spreedlyToken, additionalProperties);
+    return Objects.hash(type, card, token, bluesnapVaultedShopperToken, mockerShopperToken, spreedlyToken, cardPAR, additionalProperties);
   }
 
   @Override
@@ -333,6 +367,7 @@ public class PaymentMethodModel {
     sb.append("    bluesnapVaultedShopperToken: ").append(toIndentedString(bluesnapVaultedShopperToken)).append("\n");
     sb.append("    mockerShopperToken: ").append(toIndentedString(mockerShopperToken)).append("\n");
     sb.append("    spreedlyToken: ").append(toIndentedString(spreedlyToken)).append("\n");
+    sb.append("    cardPAR: ").append(toIndentedString(cardPAR)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -362,6 +397,7 @@ public class PaymentMethodModel {
     openapiFields.add("BluesnapVaultedShopperToken");
     openapiFields.add("MockerShopperToken");
     openapiFields.add("SpreedlyToken");
+    openapiFields.add("CardPAR");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -405,6 +441,9 @@ public class PaymentMethodModel {
       // validate the optional field `SpreedlyToken`
       if (jsonObj.get("SpreedlyToken") != null && !jsonObj.get("SpreedlyToken").isJsonNull()) {
         SpreedlyToken.validateJsonObject(jsonObj.getAsJsonObject("SpreedlyToken"));
+      }
+      if ((jsonObj.get("CardPAR") != null && !jsonObj.get("CardPAR").isJsonNull()) && !jsonObj.get("CardPAR").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `CardPAR` to be a primitive type in the JSON string but got `%s`", jsonObj.get("CardPAR").toString()));
       }
   }
 

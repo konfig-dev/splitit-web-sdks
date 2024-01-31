@@ -12,7 +12,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "splitit-web-python-sdk"
-VERSION = "2.6.2"
+VERSION = "2.6.3"
 # To install the library, run the following
 #
 # python setup.py install
@@ -30,6 +30,7 @@ REQUIRES = [
     "python-dateutil ~= 2.8.2",
     "typing_extensions ~= 4.3.0",
     "urllib3 ~= 1.26.18",
+    "cryptography ~= 41.0.6",
     "frozendict ~= 2.3.4",
     "aiohttp ~= 3.8.4"
 ]

@@ -23,7 +23,7 @@ func Test_simple(t *testing.T) {
 	clientId := os.Getenv("SPLITIT_CLIENT_ID")
 	clientSecret := os.Getenv("SPLITIT_CLIENT_SECRET")
 	configuration := splitit.NewConfiguration()
-	configuration.Servers[0].URL = "https://web-api-v3.sandbox.splitit.com"
+	configuration.Servers[0].URL = "http://127.0.0.1:4010"
 	configuration.TokenUrl = "https://id.sandbox.splitit.com/connect/token"
 	configuration.SetOAuthClientCredentials(clientId, clientSecret)
 	client := splitit.NewAPIClient(configuration)

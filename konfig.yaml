@@ -19,7 +19,7 @@ fixConfig:
       url: https://web-api-v3.production.splitit.com
 generators:
   php:
-    version: 2.3.1
+    version: 2.3.2
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
@@ -29,7 +29,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 3.3.3
+    version: 3.3.4
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     useAxios0_27_2: true
@@ -40,7 +40,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 2.6.2
+    version: 2.6.3
     responseTypeVersion: '1'
     useAiohttp3_8: true
     packageName: splitit_client
@@ -52,7 +52,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 2.2.3
+    version: 2.2.4
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
@@ -62,7 +62,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/java
   csharp:
-    version: 2.1.2
+    version: 2.1.3
     packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
@@ -71,7 +71,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    version: 1.7.2
+    version: 1.7.3
     packageName: splitit
     outputDirectory: go
     git:

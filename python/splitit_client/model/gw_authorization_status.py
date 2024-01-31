@@ -38,6 +38,7 @@ class GwAuthorizationStatus(
             "Succeeded": "SUCCEEDED",
             "Pending3DS": "PENDING3DS",
             "Failed": "FAILED",
+            "Canceled": "CANCELED",
         }
     
     @schemas.classproperty
@@ -55,3 +56,7 @@ class GwAuthorizationStatus(
     @schemas.classproperty
     def FAILED(cls):
         return cls("Failed")
+    
+    @schemas.classproperty
+    def CANCELED(cls):
+        return cls("Canceled")

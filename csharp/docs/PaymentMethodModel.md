@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BluesnapVaultedShopperToken** | [**BluesnapVaultedShopperToken**](BluesnapVaultedShopperToken.md) |  | [optional] 
 **MockerShopperToken** | [**MockerShopperToken**](MockerShopperToken.md) |  | [optional] 
 **SpreedlyToken** | [**SpreedlyToken**](SpreedlyToken.md) |  | [optional] 
+**CardPAR** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
