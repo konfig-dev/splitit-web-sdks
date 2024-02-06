@@ -14,12 +14,15 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
+from splitit_client.type.installment_plan_response import InstallmentPlanResponse
 
 class RequiredInstallmentPlanCancelResponse(TypedDict):
     pass
 
 class OptionalInstallmentPlanCancelResponse(TypedDict, total=False):
     InstallmentPlanNumber: str
+
+    installmentPlanResponse: InstallmentPlanResponse
 
 class InstallmentPlanCancelResponse(RequiredInstallmentPlanCancelResponse, OptionalInstallmentPlanCancelResponse):
     pass

@@ -51,6 +51,7 @@ func main() {
     // response from `Cancel`: InstallmentPlanCancelResponse
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Cancel`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanResponse`: %v\n", *resp.InstallmentPlanResponse)
 }
 ```
 
