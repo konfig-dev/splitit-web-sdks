@@ -57,6 +57,7 @@ public class Example {
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentPlanNumber());
+      System.out.println(result.getInstallmentPlanResponse());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
       System.err.println("Status code: " + e.getStatusCode());

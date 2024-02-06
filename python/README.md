@@ -11,7 +11,7 @@ Splitit's Web API
 <!-- toc -->
 
 - [Requirements](#requirements)
-- [Installing](#installing)
+- [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Reference](#reference)
@@ -32,7 +32,7 @@ Splitit's Web API
 
 Python >=3.7
 
-## Installing<a id="installing"></a>
+## Installation<a id="installation"></a>
 
 ```sh
 pip install splitit-web-python-sdk==2.6.3
@@ -57,6 +57,7 @@ try:
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
+    pprint(cancel_response.body["installment_plan_response"])
     pprint(cancel_response.headers)
     pprint(cancel_response.status)
     pprint(cancel_response.round_trip_time)
@@ -105,6 +106,7 @@ async def main():
         )
         pprint(cancel_response.body)
         pprint(cancel_response.body["installment_plan_number"])
+        pprint(cancel_response.body["installment_plan_response"])
         pprint(cancel_response.headers)
         pprint(cancel_response.status)
         pprint(cancel_response.round_trip_time)

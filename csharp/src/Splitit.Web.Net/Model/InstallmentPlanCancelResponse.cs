@@ -35,9 +35,11 @@ namespace Splitit.Web.Net.Model
         /// Initializes a new instance of the <see cref="InstallmentPlanCancelResponse" /> class.
         /// </summary>
         /// <param name="installmentPlanNumber">installmentPlanNumber.</param>
-        public InstallmentPlanCancelResponse(string installmentPlanNumber = default(string))
+        /// <param name="installmentPlanResponse">installmentPlanResponse.</param>
+        public InstallmentPlanCancelResponse(string installmentPlanNumber = default(string), InstallmentPlanResponse installmentPlanResponse = default(InstallmentPlanResponse))
         {
             this.InstallmentPlanNumber = installmentPlanNumber;
+            this.InstallmentPlanResponse = installmentPlanResponse;
         }
 
         /// <summary>
@@ -45,6 +47,12 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         [DataMember(Name = "InstallmentPlanNumber", EmitDefaultValue = false)]
         public string InstallmentPlanNumber { get; set; }
+
+        /// <summary>
+        /// Gets or Sets InstallmentPlanResponse
+        /// </summary>
+        [DataMember(Name = "installmentPlanResponse", EmitDefaultValue = false)]
+        public InstallmentPlanResponse InstallmentPlanResponse { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,6 +63,7 @@ namespace Splitit.Web.Net.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class InstallmentPlanCancelResponse {\n");
             sb.Append("  InstallmentPlanNumber: ").Append(InstallmentPlanNumber).Append("\n");
+            sb.Append("  InstallmentPlanResponse: ").Append(InstallmentPlanResponse).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -94,6 +103,11 @@ namespace Splitit.Web.Net.Model
                     this.InstallmentPlanNumber == input.InstallmentPlanNumber ||
                     (this.InstallmentPlanNumber != null &&
                     this.InstallmentPlanNumber.Equals(input.InstallmentPlanNumber))
+                ) && 
+                (
+                    this.InstallmentPlanResponse == input.InstallmentPlanResponse ||
+                    (this.InstallmentPlanResponse != null &&
+                    this.InstallmentPlanResponse.Equals(input.InstallmentPlanResponse))
                 );
         }
 
@@ -109,6 +123,10 @@ namespace Splitit.Web.Net.Model
                 if (this.InstallmentPlanNumber != null)
                 {
                     hashCode = (hashCode * 59) + this.InstallmentPlanNumber.GetHashCode();
+                }
+                if (this.InstallmentPlanResponse != null)
+                {
+                    hashCode = (hashCode * 59) + this.InstallmentPlanResponse.GetHashCode();
                 }
                 return hashCode;
             }

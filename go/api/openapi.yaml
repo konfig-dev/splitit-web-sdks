@@ -2700,10 +2700,1885 @@ components:
     InstallmentPlanCancelResponse:
       example:
         InstallmentPlanNumber: InstallmentPlanNumber
+        installmentPlanResponse:
+          ResponseHeader:
+            Succeeded: true
+            Errors:
+            - AdditionalInfo: AdditionalInfo
+              Message: Message
+              ErrorCode: ErrorCode
+            - AdditionalInfo: AdditionalInfo
+              Message: Message
+              ErrorCode: ErrorCode
+            TraceId: TraceId
+          GatewayTransactionResults:
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          InstallmentPlan:
+            OnHoldLastOpenDate: 2000-01-23T04:56:07.000+00:00
+            IsInAutoRetry: true
+            DelayResolution:
+              Description: Description
+              Id: 0
+              Code: Code
+            IsFullCaptured: true
+            LogoUrl: LogoUrl
+            ActiveCard:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              Address: null
+              CardType:
+                Description: Description
+                Id: 0
+                Code: Code
+              Bin: Bin
+              CardHolderFullName: CardHolderFullName
+              CardBrand:
+                Description: Description
+                Id: 0
+                Code: Code
+              Token: Token
+              CardId: CardId
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            TestMode: null
+            PurchaseMethod:
+              Description: Description
+              Id: 0
+              Code: Code
+            OnHoldLastOpenUserId: OnHoldLastOpenUserId
+            AllowCardUpdateOnSplititPortals: true
+            SecureAuthorizations:
+            - TransactionResults:
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              Amount:
+                Currency: null
+                Value: 6.027456183070403
+              ProcessingDate: 2000-01-23T04:56:07.000+00:00
+              CardDetails:
+                CardNumber: CardNumber
+                CardExpMonth: CardExpMonth
+                Address: null
+                CardType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Bin: Bin
+                CardHolderFullName: CardHolderFullName
+                CardBrand:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Token: Token
+                CardId: CardId
+                CardExpYear: CardExpYear
+                CardCvv: CardCvv
+              Result: true
+            - TransactionResults:
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              Amount:
+                Currency: null
+                Value: 6.027456183070403
+              ProcessingDate: 2000-01-23T04:56:07.000+00:00
+              CardDetails:
+                CardNumber: CardNumber
+                CardExpMonth: CardExpMonth
+                Address: null
+                CardType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Bin: Bin
+                CardHolderFullName: CardHolderFullName
+                CardBrand:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Token: Token
+                CardId: CardId
+                CardExpYear: CardExpYear
+                CardCvv: CardCvv
+              Result: true
+            ExternalPaymentProvider: null
+            NumberOfInstallments: 1
+            FundingStatus: null
+            Disputes:
+              EvidenceProvidedOn: 2000-01-23T04:56:07.000+00:00
+              InDispute: true
+            Consumer: null
+            Merchant: null
+            ArePaymentsOnHold: true
+            Installments:
+            - Status:
+                Description: Description
+                Id: 0
+                Code: Code
+              TransactionResults:
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              Amount:
+                Currency: null
+                Value: 6.027456183070403
+              ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+              RefundAmount:
+                Currency: null
+                Value: 6.027456183070403
+              OriginalAmount:
+                Currency: null
+                Value: 6.027456183070403
+              IsRefund: true
+              RequiredCredit:
+                Currency: null
+                Value: 6.027456183070403
+              Result: true
+              InstallmentId: InstallmentId
+              InstallmentNumber: 2
+              PaymentMethod: PaymentMethod
+              CardDetails:
+                CardNumber: CardNumber
+                CardExpMonth: CardExpMonth
+                Address: null
+                CardType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Bin: Bin
+                CardHolderFullName: CardHolderFullName
+                CardBrand:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Token: Token
+                CardId: CardId
+                CardExpYear: CardExpYear
+                CardCvv: CardCvv
+              CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+            - Status:
+                Description: Description
+                Id: 0
+                Code: Code
+              TransactionResults:
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              - IsInDispute: true
+                GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+                GatewayResult: true
+                AVSResult:
+                  Description: Description
+                  Code: Code
+                IsChargeback: true
+                DisputeStatus: null
+                SplititGatewayTransactionId: SplititGatewayTransactionId
+                CVCResult:
+                  Description: Description
+                  Code: Code
+                SplititTransactionId: 7
+                GatewayTransactionId: GatewayTransactionId
+                GatewayResultMessage: GatewayResultMessage
+                OperationType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                GatewayResultCode: GatewayResultCode
+              Amount:
+                Currency: null
+                Value: 6.027456183070403
+              ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+              RefundAmount:
+                Currency: null
+                Value: 6.027456183070403
+              OriginalAmount:
+                Currency: null
+                Value: 6.027456183070403
+              IsRefund: true
+              RequiredCredit:
+                Currency: null
+                Value: 6.027456183070403
+              Result: true
+              InstallmentId: InstallmentId
+              InstallmentNumber: 2
+              PaymentMethod: PaymentMethod
+              CardDetails:
+                CardNumber: CardNumber
+                CardExpMonth: CardExpMonth
+                Address: null
+                CardType:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Bin: Bin
+                CardHolderFullName: CardHolderFullName
+                CardBrand:
+                  Description: Description
+                  Id: 0
+                  Code: Code
+                Token: Token
+                CardId: CardId
+                CardExpYear: CardExpYear
+                CardCvv: CardCvv
+              CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+            InstallmentPlanNumber: InstallmentPlanNumber
+            RefOrderNumber: RefOrderNumber
+            ScpFundingPercent: 5.637376656633329
+            Amount:
+              Currency: null
+              Value: 6.027456183070403
+            IsChargedBack: true
+            OutstandingAmount:
+              Currency: null
+              Value: 6.027456183070403
+            InstallmentPlanStatus:
+              Description: Description
+              Id: 0
+              Code: Code
+            RefundAmount:
+              Currency: null
+              Value: 6.027456183070403
+            LifeTimeUrlExpirationTime: 2000-01-23T04:56:07.000+00:00
+            OriginalAmount:
+              Currency: null
+              Value: 6.027456183070403
+            Terminal: null
+            NumberOfProcessedInstallments: 5
+            CreationDateTime: 2000-01-23T04:56:07.000+00:00
+            ExtendedParams:
+              key: ExtendedParams
+            Strategy:
+              Description: Description
+              Id: 0
+              Code: Code
+            PaymentMethod: PaymentMethod
+            FraudCheck:
+              ProviderResultDesc: ProviderResultDesc
+              FraudCheckResult:
+                Description: Description
+                Id: 0
+                Code: Code
+              ProviderReferenceId: ProviderReferenceId
+              ProviderResultCode: ProviderResultCode
+            InstallmentsScheduleInterval: 9
       properties:
         InstallmentPlanNumber:
           type: string
+        installmentPlanResponse:
+          $ref: '#/components/schemas/InstallmentPlanResponse'
       type: object
+    InstallmentPlanResponse:
+      example:
+        ResponseHeader:
+          Succeeded: true
+          Errors:
+          - AdditionalInfo: AdditionalInfo
+            Message: Message
+            ErrorCode: ErrorCode
+          - AdditionalInfo: AdditionalInfo
+            Message: Message
+            ErrorCode: ErrorCode
+          TraceId: TraceId
+        GatewayTransactionResults:
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        InstallmentPlan:
+          OnHoldLastOpenDate: 2000-01-23T04:56:07.000+00:00
+          IsInAutoRetry: true
+          DelayResolution:
+            Description: Description
+            Id: 0
+            Code: Code
+          IsFullCaptured: true
+          LogoUrl: LogoUrl
+          ActiveCard:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            Address: null
+            CardType:
+              Description: Description
+              Id: 0
+              Code: Code
+            Bin: Bin
+            CardHolderFullName: CardHolderFullName
+            CardBrand:
+              Description: Description
+              Id: 0
+              Code: Code
+            Token: Token
+            CardId: CardId
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          TestMode: null
+          PurchaseMethod:
+            Description: Description
+            Id: 0
+            Code: Code
+          OnHoldLastOpenUserId: OnHoldLastOpenUserId
+          AllowCardUpdateOnSplititPortals: true
+          SecureAuthorizations:
+          - TransactionResults:
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            Amount:
+              Currency: null
+              Value: 6.027456183070403
+            ProcessingDate: 2000-01-23T04:56:07.000+00:00
+            CardDetails:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              Address: null
+              CardType:
+                Description: Description
+                Id: 0
+                Code: Code
+              Bin: Bin
+              CardHolderFullName: CardHolderFullName
+              CardBrand:
+                Description: Description
+                Id: 0
+                Code: Code
+              Token: Token
+              CardId: CardId
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            Result: true
+          - TransactionResults:
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            Amount:
+              Currency: null
+              Value: 6.027456183070403
+            ProcessingDate: 2000-01-23T04:56:07.000+00:00
+            CardDetails:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              Address: null
+              CardType:
+                Description: Description
+                Id: 0
+                Code: Code
+              Bin: Bin
+              CardHolderFullName: CardHolderFullName
+              CardBrand:
+                Description: Description
+                Id: 0
+                Code: Code
+              Token: Token
+              CardId: CardId
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            Result: true
+          ExternalPaymentProvider: null
+          NumberOfInstallments: 1
+          FundingStatus: null
+          Disputes:
+            EvidenceProvidedOn: 2000-01-23T04:56:07.000+00:00
+            InDispute: true
+          Consumer: null
+          Merchant: null
+          ArePaymentsOnHold: true
+          Installments:
+          - Status:
+              Description: Description
+              Id: 0
+              Code: Code
+            TransactionResults:
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            Amount:
+              Currency: null
+              Value: 6.027456183070403
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+            RefundAmount:
+              Currency: null
+              Value: 6.027456183070403
+            OriginalAmount:
+              Currency: null
+              Value: 6.027456183070403
+            IsRefund: true
+            RequiredCredit:
+              Currency: null
+              Value: 6.027456183070403
+            Result: true
+            InstallmentId: InstallmentId
+            InstallmentNumber: 2
+            PaymentMethod: PaymentMethod
+            CardDetails:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              Address: null
+              CardType:
+                Description: Description
+                Id: 0
+                Code: Code
+              Bin: Bin
+              CardHolderFullName: CardHolderFullName
+              CardBrand:
+                Description: Description
+                Id: 0
+                Code: Code
+              Token: Token
+              CardId: CardId
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+          - Status:
+              Description: Description
+              Id: 0
+              Code: Code
+            TransactionResults:
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            - IsInDispute: true
+              GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+              GatewayResult: true
+              AVSResult:
+                Description: Description
+                Code: Code
+              IsChargeback: true
+              DisputeStatus: null
+              SplititGatewayTransactionId: SplititGatewayTransactionId
+              CVCResult:
+                Description: Description
+                Code: Code
+              SplititTransactionId: 7
+              GatewayTransactionId: GatewayTransactionId
+              GatewayResultMessage: GatewayResultMessage
+              OperationType:
+                Description: Description
+                Id: 0
+                Code: Code
+              GatewayResultCode: GatewayResultCode
+            Amount:
+              Currency: null
+              Value: 6.027456183070403
+            ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+            RefundAmount:
+              Currency: null
+              Value: 6.027456183070403
+            OriginalAmount:
+              Currency: null
+              Value: 6.027456183070403
+            IsRefund: true
+            RequiredCredit:
+              Currency: null
+              Value: 6.027456183070403
+            Result: true
+            InstallmentId: InstallmentId
+            InstallmentNumber: 2
+            PaymentMethod: PaymentMethod
+            CardDetails:
+              CardNumber: CardNumber
+              CardExpMonth: CardExpMonth
+              Address: null
+              CardType:
+                Description: Description
+                Id: 0
+                Code: Code
+              Bin: Bin
+              CardHolderFullName: CardHolderFullName
+              CardBrand:
+                Description: Description
+                Id: 0
+                Code: Code
+              Token: Token
+              CardId: CardId
+              CardExpYear: CardExpYear
+              CardCvv: CardCvv
+            CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+          InstallmentPlanNumber: InstallmentPlanNumber
+          RefOrderNumber: RefOrderNumber
+          ScpFundingPercent: 5.637376656633329
+          Amount:
+            Currency: null
+            Value: 6.027456183070403
+          IsChargedBack: true
+          OutstandingAmount:
+            Currency: null
+            Value: 6.027456183070403
+          InstallmentPlanStatus:
+            Description: Description
+            Id: 0
+            Code: Code
+          RefundAmount:
+            Currency: null
+            Value: 6.027456183070403
+          LifeTimeUrlExpirationTime: 2000-01-23T04:56:07.000+00:00
+          OriginalAmount:
+            Currency: null
+            Value: 6.027456183070403
+          Terminal: null
+          NumberOfProcessedInstallments: 5
+          CreationDateTime: 2000-01-23T04:56:07.000+00:00
+          ExtendedParams:
+            key: ExtendedParams
+          Strategy:
+            Description: Description
+            Id: 0
+            Code: Code
+          PaymentMethod: PaymentMethod
+          FraudCheck:
+            ProviderResultDesc: ProviderResultDesc
+            FraudCheckResult:
+              Description: Description
+              Id: 0
+              Code: Code
+            ProviderReferenceId: ProviderReferenceId
+            ProviderResultCode: ProviderResultCode
+          InstallmentsScheduleInterval: 9
+      properties:
+        ResponseHeader:
+          $ref: '#/components/schemas/ResponseHeader'
+        InstallmentPlan:
+          $ref: '#/components/schemas/InstallmentPlan'
+        GatewayTransactionResults:
+          items:
+            $ref: '#/components/schemas/TransactionResult'
+          type: array
+      type: object
+    ResponseHeader:
+      example:
+        Succeeded: true
+        Errors:
+        - AdditionalInfo: AdditionalInfo
+          Message: Message
+          ErrorCode: ErrorCode
+        - AdditionalInfo: AdditionalInfo
+          Message: Message
+          ErrorCode: ErrorCode
+        TraceId: TraceId
+      properties:
+        Succeeded:
+          type: boolean
+        Errors:
+          items:
+            $ref: '#/components/schemas/Error2'
+          type: array
+        TraceId:
+          type: string
+      required:
+      - Succeeded
+      type: object
+    Error2:
+      example:
+        AdditionalInfo: AdditionalInfo
+        Message: Message
+        ErrorCode: ErrorCode
+      properties:
+        ErrorCode:
+          type: string
+        Message:
+          type: string
+        AdditionalInfo:
+          type: string
+      type: object
+    InstallmentPlan:
+      example:
+        OnHoldLastOpenDate: 2000-01-23T04:56:07.000+00:00
+        IsInAutoRetry: true
+        DelayResolution:
+          Description: Description
+          Id: 0
+          Code: Code
+        IsFullCaptured: true
+        LogoUrl: LogoUrl
+        ActiveCard:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          Address: null
+          CardType:
+            Description: Description
+            Id: 0
+            Code: Code
+          Bin: Bin
+          CardHolderFullName: CardHolderFullName
+          CardBrand:
+            Description: Description
+            Id: 0
+            Code: Code
+          Token: Token
+          CardId: CardId
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+        TestMode: null
+        PurchaseMethod:
+          Description: Description
+          Id: 0
+          Code: Code
+        OnHoldLastOpenUserId: OnHoldLastOpenUserId
+        AllowCardUpdateOnSplititPortals: true
+        SecureAuthorizations:
+        - TransactionResults:
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          Amount:
+            Currency: null
+            Value: 6.027456183070403
+          ProcessingDate: 2000-01-23T04:56:07.000+00:00
+          CardDetails:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            Address: null
+            CardType:
+              Description: Description
+              Id: 0
+              Code: Code
+            Bin: Bin
+            CardHolderFullName: CardHolderFullName
+            CardBrand:
+              Description: Description
+              Id: 0
+              Code: Code
+            Token: Token
+            CardId: CardId
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          Result: true
+        - TransactionResults:
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          Amount:
+            Currency: null
+            Value: 6.027456183070403
+          ProcessingDate: 2000-01-23T04:56:07.000+00:00
+          CardDetails:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            Address: null
+            CardType:
+              Description: Description
+              Id: 0
+              Code: Code
+            Bin: Bin
+            CardHolderFullName: CardHolderFullName
+            CardBrand:
+              Description: Description
+              Id: 0
+              Code: Code
+            Token: Token
+            CardId: CardId
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          Result: true
+        ExternalPaymentProvider: null
+        NumberOfInstallments: 1
+        FundingStatus: null
+        Disputes:
+          EvidenceProvidedOn: 2000-01-23T04:56:07.000+00:00
+          InDispute: true
+        Consumer: null
+        Merchant: null
+        ArePaymentsOnHold: true
+        Installments:
+        - Status:
+            Description: Description
+            Id: 0
+            Code: Code
+          TransactionResults:
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          Amount:
+            Currency: null
+            Value: 6.027456183070403
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          RefundAmount:
+            Currency: null
+            Value: 6.027456183070403
+          OriginalAmount:
+            Currency: null
+            Value: 6.027456183070403
+          IsRefund: true
+          RequiredCredit:
+            Currency: null
+            Value: 6.027456183070403
+          Result: true
+          InstallmentId: InstallmentId
+          InstallmentNumber: 2
+          PaymentMethod: PaymentMethod
+          CardDetails:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            Address: null
+            CardType:
+              Description: Description
+              Id: 0
+              Code: Code
+            Bin: Bin
+            CardHolderFullName: CardHolderFullName
+            CardBrand:
+              Description: Description
+              Id: 0
+              Code: Code
+            Token: Token
+            CardId: CardId
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+        - Status:
+            Description: Description
+            Id: 0
+            Code: Code
+          TransactionResults:
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          - IsInDispute: true
+            GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+            GatewayResult: true
+            AVSResult:
+              Description: Description
+              Code: Code
+            IsChargeback: true
+            DisputeStatus: null
+            SplititGatewayTransactionId: SplititGatewayTransactionId
+            CVCResult:
+              Description: Description
+              Code: Code
+            SplititTransactionId: 7
+            GatewayTransactionId: GatewayTransactionId
+            GatewayResultMessage: GatewayResultMessage
+            OperationType:
+              Description: Description
+              Id: 0
+              Code: Code
+            GatewayResultCode: GatewayResultCode
+          Amount:
+            Currency: null
+            Value: 6.027456183070403
+          ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+          RefundAmount:
+            Currency: null
+            Value: 6.027456183070403
+          OriginalAmount:
+            Currency: null
+            Value: 6.027456183070403
+          IsRefund: true
+          RequiredCredit:
+            Currency: null
+            Value: 6.027456183070403
+          Result: true
+          InstallmentId: InstallmentId
+          InstallmentNumber: 2
+          PaymentMethod: PaymentMethod
+          CardDetails:
+            CardNumber: CardNumber
+            CardExpMonth: CardExpMonth
+            Address: null
+            CardType:
+              Description: Description
+              Id: 0
+              Code: Code
+            Bin: Bin
+            CardHolderFullName: CardHolderFullName
+            CardBrand:
+              Description: Description
+              Id: 0
+              Code: Code
+            Token: Token
+            CardId: CardId
+            CardExpYear: CardExpYear
+            CardCvv: CardCvv
+          CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+        InstallmentPlanNumber: InstallmentPlanNumber
+        RefOrderNumber: RefOrderNumber
+        ScpFundingPercent: 5.637376656633329
+        Amount:
+          Currency: null
+          Value: 6.027456183070403
+        IsChargedBack: true
+        OutstandingAmount:
+          Currency: null
+          Value: 6.027456183070403
+        InstallmentPlanStatus:
+          Description: Description
+          Id: 0
+          Code: Code
+        RefundAmount:
+          Currency: null
+          Value: 6.027456183070403
+        LifeTimeUrlExpirationTime: 2000-01-23T04:56:07.000+00:00
+        OriginalAmount:
+          Currency: null
+          Value: 6.027456183070403
+        Terminal: null
+        NumberOfProcessedInstallments: 5
+        CreationDateTime: 2000-01-23T04:56:07.000+00:00
+        ExtendedParams:
+          key: ExtendedParams
+        Strategy:
+          Description: Description
+          Id: 0
+          Code: Code
+        PaymentMethod: PaymentMethod
+        FraudCheck:
+          ProviderResultDesc: ProviderResultDesc
+          FraudCheckResult:
+            Description: Description
+            Id: 0
+            Code: Code
+          ProviderReferenceId: ProviderReferenceId
+          ProviderResultCode: ProviderResultCode
+        InstallmentsScheduleInterval: 9
+      properties:
+        InstallmentPlanNumber:
+          type: string
+        InstallmentPlanStatus:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        Amount:
+          $ref: '#/components/schemas/Money'
+        OutstandingAmount:
+          $ref: '#/components/schemas/Money'
+        Disputes:
+          $ref: '#/components/schemas/Disputes'
+        NumberOfInstallments:
+          format: int32
+          type: integer
+        NumberOfProcessedInstallments:
+          format: int32
+          type: integer
+        OriginalAmount:
+          $ref: '#/components/schemas/Money'
+        RefundAmount:
+          $ref: '#/components/schemas/Money'
+        Consumer:
+          $ref: '#/components/schemas/ConsumerData'
+        ActiveCard:
+          $ref: '#/components/schemas/CardData2'
+        FraudCheck:
+          $ref: '#/components/schemas/FraudCheck'
+        Terminal:
+          $ref: '#/components/schemas/TerminalRef'
+        Merchant:
+          $ref: '#/components/schemas/MerchantRef'
+        RefOrderNumber:
+          type: string
+        PurchaseMethod:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        Strategy:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        DelayResolution:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        ExtendedParams:
+          additionalProperties:
+            type: string
+          type: object
+        IsFullCaptured:
+          type: boolean
+        IsChargedBack:
+          type: boolean
+        ArePaymentsOnHold:
+          type: boolean
+        ScpFundingPercent:
+          format: decimal
+          type: number
+        FundingStatus:
+          $ref: '#/components/schemas/MoneyFlows'
+        TestMode:
+          $ref: '#/components/schemas/TestModes'
+        CreationDateTime:
+          format: date-time
+          type: string
+        LifeTimeUrlExpirationTime:
+          format: date-time
+          type: string
+        Installments:
+          items:
+            $ref: '#/components/schemas/Installment2'
+          type: array
+        SecureAuthorizations:
+          items:
+            $ref: '#/components/schemas/ReAuthorization'
+          type: array
+        LogoUrl:
+          type: string
+        IsInAutoRetry:
+          type: boolean
+        PaymentMethod:
+          type: string
+        AllowCardUpdateOnSplititPortals:
+          type: boolean
+        OnHoldLastOpenDate:
+          format: date-time
+          type: string
+        OnHoldLastOpenUserId:
+          type: string
+        InstallmentsScheduleInterval:
+          format: int32
+          type: integer
+        ExternalPaymentProvider:
+          $ref: '#/components/schemas/ExternalProviderTypes'
+      required:
+      - AllowCardUpdateOnSplititPortals
+      - ArePaymentsOnHold
+      - CreationDateTime
+      - FundingStatus
+      - InstallmentsScheduleInterval
+      - IsChargedBack
+      - IsFullCaptured
+      - IsInAutoRetry
+      - LifeTimeUrlExpirationTime
+      - NumberOfInstallments
+      - NumberOfProcessedInstallments
+      - ScpFundingPercent
+      - TestMode
+      type: object
+    ReferenceEntityBase:
+      example:
+        Description: Description
+        Id: 0
+        Code: Code
+      properties:
+        Id:
+          format: int64
+          type: integer
+        Code:
+          type: string
+        Description:
+          type: string
+      required:
+      - Id
+      type: object
+    Money:
+      example:
+        Currency: null
+        Value: 6.027456183070403
+      properties:
+        Value:
+          format: decimal
+          type: number
+        Currency:
+          $ref: '#/components/schemas/Currency'
+      required:
+      - Value
+      type: object
+    Currency:
+      allOf:
+      - $ref: '#/components/schemas/ReferenceEntityBase'
+      - $ref: '#/components/schemas/Currency_allOf'
+    Disputes:
+      example:
+        EvidenceProvidedOn: 2000-01-23T04:56:07.000+00:00
+        InDispute: true
+      properties:
+        InDispute:
+          type: boolean
+        EvidenceProvidedOn:
+          format: date-time
+          type: string
+      type: object
+    ConsumerData:
+      allOf:
+      - $ref: '#/components/schemas/User'
+      - type: object
+    User:
+      properties:
+        Id:
+          type: string
+        UniqueId:
+          type: string
+        UserName:
+          type: string
+        FullName:
+          type: string
+        Email:
+          type: string
+        PhoneNumber:
+          type: string
+        CultureName:
+          type: string
+        RoleName:
+          type: string
+          x-deprecated: true
+        IsLocked:
+          type: boolean
+        IsDataRestricted:
+          type: boolean
+        IsDataPrivateRestricted:
+          type: boolean
+      required:
+      - IsDataPrivateRestricted
+      - IsDataRestricted
+      - IsLocked
+      type: object
+    CardData2:
+      example:
+        CardNumber: CardNumber
+        CardExpMonth: CardExpMonth
+        Address: null
+        CardType:
+          Description: Description
+          Id: 0
+          Code: Code
+        Bin: Bin
+        CardHolderFullName: CardHolderFullName
+        CardBrand:
+          Description: Description
+          Id: 0
+          Code: Code
+        Token: Token
+        CardId: CardId
+        CardExpYear: CardExpYear
+        CardCvv: CardCvv
+      properties:
+        CardId:
+          type: string
+        CardNumber:
+          type: string
+        CardExpMonth:
+          type: string
+        CardExpYear:
+          type: string
+        CardBrand:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        CardType:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        Bin:
+          type: string
+        CardHolderFullName:
+          type: string
+        CardCvv:
+          type: string
+        Address:
+          $ref: '#/components/schemas/AddressData2'
+        Token:
+          type: string
+      type: object
+    AddressData2:
+      allOf:
+      - $ref: '#/components/schemas/AddressData22'
+      - type: object
+    AddressData22:
+      properties:
+        AddressLine:
+          type: string
+        AddressLine2:
+          type: string
+        City:
+          type: string
+        Country:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        FullAddressLine:
+          type: string
+      type: object
+    FraudCheck:
+      example:
+        ProviderResultDesc: ProviderResultDesc
+        FraudCheckResult:
+          Description: Description
+          Id: 0
+          Code: Code
+        ProviderReferenceId: ProviderReferenceId
+        ProviderResultCode: ProviderResultCode
+      properties:
+        FraudCheckResult:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        ProviderResultCode:
+          type: string
+        ProviderResultDesc:
+          type: string
+        ProviderReferenceId:
+          type: string
+      type: object
+    TerminalRef:
+      allOf:
+      - $ref: '#/components/schemas/ReferenceEntityBase'
+      - type: object
+    MerchantRef:
+      allOf:
+      - $ref: '#/components/schemas/ReferenceEntityBase'
+      - $ref: '#/components/schemas/MerchantRef_allOf'
+    MoneyFlows:
+      description: ""
+      enum:
+      - NotDetermined
+      - Monthly
+      - SCP
+      - Custom
+      - PendingFunding
+      - Choose
+      type: string
+      x-enumNames:
+      - NotDetermined
+      - Monthly
+      - SCP
+      - Custom
+      - PendingFunding
+      - Choose
+    Installment2:
+      example:
+        Status:
+          Description: Description
+          Id: 0
+          Code: Code
+        TransactionResults:
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        Amount:
+          Currency: null
+          Value: 6.027456183070403
+        ProcessDateTime: 2000-01-23T04:56:07.000+00:00
+        RefundAmount:
+          Currency: null
+          Value: 6.027456183070403
+        OriginalAmount:
+          Currency: null
+          Value: 6.027456183070403
+        IsRefund: true
+        RequiredCredit:
+          Currency: null
+          Value: 6.027456183070403
+        Result: true
+        InstallmentId: InstallmentId
+        InstallmentNumber: 2
+        PaymentMethod: PaymentMethod
+        CardDetails:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          Address: null
+          CardType:
+            Description: Description
+            Id: 0
+            Code: Code
+          Bin: Bin
+          CardHolderFullName: CardHolderFullName
+          CardBrand:
+            Description: Description
+            Id: 0
+            Code: Code
+          Token: Token
+          CardId: CardId
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+        CreatedDateTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        InstallmentId:
+          type: string
+        InstallmentNumber:
+          format: int32
+          type: integer
+        Amount:
+          $ref: '#/components/schemas/Money'
+        OriginalAmount:
+          $ref: '#/components/schemas/Money'
+        RefundAmount:
+          $ref: '#/components/schemas/Money'
+        ProcessDateTime:
+          format: date-time
+          type: string
+        IsRefund:
+          type: boolean
+        RequiredCredit:
+          $ref: '#/components/schemas/Money'
+        CreatedDateTime:
+          format: date-time
+          type: string
+        Status:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        TransactionResults:
+          items:
+            $ref: '#/components/schemas/TransactionResult'
+          type: array
+        CardDetails:
+          $ref: '#/components/schemas/CardData2'
+        Result:
+          type: boolean
+        PaymentMethod:
+          type: string
+      required:
+      - CreatedDateTime
+      - InstallmentNumber
+      - IsRefund
+      type: object
+    TransactionResult:
+      example:
+        IsInDispute: true
+        GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+        GatewayResult: true
+        AVSResult:
+          Description: Description
+          Code: Code
+        IsChargeback: true
+        DisputeStatus: null
+        SplititGatewayTransactionId: SplititGatewayTransactionId
+        CVCResult:
+          Description: Description
+          Code: Code
+        SplititTransactionId: 7
+        GatewayTransactionId: GatewayTransactionId
+        GatewayResultMessage: GatewayResultMessage
+        OperationType:
+          Description: Description
+          Id: 0
+          Code: Code
+        GatewayResultCode: GatewayResultCode
+      properties:
+        GatewayTransactionId:
+          type: string
+        SplititTransactionId:
+          format: int64
+          type: integer
+          x-deprecated: true
+          x-deprecatedMessage: Use TransactionLogId
+        SplititGatewayTransactionId:
+          type: string
+        GatewayResultCode:
+          type: string
+        GatewayResultMessage:
+          type: string
+        OperationType:
+          $ref: '#/components/schemas/ReferenceEntityBase'
+        GatewayResult:
+          type: boolean
+        GatewayTransactionDate:
+          format: date-time
+          type: string
+        IsChargeback:
+          type: boolean
+        AVSResult:
+          $ref: '#/components/schemas/CardResult'
+        CVCResult:
+          $ref: '#/components/schemas/CardResult'
+        IsInDispute:
+          type: boolean
+        DisputeStatus:
+          $ref: '#/components/schemas/DisputeStatus'
+      required:
+      - GatewayResult
+      - GatewayTransactionDate
+      - IsChargeback
+      - SplititTransactionId
+      type: object
+    CardResult:
+      example:
+        Description: Description
+        Code: Code
+      properties:
+        Code:
+          type: string
+        Description:
+          type: string
+      type: object
+    DisputeStatus:
+      description: ""
+      enum:
+      - Open
+      - Won
+      - Lost
+      - Closed
+      - Other
+      - Pending
+      type: string
+      x-enumNames:
+      - Open
+      - Won
+      - Lost
+      - Closed
+      - Other
+      - Pending
+    ReAuthorization:
+      example:
+        TransactionResults:
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        - IsInDispute: true
+          GatewayTransactionDate: 2000-01-23T04:56:07.000+00:00
+          GatewayResult: true
+          AVSResult:
+            Description: Description
+            Code: Code
+          IsChargeback: true
+          DisputeStatus: null
+          SplititGatewayTransactionId: SplititGatewayTransactionId
+          CVCResult:
+            Description: Description
+            Code: Code
+          SplititTransactionId: 7
+          GatewayTransactionId: GatewayTransactionId
+          GatewayResultMessage: GatewayResultMessage
+          OperationType:
+            Description: Description
+            Id: 0
+            Code: Code
+          GatewayResultCode: GatewayResultCode
+        Amount:
+          Currency: null
+          Value: 6.027456183070403
+        ProcessingDate: 2000-01-23T04:56:07.000+00:00
+        CardDetails:
+          CardNumber: CardNumber
+          CardExpMonth: CardExpMonth
+          Address: null
+          CardType:
+            Description: Description
+            Id: 0
+            Code: Code
+          Bin: Bin
+          CardHolderFullName: CardHolderFullName
+          CardBrand:
+            Description: Description
+            Id: 0
+            Code: Code
+          Token: Token
+          CardId: CardId
+          CardExpYear: CardExpYear
+          CardCvv: CardCvv
+        Result: true
+      properties:
+        ProcessingDate:
+          format: date-time
+          type: string
+        Amount:
+          $ref: '#/components/schemas/Money'
+        TransactionResults:
+          items:
+            $ref: '#/components/schemas/TransactionResult'
+          type: array
+        CardDetails:
+          $ref: '#/components/schemas/CardData2'
+        Result:
+          type: boolean
+      type: object
+    ExternalProviderTypes:
+      description: ""
+      enum:
+      - Mock
+      - Visa
+      - Splitit
+      type: string
+      x-enumNames:
+      - Mock
+      - Visa
+      - Splitit
     InstallmentsEligibilityResponse:
       example:
         InstallmentProvider: InstallmentProvider
@@ -3300,6 +5175,18 @@ components:
       properties:
         Identifier:
           $ref: '#/components/schemas/IdentifierContract'
+      type: object
+      example: null
+    Currency_allOf:
+      properties:
+        Symbol:
+          type: string
+      type: object
+      example: null
+    MerchantRef_allOf:
+      properties:
+        Name:
+          type: string
       type: object
       example: null
   securitySchemes:
