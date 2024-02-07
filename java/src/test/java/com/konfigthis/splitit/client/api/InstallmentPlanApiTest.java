@@ -94,10 +94,12 @@ public class InstallmentPlanApiTest {
         PlanData planData = null;
         CardData cardDetails = null;
         AddressData billingAddress = null;
+        String shopperIdentifier = null;
         InstallmentsEligibilityResponse response = api.checkEligibility(xSplititIdempotencyKey, xSplititTouchPoint)
                 .planData(planData)
                 .cardDetails(cardDetails)
                 .billingAddress(billingAddress)
+                .shopperIdentifier(shopperIdentifier)
                 .execute();
         // TODO: test validations
     }

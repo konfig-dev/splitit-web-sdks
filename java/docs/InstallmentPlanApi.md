@@ -151,6 +151,7 @@ public class Example {
     PlanData planData = new PlanData();
     CardData cardDetails = new CardData();
     AddressData billingAddress = new AddressData();
+    String shopperIdentifier = "shopperIdentifier_example";
     try {
       InstallmentsEligibilityResponse result = client
               .installmentPlan
@@ -158,6 +159,7 @@ public class Example {
               .planData(planData)
               .cardDetails(cardDetails)
               .billingAddress(billingAddress)
+              .shopperIdentifier(shopperIdentifier)
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentProvider());
@@ -178,6 +180,7 @@ public class Example {
               .planData(planData)
               .cardDetails(cardDetails)
               .billingAddress(billingAddress)
+              .shopperIdentifier(shopperIdentifier)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

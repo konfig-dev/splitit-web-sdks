@@ -192,6 +192,7 @@ check_eligibility_response = splitit.installment_plan.check_eligibility(
         "card_type": "Credit",
     },
     billing_address={},
+    shopper_identifier="string_example",
 )
 ```
 
@@ -211,6 +212,8 @@ TouchPoint
 
 ##### billing_address: [`AddressData`](./splitit_client/type/address_data.py)<a id="billing_address-addressdatasplitit_clienttypeaddress_datapy"></a>
 
+
+##### shopper_identifier: `str`<a id="shopper_identifier-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

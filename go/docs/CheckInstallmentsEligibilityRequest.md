@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **PlanData** | Pointer to [**PlanData**](PlanData.md) |  | [optional] 
 **CardDetails** | Pointer to [**CardData**](CardData.md) |  | [optional] 
 **BillingAddress** | Pointer to [**AddressData**](AddressData.md) |  | [optional] 
+**ShopperIdentifier** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetBillingAddress sets BillingAddress field to given value.
 `func (o *CheckInstallmentsEligibilityRequest) HasBillingAddress() bool`
 
 HasBillingAddress returns a boolean if a field has been set.
+
+### GetShopperIdentifier
+
+`func (o *CheckInstallmentsEligibilityRequest) GetShopperIdentifier() string`
+
+GetShopperIdentifier returns the ShopperIdentifier field if non-nil, zero value otherwise.
+
+### GetShopperIdentifierOk
+
+`func (o *CheckInstallmentsEligibilityRequest) GetShopperIdentifierOk() (*string, bool)`
+
+GetShopperIdentifierOk returns a tuple with the ShopperIdentifier field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetShopperIdentifier
+
+`func (o *CheckInstallmentsEligibilityRequest) SetShopperIdentifier(v string)`
+
+SetShopperIdentifier sets ShopperIdentifier field to given value.
+
+### HasShopperIdentifier
+
+`func (o *CheckInstallmentsEligibilityRequest) HasShopperIdentifier() bool`
+
+HasShopperIdentifier returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

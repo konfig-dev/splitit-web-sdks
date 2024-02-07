@@ -37,11 +37,13 @@ namespace Splitit.Web.Net.Model
         /// <param name="planData">planData.</param>
         /// <param name="cardDetails">cardDetails.</param>
         /// <param name="billingAddress">billingAddress.</param>
-        public CheckInstallmentsEligibilityRequest(PlanData planData = default(PlanData), CardData cardDetails = default(CardData), AddressData billingAddress = default(AddressData))
+        /// <param name="shopperIdentifier">shopperIdentifier.</param>
+        public CheckInstallmentsEligibilityRequest(PlanData planData = default(PlanData), CardData cardDetails = default(CardData), AddressData billingAddress = default(AddressData), string shopperIdentifier = default(string))
         {
             this.PlanData = planData;
             this.CardDetails = cardDetails;
             this.BillingAddress = billingAddress;
+            this.ShopperIdentifier = shopperIdentifier;
         }
 
         /// <summary>
@@ -63,6 +65,12 @@ namespace Splitit.Web.Net.Model
         public AddressData BillingAddress { get; set; }
 
         /// <summary>
+        /// Gets or Sets ShopperIdentifier
+        /// </summary>
+        [DataMember(Name = "ShopperIdentifier", EmitDefaultValue = false)]
+        public string ShopperIdentifier { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,6 +81,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  PlanData: ").Append(PlanData).Append("\n");
             sb.Append("  CardDetails: ").Append(CardDetails).Append("\n");
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
+            sb.Append("  ShopperIdentifier: ").Append(ShopperIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +131,11 @@ namespace Splitit.Web.Net.Model
                     this.BillingAddress == input.BillingAddress ||
                     (this.BillingAddress != null &&
                     this.BillingAddress.Equals(input.BillingAddress))
+                ) && 
+                (
+                    this.ShopperIdentifier == input.ShopperIdentifier ||
+                    (this.ShopperIdentifier != null &&
+                    this.ShopperIdentifier.Equals(input.ShopperIdentifier))
                 );
         }
 
@@ -145,6 +159,10 @@ namespace Splitit.Web.Net.Model
                 if (this.BillingAddress != null)
                 {
                     hashCode = (hashCode * 59) + this.BillingAddress.GetHashCode();
+                }
+                if (this.ShopperIdentifier != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShopperIdentifier.GetHashCode();
                 }
                 return hashCode;
             }

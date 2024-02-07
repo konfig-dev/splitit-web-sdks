@@ -19,6 +19,7 @@ type CheckInstallmentsEligibilityRequest struct {
 	PlanData *PlanData `json:"PlanData,omitempty"`
 	CardDetails *CardData `json:"CardDetails,omitempty"`
 	BillingAddress *AddressData `json:"BillingAddress,omitempty"`
+	ShopperIdentifier *string `json:"ShopperIdentifier,omitempty"`
 }
 
 // NewCheckInstallmentsEligibilityRequest instantiates a new CheckInstallmentsEligibilityRequest object
@@ -134,6 +135,38 @@ func (o *CheckInstallmentsEligibilityRequest) SetBillingAddress(v AddressData) {
 	o.BillingAddress = &v
 }
 
+// GetShopperIdentifier returns the ShopperIdentifier field value if set, zero value otherwise.
+func (o *CheckInstallmentsEligibilityRequest) GetShopperIdentifier() string {
+	if o == nil || isNil(o.ShopperIdentifier) {
+		var ret string
+		return ret
+	}
+	return *o.ShopperIdentifier
+}
+
+// GetShopperIdentifierOk returns a tuple with the ShopperIdentifier field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CheckInstallmentsEligibilityRequest) GetShopperIdentifierOk() (*string, bool) {
+	if o == nil || isNil(o.ShopperIdentifier) {
+    return nil, false
+	}
+	return o.ShopperIdentifier, true
+}
+
+// HasShopperIdentifier returns a boolean if a field has been set.
+func (o *CheckInstallmentsEligibilityRequest) HasShopperIdentifier() bool {
+	if o != nil && !isNil(o.ShopperIdentifier) {
+		return true
+	}
+
+	return false
+}
+
+// SetShopperIdentifier gets a reference to the given string and assigns it to the ShopperIdentifier field.
+func (o *CheckInstallmentsEligibilityRequest) SetShopperIdentifier(v string) {
+	o.ShopperIdentifier = &v
+}
+
 func (o CheckInstallmentsEligibilityRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.PlanData) {
@@ -144,6 +177,9 @@ func (o CheckInstallmentsEligibilityRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.BillingAddress) {
 		toSerialize["BillingAddress"] = o.BillingAddress
+	}
+	if !isNil(o.ShopperIdentifier) {
+		toSerialize["ShopperIdentifier"] = o.ShopperIdentifier
 	}
 	return json.Marshal(toSerialize)
 }

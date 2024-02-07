@@ -262,6 +262,7 @@ class BaseApi(api_client.Api):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        shopper_identifier: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
@@ -272,6 +273,8 @@ class BaseApi(api_client.Api):
             _body["CardDetails"] = card_details
         if billing_address is not None:
             _body["BillingAddress"] = billing_address
+        if shopper_identifier is not None:
+            _body["ShopperIdentifier"] = shopper_identifier
         args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
@@ -507,6 +510,7 @@ class CheckEligibility(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        shopper_identifier: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -519,6 +523,7 @@ class CheckEligibility(BaseApi):
             plan_data=plan_data,
             card_details=card_details,
             billing_address=billing_address,
+            shopper_identifier=shopper_identifier,
         )
         return await self._acheck_eligibility_oapg(
             body=args.body,
@@ -533,6 +538,7 @@ class CheckEligibility(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        shopper_identifier: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -543,6 +549,7 @@ class CheckEligibility(BaseApi):
             plan_data=plan_data,
             card_details=card_details,
             billing_address=billing_address,
+            shopper_identifier=shopper_identifier,
         )
         return self._check_eligibility_oapg(
             body=args.body,
@@ -559,6 +566,7 @@ class ApiForpost(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        shopper_identifier: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -571,6 +579,7 @@ class ApiForpost(BaseApi):
             plan_data=plan_data,
             card_details=card_details,
             billing_address=billing_address,
+            shopper_identifier=shopper_identifier,
         )
         return await self._acheck_eligibility_oapg(
             body=args.body,
@@ -585,6 +594,7 @@ class ApiForpost(BaseApi):
         plan_data: typing.Optional[PlanData] = None,
         card_details: typing.Optional[CardData] = None,
         billing_address: typing.Optional[AddressData] = None,
+        shopper_identifier: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -595,6 +605,7 @@ class ApiForpost(BaseApi):
             plan_data=plan_data,
             card_details=card_details,
             billing_address=billing_address,
+            shopper_identifier=shopper_identifier,
         )
         return self._check_eligibility_oapg(
             body=args.body,

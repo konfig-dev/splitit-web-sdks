@@ -147,6 +147,8 @@ TouchPoint
 
 ##### BillingAddress: [`AddressData`](./models/address-data.ts)<a id="billingaddress-addressdatamodelsaddress-datats"></a>
 
+##### ShopperIdentifier: `string`<a id="shopperidentifier-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [InstallmentsEligibilityResponse](./models/installments-eligibility-response.ts)

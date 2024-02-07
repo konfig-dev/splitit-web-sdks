@@ -65,6 +65,10 @@ public class ShopperData {
   @SerializedName(SERIALIZED_NAME_CULTURE)
   private String culture;
 
+  public static final String SERIALIZED_NAME_EXTERNAL_ID = "ExternalId";
+  @SerializedName(SERIALIZED_NAME_EXTERNAL_ID)
+  private String externalId;
+
   public ShopperData() {
   }
 
@@ -183,6 +187,35 @@ public class ShopperData {
     this.culture = culture;
   }
 
+
+  public ShopperData externalId(String externalId) {
+    
+    
+    
+    
+    this.externalId = externalId;
+    return this;
+  }
+
+   /**
+   * Get externalId
+   * @return externalId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getExternalId() {
+    return externalId;
+  }
+
+
+  public void setExternalId(String externalId) {
+    
+    
+    
+    this.externalId = externalId;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -241,13 +274,14 @@ public class ShopperData {
     return Objects.equals(this.fullName, shopperData.fullName) &&
         Objects.equals(this.email, shopperData.email) &&
         Objects.equals(this.phoneNumber, shopperData.phoneNumber) &&
-        Objects.equals(this.culture, shopperData.culture)&&
+        Objects.equals(this.culture, shopperData.culture) &&
+        Objects.equals(this.externalId, shopperData.externalId)&&
         Objects.equals(this.additionalProperties, shopperData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullName, email, phoneNumber, culture, additionalProperties);
+    return Objects.hash(fullName, email, phoneNumber, culture, externalId, additionalProperties);
   }
 
   @Override
@@ -258,6 +292,7 @@ public class ShopperData {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    culture: ").append(toIndentedString(culture)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -285,6 +320,7 @@ public class ShopperData {
     openapiFields.add("Email");
     openapiFields.add("PhoneNumber");
     openapiFields.add("Culture");
+    openapiFields.add("ExternalId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -313,6 +349,9 @@ public class ShopperData {
       }
       if ((jsonObj.get("Culture") != null && !jsonObj.get("Culture").isJsonNull()) && !jsonObj.get("Culture").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `Culture` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Culture").toString()));
+      }
+      if ((jsonObj.get("ExternalId") != null && !jsonObj.get("ExternalId").isJsonNull()) && !jsonObj.get("ExternalId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ExternalId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ExternalId").toString()));
       }
   }
 

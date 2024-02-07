@@ -64,6 +64,10 @@ public class CheckInstallmentsEligibilityRequest {
   @SerializedName(SERIALIZED_NAME_BILLING_ADDRESS)
   private AddressData billingAddress;
 
+  public static final String SERIALIZED_NAME_SHOPPER_IDENTIFIER = "ShopperIdentifier";
+  @SerializedName(SERIALIZED_NAME_SHOPPER_IDENTIFIER)
+  private String shopperIdentifier;
+
   public CheckInstallmentsEligibilityRequest() {
   }
 
@@ -153,6 +157,35 @@ public class CheckInstallmentsEligibilityRequest {
     this.billingAddress = billingAddress;
   }
 
+
+  public CheckInstallmentsEligibilityRequest shopperIdentifier(String shopperIdentifier) {
+    
+    
+    
+    
+    this.shopperIdentifier = shopperIdentifier;
+    return this;
+  }
+
+   /**
+   * Get shopperIdentifier
+   * @return shopperIdentifier
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getShopperIdentifier() {
+    return shopperIdentifier;
+  }
+
+
+  public void setShopperIdentifier(String shopperIdentifier) {
+    
+    
+    
+    this.shopperIdentifier = shopperIdentifier;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -210,13 +243,14 @@ public class CheckInstallmentsEligibilityRequest {
     CheckInstallmentsEligibilityRequest checkInstallmentsEligibilityRequest = (CheckInstallmentsEligibilityRequest) o;
     return Objects.equals(this.planData, checkInstallmentsEligibilityRequest.planData) &&
         Objects.equals(this.cardDetails, checkInstallmentsEligibilityRequest.cardDetails) &&
-        Objects.equals(this.billingAddress, checkInstallmentsEligibilityRequest.billingAddress)&&
+        Objects.equals(this.billingAddress, checkInstallmentsEligibilityRequest.billingAddress) &&
+        Objects.equals(this.shopperIdentifier, checkInstallmentsEligibilityRequest.shopperIdentifier)&&
         Objects.equals(this.additionalProperties, checkInstallmentsEligibilityRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(planData, cardDetails, billingAddress, additionalProperties);
+    return Objects.hash(planData, cardDetails, billingAddress, shopperIdentifier, additionalProperties);
   }
 
   @Override
@@ -226,6 +260,7 @@ public class CheckInstallmentsEligibilityRequest {
     sb.append("    planData: ").append(toIndentedString(planData)).append("\n");
     sb.append("    cardDetails: ").append(toIndentedString(cardDetails)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
+    sb.append("    shopperIdentifier: ").append(toIndentedString(shopperIdentifier)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -252,6 +287,7 @@ public class CheckInstallmentsEligibilityRequest {
     openapiFields.add("PlanData");
     openapiFields.add("CardDetails");
     openapiFields.add("BillingAddress");
+    openapiFields.add("ShopperIdentifier");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -280,6 +316,9 @@ public class CheckInstallmentsEligibilityRequest {
       // validate the optional field `BillingAddress`
       if (jsonObj.get("BillingAddress") != null && !jsonObj.get("BillingAddress").isJsonNull()) {
         AddressData.validateJsonObject(jsonObj.getAsJsonObject("BillingAddress"));
+      }
+      if ((jsonObj.get("ShopperIdentifier") != null && !jsonObj.get("ShopperIdentifier").isJsonNull()) && !jsonObj.get("ShopperIdentifier").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ShopperIdentifier` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ShopperIdentifier").toString()));
       }
   }
 

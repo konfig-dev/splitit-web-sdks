@@ -41,5 +41,11 @@ export interface ShopperData {
      * @memberof ShopperData
      */
     'Culture'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ShopperData
+     */
+    'ExternalId'?: string;
 }
 

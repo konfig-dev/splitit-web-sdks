@@ -1998,6 +1998,9 @@
           },
           "Culture": {
             "type": "string"
+          },
+          "ExternalId": {
+            "type": "string"
           }
         }
       },
@@ -3662,6 +3665,9 @@
           },
           "BillingAddress": {
             "$ref": "#/components/schemas/AddressData"
+          },
+          "ShopperIdentifier": {
+            "type": "string"
           }
         }
       },

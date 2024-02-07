@@ -1308,6 +1308,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         PurchaseMethod: null
@@ -1524,6 +1525,7 @@ components:
       example:
         Email: Email
         FullName: FullName
+        ExternalId: ExternalId
         PhoneNumber: PhoneNumber
         Culture: Culture
       properties:
@@ -1534,6 +1536,8 @@ components:
         PhoneNumber:
           type: string
         Culture:
+          type: string
+        ExternalId:
           type: string
       type: object
     AddressData:
@@ -1807,6 +1811,7 @@ components:
           Shopper:
             Email: Email
             FullName: FullName
+            ExternalId: ExternalId
             PhoneNumber: PhoneNumber
             Culture: Culture
           PurchaseMethod: null
@@ -1887,6 +1892,7 @@ components:
           Shopper:
             Email: Email
             FullName: FullName
+            ExternalId: ExternalId
             PhoneNumber: PhoneNumber
             Culture: Culture
           PurchaseMethod: null
@@ -1976,6 +1982,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         PurchaseMethod: null
@@ -2104,6 +2111,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         CheckoutUrl: CheckoutUrl
@@ -2181,6 +2189,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         RedirectUrls:
@@ -2378,6 +2387,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         PurchaseMethod: null
@@ -2508,6 +2518,7 @@ components:
         Shopper:
           Email: Email
           FullName: FullName
+          ExternalId: ExternalId
           PhoneNumber: PhoneNumber
           Culture: Culture
         PaymentMethod:
@@ -4764,6 +4775,7 @@ components:
           State: State
           Country: Country
           City: City
+        ShopperIdentifier: ShopperIdentifier
         CardDetails:
           CardNumber: CardNumber
           CardExpMonth: CardExpMonth
@@ -4779,6 +4791,8 @@ components:
           $ref: '#/components/schemas/CardData'
         BillingAddress:
           $ref: '#/components/schemas/AddressData'
+        ShopperIdentifier:
+          type: string
       type: object
     PlanData:
       example:
@@ -5219,6 +5233,8 @@ components:
           $ref: '#/components/schemas/CardData'
         BillingAddress:
           $ref: '#/components/schemas/AddressData'
+        ShopperIdentifier:
+          type: string
       required:
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint

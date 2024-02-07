@@ -137,11 +137,13 @@ namespace Example
             var planData = new PlanData();
             var cardDetails = new CardData();
             var billingAddress = new AddressData();
+            var shopperIdentifier = "shopperIdentifier_example";
             
             var checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest(
                 planData,
                 cardDetails,
-                billingAddress
+                billingAddress,
+                shopperIdentifier
             );
             
             try

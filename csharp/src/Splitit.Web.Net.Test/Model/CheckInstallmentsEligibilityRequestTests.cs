@@ -80,6 +80,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'BillingAddress'
         }
+        /// <summary>
+        /// Test the property 'ShopperIdentifier'
+        /// </summary>
+        [Fact]
+        public void ShopperIdentifierTest()
+        {
+            // TODO unit test for the property 'ShopperIdentifier'
+        }
 
     }
 
