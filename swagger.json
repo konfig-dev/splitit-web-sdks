@@ -1208,6 +1208,9 @@
         },
         "Culture": {
           "type": "string"
+        },
+        "ExternalId": {
+          "type": "string"
         }
       }
     },
@@ -2872,6 +2875,9 @@
         },
         "BillingAddress": {
           "$ref": "#/definitions/AddressData"
+        },
+        "ShopperIdentifier": {
+          "type": "string"
         }
       }
     },
