@@ -390,6 +390,7 @@ public class InstallmentPlanApiGenerated {
         private PlanData planData;
         private CardData cardDetails;
         private AddressData billingAddress;
+        private String shopperIdentifier;
 
         private CheckEligibilityRequestBuilder(String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.xSplititIdempotencyKey = xSplititIdempotencyKey;
@@ -427,6 +428,16 @@ public class InstallmentPlanApiGenerated {
         }
         
         /**
+         * Set shopperIdentifier
+         * @param shopperIdentifier  (optional)
+         * @return CheckEligibilityRequestBuilder
+         */
+        public CheckEligibilityRequestBuilder shopperIdentifier(String shopperIdentifier) {
+            this.shopperIdentifier = shopperIdentifier;
+            return this;
+        }
+        
+        /**
          * Build call for checkEligibility
          * @param _callback ApiCallback API callback
          * @return Call to execute
@@ -447,6 +458,7 @@ public class InstallmentPlanApiGenerated {
             checkInstallmentsEligibilityRequest.planData(this.planData);
             checkInstallmentsEligibilityRequest.cardDetails(this.cardDetails);
             checkInstallmentsEligibilityRequest.billingAddress(this.billingAddress);
+            checkInstallmentsEligibilityRequest.shopperIdentifier(this.shopperIdentifier);
             return checkInstallmentsEligibilityRequest;
         }
 

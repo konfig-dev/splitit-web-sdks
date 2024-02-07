@@ -46,10 +46,12 @@ class CheckInstallmentsEligibilityRequest(
             @staticmethod
             def BillingAddress() -> typing.Type['AddressData']:
                 return AddressData
+            ShopperIdentifier = schemas.StrSchema
             __annotations__ = {
                 "PlanData": PlanData,
                 "CardDetails": CardDetails,
                 "BillingAddress": BillingAddress,
+                "ShopperIdentifier": ShopperIdentifier,
             }
     
     @typing.overload
@@ -62,9 +64,12 @@ class CheckInstallmentsEligibilityRequest(
     def __getitem__(self, name: typing_extensions.Literal["BillingAddress"]) -> 'AddressData': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ShopperIdentifier"]) -> MetaOapg.properties.ShopperIdentifier: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["PlanData", "CardDetails", "BillingAddress", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["PlanData", "CardDetails", "BillingAddress", "ShopperIdentifier", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -79,9 +84,12 @@ class CheckInstallmentsEligibilityRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["BillingAddress"]) -> typing.Union['AddressData', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ShopperIdentifier"]) -> typing.Union[MetaOapg.properties.ShopperIdentifier, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["PlanData", "CardDetails", "BillingAddress", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["PlanData", "CardDetails", "BillingAddress", "ShopperIdentifier", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -91,6 +99,7 @@ class CheckInstallmentsEligibilityRequest(
         PlanData: typing.Union['PlanData', schemas.Unset] = schemas.unset,
         CardDetails: typing.Union['CardData', schemas.Unset] = schemas.unset,
         BillingAddress: typing.Union['AddressData', schemas.Unset] = schemas.unset,
+        ShopperIdentifier: typing.Union[MetaOapg.properties.ShopperIdentifier, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'CheckInstallmentsEligibilityRequest':
@@ -100,6 +109,7 @@ class CheckInstallmentsEligibilityRequest(
             PlanData=PlanData,
             CardDetails=CardDetails,
             BillingAddress=BillingAddress,
+            ShopperIdentifier=ShopperIdentifier,
             _configuration=_configuration,
             **kwargs,
         )

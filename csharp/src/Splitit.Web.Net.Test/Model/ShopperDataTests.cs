@@ -88,6 +88,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'Culture'
         }
+        /// <summary>
+        /// Test the property 'ExternalId'
+        /// </summary>
+        [Fact]
+        public void ExternalIdTest()
+        {
+            // TODO unit test for the property 'ExternalId'
+        }
 
     }
 

@@ -10,6 +10,7 @@
 |**planData** | [**PlanData**](PlanData.md) |  |  [optional] |
 |**cardDetails** | [**CardData**](CardData.md) |  |  [optional] |
 |**billingAddress** | [**AddressData**](AddressData.md) |  |  [optional] |
+|**shopperIdentifier** | **String** |  |  [optional] |
 
 
 

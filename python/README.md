@@ -3,7 +3,7 @@
 Splitit's Web API
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v2.6.4-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.4)
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.5-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.5)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>
@@ -35,7 +35,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install splitit-web-python-sdk==2.6.4
+pip install splitit-web-python-sdk==2.6.5
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -192,6 +192,7 @@ check_eligibility_response = splitit.installment_plan.check_eligibility(
         "card_type": "Credit",
     },
     billing_address={},
+    shopper_identifier="string_example",
 )
 ```
 
@@ -211,6 +212,8 @@ TouchPoint
 
 ##### billing_address: [`AddressData`](./splitit_client/type/address_data.py)<a id="billing_address-addressdatasplitit_clienttypeaddress_datapy"></a>
 
+
+##### shopper_identifier: `str`<a id="shopper_identifier-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

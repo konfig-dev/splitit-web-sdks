@@ -70,4 +70,12 @@ public class ShopperDataTest {
         // TODO: test culture
     }
 
+    /**
+     * Test the property 'externalId'
+     */
+    @Test
+    public void externalIdTest() {
+        // TODO: test externalId
+    }
+
 }

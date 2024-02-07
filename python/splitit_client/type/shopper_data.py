@@ -27,5 +27,7 @@ class OptionalShopperData(TypedDict, total=False):
 
     Culture: str
 
+    ExternalId: str
+
 class ShopperData(RequiredShopperData, OptionalShopperData):
     pass

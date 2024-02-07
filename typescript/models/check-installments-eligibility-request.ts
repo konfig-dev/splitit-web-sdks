@@ -38,5 +38,11 @@ export interface CheckInstallmentsEligibilityRequest {
      * @memberof CheckInstallmentsEligibilityRequest
      */
     'BillingAddress'?: AddressData;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckInstallmentsEligibilityRequest
+     */
+    'ShopperIdentifier'?: string;
 }
 

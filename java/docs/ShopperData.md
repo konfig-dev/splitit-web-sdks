@@ -11,6 +11,7 @@
 |**email** | **String** |  |  [optional] |
 |**phoneNumber** | **String** |  |  [optional] |
 |**culture** | **String** |  |  [optional] |
+|**externalId** | **String** |  |  [optional] |
 
 
 

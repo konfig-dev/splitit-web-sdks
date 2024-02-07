@@ -28,5 +28,7 @@ class OptionalCheckInstallmentsEligibilityRequest(TypedDict, total=False):
 
     BillingAddress: AddressData
 
+    ShopperIdentifier: str
+
 class CheckInstallmentsEligibilityRequest(RequiredCheckInstallmentsEligibilityRequest, OptionalCheckInstallmentsEligibilityRequest):
     pass

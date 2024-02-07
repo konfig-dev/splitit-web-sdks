@@ -50,6 +50,7 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
         checkInstallmentsEligibilityRequest.SetPlanData(planData)
         checkInstallmentsEligibilityRequest.SetCardDetails(cardDetails)
         checkInstallmentsEligibilityRequest.SetBillingAddress(billingAddress)
+        checkInstallmentsEligibilityRequest.SetShopperIdentifier("null")
         
         request := client.InstallmentPlanApi.CheckEligibility(
             "xSplititIdempotencyKey_example",

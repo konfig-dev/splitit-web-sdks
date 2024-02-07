@@ -65,4 +65,12 @@ public class CheckInstallmentsEligibilityRequestTest {
         // TODO: test billingAddress
     }
 
+    /**
+     * Test the property 'shopperIdentifier'
+     */
+    @Test
+    public void shopperIdentifierTest() {
+        // TODO: test shopperIdentifier
+    }
+
 }

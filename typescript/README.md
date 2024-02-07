@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v3.3.5-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.5)
+[![npm](https://img.shields.io/badge/npm-v3.3.6-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.6)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -146,6 +146,8 @@ TouchPoint
 ##### CardDetails: [`CardData`](./models/card-data.ts)<a id="carddetails-carddatamodelscard-datats"></a>
 
 ##### BillingAddress: [`AddressData`](./models/address-data.ts)<a id="billingaddress-addressdatamodelsaddress-datats"></a>
+
+##### ShopperIdentifier: `string`<a id="shopperidentifier-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

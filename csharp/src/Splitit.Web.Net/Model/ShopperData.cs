@@ -38,12 +38,14 @@ namespace Splitit.Web.Net.Model
         /// <param name="email">email.</param>
         /// <param name="phoneNumber">phoneNumber.</param>
         /// <param name="culture">culture.</param>
-        public ShopperData(string fullName = default(string), string email = default(string), string phoneNumber = default(string), string culture = default(string))
+        /// <param name="externalId">externalId.</param>
+        public ShopperData(string fullName = default(string), string email = default(string), string phoneNumber = default(string), string culture = default(string), string externalId = default(string))
         {
             this.FullName = fullName;
             this.Email = email;
             this.PhoneNumber = phoneNumber;
             this.Culture = culture;
+            this.ExternalId = externalId;
         }
 
         /// <summary>
@@ -71,6 +73,12 @@ namespace Splitit.Web.Net.Model
         public string Culture { get; set; }
 
         /// <summary>
+        /// Gets or Sets ExternalId
+        /// </summary>
+        [DataMember(Name = "ExternalId", EmitDefaultValue = false)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  Culture: ").Append(Culture).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -136,6 +145,11 @@ namespace Splitit.Web.Net.Model
                     this.Culture == input.Culture ||
                     (this.Culture != null &&
                     this.Culture.Equals(input.Culture))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 );
         }
 
@@ -163,6 +177,10 @@ namespace Splitit.Web.Net.Model
                 if (this.Culture != null)
                 {
                     hashCode = (hashCode * 59) + this.Culture.GetHashCode();
+                }
+                if (this.ExternalId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ExternalId.GetHashCode();
                 }
                 return hashCode;
             }

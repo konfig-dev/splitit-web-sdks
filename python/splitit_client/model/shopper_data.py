@@ -38,11 +38,13 @@ class ShopperData(
             Email = schemas.StrSchema
             PhoneNumber = schemas.StrSchema
             Culture = schemas.StrSchema
+            ExternalId = schemas.StrSchema
             __annotations__ = {
                 "FullName": FullName,
                 "Email": Email,
                 "PhoneNumber": PhoneNumber,
                 "Culture": Culture,
+                "ExternalId": ExternalId,
             }
     
     @typing.overload
@@ -58,9 +60,12 @@ class ShopperData(
     def __getitem__(self, name: typing_extensions.Literal["Culture"]) -> MetaOapg.properties.Culture: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ExternalId"]) -> MetaOapg.properties.ExternalId: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["FullName", "Email", "PhoneNumber", "Culture", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["FullName", "Email", "PhoneNumber", "Culture", "ExternalId", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -78,9 +83,12 @@ class ShopperData(
     def get_item_oapg(self, name: typing_extensions.Literal["Culture"]) -> typing.Union[MetaOapg.properties.Culture, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ExternalId"]) -> typing.Union[MetaOapg.properties.ExternalId, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["FullName", "Email", "PhoneNumber", "Culture", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["FullName", "Email", "PhoneNumber", "Culture", "ExternalId", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -91,6 +99,7 @@ class ShopperData(
         Email: typing.Union[MetaOapg.properties.Email, str, schemas.Unset] = schemas.unset,
         PhoneNumber: typing.Union[MetaOapg.properties.PhoneNumber, str, schemas.Unset] = schemas.unset,
         Culture: typing.Union[MetaOapg.properties.Culture, str, schemas.Unset] = schemas.unset,
+        ExternalId: typing.Union[MetaOapg.properties.ExternalId, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'ShopperData':
@@ -101,6 +110,7 @@ class ShopperData(
             Email=Email,
             PhoneNumber=PhoneNumber,
             Culture=Culture,
+            ExternalId=ExternalId,
             _configuration=_configuration,
             **kwargs,
         )
