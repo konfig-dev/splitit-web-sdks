@@ -36,7 +36,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets ShippingStatus
         /// </summary>
         [DataMember(Name = "ShippingStatus", EmitDefaultValue = false)]
-        public ShippingStatus2? ShippingStatus { get; set; }
+        public ShippingStatus? ShippingStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPlanUpdateRequest" /> class.
         /// </summary>
@@ -44,12 +44,14 @@ namespace Splitit.Web.Net.Model
         /// <param name="trackingNumber">trackingNumber.</param>
         /// <param name="capture">capture.</param>
         /// <param name="shippingStatus">shippingStatus.</param>
-        public InstallmentPlanUpdateRequest(string refOrderNumber = default(string), string trackingNumber = default(string), bool capture = default(bool), ShippingStatus2? shippingStatus = default(ShippingStatus2?))
+        /// <param name="newAmount">newAmount.</param>
+        public InstallmentPlanUpdateRequest(string refOrderNumber = default(string), string trackingNumber = default(string), bool capture = default(bool), ShippingStatus? shippingStatus = default(ShippingStatus?), double newAmount = default(double))
         {
             this.RefOrderNumber = refOrderNumber;
             this.TrackingNumber = trackingNumber;
             this.Capture = capture;
             this.ShippingStatus = shippingStatus;
+            this.NewAmount = newAmount;
         }
 
         /// <summary>
@@ -71,6 +73,12 @@ namespace Splitit.Web.Net.Model
         public bool Capture { get; set; }
 
         /// <summary>
+        /// Gets or Sets NewAmount
+        /// </summary>
+        [DataMember(Name = "NewAmount", EmitDefaultValue = false)]
+        public double NewAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
             sb.Append("  Capture: ").Append(Capture).Append("\n");
             sb.Append("  ShippingStatus: ").Append(ShippingStatus).Append("\n");
+            sb.Append("  NewAmount: ").Append(NewAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,6 +143,10 @@ namespace Splitit.Web.Net.Model
                 (
                     this.ShippingStatus == input.ShippingStatus ||
                     this.ShippingStatus.Equals(input.ShippingStatus)
+                ) && 
+                (
+                    this.NewAmount == input.NewAmount ||
+                    this.NewAmount.Equals(input.NewAmount)
                 );
         }
 
@@ -156,6 +169,7 @@ namespace Splitit.Web.Net.Model
                 }
                 hashCode = (hashCode * 59) + this.Capture.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingStatus.GetHashCode();
+                hashCode = (hashCode * 59) + this.NewAmount.GetHashCode();
                 return hashCode;
             }
         }

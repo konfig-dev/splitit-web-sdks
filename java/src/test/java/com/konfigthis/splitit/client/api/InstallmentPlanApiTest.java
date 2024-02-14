@@ -32,6 +32,7 @@ import com.konfigthis.splitit.client.model.InstallmentPlanInitiateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
+import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
 import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
@@ -42,9 +43,7 @@ import com.konfigthis.splitit.client.model.ProcessingData;
 import com.konfigthis.splitit.client.model.RedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.RefundStrategy;
 import com.konfigthis.splitit.client.model.ShippingStatus;
-import com.konfigthis.splitit.client.model.ShippingStatus2;
 import com.konfigthis.splitit.client.model.ShopperData;
-import com.konfigthis.splitit.client.model.UpdateOrderRequest;
 import com.konfigthis.splitit.client.model.UxSettingsModel;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
 import org.junit.jupiter.api.Disabled;
@@ -226,15 +225,17 @@ public class InstallmentPlanApiTest {
         String installmentPlanNumber = null;
         String xSplititIdempotencyKey = null;
         String xSplititTouchPoint = null;
-        String trackingNumber = null;
         String refOrderNumber = null;
-        ShippingStatus shippingStatus = null;
+        String trackingNumber = null;
         Boolean capture = null;
+        ShippingStatus shippingStatus = null;
+        Double newAmount = null;
         InstallmentPlanUpdateResponse response = api.updateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-                .trackingNumber(trackingNumber)
                 .refOrderNumber(refOrderNumber)
-                .shippingStatus(shippingStatus)
+                .trackingNumber(trackingNumber)
                 .capture(capture)
+                .shippingStatus(shippingStatus)
+                .newAmount(newAmount)
                 .execute();
         // TODO: test validations
     }
@@ -249,13 +250,15 @@ public class InstallmentPlanApiTest {
         String refOrderNumber = null;
         String trackingNumber = null;
         Boolean capture = null;
-        ShippingStatus2 shippingStatus = null;
+        ShippingStatus shippingStatus = null;
+        Double newAmount = null;
         IdentifierContract identifier = null;
         InstallmentPlanUpdateResponse response = api.updateOrder2(xSplititIdempotencyKey, xSplititTouchPoint)
                 .refOrderNumber(refOrderNumber)
                 .trackingNumber(trackingNumber)
                 .capture(capture)
                 .shippingStatus(shippingStatus)
+                .newAmount(newAmount)
                 .identifier(identifier)
                 .execute();
         // TODO: test validations

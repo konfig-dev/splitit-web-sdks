@@ -36,7 +36,7 @@ namespace Splitit.Web.Net.Model
         /// Gets or Sets ShippingStatus
         /// </summary>
         [DataMember(Name = "ShippingStatus", EmitDefaultValue = false)]
-        public ShippingStatus2? ShippingStatus { get; set; }
+        public ShippingStatus? ShippingStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPlanUpdateRequestByIdentifier" /> class.
         /// </summary>
@@ -44,13 +44,15 @@ namespace Splitit.Web.Net.Model
         /// <param name="trackingNumber">trackingNumber.</param>
         /// <param name="capture">capture.</param>
         /// <param name="shippingStatus">shippingStatus.</param>
+        /// <param name="newAmount">newAmount.</param>
         /// <param name="identifier">identifier.</param>
-        public InstallmentPlanUpdateRequestByIdentifier(string refOrderNumber = default(string), string trackingNumber = default(string), bool capture = default(bool), ShippingStatus2? shippingStatus = default(ShippingStatus2?), IdentifierContract identifier = default(IdentifierContract))
+        public InstallmentPlanUpdateRequestByIdentifier(string refOrderNumber = default(string), string trackingNumber = default(string), bool capture = default(bool), ShippingStatus? shippingStatus = default(ShippingStatus?), double newAmount = default(double), IdentifierContract identifier = default(IdentifierContract))
         {
             this.RefOrderNumber = refOrderNumber;
             this.TrackingNumber = trackingNumber;
             this.Capture = capture;
             this.ShippingStatus = shippingStatus;
+            this.NewAmount = newAmount;
             this.Identifier = identifier;
         }
 
@@ -73,6 +75,12 @@ namespace Splitit.Web.Net.Model
         public bool Capture { get; set; }
 
         /// <summary>
+        /// Gets or Sets NewAmount
+        /// </summary>
+        [DataMember(Name = "NewAmount", EmitDefaultValue = false)]
+        public double NewAmount { get; set; }
+
+        /// <summary>
         /// Gets or Sets Identifier
         /// </summary>
         [DataMember(Name = "Identifier", EmitDefaultValue = false)]
@@ -90,6 +98,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  TrackingNumber: ").Append(TrackingNumber).Append("\n");
             sb.Append("  Capture: ").Append(Capture).Append("\n");
             sb.Append("  ShippingStatus: ").Append(ShippingStatus).Append("\n");
+            sb.Append("  NewAmount: ").Append(NewAmount).Append("\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -145,6 +154,10 @@ namespace Splitit.Web.Net.Model
                     this.ShippingStatus.Equals(input.ShippingStatus)
                 ) && 
                 (
+                    this.NewAmount == input.NewAmount ||
+                    this.NewAmount.Equals(input.NewAmount)
+                ) && 
+                (
                     this.Identifier == input.Identifier ||
                     (this.Identifier != null &&
                     this.Identifier.Equals(input.Identifier))
@@ -170,6 +183,7 @@ namespace Splitit.Web.Net.Model
                 }
                 hashCode = (hashCode * 59) + this.Capture.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingStatus.GetHashCode();
+                hashCode = (hashCode * 59) + this.NewAmount.GetHashCode();
                 if (this.Identifier != null)
                 {
                     hashCode = (hashCode * 59) + this.Identifier.GetHashCode();

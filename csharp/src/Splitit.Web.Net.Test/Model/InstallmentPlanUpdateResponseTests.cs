@@ -88,6 +88,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'ShippingStatus'
         }
+        /// <summary>
+        /// Test the property 'NewAmount'
+        /// </summary>
+        [Fact]
+        public void NewAmountTest()
+        {
+            // TODO unit test for the property 'NewAmount'
+        }
 
     }
 

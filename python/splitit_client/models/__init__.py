@@ -91,7 +91,6 @@ from splitit_client.model.response_header import ResponseHeader
 from splitit_client.model.search_installment_plan_response_item import SearchInstallmentPlanResponseItem
 from splitit_client.model.search_installment_plan_response_item_extended_params import SearchInstallmentPlanResponseItemExtendedParams
 from splitit_client.model.shipping_status import ShippingStatus
-from splitit_client.model.shipping_status2 import ShippingStatus2
 from splitit_client.model.shopper_data import ShopperData
 from splitit_client.model.spreedly_token import SpreedlyToken
 from splitit_client.model.terminal_ref import TerminalRef
@@ -101,7 +100,6 @@ from splitit_client.model.three_ds_data2 import ThreeDSData2
 from splitit_client.model.three_ds_redirect_data_v3 import ThreeDsRedirectDataV3
 from splitit_client.model.three_ds_redirect_data_v3_params import ThreeDsRedirectDataV3Params
 from splitit_client.model.transaction_result import TransactionResult
-from splitit_client.model.update_order_request import UpdateOrderRequest
 from splitit_client.model.user import User
 from splitit_client.model.ux_settings_model import UxSettingsModel
 from splitit_client.model.ux_settings_model_displayed_installment_options import UxSettingsModelDisplayedInstallmentOptions

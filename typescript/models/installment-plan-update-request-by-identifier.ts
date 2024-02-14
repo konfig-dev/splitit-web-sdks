@@ -13,7 +13,7 @@ import type * as buffer from "buffer"
 import { IdentifierContract } from './identifier-contract';
 import { InstallmentPlanUpdateRequest } from './installment-plan-update-request';
 import { InstallmentPlanUpdateRequestByIdentifierAllOf } from './installment-plan-update-request-by-identifier-all-of';
-import { ShippingStatus2 } from './shipping-status2';
+import { ShippingStatus } from './shipping-status';
 
 /**
  * @type InstallmentPlanUpdateRequestByIdentifier

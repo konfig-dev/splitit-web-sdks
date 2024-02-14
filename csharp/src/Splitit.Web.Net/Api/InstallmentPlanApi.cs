@@ -216,10 +216,10 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        InstallmentPlanUpdateResponse UpdateOrder(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0);
+        InstallmentPlanUpdateResponse UpdateOrder(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -231,10 +231,10 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0);
+        ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -519,11 +519,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -535,11 +535,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -769,9 +769,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -878,9 +878,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -981,17 +981,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1094,17 +1094,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1209,9 +1209,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1318,9 +1318,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1425,17 +1425,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1550,17 +1550,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1673,17 +1673,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1798,17 +1798,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -1925,17 +1925,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2047,17 +2047,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2161,9 +2161,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2279,9 +2279,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2353,12 +2353,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InstallmentPlanUpdateResponse</returns>
-        public InstallmentPlanUpdateResponse UpdateOrder(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0)
+        public InstallmentPlanUpdateResponse UpdateOrder(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0)
         {
-            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
             return localVarResponse.Data;
         }
 
@@ -2369,10 +2369,10 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InstallmentPlanUpdateResponse</returns>
-        public Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0)
+        public Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> UpdateOrderWithHttpInfo(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0)
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
@@ -2392,26 +2392,26 @@ namespace Splitit.Web.Net.Api
                 throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititTouchPoint' when calling InstallmentPlanApi->UpdateOrder");
             }
 
-            // verify the required parameter 'updateOrderRequest' is set
-            if (updateOrderRequest == null)
+            // verify the required parameter 'installmentPlanUpdateRequest' is set
+            if (installmentPlanUpdateRequest == null)
             {
-                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'updateOrderRequest' when calling InstallmentPlanApi->UpdateOrder");
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'installmentPlanUpdateRequest' when calling InstallmentPlanApi->UpdateOrder");
             }
 
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2429,7 +2429,7 @@ namespace Splitit.Web.Net.Api
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Splitit-TouchPoint", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTouchPoint)); // header parameter
-            localVarRequestOptions.Data = updateOrderRequest;
+            localVarRequestOptions.Data = installmentPlanUpdateRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.UpdateOrder";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2472,13 +2472,13 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InstallmentPlanUpdateResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanUpdateResponse> UpdateOrderAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrderWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, operationIndex, cancellationToken).ConfigureAwait(false);
+            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse> localVarResponse = await UpdateOrderWithHttpInfoAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2489,11 +2489,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="installmentPlanNumber"></param>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
-        /// <param name="updateOrderRequest"></param>
+        /// <param name="installmentPlanUpdateRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InstallmentPlanUpdateResponse)</returns>
-        public async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InstallmentPlanUpdateResponse>> UpdateOrderWithHttpInfoAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'installmentPlanNumber' is set
             if (installmentPlanNumber == null)
@@ -2513,27 +2513,27 @@ namespace Splitit.Web.Net.Api
                 throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititTouchPoint' when calling InstallmentPlanApi->UpdateOrder");
             }
 
-            // verify the required parameter 'updateOrderRequest' is set
-            if (updateOrderRequest == null)
+            // verify the required parameter 'installmentPlanUpdateRequest' is set
+            if (installmentPlanUpdateRequest == null)
             {
-                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'updateOrderRequest' when calling InstallmentPlanApi->UpdateOrder");
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'installmentPlanUpdateRequest' when calling InstallmentPlanApi->UpdateOrder");
             }
 
 
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2551,7 +2551,7 @@ namespace Splitit.Web.Net.Api
             localVarRequestOptions.PathParameters.Add("installmentPlanNumber", Splitit.Web.Net.Client.ClientUtils.ParameterToString(installmentPlanNumber)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
             localVarRequestOptions.HeaderParameters.Add("X-Splitit-TouchPoint", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTouchPoint, dataFormat: "")); // header parameter
-            localVarRequestOptions.Data = updateOrderRequest;
+            localVarRequestOptions.Data = installmentPlanUpdateRequest;
 
             localVarRequestOptions.Operation = "InstallmentPlanApi.UpdateOrder";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2635,17 +2635,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json",
                 "application/json",
                 "text/json",
+                "application/json-patch+json",
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2748,17 +2748,17 @@ namespace Splitit.Web.Net.Api
             Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
-                "application/json-patch+json", 
                 "application/json", 
                 "text/json", 
+                "application/json-patch+json", 
                 "application/*+json"
             };
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2863,9 +2863,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
@@ -2972,9 +2972,9 @@ namespace Splitit.Web.Net.Api
 
             // to determine the Accept header
             string[] _accepts = new string[] {
-                "text/plain",
                 "application/json",
-                "text/json"
+                "text/json",
+                "text/plain"
             };
 
             var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);

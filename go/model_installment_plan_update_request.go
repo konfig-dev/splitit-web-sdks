@@ -19,7 +19,8 @@ type InstallmentPlanUpdateRequest struct {
 	RefOrderNumber *string `json:"RefOrderNumber,omitempty"`
 	TrackingNumber *string `json:"TrackingNumber,omitempty"`
 	Capture *bool `json:"Capture,omitempty"`
-	ShippingStatus *ShippingStatus2 `json:"ShippingStatus,omitempty"`
+	ShippingStatus *ShippingStatus `json:"ShippingStatus,omitempty"`
+	NewAmount *float32 `json:"NewAmount,omitempty"`
 }
 
 // NewInstallmentPlanUpdateRequest instantiates a new InstallmentPlanUpdateRequest object
@@ -136,9 +137,9 @@ func (o *InstallmentPlanUpdateRequest) SetCapture(v bool) {
 }
 
 // GetShippingStatus returns the ShippingStatus field value if set, zero value otherwise.
-func (o *InstallmentPlanUpdateRequest) GetShippingStatus() ShippingStatus2 {
+func (o *InstallmentPlanUpdateRequest) GetShippingStatus() ShippingStatus {
 	if o == nil || isNil(o.ShippingStatus) {
-		var ret ShippingStatus2
+		var ret ShippingStatus
 		return ret
 	}
 	return *o.ShippingStatus
@@ -146,7 +147,7 @@ func (o *InstallmentPlanUpdateRequest) GetShippingStatus() ShippingStatus2 {
 
 // GetShippingStatusOk returns a tuple with the ShippingStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InstallmentPlanUpdateRequest) GetShippingStatusOk() (*ShippingStatus2, bool) {
+func (o *InstallmentPlanUpdateRequest) GetShippingStatusOk() (*ShippingStatus, bool) {
 	if o == nil || isNil(o.ShippingStatus) {
     return nil, false
 	}
@@ -162,9 +163,41 @@ func (o *InstallmentPlanUpdateRequest) HasShippingStatus() bool {
 	return false
 }
 
-// SetShippingStatus gets a reference to the given ShippingStatus2 and assigns it to the ShippingStatus field.
-func (o *InstallmentPlanUpdateRequest) SetShippingStatus(v ShippingStatus2) {
+// SetShippingStatus gets a reference to the given ShippingStatus and assigns it to the ShippingStatus field.
+func (o *InstallmentPlanUpdateRequest) SetShippingStatus(v ShippingStatus) {
 	o.ShippingStatus = &v
+}
+
+// GetNewAmount returns the NewAmount field value if set, zero value otherwise.
+func (o *InstallmentPlanUpdateRequest) GetNewAmount() float32 {
+	if o == nil || isNil(o.NewAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.NewAmount
+}
+
+// GetNewAmountOk returns a tuple with the NewAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanUpdateRequest) GetNewAmountOk() (*float32, bool) {
+	if o == nil || isNil(o.NewAmount) {
+    return nil, false
+	}
+	return o.NewAmount, true
+}
+
+// HasNewAmount returns a boolean if a field has been set.
+func (o *InstallmentPlanUpdateRequest) HasNewAmount() bool {
+	if o != nil && !isNil(o.NewAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewAmount gets a reference to the given float32 and assigns it to the NewAmount field.
+func (o *InstallmentPlanUpdateRequest) SetNewAmount(v float32) {
+	o.NewAmount = &v
 }
 
 func (o InstallmentPlanUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -180,6 +213,9 @@ func (o InstallmentPlanUpdateRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.ShippingStatus) {
 		toSerialize["ShippingStatus"] = o.ShippingStatus
+	}
+	if !isNil(o.NewAmount) {
+		toSerialize["NewAmount"] = o.NewAmount
 	}
 	return json.Marshal(toSerialize)
 }

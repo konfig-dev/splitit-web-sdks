@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **RefOrderNumber** | Pointer to **string** |  | [optional] 
 **TrackingNumber** | Pointer to **string** |  | [optional] 
 **Capture** | Pointer to **bool** |  | [optional] 
-**ShippingStatus** | Pointer to [**ShippingStatus2**](ShippingStatus2.md) |  | [optional] 
+**ShippingStatus** | Pointer to [**ShippingStatus**](ShippingStatus.md) |  | [optional] 
+**NewAmount** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -105,20 +106,20 @@ HasCapture returns a boolean if a field has been set.
 
 ### GetShippingStatus
 
-`func (o *InstallmentPlanUpdateRequest) GetShippingStatus() ShippingStatus2`
+`func (o *InstallmentPlanUpdateRequest) GetShippingStatus() ShippingStatus`
 
 GetShippingStatus returns the ShippingStatus field if non-nil, zero value otherwise.
 
 ### GetShippingStatusOk
 
-`func (o *InstallmentPlanUpdateRequest) GetShippingStatusOk() (*ShippingStatus2, bool)`
+`func (o *InstallmentPlanUpdateRequest) GetShippingStatusOk() (*ShippingStatus, bool)`
 
 GetShippingStatusOk returns a tuple with the ShippingStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingStatus
 
-`func (o *InstallmentPlanUpdateRequest) SetShippingStatus(v ShippingStatus2)`
+`func (o *InstallmentPlanUpdateRequest) SetShippingStatus(v ShippingStatus)`
 
 SetShippingStatus sets ShippingStatus field to given value.
 
@@ -127,6 +128,31 @@ SetShippingStatus sets ShippingStatus field to given value.
 `func (o *InstallmentPlanUpdateRequest) HasShippingStatus() bool`
 
 HasShippingStatus returns a boolean if a field has been set.
+
+### GetNewAmount
+
+`func (o *InstallmentPlanUpdateRequest) GetNewAmount() float32`
+
+GetNewAmount returns the NewAmount field if non-nil, zero value otherwise.
+
+### GetNewAmountOk
+
+`func (o *InstallmentPlanUpdateRequest) GetNewAmountOk() (*float32, bool)`
+
+GetNewAmountOk returns a tuple with the NewAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewAmount
+
+`func (o *InstallmentPlanUpdateRequest) SetNewAmount(v float32)`
+
+SetNewAmount sets NewAmount field to given value.
+
+### HasNewAmount
+
+`func (o *InstallmentPlanUpdateRequest) HasNewAmount() bool`
+
+HasNewAmount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

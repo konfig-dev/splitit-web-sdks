@@ -34,14 +34,14 @@ from splitit_client import schemas  # noqa: F401
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse as InstallmentPlanUpdateResponseSchema
 from splitit_client.model.installment_plan_update_request_by_identifier import InstallmentPlanUpdateRequestByIdentifier as InstallmentPlanUpdateRequestByIdentifierSchema
-from splitit_client.model.shipping_status2 import ShippingStatus2 as ShippingStatus2Schema
+from splitit_client.model.shipping_status import ShippingStatus as ShippingStatusSchema
 from splitit_client.model.identifier_contract import IdentifierContract as IdentifierContractSchema
 
 from splitit_client.type.installment_plan_update_request_by_identifier import InstallmentPlanUpdateRequestByIdentifier
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.identifier_contract import IdentifierContract
+from splitit_client.type.shipping_status import ShippingStatus
 from splitit_client.type.installment_plan_update_response import InstallmentPlanUpdateResponse
-from splitit_client.type.shipping_status2 import ShippingStatus2
 
 # Header params
 XSplititIdempotencyKeySchema = schemas.StrSchema
@@ -78,28 +78,28 @@ request_header_x_splitit_touch_point = api_client.HeaderParameter(
     required=True,
 )
 # body param
-SchemaForRequestBodyApplicationJsonPatchjson = InstallmentPlanUpdateRequestByIdentifierSchema
 SchemaForRequestBodyApplicationJson = InstallmentPlanUpdateRequestByIdentifierSchema
 SchemaForRequestBodyTextJson = InstallmentPlanUpdateRequestByIdentifierSchema
+SchemaForRequestBodyApplicationJsonPatchjson = InstallmentPlanUpdateRequestByIdentifierSchema
 SchemaForRequestBodyApplicationJson = InstallmentPlanUpdateRequestByIdentifierSchema
 
 
 request_body_installment_plan_update_request_by_identifier = api_client.RequestBody(
     content={
-        'application/json-patch+json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaForRequestBodyTextJson),
+        'application/json-patch+json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/*+json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
     },
     required=True,
 )
-SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyApplicationJson = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyTextJson = InstallmentPlanUpdateResponseSchema
+SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 
 
 @dataclass
@@ -116,17 +116,17 @@ _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     response_cls_async=ApiResponseFor200Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyTextPlain),
     },
 )
-SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor401ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor401ResponseBodyTextJson = FailedResponseSchema
+SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -143,17 +143,17 @@ _response_for_401 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor401,
     response_cls_async=ApiResponseFor401Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor401ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor401ResponseBodyTextPlain),
     },
 )
-SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor403ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor403ResponseBodyTextJson = FailedResponseSchema
+SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -170,17 +170,17 @@ _response_for_403 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor403,
     response_cls_async=ApiResponseFor403Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor403ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor403ResponseBodyTextPlain),
     },
 )
-SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor404ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor404ResponseBodyTextJson = FailedResponseSchema
+SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -197,17 +197,17 @@ _response_for_404 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor404,
     response_cls_async=ApiResponseFor404Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyTextPlain),
     },
 )
-SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor500ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor500ResponseBodyTextJson = FailedResponseSchema
+SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -224,18 +224,18 @@ _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
     response_cls_async=ApiResponseFor500Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor500ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor500ResponseBodyTextPlain),
     },
 )
 _all_accept_content_types = (
-    'text/plain',
     'application/json',
     'text/json',
+    'text/plain',
 )
 
 
@@ -248,7 +248,8 @@ class BaseApi(api_client.Api):
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
-        shipping_status: typing.Optional[ShippingStatus2] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         identifier: typing.Optional[IdentifierContract] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -262,6 +263,8 @@ class BaseApi(api_client.Api):
             _body["Capture"] = capture
         if shipping_status is not None:
             _body["ShippingStatus"] = shipping_status
+        if new_amount is not None:
+            _body["NewAmount"] = new_amount
         if identifier is not None:
             _body["Identifier"] = identifier
         args.body = _body
@@ -279,7 +282,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -404,7 +407,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -499,7 +502,8 @@ class UpdateOrder2(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
-        shipping_status: typing.Optional[ShippingStatus2] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         identifier: typing.Optional[IdentifierContract] = None,
         **kwargs,
     ) -> typing.Union[
@@ -515,6 +519,7 @@ class UpdateOrder2(BaseApi):
             tracking_number=tracking_number,
             capture=capture,
             shipping_status=shipping_status,
+            new_amount=new_amount,
             identifier=identifier,
         )
         return await self._aupdate_order2_oapg(
@@ -530,7 +535,8 @@ class UpdateOrder2(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
-        shipping_status: typing.Optional[ShippingStatus2] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         identifier: typing.Optional[IdentifierContract] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -544,6 +550,7 @@ class UpdateOrder2(BaseApi):
             tracking_number=tracking_number,
             capture=capture,
             shipping_status=shipping_status,
+            new_amount=new_amount,
             identifier=identifier,
         )
         return self._update_order2_oapg(
@@ -561,7 +568,8 @@ class ApiForput(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
-        shipping_status: typing.Optional[ShippingStatus2] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         identifier: typing.Optional[IdentifierContract] = None,
         **kwargs,
     ) -> typing.Union[
@@ -577,6 +585,7 @@ class ApiForput(BaseApi):
             tracking_number=tracking_number,
             capture=capture,
             shipping_status=shipping_status,
+            new_amount=new_amount,
             identifier=identifier,
         )
         return await self._aupdate_order2_oapg(
@@ -592,7 +601,8 @@ class ApiForput(BaseApi):
         ref_order_number: typing.Optional[str] = None,
         tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
-        shipping_status: typing.Optional[ShippingStatus2] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         identifier: typing.Optional[IdentifierContract] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -606,6 +616,7 @@ class ApiForput(BaseApi):
             tracking_number=tracking_number,
             capture=capture,
             shipping_status=shipping_status,
+            new_amount=new_amount,
             identifier=identifier,
         )
         return self._update_order2_oapg(

@@ -7,7 +7,8 @@ Name | Type | Description | Notes
 **RefOrderNumber** | Pointer to **string** |  | [optional] 
 **TrackingNumber** | Pointer to **string** |  | [optional] 
 **Capture** | Pointer to **bool** |  | [optional] 
-**ShippingStatus** | Pointer to [**ShippingStatus2**](ShippingStatus2.md) |  | [optional] 
+**ShippingStatus** | Pointer to [**ShippingStatus**](ShippingStatus.md) |  | [optional] 
+**NewAmount** | Pointer to **float32** |  | [optional] 
 **Identifier** | Pointer to [**IdentifierContract**](IdentifierContract.md) |  | [optional] 
 
 ## Methods
@@ -106,20 +107,20 @@ HasCapture returns a boolean if a field has been set.
 
 ### GetShippingStatus
 
-`func (o *InstallmentPlanUpdateRequestByIdentifier) GetShippingStatus() ShippingStatus2`
+`func (o *InstallmentPlanUpdateRequestByIdentifier) GetShippingStatus() ShippingStatus`
 
 GetShippingStatus returns the ShippingStatus field if non-nil, zero value otherwise.
 
 ### GetShippingStatusOk
 
-`func (o *InstallmentPlanUpdateRequestByIdentifier) GetShippingStatusOk() (*ShippingStatus2, bool)`
+`func (o *InstallmentPlanUpdateRequestByIdentifier) GetShippingStatusOk() (*ShippingStatus, bool)`
 
 GetShippingStatusOk returns a tuple with the ShippingStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetShippingStatus
 
-`func (o *InstallmentPlanUpdateRequestByIdentifier) SetShippingStatus(v ShippingStatus2)`
+`func (o *InstallmentPlanUpdateRequestByIdentifier) SetShippingStatus(v ShippingStatus)`
 
 SetShippingStatus sets ShippingStatus field to given value.
 
@@ -128,6 +129,31 @@ SetShippingStatus sets ShippingStatus field to given value.
 `func (o *InstallmentPlanUpdateRequestByIdentifier) HasShippingStatus() bool`
 
 HasShippingStatus returns a boolean if a field has been set.
+
+### GetNewAmount
+
+`func (o *InstallmentPlanUpdateRequestByIdentifier) GetNewAmount() float32`
+
+GetNewAmount returns the NewAmount field if non-nil, zero value otherwise.
+
+### GetNewAmountOk
+
+`func (o *InstallmentPlanUpdateRequestByIdentifier) GetNewAmountOk() (*float32, bool)`
+
+GetNewAmountOk returns a tuple with the NewAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewAmount
+
+`func (o *InstallmentPlanUpdateRequestByIdentifier) SetNewAmount(v float32)`
+
+SetNewAmount sets NewAmount field to given value.
+
+### HasNewAmount
+
+`func (o *InstallmentPlanUpdateRequestByIdentifier) HasNewAmount() bool`
+
+HasNewAmount returns a boolean if a field has been set.
 
 ### GetIdentifier
 

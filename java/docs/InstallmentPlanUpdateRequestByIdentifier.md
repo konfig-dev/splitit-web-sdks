@@ -10,7 +10,8 @@
 |**refOrderNumber** | **String** |  |  [optional] |
 |**trackingNumber** | **String** |  |  [optional] |
 |**capture** | **Boolean** |  |  [optional] |
-|**shippingStatus** | **ShippingStatus2** |  |  [optional] |
+|**shippingStatus** | **ShippingStatus** |  |  [optional] |
+|**newAmount** | **Double** |  |  [optional] |
 |**identifier** | [**IdentifierContract**](IdentifierContract.md) |  |  [optional] |
 
 

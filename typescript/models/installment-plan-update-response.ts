@@ -43,5 +43,11 @@ export interface InstallmentPlanUpdateResponse {
      * @memberof InstallmentPlanUpdateResponse
      */
     'ShippingStatus': ShippingStatus;
+    /**
+     * 
+     * @type {number}
+     * @memberof InstallmentPlanUpdateResponse
+     */
+    'NewAmount'?: number;
 }
 

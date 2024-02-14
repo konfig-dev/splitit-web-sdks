@@ -1,6 +1,6 @@
 # Splitit.Web.Net - C#
 
-[![NuGet](https://img.shields.io/badge/NuGet-2.1.5-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/2.1.5)
+[![NuGet](https://img.shields.io/badge/NuGet-2.1.6-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/2.1.6)
 
 Splitit's Web API
 
@@ -180,7 +180,6 @@ Class | Method | HTTP request | Description
  - [ResponseHeader](docs/ResponseHeader.md)
  - [SearchInstallmentPlanResponseItem](docs/SearchInstallmentPlanResponseItem.md)
  - [ShippingStatus](docs/ShippingStatus.md)
- - [ShippingStatus2](docs/ShippingStatus2.md)
  - [ShopperData](docs/ShopperData.md)
  - [SpreedlyToken](docs/SpreedlyToken.md)
  - [TerminalRef](docs/TerminalRef.md)
@@ -189,7 +188,6 @@ Class | Method | HTTP request | Description
  - [ThreeDSData2](docs/ThreeDSData2.md)
  - [ThreeDsRedirectDataV3](docs/ThreeDsRedirectDataV3.md)
  - [TransactionResult](docs/TransactionResult.md)
- - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
  - [User](docs/User.md)
  - [UxSettingsModel](docs/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/VerifyAuthorizationResponse.md)

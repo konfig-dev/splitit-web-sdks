@@ -27,5 +27,7 @@ class OptionalInstallmentPlanUpdateResponse(TypedDict, total=False):
 
     InstallmentPlanNumber: str
 
+    NewAmount: typing.Union[int, float]
+
 class InstallmentPlanUpdateResponse(RequiredInstallmentPlanUpdateResponse, OptionalInstallmentPlanUpdateResponse):
     pass

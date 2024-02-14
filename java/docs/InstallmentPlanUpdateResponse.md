@@ -11,6 +11,7 @@
 |**installmentPlanNumber** | **String** |  |  [optional] |
 |**status** | **PlanStatus** |  |  |
 |**shippingStatus** | **ShippingStatus** |  |  |
+|**newAmount** | **Double** |  |  [optional] |
 
 
 

@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.6-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.6)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.7-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.7)
 
 ## Requirements
 
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-web-java-sdk</artifactId>
-  <version>2.2.6</version>
+  <version>2.2.7</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis:splitit-web-java-sdk:2.2.6"
+   implementation "com.konfigthis:splitit-web-java-sdk:2.2.7"
 }
 ```
 
@@ -92,7 +92,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-web-java-sdk-2.2.6.jar`
+* `target/splitit-web-java-sdk-2.2.7.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -260,7 +260,6 @@ Class | Method | HTTP request | Description
  - [ResponseHeader](docs/ResponseHeader.md)
  - [SearchInstallmentPlanResponseItem](docs/SearchInstallmentPlanResponseItem.md)
  - [ShippingStatus](docs/ShippingStatus.md)
- - [ShippingStatus2](docs/ShippingStatus2.md)
  - [ShopperData](docs/ShopperData.md)
  - [SpreedlyToken](docs/SpreedlyToken.md)
  - [TerminalRef](docs/TerminalRef.md)
@@ -269,7 +268,6 @@ Class | Method | HTTP request | Description
  - [ThreeDSData2](docs/ThreeDSData2.md)
  - [ThreeDsRedirectDataV3](docs/ThreeDsRedirectDataV3.md)
  - [TransactionResult](docs/TransactionResult.md)
- - [UpdateOrderRequest](docs/UpdateOrderRequest.md)
  - [User](docs/User.md)
  - [UxSettingsModel](docs/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/VerifyAuthorizationResponse.md)

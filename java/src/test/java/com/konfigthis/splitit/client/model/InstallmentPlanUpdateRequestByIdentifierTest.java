@@ -18,7 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.splitit.client.model.IdentifierContract;
-import com.konfigthis.splitit.client.model.ShippingStatus2;
+import com.konfigthis.splitit.client.model.ShippingStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -70,6 +70,14 @@ public class InstallmentPlanUpdateRequestByIdentifierTest {
     @Test
     public void shippingStatusTest() {
         // TODO: test shippingStatus
+    }
+
+    /**
+     * Test the property 'newAmount'
+     */
+    @Test
+    public void newAmountTest() {
+        // TODO: test newAmount
     }
 
     /**

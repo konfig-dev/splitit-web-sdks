@@ -19,6 +19,7 @@ type ApiKey =
   | { [apiKeyName: string]: string | undefined };
 
 export interface ConfigurationParameters {
+
     /**
      * parameter for apiKey security
      * @param name security name
@@ -105,6 +106,7 @@ export class Configuration {
     userAgent: string;
 
     constructor(param: ConfigurationParameters) {
+
         this.apiKey = param.apiKey
         if (this.apiKey === undefined) {
             this.apiKey = {}
@@ -114,7 +116,7 @@ export class Configuration {
         this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
-        this.userAgent = param.userAgent === undefined ? "Konfig/3.3.6/typescript" : param.userAgent;
+        this.userAgent = param.userAgent === undefined ? "Konfig/3.3.7/typescript" : param.userAgent;
         this.oauthTokenUrl = param.oauthTokenUrl;
         this.oauthClientId = param.oauthClientId;
         this.oauthClientSecret = param.oauthClientSecret;

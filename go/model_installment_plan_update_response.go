@@ -20,6 +20,7 @@ type InstallmentPlanUpdateResponse struct {
 	InstallmentPlanNumber *string `json:"InstallmentPlanNumber,omitempty"`
 	Status PlanStatus `json:"Status"`
 	ShippingStatus ShippingStatus `json:"ShippingStatus"`
+	NewAmount *float32 `json:"NewAmount,omitempty"`
 }
 
 // NewInstallmentPlanUpdateResponse instantiates a new InstallmentPlanUpdateResponse object
@@ -153,6 +154,38 @@ func (o *InstallmentPlanUpdateResponse) SetShippingStatus(v ShippingStatus) {
 	o.ShippingStatus = v
 }
 
+// GetNewAmount returns the NewAmount field value if set, zero value otherwise.
+func (o *InstallmentPlanUpdateResponse) GetNewAmount() float32 {
+	if o == nil || isNil(o.NewAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.NewAmount
+}
+
+// GetNewAmountOk returns a tuple with the NewAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanUpdateResponse) GetNewAmountOk() (*float32, bool) {
+	if o == nil || isNil(o.NewAmount) {
+    return nil, false
+	}
+	return o.NewAmount, true
+}
+
+// HasNewAmount returns a boolean if a field has been set.
+func (o *InstallmentPlanUpdateResponse) HasNewAmount() bool {
+	if o != nil && !isNil(o.NewAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetNewAmount gets a reference to the given float32 and assigns it to the NewAmount field.
+func (o *InstallmentPlanUpdateResponse) SetNewAmount(v float32) {
+	o.NewAmount = &v
+}
+
 func (o InstallmentPlanUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RefOrderNumber) {
@@ -166,6 +199,9 @@ func (o InstallmentPlanUpdateResponse) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["ShippingStatus"] = o.ShippingStatus
+	}
+	if !isNil(o.NewAmount) {
+		toSerialize["NewAmount"] = o.NewAmount
 	}
 	return json.Marshal(toSerialize)
 }

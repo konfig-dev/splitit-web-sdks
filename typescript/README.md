@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v3.3.6-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.6)
+[![npm](https://img.shields.io/badge/npm-v3.3.7-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.7)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -426,15 +426,17 @@ const updateOrderResponse = await splitit.installmentplan.updateOrder({
 
 TouchPoint
 
+##### RefOrderNumber: `string`<a id="refordernumber-string"></a>
+
 ##### TrackingNumber: `string`<a id="trackingnumber-string"></a>
 
-##### RefOrderNumber: `string`<a id="refordernumber-string"></a>
+##### Capture: `boolean`<a id="capture-boolean"></a>
 
 ##### ShippingStatus: [`ShippingStatus`](./models/shipping-status.ts)<a id="shippingstatus-shippingstatusmodelsshipping-statusts"></a>
 
 
 
-##### Capture: `boolean`<a id="capture-boolean"></a>
+##### NewAmount: `number`<a id="newamount-number"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -476,9 +478,11 @@ TouchPoint
 
 ##### Capture: `boolean`<a id="capture-boolean"></a>
 
-##### ShippingStatus: [`ShippingStatus2`](./models/shipping-status2.ts)<a id="shippingstatus-shippingstatus2modelsshipping-status2ts"></a>
+##### ShippingStatus: [`ShippingStatus`](./models/shipping-status.ts)<a id="shippingstatus-shippingstatusmodelsshipping-statusts"></a>
 
 
+
+##### NewAmount: `number`<a id="newamount-number"></a>
 
 ##### Identifier: [`IdentifierContract`](./models/identifier-contract.ts)<a id="identifier-identifiercontractmodelsidentifier-contractts"></a>
 

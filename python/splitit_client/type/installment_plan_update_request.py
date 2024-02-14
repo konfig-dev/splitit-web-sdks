@@ -14,7 +14,7 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from splitit_client.type.shipping_status2 import ShippingStatus2
+from splitit_client.type.shipping_status import ShippingStatus
 
 class RequiredInstallmentPlanUpdateRequest(TypedDict):
     pass
@@ -26,7 +26,9 @@ class OptionalInstallmentPlanUpdateRequest(TypedDict, total=False):
 
     Capture: bool
 
-    ShippingStatus: ShippingStatus2
+    ShippingStatus: ShippingStatus
+
+    NewAmount: typing.Union[int, float]
 
 class InstallmentPlanUpdateRequest(RequiredInstallmentPlanUpdateRequest, OptionalInstallmentPlanUpdateRequest):
     pass

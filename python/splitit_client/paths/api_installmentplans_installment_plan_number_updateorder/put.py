@@ -31,14 +31,14 @@ import frozendict  # noqa: F401
 
 from splitit_client import schemas  # noqa: F401
 
-from splitit_client.model.update_order_request import UpdateOrderRequest as UpdateOrderRequestSchema
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
 from splitit_client.model.installment_plan_update_response import InstallmentPlanUpdateResponse as InstallmentPlanUpdateResponseSchema
+from splitit_client.model.installment_plan_update_request import InstallmentPlanUpdateRequest as InstallmentPlanUpdateRequestSchema
 from splitit_client.model.shipping_status import ShippingStatus as ShippingStatusSchema
 
 from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.update_order_request import UpdateOrderRequest
 from splitit_client.type.shipping_status import ShippingStatus
+from splitit_client.type.installment_plan_update_request import InstallmentPlanUpdateRequest
 from splitit_client.type.installment_plan_update_response import InstallmentPlanUpdateResponse
 
 from . import path
@@ -104,20 +104,20 @@ request_path_installment_plan_number = api_client.PathParameter(
     required=True,
 )
 # body param
-SchemaForRequestBodyApplicationJsonPatchjson = UpdateOrderRequestSchema
-SchemaForRequestBodyApplicationJson = UpdateOrderRequestSchema
-SchemaForRequestBodyTextJson = UpdateOrderRequestSchema
-SchemaForRequestBodyApplicationJson = UpdateOrderRequestSchema
+SchemaForRequestBodyApplicationJson = InstallmentPlanUpdateRequestSchema
+SchemaForRequestBodyTextJson = InstallmentPlanUpdateRequestSchema
+SchemaForRequestBodyApplicationJsonPatchjson = InstallmentPlanUpdateRequestSchema
+SchemaForRequestBodyApplicationJson = InstallmentPlanUpdateRequestSchema
 
 
-request_body_update_order_request = api_client.RequestBody(
+request_body_installment_plan_update_request = api_client.RequestBody(
     content={
-        'application/json-patch+json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaForRequestBodyTextJson),
+        'application/json-patch+json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJsonPatchjson),
         'application/*+json': api_client.MediaType(
             schema=SchemaForRequestBodyApplicationJson),
     },
@@ -126,9 +126,9 @@ request_body_update_order_request = api_client.RequestBody(
 _auth = [
     'oauth',
 ]
-SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyApplicationJson = InstallmentPlanUpdateResponseSchema
 SchemaFor200ResponseBodyTextJson = InstallmentPlanUpdateResponseSchema
+SchemaFor200ResponseBodyTextPlain = InstallmentPlanUpdateResponseSchema
 
 
 @dataclass
@@ -145,17 +145,17 @@ _response_for_200 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor200,
     response_cls_async=ApiResponseFor200Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor200ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor200ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor200ResponseBodyTextPlain),
     },
 )
-SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor401ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor401ResponseBodyTextJson = FailedResponseSchema
+SchemaFor401ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -172,17 +172,17 @@ _response_for_401 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor401,
     response_cls_async=ApiResponseFor401Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor401ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor401ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor401ResponseBodyTextPlain),
     },
 )
-SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor403ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor403ResponseBodyTextJson = FailedResponseSchema
+SchemaFor403ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -199,17 +199,17 @@ _response_for_403 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor403,
     response_cls_async=ApiResponseFor403Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor403ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor403ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor403ResponseBodyTextPlain),
     },
 )
-SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor404ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor404ResponseBodyTextJson = FailedResponseSchema
+SchemaFor404ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -226,17 +226,17 @@ _response_for_404 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor404,
     response_cls_async=ApiResponseFor404Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor404ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor404ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor404ResponseBodyTextPlain),
     },
 )
-SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 SchemaFor500ResponseBodyApplicationJson = FailedResponseSchema
 SchemaFor500ResponseBodyTextJson = FailedResponseSchema
+SchemaFor500ResponseBodyTextPlain = FailedResponseSchema
 
 
 @dataclass
@@ -253,12 +253,12 @@ _response_for_500 = api_client.OpenApiResponse(
     response_cls=ApiResponseFor500,
     response_cls_async=ApiResponseFor500Async,
     content={
-        'text/plain': api_client.MediaType(
-            schema=SchemaFor500ResponseBodyTextPlain),
         'application/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyApplicationJson),
         'text/json': api_client.MediaType(
             schema=SchemaFor500ResponseBodyTextJson),
+        'text/plain': api_client.MediaType(
+            schema=SchemaFor500ResponseBodyTextPlain),
     },
 )
 _status_code_to_response = {
@@ -269,9 +269,9 @@ _status_code_to_response = {
     '500': _response_for_500,
 }
 _all_accept_content_types = (
-    'text/plain',
     'application/json',
     'text/json',
+    'text/plain',
 )
 
 
@@ -282,23 +282,26 @@ class BaseApi(api_client.Api):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
-        tracking_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
-        shipping_status: typing.Optional[ShippingStatus] = None,
+        tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
         _path_params = {}
         _body = {}
-        if tracking_number is not None:
-            _body["TrackingNumber"] = tracking_number
         if ref_order_number is not None:
             _body["RefOrderNumber"] = ref_order_number
-        if shipping_status is not None:
-            _body["ShippingStatus"] = shipping_status
+        if tracking_number is not None:
+            _body["TrackingNumber"] = tracking_number
         if capture is not None:
             _body["Capture"] = capture
+        if shipping_status is not None:
+            _body["ShippingStatus"] = shipping_status
+        if new_amount is not None:
+            _body["NewAmount"] = new_amount
         args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
@@ -318,7 +321,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -378,7 +381,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             headers=_headers,
         )
-        serialized_data = request_body_update_order_request.serialize(body, content_type)
+        serialized_data = request_body_installment_plan_update_request.serialize(body, content_type)
         if 'fields' in serialized_data:
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
@@ -458,7 +461,7 @@ class BaseApi(api_client.Api):
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
-        content_type: str = 'application/json-patch+json',
+        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -516,7 +519,7 @@ class BaseApi(api_client.Api):
             auth_settings=_auth,
             headers=_headers,
         )
-        serialized_data = request_body_update_order_request.serialize(body, content_type)
+        serialized_data = request_body_installment_plan_update_request.serialize(body, content_type)
         if 'fields' in serialized_data:
             _fields = serialized_data['fields']
         elif 'body' in serialized_data:
@@ -565,10 +568,11 @@ class UpdateOrder(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
-        tracking_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
-        shipping_status: typing.Optional[ShippingStatus] = None,
+        tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -579,10 +583,11 @@ class UpdateOrder(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
-            tracking_number=tracking_number,
             ref_order_number=ref_order_number,
-            shipping_status=shipping_status,
+            tracking_number=tracking_number,
             capture=capture,
+            shipping_status=shipping_status,
+            new_amount=new_amount,
         )
         return await self._aupdate_order_oapg(
             body=args.body,
@@ -596,10 +601,11 @@ class UpdateOrder(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
-        tracking_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
-        shipping_status: typing.Optional[ShippingStatus] = None,
+        tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -608,10 +614,11 @@ class UpdateOrder(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
-            tracking_number=tracking_number,
             ref_order_number=ref_order_number,
-            shipping_status=shipping_status,
+            tracking_number=tracking_number,
             capture=capture,
+            shipping_status=shipping_status,
+            new_amount=new_amount,
         )
         return self._update_order_oapg(
             body=args.body,
@@ -627,10 +634,11 @@ class ApiForput(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
-        tracking_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
-        shipping_status: typing.Optional[ShippingStatus] = None,
+        tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -641,10 +649,11 @@ class ApiForput(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
-            tracking_number=tracking_number,
             ref_order_number=ref_order_number,
-            shipping_status=shipping_status,
+            tracking_number=tracking_number,
             capture=capture,
+            shipping_status=shipping_status,
+            new_amount=new_amount,
         )
         return await self._aupdate_order_oapg(
             body=args.body,
@@ -658,10 +667,11 @@ class ApiForput(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
-        tracking_number: typing.Optional[str] = None,
         ref_order_number: typing.Optional[str] = None,
-        shipping_status: typing.Optional[ShippingStatus] = None,
+        tracking_number: typing.Optional[str] = None,
         capture: typing.Optional[bool] = None,
+        shipping_status: typing.Optional[ShippingStatus] = None,
+        new_amount: typing.Optional[typing.Union[int, float]] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -670,10 +680,11 @@ class ApiForput(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
-            tracking_number=tracking_number,
             ref_order_number=ref_order_number,
-            shipping_status=shipping_status,
+            tracking_number=tracking_number,
             capture=capture,
+            shipping_status=shipping_status,
+            new_amount=new_amount,
         )
         return self._update_order_oapg(
             body=args.body,

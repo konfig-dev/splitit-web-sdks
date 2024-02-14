@@ -48,11 +48,13 @@ class InstallmentPlanUpdateResponse(
                 return ShippingStatus
             RefOrderNumber = schemas.StrSchema
             InstallmentPlanNumber = schemas.StrSchema
+            NewAmount = schemas.NumberSchema
             __annotations__ = {
                 "Status": Status,
                 "ShippingStatus": ShippingStatus,
                 "RefOrderNumber": RefOrderNumber,
                 "InstallmentPlanNumber": InstallmentPlanNumber,
+                "NewAmount": NewAmount,
             }
     
     Status: 'PlanStatus'
@@ -71,9 +73,12 @@ class InstallmentPlanUpdateResponse(
     def __getitem__(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> MetaOapg.properties.InstallmentPlanNumber: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["NewAmount"]) -> MetaOapg.properties.NewAmount: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "ShippingStatus", "RefOrderNumber", "InstallmentPlanNumber", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "ShippingStatus", "RefOrderNumber", "InstallmentPlanNumber", "NewAmount", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -91,9 +96,12 @@ class InstallmentPlanUpdateResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> typing.Union[MetaOapg.properties.InstallmentPlanNumber, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["NewAmount"]) -> typing.Union[MetaOapg.properties.NewAmount, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "ShippingStatus", "RefOrderNumber", "InstallmentPlanNumber", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "ShippingStatus", "RefOrderNumber", "InstallmentPlanNumber", "NewAmount", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -104,6 +112,7 @@ class InstallmentPlanUpdateResponse(
         ShippingStatus: 'ShippingStatus',
         RefOrderNumber: typing.Union[MetaOapg.properties.RefOrderNumber, str, schemas.Unset] = schemas.unset,
         InstallmentPlanNumber: typing.Union[MetaOapg.properties.InstallmentPlanNumber, str, schemas.Unset] = schemas.unset,
+        NewAmount: typing.Union[MetaOapg.properties.NewAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InstallmentPlanUpdateResponse':
@@ -114,6 +123,7 @@ class InstallmentPlanUpdateResponse(
             ShippingStatus=ShippingStatus,
             RefOrderNumber=RefOrderNumber,
             InstallmentPlanNumber=InstallmentPlanNumber,
+            NewAmount=NewAmount,
             _configuration=_configuration,
             **kwargs,
         )

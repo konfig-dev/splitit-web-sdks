@@ -54,6 +54,8 @@ import { InstallmentPlanRefundResponse } from '../models';
 // @ts-ignore
 import { InstallmentPlanSearchResponse } from '../models';
 // @ts-ignore
+import { InstallmentPlanUpdateRequest } from '../models';
+// @ts-ignore
 import { InstallmentPlanUpdateRequestByIdentifier } from '../models';
 // @ts-ignore
 import { InstallmentPlanUpdateResponse } from '../models';
@@ -76,11 +78,7 @@ import { RefundStrategy } from '../models';
 // @ts-ignore
 import { ShippingStatus } from '../models';
 // @ts-ignore
-import { ShippingStatus2 } from '../models';
-// @ts-ignore
 import { ShopperData } from '../models';
-// @ts-ignore
-import { UpdateOrderRequest } from '../models';
 // @ts-ignore
 import { UxSettingsModel } from '../models';
 // @ts-ignore
@@ -190,7 +188,7 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -316,7 +314,7 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -386,7 +384,7 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -450,7 +448,7 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -542,19 +540,19 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} installmentPlanNumber 
          * @param {string} xSplititIdempotencyKey 
          * @param {string} xSplititTouchPoint TouchPoint
-         * @param {UpdateOrderRequest} updateOrderRequest 
+         * @param {InstallmentPlanUpdateRequest} installmentPlanUpdateRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateOrder: async (installmentPlanNumber: string, xSplititIdempotencyKey: string, xSplititTouchPoint: string, updateOrderRequest: UpdateOrderRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateOrder: async (installmentPlanNumber: string, xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanUpdateRequest: InstallmentPlanUpdateRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'installmentPlanNumber' is not null or undefined
             assertParamExists('updateOrder', 'installmentPlanNumber', installmentPlanNumber)
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('updateOrder', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             // verify required parameter 'xSplititTouchPoint' is not null or undefined
             assertParamExists('updateOrder', 'xSplititTouchPoint', xSplititTouchPoint)
-            // verify required parameter 'updateOrderRequest' is not null or undefined
-            assertParamExists('updateOrder', 'updateOrderRequest', updateOrderRequest)
+            // verify required parameter 'installmentPlanUpdateRequest' is not null or undefined
+            assertParamExists('updateOrder', 'installmentPlanUpdateRequest', installmentPlanUpdateRequest)
             const localVarPath = `/api/installmentplans/{installmentPlanNumber}/updateorder`
                 .replace(`{${"installmentPlanNumber"}}`, encodeURIComponent(String(installmentPlanNumber !== undefined ? installmentPlanNumber : `-installmentPlanNumber-`)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -581,19 +579,19 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             requestBeforeHook({
-                requestBody: updateOrderRequest,
+                requestBody: installmentPlanUpdateRequest,
                 queryParameters: localVarQueryParameter,
                 requestConfig: localVarRequestOptions,
                 path: localVarPath,
                 configuration
             });
-            localVarRequestOptions.data = serializeDataIfNeeded(updateOrderRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanUpdateRequest, localVarRequestOptions, configuration)
 
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             return {
@@ -641,7 +639,7 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
 
 
     
-            localVarHeaderParameter['Content-Type'] = 'application/json-patch+json';
+            localVarHeaderParameter['Content-Type'] = 'application/json';
 
 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
@@ -1189,7 +1187,7 @@ export type InstallmentplanApiUpdateOrderRequest = {
     */
     readonly xSplititTouchPoint: string
     
-} & UpdateOrderRequest
+} & InstallmentPlanUpdateRequest
 
 /**
  * Request parameters for updateOrder2 operation in InstallmentplanApi.

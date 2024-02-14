@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.ShippingStatus2;
+import com.konfigthis.splitit.client.model.ShippingStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -64,7 +64,11 @@ public class InstallmentPlanUpdateRequest {
 
   public static final String SERIALIZED_NAME_SHIPPING_STATUS = "ShippingStatus";
   @SerializedName(SERIALIZED_NAME_SHIPPING_STATUS)
-  private ShippingStatus2 shippingStatus;
+  private ShippingStatus shippingStatus;
+
+  public static final String SERIALIZED_NAME_NEW_AMOUNT = "NewAmount";
+  @SerializedName(SERIALIZED_NAME_NEW_AMOUNT)
+  private Double newAmount;
 
   public InstallmentPlanUpdateRequest() {
   }
@@ -156,7 +160,7 @@ public class InstallmentPlanUpdateRequest {
   }
 
 
-  public InstallmentPlanUpdateRequest shippingStatus(ShippingStatus2 shippingStatus) {
+  public InstallmentPlanUpdateRequest shippingStatus(ShippingStatus shippingStatus) {
     
     
     
@@ -172,16 +176,54 @@ public class InstallmentPlanUpdateRequest {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ShippingStatus2 getShippingStatus() {
+  public ShippingStatus getShippingStatus() {
     return shippingStatus;
   }
 
 
-  public void setShippingStatus(ShippingStatus2 shippingStatus) {
+  public void setShippingStatus(ShippingStatus shippingStatus) {
     
     
     
     this.shippingStatus = shippingStatus;
+  }
+
+
+  public InstallmentPlanUpdateRequest newAmount(Double newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount;
+    return this;
+  }
+
+  public InstallmentPlanUpdateRequest newAmount(Integer newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount.doubleValue();
+    return this;
+  }
+
+   /**
+   * Get newAmount
+   * @return newAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Double getNewAmount() {
+    return newAmount;
+  }
+
+
+  public void setNewAmount(Double newAmount) {
+    
+    
+    
+    this.newAmount = newAmount;
   }
 
   /**
@@ -242,13 +284,14 @@ public class InstallmentPlanUpdateRequest {
     return Objects.equals(this.refOrderNumber, installmentPlanUpdateRequest.refOrderNumber) &&
         Objects.equals(this.trackingNumber, installmentPlanUpdateRequest.trackingNumber) &&
         Objects.equals(this.capture, installmentPlanUpdateRequest.capture) &&
-        Objects.equals(this.shippingStatus, installmentPlanUpdateRequest.shippingStatus)&&
+        Objects.equals(this.shippingStatus, installmentPlanUpdateRequest.shippingStatus) &&
+        Objects.equals(this.newAmount, installmentPlanUpdateRequest.newAmount)&&
         Objects.equals(this.additionalProperties, installmentPlanUpdateRequest.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refOrderNumber, trackingNumber, capture, shippingStatus, additionalProperties);
+    return Objects.hash(refOrderNumber, trackingNumber, capture, shippingStatus, newAmount, additionalProperties);
   }
 
   @Override
@@ -259,6 +302,7 @@ public class InstallmentPlanUpdateRequest {
     sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
     sb.append("    capture: ").append(toIndentedString(capture)).append("\n");
     sb.append("    shippingStatus: ").append(toIndentedString(shippingStatus)).append("\n");
+    sb.append("    newAmount: ").append(toIndentedString(newAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -286,6 +330,7 @@ public class InstallmentPlanUpdateRequest {
     openapiFields.add("TrackingNumber");
     openapiFields.add("Capture");
     openapiFields.add("ShippingStatus");
+    openapiFields.add("NewAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
