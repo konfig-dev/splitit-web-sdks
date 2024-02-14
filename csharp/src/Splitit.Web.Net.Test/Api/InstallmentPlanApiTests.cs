@@ -322,21 +322,23 @@ namespace Splitit.Web.Net.Test.Api
             var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
-            var trackingNumber = "trackingNumber_example";
             var refOrderNumber = "refOrderNumber_example";
-            var shippingStatus = ShippingStatus.Pending;
+            var trackingNumber = "trackingNumber_example";
             var capture = false;
+            var shippingStatus = ShippingStatus.Pending;
+            var newAmount = default(double);
             
-            var updateOrderRequest = new UpdateOrderRequest(
-                trackingNumber,
+            var installmentPlanUpdateRequest = new InstallmentPlanUpdateRequest(
                 refOrderNumber,
+                trackingNumber,
+                capture,
                 shippingStatus,
-                capture
+                newAmount
             );
             
             try
             {
-                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)

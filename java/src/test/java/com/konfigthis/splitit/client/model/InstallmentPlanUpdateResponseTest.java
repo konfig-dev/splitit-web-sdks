@@ -72,4 +72,12 @@ public class InstallmentPlanUpdateResponseTest {
         // TODO: test shippingStatus
     }
 
+    /**
+     * Test the property 'newAmount'
+     */
+    @Test
+    public void newAmountTest() {
+        // TODO: test newAmount
+    }
+
 }

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **InstallmentPlanNumber** | Pointer to **string** |  | [optional] 
 **Status** | [**PlanStatus**](PlanStatus.md) |  | 
 **ShippingStatus** | [**ShippingStatus**](ShippingStatus.md) |  | 
+**NewAmount** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ and a boolean to check if the value has been set.
 
 SetShippingStatus sets ShippingStatus field to given value.
 
+
+### GetNewAmount
+
+`func (o *InstallmentPlanUpdateResponse) GetNewAmount() float32`
+
+GetNewAmount returns the NewAmount field if non-nil, zero value otherwise.
+
+### GetNewAmountOk
+
+`func (o *InstallmentPlanUpdateResponse) GetNewAmountOk() (*float32, bool)`
+
+GetNewAmountOk returns a tuple with the NewAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewAmount
+
+`func (o *InstallmentPlanUpdateResponse) SetNewAmount(v float32)`
+
+SetNewAmount sets NewAmount field to given value.
+
+### HasNewAmount
+
+`func (o *InstallmentPlanUpdateResponse) HasNewAmount() bool`
+
+HasNewAmount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

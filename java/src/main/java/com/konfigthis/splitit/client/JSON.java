@@ -179,7 +179,6 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.ThreeDSData2.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.ThreeDsRedirectDataV3.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.TransactionResult.CustomTypeAdapterFactory());
-        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.UpdateOrderRequest.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.User.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.UxSettingsModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.VerifyAuthorizationResponse.CustomTypeAdapterFactory());

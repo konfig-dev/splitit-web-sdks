@@ -768,21 +768,23 @@ namespace Example
             var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
-            var trackingNumber = "trackingNumber_example";
             var refOrderNumber = "refOrderNumber_example";
-            var shippingStatus = ShippingStatus.Pending;
+            var trackingNumber = "trackingNumber_example";
             var capture = false;
+            var shippingStatus = ShippingStatus.Pending;
+            var newAmount = default(double);
             
-            var updateOrderRequest = new UpdateOrderRequest(
-                trackingNumber,
+            var installmentPlanUpdateRequest = new InstallmentPlanUpdateRequest(
                 refOrderNumber,
+                trackingNumber,
+                capture,
                 shippingStatus,
-                capture
+                newAmount
             );
             
             try
             {
-                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+                InstallmentPlanUpdateResponse result = client.InstallmentPlan.UpdateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -808,7 +810,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+    ApiResponse<InstallmentPlanUpdateResponse> response = apiInstance.UpdateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -828,7 +830,7 @@ catch (ApiException e)
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
 | **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
-| **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md) |  |  |
+| **installmentPlanUpdateRequest** | [**InstallmentPlanUpdateRequest**](InstallmentPlanUpdateRequest.md) |  |  |
 
 ### Return type
 

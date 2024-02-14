@@ -108,7 +108,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -217,8 +217,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -331,7 +331,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -469,8 +469,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -614,8 +614,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -722,8 +722,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -831,7 +831,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -840,7 +840,7 @@ public class Example {
 
 <a name="updateOrder"></a>
 # **updateOrder**
-> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest).execute();
+> InstallmentPlanUpdateResponse updateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest).execute();
 
 
 
@@ -872,24 +872,27 @@ public class Example {
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
-    String trackingNumber = "trackingNumber_example";
     String refOrderNumber = "refOrderNumber_example";
-    ShippingStatus shippingStatus = ShippingStatus.fromValue("Pending");
+    String trackingNumber = "trackingNumber_example";
     Boolean capture = true;
+    ShippingStatus shippingStatus = ShippingStatus.fromValue("Pending");
+    Double newAmount = 3.4D;
     try {
       InstallmentPlanUpdateResponse result = client
               .installmentPlan
               .updateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .trackingNumber(trackingNumber)
               .refOrderNumber(refOrderNumber)
-              .shippingStatus(shippingStatus)
+              .trackingNumber(trackingNumber)
               .capture(capture)
+              .shippingStatus(shippingStatus)
+              .newAmount(newAmount)
               .execute();
       System.out.println(result);
       System.out.println(result.getRefOrderNumber());
       System.out.println(result.getInstallmentPlanNumber());
       System.out.println(result.getStatus());
       System.out.println(result.getShippingStatus());
+      System.out.println(result.getNewAmount());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder");
       System.err.println("Status code: " + e.getStatusCode());
@@ -903,10 +906,11 @@ public class Example {
       ApiResponse<InstallmentPlanUpdateResponse> response = client
               .installmentPlan
               .updateOrder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .trackingNumber(trackingNumber)
               .refOrderNumber(refOrderNumber)
-              .shippingStatus(shippingStatus)
+              .trackingNumber(trackingNumber)
               .capture(capture)
+              .shippingStatus(shippingStatus)
+              .newAmount(newAmount)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -932,7 +936,7 @@ public class Example {
 | **installmentPlanNumber** | **String**|  | |
 | **xSplititIdempotencyKey** | **String**|  | |
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
-| **updateOrderRequest** | [**UpdateOrderRequest**](UpdateOrderRequest.md)|  | |
+| **installmentPlanUpdateRequest** | [**InstallmentPlanUpdateRequest**](InstallmentPlanUpdateRequest.md)|  | |
 
 ### Return type
 
@@ -944,8 +948,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -988,7 +992,8 @@ public class Example {
     String refOrderNumber = "refOrderNumber_example";
     String trackingNumber = "trackingNumber_example";
     Boolean capture = true;
-    ShippingStatus2 shippingStatus = ShippingStatus2.fromValue("Shipped");
+    ShippingStatus shippingStatus = ShippingStatus.fromValue("Pending");
+    Double newAmount = 3.4D;
     IdentifierContract identifier = new IdentifierContract();
     try {
       InstallmentPlanUpdateResponse result = client
@@ -998,6 +1003,7 @@ public class Example {
               .trackingNumber(trackingNumber)
               .capture(capture)
               .shippingStatus(shippingStatus)
+              .newAmount(newAmount)
               .identifier(identifier)
               .execute();
       System.out.println(result);
@@ -1005,6 +1011,7 @@ public class Example {
       System.out.println(result.getInstallmentPlanNumber());
       System.out.println(result.getStatus());
       System.out.println(result.getShippingStatus());
+      System.out.println(result.getNewAmount());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#updateOrder2");
       System.err.println("Status code: " + e.getStatusCode());
@@ -1022,6 +1029,7 @@ public class Example {
               .trackingNumber(trackingNumber)
               .capture(capture)
               .shippingStatus(shippingStatus)
+              .newAmount(newAmount)
               .identifier(identifier)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
@@ -1059,8 +1067,8 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
- - **Accept**: text/plain, application/json, text/json
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1160,7 +1168,7 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
+ - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
 | Status code | Description | Response headers |

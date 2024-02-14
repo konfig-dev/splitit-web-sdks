@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.splitit.client.model.IdentifierContract;
-import com.konfigthis.splitit.client.model.ShippingStatus2;
+import com.konfigthis.splitit.client.model.ShippingStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -65,7 +65,11 @@ public class InstallmentPlanUpdateRequestByIdentifier {
 
   public static final String SERIALIZED_NAME_SHIPPING_STATUS = "ShippingStatus";
   @SerializedName(SERIALIZED_NAME_SHIPPING_STATUS)
-  private ShippingStatus2 shippingStatus;
+  private ShippingStatus shippingStatus;
+
+  public static final String SERIALIZED_NAME_NEW_AMOUNT = "NewAmount";
+  @SerializedName(SERIALIZED_NAME_NEW_AMOUNT)
+  private Double newAmount;
 
   public static final String SERIALIZED_NAME_IDENTIFIER = "Identifier";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER)
@@ -161,7 +165,7 @@ public class InstallmentPlanUpdateRequestByIdentifier {
   }
 
 
-  public InstallmentPlanUpdateRequestByIdentifier shippingStatus(ShippingStatus2 shippingStatus) {
+  public InstallmentPlanUpdateRequestByIdentifier shippingStatus(ShippingStatus shippingStatus) {
     
     
     
@@ -177,16 +181,54 @@ public class InstallmentPlanUpdateRequestByIdentifier {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public ShippingStatus2 getShippingStatus() {
+  public ShippingStatus getShippingStatus() {
     return shippingStatus;
   }
 
 
-  public void setShippingStatus(ShippingStatus2 shippingStatus) {
+  public void setShippingStatus(ShippingStatus shippingStatus) {
     
     
     
     this.shippingStatus = shippingStatus;
+  }
+
+
+  public InstallmentPlanUpdateRequestByIdentifier newAmount(Double newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount;
+    return this;
+  }
+
+  public InstallmentPlanUpdateRequestByIdentifier newAmount(Integer newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount.doubleValue();
+    return this;
+  }
+
+   /**
+   * Get newAmount
+   * @return newAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Double getNewAmount() {
+    return newAmount;
+  }
+
+
+  public void setNewAmount(Double newAmount) {
+    
+    
+    
+    this.newAmount = newAmount;
   }
 
 
@@ -277,13 +319,14 @@ public class InstallmentPlanUpdateRequestByIdentifier {
         Objects.equals(this.trackingNumber, installmentPlanUpdateRequestByIdentifier.trackingNumber) &&
         Objects.equals(this.capture, installmentPlanUpdateRequestByIdentifier.capture) &&
         Objects.equals(this.shippingStatus, installmentPlanUpdateRequestByIdentifier.shippingStatus) &&
+        Objects.equals(this.newAmount, installmentPlanUpdateRequestByIdentifier.newAmount) &&
         Objects.equals(this.identifier, installmentPlanUpdateRequestByIdentifier.identifier)&&
         Objects.equals(this.additionalProperties, installmentPlanUpdateRequestByIdentifier.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refOrderNumber, trackingNumber, capture, shippingStatus, identifier, additionalProperties);
+    return Objects.hash(refOrderNumber, trackingNumber, capture, shippingStatus, newAmount, identifier, additionalProperties);
   }
 
   @Override
@@ -294,6 +337,7 @@ public class InstallmentPlanUpdateRequestByIdentifier {
     sb.append("    trackingNumber: ").append(toIndentedString(trackingNumber)).append("\n");
     sb.append("    capture: ").append(toIndentedString(capture)).append("\n");
     sb.append("    shippingStatus: ").append(toIndentedString(shippingStatus)).append("\n");
+    sb.append("    newAmount: ").append(toIndentedString(newAmount)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
@@ -322,6 +366,7 @@ public class InstallmentPlanUpdateRequestByIdentifier {
     openapiFields.add("TrackingNumber");
     openapiFields.add("Capture");
     openapiFields.add("ShippingStatus");
+    openapiFields.add("NewAmount");
     openapiFields.add("Identifier");
 
     // a set of required properties/fields (JSON key names)

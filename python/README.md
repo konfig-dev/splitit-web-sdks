@@ -529,10 +529,11 @@ update_order_response = splitit.installment_plan.update_order(
     installment_plan_number="installmentPlanNumber_example",
     x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
     x_splitit_touch_point="",
-    tracking_number="string_example",
     ref_order_number="string_example",
-    shipping_status="Pending",
+    tracking_number="string_example",
     capture=True,
+    shipping_status="Pending",
+    new_amount=3.14,
 )
 ```
 
@@ -546,17 +547,19 @@ update_order_response = splitit.installment_plan.update_order(
 
 TouchPoint
 
-##### tracking_number: `str`<a id="tracking_number-str"></a>
-
 ##### ref_order_number: `str`<a id="ref_order_number-str"></a>
 
-##### shipping_status: [`ShippingStatus`](./splitit_client/type/shipping_status.py)<a id="shipping_status-shippingstatussplitit_clienttypeshipping_statuspy"></a>
+##### tracking_number: `str`<a id="tracking_number-str"></a>
 
 ##### capture: `bool`<a id="capture-bool"></a>
 
+##### shipping_status: [`ShippingStatus`](./splitit_client/type/shipping_status.py)<a id="shipping_status-shippingstatussplitit_clienttypeshipping_statuspy"></a>
+
+##### new_amount: `Union[int, float]`<a id="new_amount-unionint-float"></a>
+
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 
-[`UpdateOrderRequest`](./splitit_client/type/update_order_request.py)
+[`InstallmentPlanUpdateRequest`](./splitit_client/type/installment_plan_update_request.py)
 #### 🔄 Return<a id="🔄-return"></a>
 
 [`InstallmentPlanUpdateResponse`](./splitit_client/type/installment_plan_update_response.py)
@@ -583,7 +586,8 @@ update_order2_response = splitit.installment_plan.update_order2(
     ref_order_number="string_example",
     tracking_number="string_example",
     capture=True,
-    shipping_status="Shipped",
+    shipping_status="Pending",
+    new_amount=3.14,
     identifier={},
 )
 ```
@@ -602,7 +606,9 @@ TouchPoint
 
 ##### capture: `bool`<a id="capture-bool"></a>
 
-##### shipping_status: [`ShippingStatus2`](./splitit_client/type/shipping_status2.py)<a id="shipping_status-shippingstatus2splitit_clienttypeshipping_status2py"></a>
+##### shipping_status: [`ShippingStatus`](./splitit_client/type/shipping_status.py)<a id="shipping_status-shippingstatussplitit_clienttypeshipping_statuspy"></a>
+
+##### new_amount: `Union[int, float]`<a id="new_amount-unionint-float"></a>
 
 ##### identifier: [`IdentifierContract`](./splitit_client/type/identifier_contract.py)<a id="identifier-identifiercontractsplitit_clienttypeidentifier_contractpy"></a>
 

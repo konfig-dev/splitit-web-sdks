@@ -203,17 +203,18 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
     t.Run("Test InstallmentPlanApiService UpdateOrder", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         
-        updateOrderRequest := *splitit.NewUpdateOrderRequest()
-        updateOrderRequest.SetTrackingNumber("null")
-        updateOrderRequest.SetRefOrderNumber("null")
-        updateOrderRequest.SetShippingStatus(null)
-        updateOrderRequest.SetCapture(null)
+        installmentPlanUpdateRequest := *splitit.NewInstallmentPlanUpdateRequest()
+        installmentPlanUpdateRequest.SetRefOrderNumber("null")
+        installmentPlanUpdateRequest.SetTrackingNumber("null")
+        installmentPlanUpdateRequest.SetCapture(null)
+        installmentPlanUpdateRequest.SetShippingStatus(null)
+        installmentPlanUpdateRequest.SetNewAmount(null)
         
         request := client.InstallmentPlanApi.UpdateOrder(
             "installmentPlanNumber_example",
             "xSplititIdempotencyKey_example",
             """",
-            updateOrderRequest,
+            installmentPlanUpdateRequest,
         )
         
         resp, httpRes, err := request.Execute()

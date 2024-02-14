@@ -67,6 +67,10 @@ public class InstallmentPlanUpdateResponse {
   @SerializedName(SERIALIZED_NAME_SHIPPING_STATUS)
   private ShippingStatus shippingStatus;
 
+  public static final String SERIALIZED_NAME_NEW_AMOUNT = "NewAmount";
+  @SerializedName(SERIALIZED_NAME_NEW_AMOUNT)
+  private Double newAmount;
+
   public InstallmentPlanUpdateResponse() {
   }
 
@@ -185,6 +189,44 @@ public class InstallmentPlanUpdateResponse {
     this.shippingStatus = shippingStatus;
   }
 
+
+  public InstallmentPlanUpdateResponse newAmount(Double newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount;
+    return this;
+  }
+
+  public InstallmentPlanUpdateResponse newAmount(Integer newAmount) {
+    
+    
+    
+    
+    this.newAmount = newAmount.doubleValue();
+    return this;
+  }
+
+   /**
+   * Get newAmount
+   * @return newAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Double getNewAmount() {
+    return newAmount;
+  }
+
+
+  public void setNewAmount(Double newAmount) {
+    
+    
+    
+    this.newAmount = newAmount;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -243,13 +285,14 @@ public class InstallmentPlanUpdateResponse {
     return Objects.equals(this.refOrderNumber, installmentPlanUpdateResponse.refOrderNumber) &&
         Objects.equals(this.installmentPlanNumber, installmentPlanUpdateResponse.installmentPlanNumber) &&
         Objects.equals(this.status, installmentPlanUpdateResponse.status) &&
-        Objects.equals(this.shippingStatus, installmentPlanUpdateResponse.shippingStatus)&&
+        Objects.equals(this.shippingStatus, installmentPlanUpdateResponse.shippingStatus) &&
+        Objects.equals(this.newAmount, installmentPlanUpdateResponse.newAmount)&&
         Objects.equals(this.additionalProperties, installmentPlanUpdateResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refOrderNumber, installmentPlanNumber, status, shippingStatus, additionalProperties);
+    return Objects.hash(refOrderNumber, installmentPlanNumber, status, shippingStatus, newAmount, additionalProperties);
   }
 
   @Override
@@ -260,6 +303,7 @@ public class InstallmentPlanUpdateResponse {
     sb.append("    installmentPlanNumber: ").append(toIndentedString(installmentPlanNumber)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    shippingStatus: ").append(toIndentedString(shippingStatus)).append("\n");
+    sb.append("    newAmount: ").append(toIndentedString(newAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -287,6 +331,7 @@ public class InstallmentPlanUpdateResponse {
     openapiFields.add("InstallmentPlanNumber");
     openapiFields.add("Status");
     openapiFields.add("ShippingStatus");
+    openapiFields.add("NewAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

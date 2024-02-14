@@ -42,6 +42,7 @@ import com.konfigthis.splitit.client.model.InstallmentPlanInitiateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanRefundResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanSearchResponse;
+import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateRequestByIdentifier;
 import com.konfigthis.splitit.client.model.InstallmentPlanUpdateResponse;
 import com.konfigthis.splitit.client.model.InstallmentsEligibilityResponse;
@@ -52,9 +53,7 @@ import com.konfigthis.splitit.client.model.ProcessingData;
 import com.konfigthis.splitit.client.model.RedirectionEndpointsModel;
 import com.konfigthis.splitit.client.model.RefundStrategy;
 import com.konfigthis.splitit.client.model.ShippingStatus;
-import com.konfigthis.splitit.client.model.ShippingStatus2;
 import com.konfigthis.splitit.client.model.ShopperData;
-import com.konfigthis.splitit.client.model.UpdateOrderRequest;
 import com.konfigthis.splitit.client.model.UxSettingsModel;
 import com.konfigthis.splitit.client.model.VerifyAuthorizationResponse;
 
@@ -137,9 +136,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -324,9 +323,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -334,9 +333,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -567,9 +566,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -762,9 +761,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -772,9 +771,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1086,9 +1085,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1096,9 +1095,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1407,9 +1406,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1417,9 +1416,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1640,9 +1639,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1815,7 +1814,7 @@ public class InstallmentPlanApiGenerated {
 
         return new SearchRequestBuilder(xSplititIdempotencyKey, xSplititTouchPoint);
     }
-    private okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrderCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -1829,7 +1828,7 @@ public class InstallmentPlanApiGenerated {
             basePath = null;
         }
 
-        Object localVarPostBody = updateOrderRequest;
+        Object localVarPostBody = installmentPlanUpdateRequest;
 
         // create path and map variables
         String localVarPath = "/api/installmentplans/{installmentPlanNumber}/updateorder"
@@ -1850,9 +1849,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -1860,9 +1859,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -1875,7 +1874,7 @@ public class InstallmentPlanApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateOrderValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateOrderValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling updateOrder(Async)");
@@ -1891,25 +1890,25 @@ public class InstallmentPlanApiGenerated {
             throw new ApiException("Missing the required parameter 'xSplititTouchPoint' when calling updateOrder(Async)");
         }
 
-        // verify the required parameter 'updateOrderRequest' is set
-        if (updateOrderRequest == null) {
-            throw new ApiException("Missing the required parameter 'updateOrderRequest' when calling updateOrder(Async)");
+        // verify the required parameter 'installmentPlanUpdateRequest' is set
+        if (installmentPlanUpdateRequest == null) {
+            throw new ApiException("Missing the required parameter 'installmentPlanUpdateRequest' when calling updateOrder(Async)");
         }
 
-        return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, _callback);
+        return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, _callback);
 
     }
 
 
-    private ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, UpdateOrderRequest updateOrderRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, null);
+    private ApiResponse<InstallmentPlanUpdateResponse> updateOrderWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call updateOrderAsync(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, UpdateOrderRequest updateOrderRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
+    private okhttp3.Call updateOrderAsync(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanUpdateRequest installmentPlanUpdateRequest, final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, _callback);
+        okhttp3.Call localVarCall = updateOrderValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanUpdateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1919,10 +1918,11 @@ public class InstallmentPlanApiGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
-        private String trackingNumber;
         private String refOrderNumber;
-        private ShippingStatus shippingStatus;
+        private String trackingNumber;
         private Boolean capture;
+        private ShippingStatus shippingStatus;
+        private Double newAmount;
 
         private UpdateOrderRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
@@ -1930,6 +1930,16 @@ public class InstallmentPlanApiGenerated {
             this.xSplititTouchPoint = xSplititTouchPoint;
         }
 
+        /**
+         * Set refOrderNumber
+         * @param refOrderNumber  (optional)
+         * @return UpdateOrderRequestBuilder
+         */
+        public UpdateOrderRequestBuilder refOrderNumber(String refOrderNumber) {
+            this.refOrderNumber = refOrderNumber;
+            return this;
+        }
+        
         /**
          * Set trackingNumber
          * @param trackingNumber  (optional)
@@ -1941,12 +1951,12 @@ public class InstallmentPlanApiGenerated {
         }
         
         /**
-         * Set refOrderNumber
-         * @param refOrderNumber  (optional)
+         * Set capture
+         * @param capture  (optional)
          * @return UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder refOrderNumber(String refOrderNumber) {
-            this.refOrderNumber = refOrderNumber;
+        public UpdateOrderRequestBuilder capture(Boolean capture) {
+            this.capture = capture;
             return this;
         }
         
@@ -1961,12 +1971,12 @@ public class InstallmentPlanApiGenerated {
         }
         
         /**
-         * Set capture
-         * @param capture  (optional)
+         * Set newAmount
+         * @param newAmount  (optional)
          * @return UpdateOrderRequestBuilder
          */
-        public UpdateOrderRequestBuilder capture(Boolean capture) {
-            this.capture = capture;
+        public UpdateOrderRequestBuilder newAmount(Double newAmount) {
+            this.newAmount = newAmount;
             return this;
         }
         
@@ -1982,17 +1992,18 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            UpdateOrderRequest updateOrderRequest = buildBodyParams();
-            return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, _callback);
+            InstallmentPlanUpdateRequest installmentPlanUpdateRequest = buildBodyParams();
+            return updateOrderCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, _callback);
         }
 
-        private UpdateOrderRequest buildBodyParams() {
-            UpdateOrderRequest updateOrderRequest = new UpdateOrderRequest();
-            updateOrderRequest.trackingNumber(this.trackingNumber);
-            updateOrderRequest.refOrderNumber(this.refOrderNumber);
-            updateOrderRequest.shippingStatus(this.shippingStatus);
-            updateOrderRequest.capture(this.capture);
-            return updateOrderRequest;
+        private InstallmentPlanUpdateRequest buildBodyParams() {
+            InstallmentPlanUpdateRequest installmentPlanUpdateRequest = new InstallmentPlanUpdateRequest();
+            installmentPlanUpdateRequest.refOrderNumber(this.refOrderNumber);
+            installmentPlanUpdateRequest.trackingNumber(this.trackingNumber);
+            installmentPlanUpdateRequest.capture(this.capture);
+            installmentPlanUpdateRequest.shippingStatus(this.shippingStatus);
+            installmentPlanUpdateRequest.newAmount(this.newAmount);
+            return installmentPlanUpdateRequest;
         }
 
         /**
@@ -2006,8 +2017,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public InstallmentPlanUpdateResponse execute() throws ApiException {
-            UpdateOrderRequest updateOrderRequest = buildBodyParams();
-            ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+            InstallmentPlanUpdateRequest installmentPlanUpdateRequest = buildBodyParams();
+            ApiResponse<InstallmentPlanUpdateResponse> localVarResp = updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
             return localVarResp.getResponseBody();
         }
 
@@ -2022,8 +2033,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public ApiResponse<InstallmentPlanUpdateResponse> executeWithHttpInfo() throws ApiException {
-            UpdateOrderRequest updateOrderRequest = buildBodyParams();
-            return updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest);
+            InstallmentPlanUpdateRequest installmentPlanUpdateRequest = buildBodyParams();
+            return updateOrderWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest);
         }
 
         /**
@@ -2038,8 +2049,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanUpdateResponse> _callback) throws ApiException {
-            UpdateOrderRequest updateOrderRequest = buildBodyParams();
-            return updateOrderAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, updateOrderRequest, _callback);
+            InstallmentPlanUpdateRequest installmentPlanUpdateRequest = buildBodyParams();
+            return updateOrderAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanUpdateRequest, _callback);
         }
     }
 
@@ -2049,7 +2060,7 @@ public class InstallmentPlanApiGenerated {
      * @param installmentPlanNumber  (required)
      * @param xSplititIdempotencyKey  (required)
      * @param xSplititTouchPoint TouchPoint (required)
-     * @param updateOrderRequest  (required)
+     * @param installmentPlanUpdateRequest  (required)
      * @return UpdateOrderRequestBuilder
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -2103,9 +2114,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {
@@ -2113,9 +2124,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
-            "application/json-patch+json",
             "application/json",
             "text/json",
+            "application/json-patch+json",
             "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
@@ -2169,7 +2180,8 @@ public class InstallmentPlanApiGenerated {
         private String refOrderNumber;
         private String trackingNumber;
         private Boolean capture;
-        private ShippingStatus2 shippingStatus;
+        private ShippingStatus shippingStatus;
+        private Double newAmount;
         private IdentifierContract identifier;
 
         private UpdateOrder2RequestBuilder(String xSplititIdempotencyKey, String xSplititTouchPoint) {
@@ -2212,8 +2224,18 @@ public class InstallmentPlanApiGenerated {
          * @param shippingStatus  (optional)
          * @return UpdateOrder2RequestBuilder
          */
-        public UpdateOrder2RequestBuilder shippingStatus(ShippingStatus2 shippingStatus) {
+        public UpdateOrder2RequestBuilder shippingStatus(ShippingStatus shippingStatus) {
             this.shippingStatus = shippingStatus;
+            return this;
+        }
+        
+        /**
+         * Set newAmount
+         * @param newAmount  (optional)
+         * @return UpdateOrder2RequestBuilder
+         */
+        public UpdateOrder2RequestBuilder newAmount(Double newAmount) {
+            this.newAmount = newAmount;
             return this;
         }
         
@@ -2353,9 +2375,9 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarAccepts = {
-            "text/plain",
             "application/json",
-            "text/json"
+            "text/json",
+            "text/plain"
         };
         final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) {

@@ -55,12 +55,14 @@ namespace Splitit.Web.Net.Model
         /// <param name="installmentPlanNumber">installmentPlanNumber.</param>
         /// <param name="status">status (required).</param>
         /// <param name="shippingStatus">shippingStatus (required).</param>
-        public InstallmentPlanUpdateResponse(string refOrderNumber = default(string), string installmentPlanNumber = default(string), PlanStatus status = default(PlanStatus), ShippingStatus shippingStatus = default(ShippingStatus))
+        /// <param name="newAmount">newAmount.</param>
+        public InstallmentPlanUpdateResponse(string refOrderNumber = default(string), string installmentPlanNumber = default(string), PlanStatus status = default(PlanStatus), ShippingStatus shippingStatus = default(ShippingStatus), double newAmount = default(double))
         {
             this.Status = status;
             this.ShippingStatus = shippingStatus;
             this.RefOrderNumber = refOrderNumber;
             this.InstallmentPlanNumber = installmentPlanNumber;
+            this.NewAmount = newAmount;
         }
 
         /// <summary>
@@ -76,6 +78,12 @@ namespace Splitit.Web.Net.Model
         public string InstallmentPlanNumber { get; set; }
 
         /// <summary>
+        /// Gets or Sets NewAmount
+        /// </summary>
+        [DataMember(Name = "NewAmount", EmitDefaultValue = false)]
+        public double NewAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -87,6 +95,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  InstallmentPlanNumber: ").Append(InstallmentPlanNumber).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ShippingStatus: ").Append(ShippingStatus).Append("\n");
+            sb.Append("  NewAmount: ").Append(NewAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -139,6 +148,10 @@ namespace Splitit.Web.Net.Model
                 (
                     this.ShippingStatus == input.ShippingStatus ||
                     this.ShippingStatus.Equals(input.ShippingStatus)
+                ) && 
+                (
+                    this.NewAmount == input.NewAmount ||
+                    this.NewAmount.Equals(input.NewAmount)
                 );
         }
 
@@ -161,6 +174,7 @@ namespace Splitit.Web.Net.Model
                 }
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 hashCode = (hashCode * 59) + this.ShippingStatus.GetHashCode();
+                hashCode = (hashCode * 59) + this.NewAmount.GetHashCode();
                 return hashCode;
             }
         }

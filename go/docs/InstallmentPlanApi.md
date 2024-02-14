@@ -440,17 +440,18 @@ func main() {
     client := splitit.NewAPIClient(configuration)
 
     
-    updateOrderRequest := *splitit.NewUpdateOrderRequest()
-    updateOrderRequest.SetTrackingNumber("null")
-    updateOrderRequest.SetRefOrderNumber("null")
-    updateOrderRequest.SetShippingStatus(null)
-    updateOrderRequest.SetCapture(null)
+    installmentPlanUpdateRequest := *splitit.NewInstallmentPlanUpdateRequest()
+    installmentPlanUpdateRequest.SetRefOrderNumber("null")
+    installmentPlanUpdateRequest.SetTrackingNumber("null")
+    installmentPlanUpdateRequest.SetCapture(null)
+    installmentPlanUpdateRequest.SetShippingStatus(null)
+    installmentPlanUpdateRequest.SetNewAmount(null)
     
     request := client.InstallmentPlanApi.UpdateOrder(
         "installmentPlanNumber_example",
         "xSplititIdempotencyKey_example",
         """",
-        updateOrderRequest,
+        installmentPlanUpdateRequest,
     )
     
     resp, httpRes, err := request.Execute()
@@ -465,6 +466,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder.Status`: %v\n", resp.Status)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder.ShippingStatus`: %v\n", resp.ShippingStatus)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder.NewAmount`: %v\n", *resp.NewAmount)
 }
 ```
 
@@ -513,6 +515,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder2.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder2.Status`: %v\n", resp.Status)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder2.ShippingStatus`: %v\n", resp.ShippingStatus)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanUpdateResponse.UpdateOrder2.NewAmount`: %v\n", *resp.NewAmount)
 }
 ```
 
