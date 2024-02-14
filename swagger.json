@@ -540,7 +540,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/UpdateOrderRequest"
+              "$ref": "#/definitions/InstallmentPlanUpdateRequest"
             },
             "x-nullable": false
           },
@@ -1988,6 +1988,10 @@
         },
         "ShippingStatus": {
           "$ref": "#/definitions/ShippingStatus"
+        },
+        "NewAmount": {
+          "type": "number",
+          "format": "decimal"
         }
       }
     },
@@ -2005,20 +2009,24 @@
         "Delivered"
       ]
     },
-    "UpdateOrderRequest": {
+    "InstallmentPlanUpdateRequest": {
       "type": "object",
       "properties": {
+        "RefOrderNumber": {
+          "type": "string"
+        },
         "TrackingNumber": {
           "type": "string"
         },
-        "RefOrderNumber": {
-          "type": "string"
+        "Capture": {
+          "type": "boolean"
         },
         "ShippingStatus": {
           "$ref": "#/definitions/ShippingStatus"
         },
-        "Capture": {
-          "type": "boolean"
+        "NewAmount": {
+          "type": "number",
+          "format": "decimal"
         }
       }
     },
@@ -2053,35 +2061,6 @@
           }
         }
       }
-    },
-    "InstallmentPlanUpdateRequest": {
-      "type": "object",
-      "properties": {
-        "RefOrderNumber": {
-          "type": "string"
-        },
-        "TrackingNumber": {
-          "type": "string"
-        },
-        "Capture": {
-          "type": "boolean"
-        },
-        "ShippingStatus": {
-          "$ref": "#/definitions/ShippingStatus2"
-        }
-      }
-    },
-    "ShippingStatus2": {
-      "type": "string",
-      "description": "",
-      "x-enumNames": [
-        "Shipped",
-        "Delivered"
-      ],
-      "enum": [
-        "Shipped",
-        "Delivered"
-      ]
     },
     "InstallmentPlanRefundResponse": {
       "type": "object",
