@@ -23,7 +23,7 @@ import frozendict  # noqa: F401
 from splitit_client import schemas  # noqa: F401
 
 
-class InstallmentPlanCancelResponse(
+class InstallmentPlanCancelRequest(
     schemas.DictSchema
 ):
     """
@@ -34,43 +34,43 @@ class InstallmentPlanCancelResponse(
     class MetaOapg:
         
         class properties:
-            InstallmentPlanNumber = schemas.StrSchema
+            ReferenceId = schemas.StrSchema
             __annotations__ = {
-                "InstallmentPlanNumber": InstallmentPlanNumber,
+                "ReferenceId": ReferenceId,
             }
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> MetaOapg.properties.InstallmentPlanNumber: ...
+    def __getitem__(self, name: typing_extensions.Literal["ReferenceId"]) -> MetaOapg.properties.ReferenceId: ...
     
     @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["ReferenceId", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> typing.Union[MetaOapg.properties.InstallmentPlanNumber, schemas.Unset]: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["ReferenceId"]) -> typing.Union[MetaOapg.properties.ReferenceId, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["ReferenceId", ], str]):
         return super().get_item_oapg(name)
     
 
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        InstallmentPlanNumber: typing.Union[MetaOapg.properties.InstallmentPlanNumber, str, schemas.Unset] = schemas.unset,
+        ReferenceId: typing.Union[MetaOapg.properties.ReferenceId, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
-    ) -> 'InstallmentPlanCancelResponse':
+    ) -> 'InstallmentPlanCancelRequest':
         return super().__new__(
             cls,
             *args,
-            InstallmentPlanNumber=InstallmentPlanNumber,
+            ReferenceId=ReferenceId,
             _configuration=_configuration,
             **kwargs,
         )

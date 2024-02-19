@@ -72,6 +72,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'RefundStrategy'
         }
+        /// <summary>
+        /// Test the property 'ReferenceId'
+        /// </summary>
+        [Fact]
+        public void ReferenceIdTest()
+        {
+            // TODO unit test for the property 'ReferenceId'
+        }
 
     }
 

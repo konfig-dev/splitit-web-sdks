@@ -36,11 +36,16 @@ func main() {
     configuration := splitit.NewConfiguration()
     client := splitit.NewAPIClient(configuration)
 
+    
+    installmentPlanCancelRequest := *splitit.NewInstallmentPlanCancelRequest()
+    installmentPlanCancelRequest.SetReferenceId("null")
+    
     request := client.InstallmentPlanApi.Cancel(
         "installmentPlanNumber_example",
         "xSplititIdempotencyKey_example",
         """",
     )
+    request.InstallmentPlanCancelRequest(installmentPlanCancelRequest)
     
     resp, httpRes, err := request.Execute()
 
@@ -51,7 +56,6 @@ func main() {
     // response from `Cancel`: InstallmentPlanCancelResponse
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Cancel`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
-    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanResponse`: %v\n", *resp.InstallmentPlanResponse)
 }
 ```
 
@@ -346,6 +350,7 @@ func main() {
         null,
     )
     installmentPlanRefundRequest.SetRefundStrategy(null)
+    installmentPlanRefundRequest.SetReferenceId("null")
     
     request := client.InstallmentPlanApi.Refund(
         "installmentPlanNumber_example",

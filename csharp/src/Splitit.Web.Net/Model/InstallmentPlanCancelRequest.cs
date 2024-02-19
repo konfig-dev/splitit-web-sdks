@@ -26,40 +26,19 @@ using OpenAPIDateConverter = Splitit.Web.Net.Client.OpenAPIDateConverter;
 namespace Splitit.Web.Net.Model
 {
     /// <summary>
-    /// InstallmentPlanRefundRequest
+    /// InstallmentPlanCancelRequest
     /// </summary>
-    [DataContract(Name = "InstallmentPlanRefundRequest")]
-    public partial class InstallmentPlanRefundRequest : IEquatable<InstallmentPlanRefundRequest>, IValidatableObject
+    [DataContract(Name = "InstallmentPlanCancelRequest")]
+    public partial class InstallmentPlanCancelRequest : IEquatable<InstallmentPlanCancelRequest>, IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets RefundStrategy
+        /// Initializes a new instance of the <see cref="InstallmentPlanCancelRequest" /> class.
         /// </summary>
-        [DataMember(Name = "RefundStrategy", EmitDefaultValue = false)]
-        public RefundStrategy? RefundStrategy { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InstallmentPlanRefundRequest" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected InstallmentPlanRefundRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InstallmentPlanRefundRequest" /> class.
-        /// </summary>
-        /// <param name="amount">amount (required).</param>
-        /// <param name="refundStrategy">refundStrategy.</param>
         /// <param name="referenceId">referenceId.</param>
-        public InstallmentPlanRefundRequest(double amount = default(double), RefundStrategy? refundStrategy = default(RefundStrategy?), string referenceId = default(string))
+        public InstallmentPlanCancelRequest(string referenceId = default(string))
         {
-            this.Amount = amount;
-            this.RefundStrategy = refundStrategy;
             this.ReferenceId = referenceId;
         }
-
-        /// <summary>
-        /// Gets or Sets Amount
-        /// </summary>
-        [DataMember(Name = "Amount", IsRequired = true, EmitDefaultValue = true)]
-        public double Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets ReferenceId
@@ -74,9 +53,7 @@ namespace Splitit.Web.Net.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class InstallmentPlanRefundRequest {\n");
-            sb.Append("  Amount: ").Append(Amount).Append("\n");
-            sb.Append("  RefundStrategy: ").Append(RefundStrategy).Append("\n");
+            sb.Append("class InstallmentPlanCancelRequest {\n");
             sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -98,29 +75,21 @@ namespace Splitit.Web.Net.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InstallmentPlanRefundRequest);
+            return this.Equals(input as InstallmentPlanCancelRequest);
         }
 
         /// <summary>
-        /// Returns true if InstallmentPlanRefundRequest instances are equal
+        /// Returns true if InstallmentPlanCancelRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of InstallmentPlanRefundRequest to be compared</param>
+        /// <param name="input">Instance of InstallmentPlanCancelRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InstallmentPlanRefundRequest input)
+        public bool Equals(InstallmentPlanCancelRequest input)
         {
             if (input == null)
             {
                 return false;
             }
             return 
-                (
-                    this.Amount == input.Amount ||
-                    this.Amount.Equals(input.Amount)
-                ) && 
-                (
-                    this.RefundStrategy == input.RefundStrategy ||
-                    this.RefundStrategy.Equals(input.RefundStrategy)
-                ) && 
                 (
                     this.ReferenceId == input.ReferenceId ||
                     (this.ReferenceId != null &&
@@ -137,8 +106,6 @@ namespace Splitit.Web.Net.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = (hashCode * 59) + this.Amount.GetHashCode();
-                hashCode = (hashCode * 59) + this.RefundStrategy.GetHashCode();
                 if (this.ReferenceId != null)
                 {
                     hashCode = (hashCode * 59) + this.ReferenceId.GetHashCode();

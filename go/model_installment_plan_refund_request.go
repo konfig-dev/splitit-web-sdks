@@ -18,6 +18,7 @@ import (
 type InstallmentPlanRefundRequest struct {
 	Amount float32 `json:"Amount"`
 	RefundStrategy *RefundStrategy `json:"RefundStrategy,omitempty"`
+	ReferenceId *string `json:"ReferenceId,omitempty"`
 }
 
 // NewInstallmentPlanRefundRequest instantiates a new InstallmentPlanRefundRequest object
@@ -94,6 +95,38 @@ func (o *InstallmentPlanRefundRequest) SetRefundStrategy(v RefundStrategy) {
 	o.RefundStrategy = &v
 }
 
+// GetReferenceId returns the ReferenceId field value if set, zero value otherwise.
+func (o *InstallmentPlanRefundRequest) GetReferenceId() string {
+	if o == nil || isNil(o.ReferenceId) {
+		var ret string
+		return ret
+	}
+	return *o.ReferenceId
+}
+
+// GetReferenceIdOk returns a tuple with the ReferenceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InstallmentPlanRefundRequest) GetReferenceIdOk() (*string, bool) {
+	if o == nil || isNil(o.ReferenceId) {
+    return nil, false
+	}
+	return o.ReferenceId, true
+}
+
+// HasReferenceId returns a boolean if a field has been set.
+func (o *InstallmentPlanRefundRequest) HasReferenceId() bool {
+	if o != nil && !isNil(o.ReferenceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetReferenceId gets a reference to the given string and assigns it to the ReferenceId field.
+func (o *InstallmentPlanRefundRequest) SetReferenceId(v string) {
+	o.ReferenceId = &v
+}
+
 func (o InstallmentPlanRefundRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
@@ -101,6 +134,9 @@ func (o InstallmentPlanRefundRequest) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.RefundStrategy) {
 		toSerialize["RefundStrategy"] = o.RefundStrategy
+	}
+	if !isNil(o.ReferenceId) {
+		toSerialize["ReferenceId"] = o.ReferenceId
 	}
 	return json.Marshal(toSerialize)
 }

@@ -105,6 +105,8 @@ const cancelResponse = await splitit.installmentplan.cancel({
 
 TouchPoint
 
+##### ReferenceId: `string`<a id="referenceid-string"></a>
+
 #### 🔄 Return<a id="🔄-return"></a>
 
 [InstallmentPlanCancelResponse](./models/installment-plan-cancel-response.ts)
@@ -348,6 +350,8 @@ TouchPoint
 ##### RefundStrategy: [`RefundStrategy`](./models/refund-strategy.ts)<a id="refundstrategy-refundstrategymodelsrefund-strategyts"></a>
 
 
+
+##### ReferenceId: `string`<a id="referenceid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

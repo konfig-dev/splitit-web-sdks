@@ -24,6 +24,7 @@ import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
+import com.konfigthis.splitit.client.model.InstallmentPlanCancelRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
@@ -78,7 +79,9 @@ public class InstallmentPlanApiTest {
         String installmentPlanNumber = null;
         String xSplititIdempotencyKey = null;
         String xSplititTouchPoint = null;
+        String referenceId = null;
         InstallmentPlanCancelResponse response = api.cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+                .referenceId(referenceId)
                 .execute();
         // TODO: test validations
     }
@@ -193,8 +196,10 @@ public class InstallmentPlanApiTest {
         String xSplititIdempotencyKey = null;
         String xSplititTouchPoint = null;
         RefundStrategy refundStrategy = null;
+        String referenceId = null;
         InstallmentPlanRefundResponse response = api.refund(amount, installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
                 .refundStrategy(refundStrategy)
+                .referenceId(referenceId)
                 .execute();
         // TODO: test validations
     }

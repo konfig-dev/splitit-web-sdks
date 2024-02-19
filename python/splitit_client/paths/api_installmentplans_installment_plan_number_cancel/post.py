@@ -32,10 +32,12 @@ import frozendict  # noqa: F401
 from splitit_client import schemas  # noqa: F401
 
 from splitit_client.model.failed_response import FailedResponse as FailedResponseSchema
+from splitit_client.model.installment_plan_cancel_request import InstallmentPlanCancelRequest as InstallmentPlanCancelRequestSchema
 from splitit_client.model.installment_plan_cancel_response import InstallmentPlanCancelResponse as InstallmentPlanCancelResponseSchema
 
 from splitit_client.type.failed_response import FailedResponse
 from splitit_client.type.installment_plan_cancel_response import InstallmentPlanCancelResponse
+from splitit_client.type.installment_plan_cancel_request import InstallmentPlanCancelRequest
 
 from . import path
 
@@ -98,6 +100,25 @@ request_path_installment_plan_number = api_client.PathParameter(
     style=api_client.ParameterStyle.SIMPLE,
     schema=InstallmentPlanNumberSchema,
     required=True,
+)
+# body param
+SchemaForRequestBodyApplicationJson = InstallmentPlanCancelRequestSchema
+SchemaForRequestBodyTextJson = InstallmentPlanCancelRequestSchema
+SchemaForRequestBodyApplicationJsonPatchjson = InstallmentPlanCancelRequestSchema
+SchemaForRequestBodyApplicationJson = InstallmentPlanCancelRequestSchema
+
+
+request_body_installment_plan_cancel_request = api_client.RequestBody(
+    content={
+        'application/json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJson),
+        'text/json': api_client.MediaType(
+            schema=SchemaForRequestBodyTextJson),
+        'application/json-patch+json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJsonPatchjson),
+        'application/*+json': api_client.MediaType(
+            schema=SchemaForRequestBodyApplicationJson),
+    },
 )
 _auth = [
     'oauth',
@@ -258,10 +279,15 @@ class BaseApi(api_client.Api):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        reference_id: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
         _path_params = {}
+        _body = {}
+        if reference_id is not None:
+            _body["ReferenceId"] = reference_id
+        args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
         if x_splitit_touch_point is not None:
@@ -274,11 +300,13 @@ class BaseApi(api_client.Api):
 
     async def _acancel_oapg(
         self,
+        body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -323,18 +351,32 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
         method = 'post'.upper()
+        _headers.add('Content-Type', content_type)
+    
+        _fields = None
+        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
+        if body is not schemas.unset:
+            serialized_data = request_body_installment_plan_cancel_request.serialize(body, content_type)
+            if 'fields' in serialized_data:
+                _fields = serialized_data['fields']
+            elif 'body' in serialized_data:
+                _body = serialized_data['body']
     
         response = await self.api_client.async_call_api(
             resource_path=used_path,
             method=method,
             headers=_headers,
+            fields=_fields,
+            serialized_body=_body,
+            body=body,
             auth_settings=_auth,
             timeout=timeout,
             **kwargs
@@ -396,11 +438,13 @@ class BaseApi(api_client.Api):
 
     def _cancel_oapg(
         self,
+        body: typing.Any = None,
             header_params: typing.Optional[dict] = {},
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
         accept_content_types: typing.Tuple[str] = _all_accept_content_types,
+        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -443,18 +487,32 @@ class BaseApi(api_client.Api):
             for accept_content_type in accept_content_types:
                 _headers.add('Accept', accept_content_type)
         method = 'post'.upper()
+        _headers.add('Content-Type', content_type)
+    
+        _fields = None
+        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
+            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
+        if body is not schemas.unset:
+            serialized_data = request_body_installment_plan_cancel_request.serialize(body, content_type)
+            if 'fields' in serialized_data:
+                _fields = serialized_data['fields']
+            elif 'body' in serialized_data:
+                _body = serialized_data['body']
     
         response = self.api_client.call_api(
             resource_path=used_path,
             method=method,
             headers=_headers,
+            fields=_fields,
+            serialized_body=_body,
+            body=body,
             auth_settings=_auth,
             timeout=timeout,
         )
@@ -491,6 +549,7 @@ class Cancel(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        reference_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -501,8 +560,10 @@ class Cancel(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            reference_id=reference_id,
         )
         return await self._acancel_oapg(
+            body=args.body,
             header_params=args.header,
             path_params=args.path,
             **kwargs,
@@ -513,6 +574,7 @@ class Cancel(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        reference_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -521,8 +583,10 @@ class Cancel(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            reference_id=reference_id,
         )
         return self._cancel_oapg(
+            body=args.body,
             header_params=args.header,
             path_params=args.path,
         )
@@ -535,6 +599,7 @@ class ApiForpost(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        reference_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -545,8 +610,10 @@ class ApiForpost(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            reference_id=reference_id,
         )
         return await self._acancel_oapg(
+            body=args.body,
             header_params=args.header,
             path_params=args.path,
             **kwargs,
@@ -557,6 +624,7 @@ class ApiForpost(BaseApi):
         installment_plan_number: str,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        reference_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -565,8 +633,10 @@ class ApiForpost(BaseApi):
             installment_plan_number=installment_plan_number,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            reference_id=reference_id,
         )
         return self._cancel_oapg(
+            body=args.body,
             header_params=args.header,
             path_params=args.path,
         )

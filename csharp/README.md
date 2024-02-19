@@ -61,10 +61,15 @@ namespace Example
             var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var referenceId = "referenceId_example";
+            
+            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
+                referenceId
+            );
             
             try
             {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -105,38 +110,25 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [AddressData](docs/AddressData.md)
- - [AddressData2](docs/AddressData2.md)
- - [AddressData22](docs/AddressData22.md)
  - [AddressDataModel](docs/AddressDataModel.md)
  - [AuthorizationModel](docs/AuthorizationModel.md)
  - [BluesnapVaultedShopperToken](docs/BluesnapVaultedShopperToken.md)
  - [CardBrand](docs/CardBrand.md)
  - [CardData](docs/CardData.md)
- - [CardData2](docs/CardData2.md)
- - [CardResult](docs/CardResult.md)
  - [CardType](docs/CardType.md)
  - [CheckInstallmentsEligibilityRequest](docs/CheckInstallmentsEligibilityRequest.md)
- - [ConsumerData](docs/ConsumerData.md)
- - [Currency](docs/Currency.md)
- - [CurrencyAllOf](docs/CurrencyAllOf.md)
- - [DisputeStatus](docs/DisputeStatus.md)
- - [Disputes](docs/Disputes.md)
  - [Error](docs/Error.md)
- - [Error2](docs/Error2.md)
  - [ErrorExtended](docs/ErrorExtended.md)
  - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
  - [EventsEndpointsModel](docs/EventsEndpointsModel.md)
- - [ExternalProviderTypes](docs/ExternalProviderTypes.md)
  - [FailedResponse](docs/FailedResponse.md)
- - [FraudCheck](docs/FraudCheck.md)
  - [GatewayTokenData](docs/GatewayTokenData.md)
  - [GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/IdentifierContract.md)
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
  - [InitiateRedirectionEndpointsModel](docs/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/Installment.md)
- - [Installment2](docs/Installment2.md)
- - [InstallmentPlan](docs/InstallmentPlan.md)
+ - [InstallmentPlanCancelRequest](docs/InstallmentPlanCancelRequest.md)
  - [InstallmentPlanCancelResponse](docs/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/InstallmentPlanCreateResponse.md)
@@ -144,7 +136,6 @@ Class | Method | HTTP request | Description
  - [InstallmentPlanInitiateRequest](docs/InstallmentPlanInitiateRequest.md)
  - [InstallmentPlanRefundRequest](docs/InstallmentPlanRefundRequest.md)
  - [InstallmentPlanRefundResponse](docs/InstallmentPlanRefundResponse.md)
- - [InstallmentPlanResponse](docs/InstallmentPlanResponse.md)
  - [InstallmentPlanSearchResponse](docs/InstallmentPlanSearchResponse.md)
  - [InstallmentPlanUpdateRequest](docs/InstallmentPlanUpdateRequest.md)
  - [InstallmentPlanUpdateRequestByIdentifier](docs/InstallmentPlanUpdateRequestByIdentifier.md)
@@ -154,11 +145,7 @@ Class | Method | HTTP request | Description
  - [InstallmentsEligibilityResponse](docs/InstallmentsEligibilityResponse.md)
  - [LinksData](docs/LinksData.md)
  - [LinksModel](docs/LinksModel.md)
- - [MerchantRef](docs/MerchantRef.md)
- - [MerchantRefAllOf](docs/MerchantRefAllOf.md)
  - [MockerShopperToken](docs/MockerShopperToken.md)
- - [Money](docs/Money.md)
- - [MoneyFlows](docs/MoneyFlows.md)
  - [PaymentMethodModel](docs/PaymentMethodModel.md)
  - [PaymentMethodType](docs/PaymentMethodType.md)
  - [PaymentPlanOptionModel](docs/PaymentPlanOptionModel.md)
@@ -170,25 +157,19 @@ Class | Method | HTTP request | Description
  - [ProcessingData](docs/ProcessingData.md)
  - [ProcessingData2](docs/ProcessingData2.md)
  - [PurchaseMethod](docs/PurchaseMethod.md)
- - [ReAuthorization](docs/ReAuthorization.md)
  - [RedirectionEndpointsModel](docs/RedirectionEndpointsModel.md)
- - [ReferenceEntityBase](docs/ReferenceEntityBase.md)
  - [RefundModel](docs/RefundModel.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RefundStrategy](docs/RefundStrategy.md)
  - [RefundSummary](docs/RefundSummary.md)
- - [ResponseHeader](docs/ResponseHeader.md)
  - [SearchInstallmentPlanResponseItem](docs/SearchInstallmentPlanResponseItem.md)
  - [ShippingStatus](docs/ShippingStatus.md)
  - [ShopperData](docs/ShopperData.md)
  - [SpreedlyToken](docs/SpreedlyToken.md)
- - [TerminalRef](docs/TerminalRef.md)
  - [TestModes](docs/TestModes.md)
  - [ThreeDSData](docs/ThreeDSData.md)
  - [ThreeDSData2](docs/ThreeDSData2.md)
  - [ThreeDsRedirectDataV3](docs/ThreeDsRedirectDataV3.md)
- - [TransactionResult](docs/TransactionResult.md)
- - [User](docs/User.md)
  - [UxSettingsModel](docs/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/VerifyAuthorizationResponse.md)
 

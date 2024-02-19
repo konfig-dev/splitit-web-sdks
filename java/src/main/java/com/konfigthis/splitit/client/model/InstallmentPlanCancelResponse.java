@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.InstallmentPlanResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -54,10 +53,6 @@ public class InstallmentPlanCancelResponse {
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER)
   private String installmentPlanNumber;
 
-  public static final String SERIALIZED_NAME_INSTALLMENT_PLAN_RESPONSE = "installmentPlanResponse";
-  @SerializedName(SERIALIZED_NAME_INSTALLMENT_PLAN_RESPONSE)
-  private InstallmentPlanResponse installmentPlanResponse;
-
   public InstallmentPlanCancelResponse() {
   }
 
@@ -87,35 +82,6 @@ public class InstallmentPlanCancelResponse {
     
     
     this.installmentPlanNumber = installmentPlanNumber;
-  }
-
-
-  public InstallmentPlanCancelResponse installmentPlanResponse(InstallmentPlanResponse installmentPlanResponse) {
-    
-    
-    
-    
-    this.installmentPlanResponse = installmentPlanResponse;
-    return this;
-  }
-
-   /**
-   * Get installmentPlanResponse
-   * @return installmentPlanResponse
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public InstallmentPlanResponse getInstallmentPlanResponse() {
-    return installmentPlanResponse;
-  }
-
-
-  public void setInstallmentPlanResponse(InstallmentPlanResponse installmentPlanResponse) {
-    
-    
-    
-    this.installmentPlanResponse = installmentPlanResponse;
   }
 
   /**
@@ -173,14 +139,13 @@ public class InstallmentPlanCancelResponse {
       return false;
     }
     InstallmentPlanCancelResponse installmentPlanCancelResponse = (InstallmentPlanCancelResponse) o;
-    return Objects.equals(this.installmentPlanNumber, installmentPlanCancelResponse.installmentPlanNumber) &&
-        Objects.equals(this.installmentPlanResponse, installmentPlanCancelResponse.installmentPlanResponse)&&
+    return Objects.equals(this.installmentPlanNumber, installmentPlanCancelResponse.installmentPlanNumber)&&
         Objects.equals(this.additionalProperties, installmentPlanCancelResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(installmentPlanNumber, installmentPlanResponse, additionalProperties);
+    return Objects.hash(installmentPlanNumber, additionalProperties);
   }
 
   @Override
@@ -188,7 +153,6 @@ public class InstallmentPlanCancelResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstallmentPlanCancelResponse {\n");
     sb.append("    installmentPlanNumber: ").append(toIndentedString(installmentPlanNumber)).append("\n");
-    sb.append("    installmentPlanResponse: ").append(toIndentedString(installmentPlanResponse)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -213,7 +177,6 @@ public class InstallmentPlanCancelResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("InstallmentPlanNumber");
-    openapiFields.add("installmentPlanResponse");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -233,10 +196,6 @@ public class InstallmentPlanCancelResponse {
       }
       if ((jsonObj.get("InstallmentPlanNumber") != null && !jsonObj.get("InstallmentPlanNumber").isJsonNull()) && !jsonObj.get("InstallmentPlanNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `InstallmentPlanNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InstallmentPlanNumber").toString()));
-      }
-      // validate the optional field `installmentPlanResponse`
-      if (jsonObj.get("installmentPlanResponse") != null && !jsonObj.get("installmentPlanResponse").isJsonNull()) {
-        InstallmentPlanResponse.validateJsonObject(jsonObj.getAsJsonObject("installmentPlanResponse"));
       }
   }
 

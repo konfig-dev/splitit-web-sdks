@@ -15,11 +15,11 @@ from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
 
-class RequiredInstallmentPlanCancelResponse(TypedDict):
+class RequiredInstallmentPlanCancelRequest(TypedDict):
     pass
 
-class OptionalInstallmentPlanCancelResponse(TypedDict, total=False):
-    InstallmentPlanNumber: str
+class OptionalInstallmentPlanCancelRequest(TypedDict, total=False):
+    ReferenceId: str
 
-class InstallmentPlanCancelResponse(RequiredInstallmentPlanCancelResponse, OptionalInstallmentPlanCancelResponse):
+class InstallmentPlanCancelRequest(RequiredInstallmentPlanCancelRequest, OptionalInstallmentPlanCancelRequest):
     pass

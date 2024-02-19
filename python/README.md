@@ -54,10 +54,10 @@ try:
         installment_plan_number="installmentPlanNumber_example",
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
         x_splitit_touch_point="",
+        reference_id="string_example",
     )
     pprint(cancel_response.body)
     pprint(cancel_response.body["installment_plan_number"])
-    pprint(cancel_response.body["installment_plan_response"])
     pprint(cancel_response.headers)
     pprint(cancel_response.status)
     pprint(cancel_response.round_trip_time)
@@ -103,10 +103,10 @@ async def main():
             installment_plan_number="installmentPlanNumber_example",
             x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
             x_splitit_touch_point="",
+            reference_id="string_example",
         )
         pprint(cancel_response.body)
         pprint(cancel_response.body["installment_plan_number"])
-        pprint(cancel_response.body["installment_plan_response"])
         pprint(cancel_response.headers)
         pprint(cancel_response.status)
         pprint(cancel_response.round_trip_time)
@@ -147,6 +147,7 @@ cancel_response = splitit.installment_plan.cancel(
     installment_plan_number="installmentPlanNumber_example",
     x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
     x_splitit_touch_point="",
+    reference_id="string_example",
 )
 ```
 
@@ -160,6 +161,11 @@ cancel_response = splitit.installment_plan.cancel(
 
 TouchPoint
 
+##### reference_id: `str`<a id="reference_id-str"></a>
+
+#### ⚙️ Request Body<a id="⚙️-request-body"></a>
+
+[`InstallmentPlanCancelRequest`](./splitit_client/type/installment_plan_cancel_request.py)
 #### 🔄 Return<a id="🔄-return"></a>
 
 [`InstallmentPlanCancelResponse`](./splitit_client/type/installment_plan_cancel_response.py)
@@ -442,6 +448,7 @@ refund_response = splitit.installment_plan.refund(
     x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
     x_splitit_touch_point="",
     refund_strategy="FutureInstallmentsFirst",
+    reference_id="string_example",
 )
 ```
 
@@ -458,6 +465,8 @@ refund_response = splitit.installment_plan.refund(
 TouchPoint
 
 ##### refund_strategy: [`RefundStrategy`](./splitit_client/type/refund_strategy.py)<a id="refund_strategy-refundstrategysplitit_clienttyperefund_strategypy"></a>
+
+##### reference_id: `str`<a id="reference_id-str"></a>
 
 #### ⚙️ Request Body<a id="⚙️-request-body"></a>
 

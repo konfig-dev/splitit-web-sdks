@@ -1,4 +1,4 @@
-# splitit-web-sdks
+# splitit-sdks
 
 |Language|Version|Package Manager|README|Source|
 |-|-|-|-|-|

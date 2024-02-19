@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Amount** | **float32** |  | 
 **RefundStrategy** | Pointer to [**RefundStrategy**](RefundStrategy.md) |  | [optional] 
+**ReferenceId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -70,6 +71,31 @@ SetRefundStrategy sets RefundStrategy field to given value.
 `func (o *InstallmentPlanRefundRequest) HasRefundStrategy() bool`
 
 HasRefundStrategy returns a boolean if a field has been set.
+
+### GetReferenceId
+
+`func (o *InstallmentPlanRefundRequest) GetReferenceId() string`
+
+GetReferenceId returns the ReferenceId field if non-nil, zero value otherwise.
+
+### GetReferenceIdOk
+
+`func (o *InstallmentPlanRefundRequest) GetReferenceIdOk() (*string, bool)`
+
+GetReferenceIdOk returns a tuple with the ReferenceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReferenceId
+
+`func (o *InstallmentPlanRefundRequest) SetReferenceId(v string)`
+
+SetReferenceId sets ReferenceId field to given value.
+
+### HasReferenceId
+
+`func (o *InstallmentPlanRefundRequest) HasReferenceId() bool`
+
+HasReferenceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -42,10 +42,15 @@ namespace Example
             var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var referenceId = "referenceId_example";
+            
+            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
+                referenceId
+            );
             
             try
             {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -71,7 +76,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<InstallmentPlanCancelResponse> response = apiInstance.CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+    ApiResponse<InstallmentPlanCancelResponse> response = apiInstance.CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -91,6 +96,7 @@ catch (ApiException e)
 | **installmentPlanNumber** | **string** |  |  |
 | **xSplititIdempotencyKey** | **string** |  |  |
 | **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
+| **installmentPlanCancelRequest** | [**InstallmentPlanCancelRequest**](InstallmentPlanCancelRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -571,10 +577,12 @@ namespace Example
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
             var amount = default(double);
             var refundStrategy = RefundStrategy.FutureInstallmentsFirst;
+            var referenceId = "referenceId_example";
             
             var installmentPlanRefundRequest = new InstallmentPlanRefundRequest(
                 amount,
-                refundStrategy
+                refundStrategy,
+                referenceId
             );
             
             try

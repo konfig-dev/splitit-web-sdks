@@ -29,6 +29,12 @@ type InstallmentPlanApiCancelRequest struct {
 	installmentPlanNumber string
 	xSplititIdempotencyKey string
 	xSplititTouchPoint string
+	installmentPlanCancelRequest *InstallmentPlanCancelRequest
+}
+
+func (r *InstallmentPlanApiCancelRequest) InstallmentPlanCancelRequest(installmentPlanCancelRequest InstallmentPlanCancelRequest) *InstallmentPlanApiCancelRequest {
+	r.installmentPlanCancelRequest = &installmentPlanCancelRequest
+	return r
 }
 
 func (r InstallmentPlanApiCancelRequest) Execute() (*InstallmentPlanCancelResponse, *http.Response, error) {
@@ -77,7 +83,7 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json", "text/json", "application/json-patch+json", "application/*+json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -95,6 +101,8 @@ func (a *InstallmentPlanApiService) CancelExecute(r InstallmentPlanApiCancelRequ
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
+	// body params
+	localVarPostBody = r.installmentPlanCancelRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

@@ -22,5 +22,7 @@ class RequiredInstallmentPlanRefundRequest(TypedDict):
 class OptionalInstallmentPlanRefundRequest(TypedDict, total=False):
     RefundStrategy: RefundStrategy
 
+    ReferenceId: str
+
 class InstallmentPlanRefundRequest(RequiredInstallmentPlanRefundRequest, OptionalInstallmentPlanRefundRequest):
     pass

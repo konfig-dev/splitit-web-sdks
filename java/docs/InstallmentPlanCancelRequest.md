@@ -1,14 +1,12 @@
 
 
-# InstallmentPlanRefundRequest
+# InstallmentPlanCancelRequest
 
 
 ## Properties
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**amount** | **Double** |  |  |
-|**refundStrategy** | **RefundStrategy** |  |  [optional] |
 |**referenceId** | **String** |  |  [optional] |
 
 
