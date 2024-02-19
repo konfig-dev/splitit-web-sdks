@@ -30,5 +30,11 @@ export interface InstallmentPlanRefundRequest {
      * @memberof InstallmentPlanRefundRequest
      */
     'RefundStrategy'?: RefundStrategy;
+    /**
+     * 
+     * @type {string}
+     * @memberof InstallmentPlanRefundRequest
+     */
+    'ReferenceId'?: string;
 }
 

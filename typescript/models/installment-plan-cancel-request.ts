@@ -14,14 +14,14 @@ import type * as buffer from "buffer"
 /**
  * 
  * @export
- * @interface InstallmentPlanCancelResponse
+ * @interface InstallmentPlanCancelRequest
  */
-export interface InstallmentPlanCancelResponse {
+export interface InstallmentPlanCancelRequest {
     /**
      * 
      * @type {string}
-     * @memberof InstallmentPlanCancelResponse
+     * @memberof InstallmentPlanCancelRequest
      */
-    'InstallmentPlanNumber'?: string;
+    'ReferenceId'?: string;
 }
 

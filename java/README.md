@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.7-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.7)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v2.2.8-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.8)
 
 ## Requirements
 
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-web-java-sdk</artifactId>
-  <version>2.2.7</version>
+  <version>2.2.8</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -55,7 +55,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis:splitit-web-java-sdk:2.2.7"
+   implementation "com.konfigthis:splitit-web-java-sdk:2.2.8"
 }
 ```
 
@@ -92,7 +92,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-web-java-sdk-2.2.7.jar`
+* `target/splitit-web-java-sdk-2.2.8.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
@@ -126,14 +126,15 @@ public class Example {
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
+    String referenceId = "referenceId_example";
     try {
       InstallmentPlanCancelResponse result = client
               .installmentPlan
               .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+              .referenceId(referenceId)
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentPlanNumber());
-      System.out.println(result.getInstallmentPlanResponse());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
       System.err.println("Status code: " + e.getStatusCode());
@@ -147,6 +148,7 @@ public class Example {
       ApiResponse<InstallmentPlanCancelResponse> response = client
               .installmentPlan
               .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+              .referenceId(referenceId)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -186,37 +188,24 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [AddressData](docs/AddressData.md)
- - [AddressData2](docs/AddressData2.md)
- - [AddressData22](docs/AddressData22.md)
  - [AddressDataModel](docs/AddressDataModel.md)
  - [AuthorizationModel](docs/AuthorizationModel.md)
  - [BluesnapVaultedShopperToken](docs/BluesnapVaultedShopperToken.md)
  - [CardBrand](docs/CardBrand.md)
  - [CardData](docs/CardData.md)
- - [CardData2](docs/CardData2.md)
- - [CardResult](docs/CardResult.md)
  - [CardType](docs/CardType.md)
  - [CheckInstallmentsEligibilityRequest](docs/CheckInstallmentsEligibilityRequest.md)
- - [ConsumerData](docs/ConsumerData.md)
- - [Currency](docs/Currency.md)
- - [CurrencyAllOf](docs/CurrencyAllOf.md)
- - [DisputeStatus](docs/DisputeStatus.md)
- - [Disputes](docs/Disputes.md)
  - [Error](docs/Error.md)
- - [Error2](docs/Error2.md)
  - [ErrorExtended](docs/ErrorExtended.md)
  - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)
  - [EventsEndpointsModel](docs/EventsEndpointsModel.md)
- - [ExternalProviderTypes](docs/ExternalProviderTypes.md)
- - [FraudCheck](docs/FraudCheck.md)
  - [GatewayTokenData](docs/GatewayTokenData.md)
  - [GwAuthorizationStatus](docs/GwAuthorizationStatus.md)
  - [IdentifierContract](docs/IdentifierContract.md)
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
  - [InitiateRedirectionEndpointsModel](docs/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/Installment.md)
- - [Installment2](docs/Installment2.md)
- - [InstallmentPlan](docs/InstallmentPlan.md)
+ - [InstallmentPlanCancelRequest](docs/InstallmentPlanCancelRequest.md)
  - [InstallmentPlanCancelResponse](docs/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/InstallmentPlanCreateResponse.md)
@@ -224,7 +213,6 @@ Class | Method | HTTP request | Description
  - [InstallmentPlanInitiateRequest](docs/InstallmentPlanInitiateRequest.md)
  - [InstallmentPlanRefundRequest](docs/InstallmentPlanRefundRequest.md)
  - [InstallmentPlanRefundResponse](docs/InstallmentPlanRefundResponse.md)
- - [InstallmentPlanResponse](docs/InstallmentPlanResponse.md)
  - [InstallmentPlanSearchResponse](docs/InstallmentPlanSearchResponse.md)
  - [InstallmentPlanUpdateRequest](docs/InstallmentPlanUpdateRequest.md)
  - [InstallmentPlanUpdateRequestByIdentifier](docs/InstallmentPlanUpdateRequestByIdentifier.md)
@@ -234,11 +222,7 @@ Class | Method | HTTP request | Description
  - [InstallmentsEligibilityResponse](docs/InstallmentsEligibilityResponse.md)
  - [LinksData](docs/LinksData.md)
  - [LinksModel](docs/LinksModel.md)
- - [MerchantRef](docs/MerchantRef.md)
- - [MerchantRefAllOf](docs/MerchantRefAllOf.md)
  - [MockerShopperToken](docs/MockerShopperToken.md)
- - [Money](docs/Money.md)
- - [MoneyFlows](docs/MoneyFlows.md)
  - [PaymentMethodModel](docs/PaymentMethodModel.md)
  - [PaymentMethodType](docs/PaymentMethodType.md)
  - [PaymentPlanOptionModel](docs/PaymentPlanOptionModel.md)
@@ -250,25 +234,19 @@ Class | Method | HTTP request | Description
  - [ProcessingData](docs/ProcessingData.md)
  - [ProcessingData2](docs/ProcessingData2.md)
  - [PurchaseMethod](docs/PurchaseMethod.md)
- - [ReAuthorization](docs/ReAuthorization.md)
  - [RedirectionEndpointsModel](docs/RedirectionEndpointsModel.md)
- - [ReferenceEntityBase](docs/ReferenceEntityBase.md)
  - [RefundModel](docs/RefundModel.md)
  - [RefundStatus](docs/RefundStatus.md)
  - [RefundStrategy](docs/RefundStrategy.md)
  - [RefundSummary](docs/RefundSummary.md)
- - [ResponseHeader](docs/ResponseHeader.md)
  - [SearchInstallmentPlanResponseItem](docs/SearchInstallmentPlanResponseItem.md)
  - [ShippingStatus](docs/ShippingStatus.md)
  - [ShopperData](docs/ShopperData.md)
  - [SpreedlyToken](docs/SpreedlyToken.md)
- - [TerminalRef](docs/TerminalRef.md)
  - [TestModes](docs/TestModes.md)
  - [ThreeDSData](docs/ThreeDSData.md)
  - [ThreeDSData2](docs/ThreeDSData2.md)
  - [ThreeDsRedirectDataV3](docs/ThreeDsRedirectDataV3.md)
- - [TransactionResult](docs/TransactionResult.md)
- - [User](docs/User.md)
  - [UxSettingsModel](docs/UxSettingsModel.md)
  - [VerifyAuthorizationResponse](docs/VerifyAuthorizationResponse.md)
 

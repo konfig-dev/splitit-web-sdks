@@ -53,10 +53,15 @@ namespace Splitit.Web.Net.Test.Api
             var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            var referenceId = "referenceId_example";
+            
+            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
+                referenceId
+            );
             
             try
             {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -256,10 +261,12 @@ namespace Splitit.Web.Net.Test.Api
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
             var amount = default(double);
             var refundStrategy = RefundStrategy.FutureInstallmentsFirst;
+            var referenceId = "referenceId_example";
             
             var installmentPlanRefundRequest = new InstallmentPlanRefundRequest(
                 amount,
-                refundStrategy
+                refundStrategy,
+                referenceId
             );
             
             try

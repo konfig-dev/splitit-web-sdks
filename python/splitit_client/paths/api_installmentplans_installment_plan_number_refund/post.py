@@ -284,6 +284,7 @@ class BaseApi(api_client.Api):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        reference_id: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _header_params = {}
@@ -293,6 +294,8 @@ class BaseApi(api_client.Api):
             _body["Amount"] = amount
         if refund_strategy is not None:
             _body["RefundStrategy"] = refund_strategy
+        if reference_id is not None:
+            _body["ReferenceId"] = reference_id
         args.body = _body
         if x_splitit_idempotency_key is not None:
             _header_params["X-Splitit-IdempotencyKey"] = x_splitit_idempotency_key
@@ -561,6 +564,7 @@ class Refund(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        reference_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -573,6 +577,7 @@ class Refund(BaseApi):
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
             refund_strategy=refund_strategy,
+            reference_id=reference_id,
         )
         return await self._arefund_oapg(
             body=args.body,
@@ -588,6 +593,7 @@ class Refund(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        reference_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -598,6 +604,7 @@ class Refund(BaseApi):
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
             refund_strategy=refund_strategy,
+            reference_id=reference_id,
         )
         return self._refund_oapg(
             body=args.body,
@@ -615,6 +622,7 @@ class ApiForpost(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        reference_id: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
         ApiResponseFor200Async,
@@ -627,6 +635,7 @@ class ApiForpost(BaseApi):
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
             refund_strategy=refund_strategy,
+            reference_id=reference_id,
         )
         return await self._arefund_oapg(
             body=args.body,
@@ -642,6 +651,7 @@ class ApiForpost(BaseApi):
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
         refund_strategy: typing.Optional[RefundStrategy] = None,
+        reference_id: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
@@ -652,6 +662,7 @@ class ApiForpost(BaseApi):
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
             refund_strategy=refund_strategy,
+            reference_id=reference_id,
         )
         return self._refund_oapg(
             body=args.body,

@@ -42,9 +42,11 @@ class InstallmentPlanRefundRequest(
             @staticmethod
             def RefundStrategy() -> typing.Type['RefundStrategy']:
                 return RefundStrategy
+            ReferenceId = schemas.StrSchema
             __annotations__ = {
                 "Amount": Amount,
                 "RefundStrategy": RefundStrategy,
+                "ReferenceId": ReferenceId,
             }
     
     Amount: MetaOapg.properties.Amount
@@ -56,9 +58,12 @@ class InstallmentPlanRefundRequest(
     def __getitem__(self, name: typing_extensions.Literal["RefundStrategy"]) -> 'RefundStrategy': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ReferenceId"]) -> MetaOapg.properties.ReferenceId: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Amount", "RefundStrategy", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Amount", "RefundStrategy", "ReferenceId", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -70,9 +75,12 @@ class InstallmentPlanRefundRequest(
     def get_item_oapg(self, name: typing_extensions.Literal["RefundStrategy"]) -> typing.Union['RefundStrategy', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ReferenceId"]) -> typing.Union[MetaOapg.properties.ReferenceId, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Amount", "RefundStrategy", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Amount", "RefundStrategy", "ReferenceId", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -81,6 +89,7 @@ class InstallmentPlanRefundRequest(
         *args: typing.Union[dict, frozendict.frozendict, ],
         Amount: typing.Union[MetaOapg.properties.Amount, decimal.Decimal, int, float, ],
         RefundStrategy: typing.Union['RefundStrategy', schemas.Unset] = schemas.unset,
+        ReferenceId: typing.Union[MetaOapg.properties.ReferenceId, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InstallmentPlanRefundRequest':
@@ -89,6 +98,7 @@ class InstallmentPlanRefundRequest(
             *args,
             Amount=Amount,
             RefundStrategy=RefundStrategy,
+            ReferenceId=ReferenceId,
             _configuration=_configuration,
             **kwargs,
         )

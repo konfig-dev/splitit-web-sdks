@@ -35,25 +35,17 @@ class InstallmentPlanCancelResponse(
         
         class properties:
             InstallmentPlanNumber = schemas.StrSchema
-        
-            @staticmethod
-            def installmentPlanResponse() -> typing.Type['InstallmentPlanResponse']:
-                return InstallmentPlanResponse
             __annotations__ = {
                 "InstallmentPlanNumber": InstallmentPlanNumber,
-                "installmentPlanResponse": installmentPlanResponse,
             }
     
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> MetaOapg.properties.InstallmentPlanNumber: ...
     
     @typing.overload
-    def __getitem__(self, name: typing_extensions.Literal["installmentPlanResponse"]) -> 'InstallmentPlanResponse': ...
-    
-    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", "installmentPlanResponse", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -62,12 +54,9 @@ class InstallmentPlanCancelResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> typing.Union[MetaOapg.properties.InstallmentPlanNumber, schemas.Unset]: ...
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["installmentPlanResponse"]) -> typing.Union['InstallmentPlanResponse', schemas.Unset]: ...
-    
-    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", "installmentPlanResponse", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -75,7 +64,6 @@ class InstallmentPlanCancelResponse(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
         InstallmentPlanNumber: typing.Union[MetaOapg.properties.InstallmentPlanNumber, str, schemas.Unset] = schemas.unset,
-        installmentPlanResponse: typing.Union['InstallmentPlanResponse', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InstallmentPlanCancelResponse':
@@ -83,9 +71,6 @@ class InstallmentPlanCancelResponse(
             cls,
             *args,
             InstallmentPlanNumber=InstallmentPlanNumber,
-            installmentPlanResponse=installmentPlanResponse,
             _configuration=_configuration,
             **kwargs,
         )
-
-from splitit_client.model.installment_plan_response import InstallmentPlanResponse

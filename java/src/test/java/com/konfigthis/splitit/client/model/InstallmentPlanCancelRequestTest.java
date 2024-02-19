@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.RefundStrategy;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,33 +25,17 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for InstallmentPlanRefundRequest
+ * Model tests for InstallmentPlanCancelRequest
  */
-public class InstallmentPlanRefundRequestTest {
-    private final InstallmentPlanRefundRequest model = new InstallmentPlanRefundRequest();
+public class InstallmentPlanCancelRequestTest {
+    private final InstallmentPlanCancelRequest model = new InstallmentPlanCancelRequest();
 
     /**
-     * Model tests for InstallmentPlanRefundRequest
+     * Model tests for InstallmentPlanCancelRequest
      */
     @Test
-    public void testInstallmentPlanRefundRequest() {
-        // TODO: test InstallmentPlanRefundRequest
-    }
-
-    /**
-     * Test the property 'amount'
-     */
-    @Test
-    public void amountTest() {
-        // TODO: test amount
-    }
-
-    /**
-     * Test the property 'refundStrategy'
-     */
-    @Test
-    public void refundStrategyTest() {
-        // TODO: test refundStrategy
+    public void testInstallmentPlanCancelRequest() {
+        // TODO: test InstallmentPlanCancelRequest
     }
 
     /**

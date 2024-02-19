@@ -17,7 +17,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.InstallmentPlanResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -45,14 +44,6 @@ public class InstallmentPlanCancelResponseTest {
     @Test
     public void installmentPlanNumberTest() {
         // TODO: test installmentPlanNumber
-    }
-
-    /**
-     * Test the property 'installmentPlanResponse'
-     */
-    @Test
-    public void installmentPlanResponseTest() {
-        // TODO: test installmentPlanResponse
     }
 
 }

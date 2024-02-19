@@ -18,7 +18,7 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 <a name="cancel"></a>
 # **cancel**
-> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint).execute();
+> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint).installmentPlanCancelRequest(installmentPlanCancelRequest).execute();
 
 
 
@@ -50,14 +50,15 @@ public class Example {
     String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
+    String referenceId = "referenceId_example";
     try {
       InstallmentPlanCancelResponse result = client
               .installmentPlan
               .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+              .referenceId(referenceId)
               .execute();
       System.out.println(result);
       System.out.println(result.getInstallmentPlanNumber());
-      System.out.println(result.getInstallmentPlanResponse());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#cancel");
       System.err.println("Status code: " + e.getStatusCode());
@@ -71,6 +72,7 @@ public class Example {
       ApiResponse<InstallmentPlanCancelResponse> response = client
               .installmentPlan
               .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+              .referenceId(referenceId)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -96,6 +98,7 @@ public class Example {
 | **installmentPlanNumber** | **String**|  | |
 | **xSplititIdempotencyKey** | **String**|  | |
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
+| **installmentPlanCancelRequest** | [**InstallmentPlanCancelRequest**](InstallmentPlanCancelRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -107,7 +110,7 @@ public class Example {
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
  - **Accept**: application/json, text/json, text/plain
 
 ### HTTP response details
@@ -658,11 +661,13 @@ public class Example {
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
     RefundStrategy refundStrategy = RefundStrategy.fromValue("FutureInstallmentsFirst");
+    String referenceId = "referenceId_example";
     try {
       InstallmentPlanRefundResponse result = client
               .installmentPlan
               .refund(amount, installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
               .refundStrategy(refundStrategy)
+              .referenceId(referenceId)
               .execute();
       System.out.println(result);
       System.out.println(result.getRefundId());
@@ -685,6 +690,7 @@ public class Example {
               .installmentPlan
               .refund(amount, installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
               .refundStrategy(refundStrategy)
+              .referenceId(referenceId)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());

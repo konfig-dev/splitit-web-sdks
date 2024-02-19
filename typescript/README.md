@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v3.3.7-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.7)
+[![npm](https://img.shields.io/badge/npm-v3.3.8-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.8)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -104,6 +104,8 @@ const cancelResponse = await splitit.installmentplan.cancel({
 ##### xSplititTouchPoint: `string`<a id="xsplitittouchpoint-string"></a>
 
 TouchPoint
+
+##### ReferenceId: `string`<a id="referenceid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 
@@ -348,6 +350,8 @@ TouchPoint
 ##### RefundStrategy: [`RefundStrategy`](./models/refund-strategy.ts)<a id="refundstrategy-refundstrategymodelsrefund-strategyts"></a>
 
 
+
+##### ReferenceId: `string`<a id="referenceid-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
 

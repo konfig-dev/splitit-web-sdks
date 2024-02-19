@@ -1,6 +1,6 @@
 {
   "name": "splitit-web-typescript-sdk",
-  "version": "3.3.7",
+  "version": "3.3.8",
   "description": "Client for splitit-web-api-v3",
   "author": "Konfig",
   "engines": {

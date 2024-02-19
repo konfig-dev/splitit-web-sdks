@@ -64,14 +64,6 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'InstallmentPlanNumber'
         }
-        /// <summary>
-        /// Test the property 'InstallmentPlanResponse'
-        /// </summary>
-        [Fact]
-        public void InstallmentPlanResponseTest()
-        {
-            // TODO unit test for the property 'InstallmentPlanResponse'
-        }
 
     }
 

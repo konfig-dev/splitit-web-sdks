@@ -17,7 +17,6 @@ import (
 // InstallmentPlanCancelResponse struct for InstallmentPlanCancelResponse
 type InstallmentPlanCancelResponse struct {
 	InstallmentPlanNumber *string `json:"InstallmentPlanNumber,omitempty"`
-	InstallmentPlanResponse *InstallmentPlanResponse `json:"installmentPlanResponse,omitempty"`
 }
 
 // NewInstallmentPlanCancelResponse instantiates a new InstallmentPlanCancelResponse object
@@ -69,45 +68,10 @@ func (o *InstallmentPlanCancelResponse) SetInstallmentPlanNumber(v string) {
 	o.InstallmentPlanNumber = &v
 }
 
-// GetInstallmentPlanResponse returns the InstallmentPlanResponse field value if set, zero value otherwise.
-func (o *InstallmentPlanCancelResponse) GetInstallmentPlanResponse() InstallmentPlanResponse {
-	if o == nil || isNil(o.InstallmentPlanResponse) {
-		var ret InstallmentPlanResponse
-		return ret
-	}
-	return *o.InstallmentPlanResponse
-}
-
-// GetInstallmentPlanResponseOk returns a tuple with the InstallmentPlanResponse field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InstallmentPlanCancelResponse) GetInstallmentPlanResponseOk() (*InstallmentPlanResponse, bool) {
-	if o == nil || isNil(o.InstallmentPlanResponse) {
-    return nil, false
-	}
-	return o.InstallmentPlanResponse, true
-}
-
-// HasInstallmentPlanResponse returns a boolean if a field has been set.
-func (o *InstallmentPlanCancelResponse) HasInstallmentPlanResponse() bool {
-	if o != nil && !isNil(o.InstallmentPlanResponse) {
-		return true
-	}
-
-	return false
-}
-
-// SetInstallmentPlanResponse gets a reference to the given InstallmentPlanResponse and assigns it to the InstallmentPlanResponse field.
-func (o *InstallmentPlanCancelResponse) SetInstallmentPlanResponse(v InstallmentPlanResponse) {
-	o.InstallmentPlanResponse = &v
-}
-
 func (o InstallmentPlanCancelResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.InstallmentPlanNumber) {
 		toSerialize["InstallmentPlanNumber"] = o.InstallmentPlanNumber
-	}
-	if !isNil(o.InstallmentPlanResponse) {
-		toSerialize["installmentPlanResponse"] = o.InstallmentPlanResponse
 	}
 	return json.Marshal(toSerialize)
 }

@@ -1,10 +1,10 @@
-# Splitit.Web.Net.Model.InstallmentPlanCancelResponse
+# Splitit.Web.Net.Model.InstallmentPlanCancelRequest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InstallmentPlanNumber** | **string** |  | [optional] 
+**ReferenceId** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

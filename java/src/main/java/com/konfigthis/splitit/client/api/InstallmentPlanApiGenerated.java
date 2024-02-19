@@ -34,6 +34,7 @@ import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
+import com.konfigthis.splitit.client.model.InstallmentPlanCancelRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
@@ -101,7 +102,7 @@ public class InstallmentPlanApiGenerated {
         this.localCustomBaseUrl = customBaseUrl;
     }
 
-    private okhttp3.Call cancelCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCancelRequest installmentPlanCancelRequest, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -115,7 +116,7 @@ public class InstallmentPlanApiGenerated {
             basePath = null;
         }
 
-        Object localVarPostBody = null;
+        Object localVarPostBody = installmentPlanCancelRequest;
 
         // create path and map variables
         String localVarPath = "/api/installmentplans/{installmentPlanNumber}/cancel"
@@ -146,6 +147,10 @@ public class InstallmentPlanApiGenerated {
         }
 
         final String[] localVarContentTypes = {
+            "application/json",
+            "text/json",
+            "application/json-patch+json",
+            "application/*+json"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         if (localVarContentType != null) {
@@ -157,7 +162,7 @@ public class InstallmentPlanApiGenerated {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call cancelValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call cancelValidateBeforeCall(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCancelRequest installmentPlanCancelRequest, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'installmentPlanNumber' is set
         if (installmentPlanNumber == null) {
             throw new ApiException("Missing the required parameter 'installmentPlanNumber' when calling cancel(Async)");
@@ -173,20 +178,20 @@ public class InstallmentPlanApiGenerated {
             throw new ApiException("Missing the required parameter 'xSplititTouchPoint' when calling cancel(Async)");
         }
 
-        return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+        return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest, _callback);
 
     }
 
 
-    private ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) throws ApiException {
-        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, null);
+    private ApiResponse<InstallmentPlanCancelResponse> cancelWithHttpInfo(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCancelRequest installmentPlanCancelRequest) throws ApiException {
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest, null);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
-    private okhttp3.Call cancelAsync(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
+    private okhttp3.Call cancelAsync(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanCancelRequest installmentPlanCancelRequest, final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+        okhttp3.Call localVarCall = cancelValidateBeforeCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest, _callback);
         Type localVarReturnType = new TypeToken<InstallmentPlanCancelResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -196,6 +201,7 @@ public class InstallmentPlanApiGenerated {
         private final String installmentPlanNumber;
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
+        private String referenceId;
 
         private CancelRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.installmentPlanNumber = installmentPlanNumber;
@@ -203,6 +209,16 @@ public class InstallmentPlanApiGenerated {
             this.xSplititTouchPoint = xSplititTouchPoint;
         }
 
+        /**
+         * Set referenceId
+         * @param referenceId  (optional)
+         * @return CancelRequestBuilder
+         */
+        public CancelRequestBuilder referenceId(String referenceId) {
+            this.referenceId = referenceId;
+            return this;
+        }
+        
         /**
          * Build call for cancel
          * @param _callback ApiCallback API callback
@@ -215,9 +231,15 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
-            return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+            InstallmentPlanCancelRequest installmentPlanCancelRequest = buildBodyParams();
+            return cancelCall(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest, _callback);
         }
 
+        private InstallmentPlanCancelRequest buildBodyParams() {
+            InstallmentPlanCancelRequest installmentPlanCancelRequest = new InstallmentPlanCancelRequest();
+            installmentPlanCancelRequest.referenceId(this.referenceId);
+            return installmentPlanCancelRequest;
+        }
 
         /**
          * Execute cancel request
@@ -230,7 +252,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public InstallmentPlanCancelResponse execute() throws ApiException {
-            ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+            InstallmentPlanCancelRequest installmentPlanCancelRequest = buildBodyParams();
+            ApiResponse<InstallmentPlanCancelResponse> localVarResp = cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
             return localVarResp.getResponseBody();
         }
 
@@ -245,7 +268,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public ApiResponse<InstallmentPlanCancelResponse> executeWithHttpInfo() throws ApiException {
-            return cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+            InstallmentPlanCancelRequest installmentPlanCancelRequest = buildBodyParams();
+            return cancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
         }
 
         /**
@@ -260,7 +284,8 @@ public class InstallmentPlanApiGenerated {
          </table>
          */
         public okhttp3.Call executeAsync(final ApiCallback<InstallmentPlanCancelResponse> _callback) throws ApiException {
-            return cancelAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+            InstallmentPlanCancelRequest installmentPlanCancelRequest = buildBodyParams();
+            return cancelAsync(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest, _callback);
         }
     }
 
@@ -1477,6 +1502,7 @@ public class InstallmentPlanApiGenerated {
         private final String xSplititIdempotencyKey;
         private final String xSplititTouchPoint;
         private RefundStrategy refundStrategy;
+        private String referenceId;
 
         private RefundRequestBuilder(double amount, String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             this.amount = amount;
@@ -1492,6 +1518,16 @@ public class InstallmentPlanApiGenerated {
          */
         public RefundRequestBuilder refundStrategy(RefundStrategy refundStrategy) {
             this.refundStrategy = refundStrategy;
+            return this;
+        }
+        
+        /**
+         * Set referenceId
+         * @param referenceId  (optional)
+         * @return RefundRequestBuilder
+         */
+        public RefundRequestBuilder referenceId(String referenceId) {
+            this.referenceId = referenceId;
             return this;
         }
         
@@ -1515,6 +1551,7 @@ public class InstallmentPlanApiGenerated {
             InstallmentPlanRefundRequest installmentPlanRefundRequest = new InstallmentPlanRefundRequest();
             installmentPlanRefundRequest.amount(this.amount);
             installmentPlanRefundRequest.refundStrategy(this.refundStrategy);
+            installmentPlanRefundRequest.referenceId(this.referenceId);
             return installmentPlanRefundRequest;
         }
 
