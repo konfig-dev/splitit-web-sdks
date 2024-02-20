@@ -123,20 +123,26 @@ public class Example {
     configuration.clientSecret = "clientSecret";
     
     Splitit client = new Splitit(configuration);
-    String installmentPlanNumber = "installmentPlanNumber_example";
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
-    String referenceId = "referenceId_example";
+    PlanData planData = new PlanData();
+    CardData cardDetails = new CardData();
+    AddressData billingAddress = new AddressData();
+    String shopperIdentifier = "shopperIdentifier_example";
     try {
-      InstallmentPlanCancelResponse result = client
+      InstallmentsEligibilityResponse result = client
               .installmentPlan
-              .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .referenceId(referenceId)
+              .checkEligibility(xSplititIdempotencyKey, xSplititTouchPoint)
+              .planData(planData)
+              .cardDetails(cardDetails)
+              .billingAddress(billingAddress)
+              .shopperIdentifier(shopperIdentifier)
               .execute();
       System.out.println(result);
-      System.out.println(result.getInstallmentPlanNumber());
+      System.out.println(result.getInstallmentProvider());
+      System.out.println(result.getPaymentPlanOptions());
     } catch (ApiException e) {
-      System.err.println("Exception when calling InstallmentPlanApi#cancel");
+      System.err.println("Exception when calling InstallmentPlanApi#checkEligibility");
       System.err.println("Status code: " + e.getStatusCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -145,10 +151,13 @@ public class Example {
 
     // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
     try {
-      ApiResponse<InstallmentPlanCancelResponse> response = client
+      ApiResponse<InstallmentsEligibilityResponse> response = client
               .installmentPlan
-              .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .referenceId(referenceId)
+              .checkEligibility(xSplititIdempotencyKey, xSplititTouchPoint)
+              .planData(planData)
+              .cardDetails(cardDetails)
+              .billingAddress(billingAddress)
+              .shopperIdentifier(shopperIdentifier)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
       System.out.println(response.getResponseHeaders());
@@ -156,7 +165,7 @@ public class Example {
       System.out.println(response.getRoundTripTime());
       System.out.println(response.getRequest());
     } catch (ApiException e) {
-      System.err.println("Exception when calling InstallmentPlanApi#cancel");
+      System.err.println("Exception when calling InstallmentPlanApi#checkEligibility");
       System.err.println("Status code: " + e.getStatusCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -173,7 +182,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InstallmentPlanApi* | [**cancel**](docs/InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel | 
 *InstallmentPlanApi* | [**checkEligibility**](docs/InstallmentPlanApi.md#checkEligibility) | **POST** /api/installmentplans/check-eligibility | 
 *InstallmentPlanApi* | [**get**](docs/InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
 *InstallmentPlanApi* | [**post**](docs/InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate | 
@@ -205,8 +213,6 @@ Class | Method | HTTP request | Description
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
  - [InitiateRedirectionEndpointsModel](docs/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/Installment.md)
- - [InstallmentPlanCancelRequest](docs/InstallmentPlanCancelRequest.md)
- - [InstallmentPlanCancelResponse](docs/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/InstallmentPlanCreateResponse.md)
  - [InstallmentPlanGetResponse](docs/InstallmentPlanGetResponse.md)

@@ -11,7 +11,6 @@ Splitit's Web API
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Reference](#reference)
-  * [`splitit.installmentplan.cancel`](#splititinstallmentplancancel)
   * [`splitit.installmentplan.checkEligibility`](#splititinstallmentplancheckeligibility)
   * [`splitit.installmentplan.get`](#splititinstallmentplanget)
   * [`splitit.installmentplan.post`](#splititinstallmentplanpost)
@@ -69,55 +68,17 @@ const splitit = new Splitit({
   oauthClientSecret: "CLIENT_SECRET",
 });
 
-const cancelResponse = await splitit.installmentplan.cancel({
-  installmentPlanNumber: "installmentPlanNumber_example",
-  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
-  xSplititTouchPoint: "",
-});
+const checkEligibilityResponse = await splitit.installmentplan.checkEligibility(
+  {
+    xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
+    xSplititTouchPoint: "",
+  }
+);
 
-console.log(cancelResponse);
+console.log(checkEligibilityResponse);
 ```
 
 ## Reference<a id="reference"></a>
-
-
-### `splitit.installmentplan.cancel`<a id="splititinstallmentplancancel"></a>
-
-
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```typescript
-const cancelResponse = await splitit.installmentplan.cancel({
-  installmentPlanNumber: "installmentPlanNumber_example",
-  xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
-  xSplititTouchPoint: "",
-});
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### installmentPlanNumber: `string`<a id="installmentplannumber-string"></a>
-
-##### xSplititIdempotencyKey: `string`<a id="xsplititidempotencykey-string"></a>
-
-##### xSplititTouchPoint: `string`<a id="xsplitittouchpoint-string"></a>
-
-TouchPoint
-
-##### ReferenceId: `string`<a id="referenceid-string"></a>
-
-#### 🔄 Return<a id="🔄-return"></a>
-
-[InstallmentPlanCancelResponse](./models/installment-plan-cancel-response.ts)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/api/installmentplans/{installmentPlanNumber}/cancel` `POST`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
 
 
 ### `splitit.installmentplan.checkEligibility`<a id="splititinstallmentplancheckeligibility"></a>

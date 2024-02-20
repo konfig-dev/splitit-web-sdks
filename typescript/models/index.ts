@@ -16,8 +16,6 @@ export * from './identifier-contract';
 export * from './initiate-plan-response';
 export * from './initiate-redirection-endpoints-model';
 export * from './installment';
-export * from './installment-plan-cancel-request';
-export * from './installment-plan-cancel-response';
 export * from './installment-plan-create-request';
 export * from './installment-plan-create-response';
 export * from './installment-plan-get-response';

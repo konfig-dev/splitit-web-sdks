@@ -24,8 +24,6 @@ import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
 import com.konfigthis.splitit.client.model.InitiateRedirectionEndpointsModel;
-import com.konfigthis.splitit.client.model.InstallmentPlanCancelRequest;
-import com.konfigthis.splitit.client.model.InstallmentPlanCancelResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateRequest;
 import com.konfigthis.splitit.client.model.InstallmentPlanCreateResponse;
 import com.konfigthis.splitit.client.model.InstallmentPlanGetResponse;
@@ -69,21 +67,6 @@ public class InstallmentPlanApiTest {
     public static void beforeClass() {
         ApiClient apiClient = Configuration.getDefaultApiClient();
         api = new InstallmentPlanApi(apiClient);
-    }
-
-    /**
-     * @throws ApiException if the Api call fails
-     */
-    @Test
-    public void cancelTest() throws ApiException {
-        String installmentPlanNumber = null;
-        String xSplititIdempotencyKey = null;
-        String xSplititTouchPoint = null;
-        String referenceId = null;
-        InstallmentPlanCancelResponse response = api.cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-                .referenceId(referenceId)
-                .execute();
-        // TODO: test validations
     }
 
     /**

@@ -4,7 +4,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**Cancel**](InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel |  |
 | [**CheckEligibility**](InstallmentPlanApi.md#checkeligibility) | **POST** /api/installmentplans/check-eligibility |  |
 | [**Get**](InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} |  |
 | [**Post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate |  |
@@ -14,105 +13,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 | [**UpdateOrder**](InstallmentPlanApi.md#updateorder) | **PUT** /api/installmentplans/{installmentPlanNumber}/updateorder |  |
 | [**UpdateOrder2**](InstallmentPlanApi.md#updateorder2) | **PUT** /api/installmentplans/updateorder |  |
 | [**VerifyAuthorization**](InstallmentPlanApi.md#verifyauthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization |  |
-
-
-# **Cancel**
-
-
-
-### Example
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Splitit.Web.Net.Client;
-using Splitit.Web.Net.Model;
-
-namespace Example
-{
-    public class CancelExample
-    {
-        public static void Main()
-        {
-            SplititClient client = new SplititClient();
-            // Configure OAuth2 credentials for "application" OAuth flow
-            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
-            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
-
-            var installmentPlanNumber = "installmentPlanNumber_example";
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
-            var xSplititTouchPoint = ""; // TouchPoint (default to "")
-            var referenceId = "referenceId_example";
-            
-            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
-                referenceId
-            );
-            
-            try
-            {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
-                Console.WriteLine(result);
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Exception when calling InstallmentPlanApi.Cancel: " + e.Message);
-                Console.WriteLine("Status Code: "+ e.ErrorCode);
-                Console.WriteLine(e.StackTrace);
-            }
-            catch (ClientException e)
-            {
-                Console.WriteLine(e.Response.StatusCode);
-                Console.WriteLine(e.Response.RawContent);
-                Console.WriteLine(e.InnerException);
-            }
-        }
-    }
-}
-```
-
-#### Using the CancelWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    ApiResponse<InstallmentPlanCancelResponse> response = apiInstance.CancelWithHttpInfo(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstallmentPlanApi.CancelWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **installmentPlanNumber** | **string** |  |  |
-| **xSplititIdempotencyKey** | **string** |  |  |
-| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
-| **installmentPlanCancelRequest** | [**InstallmentPlanCancelRequest**](InstallmentPlanCancelRequest.md) |  | [optional]  |
-
-### Return type
-
-[**InstallmentPlanCancelResponse**](InstallmentPlanCancelResponse.md)
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** |  |  -  |
-| **401** |  |  -  |
-| **403** |  |  -  |
-| **404** |  |  -  |
-| **500** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 
 # **CheckEligibility**

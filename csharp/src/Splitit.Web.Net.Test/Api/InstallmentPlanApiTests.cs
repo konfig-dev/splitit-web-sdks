@@ -45,40 +45,6 @@ namespace Splitit.Web.Net.Test.Api
         }
 
         /// <summary>
-        /// Test Cancel
-        /// </summary>
-        [Fact]
-        public void CancelTest()
-        {
-            var installmentPlanNumber = "installmentPlanNumber_example";
-            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
-            var xSplititTouchPoint = ""; // TouchPoint (default to "")
-            var referenceId = "referenceId_example";
-            
-            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
-                referenceId
-            );
-            
-            try
-            {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
-                Console.WriteLine(result);
-            }
-            catch (ApiException e)
-            {
-                Console.WriteLine("Exception when calling InstallmentPlanApi.Cancel: " + e.Message);
-                Console.WriteLine("Status Code: "+ e.ErrorCode);
-                Console.WriteLine(e.StackTrace);
-            }
-            catch (ClientException e)
-            {
-                Console.WriteLine(e.Response.StatusCode);
-                Console.WriteLine(e.Response.RawContent);
-                Console.WriteLine(e.InnerException);
-            }
-        }
-
-        /// <summary>
         /// Test CheckEligibility
         /// </summary>
         [Fact]

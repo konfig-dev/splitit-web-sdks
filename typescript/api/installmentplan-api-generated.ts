@@ -38,10 +38,6 @@ import { InitiatePlanResponse } from '../models';
 // @ts-ignore
 import { InitiateRedirectionEndpointsModel } from '../models';
 // @ts-ignore
-import { InstallmentPlanCancelRequest } from '../models';
-// @ts-ignore
-import { InstallmentPlanCancelResponse } from '../models';
-// @ts-ignore
 import { InstallmentPlanCreateRequest } from '../models';
 // @ts-ignore
 import { InstallmentPlanCreateResponse } from '../models';
@@ -94,68 +90,6 @@ import { requestBeforeHook } from '../requestBeforeHook';
  */
 export const InstallmentplanApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
-        /**
-         * 
-         * @param {string} installmentPlanNumber 
-         * @param {string} xSplititIdempotencyKey 
-         * @param {string} xSplititTouchPoint TouchPoint
-         * @param {InstallmentPlanCancelRequest} [installmentPlanCancelRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cancel: async (installmentPlanNumber: string, xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanCancelRequest?: InstallmentPlanCancelRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'installmentPlanNumber' is not null or undefined
-            assertParamExists('cancel', 'installmentPlanNumber', installmentPlanNumber)
-            // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
-            assertParamExists('cancel', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
-            // verify required parameter 'xSplititTouchPoint' is not null or undefined
-            assertParamExists('cancel', 'xSplititTouchPoint', xSplititTouchPoint)
-            const localVarPath = `/api/installmentplans/{installmentPlanNumber}/cancel`
-                .replace(`{${"installmentPlanNumber"}}`, encodeURIComponent(String(installmentPlanNumber !== undefined ? installmentPlanNumber : `-installmentPlanNumber-`)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions: AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication oauth required
-            // oauth required
-            await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
-            if (xSplititIdempotencyKey != null) {
-                localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
-            }
-
-            if (xSplititTouchPoint != null) {
-                localVarHeaderParameter['X-Splitit-TouchPoint'] = String(xSplititTouchPoint);
-            }
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            requestBeforeHook({
-                requestBody: installmentPlanCancelRequest,
-                queryParameters: localVarQueryParameter,
-                requestConfig: localVarRequestOptions,
-                path: localVarPath,
-                configuration
-            });
-            localVarRequestOptions.data = serializeDataIfNeeded(installmentPlanCancelRequest, localVarRequestOptions, configuration)
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
         /**
          * 
          * @param {string} xSplititIdempotencyKey 
@@ -735,19 +669,6 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
-         * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InstallmentPlanCancelResponse>> {
-            const installmentPlanCancelRequest: InstallmentPlanCancelRequest = {
-                ReferenceId: requestParameters.ReferenceId
-            };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cancel(requestParameters.installmentPlanNumber, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanCancelRequest, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * 
          * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -891,15 +812,6 @@ export const InstallmentplanApiFactory = function (configuration?: Configuration
     return {
         /**
          * 
-         * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig): AxiosPromise<InstallmentPlanCancelResponse> {
-            return localVarFp.cancel(requestParameters, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -981,36 +893,6 @@ export const InstallmentplanApiFactory = function (configuration?: Configuration
         },
     };
 };
-
-/**
- * Request parameters for cancel operation in InstallmentplanApi.
- * @export
- * @interface InstallmentplanApiCancelRequest
- */
-export type InstallmentplanApiCancelRequest = {
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof InstallmentplanApiCancel
-    */
-    readonly installmentPlanNumber: string
-    
-    /**
-    * 
-    * @type {string}
-    * @memberof InstallmentplanApiCancel
-    */
-    readonly xSplititIdempotencyKey: string
-    
-    /**
-    * TouchPoint
-    * @type {string}
-    * @memberof InstallmentplanApiCancel
-    */
-    readonly xSplititTouchPoint: string
-    
-} & InstallmentPlanCancelRequest
 
 /**
  * Request parameters for checkEligibility operation in InstallmentplanApi.
@@ -1303,17 +1185,6 @@ export type InstallmentplanApiVerifyAuthorizationRequest = {
  * @extends {BaseAPI}
  */
 export class InstallmentplanApiGenerated extends BaseAPI {
-    /**
-     * 
-     * @param {InstallmentplanApiCancelRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof InstallmentplanApiGenerated
-     */
-    public cancel(requestParameters: InstallmentplanApiCancelRequest, options?: AxiosRequestConfig) {
-        return InstallmentplanApiFp(this.configuration).cancel(requestParameters, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * 
      * @param {InstallmentplanApiCheckEligibilityRequest} requestParameters Request parameters.

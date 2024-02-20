@@ -24,27 +24,6 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
     client := splitit.NewAPIClient(configuration)
     */
 
-    t.Run("Test InstallmentPlanApiService Cancel", func(t *testing.T) {
-        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
-        
-        installmentPlanCancelRequest := *splitit.NewInstallmentPlanCancelRequest()
-        installmentPlanCancelRequest.SetReferenceId("null")
-        
-        request := client.InstallmentPlanApi.Cancel(
-            "installmentPlanNumber_example",
-            "xSplititIdempotencyKey_example",
-            """",
-        )
-        request.InstallmentPlanCancelRequest(installmentPlanCancelRequest)
-        
-        resp, httpRes, err := request.Execute()
-
-        require.Nil(t, err)
-        require.NotNil(t, resp)
-        assert.Equal(t, 200, httpRes.StatusCode)
-        */
-    })
-
     t.Run("Test InstallmentPlanApiService CheckEligibility", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         planData := *splitit.NewPlanData()

@@ -26,26 +26,32 @@ func main() {
     configuration := splitit.NewConfiguration()
     client := splitit.NewAPIClient(configuration)
 
+    planData := *splitit.NewPlanData()
+    cardDetails := *splitit.NewCardData()
+    billingAddress := *splitit.NewAddressData()
     
-    installmentPlanCancelRequest := *splitit.NewInstallmentPlanCancelRequest()
-    installmentPlanCancelRequest.SetReferenceId("null")
+    checkInstallmentsEligibilityRequest := *splitit.NewCheckInstallmentsEligibilityRequest()
+    checkInstallmentsEligibilityRequest.SetPlanData(planData)
+    checkInstallmentsEligibilityRequest.SetCardDetails(cardDetails)
+    checkInstallmentsEligibilityRequest.SetBillingAddress(billingAddress)
+    checkInstallmentsEligibilityRequest.SetShopperIdentifier("null")
     
-    request := client.InstallmentPlanApi.Cancel(
-        "installmentPlanNumber_example",
+    request := client.InstallmentPlanApi.CheckEligibility(
         "xSplititIdempotencyKey_example",
         """",
+        checkInstallmentsEligibilityRequest,
     )
-    request.InstallmentPlanCancelRequest(installmentPlanCancelRequest)
     
     resp, httpRes, err := request.Execute()
 
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Cancel``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.CheckEligibility``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
     }
-    // response from `Cancel`: InstallmentPlanCancelResponse
-    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Cancel`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
+    // response from `CheckEligibility`: InstallmentsEligibilityResponse
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.CheckEligibility`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentsEligibilityResponse.CheckEligibility.InstallmentProvider`: %v\n", *resp.InstallmentProvider)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentsEligibilityResponse.CheckEligibility.PaymentPlanOptions`: %v\n", *resp.PaymentPlanOptions)
 }
 
 ```
@@ -56,7 +62,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InstallmentPlanApi* | [**Cancel**](docs/InstallmentPlanApi.md#cancel) | **Post** /api/installmentplans/{installmentPlanNumber}/cancel | 
 *InstallmentPlanApi* | [**CheckEligibility**](docs/InstallmentPlanApi.md#checkeligibility) | **Post** /api/installmentplans/check-eligibility | 
 *InstallmentPlanApi* | [**Get**](docs/InstallmentPlanApi.md#get) | **Get** /api/installmentplans/{installmentPlanNumber} | 
 *InstallmentPlanApi* | [**Post**](docs/InstallmentPlanApi.md#post) | **Post** /api/installmentplans/initiate | 
@@ -89,8 +94,6 @@ Class | Method | HTTP request | Description
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
  - [InitiateRedirectionEndpointsModel](docs/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/Installment.md)
- - [InstallmentPlanCancelRequest](docs/InstallmentPlanCancelRequest.md)
- - [InstallmentPlanCancelResponse](docs/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/InstallmentPlanCreateResponse.md)
  - [InstallmentPlanGetResponse](docs/InstallmentPlanGetResponse.md)
