@@ -4,7 +4,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**cancel**](InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel |  |
 | [**checkEligibility**](InstallmentPlanApi.md#checkEligibility) | **POST** /api/installmentplans/check-eligibility |  |
 | [**get**](InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} |  |
 | [**post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate |  |
@@ -15,108 +14,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 | [**updateOrder2**](InstallmentPlanApi.md#updateOrder2) | **PUT** /api/installmentplans/updateorder |  |
 | [**verifyAuthorization**](InstallmentPlanApi.md#verifyAuthorization) | **GET** /api/installmentplans/{installmentPlanNumber}/verifyauthorization |  |
 
-
-<a name="cancel"></a>
-# **cancel**
-> InstallmentPlanCancelResponse cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint).installmentPlanCancelRequest(installmentPlanCancelRequest).execute();
-
-
-
-### Example
-```java
-import com.konfigthis.splitit.client.ApiClient;
-import com.konfigthis.splitit.client.ApiException;
-import com.konfigthis.splitit.client.ApiResponse;
-import com.konfigthis.splitit.client.Splitit;
-import com.konfigthis.splitit.client.Configuration;
-import com.konfigthis.splitit.client.auth.*;
-import com.konfigthis.splitit.client.model.*;
-import com.konfigthis.splitit.client.api.InstallmentPlanApi;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
-public class Example {
-  public static void main(String[] args) {
-    Configuration configuration = new Configuration();
-    configuration.host = "https://web-api-v3.production.splitit.com";
-    // Configure OAuth2 client credentials for "application" OAuth flow
-    String clientId = System.getenv("CLIENT_ID");
-    String clientSecret = System.getenv("CLIENT_SECRET");
-    configuration.clientId = "clientId";
-    configuration.clientSecret = "clientSecret";
-    
-    Splitit client = new Splitit(configuration);
-    String installmentPlanNumber = "installmentPlanNumber_example";
-    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
-    String xSplititTouchPoint = ""; // TouchPoint
-    String referenceId = "referenceId_example";
-    try {
-      InstallmentPlanCancelResponse result = client
-              .installmentPlan
-              .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .referenceId(referenceId)
-              .execute();
-      System.out.println(result);
-      System.out.println(result.getInstallmentPlanNumber());
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstallmentPlanApi#cancel");
-      System.err.println("Status code: " + e.getStatusCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-
-    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
-    try {
-      ApiResponse<InstallmentPlanCancelResponse> response = client
-              .installmentPlan
-              .cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
-              .referenceId(referenceId)
-              .executeWithHttpInfo();
-      System.out.println(response.getResponseBody());
-      System.out.println(response.getResponseHeaders());
-      System.out.println(response.getStatusCode());
-      System.out.println(response.getRoundTripTime());
-      System.out.println(response.getRequest());
-    } catch (ApiException e) {
-      System.err.println("Exception when calling InstallmentPlanApi#cancel");
-      System.err.println("Status code: " + e.getStatusCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-|------------- | ------------- | ------------- | -------------|
-| **installmentPlanNumber** | **String**|  | |
-| **xSplititIdempotencyKey** | **String**|  | |
-| **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
-| **installmentPlanCancelRequest** | [**InstallmentPlanCancelRequest**](InstallmentPlanCancelRequest.md)|  | [optional] |
-
-### Return type
-
-[**InstallmentPlanCancelResponse**](InstallmentPlanCancelResponse.md)
-
-### Authorization
-
-[oauth](../README.md#oauth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/json, application/json-patch+json, application/*+json
- - **Accept**: application/json, text/json, text/plain
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **200** |  |  -  |
 
 <a name="checkEligibility"></a>
 # **checkEligibility**

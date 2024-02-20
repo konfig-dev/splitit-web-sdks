@@ -3,7 +3,7 @@
 Splitit's Web API
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v2.6.7-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.7)
+[![PyPI](https://img.shields.io/badge/PyPI-v2.6.8-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.8)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>
@@ -15,7 +15,6 @@ Splitit's Web API
 - [Getting Started](#getting-started)
 - [Async](#async)
 - [Reference](#reference)
-  * [`splitit.installment_plan.cancel`](#splititinstallment_plancancel)
   * [`splitit.installment_plan.check_eligibility`](#splititinstallment_plancheck_eligibility)
   * [`splitit.installment_plan.get`](#splititinstallment_planget)
   * [`splitit.installment_plan.post`](#splititinstallment_planpost)
@@ -35,7 +34,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install splitit-web-python-sdk==2.6.7
+pip install splitit-web-python-sdk==2.6.8
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -50,19 +49,29 @@ splitit = Splitit(
 )
 
 try:
-    cancel_response = splitit.installment_plan.cancel(
-        installment_plan_number="installmentPlanNumber_example",
+    check_eligibility_response = splitit.installment_plan.check_eligibility(
         x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
         x_splitit_touch_point="",
-        reference_id="string_example",
+        plan_data={
+            "total_amount": 3.14,
+            "number_of_installments": 1,
+            "purchase_method": "InStore",
+        },
+        card_details={
+            "card_brand": "Mastercard",
+            "card_type": "Credit",
+        },
+        billing_address={},
+        shopper_identifier="string_example",
     )
-    pprint(cancel_response.body)
-    pprint(cancel_response.body["installment_plan_number"])
-    pprint(cancel_response.headers)
-    pprint(cancel_response.status)
-    pprint(cancel_response.round_trip_time)
+    pprint(check_eligibility_response.body)
+    pprint(check_eligibility_response.body["installment_provider"])
+    pprint(check_eligibility_response.body["payment_plan_options"])
+    pprint(check_eligibility_response.headers)
+    pprint(check_eligibility_response.status)
+    pprint(check_eligibility_response.round_trip_time)
 except ApiException as e:
-    print("Exception when calling InstallmentPlanApi.cancel: %s\n" % e)
+    print("Exception when calling InstallmentPlanApi.check_eligibility: %s\n" % e)
     pprint(e.body)
     if e.status == 401:
         pprint(e.body["trace_id"])
@@ -99,19 +108,29 @@ splitit = Splitit(
 
 async def main():
     try:
-        cancel_response = await splitit.installment_plan.acancel(
-            installment_plan_number="installmentPlanNumber_example",
+        check_eligibility_response = await splitit.installment_plan.acheck_eligibility(
             x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
             x_splitit_touch_point="",
-            reference_id="string_example",
+            plan_data={
+                "total_amount": 3.14,
+                "number_of_installments": 1,
+                "purchase_method": "InStore",
+            },
+            card_details={
+                "card_brand": "Mastercard",
+                "card_type": "Credit",
+            },
+            billing_address={},
+            shopper_identifier="string_example",
         )
-        pprint(cancel_response.body)
-        pprint(cancel_response.body["installment_plan_number"])
-        pprint(cancel_response.headers)
-        pprint(cancel_response.status)
-        pprint(cancel_response.round_trip_time)
+        pprint(check_eligibility_response.body)
+        pprint(check_eligibility_response.body["installment_provider"])
+        pprint(check_eligibility_response.body["payment_plan_options"])
+        pprint(check_eligibility_response.headers)
+        pprint(check_eligibility_response.status)
+        pprint(check_eligibility_response.round_trip_time)
     except ApiException as e:
-        print("Exception when calling InstallmentPlanApi.cancel: %s\n" % e)
+        print("Exception when calling InstallmentPlanApi.check_eligibility: %s\n" % e)
         pprint(e.body)
         if e.status == 401:
             pprint(e.body["trace_id"])
@@ -136,48 +155,6 @@ asyncio.run(main())
 
 
 ## Reference<a id="reference"></a>
-### `splitit.installment_plan.cancel`<a id="splititinstallment_plancancel"></a>
-
-
-
-#### 🛠️ Usage<a id="🛠️-usage"></a>
-
-```python
-cancel_response = splitit.installment_plan.cancel(
-    installment_plan_number="installmentPlanNumber_example",
-    x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
-    x_splitit_touch_point="",
-    reference_id="string_example",
-)
-```
-
-#### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### installment_plan_number: `str`<a id="installment_plan_number-str"></a>
-
-##### x_splitit_idempotency_key: `str`<a id="x_splitit_idempotency_key-str"></a>
-
-##### x_splitit_touch_point: `str`<a id="x_splitit_touch_point-str"></a>
-
-TouchPoint
-
-##### reference_id: `str`<a id="reference_id-str"></a>
-
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-[`InstallmentPlanCancelRequest`](./splitit_client/type/installment_plan_cancel_request.py)
-#### 🔄 Return<a id="🔄-return"></a>
-
-[`InstallmentPlanCancelResponse`](./splitit_client/type/installment_plan_cancel_response.py)
-
-#### 🌐 Endpoint<a id="🌐-endpoint"></a>
-
-`/api/installmentplans/{installmentPlanNumber}/cancel` `post`
-
-[🔙 **Back to Table of Contents**](#table-of-contents)
-
----
-
 ### `splitit.installment_plan.check_eligibility`<a id="splititinstallment_plancheck_eligibility"></a>
 
 

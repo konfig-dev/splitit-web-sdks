@@ -1,6 +1,6 @@
 # Splitit.Web.Net - C#
 
-[![NuGet](https://img.shields.io/badge/NuGet-2.1.7-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/2.1.7)
+[![NuGet](https://img.shields.io/badge/NuGet-2.1.8-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/2.1.8)
 
 Splitit's Web API
 
@@ -49,7 +49,7 @@ using Splitit.Web.Net.Model;
 
 namespace Example
 {
-    public class CancelExample
+    public class CheckEligibilityExample
     {
         public static void Main()
         {
@@ -58,23 +58,28 @@ namespace Example
             client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
             client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
 
-            var installmentPlanNumber = "installmentPlanNumber_example";
             var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
             var xSplititTouchPoint = ""; // TouchPoint (default to "")
-            var referenceId = "referenceId_example";
+            var planData = new PlanData();
+            var cardDetails = new CardData();
+            var billingAddress = new AddressData();
+            var shopperIdentifier = "shopperIdentifier_example";
             
-            var installmentPlanCancelRequest = new InstallmentPlanCancelRequest(
-                referenceId
+            var checkInstallmentsEligibilityRequest = new CheckInstallmentsEligibilityRequest(
+                planData,
+                cardDetails,
+                billingAddress,
+                shopperIdentifier
             );
             
             try
             {
-                InstallmentPlanCancelResponse result = client.InstallmentPlan.Cancel(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCancelRequest);
+                InstallmentsEligibilityResponse result = client.InstallmentPlan.CheckEligibility(xSplititIdempotencyKey, xSplititTouchPoint, checkInstallmentsEligibilityRequest);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
             {
-                Console.WriteLine("Exception when calling InstallmentPlanApi.Cancel: " + e.Message);
+                Console.WriteLine("Exception when calling InstallmentPlanApi.CheckEligibility: " + e.Message);
                 Console.WriteLine("Status Code: "+ e.ErrorCode);
                 Console.WriteLine(e.StackTrace);
             }
@@ -95,7 +100,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InstallmentPlanApi* | [**Cancel**](docs/InstallmentPlanApi.md#cancel) | **POST** /api/installmentplans/{installmentPlanNumber}/cancel | 
 *InstallmentPlanApi* | [**CheckEligibility**](docs/InstallmentPlanApi.md#checkeligibility) | **POST** /api/installmentplans/check-eligibility | 
 *InstallmentPlanApi* | [**Get**](docs/InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
 *InstallmentPlanApi* | [**Post**](docs/InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate | 
@@ -128,8 +132,6 @@ Class | Method | HTTP request | Description
  - [InitiatePlanResponse](docs/InitiatePlanResponse.md)
  - [InitiateRedirectionEndpointsModel](docs/InitiateRedirectionEndpointsModel.md)
  - [Installment](docs/Installment.md)
- - [InstallmentPlanCancelRequest](docs/InstallmentPlanCancelRequest.md)
- - [InstallmentPlanCancelResponse](docs/InstallmentPlanCancelResponse.md)
  - [InstallmentPlanCreateRequest](docs/InstallmentPlanCreateRequest.md)
  - [InstallmentPlanCreateResponse](docs/InstallmentPlanCreateResponse.md)
  - [InstallmentPlanGetResponse](docs/InstallmentPlanGetResponse.md)

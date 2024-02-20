@@ -1038,131 +1038,6 @@ paths:
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-refund
       x-content-type: application/json
       x-accepts: application/json
-  /api/installmentplans/{installmentPlanNumber}/cancel:
-    post:
-      operationId: InstallmentPlan_Cancel
-      parameters:
-      - explode: false
-        in: path
-        name: installmentPlanNumber
-        required: true
-        schema:
-          type: string
-        style: simple
-        x-nullable: true
-      - explode: false
-        in: header
-        name: X-Splitit-IdempotencyKey
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: TouchPoint
-        explode: false
-        in: header
-        name: X-Splitit-TouchPoint
-        required: true
-        schema:
-          default: ""
-          example: ""
-          type: string
-          x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/InstallmentPlanCancelRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/InstallmentPlanCancelRequest'
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/InstallmentPlanCancelRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/InstallmentPlanCancelRequest'
-        x-nullable: false
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InstallmentPlanCancelResponse'
-          description: ""
-          x-nullable: false
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-          description: ""
-          x-nullable: false
-          x-do-not-generate: true
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-          description: ""
-          x-nullable: false
-          x-do-not-generate: true
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-          description: ""
-          x-nullable: false
-          x-do-not-generate: true
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/FailedResponse'
-          description: ""
-          x-nullable: false
-          x-do-not-generate: true
-      security:
-      - oauth:
-        - api.v3
-      tags:
-      - InstallmentPlan
-      x-konfig-operation-can-have-single-parameter: true
-      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel
-      x-content-type: application/json
-      x-accepts: application/json
   /api/installmentplans/check-eligibility:
     post:
       operationId: InstallmentPlan_CheckEligibility
@@ -2783,21 +2658,6 @@ components:
       - FutureInstallmentsLast
       - FutureInstallmentsNotAllowed
       - ReduceFromLastInstallment
-    InstallmentPlanCancelResponse:
-      example:
-        InstallmentPlanNumber: InstallmentPlanNumber
-      properties:
-        InstallmentPlanNumber:
-          type: string
-      type: object
-      x-konfig-is-used-in-successful-response: true
-    InstallmentPlanCancelRequest:
-      example:
-        ReferenceId: ReferenceId
-      properties:
-        ReferenceId:
-          type: string
-      type: object
     InstallmentsEligibilityResponse:
       example:
         InstallmentProvider: InstallmentProvider
@@ -3068,10 +2928,6 @@ components:
       example: ""
       type: string
       x-do-not-generate: true
-    konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema:
-      example: ""
-      type: string
-      x-do-not-generate: true
     konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema:
       example: ""
       type: string
@@ -3333,30 +3189,6 @@ components:
           type: string
       required:
       - Amount
-      - X-Splitit-IdempotencyKey
-      - X-Splitit-TouchPoint
-      - installmentPlanNumber
-      type: object
-      x-do-not-generate: true
-      x-konfig-is-parameter:
-      - installmentPlanNumber
-      - X-Splitit-IdempotencyKey
-      - X-Splitit-TouchPoint
-    konfig-generated-schema-single-parameter-schema-post--api-installmentplans-installmentPlanNumber-cancel:
-      properties:
-        installmentPlanNumber:
-          type: string
-        X-Splitit-IdempotencyKey:
-          type: string
-        X-Splitit-TouchPoint:
-          default: ""
-          example: ""
-          type: string
-          x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-cancel-post-parameters-2-schema
-        ReferenceId:
-          type: string
-      required:
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint
       - installmentPlanNumber

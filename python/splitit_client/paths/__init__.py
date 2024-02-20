@@ -14,5 +14,4 @@ class PathValues(str, enum.Enum):
     API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_UPDATEORDER = "/api/installmentplans/{installmentPlanNumber}/updateorder"
     API_INSTALLMENTPLANS_UPDATEORDER = "/api/installmentplans/updateorder"
     API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_REFUND = "/api/installmentplans/{installmentPlanNumber}/refund"
-    API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_CANCEL = "/api/installmentplans/{installmentPlanNumber}/cancel"
     API_INSTALLMENTPLANS_CHECKELIGIBILITY = "/api/installmentplans/check-eligibility"

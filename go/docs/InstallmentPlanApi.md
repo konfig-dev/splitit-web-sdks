@@ -4,7 +4,6 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 
 Method | Path | Description
 ------------- | ------------- | -------------
-[**Cancel**](InstallmentPlanApi.md#Cancel) | **Post** /api/installmentplans/{installmentPlanNumber}/cancel | 
 [**CheckEligibility**](InstallmentPlanApi.md#CheckEligibility) | **Post** /api/installmentplans/check-eligibility | 
 [**Get**](InstallmentPlanApi.md#Get) | **Get** /api/installmentplans/{installmentPlanNumber} | 
 [**Post**](InstallmentPlanApi.md#Post) | **Post** /api/installmentplans/initiate | 
@@ -15,53 +14,6 @@ Method | Path | Description
 [**UpdateOrder2**](InstallmentPlanApi.md#UpdateOrder2) | **Put** /api/installmentplans/updateorder | 
 [**VerifyAuthorization**](InstallmentPlanApi.md#VerifyAuthorization) | **Get** /api/installmentplans/{installmentPlanNumber}/verifyauthorization | 
 
-
-
-## Cancel
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "fmt"
-    "os"
-    splitit "github.com/konfig-dev/splitit-web-sdks/go"
-)
-
-func main() {
-    configuration := splitit.NewConfiguration()
-    client := splitit.NewAPIClient(configuration)
-
-    
-    installmentPlanCancelRequest := *splitit.NewInstallmentPlanCancelRequest()
-    installmentPlanCancelRequest.SetReferenceId("null")
-    
-    request := client.InstallmentPlanApi.Cancel(
-        "installmentPlanNumber_example",
-        "xSplititIdempotencyKey_example",
-        """",
-    )
-    request.InstallmentPlanCancelRequest(installmentPlanCancelRequest)
-    
-    resp, httpRes, err := request.Execute()
-
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.Cancel``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
-    }
-    // response from `Cancel`: InstallmentPlanCancelResponse
-    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.Cancel`: %v\n", resp)
-    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanCancelResponse.Cancel.InstallmentPlanNumber`: %v\n", *resp.InstallmentPlanNumber)
-}
-```
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## CheckEligibility

@@ -9,7 +9,6 @@ from splitit_client.apis.paths.api_installmentplans_installment_plan_number_veri
 from splitit_client.apis.paths.api_installmentplans_installment_plan_number_updateorder import ApiInstallmentplansInstallmentPlanNumberUpdateorder
 from splitit_client.apis.paths.api_installmentplans_updateorder import ApiInstallmentplansUpdateorder
 from splitit_client.apis.paths.api_installmentplans_installment_plan_number_refund import ApiInstallmentplansInstallmentPlanNumberRefund
-from splitit_client.apis.paths.api_installmentplans_installment_plan_number_cancel import ApiInstallmentplansInstallmentPlanNumberCancel
 from splitit_client.apis.paths.api_installmentplans_check_eligibility import ApiInstallmentplansCheckEligibility
 
 PathToApi = typing_extensions.TypedDict(
@@ -23,7 +22,6 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_UPDATEORDER: ApiInstallmentplansInstallmentPlanNumberUpdateorder,
         PathValues.API_INSTALLMENTPLANS_UPDATEORDER: ApiInstallmentplansUpdateorder,
         PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_REFUND: ApiInstallmentplansInstallmentPlanNumberRefund,
-        PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_CANCEL: ApiInstallmentplansInstallmentPlanNumberCancel,
         PathValues.API_INSTALLMENTPLANS_CHECKELIGIBILITY: ApiInstallmentplansCheckEligibility,
     }
 )
@@ -38,7 +36,6 @@ path_to_api = PathToApi(
         PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_UPDATEORDER: ApiInstallmentplansInstallmentPlanNumberUpdateorder,
         PathValues.API_INSTALLMENTPLANS_UPDATEORDER: ApiInstallmentplansUpdateorder,
         PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_REFUND: ApiInstallmentplansInstallmentPlanNumberRefund,
-        PathValues.API_INSTALLMENTPLANS_INSTALLMENT_PLAN_NUMBER_CANCEL: ApiInstallmentplansInstallmentPlanNumberCancel,
         PathValues.API_INSTALLMENTPLANS_CHECKELIGIBILITY: ApiInstallmentplansCheckEligibility,
     }
 )

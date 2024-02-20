@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "splitit-web-python-sdk"
-version = "2.6.7"
+version = "2.6.8"
 description = "Client for splitit-web-api-v3"
 authors = ["Konfig <engineering@konfigthis.com>"]
 license = "MIT"
