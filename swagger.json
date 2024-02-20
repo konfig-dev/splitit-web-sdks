@@ -799,102 +799,6 @@
         }
       }
     },
-    "/api/installmentplans/{installmentPlanNumber}/cancel": {
-      "post": {
-        "tags": [
-          "InstallmentPlan"
-        ],
-        "operationId": "InstallmentPlan_Cancel",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
-        "parameters": [
-          {
-            "type": "string",
-            "name": "installmentPlanNumber",
-            "in": "path",
-            "required": true,
-            "x-nullable": true
-          },
-          {
-            "name": "request",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/InstallmentPlanCancelRequest"
-            },
-            "x-nullable": false
-          },
-          {
-            "name": "X-Splitit-IdempotencyKey",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "description": "Bearer token",
-            "schema": {
-              "type": "string"
-            },
-            "default": "Bearer "
-          },
-          {
-            "name": "X-Splitit-TouchPoint",
-            "in": "header",
-            "required": true,
-            "description": "TouchPoint",
-            "schema": {
-              "type": "string"
-            },
-            "default": ""
-          }
-        ],
-        "responses": {
-          "200": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/InstallmentPlanCancelResponse"
-            }
-          },
-          "401": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/FailedResponse"
-            }
-          },
-          "403": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/FailedResponse"
-            }
-          },
-          "404": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/FailedResponse"
-            }
-          },
-          "500": {
-            "x-nullable": false,
-            "description": "",
-            "schema": {
-              "$ref": "#/definitions/FailedResponse"
-            }
-          }
-        }
-      }
-    },
     "/api/installmentplans/check-eligibility": {
       "post": {
         "tags": [
@@ -2155,22 +2059,6 @@
         "FutureInstallmentsNotAllowed",
         "ReduceFromLastInstallment"
       ]
-    },
-    "InstallmentPlanCancelResponse": {
-      "type": "object",
-      "properties": {
-        "InstallmentPlanNumber": {
-          "type": "string"
-        }
-      }
-    },
-    "InstallmentPlanCancelRequest": {
-      "type": "object",
-      "properties": {
-        "ReferenceId": {
-          "type": "string"
-        }
-      }
     },
     "InstallmentsEligibilityResponse": {
       "type": "object",
