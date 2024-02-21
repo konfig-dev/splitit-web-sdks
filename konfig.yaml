@@ -29,7 +29,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 3.3.9
+    version: 3.3.10
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     useAxios0_27_2: true
