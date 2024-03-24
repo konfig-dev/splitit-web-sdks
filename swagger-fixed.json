@@ -34,7 +34,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true,
+            "x-nullable": false,
             "schema": {
               "type": "string"
             }
@@ -786,7 +786,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true,
+            "x-nullable": false,
             "schema": {
               "type": "string"
             }
@@ -937,7 +937,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true,
+            "x-nullable": false,
             "schema": {
               "type": "string"
             }
@@ -1282,7 +1282,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true,
+            "x-nullable": false,
             "schema": {
               "type": "string"
             }
@@ -2109,6 +2109,9 @@
           "CreditRefundAmount": {
             "type": "number",
             "format": "decimal"
+          },
+          "ReferenceId": {
+            "type": "string"
           }
         }
       },
@@ -2723,6 +2726,9 @@
           },
           "Summary": {
             "$ref": "#/components/schemas/RefundSummary"
+          },
+          "ReferenceId": {
+            "type": "string"
           }
         }
       },
@@ -2968,5 +2974,5 @@
       }
     }
   },
-  "x-generator": "NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))"
+  "x-generator": "NSwag v14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))"
 }

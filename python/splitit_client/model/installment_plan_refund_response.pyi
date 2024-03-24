@@ -43,6 +43,7 @@ class InstallmentPlanRefundResponse(
             @staticmethod
             def Summary() -> typing.Type['RefundSummary']:
                 return RefundSummary
+            ReferenceId = schemas.StrSchema
             __annotations__ = {
                 "RefundId": RefundId,
                 "InstallmentPlanNumber": InstallmentPlanNumber,
@@ -50,6 +51,7 @@ class InstallmentPlanRefundResponse(
                 "NonCreditRefundAmount": NonCreditRefundAmount,
                 "CreditRefundAmount": CreditRefundAmount,
                 "Summary": Summary,
+                "ReferenceId": ReferenceId,
             }
     
     @typing.overload
@@ -71,9 +73,12 @@ class InstallmentPlanRefundResponse(
     def __getitem__(self, name: typing_extensions.Literal["Summary"]) -> 'RefundSummary': ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ReferenceId"]) -> MetaOapg.properties.ReferenceId: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["RefundId", "InstallmentPlanNumber", "Currency", "NonCreditRefundAmount", "CreditRefundAmount", "Summary", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["RefundId", "InstallmentPlanNumber", "Currency", "NonCreditRefundAmount", "CreditRefundAmount", "Summary", "ReferenceId", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -97,9 +102,12 @@ class InstallmentPlanRefundResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["Summary"]) -> typing.Union['RefundSummary', schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ReferenceId"]) -> typing.Union[MetaOapg.properties.ReferenceId, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["RefundId", "InstallmentPlanNumber", "Currency", "NonCreditRefundAmount", "CreditRefundAmount", "Summary", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["RefundId", "InstallmentPlanNumber", "Currency", "NonCreditRefundAmount", "CreditRefundAmount", "Summary", "ReferenceId", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -112,6 +120,7 @@ class InstallmentPlanRefundResponse(
         NonCreditRefundAmount: typing.Union[MetaOapg.properties.NonCreditRefundAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         CreditRefundAmount: typing.Union[MetaOapg.properties.CreditRefundAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         Summary: typing.Union['RefundSummary', schemas.Unset] = schemas.unset,
+        ReferenceId: typing.Union[MetaOapg.properties.ReferenceId, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InstallmentPlanRefundResponse':
@@ -124,6 +133,7 @@ class InstallmentPlanRefundResponse(
             NonCreditRefundAmount=NonCreditRefundAmount,
             CreditRefundAmount=CreditRefundAmount,
             Summary=Summary,
+            ReferenceId=ReferenceId,
             _configuration=_configuration,
             **kwargs,
         )

@@ -54,5 +54,11 @@ export interface InstallmentPlanRefundResponse {
      * @memberof InstallmentPlanRefundResponse
      */
     'Summary'?: RefundSummary;
+    /**
+     * 
+     * @type {string}
+     * @memberof InstallmentPlanRefundResponse
+     */
+    'ReferenceId'?: string;
 }
 

@@ -40,7 +40,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="nonCreditRefundAmount">nonCreditRefundAmount.</param>
         /// <param name="creditRefundAmount">creditRefundAmount.</param>
         /// <param name="summary">summary.</param>
-        public InstallmentPlanRefundResponse(string refundId = default(string), string installmentPlanNumber = default(string), string currency = default(string), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double), RefundSummary summary = default(RefundSummary))
+        /// <param name="referenceId">referenceId.</param>
+        public InstallmentPlanRefundResponse(string refundId = default(string), string installmentPlanNumber = default(string), string currency = default(string), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double), RefundSummary summary = default(RefundSummary), string referenceId = default(string))
         {
             this.RefundId = refundId;
             this.InstallmentPlanNumber = installmentPlanNumber;
@@ -48,6 +49,7 @@ namespace Splitit.Web.Net.Model
             this.NonCreditRefundAmount = nonCreditRefundAmount;
             this.CreditRefundAmount = creditRefundAmount;
             this.Summary = summary;
+            this.ReferenceId = referenceId;
         }
 
         /// <summary>
@@ -87,6 +89,12 @@ namespace Splitit.Web.Net.Model
         public RefundSummary Summary { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReferenceId
+        /// </summary>
+        [DataMember(Name = "ReferenceId", EmitDefaultValue = false)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +108,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  NonCreditRefundAmount: ").Append(NonCreditRefundAmount).Append("\n");
             sb.Append("  CreditRefundAmount: ").Append(CreditRefundAmount).Append("\n");
             sb.Append("  Summary: ").Append(Summary).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -162,6 +171,11 @@ namespace Splitit.Web.Net.Model
                     this.Summary == input.Summary ||
                     (this.Summary != null &&
                     this.Summary.Equals(input.Summary))
+                ) && 
+                (
+                    this.ReferenceId == input.ReferenceId ||
+                    (this.ReferenceId != null &&
+                    this.ReferenceId.Equals(input.ReferenceId))
                 );
         }
 
@@ -191,6 +205,10 @@ namespace Splitit.Web.Net.Model
                 if (this.Summary != null)
                 {
                     hashCode = (hashCode * 59) + this.Summary.GetHashCode();
+                }
+                if (this.ReferenceId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReferenceId.GetHashCode();
                 }
                 return hashCode;
             }

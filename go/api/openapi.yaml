@@ -20,7 +20,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: true
+        x-nullable: false
       - explode: false
         in: header
         name: X-Splitit-IdempotencyKey
@@ -546,7 +546,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: true
+        x-nullable: false
       - explode: false
         in: header
         name: X-Splitit-IdempotencyKey
@@ -650,7 +650,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: true
+        x-nullable: false
       - explode: false
         in: header
         name: X-Splitit-IdempotencyKey
@@ -882,7 +882,7 @@ paths:
         schema:
           type: string
         style: simple
-        x-nullable: true
+        x-nullable: false
       - explode: false
         in: header
         name: X-Splitit-IdempotencyKey
@@ -1177,12 +1177,14 @@ components:
         Currency: Currency
         Refunds:
         - Status: null
+          ReferenceId: ReferenceId
           NonCreditRefundAmount: 2.3021358869347655
           SubmitDate: 2000-01-23T04:56:07.000+00:00
           RefundId: RefundId
           TotalAmount: 5.637376656633329
           CreditRefundAmount: 7.061401241503109
         - Status: null
+          ReferenceId: ReferenceId
           NonCreditRefundAmount: 2.3021358869347655
           SubmitDate: 2000-01-23T04:56:07.000+00:00
           RefundId: RefundId
@@ -1570,6 +1572,7 @@ components:
     RefundModel:
       example:
         Status: null
+        ReferenceId: ReferenceId
         NonCreditRefundAmount: 2.3021358869347655
         SubmitDate: 2000-01-23T04:56:07.000+00:00
         RefundId: RefundId
@@ -1592,6 +1595,8 @@ components:
         CreditRefundAmount:
           format: decimal
           type: number
+        ReferenceId:
+          type: string
       required:
       - CreditRefundAmount
       - NonCreditRefundAmount
@@ -1679,12 +1684,14 @@ components:
           Currency: Currency
           Refunds:
           - Status: null
+            ReferenceId: ReferenceId
             NonCreditRefundAmount: 2.3021358869347655
             SubmitDate: 2000-01-23T04:56:07.000+00:00
             RefundId: RefundId
             TotalAmount: 5.637376656633329
             CreditRefundAmount: 7.061401241503109
           - Status: null
+            ReferenceId: ReferenceId
             NonCreditRefundAmount: 2.3021358869347655
             SubmitDate: 2000-01-23T04:56:07.000+00:00
             RefundId: RefundId
@@ -1760,12 +1767,14 @@ components:
           Currency: Currency
           Refunds:
           - Status: null
+            ReferenceId: ReferenceId
             NonCreditRefundAmount: 2.3021358869347655
             SubmitDate: 2000-01-23T04:56:07.000+00:00
             RefundId: RefundId
             TotalAmount: 5.637376656633329
             CreditRefundAmount: 7.061401241503109
           - Status: null
+            ReferenceId: ReferenceId
             NonCreditRefundAmount: 2.3021358869347655
             SubmitDate: 2000-01-23T04:56:07.000+00:00
             RefundId: RefundId
@@ -1849,12 +1858,14 @@ components:
         Currency: Currency
         Refunds:
         - Status: null
+          ReferenceId: ReferenceId
           NonCreditRefundAmount: 2.3021358869347655
           SubmitDate: 2000-01-23T04:56:07.000+00:00
           RefundId: RefundId
           TotalAmount: 5.637376656633329
           CreditRefundAmount: 7.061401241503109
         - Status: null
+          ReferenceId: ReferenceId
           NonCreditRefundAmount: 2.3021358869347655
           SubmitDate: 2000-01-23T04:56:07.000+00:00
           RefundId: RefundId
@@ -2521,6 +2532,7 @@ components:
     InstallmentPlanRefundResponse:
       example:
         InstallmentPlanNumber: InstallmentPlanNumber
+        ReferenceId: ReferenceId
         NonCreditRefundAmount: 0.8008281904610115
         Currency: Currency
         Summary:
@@ -2545,6 +2557,8 @@ components:
           type: number
         Summary:
           $ref: '#/components/schemas/RefundSummary'
+        ReferenceId:
+          type: string
       type: object
     RefundSummary:
       example:
@@ -3189,4 +3203,4 @@ components:
           tokenUrl: https://id.production.splitit.com/connect/token
       type: oauth2
       x-konfig-globally-required-security: true
-x-generator: NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))
+x-generator: NSwag v14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))

@@ -13,6 +13,7 @@
 |**status** | **RefundStatus** |  |  |
 |**nonCreditRefundAmount** | **Double** |  |  |
 |**creditRefundAmount** | **Double** |  |  |
+|**referenceId** | **String** |  |  [optional] |
 
 
 

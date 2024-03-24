@@ -325,6 +325,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanRefundResponse.Refund.NonCreditRefundAmount`: %v\n", *resp.NonCreditRefundAmount)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanRefundResponse.Refund.CreditRefundAmount`: %v\n", *resp.CreditRefundAmount)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanRefundResponse.Refund.Summary`: %v\n", *resp.Summary)
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanRefundResponse.Refund.ReferenceId`: %v\n", *resp.ReferenceId)
 }
 ```
 

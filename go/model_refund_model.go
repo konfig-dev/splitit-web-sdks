@@ -23,6 +23,7 @@ type RefundModel struct {
 	Status RefundStatus `json:"Status"`
 	NonCreditRefundAmount float32 `json:"NonCreditRefundAmount"`
 	CreditRefundAmount float32 `json:"CreditRefundAmount"`
+	ReferenceId *string `json:"ReferenceId,omitempty"`
 }
 
 // NewRefundModel instantiates a new RefundModel object
@@ -199,6 +200,38 @@ func (o *RefundModel) SetCreditRefundAmount(v float32) {
 	o.CreditRefundAmount = v
 }
 
+// GetReferenceId returns the ReferenceId field value if set, zero value otherwise.
+func (o *RefundModel) GetReferenceId() string {
+	if o == nil || isNil(o.ReferenceId) {
+		var ret string
+		return ret
+	}
+	return *o.ReferenceId
+}
+
+// GetReferenceIdOk returns a tuple with the ReferenceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *RefundModel) GetReferenceIdOk() (*string, bool) {
+	if o == nil || isNil(o.ReferenceId) {
+    return nil, false
+	}
+	return o.ReferenceId, true
+}
+
+// HasReferenceId returns a boolean if a field has been set.
+func (o *RefundModel) HasReferenceId() bool {
+	if o != nil && !isNil(o.ReferenceId) {
+		return true
+	}
+
+	return false
+}
+
+// SetReferenceId gets a reference to the given string and assigns it to the ReferenceId field.
+func (o *RefundModel) SetReferenceId(v string) {
+	o.ReferenceId = &v
+}
+
 func (o RefundModel) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.RefundId) {
@@ -218,6 +251,9 @@ func (o RefundModel) MarshalJSON() ([]byte, error) {
 	}
 	if true {
 		toSerialize["CreditRefundAmount"] = o.CreditRefundAmount
+	}
+	if !isNil(o.ReferenceId) {
+		toSerialize["ReferenceId"] = o.ReferenceId
 	}
 	return json.Marshal(toSerialize)
 }

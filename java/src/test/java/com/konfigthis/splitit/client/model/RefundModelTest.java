@@ -88,4 +88,12 @@ public class RefundModelTest {
         // TODO: test creditRefundAmount
     }
 
+    /**
+     * Test the property 'referenceId'
+     */
+    @Test
+    public void referenceIdTest() {
+        // TODO: test referenceId
+    }
+
 }

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Status** | [**RefundStatus**](RefundStatus.md) |  | 
 **NonCreditRefundAmount** | **float32** |  | 
 **CreditRefundAmount** | **float32** |  | 
+**ReferenceId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -154,6 +155,31 @@ and a boolean to check if the value has been set.
 
 SetCreditRefundAmount sets CreditRefundAmount field to given value.
 
+
+### GetReferenceId
+
+`func (o *RefundModel) GetReferenceId() string`
+
+GetReferenceId returns the ReferenceId field if non-nil, zero value otherwise.
+
+### GetReferenceIdOk
+
+`func (o *RefundModel) GetReferenceIdOk() (*string, bool)`
+
+GetReferenceIdOk returns a tuple with the ReferenceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReferenceId
+
+`func (o *RefundModel) SetReferenceId(v string)`
+
+SetReferenceId sets ReferenceId field to given value.
+
+### HasReferenceId
+
+`func (o *RefundModel) HasReferenceId() bool`
+
+HasReferenceId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

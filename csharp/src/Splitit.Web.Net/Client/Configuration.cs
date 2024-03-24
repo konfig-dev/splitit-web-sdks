@@ -33,7 +33,7 @@ namespace Splitit.Web.Net.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.1.8";
+        public const string Version = "3.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -116,7 +116,7 @@ namespace Splitit.Web.Net.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "Konfig/2.1.8/csharp";
+            UserAgent = "Konfig/3.0.0/csharp";
             BasePath = "https://web-api-v3.production.splitit.com";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -227,18 +227,6 @@ namespace Splitit.Web.Net.Client
         /// </summary>
         /// <value>Http user agent.</value>
         public virtual string UserAgent { get; set; }
-
-        /// <summary>
-        /// Gets or sets the username (HTTP basic authentication).
-        /// </summary>
-        /// <value>The username.</value>
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password (HTTP basic authentication).
-        /// </summary>
-        /// <value>The password.</value>
-        public virtual string Password { get; set; }
 
         /// <summary>
         /// Gets or sets the verifySsl flag.
@@ -557,7 +545,7 @@ namespace Splitit.Web.Net.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 2.1.8\n";
+            report += "    SDK Package Version: 3.0.0\n";
 
             return report;
         }
@@ -613,8 +601,6 @@ namespace Splitit.Web.Net.Client
                 Timeout = second.Timeout,
                 Proxy = second.Proxy ?? first.Proxy,
                 UserAgent = second.UserAgent ?? first.UserAgent,
-                Username = second.Username ?? first.Username,
-                Password = second.Password ?? first.Password,
                 VerifySsl = second.VerifySsl && first.VerifySsl,
                 AccessToken = second.AccessToken ?? first.AccessToken,
                 OAuthTokenUrl = second.OAuthTokenUrl ?? first.OAuthTokenUrl,

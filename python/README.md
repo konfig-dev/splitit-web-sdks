@@ -3,7 +3,7 @@
 Splitit's Web API
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v2.6.8-blue)](https://pypi.org/project/splitit-web-python-sdk/2.6.8)
+[![PyPI](https://img.shields.io/badge/PyPI-v3.0.0-blue)](https://pypi.org/project/splitit-web-python-sdk/3.0.0)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>
@@ -34,7 +34,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install splitit-web-python-sdk==2.6.8
+pip install splitit-web-python-sdk==3.0.0
 ```
 
 ## Getting Started<a id="getting-started"></a>

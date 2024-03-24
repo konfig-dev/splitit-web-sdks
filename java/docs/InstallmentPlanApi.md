@@ -573,6 +573,7 @@ public class Example {
       System.out.println(result.getNonCreditRefundAmount());
       System.out.println(result.getCreditRefundAmount());
       System.out.println(result.getSummary());
+      System.out.println(result.getReferenceId());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#refund");
       System.err.println("Status code: " + e.getStatusCode());

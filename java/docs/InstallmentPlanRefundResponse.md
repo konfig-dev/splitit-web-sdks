@@ -13,6 +13,7 @@
 |**nonCreditRefundAmount** | **Double** |  |  [optional] |
 |**creditRefundAmount** | **Double** |  |  [optional] |
 |**summary** | [**RefundSummary**](RefundSummary.md) |  |  [optional] |
+|**referenceId** | **String** |  |  [optional] |
 
 
 

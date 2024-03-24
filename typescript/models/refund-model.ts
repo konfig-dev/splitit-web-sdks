@@ -54,5 +54,11 @@ export interface RefundModel {
      * @memberof RefundModel
      */
     'CreditRefundAmount': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RefundModel
+     */
+    'ReferenceId'?: string;
 }
 

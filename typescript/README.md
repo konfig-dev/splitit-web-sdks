@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v3.3.10-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.10)
+[![npm](https://img.shields.io/badge/npm-v4.0.0-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.0)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -293,6 +293,7 @@ const refundResponse = await splitit.installmentplan.refund({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
   Amount: 3.14,
+  RefundStrategy: "FutureInstallmentsFirst",
 });
 ```
 
@@ -378,6 +379,7 @@ const updateOrderResponse = await splitit.installmentplan.updateOrder({
   installmentPlanNumber: "installmentPlanNumber_example",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
+  ShippingStatus: "Pending",
 });
 ```
 
@@ -426,6 +428,7 @@ TouchPoint
 const updateOrder2Response = await splitit.installmentplan.updateOrder2({
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
+  ShippingStatus: "Pending",
 });
 ```
 

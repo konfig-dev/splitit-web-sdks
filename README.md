@@ -1,10 +1,10 @@
-# splitit-web-sdks
+# splitit-sdks
 
 |Language|Version|Package Manager|README|Source|
 |-|-|-|-|-|
-|Java|2.2.9|[Maven Central](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/2.2.9)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/main/java#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/java)|
-|Python|2.6.8|[PyPI](https://pypi.org/project/splitit-web-python-sdk/2.6.8)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python)|
-|TypeScript|3.3.10|[npm](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/3.3.10)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/main/typescript#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/typescript)|
-|C#|2.1.8|[NuGet](https://nuget.org/packages/Splitit.Web.Net/2.1.8)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/main/csharp#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/main/csharp)|
-|PHP (7.0+)|2.3.7|[Packagist](https://packagist.org/packages/konfig/splitit-web-php-sdk#2.3.7)|[README](https://github.com/konfig-dev/splitit-web-php-sdk#readme)|[Source](https://github.com/konfig-dev/splitit-web-php-sdk)|
-|Go|1.7.8|[pkg.go.dev](https://pkg.go.dev/github.com/konfig-dev/splitit-web-sdks/go)|[README](https://github.com/konfig-dev/splitit-web-sdks/go#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/go)|
+|Java|3.0.0|[Maven Central](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/3.0.0)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/java#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/java)|
+|Python|3.0.0|[PyPI](https://pypi.org/project/splitit-web-python-sdk/3.0.0)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/python#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/python)|
+|TypeScript|4.0.0|[npm](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.0)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/typescript#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/typescript)|
+|C#|3.0.0|[NuGet](https://nuget.org/packages/Splitit.Web.Net/3.0.0)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/csharp#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/csharp)|
+|PHP (7.0+)|3.0.0|[Packagist](https://packagist.org/packages/konfig/splitit-web-php-sdk#3.0.0)|[README](https://github.com/konfig-dev/splitit-web-php-sdk/tree/HEAD/php#readme)|[Source](https://github.com/konfig-dev/splitit-web-php-sdk/tree/HEAD/php)|
+|Go|2.0.0|[pkg.go.dev](https://pkg.go.dev/github.com/konfig-dev/splitit-web-sdks/go)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/go#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/go)|

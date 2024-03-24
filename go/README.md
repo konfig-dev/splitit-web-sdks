@@ -53,7 +53,6 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentsEligibilityResponse.CheckEligibility.InstallmentProvider`: %v\n", *resp.InstallmentProvider)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentsEligibilityResponse.CheckEligibility.PaymentPlanOptions`: %v\n", *resp.PaymentPlanOptions)
 }
-
 ```
 
 ## Documentation for API Endpoints

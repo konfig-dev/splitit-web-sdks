@@ -32,5 +32,7 @@ class OptionalInstallmentPlanRefundResponse(TypedDict, total=False):
 
     Summary: RefundSummary
 
+    ReferenceId: str
+
 class InstallmentPlanRefundResponse(RequiredInstallmentPlanRefundResponse, OptionalInstallmentPlanRefundResponse):
     pass

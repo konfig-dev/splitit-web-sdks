@@ -30,5 +30,7 @@ class RequiredRefundModel(TypedDict):
 class OptionalRefundModel(TypedDict, total=False):
     RefundId: str
 
+    ReferenceId: str
+
 class RefundModel(RequiredRefundModel, OptionalRefundModel):
     pass

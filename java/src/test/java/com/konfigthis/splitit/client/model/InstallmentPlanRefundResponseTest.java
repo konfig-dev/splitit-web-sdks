@@ -87,4 +87,12 @@ public class InstallmentPlanRefundResponseTest {
         // TODO: test summary
     }
 
+    /**
+     * Test the property 'referenceId'
+     */
+    @Test
+    public void referenceIdTest() {
+        // TODO: test referenceId
+    }
+
 }

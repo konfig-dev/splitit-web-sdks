@@ -75,6 +75,10 @@ public class RefundModel {
   @SerializedName(SERIALIZED_NAME_CREDIT_REFUND_AMOUNT)
   private Double creditRefundAmount;
 
+  public static final String SERIALIZED_NAME_REFERENCE_ID = "ReferenceId";
+  @SerializedName(SERIALIZED_NAME_REFERENCE_ID)
+  private String referenceId;
+
   public RefundModel() {
   }
 
@@ -278,6 +282,35 @@ public class RefundModel {
     this.creditRefundAmount = creditRefundAmount;
   }
 
+
+  public RefundModel referenceId(String referenceId) {
+    
+    
+    
+    
+    this.referenceId = referenceId;
+    return this;
+  }
+
+   /**
+   * Get referenceId
+   * @return referenceId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getReferenceId() {
+    return referenceId;
+  }
+
+
+  public void setReferenceId(String referenceId) {
+    
+    
+    
+    this.referenceId = referenceId;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -338,13 +371,14 @@ public class RefundModel {
         Objects.equals(this.totalAmount, refundModel.totalAmount) &&
         Objects.equals(this.status, refundModel.status) &&
         Objects.equals(this.nonCreditRefundAmount, refundModel.nonCreditRefundAmount) &&
-        Objects.equals(this.creditRefundAmount, refundModel.creditRefundAmount)&&
+        Objects.equals(this.creditRefundAmount, refundModel.creditRefundAmount) &&
+        Objects.equals(this.referenceId, refundModel.referenceId)&&
         Objects.equals(this.additionalProperties, refundModel.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refundId, submitDate, totalAmount, status, nonCreditRefundAmount, creditRefundAmount, additionalProperties);
+    return Objects.hash(refundId, submitDate, totalAmount, status, nonCreditRefundAmount, creditRefundAmount, referenceId, additionalProperties);
   }
 
   @Override
@@ -357,6 +391,7 @@ public class RefundModel {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    nonCreditRefundAmount: ").append(toIndentedString(nonCreditRefundAmount)).append("\n");
     sb.append("    creditRefundAmount: ").append(toIndentedString(creditRefundAmount)).append("\n");
+    sb.append("    referenceId: ").append(toIndentedString(referenceId)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -386,6 +421,7 @@ public class RefundModel {
     openapiFields.add("Status");
     openapiFields.add("NonCreditRefundAmount");
     openapiFields.add("CreditRefundAmount");
+    openapiFields.add("ReferenceId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -417,6 +453,9 @@ public class RefundModel {
       }
       if ((jsonObj.get("RefundId") != null && !jsonObj.get("RefundId").isJsonNull()) && !jsonObj.get("RefundId").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `RefundId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("RefundId").toString()));
+      }
+      if ((jsonObj.get("ReferenceId") != null && !jsonObj.get("ReferenceId").isJsonNull()) && !jsonObj.get("ReferenceId").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `ReferenceId` to be a primitive type in the JSON string but got `%s`", jsonObj.get("ReferenceId").toString()));
       }
   }
 

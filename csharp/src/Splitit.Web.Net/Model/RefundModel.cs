@@ -51,7 +51,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="status">status (required).</param>
         /// <param name="nonCreditRefundAmount">nonCreditRefundAmount (required).</param>
         /// <param name="creditRefundAmount">creditRefundAmount (required).</param>
-        public RefundModel(string refundId = default(string), DateTime submitDate = default(DateTime), double totalAmount = default(double), RefundStatus status = default(RefundStatus), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double))
+        /// <param name="referenceId">referenceId.</param>
+        public RefundModel(string refundId = default(string), DateTime submitDate = default(DateTime), double totalAmount = default(double), RefundStatus status = default(RefundStatus), double nonCreditRefundAmount = default(double), double creditRefundAmount = default(double), string referenceId = default(string))
         {
             this.SubmitDate = submitDate;
             this.TotalAmount = totalAmount;
@@ -59,6 +60,7 @@ namespace Splitit.Web.Net.Model
             this.NonCreditRefundAmount = nonCreditRefundAmount;
             this.CreditRefundAmount = creditRefundAmount;
             this.RefundId = refundId;
+            this.ReferenceId = referenceId;
         }
 
         /// <summary>
@@ -92,6 +94,12 @@ namespace Splitit.Web.Net.Model
         public double CreditRefundAmount { get; set; }
 
         /// <summary>
+        /// Gets or Sets ReferenceId
+        /// </summary>
+        [DataMember(Name = "ReferenceId", EmitDefaultValue = false)]
+        public string ReferenceId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,6 +113,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  NonCreditRefundAmount: ").Append(NonCreditRefundAmount).Append("\n");
             sb.Append("  CreditRefundAmount: ").Append(CreditRefundAmount).Append("\n");
+            sb.Append("  ReferenceId: ").Append(ReferenceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -165,6 +174,11 @@ namespace Splitit.Web.Net.Model
                 (
                     this.CreditRefundAmount == input.CreditRefundAmount ||
                     this.CreditRefundAmount.Equals(input.CreditRefundAmount)
+                ) && 
+                (
+                    this.ReferenceId == input.ReferenceId ||
+                    (this.ReferenceId != null &&
+                    this.ReferenceId.Equals(input.ReferenceId))
                 );
         }
 
@@ -189,6 +203,10 @@ namespace Splitit.Web.Net.Model
                 hashCode = (hashCode * 59) + this.Status.GetHashCode();
                 hashCode = (hashCode * 59) + this.NonCreditRefundAmount.GetHashCode();
                 hashCode = (hashCode * 59) + this.CreditRefundAmount.GetHashCode();
+                if (this.ReferenceId != null)
+                {
+                    hashCode = (hashCode * 59) + this.ReferenceId.GetHashCode();
+                }
                 return hashCode;
             }
         }

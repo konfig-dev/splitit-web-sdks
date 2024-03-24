@@ -50,6 +50,7 @@ class RefundModel(
             NonCreditRefundAmount = schemas.NumberSchema
             CreditRefundAmount = schemas.NumberSchema
             RefundId = schemas.StrSchema
+            ReferenceId = schemas.StrSchema
             __annotations__ = {
                 "SubmitDate": SubmitDate,
                 "TotalAmount": TotalAmount,
@@ -57,6 +58,7 @@ class RefundModel(
                 "NonCreditRefundAmount": NonCreditRefundAmount,
                 "CreditRefundAmount": CreditRefundAmount,
                 "RefundId": RefundId,
+                "ReferenceId": ReferenceId,
             }
     
     Status: 'RefundStatus'
@@ -84,9 +86,12 @@ class RefundModel(
     def __getitem__(self, name: typing_extensions.Literal["RefundId"]) -> MetaOapg.properties.RefundId: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["ReferenceId"]) -> MetaOapg.properties.ReferenceId: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["SubmitDate", "TotalAmount", "Status", "NonCreditRefundAmount", "CreditRefundAmount", "RefundId", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["SubmitDate", "TotalAmount", "Status", "NonCreditRefundAmount", "CreditRefundAmount", "RefundId", "ReferenceId", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -110,9 +115,12 @@ class RefundModel(
     def get_item_oapg(self, name: typing_extensions.Literal["RefundId"]) -> typing.Union[MetaOapg.properties.RefundId, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["ReferenceId"]) -> typing.Union[MetaOapg.properties.ReferenceId, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["SubmitDate", "TotalAmount", "Status", "NonCreditRefundAmount", "CreditRefundAmount", "RefundId", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["SubmitDate", "TotalAmount", "Status", "NonCreditRefundAmount", "CreditRefundAmount", "RefundId", "ReferenceId", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -125,6 +133,7 @@ class RefundModel(
         TotalAmount: typing.Union[MetaOapg.properties.TotalAmount, decimal.Decimal, int, float, ],
         CreditRefundAmount: typing.Union[MetaOapg.properties.CreditRefundAmount, decimal.Decimal, int, float, ],
         RefundId: typing.Union[MetaOapg.properties.RefundId, str, schemas.Unset] = schemas.unset,
+        ReferenceId: typing.Union[MetaOapg.properties.ReferenceId, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'RefundModel':
@@ -137,6 +146,7 @@ class RefundModel(
             TotalAmount=TotalAmount,
             CreditRefundAmount=CreditRefundAmount,
             RefundId=RefundId,
+            ReferenceId=ReferenceId,
             _configuration=_configuration,
             **kwargs,
         )
