@@ -1,5 +1,5 @@
 {
-  "x-generator": "NSwag v13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))",
+  "x-generator": "NSwag v14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))",
   "swagger": "2.0",
   "info": {
     "title": "splitit-web-api-v3",
@@ -27,7 +27,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true
+            "x-nullable": false
           },
           {
             "name": "X-Splitit-IdempotencyKey",
@@ -445,7 +445,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true
+            "x-nullable": false
           },
           {
             "name": "X-Splitit-IdempotencyKey",
@@ -533,7 +533,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true
+            "x-nullable": false
           },
           {
             "name": "request",
@@ -720,7 +720,7 @@
             "name": "installmentPlanNumber",
             "in": "path",
             "required": true,
-            "x-nullable": true
+            "x-nullable": false
           },
           {
             "name": "request",
@@ -1388,6 +1388,9 @@
         "CreditRefundAmount": {
           "type": "number",
           "format": "decimal"
+        },
+        "ReferenceId": {
+          "type": "string"
         }
       }
     },
@@ -2002,6 +2005,9 @@
         },
         "Summary": {
           "$ref": "#/definitions/RefundSummary"
+        },
+        "ReferenceId": {
+          "type": "string"
         }
       }
     },
