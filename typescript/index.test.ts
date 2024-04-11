@@ -33,4 +33,29 @@ it("simple operation started", async () => {
     RedirectUrls: {},
   });
   expect(result).not.toBeNull();
+
+  const result2 = await splitit.installmentplan.post({
+    AutoCapture: true,
+    Attempt3dSecure: true,
+    xSplititIdempotencyKey: new Date().toISOString(),
+    xSplititTouchPoint: "TestSDK",
+    Shopper: {
+      Email: "fake@email.com",
+    },
+    PlanData: {
+      TotalAmount: 10,
+      NumberOfInstallments: 10,
+      Currency: "USD",
+      PurchaseMethod: "InStore",
+    },
+    BillingAddress: {
+      AddressLine1: "144 Union St",
+      City: "Brooklyn",
+      State: "North Dakota",
+      Zip: "11231",
+      Country: "United States",
+    },
+    RedirectUrls: {},
+  });
+  expect(result2).not.toBeNull();
 });
