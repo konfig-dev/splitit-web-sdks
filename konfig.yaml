@@ -78,3 +78,16 @@ generators:
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/go
+additionalGenerators:
+  phpGuzzle6:
+    version: 3.0.0
+    outputDirectory: phpGuzzle6
+    packageName: splitit-web-php-guzzle6-sdk
+    invokerPackage: Splitit
+    apiDocumentationAuthenticationPartial: snippets/phpDocAuthPartial.php
+    generator: php
+    guzzle6: true
+    supportPhp7: true
+    git:
+      userId: konfig-dev
+      repoId: splitit-web-php-guzzle6-sdk
