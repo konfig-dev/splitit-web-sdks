@@ -1,3 +1,6 @@
 [submodule "php"]
 	path = php
 	url = https://github.com/konfig-dev/splitit-web-php-sdk.git
+[submodule "phpGuzzle6"]
+	path = phpGuzzle6
+	url = https://github.com/konfig-dev/splitit-web-php-guzzle6-sdk.git
