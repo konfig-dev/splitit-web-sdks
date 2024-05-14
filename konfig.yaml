@@ -80,7 +80,7 @@ generators:
       repoId: splitit-web-sdks/go
 additionalGenerators:
   phpGuzzle6:
-    version: 3.0.0
+    version: 3.0.1
     outputDirectory: phpGuzzle6
     packageName: splitit-web-php-guzzle6-sdk
     invokerPackage: Splitit
