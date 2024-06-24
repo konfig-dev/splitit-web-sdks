@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**autoCapture** | **Boolean** |  |  |
+|**autoCapture** | **Boolean** |  |  [optional] |
 |**attempt3dSecure** | **Boolean** |  |  [optional] |
 |**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
 |**planData** | [**PlanDataModel**](PlanDataModel.md) |  |  [optional] |

@@ -23,9 +23,11 @@ from splitit_client.type.shopper_data import ShopperData
 from splitit_client.type.ux_settings_model import UxSettingsModel
 
 class RequiredInstallmentPlanInitiateRequest(TypedDict):
-    AutoCapture: bool
+    pass
 
 class OptionalInstallmentPlanInitiateRequest(TypedDict, total=False):
+    AutoCapture: bool
+
     Attempt3dSecure: bool
 
     Shopper: ShopperData

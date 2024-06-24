@@ -33,7 +33,7 @@ namespace Splitit.Web.Net.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.0.0";
+        public const string Version = "3.0.1";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -116,7 +116,7 @@ namespace Splitit.Web.Net.Client
         public Configuration()
         {
             Proxy = null;
-            UserAgent = "Konfig/3.0.0/csharp";
+            UserAgent = "Konfig/3.0.1/csharp";
             BasePath = "https://web-api-v3.production.splitit.com";
             DefaultHeaders = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -545,7 +545,7 @@ namespace Splitit.Web.Net.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.0.0\n";
-            report += "    SDK Package Version: 3.0.0\n";
+            report += "    SDK Package Version: 3.0.1\n";
 
             return report;
         }

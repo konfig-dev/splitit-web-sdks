@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoCapture** | **bool** |  | 
+**AutoCapture** | **bool** |  | [optional] 
 **Attempt3dSecure** | **bool** |  | [optional] 
 **Shopper** | [**ShopperData**](ShopperData.md) |  | [optional] 
 **PlanData** | [**PlanDataModel**](PlanDataModel.md) |  | [optional] 

@@ -1165,6 +1165,9 @@ components:
         Error:
           $ref: '#/components/schemas/ErrorExtended'
       type: object
+      x-deprecated: true
+      x-deprecatedMessage: Do not implement this interface - use ApiErrorResponse
+        from v2.common
       x-konfig-is-used-in-non-successful-response: true
       x-do-not-generate: true
     ErrorExtended:
@@ -1180,6 +1183,8 @@ components:
         AdditionalInfo:
           type: string
       type: object
+      x-deprecated: true
+      x-deprecatedMessage: Use ApiErrorModel from v2.common instread
     InstallmentPlanGetResponse:
       example:
         Status: null
@@ -2118,8 +2123,6 @@ components:
           $ref: '#/components/schemas/EventsEndpointsModel'
         ProcessingData:
           $ref: '#/components/schemas/ProcessingData'
-      required:
-      - AutoCapture
       type: object
     PlanDataModel:
       example:
@@ -3035,7 +3038,6 @@ components:
         ProcessingData:
           $ref: '#/components/schemas/ProcessingData'
       required:
-      - AutoCapture
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint
       type: object
@@ -3245,6 +3247,8 @@ components:
             type: string
           type: object
       type: object
+      x-deprecated: true
+      x-deprecatedMessage: Use ApiErrorModel from v2.common instread
       example: null
     PlanErrorResponse_allOf:
       properties:

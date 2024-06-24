@@ -39,10 +39,11 @@ func Test_simple(t *testing.T) {
 		Country := "United States"
 		var NumberOfInstallments int32 = 10
 		Attemp3dSecure := true
+		AutoCapture := true
 
 		installmentPlanCreateRequest := &splitit.InstallmentPlanInitiateRequest{
 			Attempt3dSecure: &Attemp3dSecure,
-			AutoCapture:     true,
+			AutoCapture:     &AutoCapture,
 			PlanData: &splitit.PlanDataModel{
 				TotalAmount:          10.0,
 				NumberOfInstallments: &NumberOfInstallments,

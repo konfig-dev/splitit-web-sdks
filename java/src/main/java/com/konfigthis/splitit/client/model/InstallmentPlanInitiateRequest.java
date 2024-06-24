@@ -108,8 +108,8 @@ public class InstallmentPlanInitiateRequest {
    * Get autoCapture
    * @return autoCapture
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
 
   public Boolean getAutoCapture() {
     return autoCapture;
@@ -475,7 +475,6 @@ public class InstallmentPlanInitiateRequest {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("AutoCapture");
   }
 
  /**
@@ -488,13 +487,6 @@ public class InstallmentPlanInitiateRequest {
       if (jsonObj == null) {
         if (!InstallmentPlanInitiateRequest.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
           throw new IllegalArgumentException(String.format("The required field(s) %s in InstallmentPlanInitiateRequest is not found in the empty JSON string", InstallmentPlanInitiateRequest.openapiRequiredFields.toString()));
-        }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : InstallmentPlanInitiateRequest.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
       // validate the optional field `Shopper`

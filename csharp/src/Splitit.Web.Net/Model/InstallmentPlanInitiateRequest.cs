@@ -34,12 +34,7 @@ namespace Splitit.Web.Net.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPlanInitiateRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected InstallmentPlanInitiateRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InstallmentPlanInitiateRequest" /> class.
-        /// </summary>
-        /// <param name="autoCapture">autoCapture (required).</param>
+        /// <param name="autoCapture">autoCapture.</param>
         /// <param name="attempt3dSecure">attempt3dSecure.</param>
         /// <param name="shopper">shopper.</param>
         /// <param name="planData">planData.</param>
@@ -64,7 +59,7 @@ namespace Splitit.Web.Net.Model
         /// <summary>
         /// Gets or Sets AutoCapture
         /// </summary>
-        [DataMember(Name = "AutoCapture", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "AutoCapture", EmitDefaultValue = true)]
         public bool AutoCapture { get; set; }
 
         /// <summary>

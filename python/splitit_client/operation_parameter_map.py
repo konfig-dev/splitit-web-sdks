@@ -37,13 +37,13 @@ operation_parameter_map = {
     '/api/installmentplans/initiate-POST': {
         'parameters': [
             {
-                'name': 'AutoCapture'
-            },
-            {
                 'name': 'X-Splitit-IdempotencyKey'
             },
             {
                 'name': 'X-Splitit-TouchPoint'
+            },
+            {
+                'name': 'AutoCapture'
             },
             {
                 'name': 'Attempt3dSecure'

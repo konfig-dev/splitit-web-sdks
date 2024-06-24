@@ -26,7 +26,8 @@ public class SimpleInstallmentPlanApiTest {
                 configuration.tokenUrl = "https://id.sandbox.splitit.com/connect/token";
                 Splitit splitit = new Splitit(configuration);
                 InitiatePlanResponse result = splitit.installmentPlan
-                                .post(true, new Date().toString(), new Date().toString())
+                                .post(new Date().toString(), new Date().toString())
+                                .autoCapture(true)
                                 .attempt3dSecure(true)
                                 .planData(new PlanDataModel()
                                                 .totalAmount(10)

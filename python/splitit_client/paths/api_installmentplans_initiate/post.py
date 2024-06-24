@@ -339,9 +339,9 @@ class BaseApi(api_client.Api):
 
     def _post_mapped_args(
         self,
-        auto_capture: bool,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        auto_capture: typing.Optional[bool] = None,
         attempt3d_secure: typing.Optional[bool] = None,
         shopper: typing.Optional[ShopperData] = None,
         plan_data: typing.Optional[PlanDataModel] = None,
@@ -614,9 +614,9 @@ class Post(BaseApi):
 
     async def apost(
         self,
-        auto_capture: bool,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        auto_capture: typing.Optional[bool] = None,
         attempt3d_secure: typing.Optional[bool] = None,
         shopper: typing.Optional[ShopperData] = None,
         plan_data: typing.Optional[PlanDataModel] = None,
@@ -634,9 +634,9 @@ class Post(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._post_mapped_args(
-            auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            auto_capture=auto_capture,
             attempt3d_secure=attempt3d_secure,
             shopper=shopper,
             plan_data=plan_data,
@@ -656,9 +656,9 @@ class Post(BaseApi):
     
     def post(
         self,
-        auto_capture: bool,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        auto_capture: typing.Optional[bool] = None,
         attempt3d_secure: typing.Optional[bool] = None,
         shopper: typing.Optional[ShopperData] = None,
         plan_data: typing.Optional[PlanDataModel] = None,
@@ -674,9 +674,9 @@ class Post(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._post_mapped_args(
-            auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            auto_capture=auto_capture,
             attempt3d_secure=attempt3d_secure,
             shopper=shopper,
             plan_data=plan_data,
@@ -698,9 +698,9 @@ class ApiForpost(BaseApi):
 
     async def apost(
         self,
-        auto_capture: bool,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        auto_capture: typing.Optional[bool] = None,
         attempt3d_secure: typing.Optional[bool] = None,
         shopper: typing.Optional[ShopperData] = None,
         plan_data: typing.Optional[PlanDataModel] = None,
@@ -718,9 +718,9 @@ class ApiForpost(BaseApi):
         AsyncGeneratorResponse,
     ]:
         args = self._post_mapped_args(
-            auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            auto_capture=auto_capture,
             attempt3d_secure=attempt3d_secure,
             shopper=shopper,
             plan_data=plan_data,
@@ -740,9 +740,9 @@ class ApiForpost(BaseApi):
     
     def post(
         self,
-        auto_capture: bool,
         x_splitit_idempotency_key: str,
         x_splitit_touch_point: str,
+        auto_capture: typing.Optional[bool] = None,
         attempt3d_secure: typing.Optional[bool] = None,
         shopper: typing.Optional[ShopperData] = None,
         plan_data: typing.Optional[PlanDataModel] = None,
@@ -758,9 +758,9 @@ class ApiForpost(BaseApi):
         api_client.ApiResponseWithoutDeserialization,
     ]:
         args = self._post_mapped_args(
-            auto_capture=auto_capture,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
+            auto_capture=auto_capture,
             attempt3d_secure=attempt3d_secure,
             shopper=shopper,
             plan_data=plan_data,

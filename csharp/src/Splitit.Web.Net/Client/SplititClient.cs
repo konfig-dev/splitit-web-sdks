@@ -20,7 +20,7 @@ namespace Splitit.Web.Net.Client
         /// <summary>
         /// API instance
         /// </summary>
-        public virtual IInstallmentPlanApi InstallmentPlan { get; set; }
+        public virtual InstallmentPlanApi InstallmentPlan { get; set; }
 
         /// <summary>
         /// Configuration instance

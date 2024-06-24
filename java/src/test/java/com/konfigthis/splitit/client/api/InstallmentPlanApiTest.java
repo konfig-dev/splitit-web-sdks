@@ -107,9 +107,9 @@ public class InstallmentPlanApiTest {
      */
     @Test
     public void postTest() throws ApiException {
-        Boolean autoCapture = null;
         String xSplititIdempotencyKey = null;
         String xSplititTouchPoint = null;
+        Boolean autoCapture = null;
         Boolean attempt3dSecure = null;
         ShopperData shopper = null;
         PlanDataModel planData = null;
@@ -120,7 +120,8 @@ public class InstallmentPlanApiTest {
         ProcessingData processingData = null;
         String xSplititTestMode = null;
         String splititclientinfo = null;
-        InitiatePlanResponse response = api.post(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint)
+        InitiatePlanResponse response = api.post(xSplititIdempotencyKey, xSplititTouchPoint)
+                .autoCapture(autoCapture)
                 .attempt3dSecure(attempt3dSecure)
                 .shopper(shopper)
                 .planData(planData)

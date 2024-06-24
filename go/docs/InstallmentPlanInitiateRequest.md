@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AutoCapture** | **bool** |  | 
+**AutoCapture** | Pointer to **bool** |  | [optional] 
 **Attempt3dSecure** | Pointer to **bool** |  | [optional] 
 **Shopper** | Pointer to [**ShopperData**](ShopperData.md) |  | [optional] 
 **PlanData** | Pointer to [**PlanDataModel**](PlanDataModel.md) |  | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewInstallmentPlanInitiateRequest
 
-`func NewInstallmentPlanInitiateRequest(autoCapture bool, ) *InstallmentPlanInitiateRequest`
+`func NewInstallmentPlanInitiateRequest() *InstallmentPlanInitiateRequest`
 
 NewInstallmentPlanInitiateRequest instantiates a new InstallmentPlanInitiateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +52,11 @@ and a boolean to check if the value has been set.
 
 SetAutoCapture sets AutoCapture field to given value.
 
+### HasAutoCapture
+
+`func (o *InstallmentPlanInitiateRequest) HasAutoCapture() bool`
+
+HasAutoCapture returns a boolean if a field has been set.
 
 ### GetAttempt3dSecure
 

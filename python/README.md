@@ -3,7 +3,7 @@
 Splitit's Web API
 
 
-[![PyPI](https://img.shields.io/badge/PyPI-v3.0.0-blue)](https://pypi.org/project/splitit-web-python-sdk/3.0.0)
+[![PyPI](https://img.shields.io/badge/PyPI-v3.0.1-blue)](https://pypi.org/project/splitit-web-python-sdk/3.0.1)
 [![README.md](https://img.shields.io/badge/README-Click%20Here-green)](https://github.com/konfig-dev/splitit-web-sdks/tree/main/python#readme)
 
 ## Table of Contents<a id="table-of-contents"></a>
@@ -34,7 +34,7 @@ Python >=3.7
 ## Installation<a id="installation"></a>
 
 ```sh
-pip install splitit-web-python-sdk==3.0.0
+pip install splitit-web-python-sdk==3.0.1
 ```
 
 ## Getting Started<a id="getting-started"></a>
@@ -257,9 +257,9 @@ TouchPoint
 
 ```python
 post_response = splitit.installment_plan.post(
-    auto_capture=True,
     x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
     x_splitit_touch_point="",
+    auto_capture=True,
     attempt3d_secure=True,
     shopper={},
     plan_data={
@@ -278,13 +278,13 @@ post_response = splitit.installment_plan.post(
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
 
-##### auto_capture: `bool`<a id="auto_capture-bool"></a>
-
 ##### x_splitit_idempotency_key: `str`<a id="x_splitit_idempotency_key-str"></a>
 
 ##### x_splitit_touch_point: `str`<a id="x_splitit_touch_point-str"></a>
 
 TouchPoint
+
+##### auto_capture: `bool`<a id="auto_capture-bool"></a>
 
 ##### attempt3d_secure: `bool`<a id="attempt3d_secure-bool"></a>
 
