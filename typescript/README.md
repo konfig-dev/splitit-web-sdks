@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v4.0.1-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.1)
+[![npm](https://img.shields.io/badge/npm-v4.0.2-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.2)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -173,19 +173,18 @@ const postResponse = await splitit.installmentplan.post({
   xSplititTestMode: "None",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
-  AutoCapture: true,
 });
 ```
 
 #### ⚙️ Parameters<a id="⚙️-parameters"></a>
-
-##### AutoCapture: `boolean`<a id="autocapture-boolean"></a>
 
 ##### xSplititIdempotencyKey: `string`<a id="xsplititidempotencykey-string"></a>
 
 ##### xSplititTouchPoint: `string`<a id="xsplitittouchpoint-string"></a>
 
 TouchPoint
+
+##### AutoCapture: `boolean`<a id="autocapture-boolean"></a>
 
 ##### Attempt3dSecure: `boolean`<a id="attempt3dsecure-boolean"></a>
 

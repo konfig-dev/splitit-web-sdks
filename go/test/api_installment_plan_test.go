@@ -76,9 +76,8 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
         eventsEndpoints := *splitit.NewEventsEndpointsModel()
         processingData := *splitit.NewProcessingData()
         
-        installmentPlanInitiateRequest := *splitit.NewInstallmentPlanInitiateRequest(
-            null,
-        )
+        installmentPlanInitiateRequest := *splitit.NewInstallmentPlanInitiateRequest()
+        installmentPlanInitiateRequest.SetAutoCapture(null)
         installmentPlanInitiateRequest.SetAttempt3dSecure(null)
         installmentPlanInitiateRequest.SetShopper(shopper)
         installmentPlanInitiateRequest.SetPlanData(planData)

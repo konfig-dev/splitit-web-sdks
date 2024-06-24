@@ -9,7 +9,6 @@
  * Do not edit the class manually.
  */
 
-
 package com.konfigthis.splitit.client;
 
 import okhttp3.*;
@@ -213,7 +212,7 @@ public class ApiClient extends ApiClientCustom {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Konfig/3.0.0/java");
+        setUserAgent("Konfig/3.0.1/java");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -500,7 +499,6 @@ public class ApiClient extends ApiClientCustom {
                 return;
             }
         }
-        throw new RuntimeException("No OAuth2 authentication configured!");
     }
 
     /**

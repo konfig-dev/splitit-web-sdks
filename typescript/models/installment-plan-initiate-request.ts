@@ -29,7 +29,7 @@ export interface InstallmentPlanInitiateRequest {
      * @type {boolean}
      * @memberof InstallmentPlanInitiateRequest
      */
-    'AutoCapture': boolean;
+    'AutoCapture'?: boolean;
     /**
      * 
      * @type {boolean}

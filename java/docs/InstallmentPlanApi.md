@@ -269,9 +269,9 @@ public class Example {
     configuration.clientSecret = "clientSecret";
     
     Splitit client = new Splitit(configuration);
-    Boolean autoCapture = true;
     String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
     String xSplititTouchPoint = ""; // TouchPoint
+    Boolean autoCapture = true;
     Boolean attempt3dSecure = true;
     ShopperData shopper = new ShopperData();
     PlanDataModel planData = new PlanDataModel();
@@ -285,7 +285,8 @@ public class Example {
     try {
       InitiatePlanResponse result = client
               .installmentPlan
-              .post(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint)
+              .post(xSplititIdempotencyKey, xSplititTouchPoint)
+              .autoCapture(autoCapture)
               .attempt3dSecure(attempt3dSecure)
               .shopper(shopper)
               .planData(planData)
@@ -320,7 +321,8 @@ public class Example {
     try {
       ApiResponse<InitiatePlanResponse> response = client
               .installmentPlan
-              .post(autoCapture, xSplititIdempotencyKey, xSplititTouchPoint)
+              .post(xSplititIdempotencyKey, xSplititTouchPoint)
+              .autoCapture(autoCapture)
               .attempt3dSecure(attempt3dSecure)
               .shopper(shopper)
               .planData(planData)

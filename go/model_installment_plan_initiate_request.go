@@ -16,7 +16,7 @@ import (
 
 // InstallmentPlanInitiateRequest struct for InstallmentPlanInitiateRequest
 type InstallmentPlanInitiateRequest struct {
-	AutoCapture bool `json:"AutoCapture"`
+	AutoCapture *bool `json:"AutoCapture,omitempty"`
 	Attempt3dSecure *bool `json:"Attempt3dSecure,omitempty"`
 	Shopper *ShopperData `json:"Shopper,omitempty"`
 	PlanData *PlanDataModel `json:"PlanData,omitempty"`
@@ -31,9 +31,8 @@ type InstallmentPlanInitiateRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstallmentPlanInitiateRequest(autoCapture bool) *InstallmentPlanInitiateRequest {
+func NewInstallmentPlanInitiateRequest() *InstallmentPlanInitiateRequest {
 	this := InstallmentPlanInitiateRequest{}
-	this.AutoCapture = autoCapture
 	return &this
 }
 
@@ -45,28 +44,36 @@ func NewInstallmentPlanInitiateRequestWithDefaults() *InstallmentPlanInitiateReq
 	return &this
 }
 
-// GetAutoCapture returns the AutoCapture field value
+// GetAutoCapture returns the AutoCapture field value if set, zero value otherwise.
 func (o *InstallmentPlanInitiateRequest) GetAutoCapture() bool {
-	if o == nil {
+	if o == nil || isNil(o.AutoCapture) {
 		var ret bool
 		return ret
 	}
-
-	return o.AutoCapture
+	return *o.AutoCapture
 }
 
-// GetAutoCaptureOk returns a tuple with the AutoCapture field value
+// GetAutoCaptureOk returns a tuple with the AutoCapture field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *InstallmentPlanInitiateRequest) GetAutoCaptureOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || isNil(o.AutoCapture) {
     return nil, false
 	}
-	return &o.AutoCapture, true
+	return o.AutoCapture, true
 }
 
-// SetAutoCapture sets field value
+// HasAutoCapture returns a boolean if a field has been set.
+func (o *InstallmentPlanInitiateRequest) HasAutoCapture() bool {
+	if o != nil && !isNil(o.AutoCapture) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoCapture gets a reference to the given bool and assigns it to the AutoCapture field.
 func (o *InstallmentPlanInitiateRequest) SetAutoCapture(v bool) {
-	o.AutoCapture = v
+	o.AutoCapture = &v
 }
 
 // GetAttempt3dSecure returns the Attempt3dSecure field value if set, zero value otherwise.
@@ -327,7 +334,7 @@ func (o *InstallmentPlanInitiateRequest) SetProcessingData(v ProcessingData) {
 
 func (o InstallmentPlanInitiateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if true {
+	if !isNil(o.AutoCapture) {
 		toSerialize["AutoCapture"] = o.AutoCapture
 	}
 	if !isNil(o.Attempt3dSecure) {

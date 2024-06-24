@@ -1614,6 +1614,8 @@
     "schemas": {
       "FailedResponse": {
         "type": "object",
+        "x-deprecated": true,
+        "x-deprecatedMessage": "Do not implement this interface - use ApiErrorResponse from v2.common",
         "properties": {
           "TraceId": {
             "type": "string"
@@ -1630,6 +1632,8 @@
           },
           {
             "type": "object",
+            "x-deprecated": true,
+            "x-deprecatedMessage": "Use ApiErrorModel from v2.common instread",
             "properties": {
               "ExtraData": {
                 "type": "object",
@@ -1643,6 +1647,8 @@
       },
       "Error": {
         "type": "object",
+        "x-deprecated": true,
+        "x-deprecatedMessage": "Use ApiErrorModel from v2.common instread",
         "properties": {
           "Code": {
             "type": "string"
@@ -2285,9 +2291,6 @@
       },
       "InstallmentPlanInitiateRequest": {
         "type": "object",
-        "required": [
-          "AutoCapture"
-        ],
         "properties": {
           "AutoCapture": {
             "type": "boolean"

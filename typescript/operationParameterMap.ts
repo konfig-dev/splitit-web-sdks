@@ -43,13 +43,13 @@ export const operationParameterMap: Record<string, Entry> = {
     '/api/installmentplans/initiate-POST': {
         parameters: [
             {
-                name: 'AutoCapture'
-            },
-            {
                 name: 'X-Splitit-IdempotencyKey'
             },
             {
                 name: 'X-Splitit-TouchPoint'
+            },
+            {
+                name: 'AutoCapture'
             },
             {
                 name: 'Attempt3dSecure'

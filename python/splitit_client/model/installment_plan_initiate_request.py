@@ -32,9 +32,6 @@ class InstallmentPlanInitiateRequest(
 
 
     class MetaOapg:
-        required = {
-            "AutoCapture",
-        }
         
         class properties:
             AutoCapture = schemas.BoolSchema
@@ -79,8 +76,6 @@ class InstallmentPlanInitiateRequest(
                 "ProcessingData": ProcessingData,
             }
     
-    AutoCapture: MetaOapg.properties.AutoCapture
-    
     @typing.overload
     def __getitem__(self, name: typing_extensions.Literal["AutoCapture"]) -> MetaOapg.properties.AutoCapture: ...
     
@@ -117,7 +112,7 @@ class InstallmentPlanInitiateRequest(
     
     
     @typing.overload
-    def get_item_oapg(self, name: typing_extensions.Literal["AutoCapture"]) -> MetaOapg.properties.AutoCapture: ...
+    def get_item_oapg(self, name: typing_extensions.Literal["AutoCapture"]) -> typing.Union[MetaOapg.properties.AutoCapture, schemas.Unset]: ...
     
     @typing.overload
     def get_item_oapg(self, name: typing_extensions.Literal["Attempt3dSecure"]) -> typing.Union[MetaOapg.properties.Attempt3dSecure, schemas.Unset]: ...
@@ -153,7 +148,7 @@ class InstallmentPlanInitiateRequest(
     def __new__(
         cls,
         *args: typing.Union[dict, frozendict.frozendict, ],
-        AutoCapture: typing.Union[MetaOapg.properties.AutoCapture, bool, ],
+        AutoCapture: typing.Union[MetaOapg.properties.AutoCapture, bool, schemas.Unset] = schemas.unset,
         Attempt3dSecure: typing.Union[MetaOapg.properties.Attempt3dSecure, bool, schemas.Unset] = schemas.unset,
         Shopper: typing.Union['ShopperData', schemas.Unset] = schemas.unset,
         PlanData: typing.Union['PlanDataModel', schemas.Unset] = schemas.unset,
