@@ -1393,6 +1393,7 @@ components:
       - Pending3DS
       - Failed
       - Canceled
+      - Voided
       type: string
       x-enumNames:
       - NA
@@ -1400,6 +1401,7 @@ components:
       - Pending3DS
       - Failed
       - Canceled
+      - Voided
     ThreeDsRedirectDataV3:
       example:
         Verb: Verb

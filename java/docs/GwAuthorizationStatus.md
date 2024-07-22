@@ -15,5 +15,7 @@
 
 * `CANCELED` (value: `"Canceled"`)
 
+* `VOIDED` (value: `"Voided"`)
+
 
 

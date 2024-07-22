@@ -36,7 +36,9 @@ import com.google.gson.stream.JsonWriter;
   
   FAILED("Failed"),
   
-  CANCELED("Canceled");
+  CANCELED("Canceled"),
+  
+  VOIDED("Voided");
 
   private String value;
 
