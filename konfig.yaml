@@ -48,7 +48,7 @@ generators:
     outputDirectory: python
     clientName: Splitit
     setSkipSerializationToTrueByDefault: true
-    pypiApiTokenEnvironmentVariable: SPLITIT_PYPI_API_TOKEN
+    pypiApiTokenEnvironmentVariable: PYPI_TOKEN_1
     git:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
