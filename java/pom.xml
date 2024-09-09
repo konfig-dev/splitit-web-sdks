@@ -5,7 +5,7 @@
     <artifactId>splitit-web-java-sdk</artifactId>
     <packaging>jar</packaging>
     <name>splitit-web-java-sdk</name>
-    <version>3.0.2</version>
+    <version>3.0.3</version>
     <url>https://github.com/konfig-dev/splitit-web-sdks/tree/main/java</url>
     <description>
     Splitit&#39;s Web API
