@@ -545,6 +545,7 @@ class CheckEligibility(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._check_eligibility_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,
@@ -601,6 +602,7 @@ class ApiForpost(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._check_eligibility_mapped_args(
             x_splitit_idempotency_key=x_splitit_idempotency_key,
             x_splitit_touch_point=x_splitit_touch_point,

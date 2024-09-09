@@ -59,13 +59,7 @@ namespace Splitit.Web.Net.Model
         /// Enum Canceled for value: Canceled
         /// </summary>
         [EnumMember(Value = "Canceled")]
-        Canceled = 5,
-
-        /// <summary>
-        /// Enum Voided for value: Voided
-        /// </summary>
-        [EnumMember(Value = "Voided")]
-        Voided = 6
+        Canceled = 5
 
     }
 

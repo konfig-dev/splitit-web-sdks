@@ -69,7 +69,11 @@ func (a *InstallmentPlanApiService) CheckEligibilityExecute(r InstallmentPlanApi
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/check-eligibility"
+    subpath := "/api/installmentplans/check-eligibility"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -95,7 +99,11 @@ func (a *InstallmentPlanApiService) CheckEligibilityExecute(r InstallmentPlanApi
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.checkInstallmentsEligibilityRequest
+    if !checkNilInterface(r.checkInstallmentsEligibilityRequest) {
+        localVarPostBody = r.checkInstallmentsEligibilityRequest
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -222,7 +230,11 @@ func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/{installmentPlanNumber}"
+    subpath := "/api/installmentplans/{installmentPlanNumber}"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"installmentPlanNumber"+"}", url.PathEscape(parameterToString(r.installmentPlanNumber, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -248,6 +260,8 @@ func (a *InstallmentPlanApiService) GetExecute(r InstallmentPlanApiGetRequest) (
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -386,7 +400,11 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/initiate"
+    subpath := "/api/installmentplans/initiate"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -418,7 +436,11 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.installmentPlanInitiateRequest
+    if !checkNilInterface(r.installmentPlanInitiateRequest) {
+        localVarPostBody = r.installmentPlanInitiateRequest
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -568,7 +590,11 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans"
+    subpath := "/api/installmentplans"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -600,7 +626,11 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.installmentPlanCreateRequest
+    if !checkNilInterface(r.installmentPlanCreateRequest) {
+        localVarPostBody = r.installmentPlanCreateRequest
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -741,7 +771,11 @@ func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequ
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/{installmentPlanNumber}/refund"
+    subpath := "/api/installmentplans/{installmentPlanNumber}/refund"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"installmentPlanNumber"+"}", url.PathEscape(parameterToString(r.installmentPlanNumber, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -768,7 +802,11 @@ func (a *InstallmentPlanApiService) RefundExecute(r InstallmentPlanApiRefundRequ
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.installmentPlanRefundRequest
+    if !checkNilInterface(r.installmentPlanRefundRequest) {
+        localVarPostBody = r.installmentPlanRefundRequest
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -910,7 +948,11 @@ func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequ
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/search"
+    subpath := "/api/installmentplans/search"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -944,6 +986,8 @@ func (a *InstallmentPlanApiService) SearchExecute(r InstallmentPlanApiSearchRequ
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1073,7 +1117,11 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdat
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/{installmentPlanNumber}/updateorder"
+    subpath := "/api/installmentplans/{installmentPlanNumber}/updateorder"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"installmentPlanNumber"+"}", url.PathEscape(parameterToString(r.installmentPlanNumber, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1100,7 +1148,11 @@ func (a *InstallmentPlanApiService) UpdateOrderExecute(r InstallmentPlanApiUpdat
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.installmentPlanUpdateRequest
+    if !checkNilInterface(r.installmentPlanUpdateRequest) {
+        localVarPostBody = r.installmentPlanUpdateRequest
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1227,7 +1279,11 @@ func (a *InstallmentPlanApiService) UpdateOrder2Execute(r InstallmentPlanApiUpda
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/updateorder"
+    subpath := "/api/installmentplans/updateorder"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1253,7 +1309,11 @@ func (a *InstallmentPlanApiService) UpdateOrder2Execute(r InstallmentPlanApiUpda
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
 	// body params
-	localVarPostBody = r.installmentPlanUpdateRequestByIdentifier
+    if !checkNilInterface(r.installmentPlanUpdateRequestByIdentifier) {
+        localVarPostBody = r.installmentPlanUpdateRequestByIdentifier
+    }
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1380,7 +1440,11 @@ func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r InstallmentPlan
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/installmentplans/{installmentPlanNumber}/verifyauthorization"
+    subpath := "/api/installmentplans/{installmentPlanNumber}/verifyauthorization"
+	localVarPath := localBasePath + subpath
+	if a.client.cfg.Host != "" {
+		localVarPath = a.client.cfg.Scheme + "://" + a.client.cfg.Host + subpath
+	}
 	localVarPath = strings.Replace(localVarPath, "{"+"installmentPlanNumber"+"}", url.PathEscape(parameterToString(r.installmentPlanNumber, "")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -1406,6 +1470,8 @@ func (a *InstallmentPlanApiService) VerifyAuthorizationExecute(r InstallmentPlan
 	}
 	localVarHeaderParams["X-Splitit-IdempotencyKey"] = parameterToString(r.xSplititIdempotencyKey, "")
 	localVarHeaderParams["X-Splitit-TouchPoint"] = parameterToString(r.xSplititTouchPoint, "")
+
+    prepareRequestBefore(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err

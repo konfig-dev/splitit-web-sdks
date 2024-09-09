@@ -1393,7 +1393,6 @@ components:
       - Pending3DS
       - Failed
       - Canceled
-      - Voided
       type: string
       x-enumNames:
       - NA
@@ -1401,7 +1400,6 @@ components:
       - Pending3DS
       - Failed
       - Canceled
-      - Voided
     ThreeDsRedirectDataV3:
       example:
         Verb: Verb
@@ -3273,5 +3271,5 @@ components:
           tokenUrl: https://id.production.splitit.com/connect/token
       type: oauth2
       x-konfig-globally-required-security: true
-x-generator: NSwag v14.0.3.0 (NJsonSchema v11.0.0.0 (Newtonsoft.Json v13.0.0.0))
+x-generator: NSwag v14.1.0.0 (NJsonSchema v11.0.2.0 (Newtonsoft.Json v13.0.0.0))
 
