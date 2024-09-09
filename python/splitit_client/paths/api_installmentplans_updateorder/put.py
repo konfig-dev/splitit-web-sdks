@@ -556,6 +556,7 @@ class UpdateOrder2(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
@@ -622,6 +623,7 @@ class ApiForput(BaseApi):
         ApiResponseFor200,
         api_client.ApiResponseWithoutDeserialization,
     ]:
+        """  """
         args = self._update_order2_mapped_args(
             body=body,
             x_splitit_idempotency_key=x_splitit_idempotency_key,
