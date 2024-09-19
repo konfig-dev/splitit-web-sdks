@@ -888,6 +888,88 @@
           }
         }
       }
+    },
+    "/api/installmentplans/{ipn}/legal": {
+      "get": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_GetEligibilityTermsAndCondition",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "ipn",
+            "in": "path",
+            "required": true,
+            "x-nullable": false
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "description": "Bearer token",
+            "schema": {
+              "type": "string"
+            },
+            "default": "Bearer "
+          },
+          {
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "description": "TouchPoint",
+            "schema": {
+              "type": "string"
+            },
+            "default": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/EligibilityTermsAndConditionResponse"
+            }
+          },
+          "401": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "403": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "404": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          },
+          "500": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/FailedResponse"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2237,6 +2319,17 @@
           "type": "string"
         },
         "TransactionId": {
+          "type": "string"
+        }
+      }
+    },
+    "EligibilityTermsAndConditionResponse": {
+      "type": "object",
+      "properties": {
+        "TermsAndConditions": {
+          "type": "string"
+        },
+        "PrivacyPolicy": {
           "type": "string"
         }
       }
