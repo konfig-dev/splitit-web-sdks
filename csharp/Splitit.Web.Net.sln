@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splitit.Web.Net", "src\Splitit.Web.Net\Splitit.Web.Net.csproj", "{A9C862E9-B2B9-4B6A-B13E-4FB84E3878B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splitit.Web.Net", "src\Splitit.Web.Net\Splitit.Web.Net.csproj", "{DEB86C7F-1F37-4EA3-87AD-EBC9E52B8D20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Splitit.Web.Net.Test", "src\Splitit.Web.Net.Test\Splitit.Web.Net.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A9C862E9-B2B9-4B6A-B13E-4FB84E3878B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A9C862E9-B2B9-4B6A-B13E-4FB84E3878B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A9C862E9-B2B9-4B6A-B13E-4FB84E3878B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A9C862E9-B2B9-4B6A-B13E-4FB84E3878B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEB86C7F-1F37-4EA3-87AD-EBC9E52B8D20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEB86C7F-1F37-4EA3-87AD-EBC9E52B8D20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEB86C7F-1F37-4EA3-87AD-EBC9E52B8D20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEB86C7F-1F37-4EA3-87AD-EBC9E52B8D20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
