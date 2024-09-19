@@ -6,6 +6,7 @@ Method | Path | Description
 ------------- | ------------- | -------------
 [**CheckEligibility**](InstallmentPlanApi.md#CheckEligibility) | **Post** /api/installmentplans/check-eligibility | 
 [**Get**](InstallmentPlanApi.md#Get) | **Get** /api/installmentplans/{installmentPlanNumber} | 
+[**GetEligibilityTermsAndCondition**](InstallmentPlanApi.md#GetEligibilityTermsAndCondition) | **Get** /api/installmentplans/{ipn}/legal | 
 [**Post**](InstallmentPlanApi.md#Post) | **Post** /api/installmentplans/initiate | 
 [**Post2**](InstallmentPlanApi.md#Post2) | **Post** /api/installmentplans | 
 [**Refund**](InstallmentPlanApi.md#Refund) | **Post** /api/installmentplans/{installmentPlanNumber}/refund | 
@@ -118,6 +119,49 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanGetResponse.Get.Installments`: %v\n", *resp.Installments)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanGetResponse.Get.Refunds`: %v\n", *resp.Refunds)
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanGetResponse.Get.Links`: %v\n", *resp.Links)
+}
+```
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetEligibilityTermsAndCondition
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+    splitit "github.com/konfig-dev/splitit-web-sdks/go"
+)
+
+func main() {
+    configuration := splitit.NewConfiguration()
+    client := splitit.NewAPIClient(configuration)
+
+    request := client.InstallmentPlanApi.GetEligibilityTermsAndCondition(
+        "ipn_example",
+        "xSplititIdempotencyKey_example",
+        """",
+    )
+    
+    resp, httpRes, err := request.Execute()
+
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `InstallmentPlanApi.GetEligibilityTermsAndCondition``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", httpRes)
+    }
+    // response from `GetEligibilityTermsAndCondition`: EligibilityTermsAndConditionResponse
+    fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.GetEligibilityTermsAndCondition`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `EligibilityTermsAndConditionResponse.GetEligibilityTermsAndCondition.TermsAndConditions`: %v\n", *resp.TermsAndConditions)
+    fmt.Fprintf(os.Stdout, "Response from `EligibilityTermsAndConditionResponse.GetEligibilityTermsAndCondition.PrivacyPolicy`: %v\n", *resp.PrivacyPolicy)
 }
 ```
 

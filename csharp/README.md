@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *InstallmentPlanApi* | [**CheckEligibility**](docs/InstallmentPlanApi.md#checkeligibility) | **POST** /api/installmentplans/check-eligibility | 
 *InstallmentPlanApi* | [**Get**](docs/InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} | 
+*InstallmentPlanApi* | [**GetEligibilityTermsAndCondition**](docs/InstallmentPlanApi.md#geteligibilitytermsandcondition) | **GET** /api/installmentplans/{ipn}/legal | 
 *InstallmentPlanApi* | [**Post**](docs/InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate | 
 *InstallmentPlanApi* | [**Post2**](docs/InstallmentPlanApi.md#post2) | **POST** /api/installmentplans | 
 *InstallmentPlanApi* | [**Refund**](docs/InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund | 
@@ -121,6 +122,7 @@ Class | Method | HTTP request | Description
  - [CardData](docs/CardData.md)
  - [CardType](docs/CardType.md)
  - [CheckInstallmentsEligibilityRequest](docs/CheckInstallmentsEligibilityRequest.md)
+ - [EligibilityTermsAndConditionResponse](docs/EligibilityTermsAndConditionResponse.md)
  - [Error](docs/Error.md)
  - [ErrorExtended](docs/ErrorExtended.md)
  - [ErrorExtendedAllOf](docs/ErrorExtendedAllOf.md)

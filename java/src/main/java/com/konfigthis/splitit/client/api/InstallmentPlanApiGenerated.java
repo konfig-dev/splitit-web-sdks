@@ -30,6 +30,7 @@ import com.konfigthis.splitit.client.model.AddressData;
 import com.konfigthis.splitit.client.model.AddressDataModel;
 import com.konfigthis.splitit.client.model.CardData;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
+import com.konfigthis.splitit.client.model.EligibilityTermsAndConditionResponse;
 import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
@@ -529,6 +530,194 @@ public class InstallmentPlanApiGenerated {
             
 
         return ((InstallmentPlanApi) this).new GetRequestBuilder(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+    }
+    private okhttp3.Call getEligibilityTermsAndConditionCall(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/installmentplans/{ipn}/legal"
+            .replace("{" + "ipn" + "}", localVarApiClient.escapeString(ipn.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (xSplititIdempotencyKey != null) {
+            localVarHeaderParams.put("X-Splitit-IdempotencyKey", localVarApiClient.parameterToString(xSplititIdempotencyKey));
+        }
+
+        if (xSplititTouchPoint != null) {
+            localVarHeaderParams.put("X-Splitit-TouchPoint", localVarApiClient.parameterToString(xSplititTouchPoint));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json",
+            "text/json",
+            "text/plain"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getEligibilityTermsAndConditionValidateBeforeCall(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'ipn' is set
+        if (ipn == null) {
+            throw new ApiException("Missing the required parameter 'ipn' when calling getEligibilityTermsAndCondition(Async)");
+        }
+
+        // verify the required parameter 'xSplititIdempotencyKey' is set
+        if (xSplititIdempotencyKey == null) {
+            throw new ApiException("Missing the required parameter 'xSplititIdempotencyKey' when calling getEligibilityTermsAndCondition(Async)");
+        }
+
+        // verify the required parameter 'xSplititTouchPoint' is set
+        if (xSplititTouchPoint == null) {
+            throw new ApiException("Missing the required parameter 'xSplititTouchPoint' when calling getEligibilityTermsAndCondition(Async)");
+        }
+
+        return getEligibilityTermsAndConditionCall(ipn, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+
+    }
+
+
+    private ApiResponse<EligibilityTermsAndConditionResponse> getEligibilityTermsAndConditionWithHttpInfo(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint) throws ApiException {
+        okhttp3.Call localVarCall = getEligibilityTermsAndConditionValidateBeforeCall(ipn, xSplititIdempotencyKey, xSplititTouchPoint, null);
+        Type localVarReturnType = new TypeToken<EligibilityTermsAndConditionResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    private okhttp3.Call getEligibilityTermsAndConditionAsync(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint, final ApiCallback<EligibilityTermsAndConditionResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getEligibilityTermsAndConditionValidateBeforeCall(ipn, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+        Type localVarReturnType = new TypeToken<EligibilityTermsAndConditionResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+
+    public abstract class GetEligibilityTermsAndConditionRequestBuilderGenerated {
+        final String ipn;
+        final String xSplititIdempotencyKey;
+        final String xSplititTouchPoint;
+
+        public GetEligibilityTermsAndConditionRequestBuilderGenerated(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+            this.ipn = ipn;
+            this.xSplititIdempotencyKey = xSplititIdempotencyKey;
+            this.xSplititTouchPoint = xSplititTouchPoint;
+        }
+
+        /**
+         * Build call for getEligibilityTermsAndCondition
+         * @param _callback ApiCallback API callback
+         * @return Call to execute
+         * @throws ApiException If fail to serialize the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call buildCall(final ApiCallback _callback) throws ApiException {
+            return getEligibilityTermsAndConditionCall(ipn, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+        }
+
+
+        /**
+         * Execute getEligibilityTermsAndCondition request
+         * @return EligibilityTermsAndConditionResponse
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public EligibilityTermsAndConditionResponse execute() throws ApiException {
+            ApiResponse<EligibilityTermsAndConditionResponse> localVarResp = getEligibilityTermsAndConditionWithHttpInfo(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+            return localVarResp.getResponseBody();
+        }
+
+        /**
+         * Execute getEligibilityTermsAndCondition request with HTTP info returned
+         * @return ApiResponse&lt;EligibilityTermsAndConditionResponse&gt;
+         * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public ApiResponse<EligibilityTermsAndConditionResponse> executeWithHttpInfo() throws ApiException {
+            return getEligibilityTermsAndConditionWithHttpInfo(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+        }
+
+        /**
+         * Execute getEligibilityTermsAndCondition request (asynchronously)
+         * @param _callback The callback to be executed when the API call finishes
+         * @return The request call
+         * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+         * @http.response.details
+         <table summary="Response Details" border="1">
+            <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+            <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+         </table>
+         */
+        public okhttp3.Call executeAsync(final ApiCallback<EligibilityTermsAndConditionResponse> _callback) throws ApiException {
+            return getEligibilityTermsAndConditionAsync(ipn, xSplititIdempotencyKey, xSplititTouchPoint, _callback);
+        }
+    }
+
+    /**
+     * 
+     * 
+     * @param ipn  (required)
+     * @param xSplititIdempotencyKey  (required)
+     * @param xSplititTouchPoint TouchPoint (required)
+     * @return GetEligibilityTermsAndConditionRequestBuilder
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td>  </td><td>  -  </td></tr>
+     </table>
+     */
+    public InstallmentPlanApi.GetEligibilityTermsAndConditionRequestBuilder getEligibilityTermsAndCondition(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint) throws IllegalArgumentException {
+        if (ipn == null) throw new IllegalArgumentException("\"ipn\" is required but got null");
+            
+
+        if (xSplititIdempotencyKey == null) throw new IllegalArgumentException("\"xSplititIdempotencyKey\" is required but got null");
+            
+
+        if (xSplititTouchPoint == null) throw new IllegalArgumentException("\"xSplititTouchPoint\" is required but got null");
+            
+
+        return ((InstallmentPlanApi) this).new GetEligibilityTermsAndConditionRequestBuilder(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
     }
     private okhttp3.Call postCall(String xSplititIdempotencyKey, String xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, String xSplititTestMode, String splititclientinfo, final ApiCallback _callback) throws ApiException {
         String basePath = null;

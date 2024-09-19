@@ -6,6 +6,7 @@ export * from './card-brand';
 export * from './card-data';
 export * from './card-type';
 export * from './check-installments-eligibility-request';
+export * from './eligibility-terms-and-condition-response';
 export * from './error-extended';
 export * from './error-extended-all-of';
 export * from './events-endpoints-model';

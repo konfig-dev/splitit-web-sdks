@@ -66,6 +66,22 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
         */
     })
 
+    t.Run("Test InstallmentPlanApiService GetEligibilityTermsAndCondition", func(t *testing.T) {
+        /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
+        request := client.InstallmentPlanApi.GetEligibilityTermsAndCondition(
+            "ipn_example",
+            "xSplititIdempotencyKey_example",
+            """",
+        )
+        
+        resp, httpRes, err := request.Execute()
+
+        require.Nil(t, err)
+        require.NotNil(t, resp)
+        assert.Equal(t, 200, httpRes.StatusCode)
+        */
+    })
+
     t.Run("Test InstallmentPlanApiService Post", func(t *testing.T) {
         /* TODO: ENG-1367 Fix parameter values for Go SDK generated tests
         shopper := *splitit.NewShopperData()

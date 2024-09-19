@@ -6,6 +6,7 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 |------------- | ------------- | -------------|
 | [**checkEligibility**](InstallmentPlanApi.md#checkEligibility) | **POST** /api/installmentplans/check-eligibility |  |
 | [**get**](InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} |  |
+| [**getEligibilityTermsAndCondition**](InstallmentPlanApi.md#getEligibilityTermsAndCondition) | **GET** /api/installmentplans/{ipn}/legal |  |
 | [**post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate |  |
 | [**post2**](InstallmentPlanApi.md#post2) | **POST** /api/installmentplans |  |
 | [**refund**](InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund |  |
@@ -223,6 +224,105 @@ public class Example {
 ### Return type
 
 [**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
+
+### Authorization
+
+[oauth](../README.md#oauth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json, text/json, text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+
+<a name="getEligibilityTermsAndCondition"></a>
+# **getEligibilityTermsAndCondition**
+> EligibilityTermsAndConditionResponse getEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint).execute();
+
+
+
+### Example
+```java
+import com.konfigthis.splitit.client.ApiClient;
+import com.konfigthis.splitit.client.ApiException;
+import com.konfigthis.splitit.client.ApiResponse;
+import com.konfigthis.splitit.client.Splitit;
+import com.konfigthis.splitit.client.Configuration;
+import com.konfigthis.splitit.client.auth.*;
+import com.konfigthis.splitit.client.model.*;
+import com.konfigthis.splitit.client.api.InstallmentPlanApi;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+public class Example {
+  public static void main(String[] args) {
+    Configuration configuration = new Configuration();
+    configuration.host = "https://web-api-v3.production.splitit.com";
+    // Configure OAuth2 client credentials for "application" OAuth flow
+    String clientId = System.getenv("CLIENT_ID");
+    String clientSecret = System.getenv("CLIENT_SECRET");
+    configuration.clientId = "clientId";
+    configuration.clientSecret = "clientSecret";
+    
+    Splitit client = new Splitit(configuration);
+    String ipn = "ipn_example";
+    String xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+    String xSplititTouchPoint = ""; // TouchPoint
+    try {
+      EligibilityTermsAndConditionResponse result = client
+              .installmentPlan
+              .getEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint)
+              .execute();
+      System.out.println(result);
+      System.out.println(result.getTermsAndConditions());
+      System.out.println(result.getPrivacyPolicy());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstallmentPlanApi#getEligibilityTermsAndCondition");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+
+    // Use .executeWithHttpInfo() to retrieve HTTP Status Code, Headers and Request
+    try {
+      ApiResponse<EligibilityTermsAndConditionResponse> response = client
+              .installmentPlan
+              .getEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint)
+              .executeWithHttpInfo();
+      System.out.println(response.getResponseBody());
+      System.out.println(response.getResponseHeaders());
+      System.out.println(response.getStatusCode());
+      System.out.println(response.getRoundTripTime());
+      System.out.println(response.getRequest());
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstallmentPlanApi#getEligibilityTermsAndCondition");
+      System.err.println("Status code: " + e.getStatusCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **ipn** | **String**|  | |
+| **xSplititIdempotencyKey** | **String**|  | |
+| **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
+
+### Return type
+
+[**EligibilityTermsAndConditionResponse**](EligibilityTermsAndConditionResponse.md)
 
 ### Authorization
 

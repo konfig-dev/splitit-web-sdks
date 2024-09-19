@@ -1608,6 +1608,157 @@
           }
         }
       }
+    },
+    "/api/installmentplans/{ipn}/legal": {
+      "get": {
+        "tags": [
+          "InstallmentPlan"
+        ],
+        "operationId": "InstallmentPlan_GetEligibilityTermsAndCondition",
+        "security": [
+          {
+            "oauth": [
+              "api.v3"
+            ]
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ipn",
+            "in": "path",
+            "required": true,
+            "x-nullable": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Splitit-IdempotencyKey",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "TouchPoint",
+            "name": "X-Splitit-TouchPoint",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EligibilityTermsAndConditionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EligibilityTermsAndConditionResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EligibilityTermsAndConditionResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "x-nullable": false,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FailedResponse"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2958,6 +3109,17 @@
             "type": "string"
           },
           "TransactionId": {
+            "type": "string"
+          }
+        }
+      },
+      "EligibilityTermsAndConditionResponse": {
+        "type": "object",
+        "properties": {
+          "TermsAndConditions": {
+            "type": "string"
+          },
+          "PrivacyPolicy": {
             "type": "string"
           }
         }

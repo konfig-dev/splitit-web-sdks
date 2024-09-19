@@ -1103,6 +1103,110 @@ paths:
       - InstallmentPlan
       x-konfig-operation-can-have-single-parameter: true
       x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-post--api-installmentplans-check-eligibility
+  /api/installmentplans/{ipn}/legal:
+    get:
+      operationId: InstallmentPlan_GetEligibilityTermsAndCondition
+      parameters:
+      - explode: false
+        in: path
+        name: ipn
+        required: true
+        schema:
+          type: string
+        style: simple
+        x-nullable: false
+      - explode: false
+        in: header
+        name: X-Splitit-IdempotencyKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: TouchPoint
+        explode: false
+        in: header
+        name: X-Splitit-TouchPoint
+        required: true
+        schema:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-ipn-legal-get-parameters-2-schema
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EligibilityTermsAndConditionResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/EligibilityTermsAndConditionResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/EligibilityTermsAndConditionResponse'
+          description: ""
+          x-nullable: false
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FailedResponse'
+          description: ""
+          x-nullable: false
+      security:
+      - oauth:
+        - api.v3
+      tags:
+      - InstallmentPlan
+      x-konfig-operation-can-have-single-parameter: true
+      x-konfig-single-parameter-schema: konfig-generated-schema-single-parameter-schema-get--api-installmentplans-ipn-legal
 components:
   schemas:
     FailedResponse:
@@ -2849,6 +2953,16 @@ components:
         TransactionId:
           type: string
       type: object
+    EligibilityTermsAndConditionResponse:
+      example:
+        TermsAndConditions: TermsAndConditions
+        PrivacyPolicy: PrivacyPolicy
+      properties:
+        TermsAndConditions:
+          type: string
+        PrivacyPolicy:
+          type: string
+      type: object
     konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema:
       example: ""
       type: string
@@ -2882,6 +2996,10 @@ components:
       type: string
       x-do-not-generate: true
     konfig-generated-schema-paths--api-installmentplans-check-eligibility-post-parameters-1-schema:
+      example: ""
+      type: string
+      x-do-not-generate: true
+    konfig-generated-schema-paths--api-installmentplans-ipn-legal-get-parameters-2-schema:
       example: ""
       type: string
       x-do-not-generate: true
@@ -3174,6 +3292,28 @@ components:
       type: object
       x-do-not-generate: true
       x-konfig-is-parameter:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+    konfig-generated-schema-single-parameter-schema-get--api-installmentplans-ipn-legal:
+      properties:
+        ipn:
+          type: string
+        X-Splitit-IdempotencyKey:
+          type: string
+        X-Splitit-TouchPoint:
+          default: ""
+          example: ""
+          type: string
+          x-konfig-original-example: ""
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-ipn-legal-get-parameters-2-schema
+      required:
+      - X-Splitit-IdempotencyKey
+      - X-Splitit-TouchPoint
+      - ipn
+      type: object
+      x-do-not-generate: true
+      x-konfig-is-parameter:
+      - ipn
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint
     ErrorExtended_allOf:

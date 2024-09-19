@@ -17,6 +17,7 @@ Splitit's Web API
 - [Reference](#reference)
   * [`splitit.installment_plan.check_eligibility`](#splititinstallment_plancheck_eligibility)
   * [`splitit.installment_plan.get`](#splititinstallment_planget)
+  * [`splitit.installment_plan.get_eligibility_terms_and_condition`](#splititinstallment_planget_eligibility_terms_and_condition)
   * [`splitit.installment_plan.post`](#splititinstallment_planpost)
   * [`splitit.installment_plan.post2`](#splititinstallment_planpost2)
   * [`splitit.installment_plan.refund`](#splititinstallment_planrefund)
@@ -244,6 +245,44 @@ TouchPoint
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/api/installmentplans/{installmentPlanNumber}` `get`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `splitit.installment_plan.get_eligibility_terms_and_condition`<a id="splititinstallment_planget_eligibility_terms_and_condition"></a>
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+get_eligibility_terms_and_condition_response = (
+    splitit.installment_plan.get_eligibility_terms_and_condition(
+        ipn="ipn_example",
+        x_splitit_idempotency_key="X-Splitit-IdempotencyKey_example",
+        x_splitit_touch_point="",
+    )
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ipn: `str`<a id="ipn-str"></a>
+
+##### x_splitit_idempotency_key: `str`<a id="x_splitit_idempotency_key-str"></a>
+
+##### x_splitit_touch_point: `str`<a id="x_splitit_touch_point-str"></a>
+
+TouchPoint
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[`EligibilityTermsAndConditionResponse`](./splitit_client/type/eligibility_terms_and_condition_response.py)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/installmentplans/{ipn}/legal` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
