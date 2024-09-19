@@ -18,6 +18,7 @@ Splitit's Web API
 - [Reference](#reference)
   * [`splitit.installmentPlan.checkEligibility`](#splititinstallmentplancheckeligibility)
   * [`splitit.installmentPlan.get`](#splititinstallmentplanget)
+  * [`splitit.installmentPlan.getEligibilityTermsAndCondition`](#splititinstallmentplangeteligibilitytermsandcondition)
   * [`splitit.installmentPlan.post`](#splititinstallmentplanpost)
   * [`splitit.installmentPlan.post2`](#splititinstallmentplanpost2)
   * [`splitit.installmentPlan.refund`](#splititinstallmentplanrefund)
@@ -278,6 +279,42 @@ TouchPoint
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/api/installmentplans/{installmentPlanNumber}` `GET`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+
+### `splitit.installmentPlan.getEligibilityTermsAndCondition`<a id="splititinstallmentplangeteligibilitytermsandcondition"></a>
+
+
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```java
+EligibilityTermsAndConditionResponse result = client
+        .installmentPlan
+        .getEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint)
+        .execute();
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### ipn: `String`<a id="ipn-string"></a>
+
+##### xSplititIdempotencyKey: `String`<a id="xsplititidempotencykey-string"></a>
+
+##### xSplititTouchPoint: `String`<a id="xsplitittouchpoint-string"></a>
+
+TouchPoint
+
+#### 🔄 Return<a id="🔄-return"></a>
+
+[EligibilityTermsAndConditionResponse](./src/main/java/com/konfigthis/client/model/EligibilityTermsAndConditionResponse.java)
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/api/installmentplans/{ipn}/legal` `GET`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 

@@ -113,6 +113,35 @@ namespace Splitit.Web.Net.Test.Api
         }
 
         /// <summary>
+        /// Test GetEligibilityTermsAndCondition
+        /// </summary>
+        [Fact]
+        public void GetEligibilityTermsAndConditionTest()
+        {
+            var ipn = "ipn_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
+            try
+            {
+                EligibilityTermsAndConditionResponse result = client.InstallmentPlan.GetEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+                Console.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Console.WriteLine("Exception when calling InstallmentPlanApi.GetEligibilityTermsAndCondition: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
+            }
+        }
+
+        /// <summary>
         /// Test Post
         /// </summary>
         [Fact]

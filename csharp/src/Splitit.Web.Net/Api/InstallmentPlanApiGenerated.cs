@@ -79,6 +79,30 @@ namespace Splitit.Web.Net.Api
         /// 
         /// </summary>
         /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EligibilityTermsAndConditionResponse</returns>
+        EligibilityTermsAndConditionResponse GetEligibilityTermsAndCondition(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EligibilityTermsAndConditionResponse</returns>
+        ApiResponse<EligibilityTermsAndConditionResponse> GetEligibilityTermsAndConditionWithHttpInfo(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xSplititIdempotencyKey"></param>
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
@@ -326,6 +350,35 @@ namespace Splitit.Web.Net.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InstallmentPlanGetResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<InstallmentPlanGetResponse>> GetWithHttpInfoAsync(string installmentPlanNumber, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EligibilityTermsAndConditionResponse</returns>
+        System.Threading.Tasks.Task<EligibilityTermsAndConditionResponse> GetEligibilityTermsAndConditionAsync(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EligibilityTermsAndConditionResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EligibilityTermsAndConditionResponse>> GetEligibilityTermsAndConditionWithHttpInfoAsync(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1096,6 +1149,222 @@ namespace Splitit.Web.Net.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("Get", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>EligibilityTermsAndConditionResponse</returns>
+        public EligibilityTermsAndConditionResponse GetEligibilityTermsAndCondition(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0)
+        {
+            Splitit.Web.Net.Client.ApiResponse<EligibilityTermsAndConditionResponse> localVarResponse = GetEligibilityTermsAndConditionWithHttpInfo(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of EligibilityTermsAndConditionResponse</returns>
+        public Splitit.Web.Net.Client.ApiResponse<EligibilityTermsAndConditionResponse> GetEligibilityTermsAndConditionWithHttpInfo(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0)
+        {
+            // verify the required parameter 'ipn' is set
+            if (ipn == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'ipn' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+            // verify the required parameter 'xSplititTouchPoint' is set
+            if (xSplititTouchPoint == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititTouchPoint' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+            Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/json",
+                "text/plain"
+            };
+
+            var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Splitit.Web.Net.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ipn", Splitit.Web.Net.Client.ClientUtils.ParameterToString(ipn)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-TouchPoint", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTouchPoint)); // header parameter
+
+            localVarRequestOptions.Operation = "InstallmentPlanApi.GetEligibilityTermsAndCondition";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<EligibilityTermsAndConditionResponse>("/api/installmentplans/{ipn}/legal", localVarRequestOptions, this.Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEligibilityTermsAndCondition", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EligibilityTermsAndConditionResponse</returns>
+        public async System.Threading.Tasks.Task<EligibilityTermsAndConditionResponse> GetEligibilityTermsAndConditionAsync(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Splitit.Web.Net.Client.ApiResponse<EligibilityTermsAndConditionResponse> localVarResponse = await GetEligibilityTermsAndConditionWithHttpInfoAsync(ipn, xSplititIdempotencyKey, xSplititTouchPoint, operationIndex, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <exception cref="Splitit.Web.Net.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="ipn"></param>
+        /// <param name="xSplititIdempotencyKey"></param>
+        /// <param name="xSplititTouchPoint">TouchPoint</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EligibilityTermsAndConditionResponse)</returns>
+        public virtual async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<EligibilityTermsAndConditionResponse>> GetEligibilityTermsAndConditionWithHttpInfoAsync(string ipn, string xSplititIdempotencyKey, string xSplititTouchPoint, int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'ipn' is set
+            if (ipn == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'ipn' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+            // verify the required parameter 'xSplititIdempotencyKey' is set
+            if (xSplititIdempotencyKey == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititIdempotencyKey' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+            // verify the required parameter 'xSplititTouchPoint' is set
+            if (xSplititTouchPoint == null)
+            {
+                throw new Splitit.Web.Net.Client.ApiException(400, "Missing required parameter 'xSplititTouchPoint' when calling InstallmentPlanApi->GetEligibilityTermsAndCondition");
+            }
+
+
+            Splitit.Web.Net.Client.RequestOptions localVarRequestOptions = new Splitit.Web.Net.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json",
+                "text/json",
+                "text/plain"
+            };
+
+            var localVarContentType = Splitit.Web.Net.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Splitit.Web.Net.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("ipn", Splitit.Web.Net.Client.ClientUtils.ParameterToString(ipn)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-IdempotencyKey", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititIdempotencyKey, dataFormat: "")); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Splitit-TouchPoint", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTouchPoint, dataFormat: "")); // header parameter
+
+            localVarRequestOptions.Operation = "InstallmentPlanApi.GetEligibilityTermsAndCondition";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // authentication (oauth) required
+            // oauth required
+            if (!localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                if (!string.IsNullOrEmpty(this.Configuration.AccessToken))
+                {
+                    localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+                }
+                else if (!string.IsNullOrEmpty(this.Configuration.OAuthTokenUrl) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientId) &&
+                         !string.IsNullOrEmpty(this.Configuration.OAuthClientSecret) &&
+                         this.Configuration.OAuthFlow != null)
+                {
+                    localVarRequestOptions.OAuth = true;
+                }
+            }
+
+            // make the HTTP request
+            var localVarResponse = await this.AsynchronousClient.GetAsync<EligibilityTermsAndConditionResponse>("/api/installmentplans/{ipn}/legal", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetEligibilityTermsAndCondition", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

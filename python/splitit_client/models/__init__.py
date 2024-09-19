@@ -19,6 +19,7 @@ from splitit_client.model.card_brand import CardBrand
 from splitit_client.model.card_data import CardData
 from splitit_client.model.card_type import CardType
 from splitit_client.model.check_installments_eligibility_request import CheckInstallmentsEligibilityRequest
+from splitit_client.model.eligibility_terms_and_condition_response import EligibilityTermsAndConditionResponse
 from splitit_client.model.error import Error
 from splitit_client.model.error_extended import ErrorExtended
 from splitit_client.model.events_endpoints_model import EventsEndpointsModel

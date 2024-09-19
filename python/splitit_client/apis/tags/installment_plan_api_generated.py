@@ -10,6 +10,7 @@
 
 from splitit_client.paths.api_installmentplans_check_eligibility.post import CheckEligibility
 from splitit_client.paths.api_installmentplans_installment_plan_number.get import Get
+from splitit_client.paths.api_installmentplans_ipn_legal.get import GetEligibilityTermsAndCondition
 from splitit_client.paths.api_installmentplans_initiate.post import Post
 from splitit_client.paths.api_installmentplans.post import Post2
 from splitit_client.paths.api_installmentplans_installment_plan_number_refund.post import Refund
@@ -22,6 +23,7 @@ from splitit_client.paths.api_installmentplans_installment_plan_number_verifyaut
 class InstallmentPlanApiGenerated(
     CheckEligibility,
     Get,
+    GetEligibilityTermsAndCondition,
     Post,
     Post2,
     Refund,

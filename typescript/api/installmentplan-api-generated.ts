@@ -28,6 +28,8 @@ import { CardData } from '../models';
 // @ts-ignore
 import { CheckInstallmentsEligibilityRequest } from '../models';
 // @ts-ignore
+import { EligibilityTermsAndConditionResponse } from '../models';
+// @ts-ignore
 import { EventsEndpointsModel } from '../models';
 // @ts-ignore
 import { FailedResponse } from '../models';
@@ -201,6 +203,64 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
                 path: localVarPath,
                 configuration,
                 pathTemplate: '/api/installmentplans/{installmentPlanNumber}',
+                httpMethod: 'GET'
+            });
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} ipn 
+         * @param {string} xSplititIdempotencyKey 
+         * @param {string} xSplititTouchPoint TouchPoint
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibilityTermsAndCondition: async (ipn: string, xSplititIdempotencyKey: string, xSplititTouchPoint: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'ipn' is not null or undefined
+            assertParamExists('getEligibilityTermsAndCondition', 'ipn', ipn)
+            // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
+            assertParamExists('getEligibilityTermsAndCondition', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
+            // verify required parameter 'xSplititTouchPoint' is not null or undefined
+            assertParamExists('getEligibilityTermsAndCondition', 'xSplititTouchPoint', xSplititTouchPoint)
+            const localVarPath = `/api/installmentplans/{ipn}/legal`
+                .replace(`{${"ipn"}}`, encodeURIComponent(String(ipn !== undefined ? ipn : `-ipn-`)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions: AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = configuration && !isBrowser() ? { "User-Agent": configuration.userAgent } : {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication oauth required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
+            if (xSplititIdempotencyKey != null) {
+                localVarHeaderParameter['X-Splitit-IdempotencyKey'] = String(xSplititIdempotencyKey);
+            }
+
+            if (xSplititTouchPoint != null) {
+                localVarHeaderParameter['X-Splitit-TouchPoint'] = String(xSplititTouchPoint);
+            }
+
+
+    
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            requestBeforeHook({
+                queryParameters: localVarQueryParameter,
+                requestConfig: localVarRequestOptions,
+                path: localVarPath,
+                configuration,
+                pathTemplate: '/api/installmentplans/{ipn}/legal',
                 httpMethod: 'GET'
             });
 
@@ -713,6 +773,16 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @param {InstallmentplanApiGetEligibilityTermsAndConditionRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getEligibilityTermsAndCondition(requestParameters: InstallmentplanApiGetEligibilityTermsAndConditionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<EligibilityTermsAndConditionResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getEligibilityTermsAndCondition(requestParameters.ipn, requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @param {InstallmentplanApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -848,6 +918,15 @@ export const InstallmentplanApiFactory = function (configuration?: Configuration
         },
         /**
          * 
+         * @param {InstallmentplanApiGetEligibilityTermsAndConditionRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getEligibilityTermsAndCondition(requestParameters: InstallmentplanApiGetEligibilityTermsAndConditionRequest, options?: AxiosRequestConfig): AxiosPromise<EligibilityTermsAndConditionResponse> {
+            return localVarFp.getEligibilityTermsAndCondition(requestParameters, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {InstallmentplanApiPostRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -960,6 +1039,36 @@ export type InstallmentplanApiGetRequest = {
     * TouchPoint
     * @type {string}
     * @memberof InstallmentplanApiGet
+    */
+    readonly xSplititTouchPoint: string
+    
+}
+
+/**
+ * Request parameters for getEligibilityTermsAndCondition operation in InstallmentplanApi.
+ * @export
+ * @interface InstallmentplanApiGetEligibilityTermsAndConditionRequest
+ */
+export type InstallmentplanApiGetEligibilityTermsAndConditionRequest = {
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof InstallmentplanApiGetEligibilityTermsAndCondition
+    */
+    readonly ipn: string
+    
+    /**
+    * 
+    * @type {string}
+    * @memberof InstallmentplanApiGetEligibilityTermsAndCondition
+    */
+    readonly xSplititIdempotencyKey: string
+    
+    /**
+    * TouchPoint
+    * @type {string}
+    * @memberof InstallmentplanApiGetEligibilityTermsAndCondition
     */
     readonly xSplititTouchPoint: string
     
@@ -1223,6 +1332,17 @@ export class InstallmentplanApiGenerated extends BaseAPI {
      */
     public get(requestParameters: InstallmentplanApiGetRequest, options?: AxiosRequestConfig) {
         return InstallmentplanApiFp(this.configuration).get(requestParameters, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {InstallmentplanApiGetEligibilityTermsAndConditionRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof InstallmentplanApiGenerated
+     */
+    public getEligibilityTermsAndCondition(requestParameters: InstallmentplanApiGetEligibilityTermsAndConditionRequest, options?: AxiosRequestConfig) {
+        return InstallmentplanApiFp(this.configuration).getEligibilityTermsAndCondition(requestParameters, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

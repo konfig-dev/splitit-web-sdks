@@ -5,6 +5,7 @@ import com.konfigthis.splitit.client.model.AddressData;
 import com.konfigthis.splitit.client.model.AddressDataModel;
 import com.konfigthis.splitit.client.model.CardData;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
+import com.konfigthis.splitit.client.model.EligibilityTermsAndConditionResponse;
 import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
@@ -48,6 +49,11 @@ public class InstallmentPlanApi extends InstallmentPlanApiGenerated {
     public class GetRequestBuilder extends GetRequestBuilderGenerated {
         public GetRequestBuilder(String installmentPlanNumber, String xSplititIdempotencyKey, String xSplititTouchPoint) {
             super(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint);
+        }
+    }
+    public class GetEligibilityTermsAndConditionRequestBuilder extends GetEligibilityTermsAndConditionRequestBuilderGenerated {
+        public GetEligibilityTermsAndConditionRequestBuilder(String ipn, String xSplititIdempotencyKey, String xSplititTouchPoint) {
+            super(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
         }
     }
     public class PostRequestBuilder extends PostRequestBuilderGenerated {

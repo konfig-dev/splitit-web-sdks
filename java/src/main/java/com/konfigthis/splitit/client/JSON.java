@@ -116,6 +116,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.BluesnapVaultedShopperToken.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.CardData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.EligibilityTermsAndConditionResponse.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.Error.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.ErrorExtended.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.ErrorExtendedAllOf.CustomTypeAdapterFactory());

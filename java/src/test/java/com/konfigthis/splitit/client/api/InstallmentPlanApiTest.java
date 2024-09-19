@@ -20,6 +20,7 @@ import com.konfigthis.splitit.client.model.AddressData;
 import com.konfigthis.splitit.client.model.AddressDataModel;
 import com.konfigthis.splitit.client.model.CardData;
 import com.konfigthis.splitit.client.model.CheckInstallmentsEligibilityRequest;
+import com.konfigthis.splitit.client.model.EligibilityTermsAndConditionResponse;
 import com.konfigthis.splitit.client.model.EventsEndpointsModel;
 import com.konfigthis.splitit.client.model.IdentifierContract;
 import com.konfigthis.splitit.client.model.InitiatePlanResponse;
@@ -98,6 +99,19 @@ public class InstallmentPlanApiTest {
         String xSplititIdempotencyKey = null;
         String xSplititTouchPoint = null;
         InstallmentPlanGetResponse response = api.get(installmentPlanNumber, xSplititIdempotencyKey, xSplititTouchPoint)
+                .execute();
+        // TODO: test validations
+    }
+
+    /**
+     * @throws ApiException if the Api call fails
+     */
+    @Test
+    public void getEligibilityTermsAndConditionTest() throws ApiException {
+        String ipn = null;
+        String xSplititIdempotencyKey = null;
+        String xSplititTouchPoint = null;
+        EligibilityTermsAndConditionResponse response = api.getEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint)
                 .execute();
         // TODO: test validations
     }

@@ -34,6 +34,19 @@ operation_parameter_map = {
             },
         ]
     },
+    '/api/installmentplans/{ipn}/legal-GET': {
+        'parameters': [
+            {
+                'name': 'ipn'
+            },
+            {
+                'name': 'X-Splitit-IdempotencyKey'
+            },
+            {
+                'name': 'X-Splitit-TouchPoint'
+            },
+        ]
+    },
     '/api/installmentplans/initiate-POST': {
         'parameters': [
             {

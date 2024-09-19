@@ -6,6 +6,7 @@ All URIs are relative to *https://web-api-v3.production.splitit.com*
 |--------|--------------|-------------|
 | [**CheckEligibility**](InstallmentPlanApi.md#checkeligibility) | **POST** /api/installmentplans/check-eligibility |  |
 | [**Get**](InstallmentPlanApi.md#get) | **GET** /api/installmentplans/{installmentPlanNumber} |  |
+| [**GetEligibilityTermsAndCondition**](InstallmentPlanApi.md#geteligibilitytermsandcondition) | **GET** /api/installmentplans/{ipn}/legal |  |
 | [**Post**](InstallmentPlanApi.md#post) | **POST** /api/installmentplans/initiate |  |
 | [**Post2**](InstallmentPlanApi.md#post2) | **POST** /api/installmentplans |  |
 | [**Refund**](InstallmentPlanApi.md#refund) | **POST** /api/installmentplans/{installmentPlanNumber}/refund |  |
@@ -197,6 +198,99 @@ catch (ApiException e)
 ### Return type
 
 [**InstallmentPlanGetResponse**](InstallmentPlanGetResponse.md)
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+| **401** |  |  -  |
+| **403** |  |  -  |
+| **404** |  |  -  |
+| **500** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+
+# **GetEligibilityTermsAndCondition**
+
+
+
+### Example
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Splitit.Web.Net.Client;
+using Splitit.Web.Net.Model;
+
+namespace Example
+{
+    public class GetEligibilityTermsAndConditionExample
+    {
+        public static void Main()
+        {
+            SplititClient client = new SplititClient();
+            // Configure OAuth2 credentials for "application" OAuth flow
+            client.SetOAuthClientId(System.Environment.GetEnvironmentVariable("CLIENT_ID"));
+            client.SetOAuthClientSecret(System.Environment.GetEnvironmentVariable("CLIENT_SECRET"));
+
+            var ipn = "ipn_example";
+            var xSplititIdempotencyKey = "xSplititIdempotencyKey_example";
+            var xSplititTouchPoint = ""; // TouchPoint (default to "")
+            
+            try
+            {
+                EligibilityTermsAndConditionResponse result = client.InstallmentPlan.GetEligibilityTermsAndCondition(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+                Console.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Console.WriteLine("Exception when calling InstallmentPlanApi.GetEligibilityTermsAndCondition: " + e.Message);
+                Console.WriteLine("Status Code: "+ e.ErrorCode);
+                Console.WriteLine(e.StackTrace);
+            }
+            catch (ClientException e)
+            {
+                Console.WriteLine(e.Response.StatusCode);
+                Console.WriteLine(e.Response.RawContent);
+                Console.WriteLine(e.InnerException);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetEligibilityTermsAndConditionWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EligibilityTermsAndConditionResponse> response = apiInstance.GetEligibilityTermsAndConditionWithHttpInfo(ipn, xSplititIdempotencyKey, xSplititTouchPoint);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InstallmentPlanApi.GetEligibilityTermsAndConditionWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **ipn** | **string** |  |  |
+| **xSplititIdempotencyKey** | **string** |  |  |
+| **xSplititTouchPoint** | **string** | TouchPoint | [default to &quot;&quot;] |
+
+### Return type
+
+[**EligibilityTermsAndConditionResponse**](EligibilityTermsAndConditionResponse.md)
 
 
 ### HTTP response details
