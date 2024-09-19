@@ -19,7 +19,7 @@ fixConfig:
       url: https://web-api-v3.production.splitit.com
 generators:
   php:
-    version: 3.0.3
+    version: 3.0.4
     outputDirectory: php
     packageName: splitit-web-php-sdk
     invokerPackage: Splitit
@@ -29,7 +29,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-php-sdk
   typescript:
-    version: 4.0.4
+    version: 4.0.5
     outputDirectory: typescript
     npmName: splitit-web-typescript-sdk
     useAxios0_27_2: true
@@ -40,7 +40,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/typescript
   python:
-    version: 3.0.3
+    version: 3.0.4
     responseTypeVersion: '1'
     useAiohttp3_8: true
     packageName: splitit_client
@@ -53,7 +53,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/python
   java:
-    version: 3.0.3
+    version: 3.0.4
     groupId: com.konfigthis
     packageName: splitit
     artifactId: splitit-web-java-sdk
@@ -63,7 +63,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/java
   csharp:
-    version: 3.0.3
+    version: 3.0.4
     packageName: Splitit.Web.Net
     outputDirectory: csharp
     logoPath: logo.png
@@ -72,7 +72,7 @@ generators:
       userId: konfig-dev
       repoId: splitit-web-sdks/tree/main/csharp
   go:
-    version: 1.8.3
+    version: 1.8.4
     packageName: splitit
     outputDirectory: go
     git:
@@ -80,7 +80,7 @@ generators:
       repoId: splitit-web-sdks/go
 additionalGenerators:
   phpGuzzle6:
-    version: 3.0.4
+    version: 3.0.5
     outputDirectory: phpGuzzle6
     packageName: splitit-web-php-guzzle6-sdk
     invokerPackage: Splitit
