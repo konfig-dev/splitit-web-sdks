@@ -23,6 +23,8 @@ securityParameters:
     header: false
   X-Splitit-IdempotencyKey:
     header: false
+  X-Splitit-Strategy:
+    header: false
   X-Splitit-TestMode:
     header: false
   X-Splitit-TouchPoint:

@@ -42,6 +42,7 @@ export * from './plan-data-model';
 export * from './plan-error-response';
 export * from './plan-error-response-all-of';
 export * from './plan-status';
+export * from './plan-strategy';
 export * from './processing-data';
 export * from './processing-data2';
 export * from './purchase-method';

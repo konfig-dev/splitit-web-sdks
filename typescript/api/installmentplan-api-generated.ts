@@ -276,11 +276,12 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {InstallmentPlanInitiateRequest} installmentPlanInitiateRequest 
          * @param {'None' | 'Regular' | 'Fast' | 'Automation'} [xSplititTestMode] 
+         * @param {'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'} [xSplititStrategy] 
          * @param {string} [splititclientinfo] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanInitiateRequest: InstallmentPlanInitiateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        post: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanInitiateRequest: InstallmentPlanInitiateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', xSplititStrategy?: 'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('post', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             // verify required parameter 'xSplititTouchPoint' is not null or undefined
@@ -304,6 +305,10 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
+            }
+
+            if (xSplititStrategy != null) {
+                localVarHeaderParameter['X-Splitit-Strategy'] = String(xSplititStrategy);
             }
 
             if (splititclientinfo != null) {
@@ -348,11 +353,12 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
          * @param {string} xSplititTouchPoint TouchPoint
          * @param {InstallmentPlanCreateRequest} installmentPlanCreateRequest 
          * @param {'None' | 'Regular' | 'Fast' | 'Automation'} [xSplititTestMode] 
+         * @param {'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'} [xSplititStrategy] 
          * @param {string} [splititclientinfo] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        post2: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanCreateRequest: InstallmentPlanCreateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        post2: async (xSplititIdempotencyKey: string, xSplititTouchPoint: string, installmentPlanCreateRequest: InstallmentPlanCreateRequest, xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation', xSplititStrategy?: 'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A', splititclientinfo?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'xSplititIdempotencyKey' is not null or undefined
             assertParamExists('post2', 'xSplititIdempotencyKey', xSplititIdempotencyKey)
             // verify required parameter 'xSplititTouchPoint' is not null or undefined
@@ -376,6 +382,10 @@ export const InstallmentplanApiAxiosParamCreator = function (configuration?: Con
             await setOAuthToObject(localVarHeaderParameter, "oauth", ["api.v3"], configuration)
             if (xSplititTestMode != null) {
                 localVarHeaderParameter['X-Splitit-TestMode'] = String(xSplititTestMode);
+            }
+
+            if (xSplititStrategy != null) {
+                localVarHeaderParameter['X-Splitit-Strategy'] = String(xSplititStrategy);
             }
 
             if (splititclientinfo != null) {
@@ -799,7 +809,7 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
                 EventsEndpoints: requestParameters.EventsEndpoints,
                 ProcessingData: requestParameters.ProcessingData
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanInitiateRequest, requestParameters.xSplititTestMode, requestParameters.splititclientinfo, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanInitiateRequest, requestParameters.xSplititTestMode, requestParameters.xSplititStrategy, requestParameters.splititclientinfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -821,7 +831,7 @@ export const InstallmentplanApiFp = function(configuration?: Configuration) {
                 ProcessingData: requestParameters.ProcessingData,
                 EventsEndpoints: requestParameters.EventsEndpoints
             };
-            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanCreateRequest, requestParameters.xSplititTestMode, requestParameters.splititclientinfo, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.post2(requestParameters.xSplititIdempotencyKey, requestParameters.xSplititTouchPoint, installmentPlanCreateRequest, requestParameters.xSplititTestMode, requestParameters.xSplititStrategy, requestParameters.splititclientinfo, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1104,6 +1114,13 @@ export type InstallmentplanApiPostRequest = {
     
     /**
     * 
+    * @type {'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'}
+    * @memberof InstallmentplanApiPost
+    */
+    readonly xSplititStrategy?: 'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'
+    
+    /**
+    * 
     * @type {string}
     * @memberof InstallmentplanApiPost
     */
@@ -1138,6 +1155,13 @@ export type InstallmentplanApiPost2Request = {
     * @memberof InstallmentplanApiPost2
     */
     readonly xSplititTestMode?: 'None' | 'Regular' | 'Fast' | 'Automation'
+    
+    /**
+    * 
+    * @type {'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'}
+    * @memberof InstallmentplanApiPost2
+    */
+    readonly xSplititStrategy?: 'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'
     
     /**
     * 

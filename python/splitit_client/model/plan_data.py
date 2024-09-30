@@ -62,6 +62,10 @@ class PlanData(
             def ProcessingData() -> typing.Type['ProcessingData2']:
                 return ProcessingData2
             FirstInstallmentDate = schemas.DateTimeSchema
+        
+            @staticmethod
+            def Strategy() -> typing.Type['PlanStrategy']:
+                return PlanStrategy
             __annotations__ = {
                 "TotalAmount": TotalAmount,
                 "NumberOfInstallments": NumberOfInstallments,
@@ -74,6 +78,7 @@ class PlanData(
                 "Tags": Tags,
                 "ProcessingData": ProcessingData,
                 "FirstInstallmentDate": FirstInstallmentDate,
+                "Strategy": Strategy,
             }
     
     PurchaseMethod: 'PurchaseMethod'
@@ -114,9 +119,12 @@ class PlanData(
     def __getitem__(self, name: typing_extensions.Literal["FirstInstallmentDate"]) -> MetaOapg.properties.FirstInstallmentDate: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["Strategy"]) -> 'PlanStrategy': ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["TotalAmount", "NumberOfInstallments", "PurchaseMethod", "TerminalId", "FirstInstallmentAmount", "Currency", "RefOrderNumber", "AllowedInstallmentOptions", "Tags", "ProcessingData", "FirstInstallmentDate", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["TotalAmount", "NumberOfInstallments", "PurchaseMethod", "TerminalId", "FirstInstallmentAmount", "Currency", "RefOrderNumber", "AllowedInstallmentOptions", "Tags", "ProcessingData", "FirstInstallmentDate", "Strategy", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -155,9 +163,12 @@ class PlanData(
     def get_item_oapg(self, name: typing_extensions.Literal["FirstInstallmentDate"]) -> typing.Union[MetaOapg.properties.FirstInstallmentDate, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["Strategy"]) -> typing.Union['PlanStrategy', schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["TotalAmount", "NumberOfInstallments", "PurchaseMethod", "TerminalId", "FirstInstallmentAmount", "Currency", "RefOrderNumber", "AllowedInstallmentOptions", "Tags", "ProcessingData", "FirstInstallmentDate", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["TotalAmount", "NumberOfInstallments", "PurchaseMethod", "TerminalId", "FirstInstallmentAmount", "Currency", "RefOrderNumber", "AllowedInstallmentOptions", "Tags", "ProcessingData", "FirstInstallmentDate", "Strategy", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -175,6 +186,7 @@ class PlanData(
         Tags: typing.Union['PlanDataTags', schemas.Unset] = schemas.unset,
         ProcessingData: typing.Union['ProcessingData2', schemas.Unset] = schemas.unset,
         FirstInstallmentDate: typing.Union[MetaOapg.properties.FirstInstallmentDate, str, datetime, schemas.Unset] = schemas.unset,
+        Strategy: typing.Union['PlanStrategy', schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'PlanData':
@@ -192,11 +204,13 @@ class PlanData(
             Tags=Tags,
             ProcessingData=ProcessingData,
             FirstInstallmentDate=FirstInstallmentDate,
+            Strategy=Strategy,
             _configuration=_configuration,
             **kwargs,
         )
 
 from splitit_client.model.plan_data_allowed_installment_options import PlanDataAllowedInstallmentOptions
 from splitit_client.model.plan_data_tags import PlanDataTags
+from splitit_client.model.plan_strategy import PlanStrategy
 from splitit_client.model.processing_data2 import ProcessingData2
 from splitit_client.model.purchase_method import PurchaseMethod

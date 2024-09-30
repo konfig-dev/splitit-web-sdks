@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
  - [PlanErrorResponse](docs/PlanErrorResponse.md)
  - [PlanErrorResponseAllOf](docs/PlanErrorResponseAllOf.md)
  - [PlanStatus](docs/PlanStatus.md)
+ - [PlanStrategy](docs/PlanStrategy.md)
  - [ProcessingData](docs/ProcessingData.md)
  - [ProcessingData2](docs/ProcessingData2.md)
  - [PurchaseMethod](docs/PurchaseMethod.md)

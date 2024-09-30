@@ -507,11 +507,17 @@ type InstallmentPlanApiPostRequest struct {
 	xSplititTouchPoint string
 	installmentPlanInitiateRequest InstallmentPlanInitiateRequest
 	xSplititTestMode *string
+	xSplititStrategy *string
 	splititclientinfo *string
 }
 
 func (r *InstallmentPlanApiPostRequest) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPostRequest {
 	r.xSplititTestMode = &xSplititTestMode
+	return r
+}
+
+func (r *InstallmentPlanApiPostRequest) XSplititStrategy(xSplititStrategy string) *InstallmentPlanApiPostRequest {
+	r.xSplititStrategy = &xSplititStrategy
 	return r
 }
 
@@ -587,6 +593,9 @@ func (a *InstallmentPlanApiService) PostExecute(r InstallmentPlanApiPostRequest)
 	}
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
+	}
+	if r.xSplititStrategy != nil {
+		localVarHeaderParams["X-Splitit-Strategy"] = parameterToString(*r.xSplititStrategy, "")
 	}
 	if r.splititclientinfo != nil {
 		localVarHeaderParams["Splititclientinfo"] = parameterToString(*r.splititclientinfo, "")
@@ -697,11 +706,17 @@ type InstallmentPlanApiPost2Request struct {
 	xSplititTouchPoint string
 	installmentPlanCreateRequest InstallmentPlanCreateRequest
 	xSplititTestMode *string
+	xSplititStrategy *string
 	splititclientinfo *string
 }
 
 func (r *InstallmentPlanApiPost2Request) XSplititTestMode(xSplititTestMode string) *InstallmentPlanApiPost2Request {
 	r.xSplititTestMode = &xSplititTestMode
+	return r
+}
+
+func (r *InstallmentPlanApiPost2Request) XSplititStrategy(xSplititStrategy string) *InstallmentPlanApiPost2Request {
+	r.xSplititStrategy = &xSplititStrategy
 	return r
 }
 
@@ -777,6 +792,9 @@ func (a *InstallmentPlanApiService) Post2Execute(r InstallmentPlanApiPost2Reques
 	}
 	if r.xSplititTestMode != nil {
 		localVarHeaderParams["X-Splitit-TestMode"] = parameterToString(*r.xSplititTestMode, "")
+	}
+	if r.xSplititStrategy != nil {
+		localVarHeaderParams["X-Splitit-Strategy"] = parameterToString(*r.xSplititStrategy, "")
 	}
 	if r.splititclientinfo != nil {
 		localVarHeaderParams["Splititclientinfo"] = parameterToString(*r.splititclientinfo, "")

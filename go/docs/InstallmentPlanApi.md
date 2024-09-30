@@ -214,6 +214,7 @@ func main() {
         installmentPlanInitiateRequest,
     )
     request.XSplititTestMode("xSplititTestMode_example")
+    request.XSplititStrategy("xSplititStrategy_example")
     request.Splititclientinfo("splititclientinfo_example")
     
     resp, httpRes, err := request.Execute()
@@ -288,6 +289,7 @@ func main() {
         installmentPlanCreateRequest,
     )
     request.XSplititTestMode("xSplititTestMode_example")
+    request.XSplititStrategy("xSplititStrategy_example")
     request.Splititclientinfo("splititclientinfo_example")
     
     resp, httpRes, err := request.Execute()

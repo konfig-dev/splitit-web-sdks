@@ -86,6 +86,9 @@ operation_parameter_map = {
                 'name': 'X-Splitit-TestMode'
             },
             {
+                'name': 'X-Splitit-Strategy'
+            },
+            {
                 'name': 'Splititclientinfo'
             },
         ]
@@ -130,6 +133,9 @@ operation_parameter_map = {
             },
             {
                 'name': 'X-Splitit-TestMode'
+            },
+            {
+                'name': 'X-Splitit-Strategy'
             },
             {
                 'name': 'Splititclientinfo'

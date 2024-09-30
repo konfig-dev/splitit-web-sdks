@@ -37,6 +37,12 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         [DataMember(Name = "PurchaseMethod", IsRequired = true, EmitDefaultValue = true)]
         public PurchaseMethod PurchaseMethod { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Strategy
+        /// </summary>
+        [DataMember(Name = "Strategy", EmitDefaultValue = false)]
+        public PlanStrategy? Strategy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PlanData" /> class.
         /// </summary>
@@ -56,7 +62,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="tags">tags.</param>
         /// <param name="processingData">processingData.</param>
         /// <param name="firstInstallmentDate">firstInstallmentDate.</param>
-        public PlanData(string terminalId = default(string), double totalAmount = default(double), double firstInstallmentAmount = default(double), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), List<int> allowedInstallmentOptions = default(List<int>), Dictionary<string, string> tags = default(Dictionary<string, string>), ProcessingData2 processingData = default(ProcessingData2), DateTime firstInstallmentDate = default(DateTime))
+        /// <param name="strategy">strategy.</param>
+        public PlanData(string terminalId = default(string), double totalAmount = default(double), double firstInstallmentAmount = default(double), string currency = default(string), int numberOfInstallments = default(int), PurchaseMethod purchaseMethod = default(PurchaseMethod), string refOrderNumber = default(string), List<int> allowedInstallmentOptions = default(List<int>), Dictionary<string, string> tags = default(Dictionary<string, string>), ProcessingData2 processingData = default(ProcessingData2), DateTime firstInstallmentDate = default(DateTime), PlanStrategy? strategy = default(PlanStrategy?))
         {
             this.TotalAmount = totalAmount;
             this.NumberOfInstallments = numberOfInstallments;
@@ -69,6 +76,7 @@ namespace Splitit.Web.Net.Model
             this.Tags = tags;
             this.ProcessingData = processingData;
             this.FirstInstallmentDate = firstInstallmentDate;
+            this.Strategy = strategy;
         }
 
         /// <summary>
@@ -150,6 +158,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  ProcessingData: ").Append(ProcessingData).Append("\n");
             sb.Append("  FirstInstallmentDate: ").Append(FirstInstallmentDate).Append("\n");
+            sb.Append("  Strategy: ").Append(Strategy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -237,6 +246,10 @@ namespace Splitit.Web.Net.Model
                     this.FirstInstallmentDate == input.FirstInstallmentDate ||
                     (this.FirstInstallmentDate != null &&
                     this.FirstInstallmentDate.Equals(input.FirstInstallmentDate))
+                ) && 
+                (
+                    this.Strategy == input.Strategy ||
+                    this.Strategy.Equals(input.Strategy)
                 );
         }
 
@@ -281,6 +294,7 @@ namespace Splitit.Web.Net.Model
                 {
                     hashCode = (hashCode * 59) + this.FirstInstallmentDate.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.Strategy.GetHashCode();
                 return hashCode;
             }
         }

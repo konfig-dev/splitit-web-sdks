@@ -107,10 +107,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InitiatePlanResponse</returns>
-        InitiatePlanResponse Post(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0);
+        InitiatePlanResponse Post(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -123,10 +124,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InitiatePlanResponse</returns>
-        ApiResponse<InitiatePlanResponse> PostWithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0);
+        ApiResponse<InitiatePlanResponse> PostWithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -135,10 +137,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InstallmentPlanCreateResponse</returns>
-        InstallmentPlanCreateResponse Post2(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0);
+        InstallmentPlanCreateResponse Post2(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0);
 
         /// <summary>
         /// 
@@ -151,10 +154,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InstallmentPlanCreateResponse</returns>
-        ApiResponse<InstallmentPlanCreateResponse> Post2WithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0);
+        ApiResponse<InstallmentPlanCreateResponse> Post2WithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0);
         /// <summary>
         /// 
         /// </summary>
@@ -390,11 +394,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InitiatePlanResponse</returns>
-        System.Threading.Tasks.Task<InitiatePlanResponse> PostAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<InitiatePlanResponse> PostAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -407,11 +412,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InitiatePlanResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InitiatePlanResponse>> PostWithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InitiatePlanResponse>> PostWithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -423,11 +429,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InstallmentPlanCreateResponse</returns>
-        System.Threading.Tasks.Task<InstallmentPlanCreateResponse> Post2Async(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<InstallmentPlanCreateResponse> Post2Async(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -440,11 +447,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InstallmentPlanCreateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCreateResponse>> Post2WithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<InstallmentPlanCreateResponse>> Post2WithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -1382,12 +1390,13 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InitiatePlanResponse</returns>
-        public InitiatePlanResponse Post(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0)
+        public InitiatePlanResponse Post(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0)
         {
-            Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> localVarResponse = PostWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
+            Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> localVarResponse = PostWithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo);
             return localVarResponse.Data;
         }
 
@@ -1399,10 +1408,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InitiatePlanResponse</returns>
-        public Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> PostWithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0)
+        public Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> PostWithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'xSplititIdempotencyKey' is set
             if (xSplititIdempotencyKey == null)
@@ -1454,6 +1464,10 @@ namespace Splitit.Web.Net.Api
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode)); // header parameter
             }
+            if (xSplititStrategy != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-Strategy", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititStrategy)); // header parameter
+            }
             if (splititclientinfo != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Splititclientinfo", Splitit.Web.Net.Client.ClientUtils.ParameterToString(splititclientinfo)); // header parameter
@@ -1504,13 +1518,14 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InitiatePlanResponse</returns>
-        public async System.Threading.Tasks.Task<InitiatePlanResponse> PostAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<InitiatePlanResponse> PostAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> localVarResponse = await PostWithHttpInfoAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo, operationIndex, cancellationToken).ConfigureAwait(false);
+            Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse> localVarResponse = await PostWithHttpInfoAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1522,11 +1537,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanInitiateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InitiatePlanResponse)</returns>
-        public virtual async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse>> PostWithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InitiatePlanResponse>> PostWithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanInitiateRequest installmentPlanInitiateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xSplititIdempotencyKey' is set
             if (xSplititIdempotencyKey == null)
@@ -1578,6 +1594,10 @@ namespace Splitit.Web.Net.Api
             if (xSplititTestMode != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode, dataFormat: "")); // header parameter
+            }
+            if (xSplititStrategy != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-Strategy", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititStrategy, dataFormat: "")); // header parameter
             }
             if (splititclientinfo != null)
             {
@@ -1630,12 +1650,13 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InstallmentPlanCreateResponse</returns>
-        public InstallmentPlanCreateResponse Post2(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0)
+        public InstallmentPlanCreateResponse Post2(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0)
         {
-            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> localVarResponse = Post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
+            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> localVarResponse = Post2WithHttpInfo(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo);
             return localVarResponse.Data;
         }
 
@@ -1647,10 +1668,11 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InstallmentPlanCreateResponse</returns>
-        public Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> Post2WithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0)
+        public Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> Post2WithHttpInfo(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0)
         {
             // verify the required parameter 'xSplititIdempotencyKey' is set
             if (xSplititIdempotencyKey == null)
@@ -1702,6 +1724,10 @@ namespace Splitit.Web.Net.Api
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode)); // header parameter
             }
+            if (xSplititStrategy != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-Strategy", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititStrategy)); // header parameter
+            }
             if (splititclientinfo != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Splititclientinfo", Splitit.Web.Net.Client.ClientUtils.ParameterToString(splititclientinfo)); // header parameter
@@ -1752,13 +1778,14 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of InstallmentPlanCreateResponse</returns>
-        public async System.Threading.Tasks.Task<InstallmentPlanCreateResponse> Post2Async(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<InstallmentPlanCreateResponse> Post2Async(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> localVarResponse = await Post2WithHttpInfoAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo, operationIndex, cancellationToken).ConfigureAwait(false);
+            Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse> localVarResponse = await Post2WithHttpInfoAsync(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo, operationIndex, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1770,11 +1797,12 @@ namespace Splitit.Web.Net.Api
         /// <param name="xSplititTouchPoint">TouchPoint</param>
         /// <param name="installmentPlanCreateRequest"></param>
         /// <param name="xSplititTestMode"> (optional)</param>
+        /// <param name="xSplititStrategy"> (optional)</param>
         /// <param name="splititclientinfo"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (InstallmentPlanCreateResponse)</returns>
-        public virtual async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse>> Post2WithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public virtual async System.Threading.Tasks.Task<Splitit.Web.Net.Client.ApiResponse<InstallmentPlanCreateResponse>> Post2WithHttpInfoAsync(string xSplititIdempotencyKey, string xSplititTouchPoint, InstallmentPlanCreateRequest installmentPlanCreateRequest, string xSplititTestMode = default(string), string xSplititStrategy = default(string), string splititclientinfo = default(string), int operationIndex = 0, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xSplititIdempotencyKey' is set
             if (xSplititIdempotencyKey == null)
@@ -1826,6 +1854,10 @@ namespace Splitit.Web.Net.Api
             if (xSplititTestMode != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("X-Splitit-TestMode", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititTestMode, dataFormat: "")); // header parameter
+            }
+            if (xSplititStrategy != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("X-Splitit-Strategy", Splitit.Web.Net.Client.ClientUtils.ParameterToString(xSplititStrategy, dataFormat: "")); // header parameter
             }
             if (splititclientinfo != null)
             {

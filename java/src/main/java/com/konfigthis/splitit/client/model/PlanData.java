@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.PlanStrategy;
 import com.konfigthis.splitit.client.model.ProcessingData2;
 import com.konfigthis.splitit.client.model.PurchaseMethod;
 import io.swagger.annotations.ApiModel;
@@ -99,6 +100,10 @@ public class PlanData {
   public static final String SERIALIZED_NAME_FIRST_INSTALLMENT_DATE = "FirstInstallmentDate";
   @SerializedName(SERIALIZED_NAME_FIRST_INSTALLMENT_DATE)
   private OffsetDateTime firstInstallmentDate;
+
+  public static final String SERIALIZED_NAME_STRATEGY = "Strategy";
+  @SerializedName(SERIALIZED_NAME_STRATEGY)
+  private PlanStrategy strategy;
 
   public PlanData() {
   }
@@ -455,6 +460,35 @@ public class PlanData {
     this.firstInstallmentDate = firstInstallmentDate;
   }
 
+
+  public PlanData strategy(PlanStrategy strategy) {
+    
+    
+    
+    
+    this.strategy = strategy;
+    return this;
+  }
+
+   /**
+   * Get strategy
+   * @return strategy
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PlanStrategy getStrategy() {
+    return strategy;
+  }
+
+
+  public void setStrategy(PlanStrategy strategy) {
+    
+    
+    
+    this.strategy = strategy;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -520,13 +554,14 @@ public class PlanData {
         Objects.equals(this.allowedInstallmentOptions, planData.allowedInstallmentOptions) &&
         Objects.equals(this.tags, planData.tags) &&
         Objects.equals(this.processingData, planData.processingData) &&
-        Objects.equals(this.firstInstallmentDate, planData.firstInstallmentDate)&&
+        Objects.equals(this.firstInstallmentDate, planData.firstInstallmentDate) &&
+        Objects.equals(this.strategy, planData.strategy)&&
         Objects.equals(this.additionalProperties, planData.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(terminalId, totalAmount, firstInstallmentAmount, currency, numberOfInstallments, purchaseMethod, refOrderNumber, allowedInstallmentOptions, tags, processingData, firstInstallmentDate, additionalProperties);
+    return Objects.hash(terminalId, totalAmount, firstInstallmentAmount, currency, numberOfInstallments, purchaseMethod, refOrderNumber, allowedInstallmentOptions, tags, processingData, firstInstallmentDate, strategy, additionalProperties);
   }
 
   @Override
@@ -544,6 +579,7 @@ public class PlanData {
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    processingData: ").append(toIndentedString(processingData)).append("\n");
     sb.append("    firstInstallmentDate: ").append(toIndentedString(firstInstallmentDate)).append("\n");
+    sb.append("    strategy: ").append(toIndentedString(strategy)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -578,6 +614,7 @@ public class PlanData {
     openapiFields.add("Tags");
     openapiFields.add("ProcessingData");
     openapiFields.add("FirstInstallmentDate");
+    openapiFields.add("Strategy");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

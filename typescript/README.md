@@ -210,6 +210,7 @@ TouchPoint
 ```typescript
 const postResponse = await splitit.installmentplan.post({
   xSplititTestMode: "None",
+  xSplititStrategy: "SecuredPlan",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
 });
@@ -243,6 +244,8 @@ TouchPoint
 
 ##### xSplititTestMode: `'None' | 'Regular' | 'Fast' | 'Automation'`<a id="xsplitittestmode-none--regular--fast--automation"></a>
 
+##### xSplititStrategy: `'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'`<a id="xsplititstrategy-securedplan--nonsecuredplan--securedplancaptureexistingsecurityauth--securedplan3--singlepayment--externalinstallmentprovider--securedplan3a--securedplan3b--securedplan2a--securedplan2--securedplan4--securedplan4a"></a>
+
 ##### splititclientinfo: `string`<a id="splititclientinfo-string"></a>
 
 #### 🔄 Return<a id="🔄-return"></a>
@@ -267,6 +270,7 @@ TouchPoint
 ```typescript
 const post2Response = await splitit.installmentplan.post2({
   xSplititTestMode: "None",
+  xSplititStrategy: "SecuredPlan",
   xSplititIdempotencyKey: "xSplititIdempotencyKey_example",
   xSplititTouchPoint: "",
   AutoCapture: true,
@@ -303,6 +307,8 @@ TouchPoint
 ##### EventsEndpoints: [`EventsEndpointsModel`](./models/events-endpoints-model.ts)<a id="eventsendpoints-eventsendpointsmodelmodelsevents-endpoints-modelts"></a>
 
 ##### xSplititTestMode: `'None' | 'Regular' | 'Fast' | 'Automation'`<a id="xsplitittestmode-none--regular--fast--automation"></a>
+
+##### xSplititStrategy: `'SecuredPlan' | 'NonSecuredPlan' | 'SecuredPlanCaptureExistingSecurityAuth' | 'SecuredPlan3' | 'SinglePayment' | 'ExternalInstallmentProvider' | 'SecuredPlan3A' | 'SecuredPlan3B' | 'SecuredPlan2A' | 'SecuredPlan2' | 'SecuredPlan4' | 'SecuredPlan4A'`<a id="xsplititstrategy-securedplan--nonsecuredplan--securedplancaptureexistingsecurityauth--securedplan3--singlepayment--externalinstallmentprovider--securedplan3a--securedplan3b--securedplan2a--securedplan2--securedplan4--securedplan4a"></a>
 
 ##### splititclientinfo: `string`<a id="splititclientinfo-string"></a>
 

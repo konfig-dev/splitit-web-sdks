@@ -57,6 +57,7 @@ try:
             "total_amount": 3.14,
             "number_of_installments": 1,
             "purchase_method": "InStore",
+            "strategy": "SecuredPlan",
         },
         card_details={
             "card_brand": "Mastercard",
@@ -116,6 +117,7 @@ async def main():
                 "total_amount": 3.14,
                 "number_of_installments": 1,
                 "purchase_method": "InStore",
+                "strategy": "SecuredPlan",
             },
             card_details={
                 "card_brand": "Mastercard",
@@ -170,6 +172,7 @@ check_eligibility_response = splitit.installment_plan.check_eligibility(
         "total_amount": 3.14,
         "number_of_installments": 1,
         "purchase_method": "InStore",
+        "strategy": "SecuredPlan",
     },
     card_details={
         "card_brand": "Mastercard",
@@ -311,6 +314,7 @@ post_response = splitit.installment_plan.post(
     events_endpoints={},
     processing_data={},
     x_splitit_test_mode="None",
+    x_splitit_strategy="SecuredPlan",
     splititclientinfo="string_example",
 )
 ```
@@ -349,6 +353,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### x_splitit_strategy: `str`<a id="x_splitit_strategy-str"></a>
 
 ##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 
@@ -393,6 +399,7 @@ post2_response = splitit.installment_plan.post2(
     processing_data={},
     events_endpoints={},
     x_splitit_test_mode="None",
+    x_splitit_strategy="SecuredPlan",
     splititclientinfo="string_example",
 )
 ```
@@ -433,6 +440,8 @@ TouchPoint
 
 
 ##### x_splitit_test_mode: `str`<a id="x_splitit_test_mode-str"></a>
+
+##### x_splitit_strategy: `str`<a id="x_splitit_strategy-str"></a>
 
 ##### splititclientinfo: `str`<a id="splititclientinfo-str"></a>
 

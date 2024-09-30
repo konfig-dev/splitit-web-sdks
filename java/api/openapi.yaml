@@ -267,6 +267,30 @@ paths:
         x-nullable: true
       - explode: false
         in: header
+        name: X-Splitit-Strategy
+        required: false
+        schema:
+          enum:
+          - SecuredPlan
+          - NonSecuredPlan
+          - SecuredPlanCaptureExistingSecurityAuth
+          - SecuredPlan3
+          - SinglePayment
+          - ExternalInstallmentProvider
+          - SecuredPlan3A
+          - SecuredPlan3B
+          - SecuredPlan2A
+          - SecuredPlan2
+          - SecuredPlan4
+          - SecuredPlan4A
+          type: string
+        style: simple
+        x-originalName: planStrategy
+        x-schema:
+          $ref: '#/components/schemas/PlanStrategy'
+        x-nullable: true
+      - explode: false
+        in: header
         name: Splititclientinfo
         required: false
         schema:
@@ -291,7 +315,7 @@ paths:
           example: ""
           type: string
           x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-3-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-4-schema
         style: simple
       requestBody:
         content:
@@ -424,6 +448,30 @@ paths:
         x-nullable: true
       - explode: false
         in: header
+        name: X-Splitit-Strategy
+        required: false
+        schema:
+          enum:
+          - SecuredPlan
+          - NonSecuredPlan
+          - SecuredPlanCaptureExistingSecurityAuth
+          - SecuredPlan3
+          - SinglePayment
+          - ExternalInstallmentProvider
+          - SecuredPlan3A
+          - SecuredPlan3B
+          - SecuredPlan2A
+          - SecuredPlan2
+          - SecuredPlan4
+          - SecuredPlan4A
+          type: string
+        style: simple
+        x-originalName: planStrategy
+        x-schema:
+          $ref: '#/components/schemas/PlanStrategy'
+        x-nullable: true
+      - explode: false
+        in: header
         name: Splititclientinfo
         required: false
         schema:
@@ -448,7 +496,7 @@ paths:
           example: ""
           type: string
           x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-3-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-4-schema
         style: simple
       requestBody:
         content:
@@ -2382,6 +2430,35 @@ components:
       - Regular
       - Fast
       - Automation
+    PlanStrategy:
+      description: ""
+      enum:
+      - SecuredPlan
+      - NonSecuredPlan
+      - SecuredPlanCaptureExistingSecurityAuth
+      - SecuredPlan3
+      - SinglePayment
+      - ExternalInstallmentProvider
+      - SecuredPlan3A
+      - SecuredPlan3B
+      - SecuredPlan2A
+      - SecuredPlan2
+      - SecuredPlan4
+      - SecuredPlan4A
+      type: string
+      x-enumNames:
+      - SecuredPlan
+      - NonSecuredPlan
+      - SecuredPlanCaptureExistingSecurityAuth
+      - SecuredPlan3
+      - SinglePayment
+      - ExternalInstallmentProvider
+      - SecuredPlan3A
+      - SecuredPlan3B
+      - SecuredPlan2A
+      - SecuredPlan2
+      - SecuredPlan4
+      - SecuredPlan4A
     InstallmentPlanCreateResponse:
       example:
         Status: null
@@ -2886,6 +2963,7 @@ components:
           - 5
           - 5
           TerminalId: TerminalId
+          Strategy: null
           TotalAmount: 0.8008281904610115
           PurchaseMethod: null
           FirstInstallmentAmount: 6.027456183070403
@@ -2937,6 +3015,7 @@ components:
         - 5
         - 5
         TerminalId: TerminalId
+        Strategy: null
         TotalAmount: 0.8008281904610115
         PurchaseMethod: null
         FirstInstallmentAmount: 6.027456183070403
@@ -2976,6 +3055,8 @@ components:
         FirstInstallmentDate:
           format: date-time
           type: string
+        Strategy:
+          $ref: '#/components/schemas/PlanStrategy'
       required:
       - NumberOfInstallments
       - PurchaseMethod
@@ -3041,11 +3122,11 @@ components:
       example: ""
       type: string
       x-do-not-generate: true
-    konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-3-schema:
+    konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-4-schema:
       example: ""
       type: string
       x-do-not-generate: true
-    konfig-generated-schema-paths--api-installmentplans-post-parameters-3-schema:
+    konfig-generated-schema-paths--api-installmentplans-post-parameters-4-schema:
       example: ""
       type: string
       x-do-not-generate: true
@@ -3133,6 +3214,21 @@ components:
           - Fast
           - Automation
           type: string
+        X-Splitit-Strategy:
+          enum:
+          - SecuredPlan
+          - NonSecuredPlan
+          - SecuredPlanCaptureExistingSecurityAuth
+          - SecuredPlan3
+          - SinglePayment
+          - ExternalInstallmentProvider
+          - SecuredPlan3A
+          - SecuredPlan3B
+          - SecuredPlan2A
+          - SecuredPlan2
+          - SecuredPlan4
+          - SecuredPlan4A
+          type: string
         Splititclientinfo:
           type: string
         X-Splitit-IdempotencyKey:
@@ -3142,7 +3238,7 @@ components:
           example: ""
           type: string
           x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-3-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-initiate-post-parameters-4-schema
         AutoCapture:
           type: boolean
         Attempt3dSecure:
@@ -3168,6 +3264,7 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
+      - X-Splitit-Strategy
       - Splititclientinfo
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint
@@ -3180,6 +3277,21 @@ components:
           - Fast
           - Automation
           type: string
+        X-Splitit-Strategy:
+          enum:
+          - SecuredPlan
+          - NonSecuredPlan
+          - SecuredPlanCaptureExistingSecurityAuth
+          - SecuredPlan3
+          - SinglePayment
+          - ExternalInstallmentProvider
+          - SecuredPlan3A
+          - SecuredPlan3B
+          - SecuredPlan2A
+          - SecuredPlan2
+          - SecuredPlan4
+          - SecuredPlan4A
+          type: string
         Splititclientinfo:
           type: string
         X-Splitit-IdempotencyKey:
@@ -3189,7 +3301,7 @@ components:
           example: ""
           type: string
           x-konfig-original-example: ""
-          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-3-schema
+          x-konfig-generated-schema: konfig-generated-schema-paths--api-installmentplans-post-parameters-4-schema
         AutoCapture:
           type: boolean
         Attempt3dSecure:
@@ -3219,6 +3331,7 @@ components:
       x-do-not-generate: true
       x-konfig-is-parameter:
       - X-Splitit-TestMode
+      - X-Splitit-Strategy
       - Splititclientinfo
       - X-Splitit-IdempotencyKey
       - X-Splitit-TouchPoint
