@@ -120,7 +120,7 @@ export class Configuration {
         this.accessToken = param.accessToken;
         this.basePath = param.basePath;
         this.baseOptions = param.baseOptions ?? {};
-        this.userAgent = param.userAgent === undefined ? "Konfig/4.0.5/typescript" : param.userAgent;
+        this.userAgent = param.userAgent === undefined ? "Konfig/4.0.6/typescript" : param.userAgent;
         this.oauthTokenUrl = param.oauthTokenUrl;
         this.oauthClientId = param.oauthClientId;
         this.oauthClientSecret = param.oauthClientSecret;

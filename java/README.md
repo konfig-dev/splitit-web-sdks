@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![Maven Central](https://img.shields.io/badge/Maven%20Central-v3.0.4-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/3.0.4)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-v3.0.5-blue)](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/3.0.5)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
@@ -64,7 +64,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.konfigthis</groupId>
   <artifactId>splitit-web-java-sdk</artifactId>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -80,7 +80,7 @@ repositories {
 }
 
 dependencies {
-   implementation "com.konfigthis:splitit-web-java-sdk:3.0.4"
+   implementation "com.konfigthis:splitit-web-java-sdk:3.0.5"
 }
 ```
 
@@ -117,7 +117,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/splitit-web-java-sdk-3.0.4.jar`
+* `target/splitit-web-java-sdk-3.0.5.jar`
 * `target/lib/*.jar`
 
 ## Getting Started<a id="getting-started"></a>
