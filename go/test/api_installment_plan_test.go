@@ -109,6 +109,7 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
             installmentPlanInitiateRequest,
         )
         request.XSplititTestMode("xSplititTestMode_example")
+        request.XSplititStrategy("xSplititStrategy_example")
         request.Splititclientinfo("splititclientinfo_example")
         
         resp, httpRes, err := request.Execute()
@@ -148,6 +149,7 @@ func Test_splitit_InstallmentPlanApiService(t *testing.T) {
             installmentPlanCreateRequest,
         )
         request.XSplititTestMode("xSplititTestMode_example")
+        request.XSplititStrategy("xSplititStrategy_example")
         request.Splititclientinfo("splititclientinfo_example")
         
         resp, httpRes, err := request.Execute()

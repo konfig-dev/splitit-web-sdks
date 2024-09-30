@@ -340,7 +340,7 @@ public class Example {
 
 <a name="post"></a>
 # **post**
-> InitiatePlanResponse post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest).xSplititTestMode(xSplititTestMode).splititclientinfo(splititclientinfo).execute();
+> InitiatePlanResponse post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest).xSplititTestMode(xSplititTestMode).xSplititStrategy(xSplititStrategy).splititclientinfo(splititclientinfo).execute();
 
 
 
@@ -381,6 +381,7 @@ public class Example {
     EventsEndpointsModel eventsEndpoints = new EventsEndpointsModel();
     ProcessingData processingData = new ProcessingData();
     String xSplititTestMode = "None";
+    String xSplititStrategy = "SecuredPlan";
     String splititclientinfo = "splititclientinfo_example";
     try {
       InitiatePlanResponse result = client
@@ -396,6 +397,7 @@ public class Example {
               .eventsEndpoints(eventsEndpoints)
               .processingData(processingData)
               .xSplititTestMode(xSplititTestMode)
+              .xSplititStrategy(xSplititStrategy)
               .splititclientinfo(splititclientinfo)
               .execute();
       System.out.println(result);
@@ -432,6 +434,7 @@ public class Example {
               .eventsEndpoints(eventsEndpoints)
               .processingData(processingData)
               .xSplititTestMode(xSplititTestMode)
+              .xSplititStrategy(xSplititStrategy)
               .splititclientinfo(splititclientinfo)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
@@ -459,6 +462,7 @@ public class Example {
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
 | **installmentPlanInitiateRequest** | [**InstallmentPlanInitiateRequest**](InstallmentPlanInitiateRequest.md)|  | |
 | **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
+| **xSplititStrategy** | **String**|  | [optional] [enum: SecuredPlan, NonSecuredPlan, SecuredPlanCaptureExistingSecurityAuth, SecuredPlan3, SinglePayment, ExternalInstallmentProvider, SecuredPlan3A, SecuredPlan3B, SecuredPlan2A, SecuredPlan2, SecuredPlan4, SecuredPlan4A] |
 | **splititclientinfo** | **String**|  | [optional] |
 
 ### Return type
@@ -481,7 +485,7 @@ public class Example {
 
 <a name="post2"></a>
 # **post2**
-> InstallmentPlanCreateResponse post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest).xSplititTestMode(xSplititTestMode).splititclientinfo(splititclientinfo).execute();
+> InstallmentPlanCreateResponse post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest).xSplititTestMode(xSplititTestMode).xSplititStrategy(xSplititStrategy).splititclientinfo(splititclientinfo).execute();
 
 
 
@@ -523,6 +527,7 @@ public class Example {
     ProcessingData processingData = new ProcessingData();
     EventsEndpointsModel eventsEndpoints = new EventsEndpointsModel();
     String xSplititTestMode = "None";
+    String xSplititStrategy = "SecuredPlan";
     String splititclientinfo = "splititclientinfo_example";
     try {
       InstallmentPlanCreateResponse result = client
@@ -537,6 +542,7 @@ public class Example {
               .processingData(processingData)
               .eventsEndpoints(eventsEndpoints)
               .xSplititTestMode(xSplititTestMode)
+              .xSplititStrategy(xSplititStrategy)
               .splititclientinfo(splititclientinfo)
               .execute();
       System.out.println(result);
@@ -577,6 +583,7 @@ public class Example {
               .processingData(processingData)
               .eventsEndpoints(eventsEndpoints)
               .xSplititTestMode(xSplititTestMode)
+              .xSplititStrategy(xSplititStrategy)
               .splititclientinfo(splititclientinfo)
               .executeWithHttpInfo();
       System.out.println(response.getResponseBody());
@@ -604,6 +611,7 @@ public class Example {
 | **xSplititTouchPoint** | **String**| TouchPoint | [default to ] |
 | **installmentPlanCreateRequest** | [**InstallmentPlanCreateRequest**](InstallmentPlanCreateRequest.md)|  | |
 | **xSplititTestMode** | **String**|  | [optional] [enum: None, Regular, Fast, Automation] |
+| **xSplititStrategy** | **String**|  | [optional] [enum: SecuredPlan, NonSecuredPlan, SecuredPlanCaptureExistingSecurityAuth, SecuredPlan3, SinglePayment, ExternalInstallmentProvider, SecuredPlan3A, SecuredPlan3B, SecuredPlan2A, SecuredPlan2, SecuredPlan4, SecuredPlan4A] |
 | **splititclientinfo** | **String**|  | [optional] |
 
 ### Return type

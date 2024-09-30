@@ -171,11 +171,12 @@ namespace Splitit.Web.Net.Test.Api
                 processingData
             );
             var xSplititTestMode = "None";
+            var xSplititStrategy = "SecuredPlan";
             var splititclientinfo = "splititclientinfo_example";
             
             try
             {
-                InitiatePlanResponse result = client.InstallmentPlan.Post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, splititclientinfo);
+                InitiatePlanResponse result = client.InstallmentPlan.Post(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanInitiateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo);
                 Console.WriteLine(result);
             }
             catch (ApiException e)
@@ -224,11 +225,12 @@ namespace Splitit.Web.Net.Test.Api
                 eventsEndpoints
             );
             var xSplititTestMode = "None";
+            var xSplititStrategy = "SecuredPlan";
             var splititclientinfo = "splititclientinfo_example";
             
             try
             {
-                InstallmentPlanCreateResponse result = client.InstallmentPlan.Post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, splititclientinfo);
+                InstallmentPlanCreateResponse result = client.InstallmentPlan.Post2(xSplititIdempotencyKey, xSplititTouchPoint, installmentPlanCreateRequest, xSplititTestMode, xSplititStrategy, splititclientinfo);
                 Console.WriteLine(result);
             }
             catch (ApiException e)

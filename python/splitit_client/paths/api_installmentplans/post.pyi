@@ -78,6 +78,60 @@ class XSplititTestModeSchema(
     @schemas.classproperty
     def AUTOMATION(cls):
         return cls("Automation")
+
+
+class XSplititStrategySchema(
+    schemas.EnumBase,
+    schemas.StrSchema
+):
+    
+    @schemas.classproperty
+    def SECURED_PLAN(cls):
+        return cls("SecuredPlan")
+    
+    @schemas.classproperty
+    def NON_SECURED_PLAN(cls):
+        return cls("NonSecuredPlan")
+    
+    @schemas.classproperty
+    def SECURED_PLAN_CAPTURE_EXISTING_SECURITY_AUTH(cls):
+        return cls("SecuredPlanCaptureExistingSecurityAuth")
+    
+    @schemas.classproperty
+    def SECURED_PLAN3(cls):
+        return cls("SecuredPlan3")
+    
+    @schemas.classproperty
+    def SINGLE_PAYMENT(cls):
+        return cls("SinglePayment")
+    
+    @schemas.classproperty
+    def EXTERNAL_INSTALLMENT_PROVIDER(cls):
+        return cls("ExternalInstallmentProvider")
+    
+    @schemas.classproperty
+    def SECURED_PLAN3A(cls):
+        return cls("SecuredPlan3A")
+    
+    @schemas.classproperty
+    def SECURED_PLAN3B(cls):
+        return cls("SecuredPlan3B")
+    
+    @schemas.classproperty
+    def SECURED_PLAN2A(cls):
+        return cls("SecuredPlan2A")
+    
+    @schemas.classproperty
+    def SECURED_PLAN2(cls):
+        return cls("SecuredPlan2")
+    
+    @schemas.classproperty
+    def SECURED_PLAN4(cls):
+        return cls("SecuredPlan4")
+    
+    @schemas.classproperty
+    def SECURED_PLAN4A(cls):
+        return cls("SecuredPlan4A")
 SplititclientinfoSchema = schemas.StrSchema
 XSplititIdempotencyKeySchema = schemas.StrSchema
 XSplititTouchPointSchema = schemas.StrSchema
@@ -92,6 +146,7 @@ RequestOptionalHeaderParams = typing_extensions.TypedDict(
     'RequestOptionalHeaderParams',
     {
         'X-Splitit-TestMode': typing.Union[XSplititTestModeSchema, str, ],
+        'X-Splitit-Strategy': typing.Union[XSplititStrategySchema, str, ],
         'Splititclientinfo': typing.Union[SplititclientinfoSchema, str, ],
     },
     total=False
@@ -106,6 +161,11 @@ request_header_x_splitit_test_mode = api_client.HeaderParameter(
     name="X-Splitit-TestMode",
     style=api_client.ParameterStyle.SIMPLE,
     schema=XSplititTestModeSchema,
+)
+request_header_x_splitit_strategy = api_client.HeaderParameter(
+    name="X-Splitit-Strategy",
+    style=api_client.ParameterStyle.SIMPLE,
+    schema=XSplititStrategySchema,
 )
 request_header_splititclientinfo = api_client.HeaderParameter(
     name="Splititclientinfo",
@@ -330,6 +390,7 @@ class BaseApi(api_client.Api):
         processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        x_splitit_strategy: typing.Optional[str] = None,
         splititclientinfo: typing.Optional[str] = None,
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
@@ -358,6 +419,8 @@ class BaseApi(api_client.Api):
         args.body = _body
         if x_splitit_test_mode is not None:
             _header_params["X-Splitit-TestMode"] = x_splitit_test_mode
+        if x_splitit_strategy is not None:
+            _header_params["X-Splitit-Strategy"] = x_splitit_strategy
         if splititclientinfo is not None:
             _header_params["Splititclientinfo"] = splititclientinfo
         if x_splitit_idempotency_key is not None:
@@ -393,6 +456,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_test_mode,
+            request_header_x_splitit_strategy,
             request_header_splititclientinfo,
             request_header_x_splitit_idempotency_key,
             request_header_x_splitit_touch_point,
@@ -519,6 +583,7 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         for parameter in (
             request_header_x_splitit_test_mode,
+            request_header_x_splitit_strategy,
             request_header_splititclientinfo,
             request_header_x_splitit_idempotency_key,
             request_header_x_splitit_touch_point,
@@ -608,6 +673,7 @@ class Post2(BaseApi):
         processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        x_splitit_strategy: typing.Optional[str] = None,
         splititclientinfo: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -629,6 +695,7 @@ class Post2(BaseApi):
             processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
+            x_splitit_strategy=x_splitit_strategy,
             splititclientinfo=splititclientinfo,
         )
         return await self._apost2_oapg(
@@ -652,6 +719,7 @@ class Post2(BaseApi):
         processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        x_splitit_strategy: typing.Optional[str] = None,
         splititclientinfo: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -672,6 +740,7 @@ class Post2(BaseApi):
             processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
+            x_splitit_strategy=x_splitit_strategy,
             splititclientinfo=splititclientinfo,
         )
         return self._post2_oapg(
@@ -697,6 +766,7 @@ class ApiForpost(BaseApi):
         processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        x_splitit_strategy: typing.Optional[str] = None,
         splititclientinfo: typing.Optional[str] = None,
         **kwargs,
     ) -> typing.Union[
@@ -718,6 +788,7 @@ class ApiForpost(BaseApi):
             processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
+            x_splitit_strategy=x_splitit_strategy,
             splititclientinfo=splititclientinfo,
         )
         return await self._apost2_oapg(
@@ -741,6 +812,7 @@ class ApiForpost(BaseApi):
         processing_data: typing.Optional[ProcessingData] = None,
         events_endpoints: typing.Optional[EventsEndpointsModel] = None,
         x_splitit_test_mode: typing.Optional[str] = None,
+        x_splitit_strategy: typing.Optional[str] = None,
         splititclientinfo: typing.Optional[str] = None,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -761,6 +833,7 @@ class ApiForpost(BaseApi):
             processing_data=processing_data,
             events_endpoints=events_endpoints,
             x_splitit_test_mode=x_splitit_test_mode,
+            x_splitit_strategy=x_splitit_strategy,
             splititclientinfo=splititclientinfo,
         )
         return self._post2_oapg(

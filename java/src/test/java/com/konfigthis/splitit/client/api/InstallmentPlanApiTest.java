@@ -133,6 +133,7 @@ public class InstallmentPlanApiTest {
         EventsEndpointsModel eventsEndpoints = null;
         ProcessingData processingData = null;
         String xSplititTestMode = null;
+        String xSplititStrategy = null;
         String splititclientinfo = null;
         InitiatePlanResponse response = api.post(xSplititIdempotencyKey, xSplititTouchPoint)
                 .autoCapture(autoCapture)
@@ -145,6 +146,7 @@ public class InstallmentPlanApiTest {
                 .eventsEndpoints(eventsEndpoints)
                 .processingData(processingData)
                 .xSplititTestMode(xSplititTestMode)
+                .xSplititStrategy(xSplititStrategy)
                 .splititclientinfo(splititclientinfo)
                 .execute();
         // TODO: test validations
@@ -168,6 +170,7 @@ public class InstallmentPlanApiTest {
         ProcessingData processingData = null;
         EventsEndpointsModel eventsEndpoints = null;
         String xSplititTestMode = null;
+        String xSplititStrategy = null;
         String splititclientinfo = null;
         InstallmentPlanCreateResponse response = api.post2(autoCapture, termsAndConditionsAccepted, xSplititIdempotencyKey, xSplititTouchPoint)
                 .attempt3dSecure(attempt3dSecure)
@@ -179,6 +182,7 @@ public class InstallmentPlanApiTest {
                 .processingData(processingData)
                 .eventsEndpoints(eventsEndpoints)
                 .xSplititTestMode(xSplititTestMode)
+                .xSplititStrategy(xSplititStrategy)
                 .splititclientinfo(splititclientinfo)
                 .execute();
         // TODO: test validations

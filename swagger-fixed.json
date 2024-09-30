@@ -369,6 +369,32 @@
             }
           },
           {
+            "name": "X-Splitit-Strategy",
+            "x-originalName": "planStrategy",
+            "in": "header",
+            "x-schema": {
+              "$ref": "#/components/schemas/PlanStrategy"
+            },
+            "x-nullable": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SecuredPlan",
+                "NonSecuredPlan",
+                "SecuredPlanCaptureExistingSecurityAuth",
+                "SecuredPlan3",
+                "SinglePayment",
+                "ExternalInstallmentProvider",
+                "SecuredPlan3A",
+                "SecuredPlan3B",
+                "SecuredPlan2A",
+                "SecuredPlan2",
+                "SecuredPlan4",
+                "SecuredPlan4A"
+              ]
+            }
+          },
+          {
             "name": "Splititclientinfo",
             "x-originalName": "splititclientinfo",
             "in": "header",
@@ -581,6 +607,32 @@
                 "Regular",
                 "Fast",
                 "Automation"
+              ]
+            }
+          },
+          {
+            "name": "X-Splitit-Strategy",
+            "x-originalName": "planStrategy",
+            "in": "header",
+            "x-schema": {
+              "$ref": "#/components/schemas/PlanStrategy"
+            },
+            "x-nullable": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "SecuredPlan",
+                "NonSecuredPlan",
+                "SecuredPlanCaptureExistingSecurityAuth",
+                "SecuredPlan3",
+                "SinglePayment",
+                "ExternalInstallmentProvider",
+                "SecuredPlan3A",
+                "SecuredPlan3B",
+                "SecuredPlan2A",
+                "SecuredPlan2",
+                "SecuredPlan4",
+                "SecuredPlan4A"
               ]
             }
           },
@@ -2625,6 +2677,38 @@
           "Automation"
         ]
       },
+      "PlanStrategy": {
+        "description": "",
+        "type": "string",
+        "x-enumNames": [
+          "SecuredPlan",
+          "NonSecuredPlan",
+          "SecuredPlanCaptureExistingSecurityAuth",
+          "SecuredPlan3",
+          "SinglePayment",
+          "ExternalInstallmentProvider",
+          "SecuredPlan3A",
+          "SecuredPlan3B",
+          "SecuredPlan2A",
+          "SecuredPlan2",
+          "SecuredPlan4",
+          "SecuredPlan4A"
+        ],
+        "enum": [
+          "SecuredPlan",
+          "NonSecuredPlan",
+          "SecuredPlanCaptureExistingSecurityAuth",
+          "SecuredPlan3",
+          "SinglePayment",
+          "ExternalInstallmentProvider",
+          "SecuredPlan3A",
+          "SecuredPlan3B",
+          "SecuredPlan2A",
+          "SecuredPlan2",
+          "SecuredPlan4",
+          "SecuredPlan4A"
+        ]
+      },
       "InstallmentPlanCreateResponse": {
         "type": "object",
         "required": [
@@ -3073,6 +3157,9 @@
           "FirstInstallmentDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "Strategy": {
+            "$ref": "#/components/schemas/PlanStrategy"
           }
         }
       },

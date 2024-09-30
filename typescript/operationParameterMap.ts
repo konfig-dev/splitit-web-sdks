@@ -92,6 +92,9 @@ export const operationParameterMap: Record<string, Entry> = {
                 name: 'X-Splitit-TestMode'
             },
             {
+                name: 'X-Splitit-Strategy'
+            },
+            {
                 name: 'Splititclientinfo'
             },
         ]
@@ -136,6 +139,9 @@ export const operationParameterMap: Record<string, Entry> = {
             },
             {
                 name: 'X-Splitit-TestMode'
+            },
+            {
+                name: 'X-Splitit-Strategy'
             },
             {
                 name: 'Splititclientinfo'

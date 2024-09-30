@@ -28,6 +28,7 @@ type PlanData struct {
 	Tags *map[string]string `json:"Tags,omitempty"`
 	ProcessingData *ProcessingData2 `json:"ProcessingData,omitempty"`
 	FirstInstallmentDate *time.Time `json:"FirstInstallmentDate,omitempty"`
+	Strategy *PlanStrategy `json:"Strategy,omitempty"`
 }
 
 // NewPlanData instantiates a new PlanData object
@@ -378,6 +379,38 @@ func (o *PlanData) SetFirstInstallmentDate(v time.Time) {
 	o.FirstInstallmentDate = &v
 }
 
+// GetStrategy returns the Strategy field value if set, zero value otherwise.
+func (o *PlanData) GetStrategy() PlanStrategy {
+	if o == nil || isNil(o.Strategy) {
+		var ret PlanStrategy
+		return ret
+	}
+	return *o.Strategy
+}
+
+// GetStrategyOk returns a tuple with the Strategy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanData) GetStrategyOk() (*PlanStrategy, bool) {
+	if o == nil || isNil(o.Strategy) {
+    return nil, false
+	}
+	return o.Strategy, true
+}
+
+// HasStrategy returns a boolean if a field has been set.
+func (o *PlanData) HasStrategy() bool {
+	if o != nil && !isNil(o.Strategy) {
+		return true
+	}
+
+	return false
+}
+
+// SetStrategy gets a reference to the given PlanStrategy and assigns it to the Strategy field.
+func (o *PlanData) SetStrategy(v PlanStrategy) {
+	o.Strategy = &v
+}
+
 func (o PlanData) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TerminalId) {
@@ -412,6 +445,9 @@ func (o PlanData) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.FirstInstallmentDate) {
 		toSerialize["FirstInstallmentDate"] = o.FirstInstallmentDate
+	}
+	if !isNil(o.Strategy) {
+		toSerialize["Strategy"] = o.Strategy
 	}
 	return json.Marshal(toSerialize)
 }

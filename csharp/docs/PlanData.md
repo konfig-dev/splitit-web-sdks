@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Tags** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **ProcessingData** | [**ProcessingData2**](ProcessingData2.md) |  | [optional] 
 **FirstInstallmentDate** | **DateTime** |  | [optional] 
+**Strategy** | **PlanStrategy** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

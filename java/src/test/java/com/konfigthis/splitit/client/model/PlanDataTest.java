@@ -17,6 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.konfigthis.splitit.client.model.PlanStrategy;
 import com.konfigthis.splitit.client.model.ProcessingData2;
 import com.konfigthis.splitit.client.model.PurchaseMethod;
 import io.swagger.annotations.ApiModel;
@@ -131,6 +132,14 @@ public class PlanDataTest {
     @Test
     public void firstInstallmentDateTest() {
         // TODO: test firstInstallmentDate
+    }
+
+    /**
+     * Test the property 'strategy'
+     */
+    @Test
+    public void strategyTest() {
+        // TODO: test strategy
     }
 
 }

@@ -341,6 +341,7 @@ InitiatePlanResponse result = client
         .eventsEndpoints(eventsEndpoints)
         .processingData(processingData)
         .xSplititTestMode(xSplititTestMode)
+        .xSplititStrategy(xSplititStrategy)
         .splititclientinfo(splititclientinfo)
         .execute();
 ```
@@ -372,6 +373,8 @@ TouchPoint
 ##### ProcessingData: [`ProcessingData`](./src/main/java/com/konfigthis/client/model/ProcessingData.java)<a id="processingdata-processingdatasrcmainjavacomkonfigthisclientmodelprocessingdatajava"></a>
 
 ##### xSplititTestMode: `String`<a id="xsplitittestmode-string"></a>
+
+##### xSplititStrategy: `String`<a id="xsplititstrategy-string"></a>
 
 ##### splititclientinfo: `String`<a id="splititclientinfo-string"></a>
 
@@ -407,6 +410,7 @@ InstallmentPlanCreateResponse result = client
         .processingData(processingData)
         .eventsEndpoints(eventsEndpoints)
         .xSplititTestMode(xSplititTestMode)
+        .xSplititStrategy(xSplititStrategy)
         .splititclientinfo(splititclientinfo)
         .execute();
 ```
@@ -440,6 +444,8 @@ TouchPoint
 ##### EventsEndpoints: [`EventsEndpointsModel`](./src/main/java/com/konfigthis/client/model/EventsEndpointsModel.java)<a id="eventsendpoints-eventsendpointsmodelsrcmainjavacomkonfigthisclientmodeleventsendpointsmodeljava"></a>
 
 ##### xSplititTestMode: `String`<a id="xsplitittestmode-string"></a>
+
+##### xSplititStrategy: `String`<a id="xsplititstrategy-string"></a>
 
 ##### splititclientinfo: `String`<a id="splititclientinfo-string"></a>
 

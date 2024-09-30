@@ -144,6 +144,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'FirstInstallmentDate'
         }
+        /// <summary>
+        /// Test the property 'Strategy'
+        /// </summary>
+        [Fact]
+        public void StrategyTest()
+        {
+            // TODO unit test for the property 'Strategy'
+        }
 
     }
 

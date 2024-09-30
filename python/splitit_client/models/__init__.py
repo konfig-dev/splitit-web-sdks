@@ -59,6 +59,7 @@ from splitit_client.model.plan_data_model_extended_params import PlanDataModelEx
 from splitit_client.model.plan_data_tags import PlanDataTags
 from splitit_client.model.plan_error_response import PlanErrorResponse
 from splitit_client.model.plan_status import PlanStatus
+from splitit_client.model.plan_strategy import PlanStrategy
 from splitit_client.model.processing_data import ProcessingData
 from splitit_client.model.processing_data2 import ProcessingData2
 from splitit_client.model.purchase_method import PurchaseMethod
