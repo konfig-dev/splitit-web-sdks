@@ -1,6 +1,6 @@
 # Splitit.Web.Net - C#
 
-[![NuGet](https://img.shields.io/badge/NuGet-3.0.4-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/3.0.4)
+[![NuGet](https://img.shields.io/badge/NuGet-3.0.5-blue.svg)](https://www.nuget.org/packages/Splitit.Web.Net/3.0.5)
 
 Splitit's Web API
 
