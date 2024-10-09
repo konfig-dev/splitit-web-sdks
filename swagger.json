@@ -1680,6 +1680,10 @@
         },
         "CheckoutUrl": {
           "type": "string"
+        },
+        "PrincipalAmount": {
+          "type": "number",
+          "format": "decimal"
         }
       }
     },
