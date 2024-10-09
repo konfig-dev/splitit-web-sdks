@@ -62,6 +62,7 @@ class InitiatePlanResponse(
             def BillingAddress() -> typing.Type['AddressData']:
                 return AddressData
             CheckoutUrl = schemas.StrSchema
+            PrincipalAmount = schemas.NumberSchema
             __annotations__ = {
                 "Status": Status,
                 "InstallmentPlanNumber": InstallmentPlanNumber,
@@ -73,6 +74,7 @@ class InitiatePlanResponse(
                 "Shopper": Shopper,
                 "BillingAddress": BillingAddress,
                 "CheckoutUrl": CheckoutUrl,
+                "PrincipalAmount": PrincipalAmount,
             }
     
     Status: 'PlanStatus'
@@ -108,9 +110,12 @@ class InitiatePlanResponse(
     def __getitem__(self, name: typing_extensions.Literal["CheckoutUrl"]) -> MetaOapg.properties.CheckoutUrl: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["PrincipalAmount"]) -> MetaOapg.properties.PrincipalAmount: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "InstallmentPlanNumber", "RefOrderNumber", "PurchaseMethod", "Currency", "Amount", "ExtendedParams", "Shopper", "BillingAddress", "CheckoutUrl", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["Status", "InstallmentPlanNumber", "RefOrderNumber", "PurchaseMethod", "Currency", "Amount", "ExtendedParams", "Shopper", "BillingAddress", "CheckoutUrl", "PrincipalAmount", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -146,9 +151,12 @@ class InitiatePlanResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["CheckoutUrl"]) -> typing.Union[MetaOapg.properties.CheckoutUrl, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["PrincipalAmount"]) -> typing.Union[MetaOapg.properties.PrincipalAmount, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "InstallmentPlanNumber", "RefOrderNumber", "PurchaseMethod", "Currency", "Amount", "ExtendedParams", "Shopper", "BillingAddress", "CheckoutUrl", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["Status", "InstallmentPlanNumber", "RefOrderNumber", "PurchaseMethod", "Currency", "Amount", "ExtendedParams", "Shopper", "BillingAddress", "CheckoutUrl", "PrincipalAmount", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -165,6 +173,7 @@ class InitiatePlanResponse(
         Shopper: typing.Union['ShopperData', schemas.Unset] = schemas.unset,
         BillingAddress: typing.Union['AddressData', schemas.Unset] = schemas.unset,
         CheckoutUrl: typing.Union[MetaOapg.properties.CheckoutUrl, str, schemas.Unset] = schemas.unset,
+        PrincipalAmount: typing.Union[MetaOapg.properties.PrincipalAmount, decimal.Decimal, int, float, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'InitiatePlanResponse':
@@ -181,6 +190,7 @@ class InitiatePlanResponse(
             Shopper=Shopper,
             BillingAddress=BillingAddress,
             CheckoutUrl=CheckoutUrl,
+            PrincipalAmount=PrincipalAmount,
             _configuration=_configuration,
             **kwargs,
         )

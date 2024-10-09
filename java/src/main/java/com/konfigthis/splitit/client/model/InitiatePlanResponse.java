@@ -95,6 +95,10 @@ public class InitiatePlanResponse {
   @SerializedName(SERIALIZED_NAME_CHECKOUT_URL)
   private String checkoutUrl;
 
+  public static final String SERIALIZED_NAME_PRINCIPAL_AMOUNT = "PrincipalAmount";
+  @SerializedName(SERIALIZED_NAME_PRINCIPAL_AMOUNT)
+  private Double principalAmount;
+
   public InitiatePlanResponse() {
   }
 
@@ -404,6 +408,44 @@ public class InitiatePlanResponse {
     this.checkoutUrl = checkoutUrl;
   }
 
+
+  public InitiatePlanResponse principalAmount(Double principalAmount) {
+    
+    
+    
+    
+    this.principalAmount = principalAmount;
+    return this;
+  }
+
+  public InitiatePlanResponse principalAmount(Integer principalAmount) {
+    
+    
+    
+    
+    this.principalAmount = principalAmount.doubleValue();
+    return this;
+  }
+
+   /**
+   * Get principalAmount
+   * @return principalAmount
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Double getPrincipalAmount() {
+    return principalAmount;
+  }
+
+
+  public void setPrincipalAmount(Double principalAmount) {
+    
+    
+    
+    this.principalAmount = principalAmount;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -468,13 +510,14 @@ public class InitiatePlanResponse {
         Objects.equals(this.extendedParams, initiatePlanResponse.extendedParams) &&
         Objects.equals(this.shopper, initiatePlanResponse.shopper) &&
         Objects.equals(this.billingAddress, initiatePlanResponse.billingAddress) &&
-        Objects.equals(this.checkoutUrl, initiatePlanResponse.checkoutUrl)&&
+        Objects.equals(this.checkoutUrl, initiatePlanResponse.checkoutUrl) &&
+        Objects.equals(this.principalAmount, initiatePlanResponse.principalAmount)&&
         Objects.equals(this.additionalProperties, initiatePlanResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(installmentPlanNumber, refOrderNumber, purchaseMethod, status, currency, amount, extendedParams, shopper, billingAddress, checkoutUrl, additionalProperties);
+    return Objects.hash(installmentPlanNumber, refOrderNumber, purchaseMethod, status, currency, amount, extendedParams, shopper, billingAddress, checkoutUrl, principalAmount, additionalProperties);
   }
 
   @Override
@@ -491,6 +534,7 @@ public class InitiatePlanResponse {
     sb.append("    shopper: ").append(toIndentedString(shopper)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    checkoutUrl: ").append(toIndentedString(checkoutUrl)).append("\n");
+    sb.append("    principalAmount: ").append(toIndentedString(principalAmount)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -524,6 +568,7 @@ public class InitiatePlanResponse {
     openapiFields.add("Shopper");
     openapiFields.add("BillingAddress");
     openapiFields.add("CheckoutUrl");
+    openapiFields.add("PrincipalAmount");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

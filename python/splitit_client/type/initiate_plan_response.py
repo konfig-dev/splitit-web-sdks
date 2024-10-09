@@ -43,5 +43,7 @@ class OptionalInitiatePlanResponse(TypedDict, total=False):
 
     CheckoutUrl: str
 
+    PrincipalAmount: typing.Union[int, float]
+
 class InitiatePlanResponse(RequiredInitiatePlanResponse, OptionalInitiatePlanResponse):
     pass

@@ -61,7 +61,8 @@ namespace Splitit.Web.Net.Model
         /// <param name="shopper">shopper.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="checkoutUrl">checkoutUrl.</param>
-        public InitiatePlanResponse(string installmentPlanNumber = default(string), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), double amount = default(double), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), string checkoutUrl = default(string))
+        /// <param name="principalAmount">principalAmount.</param>
+        public InitiatePlanResponse(string installmentPlanNumber = default(string), string refOrderNumber = default(string), PurchaseMethod? purchaseMethod = default(PurchaseMethod?), PlanStatus status = default(PlanStatus), string currency = default(string), double amount = default(double), Dictionary<string, string> extendedParams = default(Dictionary<string, string>), ShopperData shopper = default(ShopperData), AddressData billingAddress = default(AddressData), string checkoutUrl = default(string), double principalAmount = default(double))
         {
             this.Status = status;
             this.InstallmentPlanNumber = installmentPlanNumber;
@@ -73,6 +74,7 @@ namespace Splitit.Web.Net.Model
             this.Shopper = shopper;
             this.BillingAddress = billingAddress;
             this.CheckoutUrl = checkoutUrl;
+            this.PrincipalAmount = principalAmount;
         }
 
         /// <summary>
@@ -124,6 +126,12 @@ namespace Splitit.Web.Net.Model
         public string CheckoutUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets PrincipalAmount
+        /// </summary>
+        [DataMember(Name = "PrincipalAmount", EmitDefaultValue = false)]
+        public double PrincipalAmount { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -141,6 +149,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  Shopper: ").Append(Shopper).Append("\n");
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  CheckoutUrl: ").Append(CheckoutUrl).Append("\n");
+            sb.Append("  PrincipalAmount: ").Append(PrincipalAmount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -223,6 +232,10 @@ namespace Splitit.Web.Net.Model
                     this.CheckoutUrl == input.CheckoutUrl ||
                     (this.CheckoutUrl != null &&
                     this.CheckoutUrl.Equals(input.CheckoutUrl))
+                ) && 
+                (
+                    this.PrincipalAmount == input.PrincipalAmount ||
+                    this.PrincipalAmount.Equals(input.PrincipalAmount)
                 );
         }
 
@@ -266,6 +279,7 @@ namespace Splitit.Web.Net.Model
                 {
                     hashCode = (hashCode * 59) + this.CheckoutUrl.GetHashCode();
                 }
+                hashCode = (hashCode * 59) + this.PrincipalAmount.GetHashCode();
                 return hashCode;
             }
         }

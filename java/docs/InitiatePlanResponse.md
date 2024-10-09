@@ -17,6 +17,7 @@
 |**shopper** | [**ShopperData**](ShopperData.md) |  |  [optional] |
 |**billingAddress** | [**AddressData**](AddressData.md) |  |  [optional] |
 |**checkoutUrl** | **String** |  |  [optional] |
+|**principalAmount** | **Double** |  |  [optional] |
 
 
 

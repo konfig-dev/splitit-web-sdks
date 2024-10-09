@@ -235,6 +235,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InitiatePlanResponse.Post.Shopper`: %v\n", *resp.Shopper)
     fmt.Fprintf(os.Stdout, "Response from `InitiatePlanResponse.Post.BillingAddress`: %v\n", *resp.BillingAddress)
     fmt.Fprintf(os.Stdout, "Response from `InitiatePlanResponse.Post.CheckoutUrl`: %v\n", *resp.CheckoutUrl)
+    fmt.Fprintf(os.Stdout, "Response from `InitiatePlanResponse.Post.PrincipalAmount`: %v\n", *resp.PrincipalAmount)
 }
 ```
 

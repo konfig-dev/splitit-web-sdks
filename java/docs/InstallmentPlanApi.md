@@ -411,6 +411,7 @@ public class Example {
       System.out.println(result.getShopper());
       System.out.println(result.getBillingAddress());
       System.out.println(result.getCheckoutUrl());
+      System.out.println(result.getPrincipalAmount());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#post");
       System.err.println("Status code: " + e.getStatusCode());
