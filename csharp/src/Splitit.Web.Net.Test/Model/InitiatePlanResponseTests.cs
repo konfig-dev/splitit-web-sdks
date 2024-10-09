@@ -136,6 +136,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'CheckoutUrl'
         }
+        /// <summary>
+        /// Test the property 'PrincipalAmount'
+        /// </summary>
+        [Fact]
+        public void PrincipalAmountTest()
+        {
+            // TODO unit test for the property 'PrincipalAmount'
+        }
 
     }
 

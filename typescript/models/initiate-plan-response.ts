@@ -81,5 +81,11 @@ export interface InitiatePlanResponse {
      * @memberof InitiatePlanResponse
      */
     'CheckoutUrl'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof InitiatePlanResponse
+     */
+    'PrincipalAmount'?: number;
 }
 

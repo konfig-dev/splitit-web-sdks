@@ -26,6 +26,7 @@ type InitiatePlanResponse struct {
 	Shopper *ShopperData `json:"Shopper,omitempty"`
 	BillingAddress *AddressData `json:"BillingAddress,omitempty"`
 	CheckoutUrl *string `json:"CheckoutUrl,omitempty"`
+	PrincipalAmount *float32 `json:"PrincipalAmount,omitempty"`
 }
 
 // NewInitiatePlanResponse instantiates a new InitiatePlanResponse object
@@ -358,6 +359,38 @@ func (o *InitiatePlanResponse) SetCheckoutUrl(v string) {
 	o.CheckoutUrl = &v
 }
 
+// GetPrincipalAmount returns the PrincipalAmount field value if set, zero value otherwise.
+func (o *InitiatePlanResponse) GetPrincipalAmount() float32 {
+	if o == nil || isNil(o.PrincipalAmount) {
+		var ret float32
+		return ret
+	}
+	return *o.PrincipalAmount
+}
+
+// GetPrincipalAmountOk returns a tuple with the PrincipalAmount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InitiatePlanResponse) GetPrincipalAmountOk() (*float32, bool) {
+	if o == nil || isNil(o.PrincipalAmount) {
+    return nil, false
+	}
+	return o.PrincipalAmount, true
+}
+
+// HasPrincipalAmount returns a boolean if a field has been set.
+func (o *InitiatePlanResponse) HasPrincipalAmount() bool {
+	if o != nil && !isNil(o.PrincipalAmount) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrincipalAmount gets a reference to the given float32 and assigns it to the PrincipalAmount field.
+func (o *InitiatePlanResponse) SetPrincipalAmount(v float32) {
+	o.PrincipalAmount = &v
+}
+
 func (o InitiatePlanResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.InstallmentPlanNumber) {
@@ -389,6 +422,9 @@ func (o InitiatePlanResponse) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.CheckoutUrl) {
 		toSerialize["CheckoutUrl"] = o.CheckoutUrl
+	}
+	if !isNil(o.PrincipalAmount) {
+		toSerialize["PrincipalAmount"] = o.PrincipalAmount
 	}
 	return json.Marshal(toSerialize)
 }

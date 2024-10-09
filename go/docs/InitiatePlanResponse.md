@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Shopper** | Pointer to [**ShopperData**](ShopperData.md) |  | [optional] 
 **BillingAddress** | Pointer to [**AddressData**](AddressData.md) |  | [optional] 
 **CheckoutUrl** | Pointer to **string** |  | [optional] 
+**PrincipalAmount** | Pointer to **float32** |  | [optional] 
 
 ## Methods
 
@@ -278,6 +279,31 @@ SetCheckoutUrl sets CheckoutUrl field to given value.
 `func (o *InitiatePlanResponse) HasCheckoutUrl() bool`
 
 HasCheckoutUrl returns a boolean if a field has been set.
+
+### GetPrincipalAmount
+
+`func (o *InitiatePlanResponse) GetPrincipalAmount() float32`
+
+GetPrincipalAmount returns the PrincipalAmount field if non-nil, zero value otherwise.
+
+### GetPrincipalAmountOk
+
+`func (o *InitiatePlanResponse) GetPrincipalAmountOk() (*float32, bool)`
+
+GetPrincipalAmountOk returns a tuple with the PrincipalAmount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrincipalAmount
+
+`func (o *InitiatePlanResponse) SetPrincipalAmount(v float32)`
+
+SetPrincipalAmount sets PrincipalAmount field to given value.
+
+### HasPrincipalAmount
+
+`func (o *InitiatePlanResponse) HasPrincipalAmount() bool`
+
+HasPrincipalAmount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

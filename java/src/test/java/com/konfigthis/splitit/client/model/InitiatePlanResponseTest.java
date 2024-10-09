@@ -124,4 +124,12 @@ public class InitiatePlanResponseTest {
         // TODO: test checkoutUrl
     }
 
+    /**
+     * Test the property 'principalAmount'
+     */
+    @Test
+    public void principalAmountTest() {
+        // TODO: test principalAmount
+    }
+
 }

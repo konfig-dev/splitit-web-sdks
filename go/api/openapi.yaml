@@ -2118,6 +2118,7 @@ components:
           Culture: Culture
         CheckoutUrl: CheckoutUrl
         PurchaseMethod: null
+        PrincipalAmount: 6.027456183070403
       properties:
         InstallmentPlanNumber:
           type: string
@@ -2142,6 +2143,9 @@ components:
           $ref: '#/components/schemas/AddressData'
         CheckoutUrl:
           type: string
+        PrincipalAmount:
+          format: decimal
+          type: number
       required:
       - Status
       type: object
