@@ -36,10 +36,12 @@ namespace Splitit.Web.Net.Model
         /// </summary>
         /// <param name="termsAndConditions">termsAndConditions.</param>
         /// <param name="privacyPolicy">privacyPolicy.</param>
-        public EligibilityTermsAndConditionResponse(string termsAndConditions = default(string), string privacyPolicy = default(string))
+        /// <param name="provider">provider.</param>
+        public EligibilityTermsAndConditionResponse(string termsAndConditions = default(string), string privacyPolicy = default(string), string provider = default(string))
         {
             this.TermsAndConditions = termsAndConditions;
             this.PrivacyPolicy = privacyPolicy;
+            this.Provider = provider;
         }
 
         /// <summary>
@@ -55,6 +57,12 @@ namespace Splitit.Web.Net.Model
         public string PrivacyPolicy { get; set; }
 
         /// <summary>
+        /// Gets or Sets Provider
+        /// </summary>
+        [DataMember(Name = "Provider", EmitDefaultValue = false)]
+        public string Provider { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +72,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("class EligibilityTermsAndConditionResponse {\n");
             sb.Append("  TermsAndConditions: ").Append(TermsAndConditions).Append("\n");
             sb.Append("  PrivacyPolicy: ").Append(PrivacyPolicy).Append("\n");
+            sb.Append("  Provider: ").Append(Provider).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,6 +117,11 @@ namespace Splitit.Web.Net.Model
                     this.PrivacyPolicy == input.PrivacyPolicy ||
                     (this.PrivacyPolicy != null &&
                     this.PrivacyPolicy.Equals(input.PrivacyPolicy))
+                ) && 
+                (
+                    this.Provider == input.Provider ||
+                    (this.Provider != null &&
+                    this.Provider.Equals(input.Provider))
                 );
         }
 
@@ -127,6 +141,10 @@ namespace Splitit.Web.Net.Model
                 if (this.PrivacyPolicy != null)
                 {
                     hashCode = (hashCode * 59) + this.PrivacyPolicy.GetHashCode();
+                }
+                if (this.Provider != null)
+                {
+                    hashCode = (hashCode * 59) + this.Provider.GetHashCode();
                 }
                 return hashCode;
             }

@@ -36,9 +36,11 @@ class EligibilityTermsAndConditionResponse(
         class properties:
             TermsAndConditions = schemas.StrSchema
             PrivacyPolicy = schemas.StrSchema
+            Provider = schemas.StrSchema
             __annotations__ = {
                 "TermsAndConditions": TermsAndConditions,
                 "PrivacyPolicy": PrivacyPolicy,
+                "Provider": Provider,
             }
     
     @typing.overload
@@ -48,9 +50,12 @@ class EligibilityTermsAndConditionResponse(
     def __getitem__(self, name: typing_extensions.Literal["PrivacyPolicy"]) -> MetaOapg.properties.PrivacyPolicy: ...
     
     @typing.overload
+    def __getitem__(self, name: typing_extensions.Literal["Provider"]) -> MetaOapg.properties.Provider: ...
+    
+    @typing.overload
     def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
     
-    def __getitem__(self, name: typing.Union[typing_extensions.Literal["TermsAndConditions", "PrivacyPolicy", ], str]):
+    def __getitem__(self, name: typing.Union[typing_extensions.Literal["TermsAndConditions", "PrivacyPolicy", "Provider", ], str]):
         # dict_instance[name] accessor
         return super().__getitem__(name)
     
@@ -62,9 +67,12 @@ class EligibilityTermsAndConditionResponse(
     def get_item_oapg(self, name: typing_extensions.Literal["PrivacyPolicy"]) -> typing.Union[MetaOapg.properties.PrivacyPolicy, schemas.Unset]: ...
     
     @typing.overload
+    def get_item_oapg(self, name: typing_extensions.Literal["Provider"]) -> typing.Union[MetaOapg.properties.Provider, schemas.Unset]: ...
+    
+    @typing.overload
     def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
     
-    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["TermsAndConditions", "PrivacyPolicy", ], str]):
+    def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["TermsAndConditions", "PrivacyPolicy", "Provider", ], str]):
         return super().get_item_oapg(name)
     
 
@@ -73,6 +81,7 @@ class EligibilityTermsAndConditionResponse(
         *args: typing.Union[dict, frozendict.frozendict, ],
         TermsAndConditions: typing.Union[MetaOapg.properties.TermsAndConditions, str, schemas.Unset] = schemas.unset,
         PrivacyPolicy: typing.Union[MetaOapg.properties.PrivacyPolicy, str, schemas.Unset] = schemas.unset,
+        Provider: typing.Union[MetaOapg.properties.Provider, str, schemas.Unset] = schemas.unset,
         _configuration: typing.Optional[schemas.Configuration] = None,
         **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
     ) -> 'EligibilityTermsAndConditionResponse':
@@ -81,6 +90,7 @@ class EligibilityTermsAndConditionResponse(
             *args,
             TermsAndConditions=TermsAndConditions,
             PrivacyPolicy=PrivacyPolicy,
+            Provider=Provider,
             _configuration=_configuration,
             **kwargs,
         )

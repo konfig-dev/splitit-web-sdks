@@ -57,6 +57,10 @@ public class EligibilityTermsAndConditionResponse {
   @SerializedName(SERIALIZED_NAME_PRIVACY_POLICY)
   private String privacyPolicy;
 
+  public static final String SERIALIZED_NAME_PROVIDER = "Provider";
+  @SerializedName(SERIALIZED_NAME_PROVIDER)
+  private String provider;
+
   public EligibilityTermsAndConditionResponse() {
   }
 
@@ -117,6 +121,35 @@ public class EligibilityTermsAndConditionResponse {
     this.privacyPolicy = privacyPolicy;
   }
 
+
+  public EligibilityTermsAndConditionResponse provider(String provider) {
+    
+    
+    
+    
+    this.provider = provider;
+    return this;
+  }
+
+   /**
+   * Get provider
+   * @return provider
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public String getProvider() {
+    return provider;
+  }
+
+
+  public void setProvider(String provider) {
+    
+    
+    
+    this.provider = provider;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -173,13 +206,14 @@ public class EligibilityTermsAndConditionResponse {
     }
     EligibilityTermsAndConditionResponse eligibilityTermsAndConditionResponse = (EligibilityTermsAndConditionResponse) o;
     return Objects.equals(this.termsAndConditions, eligibilityTermsAndConditionResponse.termsAndConditions) &&
-        Objects.equals(this.privacyPolicy, eligibilityTermsAndConditionResponse.privacyPolicy)&&
+        Objects.equals(this.privacyPolicy, eligibilityTermsAndConditionResponse.privacyPolicy) &&
+        Objects.equals(this.provider, eligibilityTermsAndConditionResponse.provider)&&
         Objects.equals(this.additionalProperties, eligibilityTermsAndConditionResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(termsAndConditions, privacyPolicy, additionalProperties);
+    return Objects.hash(termsAndConditions, privacyPolicy, provider, additionalProperties);
   }
 
   @Override
@@ -188,6 +222,7 @@ public class EligibilityTermsAndConditionResponse {
     sb.append("class EligibilityTermsAndConditionResponse {\n");
     sb.append("    termsAndConditions: ").append(toIndentedString(termsAndConditions)).append("\n");
     sb.append("    privacyPolicy: ").append(toIndentedString(privacyPolicy)).append("\n");
+    sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -213,6 +248,7 @@ public class EligibilityTermsAndConditionResponse {
     openapiFields = new HashSet<String>();
     openapiFields.add("TermsAndConditions");
     openapiFields.add("PrivacyPolicy");
+    openapiFields.add("Provider");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -235,6 +271,9 @@ public class EligibilityTermsAndConditionResponse {
       }
       if ((jsonObj.get("PrivacyPolicy") != null && !jsonObj.get("PrivacyPolicy").isJsonNull()) && !jsonObj.get("PrivacyPolicy").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `PrivacyPolicy` to be a primitive type in the JSON string but got `%s`", jsonObj.get("PrivacyPolicy").toString()));
+      }
+      if ((jsonObj.get("Provider") != null && !jsonObj.get("Provider").isJsonNull()) && !jsonObj.get("Provider").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `Provider` to be a primitive type in the JSON string but got `%s`", jsonObj.get("Provider").toString()));
       }
   }
 

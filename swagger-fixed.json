@@ -3212,6 +3212,9 @@
           },
           "PrivacyPolicy": {
             "type": "string"
+          },
+          "Provider": {
+            "type": "string"
           }
         }
       }

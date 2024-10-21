@@ -23,5 +23,7 @@ class OptionalEligibilityTermsAndConditionResponse(TypedDict, total=False):
 
     PrivacyPolicy: str
 
+    Provider: str
+
 class EligibilityTermsAndConditionResponse(RequiredEligibilityTermsAndConditionResponse, OptionalEligibilityTermsAndConditionResponse):
     pass

@@ -3111,10 +3111,13 @@ components:
       example:
         TermsAndConditions: TermsAndConditions
         PrivacyPolicy: PrivacyPolicy
+        Provider: Provider
       properties:
         TermsAndConditions:
           type: string
         PrivacyPolicy:
+          type: string
+        Provider:
           type: string
       type: object
       x-konfig-is-used-in-successful-response: true

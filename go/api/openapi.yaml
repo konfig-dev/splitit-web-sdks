@@ -3042,10 +3042,13 @@ components:
       example:
         TermsAndConditions: TermsAndConditions
         PrivacyPolicy: PrivacyPolicy
+        Provider: Provider
       properties:
         TermsAndConditions:
           type: string
         PrivacyPolicy:
+          type: string
+        Provider:
           type: string
       type: object
     konfig-generated-schema-paths--api-installmentplans-installmentPlanNumber-get-parameters-2-schema:
