@@ -29,5 +29,11 @@ export interface EligibilityTermsAndConditionResponse {
      * @memberof EligibilityTermsAndConditionResponse
      */
     'PrivacyPolicy'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof EligibilityTermsAndConditionResponse
+     */
+    'Provider'?: string;
 }
 

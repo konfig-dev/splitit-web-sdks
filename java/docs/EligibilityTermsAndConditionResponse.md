@@ -9,6 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**termsAndConditions** | **String** |  |  [optional] |
 |**privacyPolicy** | **String** |  |  [optional] |
+|**provider** | **String** |  |  [optional] |
 
 
 

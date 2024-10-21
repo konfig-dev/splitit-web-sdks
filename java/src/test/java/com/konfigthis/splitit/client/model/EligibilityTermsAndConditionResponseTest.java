@@ -54,4 +54,12 @@ public class EligibilityTermsAndConditionResponseTest {
         // TODO: test privacyPolicy
     }
 
+    /**
+     * Test the property 'provider'
+     */
+    @Test
+    public void providerTest() {
+        // TODO: test provider
+    }
+
 }

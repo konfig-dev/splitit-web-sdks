@@ -281,6 +281,7 @@ public class Example {
       System.out.println(result);
       System.out.println(result.getTermsAndConditions());
       System.out.println(result.getPrivacyPolicy());
+      System.out.println(result.getProvider());
     } catch (ApiException e) {
       System.err.println("Exception when calling InstallmentPlanApi#getEligibilityTermsAndCondition");
       System.err.println("Status code: " + e.getStatusCode());

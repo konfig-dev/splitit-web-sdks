@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TermsAndConditions** | Pointer to **string** |  | [optional] 
 **PrivacyPolicy** | Pointer to **string** |  | [optional] 
+**Provider** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetPrivacyPolicy sets PrivacyPolicy field to given value.
 `func (o *EligibilityTermsAndConditionResponse) HasPrivacyPolicy() bool`
 
 HasPrivacyPolicy returns a boolean if a field has been set.
+
+### GetProvider
+
+`func (o *EligibilityTermsAndConditionResponse) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *EligibilityTermsAndConditionResponse) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *EligibilityTermsAndConditionResponse) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+### HasProvider
+
+`func (o *EligibilityTermsAndConditionResponse) HasProvider() bool`
+
+HasProvider returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -72,6 +72,14 @@ namespace Splitit.Web.Net.Test.Model
         {
             // TODO unit test for the property 'PrivacyPolicy'
         }
+        /// <summary>
+        /// Test the property 'Provider'
+        /// </summary>
+        [Fact]
+        public void ProviderTest()
+        {
+            // TODO unit test for the property 'Provider'
+        }
 
     }
 

@@ -18,6 +18,7 @@ import (
 type EligibilityTermsAndConditionResponse struct {
 	TermsAndConditions *string `json:"TermsAndConditions,omitempty"`
 	PrivacyPolicy *string `json:"PrivacyPolicy,omitempty"`
+	Provider *string `json:"Provider,omitempty"`
 }
 
 // NewEligibilityTermsAndConditionResponse instantiates a new EligibilityTermsAndConditionResponse object
@@ -101,6 +102,38 @@ func (o *EligibilityTermsAndConditionResponse) SetPrivacyPolicy(v string) {
 	o.PrivacyPolicy = &v
 }
 
+// GetProvider returns the Provider field value if set, zero value otherwise.
+func (o *EligibilityTermsAndConditionResponse) GetProvider() string {
+	if o == nil || isNil(o.Provider) {
+		var ret string
+		return ret
+	}
+	return *o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EligibilityTermsAndConditionResponse) GetProviderOk() (*string, bool) {
+	if o == nil || isNil(o.Provider) {
+    return nil, false
+	}
+	return o.Provider, true
+}
+
+// HasProvider returns a boolean if a field has been set.
+func (o *EligibilityTermsAndConditionResponse) HasProvider() bool {
+	if o != nil && !isNil(o.Provider) {
+		return true
+	}
+
+	return false
+}
+
+// SetProvider gets a reference to the given string and assigns it to the Provider field.
+func (o *EligibilityTermsAndConditionResponse) SetProvider(v string) {
+	o.Provider = &v
+}
+
 func (o EligibilityTermsAndConditionResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.TermsAndConditions) {
@@ -108,6 +141,9 @@ func (o EligibilityTermsAndConditionResponse) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.PrivacyPolicy) {
 		toSerialize["PrivacyPolicy"] = o.PrivacyPolicy
+	}
+	if !isNil(o.Provider) {
+		toSerialize["Provider"] = o.Provider
 	}
 	return json.Marshal(toSerialize)
 }

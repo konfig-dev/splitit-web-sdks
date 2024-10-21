@@ -162,6 +162,7 @@ func main() {
     fmt.Fprintf(os.Stdout, "Response from `InstallmentPlanApi.GetEligibilityTermsAndCondition`: %v\n", resp)
     fmt.Fprintf(os.Stdout, "Response from `EligibilityTermsAndConditionResponse.GetEligibilityTermsAndCondition.TermsAndConditions`: %v\n", *resp.TermsAndConditions)
     fmt.Fprintf(os.Stdout, "Response from `EligibilityTermsAndConditionResponse.GetEligibilityTermsAndCondition.PrivacyPolicy`: %v\n", *resp.PrivacyPolicy)
+    fmt.Fprintf(os.Stdout, "Response from `EligibilityTermsAndConditionResponse.GetEligibilityTermsAndCondition.Provider`: %v\n", *resp.Provider)
 }
 ```
 
