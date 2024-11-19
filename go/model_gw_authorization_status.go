@@ -25,6 +25,7 @@ const (
 	GWAUTHORIZATIONSTATUS_PENDING3_DS GwAuthorizationStatus = "Pending3DS"
 	GWAUTHORIZATIONSTATUS_FAILED GwAuthorizationStatus = "Failed"
 	GWAUTHORIZATIONSTATUS_CANCELED GwAuthorizationStatus = "Canceled"
+	GWAUTHORIZATIONSTATUS_VOIDED GwAuthorizationStatus = "Voided"
 )
 
 // All allowed values of GwAuthorizationStatus enum
@@ -34,6 +35,7 @@ var AllowedGwAuthorizationStatusEnumValues = []GwAuthorizationStatus{
 	"Pending3DS",
 	"Failed",
 	"Canceled",
+	"Voided",
 }
 
 func (v *GwAuthorizationStatus) UnmarshalJSON(src []byte) error {
