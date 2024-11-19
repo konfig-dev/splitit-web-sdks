@@ -16,5 +16,5 @@ import type * as buffer from "buffer"
  * @export
  * @enum {string}
  */
-export type GwAuthorizationStatus = 'NA' | 'Succeeded' | 'Pending3DS' | 'Failed' | 'Canceled'
+export type GwAuthorizationStatus = 'NA' | 'Succeeded' | 'Pending3DS' | 'Failed' | 'Canceled' | 'Voided'
 
