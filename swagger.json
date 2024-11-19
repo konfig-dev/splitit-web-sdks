@@ -1218,14 +1218,16 @@
         "Succeeded",
         "Pending3DS",
         "Failed",
-        "Canceled"
+        "Canceled",
+        "Voided"
       ],
       "enum": [
         "NA",
         "Succeeded",
         "Pending3DS",
         "Failed",
-        "Canceled"
+        "Canceled",
+        "Voided"
       ]
     },
     "ThreeDsRedirectDataV3": {
