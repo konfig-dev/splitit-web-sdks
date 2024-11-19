@@ -2,7 +2,7 @@
 
 Splitit's Web API
 
-[![npm](https://img.shields.io/badge/npm-v4.0.8-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.8)
+[![npm](https://img.shields.io/badge/npm-v4.0.9-blue)](https://www.npmjs.com/package/splitit-web-typescript-sdk/v/4.0.9)
 
 ## Table of Contents<a id="table-of-contents"></a>
 
