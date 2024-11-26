@@ -1,5 +1,13 @@
 # splitit-web-sdks
 
+# ⚠️ Warning: Deprecated SDKs
+
+**⚠️ All SDKs in this repository are fully deprecated as of December 2024.**
+
+- These SDKs are no longer maintained or supported.
+
+For more information, please contact [danny@buildwithfern.com](mailto:danny@buildwithfern.com).
+
 |Language|Version|Package Manager|README|Source|
 |-|-|-|-|-|
 |Java|3.0.8|[Maven Central](https://central.sonatype.com/artifact/com.konfigthis/splitit-web-java-sdk/3.0.8)|[README](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/java#readme)|[Source](https://github.com/konfig-dev/splitit-web-sdks/tree/HEAD/java)|
