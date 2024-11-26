@@ -5,6 +5,8 @@
 **⚠️ All SDKs in this repository are fully deprecated as of December 2024.**
 
 - These SDKs are no longer maintained or supported.
+- While they may still function, they will become increasingly out-of-date as Splitit continues to make API updates.
+- We strongly recommend migrating to newer solutions to ensure compatibility with the latest API features.
 
 For more information, please contact [danny@buildwithfern.com](mailto:danny@buildwithfern.com).
 
