@@ -2155,6 +2155,13 @@ components:
       allOf:
       - $ref: '#/components/schemas/FailedResponse'
       - $ref: '#/components/schemas/PlanErrorResponse_allOf'
+    PaymentInfo:
+      properties:
+        CardBin:
+          type: string
+        CardType:
+          $ref: '#/components/schemas/CardType'
+      type: object
     InstallmentPlanInitiateRequest:
       example:
         PlanData:
@@ -3452,6 +3459,8 @@ components:
       properties:
         InstallmentPlanNumber:
           type: string
+        PaymentInfo:
+          $ref: '#/components/schemas/PaymentInfo'
       type: object
       example: null
     InstallmentPlanUpdateRequestByIdentifier_allOf:

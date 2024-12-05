@@ -34,6 +34,7 @@ export * from './links-data';
 export * from './links-model';
 export * from './mocker-shopper-token';
 export * from './model-error';
+export * from './payment-info';
 export * from './payment-method-model';
 export * from './payment-method-type';
 export * from './payment-plan-option-model';

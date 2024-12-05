@@ -111,6 +111,7 @@ Class | Method | HTTP request | Description
  - [LinksData](docs/LinksData.md)
  - [LinksModel](docs/LinksModel.md)
  - [MockerShopperToken](docs/MockerShopperToken.md)
+ - [PaymentInfo](docs/PaymentInfo.md)
  - [PaymentMethodModel](docs/PaymentMethodModel.md)
  - [PaymentMethodType](docs/PaymentMethodType.md)
  - [PaymentPlanOptionModel](docs/PaymentPlanOptionModel.md)

@@ -43,17 +43,25 @@ class PlanErrorResponse(
                 
                 class properties:
                     InstallmentPlanNumber = schemas.StrSchema
+                
+                    @staticmethod
+                    def PaymentInfo() -> typing.Type['PaymentInfo']:
+                        return PaymentInfo
                     __annotations__ = {
                         "InstallmentPlanNumber": InstallmentPlanNumber,
+                        "PaymentInfo": PaymentInfo,
                     }
             
             @typing.overload
             def __getitem__(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> MetaOapg.properties.InstallmentPlanNumber: ...
             
             @typing.overload
+            def __getitem__(self, name: typing_extensions.Literal["PaymentInfo"]) -> 'PaymentInfo': ...
+            
+            @typing.overload
             def __getitem__(self, name: str) -> schemas.UnsetAnyTypeSchema: ...
             
-            def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
+            def __getitem__(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", "PaymentInfo", ], str]):
                 # dict_instance[name] accessor
                 return super().__getitem__(name)
             
@@ -62,9 +70,12 @@ class PlanErrorResponse(
             def get_item_oapg(self, name: typing_extensions.Literal["InstallmentPlanNumber"]) -> typing.Union[MetaOapg.properties.InstallmentPlanNumber, schemas.Unset]: ...
             
             @typing.overload
+            def get_item_oapg(self, name: typing_extensions.Literal["PaymentInfo"]) -> typing.Union['PaymentInfo', schemas.Unset]: ...
+            
+            @typing.overload
             def get_item_oapg(self, name: str) -> typing.Union[schemas.UnsetAnyTypeSchema, schemas.Unset]: ...
             
-            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", ], str]):
+            def get_item_oapg(self, name: typing.Union[typing_extensions.Literal["InstallmentPlanNumber", "PaymentInfo", ], str]):
                 return super().get_item_oapg(name)
             
         
@@ -72,6 +83,7 @@ class PlanErrorResponse(
                 cls,
                 *args: typing.Union[dict, frozendict.frozendict, ],
                 InstallmentPlanNumber: typing.Union[MetaOapg.properties.InstallmentPlanNumber, str, schemas.Unset] = schemas.unset,
+                PaymentInfo: typing.Union['PaymentInfo', schemas.Unset] = schemas.unset,
                 _configuration: typing.Optional[schemas.Configuration] = None,
                 **kwargs: typing.Union[schemas.AnyTypeSchema, dict, frozendict.frozendict, str, date, datetime, uuid.UUID, int, float, decimal.Decimal, None, list, tuple, bytes],
             ) -> 'all_of_1':
@@ -79,6 +91,7 @@ class PlanErrorResponse(
                     cls,
                     *args,
                     InstallmentPlanNumber=InstallmentPlanNumber,
+                    PaymentInfo=PaymentInfo,
                     _configuration=_configuration,
                     **kwargs,
                 )
@@ -113,3 +126,4 @@ class PlanErrorResponse(
         )
 
 from splitit_client.model.failed_response import FailedResponse
+from splitit_client.model.payment_info import PaymentInfo

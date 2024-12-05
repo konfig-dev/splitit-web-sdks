@@ -1874,7 +1874,7 @@ class ComposedBase(Discriminable):
                 continue
             try:
                 path_to_schemas = oneof_cls._validate_oapg(arg, validation_metadata=validation_metadata)
-            except (ApiValueError, ApiTypeError) as ex:
+            except (ApiValueError, ApiTypeError, SchemaValidationError) as ex:
                 if discriminated_cls is not None and oneof_cls is discriminated_cls:
                     raise ex
                 continue
@@ -1909,7 +1909,7 @@ class ComposedBase(Discriminable):
 
             try:
                 other_path_to_schemas = anyof_cls._validate_oapg(arg, validation_metadata=validation_metadata)
-            except (ApiValueError, ApiTypeError) as ex:
+            except (ApiValueError, ApiTypeError, SchemaValidationError) as ex:
                 if discriminated_cls is not None and anyof_cls is discriminated_cls:
                     raise ex
                 exceptions.append(ex)

@@ -141,6 +141,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.LinksData.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.LinksModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.MockerShopperToken.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.PaymentInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.PaymentMethodModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.PaymentPlanOptionModel.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.konfigthis.splitit.client.model.PlanData.CustomTypeAdapterFactory());

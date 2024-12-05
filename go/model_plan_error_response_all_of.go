@@ -17,6 +17,7 @@ import (
 // PlanErrorResponseAllOf struct for PlanErrorResponseAllOf
 type PlanErrorResponseAllOf struct {
 	InstallmentPlanNumber *string `json:"InstallmentPlanNumber,omitempty"`
+	PaymentInfo *PaymentInfo `json:"PaymentInfo,omitempty"`
 }
 
 // NewPlanErrorResponseAllOf instantiates a new PlanErrorResponseAllOf object
@@ -68,10 +69,45 @@ func (o *PlanErrorResponseAllOf) SetInstallmentPlanNumber(v string) {
 	o.InstallmentPlanNumber = &v
 }
 
+// GetPaymentInfo returns the PaymentInfo field value if set, zero value otherwise.
+func (o *PlanErrorResponseAllOf) GetPaymentInfo() PaymentInfo {
+	if o == nil || isNil(o.PaymentInfo) {
+		var ret PaymentInfo
+		return ret
+	}
+	return *o.PaymentInfo
+}
+
+// GetPaymentInfoOk returns a tuple with the PaymentInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlanErrorResponseAllOf) GetPaymentInfoOk() (*PaymentInfo, bool) {
+	if o == nil || isNil(o.PaymentInfo) {
+    return nil, false
+	}
+	return o.PaymentInfo, true
+}
+
+// HasPaymentInfo returns a boolean if a field has been set.
+func (o *PlanErrorResponseAllOf) HasPaymentInfo() bool {
+	if o != nil && !isNil(o.PaymentInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetPaymentInfo gets a reference to the given PaymentInfo and assigns it to the PaymentInfo field.
+func (o *PlanErrorResponseAllOf) SetPaymentInfo(v PaymentInfo) {
+	o.PaymentInfo = &v
+}
+
 func (o PlanErrorResponseAllOf) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.InstallmentPlanNumber) {
 		toSerialize["InstallmentPlanNumber"] = o.InstallmentPlanNumber
+	}
+	if !isNil(o.PaymentInfo) {
+		toSerialize["PaymentInfo"] = o.PaymentInfo
 	}
 	return json.Marshal(toSerialize)
 }

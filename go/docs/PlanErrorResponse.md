@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **TraceId** | Pointer to **string** |  | [optional] 
 **Error** | Pointer to [**ErrorExtended**](ErrorExtended.md) |  | [optional] 
 **InstallmentPlanNumber** | Pointer to **string** |  | [optional] 
+**PaymentInfo** | Pointer to [**PaymentInfo**](PaymentInfo.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetInstallmentPlanNumber sets InstallmentPlanNumber field to given value.
 `func (o *PlanErrorResponse) HasInstallmentPlanNumber() bool`
 
 HasInstallmentPlanNumber returns a boolean if a field has been set.
+
+### GetPaymentInfo
+
+`func (o *PlanErrorResponse) GetPaymentInfo() PaymentInfo`
+
+GetPaymentInfo returns the PaymentInfo field if non-nil, zero value otherwise.
+
+### GetPaymentInfoOk
+
+`func (o *PlanErrorResponse) GetPaymentInfoOk() (*PaymentInfo, bool)`
+
+GetPaymentInfoOk returns a tuple with the PaymentInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPaymentInfo
+
+`func (o *PlanErrorResponse) SetPaymentInfo(v PaymentInfo)`
+
+SetPaymentInfo sets PaymentInfo field to given value.
+
+### HasPaymentInfo
+
+`func (o *PlanErrorResponse) HasPaymentInfo() bool`
+
+HasPaymentInfo returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

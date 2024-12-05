@@ -18,6 +18,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.splitit.client.model.ErrorExtended;
+import com.konfigthis.splitit.client.model.PaymentInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -61,6 +62,14 @@ public class PlanErrorResponseTest {
     @Test
     public void installmentPlanNumberTest() {
         // TODO: test installmentPlanNumber
+    }
+
+    /**
+     * Test the property 'paymentInfo'
+     */
+    @Test
+    public void paymentInfoTest() {
+        // TODO: test paymentInfo
     }
 
 }

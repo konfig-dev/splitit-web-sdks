@@ -49,6 +49,7 @@ from splitit_client.model.installments_eligibility_response import InstallmentsE
 from splitit_client.model.links_data import LinksData
 from splitit_client.model.links_model import LinksModel
 from splitit_client.model.mocker_shopper_token import MockerShopperToken
+from splitit_client.model.payment_info import PaymentInfo
 from splitit_client.model.payment_method_model import PaymentMethodModel
 from splitit_client.model.payment_method_type import PaymentMethodType
 from splitit_client.model.payment_plan_option_model import PaymentPlanOptionModel

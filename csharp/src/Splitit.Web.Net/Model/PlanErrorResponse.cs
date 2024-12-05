@@ -37,11 +37,13 @@ namespace Splitit.Web.Net.Model
         /// <param name="traceId">traceId.</param>
         /// <param name="error">error.</param>
         /// <param name="installmentPlanNumber">installmentPlanNumber.</param>
-        public PlanErrorResponse(string traceId = default(string), ErrorExtended error = default(ErrorExtended), string installmentPlanNumber = default(string))
+        /// <param name="paymentInfo">paymentInfo.</param>
+        public PlanErrorResponse(string traceId = default(string), ErrorExtended error = default(ErrorExtended), string installmentPlanNumber = default(string), PaymentInfo paymentInfo = default(PaymentInfo))
         {
             this.TraceId = traceId;
             this.Error = error;
             this.InstallmentPlanNumber = installmentPlanNumber;
+            this.PaymentInfo = paymentInfo;
         }
 
         /// <summary>
@@ -63,6 +65,12 @@ namespace Splitit.Web.Net.Model
         public string InstallmentPlanNumber { get; set; }
 
         /// <summary>
+        /// Gets or Sets PaymentInfo
+        /// </summary>
+        [DataMember(Name = "PaymentInfo", EmitDefaultValue = false)]
+        public PaymentInfo PaymentInfo { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,6 +81,7 @@ namespace Splitit.Web.Net.Model
             sb.Append("  TraceId: ").Append(TraceId).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  InstallmentPlanNumber: ").Append(InstallmentPlanNumber).Append("\n");
+            sb.Append("  PaymentInfo: ").Append(PaymentInfo).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -122,6 +131,11 @@ namespace Splitit.Web.Net.Model
                     this.InstallmentPlanNumber == input.InstallmentPlanNumber ||
                     (this.InstallmentPlanNumber != null &&
                     this.InstallmentPlanNumber.Equals(input.InstallmentPlanNumber))
+                ) && 
+                (
+                    this.PaymentInfo == input.PaymentInfo ||
+                    (this.PaymentInfo != null &&
+                    this.PaymentInfo.Equals(input.PaymentInfo))
                 );
         }
 
@@ -145,6 +159,10 @@ namespace Splitit.Web.Net.Model
                 if (this.InstallmentPlanNumber != null)
                 {
                     hashCode = (hashCode * 59) + this.InstallmentPlanNumber.GetHashCode();
+                }
+                if (this.PaymentInfo != null)
+                {
+                    hashCode = (hashCode * 59) + this.PaymentInfo.GetHashCode();
                 }
                 return hashCode;
             }
