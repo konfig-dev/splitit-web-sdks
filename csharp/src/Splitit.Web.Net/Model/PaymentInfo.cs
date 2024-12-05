@@ -26,33 +26,33 @@ using OpenAPIDateConverter = Splitit.Web.Net.Client.OpenAPIDateConverter;
 namespace Splitit.Web.Net.Model
 {
     /// <summary>
-    /// PlanErrorResponseAllOf
+    /// PaymentInfo
     /// </summary>
-    [DataContract(Name = "PlanErrorResponse_allOf")]
-    public partial class PlanErrorResponseAllOf : IEquatable<PlanErrorResponseAllOf>, IValidatableObject
+    [DataContract(Name = "PaymentInfo")]
+    public partial class PaymentInfo : IEquatable<PaymentInfo>, IValidatableObject
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="PlanErrorResponseAllOf" /> class.
+        /// Gets or Sets CardType
         /// </summary>
-        /// <param name="installmentPlanNumber">installmentPlanNumber.</param>
-        /// <param name="paymentInfo">paymentInfo.</param>
-        public PlanErrorResponseAllOf(string installmentPlanNumber = default(string), PaymentInfo paymentInfo = default(PaymentInfo))
+        [DataMember(Name = "CardType", EmitDefaultValue = false)]
+        public CardType? CardType { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaymentInfo" /> class.
+        /// </summary>
+        /// <param name="cardBin">cardBin.</param>
+        /// <param name="cardType">cardType.</param>
+        public PaymentInfo(string cardBin = default(string), CardType? cardType = default(CardType?))
         {
-            this.InstallmentPlanNumber = installmentPlanNumber;
-            this.PaymentInfo = paymentInfo;
+            this.CardBin = cardBin;
+            this.CardType = cardType;
         }
 
         /// <summary>
-        /// Gets or Sets InstallmentPlanNumber
+        /// Gets or Sets CardBin
         /// </summary>
-        [DataMember(Name = "InstallmentPlanNumber", EmitDefaultValue = false)]
-        public string InstallmentPlanNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PaymentInfo
-        /// </summary>
-        [DataMember(Name = "PaymentInfo", EmitDefaultValue = false)]
-        public PaymentInfo PaymentInfo { get; set; }
+        [DataMember(Name = "CardBin", EmitDefaultValue = false)]
+        public string CardBin { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +61,9 @@ namespace Splitit.Web.Net.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class PlanErrorResponseAllOf {\n");
-            sb.Append("  InstallmentPlanNumber: ").Append(InstallmentPlanNumber).Append("\n");
-            sb.Append("  PaymentInfo: ").Append(PaymentInfo).Append("\n");
+            sb.Append("class PaymentInfo {\n");
+            sb.Append("  CardBin: ").Append(CardBin).Append("\n");
+            sb.Append("  CardType: ").Append(CardType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,15 +84,15 @@ namespace Splitit.Web.Net.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as PlanErrorResponseAllOf);
+            return this.Equals(input as PaymentInfo);
         }
 
         /// <summary>
-        /// Returns true if PlanErrorResponseAllOf instances are equal
+        /// Returns true if PaymentInfo instances are equal
         /// </summary>
-        /// <param name="input">Instance of PlanErrorResponseAllOf to be compared</param>
+        /// <param name="input">Instance of PaymentInfo to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PlanErrorResponseAllOf input)
+        public bool Equals(PaymentInfo input)
         {
             if (input == null)
             {
@@ -100,14 +100,13 @@ namespace Splitit.Web.Net.Model
             }
             return 
                 (
-                    this.InstallmentPlanNumber == input.InstallmentPlanNumber ||
-                    (this.InstallmentPlanNumber != null &&
-                    this.InstallmentPlanNumber.Equals(input.InstallmentPlanNumber))
+                    this.CardBin == input.CardBin ||
+                    (this.CardBin != null &&
+                    this.CardBin.Equals(input.CardBin))
                 ) && 
                 (
-                    this.PaymentInfo == input.PaymentInfo ||
-                    (this.PaymentInfo != null &&
-                    this.PaymentInfo.Equals(input.PaymentInfo))
+                    this.CardType == input.CardType ||
+                    this.CardType.Equals(input.CardType)
                 );
         }
 
@@ -120,14 +119,11 @@ namespace Splitit.Web.Net.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.InstallmentPlanNumber != null)
+                if (this.CardBin != null)
                 {
-                    hashCode = (hashCode * 59) + this.InstallmentPlanNumber.GetHashCode();
+                    hashCode = (hashCode * 59) + this.CardBin.GetHashCode();
                 }
-                if (this.PaymentInfo != null)
-                {
-                    hashCode = (hashCode * 59) + this.PaymentInfo.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.CardType.GetHashCode();
                 return hashCode;
             }
         }

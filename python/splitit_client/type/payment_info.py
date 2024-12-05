@@ -14,7 +14,15 @@ import typing
 from enum import Enum
 from typing_extensions import TypedDict, Literal, TYPE_CHECKING
 
-from splitit_client.type.failed_response import FailedResponse
-from splitit_client.type.payment_info import PaymentInfo
+from splitit_client.type.card_type import CardType
 
-PlanErrorResponse = typing.Union[FailedResponse,typing.Dict[str, typing.Union[bool, date, datetime, dict, float, int, list, str, None]]]
+class RequiredPaymentInfo(TypedDict):
+    pass
+
+class OptionalPaymentInfo(TypedDict, total=False):
+    CardBin: str
+
+    CardType: CardType
+
+class PaymentInfo(RequiredPaymentInfo, OptionalPaymentInfo):
+    pass

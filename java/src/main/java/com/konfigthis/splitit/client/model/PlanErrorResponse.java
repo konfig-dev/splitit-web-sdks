@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.konfigthis.splitit.client.model.ErrorExtended;
+import com.konfigthis.splitit.client.model.PaymentInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -61,6 +62,10 @@ public class PlanErrorResponse {
   public static final String SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER = "InstallmentPlanNumber";
   @SerializedName(SERIALIZED_NAME_INSTALLMENT_PLAN_NUMBER)
   private String installmentPlanNumber;
+
+  public static final String SERIALIZED_NAME_PAYMENT_INFO = "PaymentInfo";
+  @SerializedName(SERIALIZED_NAME_PAYMENT_INFO)
+  private PaymentInfo paymentInfo;
 
   public PlanErrorResponse() {
   }
@@ -151,6 +156,35 @@ public class PlanErrorResponse {
     this.installmentPlanNumber = installmentPlanNumber;
   }
 
+
+  public PlanErrorResponse paymentInfo(PaymentInfo paymentInfo) {
+    
+    
+    
+    
+    this.paymentInfo = paymentInfo;
+    return this;
+  }
+
+   /**
+   * Get paymentInfo
+   * @return paymentInfo
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PaymentInfo getPaymentInfo() {
+    return paymentInfo;
+  }
+
+
+  public void setPaymentInfo(PaymentInfo paymentInfo) {
+    
+    
+    
+    this.paymentInfo = paymentInfo;
+  }
+
   /**
    * A container for additional, undeclared properties.
    * This is a holder for any undeclared properties as specified with
@@ -208,13 +242,14 @@ public class PlanErrorResponse {
     PlanErrorResponse planErrorResponse = (PlanErrorResponse) o;
     return Objects.equals(this.traceId, planErrorResponse.traceId) &&
         Objects.equals(this.error, planErrorResponse.error) &&
-        Objects.equals(this.installmentPlanNumber, planErrorResponse.installmentPlanNumber)&&
+        Objects.equals(this.installmentPlanNumber, planErrorResponse.installmentPlanNumber) &&
+        Objects.equals(this.paymentInfo, planErrorResponse.paymentInfo)&&
         Objects.equals(this.additionalProperties, planErrorResponse.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(traceId, error, installmentPlanNumber, additionalProperties);
+    return Objects.hash(traceId, error, installmentPlanNumber, paymentInfo, additionalProperties);
   }
 
   @Override
@@ -224,6 +259,7 @@ public class PlanErrorResponse {
     sb.append("    traceId: ").append(toIndentedString(traceId)).append("\n");
     sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    installmentPlanNumber: ").append(toIndentedString(installmentPlanNumber)).append("\n");
+    sb.append("    paymentInfo: ").append(toIndentedString(paymentInfo)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -250,6 +286,7 @@ public class PlanErrorResponse {
     openapiFields.add("TraceId");
     openapiFields.add("Error");
     openapiFields.add("InstallmentPlanNumber");
+    openapiFields.add("PaymentInfo");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -276,6 +313,10 @@ public class PlanErrorResponse {
       }
       if ((jsonObj.get("InstallmentPlanNumber") != null && !jsonObj.get("InstallmentPlanNumber").isJsonNull()) && !jsonObj.get("InstallmentPlanNumber").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `InstallmentPlanNumber` to be a primitive type in the JSON string but got `%s`", jsonObj.get("InstallmentPlanNumber").toString()));
+      }
+      // validate the optional field `PaymentInfo`
+      if (jsonObj.get("PaymentInfo") != null && !jsonObj.get("PaymentInfo").isJsonNull()) {
+        PaymentInfo.validateJsonObject(jsonObj.getAsJsonObject("PaymentInfo"));
       }
   }
 

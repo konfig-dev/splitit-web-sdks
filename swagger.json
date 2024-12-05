@@ -1699,10 +1699,24 @@
           "properties": {
             "InstallmentPlanNumber": {
               "type": "string"
+            },
+            "PaymentInfo": {
+              "$ref": "#/definitions/PaymentInfo"
             }
           }
         }
       ]
+    },
+    "PaymentInfo": {
+      "type": "object",
+      "properties": {
+        "CardBin": {
+          "type": "string"
+        },
+        "CardType": {
+          "$ref": "#/definitions/CardType"
+        }
+      }
     },
     "InstallmentPlanInitiateRequest": {
       "type": "object",

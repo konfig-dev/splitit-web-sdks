@@ -17,7 +17,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.konfigthis.splitit.client.model.PaymentInfo;
+import com.konfigthis.splitit.client.model.CardType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -26,33 +26,33 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Model tests for PlanErrorResponseAllOf
+ * Model tests for PaymentInfo
  */
-public class PlanErrorResponseAllOfTest {
-    private final PlanErrorResponseAllOf model = new PlanErrorResponseAllOf();
+public class PaymentInfoTest {
+    private final PaymentInfo model = new PaymentInfo();
 
     /**
-     * Model tests for PlanErrorResponseAllOf
+     * Model tests for PaymentInfo
      */
     @Test
-    public void testPlanErrorResponseAllOf() {
-        // TODO: test PlanErrorResponseAllOf
+    public void testPaymentInfo() {
+        // TODO: test PaymentInfo
     }
 
     /**
-     * Test the property 'installmentPlanNumber'
+     * Test the property 'cardBin'
      */
     @Test
-    public void installmentPlanNumberTest() {
-        // TODO: test installmentPlanNumber
+    public void cardBinTest() {
+        // TODO: test cardBin
     }
 
     /**
-     * Test the property 'paymentInfo'
+     * Test the property 'cardType'
      */
     @Test
-    public void paymentInfoTest() {
-        // TODO: test paymentInfo
+    public void cardTypeTest() {
+        // TODO: test cardType
     }
 
 }

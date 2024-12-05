@@ -12,6 +12,7 @@ import type * as buffer from "buffer"
 
 import { ErrorExtended } from './error-extended';
 import { FailedResponse } from './failed-response';
+import { PaymentInfo } from './payment-info';
 import { PlanErrorResponseAllOf } from './plan-error-response-all-of';
 
 /**

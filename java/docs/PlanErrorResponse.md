@@ -10,6 +10,7 @@
 |**traceId** | **String** |  |  [optional] |
 |**error** | [**ErrorExtended**](ErrorExtended.md) |  |  [optional] |
 |**installmentPlanNumber** | **String** |  |  [optional] |
+|**paymentInfo** | [**PaymentInfo**](PaymentInfo.md) |  |  [optional] |
 
 
 

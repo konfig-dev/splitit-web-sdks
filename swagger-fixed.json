@@ -2493,10 +2493,24 @@
             "properties": {
               "InstallmentPlanNumber": {
                 "type": "string"
+              },
+              "PaymentInfo": {
+                "$ref": "#/components/schemas/PaymentInfo"
               }
             }
           }
         ]
+      },
+      "PaymentInfo": {
+        "type": "object",
+        "properties": {
+          "CardBin": {
+            "type": "string"
+          },
+          "CardType": {
+            "$ref": "#/components/schemas/CardType"
+          }
+        }
       },
       "InstallmentPlanInitiateRequest": {
         "type": "object",
